@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace Prototipos_TUTASA
 {
-    public partial class Form1 : Form
+    public partial class Form2 : Form
     {
         private int ultimoCorrelativo = 1;
 
@@ -34,7 +34,7 @@ namespace Prototipos_TUTASA
                 RazonSocial = "Acme SA",
                 Cuit = "30-71234567-8",
                 Telefono = "1155551111",
-                Calle = "Av. Corrientes",
+                Calle = "Corrientes",
                 Altura = "1234",
                 Piso = "4A",
                 CodigoPostal = "C1043",
@@ -64,60 +64,42 @@ namespace Prototipos_TUTASA
             }
         };
 
-        public Form1()
+        public Form2()
         {
             InitializeComponent();
             CargarCombos();
-            ConfigurarPantallaInicial();
+            ConfigurarPantalla();
         }
 
         private void CargarCombos()
         {
-            cboTipoCliente.Items.AddRange(new object[]
-            {
-                "Corporativo",
-                "Particular"
-            });
+            cboTipoCliente.Items.Add("Corporativo");
+            cboTipoCliente.Items.Add("Particular");
 
             cboRazonSocial.DataSource = clientesCorporativos;
 
-            cboTipoEntrega.Items.AddRange(new object[]
-            {
-                "Puerta a puerta",
-                "Retiro en CD",
-                "Retiro en agencia"
-            });
+            cboTipoEntrega.Items.Add("Puerta a puerta");
+            cboTipoEntrega.Items.Add("Retiro en CD");
+            cboTipoEntrega.Items.Add("Retiro en agencia");
 
-            cboTipoBulto.Items.AddRange(new object[]
-            {
-                "S",
-                "M",
-                "L",
-                "XL"
-            });
+            cboTipoBulto.Items.Add("S");
+            cboTipoBulto.Items.Add("M");
+            cboTipoBulto.Items.Add("L");
+            cboTipoBulto.Items.Add("XL");
 
-            cboCdOrigen.Items.AddRange(new object[]
-            {
-                "CABA",
-                "COR",
-                "ROS",
-                "MDZ"
-            });
+            cboCdOrigen.Items.Add("CABA");
+            cboCdOrigen.Items.Add("COR");
+            cboCdOrigen.Items.Add("ROS");
+            cboCdOrigen.Items.Add("MDZ");
 
-            cboCdDestino.Items.AddRange(new object[]
-            {
-                "CABA",
-                "COR",
-                "ROS",
-                "MDZ"
-            });
+            cboCdDestino.Items.Add("CABA");
+            cboCdDestino.Items.Add("COR");
+            cboCdDestino.Items.Add("ROS");
+            cboCdDestino.Items.Add("MDZ");
 
-            cboAgencia.Items.AddRange(new object[]
-            {
-                "AG001 - Centro",
-                "AG002 - Norte",
-                "AG003 - Sur"
-            });
+            cboAgencia.Items.Add("AG001 - Centro");
+            cboAgencia.Items.Add("AG002 - Norte");
+            cboAgencia.Items.Add("AG003 - Sur");
 
             cboTipoCliente.SelectedIndex = -1;
             cboRazonSocial.SelectedIndex = -1;
@@ -128,11 +110,13 @@ namespace Prototipos_TUTASA
             cboAgencia.SelectedIndex = -1;
         }
 
-        private void ConfigurarPantallaInicial()
+        private void ConfigurarPantalla()
         {
-            lblFechaValor.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            txtFecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
 
-            HabilitarCorporativo(false);
+            cboRazonSocial.Enabled = false;
+            txtCuit.ReadOnly = true;
+
             HabilitarParticular(false);
             HabilitarEntregaDomicilio(false);
 
@@ -144,12 +128,18 @@ namespace Prototipos_TUTASA
             bool esCorporativo = cboTipoCliente.Text == "Corporativo";
             bool esParticular = cboTipoCliente.Text == "Particular";
 
-            HabilitarCorporativo(esCorporativo);
+            cboRazonSocial.Enabled = esCorporativo;
             HabilitarParticular(esParticular);
 
             if (esCorporativo)
             {
                 LimpiarParticular();
+                txtTelefonoRemitente.ReadOnly = true;
+                txtCalleRemitente.ReadOnly = true;
+                txtAlturaRemitente.ReadOnly = true;
+                txtPisoRemitente.ReadOnly = true;
+                txtCodigoPostalRemitente.ReadOnly = true;
+                txtCiudadRemitente.ReadOnly = true;
                 cboRazonSocial.SelectedIndex = -1;
                 LimpiarCamposCorporativos();
             }
@@ -157,12 +147,13 @@ namespace Prototipos_TUTASA
             {
                 cboRazonSocial.SelectedIndex = -1;
                 LimpiarCamposCorporativos();
-            }
-            else
-            {
-                cboRazonSocial.SelectedIndex = -1;
-                LimpiarCamposCorporativos();
-                LimpiarParticular();
+
+                txtTelefonoRemitente.ReadOnly = false;
+                txtCalleRemitente.ReadOnly = false;
+                txtAlturaRemitente.ReadOnly = false;
+                txtPisoRemitente.ReadOnly = false;
+                txtCodigoPostalRemitente.ReadOnly = false;
+                txtCiudadRemitente.ReadOnly = false;
             }
         }
 
@@ -173,10 +164,7 @@ namespace Prototipos_TUTASA
 
             ClienteCorporativo cliente = cboRazonSocial.SelectedItem as ClienteCorporativo;
             if (cliente == null)
-            {
-                LimpiarCamposCorporativos();
                 return;
-            }
 
             txtCuit.Text = cliente.Cuit;
             txtTelefonoRemitente.Text = cliente.Telefono;
@@ -207,24 +195,16 @@ namespace Prototipos_TUTASA
             if (!ValidarFormulario())
                 return;
 
-            string numeroOrden = GenerarNumeroOrden();
-            string guia = GenerarTextoGuia(numeroOrden);
+            string numeroOrden = $"{cboCdOrigen.Text}-{ultimoCorrelativo:D4}";
+            ultimoCorrelativo++;
+
+            txtGuia.Text = GenerarTextoGuia(numeroOrden);
 
             MessageBox.Show(
                 $"Orden nro {numeroOrden} se ha generado correctamente.",
                 "Guia generada",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
-
-            txtSalidaGuia.Text = guia;
-        }
-
-        private string GenerarNumeroOrden()
-        {
-            string codigoCd = cboCdOrigen.Text.Trim();
-            string numero = $"{codigoCd}-{ultimoCorrelativo:D4}";
-            ultimoCorrelativo++;
-            return numero;
         }
 
         private string GenerarTextoGuia(string numeroOrden)
@@ -232,55 +212,54 @@ namespace Prototipos_TUTASA
             StringBuilder sb = new StringBuilder();
 
             sb.AppendLine("GUIA DE ENCOMIENDA");
-            sb.AppendLine("------------------------------");
-            sb.AppendLine($"Nro. de guia: {numeroOrden}");
-            sb.AppendLine($"Fecha de imposicion: {DateTime.Now:dd/MM/yyyy}");
-            sb.AppendLine($"CD origen: {cboCdOrigen.Text}");
-            sb.AppendLine($"CD destino: {cboCdDestino.Text}");
-            sb.AppendLine($"Tipo de entrega: {cboTipoEntrega.Text}");
-            sb.AppendLine($"Tipo de bulto: {cboTipoBulto.Text}");
-            sb.AppendLine();
+            sb.AppendLine("Nro guia: " + numeroOrden);
+            sb.AppendLine("Fecha: " + txtFecha.Text);
+            sb.AppendLine("CD origen: " + cboCdOrigen.Text);
+            sb.AppendLine("CD destino: " + cboCdDestino.Text);
+            sb.AppendLine("Tipo entrega: " + cboTipoEntrega.Text);
+            sb.AppendLine("Tipo bulto: " + cboTipoBulto.Text);
+            sb.AppendLine("");
 
             sb.AppendLine("REMITENTE");
-            sb.AppendLine($"Tipo de cliente: {cboTipoCliente.Text}");
+            sb.AppendLine("Tipo cliente: " + cboTipoCliente.Text);
 
             if (cboTipoCliente.Text == "Corporativo")
             {
-                sb.AppendLine($"Razon social: {cboRazonSocial.Text}");
-                sb.AppendLine($"CUIT: {txtCuit.Text}");
+                sb.AppendLine("Razon social: " + cboRazonSocial.Text);
+                sb.AppendLine("CUIT: " + txtCuit.Text);
             }
             else
             {
-                sb.AppendLine($"Nombre: {txtNombreRemitente.Text}");
-                sb.AppendLine($"Apellido: {txtApellidoRemitente.Text}");
-                sb.AppendLine($"DNI: {txtDniRemitente.Text}");
+                sb.AppendLine("Nombre: " + txtNombreRemitente.Text);
+                sb.AppendLine("Apellido: " + txtApellidoRemitente.Text);
+                sb.AppendLine("DNI: " + txtDniRemitente.Text);
             }
 
-            sb.AppendLine($"Telefono: {txtTelefonoRemitente.Text}");
-            sb.AppendLine($"Calle: {txtCalleRemitente.Text}");
-            sb.AppendLine($"Altura: {txtAlturaRemitente.Text}");
-            sb.AppendLine($"Piso: {txtPisoRemitente.Text}");
-            sb.AppendLine($"Codigo postal: {txtCodigoPostalRemitente.Text}");
-            sb.AppendLine($"Ciudad: {txtCiudadRemitente.Text}");
-            sb.AppendLine();
+            sb.AppendLine("Telefono: " + txtTelefonoRemitente.Text);
+            sb.AppendLine("Calle: " + txtCalleRemitente.Text);
+            sb.AppendLine("Altura: " + txtAlturaRemitente.Text);
+            sb.AppendLine("Piso: " + txtPisoRemitente.Text);
+            sb.AppendLine("Codigo postal: " + txtCodigoPostalRemitente.Text);
+            sb.AppendLine("Ciudad: " + txtCiudadRemitente.Text);
+            sb.AppendLine("");
 
             sb.AppendLine("DESTINATARIO");
-            sb.AppendLine($"Nombre: {txtNombreDestinatario.Text}");
-            sb.AppendLine($"Apellido: {txtApellidoDestinatario.Text}");
-            sb.AppendLine($"DNI: {txtDniDestinatario.Text}");
-            sb.AppendLine($"Telefono: {txtTelefonoDestinatario.Text}");
+            sb.AppendLine("Nombre: " + txtNombreDestinatario.Text);
+            sb.AppendLine("Apellido: " + txtApellidoDestinatario.Text);
+            sb.AppendLine("DNI: " + txtDniDestinatario.Text);
+            sb.AppendLine("Telefono: " + txtTelefonoDestinatario.Text);
 
             if (cboTipoEntrega.Text == "Puerta a puerta")
             {
-                sb.AppendLine($"Calle entrega: {txtCalleEntrega.Text}");
-                sb.AppendLine($"Altura entrega: {txtAlturaEntrega.Text}");
-                sb.AppendLine($"Piso entrega: {txtPisoEntrega.Text}");
-                sb.AppendLine($"Codigo postal entrega: {txtCodigoPostalEntrega.Text}");
-                sb.AppendLine($"Ciudad entrega: {txtCiudadEntrega.Text}");
+                sb.AppendLine("Calle entrega: " + txtCalleEntrega.Text);
+                sb.AppendLine("Altura entrega: " + txtAlturaEntrega.Text);
+                sb.AppendLine("Piso entrega: " + txtPisoEntrega.Text);
+                sb.AppendLine("Codigo postal entrega: " + txtCodigoPostalEntrega.Text);
+                sb.AppendLine("Ciudad entrega: " + txtCiudadEntrega.Text);
             }
             else if (cboTipoEntrega.Text == "Retiro en agencia")
             {
-                sb.AppendLine($"Agencia: {cboAgencia.Text}");
+                sb.AppendLine("Agencia: " + cboAgencia.Text);
             }
 
             return sb.ToString();
@@ -298,67 +277,49 @@ namespace Prototipos_TUTASA
 
                 if (string.IsNullOrWhiteSpace(txtCuit.Text))
                     return MostrarError("El CUIT es obligatorio.");
-
-                if (!ValidarTelefono(txtTelefonoRemitente.Text))
-                    return MostrarError("El telefono del remitente debe tener entre 8 y 15 caracteres.");
-
-                if (!ValidarTexto(txtCalleRemitente.Text, 50))
-                    return MostrarError("La calle del remitente es obligatoria y debe tener hasta 50 caracteres.");
-
-                if (!ValidarEnteroPositivo(txtAlturaRemitente.Text))
-                    return MostrarError("La altura del remitente debe ser un numero entero mayor a 0.");
-
-                if (txtPisoRemitente.Text.Trim().Length > 10)
-                    return MostrarError("El piso del remitente debe tener hasta 10 caracteres.");
-
-                if (!ValidarTexto(txtCodigoPostalRemitente.Text, 10))
-                    return MostrarError("El codigo postal del remitente es obligatorio y debe tener hasta 10 caracteres.");
-
-                if (!ValidarTexto(txtCiudadRemitente.Text, 40))
-                    return MostrarError("La ciudad del remitente es obligatoria y debe tener hasta 40 caracteres.");
             }
 
             if (cboTipoCliente.Text == "Particular")
             {
                 if (!ValidarTexto(txtNombreRemitente.Text, 30))
-                    return MostrarError("El nombre del remitente es obligatorio y debe tener hasta 30 caracteres.");
+                    return MostrarError("El nombre del remitente es obligatorio.");
 
                 if (!ValidarTexto(txtApellidoRemitente.Text, 30))
-                    return MostrarError("El apellido del remitente es obligatorio y debe tener hasta 30 caracteres.");
+                    return MostrarError("El apellido del remitente es obligatorio.");
 
                 if (!ValidarDni(txtDniRemitente.Text))
-                    return MostrarError("El DNI del remitente debe tener entre 7 y 9 digitos numericos.");
-
-                if (!ValidarTelefono(txtTelefonoRemitente.Text))
-                    return MostrarError("El telefono del remitente debe tener entre 8 y 15 caracteres.");
-
-                if (!ValidarTexto(txtCalleRemitente.Text, 50))
-                    return MostrarError("La calle del remitente es obligatoria y debe tener hasta 50 caracteres.");
-
-                if (!ValidarEnteroPositivo(txtAlturaRemitente.Text))
-                    return MostrarError("La altura del remitente debe ser un numero entero mayor a 0.");
-
-                if (txtPisoRemitente.Text.Trim().Length > 10)
-                    return MostrarError("El piso del remitente debe tener hasta 10 caracteres.");
-
-                if (!ValidarTexto(txtCodigoPostalRemitente.Text, 10))
-                    return MostrarError("El codigo postal del remitente es obligatorio y debe tener hasta 10 caracteres.");
-
-                if (!ValidarTexto(txtCiudadRemitente.Text, 40))
-                    return MostrarError("La ciudad del remitente es obligatoria y debe tener hasta 40 caracteres.");
+                    return MostrarError("El DNI del remitente es invalido.");
             }
 
+            if (!ValidarTelefono(txtTelefonoRemitente.Text))
+                return MostrarError("El telefono del remitente es invalido.");
+
+            if (!ValidarTexto(txtCalleRemitente.Text, 50))
+                return MostrarError("La calle del remitente es obligatoria.");
+
+            if (!ValidarEnteroPositivo(txtAlturaRemitente.Text))
+                return MostrarError("La altura del remitente es invalida.");
+
+            if (txtPisoRemitente.Text.Trim().Length > 10)
+                return MostrarError("El piso del remitente debe tener hasta 10 caracteres.");
+
+            if (!ValidarTexto(txtCodigoPostalRemitente.Text, 10))
+                return MostrarError("El codigo postal del remitente es obligatorio.");
+
+            if (!ValidarTexto(txtCiudadRemitente.Text, 40))
+                return MostrarError("La ciudad del remitente es obligatoria.");
+
             if (!ValidarTexto(txtNombreDestinatario.Text, 30))
-                return MostrarError("El nombre del destinatario es obligatorio y debe tener hasta 30 caracteres.");
+                return MostrarError("El nombre del destinatario es obligatorio.");
 
             if (!ValidarTexto(txtApellidoDestinatario.Text, 30))
-                return MostrarError("El apellido del destinatario es obligatorio y debe tener hasta 30 caracteres.");
+                return MostrarError("El apellido del destinatario es obligatorio.");
 
             if (!ValidarDni(txtDniDestinatario.Text))
-                return MostrarError("El DNI del destinatario debe tener entre 7 y 9 digitos numericos.");
+                return MostrarError("El DNI del destinatario es invalido.");
 
             if (!ValidarTelefono(txtTelefonoDestinatario.Text))
-                return MostrarError("El telefono del destinatario debe tener entre 8 y 15 caracteres.");
+                return MostrarError("El telefono del destinatario es invalido.");
 
             if (cboCdOrigen.SelectedIndex == -1)
                 return MostrarError("Debe seleccionar un CD de origen.");
@@ -375,19 +336,19 @@ namespace Prototipos_TUTASA
             if (cboTipoEntrega.Text == "Puerta a puerta")
             {
                 if (!ValidarTexto(txtCalleEntrega.Text, 50))
-                    return MostrarError("La calle de entrega es obligatoria y debe tener hasta 50 caracteres.");
+                    return MostrarError("La calle de entrega es obligatoria.");
 
                 if (!ValidarEnteroPositivo(txtAlturaEntrega.Text))
-                    return MostrarError("La altura de entrega debe ser un numero entero mayor a 0.");
+                    return MostrarError("La altura de entrega es invalida.");
 
                 if (txtPisoEntrega.Text.Trim().Length > 10)
                     return MostrarError("El piso de entrega debe tener hasta 10 caracteres.");
 
                 if (!ValidarTexto(txtCodigoPostalEntrega.Text, 10))
-                    return MostrarError("El codigo postal de entrega es obligatorio y debe tener hasta 10 caracteres.");
+                    return MostrarError("El codigo postal de entrega es obligatorio.");
 
                 if (!ValidarTexto(txtCiudadEntrega.Text, 40))
-                    return MostrarError("La ciudad de entrega es obligatoria y debe tener hasta 40 caracteres.");
+                    return MostrarError("La ciudad de entrega es obligatoria.");
             }
 
             if (cboTipoEntrega.Text == "Retiro en agencia" && cboAgencia.SelectedIndex == -1)
@@ -421,19 +382,8 @@ namespace Prototipos_TUTASA
 
         private bool MostrarError(string mensaje)
         {
-            MessageBox.Show(
-                mensaje,
-                "Validacion",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Warning);
-
+            MessageBox.Show(mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return false;
-        }
-
-        private void HabilitarCorporativo(bool habilitar)
-        {
-            cboRazonSocial.Enabled = habilitar;
-            txtCuit.ReadOnly = true;
         }
 
         private void HabilitarParticular(bool habilitar)
@@ -441,24 +391,6 @@ namespace Prototipos_TUTASA
             txtNombreRemitente.Enabled = habilitar;
             txtApellidoRemitente.Enabled = habilitar;
             txtDniRemitente.Enabled = habilitar;
-
-            txtTelefonoRemitente.ReadOnly = false;
-            txtCalleRemitente.ReadOnly = false;
-            txtAlturaRemitente.ReadOnly = false;
-            txtPisoRemitente.ReadOnly = false;
-            txtCodigoPostalRemitente.ReadOnly = false;
-            txtCiudadRemitente.ReadOnly = false;
-
-            bool corporativo = cboTipoCliente.Text == "Corporativo";
-            if (corporativo)
-            {
-                txtTelefonoRemitente.ReadOnly = true;
-                txtCalleRemitente.ReadOnly = true;
-                txtAlturaRemitente.ReadOnly = true;
-                txtPisoRemitente.ReadOnly = true;
-                txtCodigoPostalRemitente.ReadOnly = true;
-                txtCiudadRemitente.ReadOnly = true;
-            }
         }
 
         private void HabilitarEntregaDomicilio(bool habilitar)
