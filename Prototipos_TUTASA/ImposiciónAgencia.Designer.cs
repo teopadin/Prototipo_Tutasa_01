@@ -28,12 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "ImposiciónAgencia";
+            button1 = new Button();
+            SuspendLayout();
+            // 
+            // button1
+            // 
+            button1.Location = new Point(386, 258);
+            button1.Name = "button1";
+            button1.Size = new Size(236, 109);
+            button1.TabIndex = 0;
+            button1.Text = "Aceptar ";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // ImposiciónAgencia
+            // 
+            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1053, 510);
+            Controls.Add(button1);
+            Name = "ImposiciónAgencia";
+            Text = "ImposiciónAgencia";
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private Button button1;
     }
 }
