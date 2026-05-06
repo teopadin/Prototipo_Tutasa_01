@@ -10,5 +10,35 @@ namespace Prototipos_TUTASA
         {
             InitializeComponent();
         }
+
+        private void ImposiciónCallCenter_Pantalla3_ClienteEmpresayParticular_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnGenerar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lstGuias_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblSecGuias_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
