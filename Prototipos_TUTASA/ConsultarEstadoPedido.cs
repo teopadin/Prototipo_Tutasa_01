@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace Prototipos_TUTASA
 {
-    public partial class ConsultaEstadoPedido : Form
+    public partial class ConsultarEstadoPedido : Form
     {
-        public ConsultaEstadoPedido()
+        public ConsultarEstadoPedido()
         {
             InitializeComponent();
         }

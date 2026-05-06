@@ -1,6 +1,6 @@
 namespace Prototipos_TUTASA
 {
-    partial class ConsultaEstadoPedido
+    partial class ConsultarEstadoPedido
     {
         /// <summary>
         /// Required designer variable.
