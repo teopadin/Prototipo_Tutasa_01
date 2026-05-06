@@ -13,9 +13,9 @@
         {
             ListViewItem listViewItem1 = new ListViewItem(new string[] { "TRK-00480", "Acme SA", "Córdoba", "M", "Puerta a Puerta", "Pendiente de admisión" }, -1);
             ListViewItem listViewItem2 = new ListViewItem(new string[] { "TRK-00481", "García, Lucía", "Rosario", "S", "Retiro en CD", "Pendiente de admisión" }, -1);
-            this.lblTitulo = new Label();
-            this.lblPaso = new Label();
-            this.lblFecha = new Label();
+            lblTitulo = new Label();
+            lblPaso = new Label();
+            lblFecha = new Label();
             lblCDOrigen = new Label();
             cboCDOrigen = new ComboBox();
             lblCDDestino = new Label();
@@ -24,14 +24,14 @@
             cboTipoBulto = new ComboBox();
             lblTipoEntrega = new Label();
             cboTipoEntrega = new ComboBox();
-            this.lblCalleEnt = new Label();
+            lblCalleEnt = new Label();
             txtCalleEnt = new TextBox();
-            this.lblAlturaEnt = new Label();
+            lblAlturaEnt = new Label();
             txtAlturaEnt = new TextBox();
-            this.lblPisoEnt = new Label();
+            lblPisoEnt = new Label();
             txtPisoEnt = new TextBox();
-            this.btnGenerar = new Button();
-            this.lblSecGuias = new Label();
+            btnGenerar = new Button();
+            lblSecGuias = new Label();
             lstGuias = new ListView();
             colTracking = new ColumnHeader();
             colRemitente = new ColumnHeader();
@@ -57,33 +57,33 @@
             // 
             // lblTitulo
             // 
-            this.lblTitulo.Font = new Font("Segoe UI", 16F);
-            this.lblTitulo.ForeColor = Color.FromArgb(30, 30, 30);
-            this.lblTitulo.Location = new Point(20, 9);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new Size(400, 46);
-            this.lblTitulo.TabIndex = 0;
-            this.lblTitulo.Text = "Imposición en Call Center";
+            lblTitulo.Font = new Font("Segoe UI", 16F);
+            lblTitulo.ForeColor = Color.FromArgb(30, 30, 30);
+            lblTitulo.Location = new Point(20, 9);
+            lblTitulo.Name = "lblTitulo";
+            lblTitulo.Size = new Size(400, 46);
+            lblTitulo.TabIndex = 0;
+            lblTitulo.Text = "Imposición en Call Center";
             // 
             // lblPaso
             // 
-            this.lblPaso.Font = new Font("Segoe UI", 9F);
-            this.lblPaso.ForeColor = Color.Gray;
-            this.lblPaso.Location = new Point(30, 73);
-            this.lblPaso.Name = "lblPaso";
-            this.lblPaso.Size = new Size(300, 20);
-            this.lblPaso.TabIndex = 4;
-            this.lblPaso.Text = "Paso 3 de 3 ";
+            lblPaso.Font = new Font("Segoe UI", 9F);
+            lblPaso.ForeColor = Color.Gray;
+            lblPaso.Location = new Point(30, 73);
+            lblPaso.Name = "lblPaso";
+            lblPaso.Size = new Size(300, 20);
+            lblPaso.TabIndex = 4;
+            lblPaso.Text = "Paso 3 de 3 ";
             // 
             // lblFecha
             // 
-            this.lblFecha.Font = new Font("Segoe UI", 9F);
-            this.lblFecha.ForeColor = Color.Gray;
-            this.lblFecha.Location = new Point(624, 25);
-            this.lblFecha.Name = "lblFecha";
-            this.lblFecha.Size = new Size(70, 27);
-            this.lblFecha.TabIndex = 1;
-            this.lblFecha.Text = "Fecha:";
+            lblFecha.Font = new Font("Segoe UI", 9F);
+            lblFecha.ForeColor = Color.Gray;
+            lblFecha.Location = new Point(624, 25);
+            lblFecha.Name = "lblFecha";
+            lblFecha.Size = new Size(70, 27);
+            lblFecha.TabIndex = 1;
+            lblFecha.Text = "Fecha:";
             // 
             // lblCDOrigen
             // 
@@ -100,7 +100,7 @@
             cboCDOrigen.Items.AddRange(new object[] { "CABA", "GBA Norte", "GBA Sur", "Rosario", "Córdoba", "Mendoza" });
             cboCDOrigen.Location = new Point(17, 70);
             cboCDOrigen.Name = "cboCDOrigen";
-            cboCDOrigen.Size = new Size(160, 33);
+            cboCDOrigen.Size = new Size(160, 23);
             cboCDOrigen.TabIndex = 8;
             // 
             // lblCDDestino
@@ -118,7 +118,7 @@
             cboCDDestino.Items.AddRange(new object[] { "CABA", "GBA Norte", "GBA Sur", "Rosario", "Córdoba", "Mendoza" });
             cboCDDestino.Location = new Point(197, 70);
             cboCDDestino.Name = "cboCDDestino";
-            cboCDDestino.Size = new Size(160, 33);
+            cboCDDestino.Size = new Size(160, 23);
             cboCDDestino.TabIndex = 10;
             // 
             // lblTipoBulto
@@ -136,7 +136,7 @@
             cboTipoBulto.Items.AddRange(new object[] { "S", "M", "L", "XL" });
             cboTipoBulto.Location = new Point(377, 70);
             cboTipoBulto.Name = "cboTipoBulto";
-            cboTipoBulto.Size = new Size(153, 33);
+            cboTipoBulto.Size = new Size(153, 23);
             cboTipoBulto.TabIndex = 12;
             // 
             // lblTipoEntrega
@@ -154,77 +154,77 @@
             cboTipoEntrega.Items.AddRange(new object[] { "Retiro en CD", "Retiro en Agencia", "Puerta a Puerta" });
             cboTipoEntrega.Location = new Point(550, 70);
             cboTipoEntrega.Name = "cboTipoEntrega";
-            cboTipoEntrega.Size = new Size(200, 33);
+            cboTipoEntrega.Size = new Size(200, 23);
             cboTipoEntrega.TabIndex = 14;
             // 
             // lblCalleEnt
             // 
-            this.lblCalleEnt.ForeColor = Color.FromArgb(60, 60, 60);
-            this.lblCalleEnt.Location = new Point(10, 32);
-            this.lblCalleEnt.Name = "lblCalleEnt";
-            this.lblCalleEnt.Size = new Size(100, 30);
-            this.lblCalleEnt.TabIndex = 21;
-            this.lblCalleEnt.Text = "Calle *";
+            lblCalleEnt.ForeColor = Color.FromArgb(60, 60, 60);
+            lblCalleEnt.Location = new Point(10, 32);
+            lblCalleEnt.Name = "lblCalleEnt";
+            lblCalleEnt.Size = new Size(100, 30);
+            lblCalleEnt.TabIndex = 21;
+            lblCalleEnt.Text = "Calle *";
             // 
             // txtCalleEnt
             // 
             txtCalleEnt.Location = new Point(10, 64);
             txtCalleEnt.Name = "txtCalleEnt";
-            txtCalleEnt.Size = new Size(280, 31);
+            txtCalleEnt.Size = new Size(280, 23);
             txtCalleEnt.TabIndex = 22;
             // 
             // lblAlturaEnt
             // 
-            this.lblAlturaEnt.ForeColor = Color.FromArgb(60, 60, 60);
-            this.lblAlturaEnt.Location = new Point(310, 32);
-            this.lblAlturaEnt.Name = "lblAlturaEnt";
-            this.lblAlturaEnt.Size = new Size(80, 30);
-            this.lblAlturaEnt.TabIndex = 23;
-            this.lblAlturaEnt.Text = "Altura *";
+            lblAlturaEnt.ForeColor = Color.FromArgb(60, 60, 60);
+            lblAlturaEnt.Location = new Point(310, 32);
+            lblAlturaEnt.Name = "lblAlturaEnt";
+            lblAlturaEnt.Size = new Size(80, 30);
+            lblAlturaEnt.TabIndex = 23;
+            lblAlturaEnt.Text = "Altura *";
             // 
             // txtAlturaEnt
             // 
             txtAlturaEnt.Location = new Point(310, 64);
             txtAlturaEnt.Name = "txtAlturaEnt";
-            txtAlturaEnt.Size = new Size(90, 31);
+            txtAlturaEnt.Size = new Size(90, 23);
             txtAlturaEnt.TabIndex = 24;
             // 
             // lblPisoEnt
             // 
-            this.lblPisoEnt.ForeColor = Color.FromArgb(60, 60, 60);
-            this.lblPisoEnt.Location = new Point(420, 32);
-            this.lblPisoEnt.Name = "lblPisoEnt";
-            this.lblPisoEnt.Size = new Size(100, 30);
-            this.lblPisoEnt.TabIndex = 25;
-            this.lblPisoEnt.Text = "Piso / Depto";
+            lblPisoEnt.ForeColor = Color.FromArgb(60, 60, 60);
+            lblPisoEnt.Location = new Point(420, 32);
+            lblPisoEnt.Name = "lblPisoEnt";
+            lblPisoEnt.Size = new Size(100, 30);
+            lblPisoEnt.TabIndex = 25;
+            lblPisoEnt.Text = "Piso / Depto";
             // 
             // txtPisoEnt
             // 
             txtPisoEnt.Location = new Point(420, 64);
             txtPisoEnt.Name = "txtPisoEnt";
-            txtPisoEnt.Size = new Size(120, 31);
+            txtPisoEnt.Size = new Size(120, 23);
             txtPisoEnt.TabIndex = 26;
             // 
             // btnGenerar
             // 
-            this.btnGenerar.FlatStyle = FlatStyle.System;
-            this.btnGenerar.Location = new Point(595, 828);
-            this.btnGenerar.Name = "btnGenerar";
-            this.btnGenerar.Size = new Size(120, 34);
-            this.btnGenerar.TabIndex = 30;
-            this.btnGenerar.Text = "Generar Guía";
-            this.btnGenerar.Click += this.btnGenerar_Click;
+            btnGenerar.FlatStyle = FlatStyle.System;
+            btnGenerar.Location = new Point(595, 828);
+            btnGenerar.Name = "btnGenerar";
+            btnGenerar.Size = new Size(120, 34);
+            btnGenerar.TabIndex = 30;
+            btnGenerar.Text = "Generar Guía";
+            btnGenerar.Click += btnGenerar_Click;
             // 
             // lblSecGuias
             // 
-            this.lblSecGuias.Font = new Font("Segoe UI", 10F);
-            this.lblSecGuias.ForeColor = Color.FromArgb(30, 30, 30);
-            this.lblSecGuias.Location = new Point(30, 652);
-            this.lblSecGuias.Name = "lblSecGuias";
-            this.lblSecGuias.Size = new Size(275, 41);
-            this.lblSecGuias.TabIndex = 31;
-            this.lblSecGuias.Text = "Guías generadas en la fecha";
-            this.lblSecGuias.Click += this.lblSecGuias_Click;
+            lblSecGuias.Font = new Font("Segoe UI", 10F);
+            lblSecGuias.ForeColor = Color.FromArgb(30, 30, 30);
+            lblSecGuias.Location = new Point(30, 652);
+            lblSecGuias.Name = "lblSecGuias";
+            lblSecGuias.Size = new Size(275, 41);
+            lblSecGuias.TabIndex = 31;
+            lblSecGuias.Text = "Guías generadas en la fecha";
+            lblSecGuias.Click += lblSecGuias_Click;
             // 
             // lstGuias
             // 
@@ -310,11 +310,11 @@
             // groupBox2
             // 
             groupBox2.Controls.Add(txtPisoEnt);
-            groupBox2.Controls.Add(this.lblPisoEnt);
+            groupBox2.Controls.Add(lblPisoEnt);
             groupBox2.Controls.Add(txtAlturaEnt);
-            groupBox2.Controls.Add(this.lblAlturaEnt);
+            groupBox2.Controls.Add(lblAlturaEnt);
             groupBox2.Controls.Add(txtCalleEnt);
-            groupBox2.Controls.Add(this.lblCalleEnt);
+            groupBox2.Controls.Add(lblCalleEnt);
             groupBox2.Location = new Point(30, 260);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(796, 118);
@@ -340,7 +340,7 @@
             comboBox1.Items.AddRange(new object[] { "Agencia Flores", "Agencia Palermo", "Agencia Belgrano" });
             comboBox1.Location = new Point(6, 70);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(534, 33);
+            comboBox1.Size = new Size(534, 23);
             comboBox1.TabIndex = 28;
             // 
             // label1
@@ -369,7 +369,7 @@
             comboBox2.Items.AddRange(new object[] { "Agencia Flores", "Agencia Palermo", "Agencia Belgrano" });
             comboBox2.Location = new Point(6, 70);
             comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(534, 33);
+            comboBox2.Size = new Size(534, 23);
             comboBox2.TabIndex = 28;
             // 
             // label2
@@ -385,18 +385,18 @@
             // ImposiciónCallCenter_Pantalla3_ClienteEmpresayParticular
             // 
             BackColor = Color.White;
-            ClientSize = new Size(871, 874);
+            ClientSize = new Size(871, 749);
             Controls.Add(groupBox4);
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Controls.Add(button1);
             Controls.Add(groupBox1);
             Controls.Add(lblFechaValor);
-            Controls.Add(this.lblTitulo);
-            Controls.Add(this.lblFecha);
-            Controls.Add(this.lblPaso);
-            Controls.Add(this.btnGenerar);
-            Controls.Add(this.lblSecGuias);
+            Controls.Add(lblTitulo);
+            Controls.Add(lblFecha);
+            Controls.Add(lblPaso);
+            Controls.Add(btnGenerar);
+            Controls.Add(lblSecGuias);
             Controls.Add(lstGuias);
             Font = new Font("Segoe UI", 9F);
             FormBorderStyle = FormBorderStyle.FixedSingle;
