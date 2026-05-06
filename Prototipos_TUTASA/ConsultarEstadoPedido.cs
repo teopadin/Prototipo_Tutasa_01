@@ -12,7 +12,7 @@ namespace Prototipos_TUTASA
     {
         public ConsultarEstadoPedido()
         {
-            InitializeComponent();
+            InicializarComponentes();
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)

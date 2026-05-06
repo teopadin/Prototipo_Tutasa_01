@@ -8,10 +8,10 @@ namespace Prototipos_TUTASA
         [STAThread]
         static void Main()
         {
-            https://aka.ms/applicationconfiguration.
+            // https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new ConsultaEstadoPedido());
-;
+            Application.Run(new Form1_Seleccion());
+;<
         }
     }
 }
