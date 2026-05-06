@@ -1,6 +1,6 @@
 ﻿namespace Prototipos_TUTASA
 {
-    partial class Imposición_Corporativo
+    partial class ImposiciónCC_Corporativo
     {
         private System.ComponentModel.IContainer components = null;
         protected override void Dispose(bool disposing)
@@ -44,9 +44,9 @@
             // 
             lblTitulo.Font = new Font("Segoe UI", 16F);
             lblTitulo.ForeColor = Color.FromArgb(30, 30, 30);
-            lblTitulo.Location = new Point(30, 20);
+            lblTitulo.Location = new Point(30, 9);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(400, 35);
+            lblTitulo.Size = new Size(400, 46);
             lblTitulo.TabIndex = 0;
             lblTitulo.Text = "Imposición en Call Center";
             // 
@@ -76,7 +76,7 @@
             lblFechaValor.ForeColor = Color.FromArgb(30, 30, 30);
             lblFechaValor.Location = new Point(618, 28);
             lblFechaValor.Name = "lblFechaValor";
-            lblFechaValor.Size = new Size(90, 20);
+            lblFechaValor.Size = new Size(126, 20);
             lblFechaValor.TabIndex = 2;
             lblFechaValor.Text = "06/05/2026";
             // 
@@ -92,9 +92,9 @@
             // 
             lblSecRemitente.Font = new Font("Segoe UI", 10F);
             lblSecRemitente.ForeColor = Color.FromArgb(30, 30, 30);
-            lblSecRemitente.Location = new Point(30, 105);
+            lblSecRemitente.Location = new Point(30, 93);
             lblSecRemitente.Name = "lblSecRemitente";
-            lblSecRemitente.Size = new Size(300, 22);
+            lblSecRemitente.Size = new Size(300, 34);
             lblSecRemitente.TabIndex = 5;
             lblSecRemitente.Text = "1. Datos del remitente";
             // 
@@ -109,9 +109,9 @@
             // lblRazonSocial
             // 
             lblRazonSocial.ForeColor = Color.FromArgb(60, 60, 60);
-            lblRazonSocial.Location = new Point(30, 142);
+            lblRazonSocial.Location = new Point(30, 134);
             lblRazonSocial.Name = "lblRazonSocial";
-            lblRazonSocial.Size = new Size(200, 18);
+            lblRazonSocial.Size = new Size(200, 26);
             lblRazonSocial.TabIndex = 7;
             lblRazonSocial.Text = "Razón social *";
             // 
@@ -126,9 +126,9 @@
             // lblCUIT
             // 
             lblCUIT.ForeColor = Color.FromArgb(60, 60, 60);
-            lblCUIT.Location = new Point(310, 142);
+            lblCUIT.Location = new Point(310, 134);
             lblCUIT.Name = "lblCUIT";
-            lblCUIT.Size = new Size(120, 18);
+            lblCUIT.Size = new Size(120, 26);
             lblCUIT.TabIndex = 9;
             lblCUIT.Text = "CUIT *";
             // 
@@ -142,9 +142,9 @@
             // lblContacto
             // 
             lblContacto.ForeColor = Color.FromArgb(60, 60, 60);
-            lblContacto.Location = new Point(480, 142);
+            lblContacto.Location = new Point(480, 134);
             lblContacto.Name = "lblContacto";
-            lblContacto.Size = new Size(180, 18);
+            lblContacto.Size = new Size(180, 26);
             lblContacto.TabIndex = 11;
             lblContacto.Text = "Nombre de contacto *";
             // 
@@ -158,9 +158,9 @@
             // lblTelefono
             // 
             lblTelefono.ForeColor = Color.FromArgb(60, 60, 60);
-            lblTelefono.Location = new Point(30, 205);
+            lblTelefono.Location = new Point(30, 198);
             lblTelefono.Name = "lblTelefono";
-            lblTelefono.Size = new Size(150, 18);
+            lblTelefono.Size = new Size(150, 25);
             lblTelefono.TabIndex = 13;
             lblTelefono.Text = "Teléfono *";
             // 
@@ -175,9 +175,9 @@
             // 
             lblSecDestinatario.Font = new Font("Segoe UI", 10F);
             lblSecDestinatario.ForeColor = Color.FromArgb(30, 30, 30);
-            lblSecDestinatario.Location = new Point(30, 275);
+            lblSecDestinatario.Location = new Point(30, 259);
             lblSecDestinatario.Name = "lblSecDestinatario";
-            lblSecDestinatario.Size = new Size(300, 22);
+            lblSecDestinatario.Size = new Size(300, 38);
             lblSecDestinatario.TabIndex = 15;
             lblSecDestinatario.Text = "2. Datos del destinatario";
             // 
@@ -192,9 +192,9 @@
             // lblNombre
             // 
             lblNombre.ForeColor = Color.FromArgb(60, 60, 60);
-            lblNombre.Location = new Point(30, 312);
+            lblNombre.Location = new Point(30, 300);
             lblNombre.Name = "lblNombre";
-            lblNombre.Size = new Size(120, 18);
+            lblNombre.Size = new Size(120, 30);
             lblNombre.TabIndex = 17;
             lblNombre.Text = "Nombre *";
             // 
@@ -208,9 +208,9 @@
             // lblApellido
             // 
             lblApellido.ForeColor = Color.FromArgb(60, 60, 60);
-            lblApellido.Location = new Point(230, 312);
+            lblApellido.Location = new Point(230, 300);
             lblApellido.Name = "lblApellido";
-            lblApellido.Size = new Size(120, 18);
+            lblApellido.Size = new Size(120, 30);
             lblApellido.TabIndex = 19;
             lblApellido.Text = "Apellido *";
             // 
@@ -224,9 +224,9 @@
             // lblDNI
             // 
             lblDNI.ForeColor = Color.FromArgb(60, 60, 60);
-            lblDNI.Location = new Point(430, 312);
+            lblDNI.Location = new Point(430, 300);
             lblDNI.Name = "lblDNI";
-            lblDNI.Size = new Size(80, 18);
+            lblDNI.Size = new Size(80, 30);
             lblDNI.TabIndex = 21;
             lblDNI.Text = "DNI *";
             // 
@@ -240,9 +240,9 @@
             // lblTelDest
             // 
             lblTelDest.ForeColor = Color.FromArgb(60, 60, 60);
-            lblTelDest.Location = new Point(580, 312);
+            lblTelDest.Location = new Point(580, 300);
             lblTelDest.Name = "lblTelDest";
-            lblTelDest.Size = new Size(100, 18);
+            lblTelDest.Size = new Size(100, 30);
             lblTelDest.TabIndex = 23;
             lblTelDest.Text = "Teléfono *";
             // 
@@ -257,7 +257,7 @@
             // 
             btnVolver.FlatStyle = FlatStyle.System;
             btnVolver.ForeColor = Color.FromArgb(80, 80, 80);
-            btnVolver.Location = new Point(30, 430);
+            btnVolver.Location = new Point(30, 405);
             btnVolver.Name = "btnVolver";
             btnVolver.Size = new Size(100, 32);
             btnVolver.TabIndex = 25;
@@ -266,16 +266,16 @@
             // btnSiguiente
             // 
             btnSiguiente.FlatStyle = FlatStyle.System;
-            btnSiguiente.Location = new Point(610, 430);
+            btnSiguiente.Location = new Point(610, 405);
             btnSiguiente.Name = "btnSiguiente";
             btnSiguiente.Size = new Size(110, 32);
             btnSiguiente.TabIndex = 26;
             btnSiguiente.Text = "Siguiente >";
             // 
-            // Imposición_Corporativo
+            // ImposiciónCC_Corporativo
             // 
             BackColor = Color.White;
-            ClientSize = new Size(738, 464);
+            ClientSize = new Size(855, 564);
             Controls.Add(lblTitulo);
             Controls.Add(lblFecha);
             Controls.Add(lblFechaValor);
@@ -306,7 +306,7 @@
             Font = new Font("Segoe UI", 9F);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
-            Name = "Imposición_Corporativo";
+            Name = "ImposiciónCC_Corporativo";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Imposición - Datos del remitente (Empresa/Agencia)";
             ResumeLayout(false);

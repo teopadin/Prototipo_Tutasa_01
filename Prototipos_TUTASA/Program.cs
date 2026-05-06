@@ -10,7 +10,7 @@ namespace Prototipos_TUTASA
         {
             // https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Form1_Seleccion());
+            Application.Run(new ImposiciónCC_DatosEnvio());
 ;<
         }
     }

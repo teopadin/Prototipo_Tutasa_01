@@ -1,6 +1,6 @@
 ﻿namespace Prototipos_TUTASA
 {
-    partial class Imposición_TipoCliente
+    partial class ImposiciónCC_TipoCliente
     {
         private System.ComponentModel.IContainer components = null;
 
@@ -32,9 +32,9 @@
             // 
             lblTitulo.Font = new Font("Segoe UI", 16F);
             lblTitulo.ForeColor = Color.FromArgb(30, 30, 30);
-            lblTitulo.Location = new Point(30, 25);
+            lblTitulo.Location = new Point(30, 19);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(400, 35);
+            lblTitulo.Size = new Size(400, 41);
             lblTitulo.TabIndex = 0;
             lblTitulo.Text = "Imposición en Call Center";
             // 
@@ -64,7 +64,7 @@
             lblFechaValor.ForeColor = Color.FromArgb(30, 30, 30);
             lblFechaValor.Location = new Point(568, 32);
             lblFechaValor.Name = "lblFechaValor";
-            lblFechaValor.Size = new Size(90, 20);
+            lblFechaValor.Size = new Size(145, 20);
             lblFechaValor.TabIndex = 2;
             lblFechaValor.Text = "06/05/2026";
             // 
@@ -154,10 +154,10 @@
             pnlSeparador.Size = new Size(630, 1);
             pnlSeparador.TabIndex = 3;
             // 
-            // Imposición_TipoCliente
+            // ImposiciónCC_TipoCliente
             // 
             BackColor = Color.White;
-            ClientSize = new Size(678, 424);
+            ClientSize = new Size(811, 424);
             Controls.Add(lblTitulo);
             Controls.Add(lblFecha);
             Controls.Add(lblFechaValor);
@@ -169,7 +169,7 @@
             Font = new Font("Segoe UI", 9F);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
-            Name = "Imposición_TipoCliente";
+            Name = "ImposiciónCC_TipoCliente";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Imposición - Selección de cliente";
             pnlEmpresa.ResumeLayout(false);

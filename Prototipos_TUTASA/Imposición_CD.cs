@@ -4,9 +4,9 @@ using System.Windows.Forms;
 
 namespace Prototipos_TUTASA
 {
-    public partial class Imposición_DatosEnvio : Form
+    public partial class Imposicion_CD : Form
     {
-        public Imposición_DatosEnvio()
+        public Imposicion_CD()
         {
             InitializeComponent();
         }

@@ -2,12 +2,11 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-
 namespace Prototipos_TUTASA
 {
-    public partial class Imposición_Particular : Form
+    public partial class Imposicion_Agencia : Form
     {
-        public Imposición_Particular()
+        public Imposicion_Agencia()
         {
             InitializeComponent();
         }
