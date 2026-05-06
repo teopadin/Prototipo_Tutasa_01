@@ -14,5 +14,10 @@ namespace Prototipos_TUTASA.GeneraciónHojaDeRutaDeTransporte
         {
             InitializeComponent();
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
