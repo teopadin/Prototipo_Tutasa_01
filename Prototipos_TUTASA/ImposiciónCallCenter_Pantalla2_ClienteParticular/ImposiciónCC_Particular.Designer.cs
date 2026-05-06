@@ -11,9 +11,9 @@
 
         private void InitializeComponent()
         {
-            this.lblTitulo = new Label();
-            this.lblPaso = new Label();
-            this.lblFecha = new Label();
+            lblTitulo = new Label();
+            lblPaso = new Label();
+            lblFecha = new Label();
             lblNombreRem = new Label();
             txtNombreRem = new TextBox();
             lblApellidoRem = new Label();
@@ -47,33 +47,33 @@
             // 
             // lblTitulo
             // 
-            this.lblTitulo.Font = new Font("Segoe UI", 16F);
-            this.lblTitulo.ForeColor = Color.FromArgb(30, 30, 30);
-            this.lblTitulo.Location = new Point(12, 12);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new Size(400, 46);
-            this.lblTitulo.TabIndex = 0;
-            this.lblTitulo.Text = "Imposición en Call Center";
+            lblTitulo.Font = new Font("Segoe UI", 16F);
+            lblTitulo.ForeColor = Color.FromArgb(30, 30, 30);
+            lblTitulo.Location = new Point(12, 12);
+            lblTitulo.Name = "lblTitulo";
+            lblTitulo.Size = new Size(400, 46);
+            lblTitulo.TabIndex = 0;
+            lblTitulo.Text = "Imposición en Call Center";
             // 
             // lblPaso
             // 
-            this.lblPaso.Font = new Font("Segoe UI", 9F);
-            this.lblPaso.ForeColor = Color.Gray;
-            this.lblPaso.Location = new Point(20, 65);
-            this.lblPaso.Name = "lblPaso";
-            this.lblPaso.Size = new Size(300, 20);
-            this.lblPaso.TabIndex = 4;
-            this.lblPaso.Text = "Paso 2 de 3  —  Particular";
+            lblPaso.Font = new Font("Segoe UI", 9F);
+            lblPaso.ForeColor = Color.Gray;
+            lblPaso.Location = new Point(20, 65);
+            lblPaso.Name = "lblPaso";
+            lblPaso.Size = new Size(300, 20);
+            lblPaso.TabIndex = 4;
+            lblPaso.Text = "Paso 2 de 3  - Particular";
             // 
             // lblFecha
             // 
-            this.lblFecha.Font = new Font("Segoe UI", 9F);
-            this.lblFecha.ForeColor = Color.Gray;
-            this.lblFecha.Location = new Point(554, 28);
-            this.lblFecha.Name = "lblFecha";
-            this.lblFecha.Size = new Size(75, 27);
-            this.lblFecha.TabIndex = 1;
-            this.lblFecha.Text = "Fecha:";
+            lblFecha.Font = new Font("Segoe UI", 9F);
+            lblFecha.ForeColor = Color.Gray;
+            lblFecha.Location = new Point(554, 28);
+            lblFecha.Name = "lblFecha";
+            lblFecha.Size = new Size(75, 27);
+            lblFecha.TabIndex = 1;
+            lblFecha.Text = "Fecha:";
             // 
             // lblNombreRem
             // 
@@ -198,7 +198,7 @@
             // 
             // txtNombreDest
             // 
-            txtNombreDest.Location = new Point(18, 54);
+            txtNombreDest.Location = new Point(18, 58);
             txtNombreDest.Name = "txtNombreDest";
             txtNombreDest.Size = new Size(160, 31);
             txtNombreDest.TabIndex = 24;
@@ -214,7 +214,7 @@
             // 
             // txtApellidoDest
             // 
-            txtApellidoDest.Location = new Point(198, 54);
+            txtApellidoDest.Location = new Point(198, 58);
             txtApellidoDest.Name = "txtApellidoDest";
             txtApellidoDest.Size = new Size(160, 31);
             txtApellidoDest.TabIndex = 26;
@@ -329,9 +329,9 @@
             Controls.Add(button2);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
-            Controls.Add(this.lblTitulo);
-            Controls.Add(this.lblFecha);
-            Controls.Add(this.lblPaso);
+            Controls.Add(lblTitulo);
+            Controls.Add(lblFecha);
+            Controls.Add(lblPaso);
             Font = new Font("Segoe UI", 9F);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
