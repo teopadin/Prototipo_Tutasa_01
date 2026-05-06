@@ -229,10 +229,5 @@ namespace Prototipos_TUTASA
 
             return true;
         }
-
-        private void cboGuiaBase_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-
-        }
     }
 }
