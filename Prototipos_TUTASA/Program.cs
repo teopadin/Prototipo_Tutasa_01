@@ -11,8 +11,7 @@ namespace Prototipos_TUTASA
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Retiro_Teo_());
-;
+            Application.Run(new Form3());
         }
     }
 }
