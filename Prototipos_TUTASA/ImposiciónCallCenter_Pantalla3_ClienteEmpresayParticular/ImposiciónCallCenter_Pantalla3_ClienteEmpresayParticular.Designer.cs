@@ -427,5 +427,7 @@
         private GroupBox groupBox4;
         private ComboBox comboBox2;
         private Label label2;
+        private Label lblTitulo, lblPaso, lblFecha, lblSecGuias, lblCalleEnt, lblAlturaEnt, lblPisoEnt;
+        private Button btnGenerar;
     }
 }
