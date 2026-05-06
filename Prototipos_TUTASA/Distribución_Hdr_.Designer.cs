@@ -48,8 +48,8 @@
             txtCantidadGuias = new TextBox();
             btnGenerarHdr = new Button();
             groupBox1 = new GroupBox();
-            textBox1 = new TextBox();
             codigo_postal_entrega = new Label();
+            textBox1 = new TextBox();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -347,14 +347,6 @@
             groupBox1.Text = "Detalle de Hoja de Ruta de Distribución";
             groupBox1.Enter += groupBox1_Enter;
             // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(613, 146);
-            textBox1.Name = "textBox1";
-            textBox1.ReadOnly = true;
-            textBox1.Size = new Size(130, 23);
-            textBox1.TabIndex = 22;
-            // 
             // codigo_postal_entrega
             // 
             codigo_postal_entrega.AutoSize = true;
@@ -363,6 +355,14 @@
             codigo_postal_entrega.Size = new Size(81, 15);
             codigo_postal_entrega.TabIndex = 23;
             codigo_postal_entrega.Text = "Codigo postal";
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(613, 146);
+            textBox1.Name = "textBox1";
+            textBox1.ReadOnly = true;
+            textBox1.Size = new Size(130, 23);
+            textBox1.TabIndex = 22;
             // 
             // Distribucion_Hdr_
             // 
@@ -379,6 +379,7 @@
             Controls.Add(lblGuiaBase);
             Name = "Distribucion_Hdr_";
             Text = "Generacion de HDR de distribucion";
+            Load += Distribucion_Hdr__Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);

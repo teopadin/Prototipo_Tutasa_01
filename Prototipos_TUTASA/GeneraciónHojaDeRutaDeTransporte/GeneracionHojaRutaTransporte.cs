@@ -19,5 +19,10 @@ namespace Prototipos_TUTASA.GeneraciónHojaDeRutaDeTransporte
         {
 
         }
+
+        private void lblDomicilioEntrega_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
