@@ -1,6 +1,6 @@
 ﻿namespace Prototipos_TUTASA
 {
-    partial class Form3_Particular
+    partial class Imposición_Particular
     {
         private System.ComponentModel.IContainer components = null;
         protected override void Dispose(bool disposing)
@@ -84,7 +84,7 @@
             lblFechaValor.Name = "lblFechaValor";
             lblFechaValor.Size = new Size(90, 20);
             lblFechaValor.TabIndex = 2;
-            lblFechaValor.Text = "05/05/2026";
+            lblFechaValor.Text = "06/05/2026";
             // 
             // pnlSep1
             // 
@@ -325,7 +325,7 @@
             btnSiguiente.TabIndex = 32;
             btnSiguiente.Text = "Siguiente >";
             // 
-            // Form3_Particular
+            // Imposición_Particular
             // 
             BackColor = Color.White;
             ClientSize = new Size(738, 484);
@@ -365,7 +365,7 @@
             Font = new Font("Segoe UI", 9F);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
-            Name = "Form3_Particular";
+            Name = "Imposición_Particular";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Imposición - Datos del remitente (Particular)";
             ResumeLayout(false);

@@ -1,6 +1,6 @@
 ﻿namespace Prototipos_TUTASA
 {
-    partial class Form1_Seleccion
+    partial class Imposición_TipoCliente
     {
         private System.ComponentModel.IContainer components = null;
 
@@ -32,9 +32,9 @@
             // 
             lblTitulo.Font = new Font("Segoe UI", 16F);
             lblTitulo.ForeColor = Color.FromArgb(30, 30, 30);
-            lblTitulo.Location = new Point(30, 17);
+            lblTitulo.Location = new Point(30, 25);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(400, 48);
+            lblTitulo.Size = new Size(400, 35);
             lblTitulo.TabIndex = 0;
             lblTitulo.Text = "Imposición en Call Center";
             // 
@@ -54,7 +54,7 @@
             lblFecha.ForeColor = Color.Gray;
             lblFecha.Location = new Point(520, 32);
             lblFecha.Name = "lblFecha";
-            lblFecha.Size = new Size(76, 33);
+            lblFecha.Size = new Size(45, 20);
             lblFecha.TabIndex = 1;
             lblFecha.Text = "Fecha:";
             // 
@@ -62,11 +62,11 @@
             // 
             lblFechaValor.Font = new Font("Segoe UI", 9F);
             lblFechaValor.ForeColor = Color.FromArgb(30, 30, 30);
-            lblFechaValor.Location = new Point(602, 32);
+            lblFechaValor.Location = new Point(568, 32);
             lblFechaValor.Name = "lblFechaValor";
             lblFechaValor.Size = new Size(90, 20);
             lblFechaValor.TabIndex = 2;
-            lblFechaValor.Text = "05/05/2026";
+            lblFechaValor.Text = "06/05/2026";
             // 
             // pnlEmpresa
             // 
@@ -142,7 +142,7 @@
             lblInstruccion.ForeColor = Color.FromArgb(60, 60, 60);
             lblInstruccion.Location = new Point(30, 115);
             lblInstruccion.Name = "lblInstruccion";
-            lblInstruccion.Size = new Size(400, 33);
+            lblInstruccion.Size = new Size(400, 25);
             lblInstruccion.TabIndex = 5;
             lblInstruccion.Text = "Seleccione el tipo de cliente para continuar";
             // 
@@ -154,10 +154,10 @@
             pnlSeparador.Size = new Size(630, 1);
             pnlSeparador.TabIndex = 3;
             // 
-            // Form1_Seleccion
+            // Imposición_TipoCliente
             // 
             BackColor = Color.White;
-            ClientSize = new Size(957, 584);
+            ClientSize = new Size(678, 424);
             Controls.Add(lblTitulo);
             Controls.Add(lblFecha);
             Controls.Add(lblFechaValor);
@@ -169,7 +169,7 @@
             Font = new Font("Segoe UI", 9F);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
-            Name = "Form1_Seleccion";
+            Name = "Imposición_TipoCliente";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Imposición - Selección de cliente";
             pnlEmpresa.ResumeLayout(false);

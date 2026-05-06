@@ -1,6 +1,6 @@
 ﻿namespace Prototipos_TUTASA
 {
-    partial class Form2_Empresa
+    partial class Imposición_Corporativo
     {
         private System.ComponentModel.IContainer components = null;
         protected override void Dispose(bool disposing)
@@ -78,7 +78,7 @@
             lblFechaValor.Name = "lblFechaValor";
             lblFechaValor.Size = new Size(90, 20);
             lblFechaValor.TabIndex = 2;
-            lblFechaValor.Text = "05/05/2026";
+            lblFechaValor.Text = "06/05/2026";
             // 
             // pnlSep1
             // 
@@ -248,7 +248,7 @@
             // 
             // txtTelDest
             // 
-            txtTelDest.Location = new Point(580, 333);
+            txtTelDest.Location = new Point(580, 332);
             txtTelDest.Name = "txtTelDest";
             txtTelDest.Size = new Size(130, 31);
             txtTelDest.TabIndex = 24;
@@ -272,10 +272,10 @@
             btnSiguiente.TabIndex = 26;
             btnSiguiente.Text = "Siguiente >";
             // 
-            // Form2_Empresa
+            // Imposición_Corporativo
             // 
             BackColor = Color.White;
-            ClientSize = new Size(881, 628);
+            ClientSize = new Size(738, 464);
             Controls.Add(lblTitulo);
             Controls.Add(lblFecha);
             Controls.Add(lblFechaValor);
@@ -306,7 +306,7 @@
             Font = new Font("Segoe UI", 9F);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
-            Name = "Form2_Empresa";
+            Name = "Imposición_Corporativo";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Imposición - Datos del remitente (Empresa/Agencia)";
             ResumeLayout(false);

@@ -4,9 +4,9 @@ using System.Windows.Forms;
 
 namespace Prototipos_TUTASA
 {
-    public partial class Form2_Empresa : Form
+    public partial class Imposición_Corporativo : Form
     {
-        public Form2_Empresa()
+        public Imposición_Corporativo()
         {
             InitializeComponent();
         }

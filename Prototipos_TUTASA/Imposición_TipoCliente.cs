@@ -4,16 +4,11 @@ using System.Windows.Forms;
 
 namespace Prototipos_TUTASA
 {
-    public partial class Form1_Seleccion : Form
+    public partial class Imposición_TipoCliente : Form
     {
-        public Form1_Seleccion()
+        public Imposición_TipoCliente()
         {
             InitializeComponent();
-        }
-
-        private void pnlSeparador_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }
