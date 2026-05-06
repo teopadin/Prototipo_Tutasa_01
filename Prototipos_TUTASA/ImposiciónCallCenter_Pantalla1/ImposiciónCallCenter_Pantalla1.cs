@@ -10,5 +10,10 @@ namespace Prototipos_TUTASA
         {
             InitializeComponent();
         }
+
+        private void ImposiciónCallCenter_Pantalla1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
