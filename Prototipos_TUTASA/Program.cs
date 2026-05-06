@@ -10,7 +10,7 @@ namespace Prototipos_TUTASA
         {
             // https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new ImposiciónCC_DatosEnvio());
+            Application.Run(new ImposiciónCallCenter_Pantalla3_ClienteEmpresayParticular());
         }
     }
 }

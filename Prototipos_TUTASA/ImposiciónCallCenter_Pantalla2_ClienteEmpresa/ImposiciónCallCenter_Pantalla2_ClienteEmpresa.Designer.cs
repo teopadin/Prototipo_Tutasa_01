@@ -13,13 +13,7 @@
         {
             lblTitulo = new Label();
             lblPaso = new Label();
-            pnlSep1 = new Panel();
             lblRazonSocial = new Label();
-            lblContacto = new Label();
-            txtContacto = new TextBox();
-            lblTelefono = new Label();
-            txtTelefono = new TextBox();
-            lblSecDestinatario = new Label();
             lblNombre = new Label();
             txtNombre = new TextBox();
             lblApellido = new Label();
@@ -31,20 +25,18 @@
             lblFechaValor = new Label();
             lblFecha = new Label();
             comboBox1 = new ComboBox();
-            panel1 = new Panel();
             label1 = new Label();
             button2 = new Button();
             button1 = new Button();
-            label2 = new Label();
-            textBox1 = new TextBox();
-            panel2 = new Panel();
+            groupBox1 = new GroupBox();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // lblTitulo
             // 
             lblTitulo.Font = new Font("Segoe UI", 16F);
             lblTitulo.ForeColor = Color.FromArgb(30, 30, 30);
-            lblTitulo.Location = new Point(30, 9);
+            lblTitulo.Location = new Point(30, 12);
             lblTitulo.Name = "lblTitulo";
             lblTitulo.Size = new Size(400, 46);
             lblTitulo.TabIndex = 0;
@@ -60,14 +52,6 @@
             lblPaso.TabIndex = 4;
             lblPaso.Text = "Paso 2 de 3  - Cliente Empresa";
             // 
-            // pnlSep1
-            // 
-            pnlSep1.BackColor = Color.FromArgb(220, 220, 220);
-            pnlSep1.Location = new Point(30, 63);
-            pnlSep1.Name = "pnlSep1";
-            pnlSep1.Size = new Size(690, 1);
-            pnlSep1.TabIndex = 3;
-            // 
             // lblRazonSocial
             // 
             lblRazonSocial.ForeColor = Color.FromArgb(60, 60, 60);
@@ -77,117 +61,75 @@
             lblRazonSocial.TabIndex = 7;
             lblRazonSocial.Text = "Razón social *";
             // 
-            // lblContacto
-            // 
-            lblContacto.ForeColor = Color.FromArgb(60, 60, 60);
-            lblContacto.Location = new Point(31, 238);
-            lblContacto.Name = "lblContacto";
-            lblContacto.Size = new Size(229, 26);
-            lblContacto.TabIndex = 11;
-            lblContacto.Text = "Nombre del Solicitante *";
-            // 
-            // txtContacto
-            // 
-            txtContacto.Location = new Point(29, 267);
-            txtContacto.Name = "txtContacto";
-            txtContacto.Size = new Size(692, 31);
-            txtContacto.TabIndex = 12;
-            // 
-            // lblTelefono
-            // 
-            lblTelefono.ForeColor = Color.FromArgb(60, 60, 60);
-            lblTelefono.Location = new Point(26, 405);
-            lblTelefono.Name = "lblTelefono";
-            lblTelefono.Size = new Size(242, 25);
-            lblTelefono.TabIndex = 13;
-            lblTelefono.Text = "Teléfono del Solicitante *";
-            // 
-            // txtTelefono
-            // 
-            txtTelefono.Location = new Point(26, 433);
-            txtTelefono.Name = "txtTelefono";
-            txtTelefono.Size = new Size(695, 31);
-            txtTelefono.TabIndex = 14;
-            // 
-            // lblSecDestinatario
-            // 
-            lblSecDestinatario.Font = new Font("Segoe UI", 10F);
-            lblSecDestinatario.ForeColor = Color.FromArgb(30, 30, 30);
-            lblSecDestinatario.Location = new Point(26, 488);
-            lblSecDestinatario.Name = "lblSecDestinatario";
-            lblSecDestinatario.Size = new Size(300, 38);
-            lblSecDestinatario.TabIndex = 15;
-            lblSecDestinatario.Text = "2. Datos del destinatario";
-            // 
             // lblNombre
             // 
             lblNombre.ForeColor = Color.FromArgb(60, 60, 60);
-            lblNombre.Location = new Point(31, 539);
+            lblNombre.Location = new Point(8, 38);
             lblNombre.Name = "lblNombre";
-            lblNombre.Size = new Size(120, 30);
+            lblNombre.Size = new Size(82, 30);
             lblNombre.TabIndex = 17;
             lblNombre.Text = "Nombre *";
             // 
             // txtNombre
             // 
-            txtNombre.Location = new Point(31, 572);
+            txtNombre.Location = new Point(8, 71);
             txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(264, 31);
+            txtNombre.Size = new Size(185, 31);
             txtNombre.TabIndex = 18;
             // 
             // lblApellido
             // 
             lblApellido.ForeColor = Color.FromArgb(60, 60, 60);
-            lblApellido.Location = new Point(31, 622);
+            lblApellido.Location = new Point(261, 38);
             lblApellido.Name = "lblApellido";
-            lblApellido.Size = new Size(120, 30);
+            lblApellido.Size = new Size(82, 30);
             lblApellido.TabIndex = 19;
             lblApellido.Text = "Apellido *";
             // 
             // txtApellido
             // 
-            txtApellido.Location = new Point(26, 655);
+            txtApellido.Location = new Point(261, 71);
             txtApellido.Name = "txtApellido";
-            txtApellido.Size = new Size(269, 31);
+            txtApellido.Size = new Size(168, 31);
             txtApellido.TabIndex = 20;
             // 
             // lblDNI
             // 
             lblDNI.ForeColor = Color.FromArgb(60, 60, 60);
-            lblDNI.Location = new Point(30, 705);
+            lblDNI.Location = new Point(492, 38);
             lblDNI.Name = "lblDNI";
-            lblDNI.Size = new Size(80, 30);
+            lblDNI.Size = new Size(60, 30);
             lblDNI.TabIndex = 21;
             lblDNI.Text = "DNI *";
             // 
             // txtDNI
             // 
-            txtDNI.Location = new Point(26, 738);
+            txtDNI.Location = new Point(492, 71);
             txtDNI.Name = "txtDNI";
-            txtDNI.Size = new Size(269, 31);
+            txtDNI.Size = new Size(231, 31);
             txtDNI.TabIndex = 22;
             // 
             // lblTelDest
             // 
             lblTelDest.ForeColor = Color.FromArgb(60, 60, 60);
-            lblTelDest.Location = new Point(26, 790);
+            lblTelDest.Location = new Point(778, 38);
             lblTelDest.Name = "lblTelDest";
-            lblTelDest.Size = new Size(100, 30);
+            lblTelDest.Size = new Size(110, 30);
             lblTelDest.TabIndex = 23;
             lblTelDest.Text = "Teléfono *";
             // 
             // txtTelDest
             // 
-            txtTelDest.Location = new Point(26, 823);
+            txtTelDest.Location = new Point(778, 71);
             txtTelDest.Name = "txtTelDest";
-            txtTelDest.Size = new Size(269, 31);
+            txtTelDest.Size = new Size(231, 31);
             txtTelDest.TabIndex = 24;
             // 
             // lblFechaValor
             // 
             lblFechaValor.Font = new Font("Segoe UI", 9F);
             lblFechaValor.ForeColor = Color.FromArgb(30, 30, 30);
-            lblFechaValor.Location = new Point(620, 25);
+            lblFechaValor.Location = new Point(926, 28);
             lblFechaValor.Name = "lblFechaValor";
             lblFechaValor.Size = new Size(145, 23);
             lblFechaValor.TabIndex = 27;
@@ -197,7 +139,7 @@
             // 
             lblFecha.Font = new Font("Segoe UI", 9F);
             lblFecha.ForeColor = Color.Gray;
-            lblFecha.Location = new Point(562, 25);
+            lblFecha.Location = new Point(857, 28);
             lblFecha.Name = "lblFecha";
             lblFecha.Size = new Size(63, 33);
             lblFecha.TabIndex = 28;
@@ -208,16 +150,8 @@
             comboBox1.Items.AddRange(new object[] { "Acme SA", "Distribuidora Norte SRL", "Logística del Sur SA" });
             comboBox1.Location = new Point(31, 184);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(690, 33);
+            comboBox1.Size = new Size(224, 33);
             comboBox1.TabIndex = 8;
-            // 
-            // panel1
-            // 
-            panel1.BackColor = Color.FromArgb(220, 220, 220);
-            panel1.Location = new Point(31, 152);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(690, 1);
-            panel1.TabIndex = 6;
             // 
             // label1
             // 
@@ -231,7 +165,7 @@
             // 
             // button2
             // 
-            button2.Location = new Point(587, 861);
+            button2.Location = new Point(829, 383);
             button2.Name = "button2";
             button2.Size = new Size(112, 34);
             button2.TabIndex = 29;
@@ -240,68 +174,44 @@
             // 
             // button1
             // 
-            button1.Location = new Point(719, 861);
+            button1.Location = new Point(959, 383);
             button1.Name = "button1";
             button1.Size = new Size(112, 34);
             button1.TabIndex = 30;
             button1.Text = "Cancelar";
             button1.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // groupBox1
             // 
-            label2.ForeColor = Color.FromArgb(60, 60, 60);
-            label2.Location = new Point(26, 325);
-            label2.Name = "label2";
-            label2.Size = new Size(229, 26);
-            label2.TabIndex = 31;
-            label2.Text = "Apellido del Solicitante *";
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(29, 354);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(692, 31);
-            textBox1.TabIndex = 32;
-            // 
-            // panel2
-            // 
-            panel2.BackColor = Color.FromArgb(220, 220, 220);
-            panel2.Location = new Point(35, 529);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(690, 1);
-            panel2.TabIndex = 33;
+            groupBox1.Controls.Add(lblTelDest);
+            groupBox1.Controls.Add(txtTelDest);
+            groupBox1.Controls.Add(txtDNI);
+            groupBox1.Controls.Add(lblDNI);
+            groupBox1.Controls.Add(txtApellido);
+            groupBox1.Controls.Add(lblApellido);
+            groupBox1.Controls.Add(txtNombre);
+            groupBox1.Controls.Add(lblNombre);
+            groupBox1.Location = new Point(32, 230);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(1031, 132);
+            groupBox1.TabIndex = 31;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Datos del Destinatario";
             // 
             // ImposiciónCallCenter_Pantalla2_ClienteEmpresa
             // 
             BackColor = Color.White;
-            ClientSize = new Size(855, 907);
-            Controls.Add(panel2);
-            Controls.Add(textBox1);
-            Controls.Add(label2);
+            ClientSize = new Size(1092, 439);
+            Controls.Add(groupBox1);
             Controls.Add(button1);
             Controls.Add(button2);
             Controls.Add(lblFecha);
             Controls.Add(lblFechaValor);
             Controls.Add(lblTitulo);
-            Controls.Add(pnlSep1);
             Controls.Add(lblPaso);
             Controls.Add(label1);
-            Controls.Add(panel1);
             Controls.Add(comboBox1);
             Controls.Add(lblRazonSocial);
-            Controls.Add(lblContacto);
-            Controls.Add(txtContacto);
-            Controls.Add(lblTelefono);
-            Controls.Add(txtTelefono);
-            Controls.Add(lblSecDestinatario);
-            Controls.Add(lblNombre);
-            Controls.Add(txtNombre);
-            Controls.Add(lblApellido);
-            Controls.Add(txtApellido);
-            Controls.Add(lblDNI);
-            Controls.Add(txtDNI);
-            Controls.Add(lblTelDest);
-            Controls.Add(txtTelDest);
             Font = new Font("Segoe UI", 9F);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
@@ -309,29 +219,21 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Imposición - Datos del Cliente - Empresa";
             Load += ImposiciónCallCenter_Pantalla2_ClienteEmpresa_Load;
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
         private System.Windows.Forms.Label lblNombre, lblApellido, lblDNI, lblTelDest;
         private System.Windows.Forms.TextBox txtNombre, txtApellido, txtDNI, txtTelDest;
         private Label lblFechaValor;
         private Label lblFecha;
         private ComboBox comboBox1;
-        private Panel panel1;
         private Label label1;
         private Button button2;
         private Button button1;
-        private Label label2;
-        private TextBox textBox1;
-        private Panel panel2;
         private Label lblTitulo;
         private Label lblPaso;
-        private Panel pnlSep1;
         private Label lblRazonSocial;
-        private Label lblContacto;
-        private TextBox txtContacto;
-        private Label lblTelefono;
-        private TextBox txtTelefono;
-        private Label lblSecDestinatario;
+        private GroupBox groupBox1;
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Prototipos_TUTASA
 {
-    partial class ImposiciónCC_DatosEnvio
+    partial class ImposiciónCallCenter_Pantalla3_ClienteEmpresayParticular
     {
         private System.ComponentModel.IContainer components = null;
         protected override void Dispose(bool disposing)
@@ -28,10 +28,6 @@
             cboTipoBulto = new ComboBox();
             lblTipoEntrega = new Label();
             cboTipoEntrega = new ComboBox();
-            lblContenido = new Label();
-            txtContenido = new TextBox();
-            lblValor = new Label();
-            txtValor = new TextBox();
             lblSecDireccion = new Label();
             pnlSepDir = new Panel();
             lblCalleEnt = new Label();
@@ -192,38 +188,6 @@
             cboTipoEntrega.Name = "cboTipoEntrega";
             cboTipoEntrega.Size = new Size(200, 33);
             cboTipoEntrega.TabIndex = 14;
-            // 
-            // lblContenido
-            // 
-            lblContenido.ForeColor = Color.FromArgb(60, 60, 60);
-            lblContenido.Location = new Point(30, 196);
-            lblContenido.Name = "lblContenido";
-            lblContenido.Size = new Size(180, 25);
-            lblContenido.TabIndex = 15;
-            lblContenido.Text = "Contenido declarado *";
-            // 
-            // txtContenido
-            // 
-            txtContenido.Location = new Point(30, 223);
-            txtContenido.Name = "txtContenido";
-            txtContenido.Size = new Size(300, 31);
-            txtContenido.TabIndex = 16;
-            // 
-            // lblValor
-            // 
-            lblValor.ForeColor = Color.FromArgb(60, 60, 60);
-            lblValor.Location = new Point(350, 196);
-            lblValor.Name = "lblValor";
-            lblValor.Size = new Size(150, 25);
-            lblValor.TabIndex = 17;
-            lblValor.Text = "Valor declarado *";
-            // 
-            // txtValor
-            // 
-            txtValor.Location = new Point(350, 223);
-            txtValor.Name = "txtValor";
-            txtValor.Size = new Size(150, 31);
-            txtValor.TabIndex = 18;
             // 
             // lblSecDireccion
             // 
@@ -409,10 +373,6 @@
             Controls.Add(cboTipoBulto);
             Controls.Add(lblTipoEntrega);
             Controls.Add(cboTipoEntrega);
-            Controls.Add(lblContenido);
-            Controls.Add(txtContenido);
-            Controls.Add(lblValor);
-            Controls.Add(txtValor);
             Controls.Add(lblSecDireccion);
             Controls.Add(pnlSepDir);
             Controls.Add(lblCalleEnt);
@@ -443,8 +403,6 @@
         private System.Windows.Forms.Label lblSecEnvio, lblSecDireccion, lblSecGuias;
         private System.Windows.Forms.Label lblCDOrigen, lblCDDestino, lblTipoBulto, lblTipoEntrega;
         private System.Windows.Forms.ComboBox cboCDOrigen, cboCDDestino, cboTipoBulto, cboTipoEntrega;
-        private System.Windows.Forms.Label lblContenido, lblValor;
-        private System.Windows.Forms.TextBox txtContenido, txtValor;
         private System.Windows.Forms.Label lblCalleEnt, lblAlturaEnt, lblPisoEnt, lblAgencia;
         private System.Windows.Forms.TextBox txtCalleEnt, txtAlturaEnt, txtPisoEnt;
         private System.Windows.Forms.ComboBox cboAgencia;
