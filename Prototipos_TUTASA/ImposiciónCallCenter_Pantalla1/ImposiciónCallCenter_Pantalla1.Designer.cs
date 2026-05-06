@@ -140,6 +140,7 @@
             Name = "ImposiciónCallCenter_Pantalla1";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Imposición - Selección de cliente";
+            Load += this.ImposiciónCallCenter_Pantalla1_Load;
             ResumeLayout(false);
         }
 

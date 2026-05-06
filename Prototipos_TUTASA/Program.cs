@@ -11,7 +11,6 @@ namespace Prototipos_TUTASA
             // https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new ImposiciónCC_DatosEnvio());
-;<
         }
     }
 }
