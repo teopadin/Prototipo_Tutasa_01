@@ -102,6 +102,9 @@
             colFecha.ReadOnly = true;
             colFecha.Width = 120;
             // 
+
+
+
             // colEstado
             // 
             colEstado.HeaderText = "Estado";
