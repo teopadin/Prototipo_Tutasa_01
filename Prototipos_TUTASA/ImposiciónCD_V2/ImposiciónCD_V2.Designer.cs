@@ -263,7 +263,7 @@
             groupBox1.Size = new Size(775, 56);
             groupBox1.TabIndex = 25;
             groupBox1.TabStop = false;
-            groupBox1.Text = "Modalidad de entrega";
+            groupBox1.Text = "Modalidad de entrega*";
             // 
             // radioButton5
             // 
@@ -432,7 +432,7 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(40, 87);
+            comboBox1.Location = new Point(38, 87);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(196, 23);
             comboBox1.TabIndex = 0;
@@ -440,7 +440,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(83, 57);
+            label6.Location = new Point(81, 57);
             label6.Name = "label6";
             label6.Size = new Size(116, 15);
             label6.TabIndex = 1;
@@ -470,7 +470,7 @@
             btnGenerarGuia.Name = "btnGenerarGuia";
             btnGenerarGuia.Size = new Size(236, 55);
             btnGenerarGuia.TabIndex = 28;
-            btnGenerarGuia.Text = "Generar guia";
+            btnGenerarGuia.Text = "Generar Guía y Confirmar Admisión";
             btnGenerarGuia.UseVisualStyleBackColor = true;
             // 
             // groupBox5
@@ -508,7 +508,7 @@
             // 
             // txtCiudadRemitente
             // 
-            txtCiudadRemitente.Location = new Point(534, 86);
+            txtCiudadRemitente.Location = new Point(534, 93);
             txtCiudadRemitente.Margin = new Padding(3, 2, 3, 2);
             txtCiudadRemitente.MaxLength = 40;
             txtCiudadRemitente.Name = "txtCiudadRemitente";
@@ -518,7 +518,7 @@
             // lblCiudadRemitente
             // 
             lblCiudadRemitente.AutoSize = true;
-            lblCiudadRemitente.Location = new Point(531, 68);
+            lblCiudadRemitente.Location = new Point(531, 75);
             lblCiudadRemitente.Name = "lblCiudadRemitente";
             lblCiudadRemitente.Size = new Size(53, 15);
             lblCiudadRemitente.TabIndex = 43;
@@ -526,7 +526,7 @@
             // 
             // txtCodigoPostalRemitente
             // 
-            txtCodigoPostalRemitente.Location = new Point(420, 86);
+            txtCodigoPostalRemitente.Location = new Point(420, 93);
             txtCodigoPostalRemitente.Margin = new Padding(3, 2, 3, 2);
             txtCodigoPostalRemitente.MaxLength = 10;
             txtCodigoPostalRemitente.Name = "txtCodigoPostalRemitente";
@@ -536,7 +536,7 @@
             // lblCodigoPostalRemitente
             // 
             lblCodigoPostalRemitente.AutoSize = true;
-            lblCodigoPostalRemitente.Location = new Point(419, 68);
+            lblCodigoPostalRemitente.Location = new Point(419, 75);
             lblCodigoPostalRemitente.Name = "lblCodigoPostalRemitente";
             lblCodigoPostalRemitente.Size = new Size(89, 15);
             lblCodigoPostalRemitente.TabIndex = 42;
@@ -544,7 +544,7 @@
             // 
             // txtPisoRemitente
             // 
-            txtPisoRemitente.Location = new Point(362, 86);
+            txtPisoRemitente.Location = new Point(362, 93);
             txtPisoRemitente.Margin = new Padding(3, 2, 3, 2);
             txtPisoRemitente.MaxLength = 10;
             txtPisoRemitente.Name = "txtPisoRemitente";
@@ -554,7 +554,7 @@
             // lblPisoRemitente
             // 
             lblPisoRemitente.AutoSize = true;
-            lblPisoRemitente.Location = new Point(361, 68);
+            lblPisoRemitente.Location = new Point(361, 75);
             lblPisoRemitente.Name = "lblPisoRemitente";
             lblPisoRemitente.Size = new Size(29, 15);
             lblPisoRemitente.TabIndex = 41;
@@ -562,7 +562,7 @@
             // 
             // txtAlturaRemitente
             // 
-            txtAlturaRemitente.Location = new Point(283, 86);
+            txtAlturaRemitente.Location = new Point(283, 93);
             txtAlturaRemitente.Margin = new Padding(3, 2, 3, 2);
             txtAlturaRemitente.Name = "txtAlturaRemitente";
             txtAlturaRemitente.Size = new Size(73, 23);
@@ -571,7 +571,7 @@
             // lblAlturaRemitente
             // 
             lblAlturaRemitente.AutoSize = true;
-            lblAlturaRemitente.Location = new Point(282, 68);
+            lblAlturaRemitente.Location = new Point(282, 75);
             lblAlturaRemitente.Name = "lblAlturaRemitente";
             lblAlturaRemitente.Size = new Size(47, 15);
             lblAlturaRemitente.TabIndex = 40;
@@ -579,7 +579,7 @@
             // 
             // txtCalleRemitente
             // 
-            txtCalleRemitente.Location = new Point(7, 86);
+            txtCalleRemitente.Location = new Point(7, 93);
             txtCalleRemitente.Margin = new Padding(3, 2, 3, 2);
             txtCalleRemitente.MaxLength = 50;
             txtCalleRemitente.Name = "txtCalleRemitente";
@@ -589,7 +589,7 @@
             // lblCalleRemitente
             // 
             lblCalleRemitente.AutoSize = true;
-            lblCalleRemitente.Location = new Point(6, 68);
+            lblCalleRemitente.Location = new Point(6, 75);
             lblCalleRemitente.Name = "lblCalleRemitente";
             lblCalleRemitente.Size = new Size(41, 15);
             lblCalleRemitente.TabIndex = 39;
@@ -598,7 +598,7 @@
             // lblRazonSocial
             // 
             lblRazonSocial.ForeColor = Color.FromArgb(60, 60, 60);
-            lblRazonSocial.Location = new Point(7, 17);
+            lblRazonSocial.Location = new Point(7, 21);
             lblRazonSocial.Margin = new Padding(2, 0, 2, 0);
             lblRazonSocial.Name = "lblRazonSocial";
             lblRazonSocial.Size = new Size(105, 17);
@@ -608,7 +608,7 @@
             // cboRazonSocial
             // 
             cboRazonSocial.Items.AddRange(new object[] { "Acme SA", "Distribuidora Norte SRL", "Logística del Sur SA" });
-            cboRazonSocial.Location = new Point(7, 36);
+            cboRazonSocial.Location = new Point(7, 40);
             cboRazonSocial.Margin = new Padding(2);
             cboRazonSocial.Name = "cboRazonSocial";
             cboRazonSocial.Size = new Size(144, 23);
@@ -617,7 +617,7 @@
             // lblCUIT
             // 
             lblCUIT.ForeColor = Color.FromArgb(60, 60, 60);
-            lblCUIT.Location = new Point(159, 17);
+            lblCUIT.Location = new Point(159, 21);
             lblCUIT.Margin = new Padding(2, 0, 2, 0);
             lblCUIT.Name = "lblCUIT";
             lblCUIT.Size = new Size(75, 17);
@@ -626,7 +626,7 @@
             // 
             // txtCUIT
             // 
-            txtCUIT.Location = new Point(159, 36);
+            txtCUIT.Location = new Point(159, 40);
             txtCUIT.Margin = new Padding(2);
             txtCUIT.Name = "txtCUIT";
             txtCUIT.Size = new Size(104, 23);
@@ -635,7 +635,7 @@
             // lblNombreRem
             // 
             lblNombreRem.ForeColor = Color.FromArgb(60, 60, 60);
-            lblNombreRem.Location = new Point(268, 17);
+            lblNombreRem.Location = new Point(268, 21);
             lblNombreRem.Margin = new Padding(2, 0, 2, 0);
             lblNombreRem.Name = "lblNombreRem";
             lblNombreRem.Size = new Size(105, 17);
@@ -644,7 +644,7 @@
             // 
             // txtNombreRem
             // 
-            txtNombreRem.Location = new Point(268, 36);
+            txtNombreRem.Location = new Point(268, 40);
             txtNombreRem.Margin = new Padding(2);
             txtNombreRem.Name = "txtNombreRem";
             txtNombreRem.Size = new Size(120, 23);
@@ -653,7 +653,7 @@
             // lblApellidoRem
             // 
             lblApellidoRem.ForeColor = Color.FromArgb(60, 60, 60);
-            lblApellidoRem.Location = new Point(392, 17);
+            lblApellidoRem.Location = new Point(392, 21);
             lblApellidoRem.Margin = new Padding(2, 0, 2, 0);
             lblApellidoRem.Name = "lblApellidoRem";
             lblApellidoRem.Size = new Size(99, 17);
@@ -662,7 +662,7 @@
             // 
             // txtApellidoRem
             // 
-            txtApellidoRem.Location = new Point(392, 36);
+            txtApellidoRem.Location = new Point(392, 40);
             txtApellidoRem.Margin = new Padding(2);
             txtApellidoRem.Name = "txtApellidoRem";
             txtApellidoRem.Size = new Size(138, 23);
@@ -671,7 +671,7 @@
             // lblDNIRem
             // 
             lblDNIRem.ForeColor = Color.FromArgb(60, 60, 60);
-            lblDNIRem.Location = new Point(534, 17);
+            lblDNIRem.Location = new Point(534, 21);
             lblDNIRem.Margin = new Padding(2, 0, 2, 0);
             lblDNIRem.Name = "lblDNIRem";
             lblDNIRem.Size = new Size(56, 17);
@@ -680,7 +680,7 @@
             // 
             // txtDNIRem
             // 
-            txtDNIRem.Location = new Point(534, 36);
+            txtDNIRem.Location = new Point(534, 40);
             txtDNIRem.Margin = new Padding(2);
             txtDNIRem.Name = "txtDNIRem";
             txtDNIRem.Size = new Size(101, 23);
@@ -689,7 +689,7 @@
             // lblTelRem
             // 
             lblTelRem.ForeColor = Color.FromArgb(60, 60, 60);
-            lblTelRem.Location = new Point(639, 17);
+            lblTelRem.Location = new Point(639, 21);
             lblTelRem.Margin = new Padding(2, 0, 2, 0);
             lblTelRem.Name = "lblTelRem";
             lblTelRem.Size = new Size(70, 17);
@@ -698,7 +698,7 @@
             // 
             // txtTelRem
             // 
-            txtTelRem.Location = new Point(639, 36);
+            txtTelRem.Location = new Point(639, 40);
             txtTelRem.Margin = new Padding(2);
             txtTelRem.Name = "txtTelRem";
             txtTelRem.Size = new Size(120, 23);
