@@ -2,9 +2,9 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace TuProyecto
+namespace Prototipos_TUTASA.EntregaenCD
 {
-    public partial class EntregaCD : Form
+    partial class EntregaCD
     {
         // ── Controles públicos para que la lógica los consuma ──────────────
         public TextBox txtNroGuia { get; private set; }
@@ -18,17 +18,12 @@ namespace TuProyecto
         public Button btnConfirmar { get; private set; }
         public Button btnCancelar { get; private set; }
 
-        public EntregaCD()
-        {
-            InitializeComponent();
-        }
-
         private void InitializeComponent()
         {
             // ── Form ───────────────────────────────────────────────────────
             this.Text = "Entrega en Terminal / Agencia";
             this.Size = new Size(640, 560);
-            this.StartPosition = StartPosition.CenterScreen;
+            this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Font = new Font("Segoe UI", 9.5f);
