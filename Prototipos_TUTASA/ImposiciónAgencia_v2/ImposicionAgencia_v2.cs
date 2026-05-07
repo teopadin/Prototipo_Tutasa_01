@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace Prototipos_TUTASA.ImposiciónAgencia_v2
 {
-    public partial class Form1 : Form
+    public partial class ImposicionAgencia_v2 : Form
     {
-        public Form1()
+        public ImposicionAgencia_v2()
         {
             InitializeComponent();
         }
