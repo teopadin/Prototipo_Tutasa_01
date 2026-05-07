@@ -24,5 +24,20 @@ namespace Prototipos_TUTASA.GeneracionHoja_DeRutaRetiro_v2
         {
 
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblGuiasPendientes_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

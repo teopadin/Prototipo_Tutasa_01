@@ -55,12 +55,12 @@
             // 
             txtGuia.Location = new Point(98, 51);
             txtGuia.Name = "txtGuia";
-            txtGuia.Size = new Size(169, 20);
+            txtGuia.Size = new Size(169, 26);
             txtGuia.TabIndex = 2;
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new Point(290, 40);
+            btnBuscar.Location = new Point(290, 49);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(102, 37);
             btnBuscar.TabIndex = 3;
@@ -113,7 +113,7 @@
             txtAgencia.Location = new Point(12, 241);
             txtAgencia.Name = "txtAgencia";
             txtAgencia.ReadOnly = true;
-            txtAgencia.Size = new Size(200, 20);
+            txtAgencia.Size = new Size(200, 26);
             txtAgencia.TabIndex = 6;
             txtAgencia.Text = "Agencia Flores (FIJO)";
             // 
@@ -129,7 +129,7 @@
             // 
             lblNombre.Location = new Point(12, 319);
             lblNombre.Name = "lblNombre";
-            lblNombre.Size = new Size(80, 31);
+            lblNombre.Size = new Size(104, 30);
             lblNombre.TabIndex = 10;
             lblNombre.Text = "Nombre";
             // 
@@ -137,14 +137,14 @@
             // 
             txtNombre.Location = new Point(12, 352);
             txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(147, 20);
+            txtNombre.Size = new Size(147, 26);
             txtNombre.TabIndex = 11;
             // 
             // lblApellido
             // 
             lblApellido.Location = new Point(170, 319);
             lblApellido.Name = "lblApellido";
-            lblApellido.Size = new Size(80, 31);
+            lblApellido.Size = new Size(97, 31);
             lblApellido.TabIndex = 12;
             lblApellido.Text = "Apellido";
             // 
@@ -152,7 +152,7 @@
             // 
             txtApellido.Location = new Point(170, 353);
             txtApellido.Name = "txtApellido";
-            txtApellido.Size = new Size(147, 20);
+            txtApellido.Size = new Size(147, 26);
             txtApellido.TabIndex = 13;
             // 
             // lblDNI
@@ -167,12 +167,12 @@
             // 
             txtDNI.Location = new Point(330, 353);
             txtDNI.Name = "txtDNI";
-            txtDNI.Size = new Size(137, 20);
+            txtDNI.Size = new Size(137, 26);
             txtDNI.TabIndex = 15;
             // 
             // chkDNI
             // 
-            chkDNI.Location = new Point(12, 399);
+            chkDNI.Location = new Point(12, 425);
             chkDNI.Name = "chkDNI";
             chkDNI.Size = new Size(200, 59);
             chkDNI.TabIndex = 16;
@@ -180,7 +180,7 @@
             // 
             // btnConfirmar
             // 
-            btnConfirmar.Location = new Point(143, 494);
+            btnConfirmar.Location = new Point(76, 464);
             btnConfirmar.Name = "btnConfirmar";
             btnConfirmar.Size = new Size(174, 70);
             btnConfirmar.TabIndex = 17;
@@ -188,7 +188,7 @@
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(339, 494);
+            btnCancelar.Location = new Point(272, 464);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(134, 70);
             btnCancelar.TabIndex = 18;
@@ -196,7 +196,7 @@
             // 
             // EntregaEncomiendaAgencia
             // 
-            ClientSize = new Size(616, 595);
+            ClientSize = new Size(708, 609);
             Controls.Add(lblTitulo);
             Controls.Add(lblGuia);
             Controls.Add(txtGuia);
