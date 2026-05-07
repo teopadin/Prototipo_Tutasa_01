@@ -120,9 +120,9 @@
             // 
             lblValidacion.Location = new Point(12, 287);
             lblValidacion.Name = "lblValidacion";
-            lblValidacion.Size = new Size(380, 32);
+            lblValidacion.Size = new Size(238, 32);
             lblValidacion.TabIndex = 9;
-            lblValidacion.Text = "Validación de identidad de quien retira";
+            lblValidacion.Text = "Validación de quien retira";
             // 
             // lblNombre
             // 
