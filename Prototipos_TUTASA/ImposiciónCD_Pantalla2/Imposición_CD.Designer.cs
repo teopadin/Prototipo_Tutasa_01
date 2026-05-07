@@ -14,13 +14,6 @@
             lblTitulo = new Label();
             lblFecha = new Label();
             lblFechaValor = new Label();
-            pnlSep1 = new Panel();
-            lblSecTipo = new Label();
-            pnlSepTipo = new Panel();
-            lblTipoCliente = new Label();
-            cboTipoCliente = new ComboBox();
-            lblSecRem = new Label();
-            pnlSepRem = new Panel();
             lblRazonSocial = new Label();
             cboRazonSocial = new ComboBox();
             lblCUIT = new Label();
@@ -33,8 +26,8 @@
             txtDNIRem = new TextBox();
             lblTelRem = new Label();
             txtTelRem = new TextBox();
-            lblSecDest = new Label();
-            pnlSepDest = new Panel();
+            this.lblSecDest = new Label();
+            this.pnlSepDest = new Panel();
             lblNombreDest = new Label();
             txtNombreDest = new TextBox();
             lblApellidoDest = new Label();
@@ -43,8 +36,8 @@
             txtDNIDest = new TextBox();
             lblTelDest = new Label();
             txtTelDest = new TextBox();
-            lblSecEnvio = new Label();
-            pnlSepEnvio = new Panel();
+            this.lblSecEnvio = new Label();
+            this.pnlSepEnvio = new Panel();
             lblCDOrigen = new Label();
             txtCDOrigen = new TextBox();
             lblCDDestino = new Label();
@@ -74,6 +67,13 @@
             btnGenerarYAdmitir = new Button();
             lblGuiaGen = new Label();
             txtGuiaGen = new TextBox();
+            lblSecRem = new Label();
+            pnlSep1 = new Panel();
+            pnlSepRem = new Panel();
+            pnlSepTipo = new Panel();
+            lblSecTipo = new Label();
+            cboTipoCliente = new ComboBox();
+            lblTipoCliente = new Label();
             SuspendLayout();
             // 
             // lblTitulo
@@ -106,68 +106,6 @@
             lblFechaValor.TabIndex = 2;
             lblFechaValor.Text = "06/05/2026";
             // 
-            // pnlSep1
-            // 
-            pnlSep1.BackColor = Color.FromArgb(220, 220, 220);
-            pnlSep1.Location = new Point(30, 63);
-            pnlSep1.Name = "pnlSep1";
-            pnlSep1.Size = new Size(1010, 1);
-            pnlSep1.TabIndex = 3;
-            // 
-            // lblSecTipo
-            // 
-            lblSecTipo.Font = new Font("Segoe UI", 10F);
-            lblSecTipo.ForeColor = Color.FromArgb(30, 30, 30);
-            lblSecTipo.Location = new Point(30, 67);
-            lblSecTipo.Name = "lblSecTipo";
-            lblSecTipo.Size = new Size(300, 35);
-            lblSecTipo.TabIndex = 4;
-            lblSecTipo.Text = "1. Tipo de remitente";
-            // 
-            // pnlSepTipo
-            // 
-            pnlSepTipo.BackColor = Color.FromArgb(220, 220, 220);
-            pnlSepTipo.Location = new Point(30, 105);
-            pnlSepTipo.Name = "pnlSepTipo";
-            pnlSepTipo.Size = new Size(1010, 1);
-            pnlSepTipo.TabIndex = 5;
-            // 
-            // lblTipoCliente
-            // 
-            lblTipoCliente.ForeColor = Color.FromArgb(60, 60, 60);
-            lblTipoCliente.Location = new Point(30, 105);
-            lblTipoCliente.Name = "lblTipoCliente";
-            lblTipoCliente.Size = new Size(150, 30);
-            lblTipoCliente.TabIndex = 6;
-            lblTipoCliente.Text = "Tipo cliente *";
-            // 
-            // cboTipoCliente
-            // 
-            cboTipoCliente.DropDownStyle = ComboBoxStyle.DropDownList;
-            cboTipoCliente.Items.AddRange(new object[] { "Empresa / Agencia", "Particular" });
-            cboTipoCliente.Location = new Point(30, 137);
-            cboTipoCliente.Name = "cboTipoCliente";
-            cboTipoCliente.Size = new Size(200, 33);
-            cboTipoCliente.TabIndex = 7;
-            // 
-            // lblSecRem
-            // 
-            lblSecRem.Font = new Font("Segoe UI", 10F);
-            lblSecRem.ForeColor = Color.FromArgb(30, 30, 30);
-            lblSecRem.Location = new Point(30, 173);
-            lblSecRem.Name = "lblSecRem";
-            lblSecRem.Size = new Size(300, 29);
-            lblSecRem.TabIndex = 8;
-            lblSecRem.Text = "2. Datos del remitente";
-            // 
-            // pnlSepRem
-            // 
-            pnlSepRem.BackColor = Color.FromArgb(220, 220, 220);
-            pnlSepRem.Location = new Point(30, 205);
-            pnlSepRem.Name = "pnlSepRem";
-            pnlSepRem.Size = new Size(1010, 1);
-            pnlSepRem.TabIndex = 9;
-            // 
             // lblRazonSocial
             // 
             lblRazonSocial.ForeColor = Color.FromArgb(60, 60, 60);
@@ -182,7 +120,7 @@
             cboRazonSocial.Items.AddRange(new object[] { "Acme SA", "Distribuidora Norte SRL", "Logística del Sur SA" });
             cboRazonSocial.Location = new Point(30, 237);
             cboRazonSocial.Name = "cboRazonSocial";
-            cboRazonSocial.Size = new Size(180, 33);
+            cboRazonSocial.Size = new Size(180, 23);
             cboRazonSocial.TabIndex = 11;
             // 
             // lblCUIT
@@ -198,7 +136,7 @@
             // 
             txtCUIT.Location = new Point(230, 237);
             txtCUIT.Name = "txtCUIT";
-            txtCUIT.Size = new Size(140, 31);
+            txtCUIT.Size = new Size(140, 23);
             txtCUIT.TabIndex = 13;
             // 
             // lblNombreRem
@@ -214,7 +152,7 @@
             // 
             txtNombreRem.Location = new Point(390, 237);
             txtNombreRem.Name = "txtNombreRem";
-            txtNombreRem.Size = new Size(140, 31);
+            txtNombreRem.Size = new Size(140, 23);
             txtNombreRem.TabIndex = 15;
             // 
             // lblApellidoRem
@@ -230,7 +168,7 @@
             // 
             txtApellidoRem.Location = new Point(550, 237);
             txtApellidoRem.Name = "txtApellidoRem";
-            txtApellidoRem.Size = new Size(140, 31);
+            txtApellidoRem.Size = new Size(140, 23);
             txtApellidoRem.TabIndex = 17;
             // 
             // lblDNIRem
@@ -246,7 +184,7 @@
             // 
             txtDNIRem.Location = new Point(710, 237);
             txtDNIRem.Name = "txtDNIRem";
-            txtDNIRem.Size = new Size(120, 31);
+            txtDNIRem.Size = new Size(120, 23);
             txtDNIRem.TabIndex = 19;
             // 
             // lblTelRem
@@ -262,26 +200,26 @@
             // 
             txtTelRem.Location = new Point(850, 237);
             txtTelRem.Name = "txtTelRem";
-            txtTelRem.Size = new Size(170, 31);
+            txtTelRem.Size = new Size(170, 23);
             txtTelRem.TabIndex = 21;
             // 
             // lblSecDest
             // 
-            lblSecDest.Font = new Font("Segoe UI", 10F);
-            lblSecDest.ForeColor = Color.FromArgb(30, 30, 30);
-            lblSecDest.Location = new Point(30, 273);
-            lblSecDest.Name = "lblSecDest";
-            lblSecDest.Size = new Size(300, 34);
-            lblSecDest.TabIndex = 22;
-            lblSecDest.Text = "3. Datos del destinatario";
+            this.lblSecDest.Font = new Font("Segoe UI", 10F);
+            this.lblSecDest.ForeColor = Color.FromArgb(30, 30, 30);
+            this.lblSecDest.Location = new Point(30, 273);
+            this.lblSecDest.Name = "lblSecDest";
+            this.lblSecDest.Size = new Size(300, 34);
+            this.lblSecDest.TabIndex = 22;
+            this.lblSecDest.Text = "3. Datos del destinatario";
             // 
             // pnlSepDest
             // 
-            pnlSepDest.BackColor = Color.FromArgb(220, 220, 220);
-            pnlSepDest.Location = new Point(30, 310);
-            pnlSepDest.Name = "pnlSepDest";
-            pnlSepDest.Size = new Size(1010, 1);
-            pnlSepDest.TabIndex = 23;
+            this.pnlSepDest.BackColor = Color.FromArgb(220, 220, 220);
+            this.pnlSepDest.Location = new Point(30, 310);
+            this.pnlSepDest.Name = "pnlSepDest";
+            this.pnlSepDest.Size = new Size(1010, 1);
+            this.pnlSepDest.TabIndex = 23;
             // 
             // lblNombreDest
             // 
@@ -296,7 +234,7 @@
             // 
             txtNombreDest.Location = new Point(30, 342);
             txtNombreDest.Name = "txtNombreDest";
-            txtNombreDest.Size = new Size(220, 31);
+            txtNombreDest.Size = new Size(220, 23);
             txtNombreDest.TabIndex = 25;
             // 
             // lblApellidoDest
@@ -312,7 +250,7 @@
             // 
             txtApellidoDest.Location = new Point(270, 342);
             txtApellidoDest.Name = "txtApellidoDest";
-            txtApellidoDest.Size = new Size(220, 31);
+            txtApellidoDest.Size = new Size(220, 23);
             txtApellidoDest.TabIndex = 27;
             // 
             // lblDNIDest
@@ -328,7 +266,7 @@
             // 
             txtDNIDest.Location = new Point(510, 342);
             txtDNIDest.Name = "txtDNIDest";
-            txtDNIDest.Size = new Size(160, 31);
+            txtDNIDest.Size = new Size(160, 23);
             txtDNIDest.TabIndex = 29;
             // 
             // lblTelDest
@@ -344,26 +282,26 @@
             // 
             txtTelDest.Location = new Point(690, 342);
             txtTelDest.Name = "txtTelDest";
-            txtTelDest.Size = new Size(180, 31);
+            txtTelDest.Size = new Size(180, 23);
             txtTelDest.TabIndex = 31;
             // 
             // lblSecEnvio
             // 
-            lblSecEnvio.Font = new Font("Segoe UI", 10F);
-            lblSecEnvio.ForeColor = Color.FromArgb(30, 30, 30);
-            lblSecEnvio.Location = new Point(30, 376);
-            lblSecEnvio.Name = "lblSecEnvio";
-            lblSecEnvio.Size = new Size(300, 36);
-            lblSecEnvio.TabIndex = 32;
-            lblSecEnvio.Text = "4. Datos del envío";
+            this.lblSecEnvio.Font = new Font("Segoe UI", 10F);
+            this.lblSecEnvio.ForeColor = Color.FromArgb(30, 30, 30);
+            this.lblSecEnvio.Location = new Point(30, 376);
+            this.lblSecEnvio.Name = "lblSecEnvio";
+            this.lblSecEnvio.Size = new Size(300, 36);
+            this.lblSecEnvio.TabIndex = 32;
+            this.lblSecEnvio.Text = "4. Datos del envío";
             // 
             // pnlSepEnvio
             // 
-            pnlSepEnvio.BackColor = Color.FromArgb(220, 220, 220);
-            pnlSepEnvio.Location = new Point(30, 415);
-            pnlSepEnvio.Name = "pnlSepEnvio";
-            pnlSepEnvio.Size = new Size(1010, 1);
-            pnlSepEnvio.TabIndex = 33;
+            this.pnlSepEnvio.BackColor = Color.FromArgb(220, 220, 220);
+            this.pnlSepEnvio.Location = new Point(30, 415);
+            this.pnlSepEnvio.Name = "pnlSepEnvio";
+            this.pnlSepEnvio.Size = new Size(1010, 1);
+            this.pnlSepEnvio.TabIndex = 33;
             // 
             // lblCDOrigen
             // 
@@ -380,7 +318,7 @@
             txtCDOrigen.Location = new Point(30, 447);
             txtCDOrigen.Name = "txtCDOrigen";
             txtCDOrigen.ReadOnly = true;
-            txtCDOrigen.Size = new Size(160, 31);
+            txtCDOrigen.Size = new Size(160, 23);
             txtCDOrigen.TabIndex = 35;
             txtCDOrigen.Text = "CABA (CD ACTUAL)";
             // 
@@ -399,7 +337,7 @@
             cboCDDestino.Items.AddRange(new object[] { "CABA", "GBA Norte", "GBA Sur", "Rosario", "Córdoba", "Mendoza" });
             cboCDDestino.Location = new Point(210, 447);
             cboCDDestino.Name = "cboCDDestino";
-            cboCDDestino.Size = new Size(140, 33);
+            cboCDDestino.Size = new Size(140, 23);
             cboCDDestino.TabIndex = 37;
             // 
             // lblTipoEntrega
@@ -417,7 +355,7 @@
             cboTipoEntrega.Items.AddRange(new object[] { "Retiro en CD", "Retiro en Agencia", "Puerta a Puerta" });
             cboTipoEntrega.Location = new Point(370, 447);
             cboTipoEntrega.Name = "cboTipoEntrega";
-            cboTipoEntrega.Size = new Size(180, 33);
+            cboTipoEntrega.Size = new Size(180, 23);
             cboTipoEntrega.TabIndex = 39;
             // 
             // lblTipoBulto
@@ -435,7 +373,7 @@
             cboTipoBulto.Items.AddRange(new object[] { "S", "M", "L", "XL" });
             cboTipoBulto.Location = new Point(570, 447);
             cboTipoBulto.Name = "cboTipoBulto";
-            cboTipoBulto.Size = new Size(100, 33);
+            cboTipoBulto.Size = new Size(100, 23);
             cboTipoBulto.TabIndex = 41;
             // 
             // lblCantBultos
@@ -451,7 +389,7 @@
             // 
             txtCantBultos.Location = new Point(690, 447);
             txtCantBultos.Name = "txtCantBultos";
-            txtCantBultos.Size = new Size(80, 31);
+            txtCantBultos.Size = new Size(80, 23);
             txtCantBultos.TabIndex = 43;
             // 
             // lblContenido
@@ -467,7 +405,7 @@
             // 
             txtContenido.Location = new Point(30, 510);
             txtContenido.Name = "txtContenido";
-            txtContenido.Size = new Size(340, 31);
+            txtContenido.Size = new Size(340, 23);
             txtContenido.TabIndex = 45;
             // 
             // lblValor
@@ -483,7 +421,7 @@
             // 
             txtValor.Location = new Point(390, 510);
             txtValor.Name = "txtValor";
-            txtValor.Size = new Size(160, 31);
+            txtValor.Size = new Size(160, 23);
             txtValor.TabIndex = 47;
             // 
             // lblAgenciaDestino
@@ -501,7 +439,7 @@
             cboAgenciaDestino.Items.AddRange(new object[] { "Agencia Centro Rosario", "Agencia Norte Córdoba", "Agencia Sur Mendoza" });
             cboAgenciaDestino.Location = new Point(570, 510);
             cboAgenciaDestino.Name = "cboAgenciaDestino";
-            cboAgenciaDestino.Size = new Size(280, 33);
+            cboAgenciaDestino.Size = new Size(280, 23);
             cboAgenciaDestino.TabIndex = 49;
             // 
             // lblCalleEnt
@@ -517,7 +455,7 @@
             // 
             txtCalleEnt.Location = new Point(30, 575);
             txtCalleEnt.Name = "txtCalleEnt";
-            txtCalleEnt.Size = new Size(280, 31);
+            txtCalleEnt.Size = new Size(280, 23);
             txtCalleEnt.TabIndex = 51;
             // 
             // lblAlturaEnt
@@ -533,7 +471,7 @@
             // 
             txtAlturaEnt.Location = new Point(330, 575);
             txtAlturaEnt.Name = "txtAlturaEnt";
-            txtAlturaEnt.Size = new Size(90, 31);
+            txtAlturaEnt.Size = new Size(90, 23);
             txtAlturaEnt.TabIndex = 53;
             // 
             // lblPisoEnt
@@ -549,7 +487,7 @@
             // 
             txtPisoEnt.Location = new Point(440, 575);
             txtPisoEnt.Name = "txtPisoEnt";
-            txtPisoEnt.Size = new Size(120, 31);
+            txtPisoEnt.Size = new Size(120, 23);
             txtPisoEnt.TabIndex = 55;
             // 
             // lblCPEnt
@@ -565,7 +503,7 @@
             // 
             txtCPEnt.Location = new Point(580, 575);
             txtCPEnt.Name = "txtCPEnt";
-            txtCPEnt.Size = new Size(110, 31);
+            txtCPEnt.Size = new Size(110, 23);
             txtCPEnt.TabIndex = 57;
             // 
             // lblCiudadEnt
@@ -581,7 +519,7 @@
             // 
             txtCiudadEnt.Location = new Point(710, 575);
             txtCiudadEnt.Name = "txtCiudadEnt";
-            txtCiudadEnt.Size = new Size(180, 31);
+            txtCiudadEnt.Size = new Size(180, 23);
             txtCiudadEnt.TabIndex = 59;
             // 
             // btnGenerarYAdmitir
@@ -613,11 +551,73 @@
             txtGuiaGen.Size = new Size(750, 60);
             txtGuiaGen.TabIndex = 62;
             // 
+            // lblSecRem
+            // 
+            lblSecRem.Font = new Font("Segoe UI", 10F);
+            lblSecRem.ForeColor = Color.FromArgb(30, 30, 30);
+            lblSecRem.Location = new Point(30, 173);
+            lblSecRem.Name = "lblSecRem";
+            lblSecRem.Size = new Size(300, 29);
+            lblSecRem.TabIndex = 8;
+            lblSecRem.Text = "2. Datos del remitente";
+            // 
+            // pnlSep1
+            // 
+            pnlSep1.BackColor = Color.FromArgb(220, 220, 220);
+            pnlSep1.Location = new Point(30, 63);
+            pnlSep1.Name = "pnlSep1";
+            pnlSep1.Size = new Size(1010, 1);
+            pnlSep1.TabIndex = 3;
+            // 
+            // pnlSepRem
+            // 
+            pnlSepRem.BackColor = Color.FromArgb(220, 220, 220);
+            pnlSepRem.Location = new Point(30, 205);
+            pnlSepRem.Name = "pnlSepRem";
+            pnlSepRem.Size = new Size(1010, 1);
+            pnlSepRem.TabIndex = 9;
+            // 
+            // pnlSepTipo
+            // 
+            pnlSepTipo.BackColor = Color.FromArgb(220, 220, 220);
+            pnlSepTipo.Location = new Point(30, 105);
+            pnlSepTipo.Name = "pnlSepTipo";
+            pnlSepTipo.Size = new Size(1010, 1);
+            pnlSepTipo.TabIndex = 5;
+            // 
+            // lblSecTipo
+            // 
+            lblSecTipo.Font = new Font("Segoe UI", 10F);
+            lblSecTipo.ForeColor = Color.FromArgb(30, 30, 30);
+            lblSecTipo.Location = new Point(30, 67);
+            lblSecTipo.Name = "lblSecTipo";
+            lblSecTipo.Size = new Size(300, 35);
+            lblSecTipo.TabIndex = 4;
+            lblSecTipo.Text = "1. Tipo de remitente";
+            // 
+            // cboTipoCliente
+            // 
+            cboTipoCliente.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboTipoCliente.Items.AddRange(new object[] { "Empresa / Agencia", "Particular" });
+            cboTipoCliente.Location = new Point(30, 137);
+            cboTipoCliente.Name = "cboTipoCliente";
+            cboTipoCliente.Size = new Size(200, 23);
+            cboTipoCliente.TabIndex = 7;
+            // 
+            // lblTipoCliente
+            // 
+            lblTipoCliente.ForeColor = Color.FromArgb(60, 60, 60);
+            lblTipoCliente.Location = new Point(30, 105);
+            lblTipoCliente.Name = "lblTipoCliente";
+            lblTipoCliente.Size = new Size(150, 30);
+            lblTipoCliente.TabIndex = 6;
+            lblTipoCliente.Text = "Tipo cliente *";
+            // 
             // Imposicion_CD
             // 
             AutoScroll = true;
             BackColor = Color.White;
-            ClientSize = new Size(1232, 859);
+            ClientSize = new Size(1232, 749);
             Controls.Add(lblTitulo);
             Controls.Add(lblFecha);
             Controls.Add(lblFechaValor);
@@ -640,8 +640,8 @@
             Controls.Add(txtDNIRem);
             Controls.Add(lblTelRem);
             Controls.Add(txtTelRem);
-            Controls.Add(lblSecDest);
-            Controls.Add(pnlSepDest);
+            Controls.Add(this.lblSecDest);
+            Controls.Add(this.pnlSepDest);
             Controls.Add(lblNombreDest);
             Controls.Add(txtNombreDest);
             Controls.Add(lblApellidoDest);
@@ -650,8 +650,8 @@
             Controls.Add(txtDNIDest);
             Controls.Add(lblTelDest);
             Controls.Add(txtTelDest);
-            Controls.Add(lblSecEnvio);
-            Controls.Add(pnlSepEnvio);
+            Controls.Add(this.lblSecEnvio);
+            Controls.Add(this.pnlSepEnvio);
             Controls.Add(lblCDOrigen);
             Controls.Add(txtCDOrigen);
             Controls.Add(lblCDDestino);
@@ -692,10 +692,6 @@
         }
 
         private System.Windows.Forms.Label lblTitulo, lblFecha, lblFechaValor;
-        private System.Windows.Forms.Panel pnlSep1, pnlSepTipo, pnlSepRem, pnlSepDest, pnlSepEnvio;
-        private System.Windows.Forms.Label lblSecTipo, lblSecRem, lblSecDest, lblSecEnvio;
-        private System.Windows.Forms.Label lblTipoCliente;
-        private System.Windows.Forms.ComboBox cboTipoCliente;
         private System.Windows.Forms.Label lblRazonSocial, lblCUIT, lblNombreRem, lblApellidoRem, lblDNIRem, lblTelRem;
         private System.Windows.Forms.ComboBox cboRazonSocial;
         private System.Windows.Forms.TextBox txtCUIT, txtNombreRem, txtApellidoRem, txtDNIRem, txtTelRem;
@@ -712,5 +708,12 @@
         private System.Windows.Forms.Button btnGenerarYAdmitir;
         private System.Windows.Forms.Label lblGuiaGen;
         private System.Windows.Forms.TextBox txtGuiaGen;
+        private Label lblSecRem;
+        private Panel pnlSep1;
+        private Panel pnlSepRem;
+        private Panel pnlSepTipo;
+        private Label lblSecTipo;
+        private ComboBox cboTipoCliente;
+        private Label lblTipoCliente;
     }
 }
