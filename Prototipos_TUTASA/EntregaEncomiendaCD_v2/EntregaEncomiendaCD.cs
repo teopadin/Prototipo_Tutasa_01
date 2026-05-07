@@ -10,5 +10,10 @@ namespace Prototipos_TUTASA
         {
 
         }
+
+        private void lblValidacion_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
