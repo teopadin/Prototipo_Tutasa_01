@@ -164,7 +164,6 @@
             btnConfirmar.Size = new Size(187, 67);
             btnConfirmar.TabIndex = 15;
             btnConfirmar.Text = "Confirmar Entrega";
-            btnConfirmar.Click += this.btnConfirmar_Click;
             // 
             // btnCancelar
             // 

@@ -1,4 +1,5 @@
 ﻿using System.Windows.Forms;
+using System;
 namespace Prototipos_TUTASA
 {
     public partial class EntregaEncomiendaCD : Form
