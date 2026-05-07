@@ -43,6 +43,8 @@
             label4 = new Label();
             textBox1 = new TextBox();
             columnHeader4 = new ColumnHeader();
+            button1 = new Button();
+            columnHeader5 = new ColumnHeader();
             SuspendLayout();
             // 
             // comboBox1
@@ -103,7 +105,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(54, 618);
+            label3.Location = new Point(54, 600);
             label3.Name = "label3";
             label3.Size = new Size(1328, 41);
             label3.TabIndex = 14;
@@ -111,9 +113,9 @@
             // 
             // listView1
             // 
-            listView1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4 });
+            listView1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader5, columnHeader3, columnHeader4 });
             listView1.FullRowSelect = true;
-            listView1.Location = new Point(54, 677);
+            listView1.Location = new Point(54, 659);
             listView1.Margin = new Padding(7, 8, 7, 8);
             listView1.Name = "listView1";
             listView1.Size = new Size(1430, 256);
@@ -155,14 +157,31 @@
             // 
             // columnHeader4
             // 
+            columnHeader4.DisplayIndex = 3;
             columnHeader4.Text = "Horario salida";
-            columnHeader4.Width = 400;
+            columnHeader4.Width = 300;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(1214, 960);
+            button1.Name = "button1";
+            button1.Size = new Size(270, 70);
+            button1.TabIndex = 17;
+            button1.Text = "Generar HDR";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // columnHeader5
+            // 
+            columnHeader5.DisplayIndex = 4;
+            columnHeader5.Text = "Tipo de Servicio";
+            columnHeader5.Width = 200;
             // 
             // HojaDeRutaDeTransporte_v2
             // 
             AutoScaleDimensions = new SizeF(17F, 41F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1562, 1052);
+            Controls.Add(button1);
             Controls.Add(textBox1);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -195,5 +214,7 @@
         private Label label4;
         private TextBox textBox1;
         private ColumnHeader columnHeader4;
+        private Button button1;
+        private ColumnHeader columnHeader5;
     }
 }
