@@ -10,7 +10,7 @@ namespace Prototipos_TUTASA
 {
     public partial class ConsultarEstadoPedidoSLog : Form
     {
-        public  ConsultarEstadoPedidoSLog()
+        public ConsultarEstadoPedidoSLog()
         {
             InitializeComponent();
         }
@@ -31,6 +31,11 @@ namespace Prototipos_TUTASA
         }
 
         private void dgvResultados_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
