@@ -153,30 +153,30 @@
             // 
             chkDNI.Location = new Point(12, 406);
             chkDNI.Name = "chkDNI";
-            chkDNI.Size = new Size(200, 78);
+            chkDNI.Size = new Size(324, 78);
             chkDNI.TabIndex = 14;
             chkDNI.Text = "Presentó DNI / Cédula";
             // 
             // btnConfirmar
             // 
-            btnConfirmar.Location = new Point(71, 515);
+            btnConfirmar.Location = new Point(232, 513);
             btnConfirmar.Name = "btnConfirmar";
-            btnConfirmar.Size = new Size(187, 67);
+            btnConfirmar.Size = new Size(187, 32);
             btnConfirmar.TabIndex = 15;
             btnConfirmar.Text = "Confirmar Entrega";
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(264, 515);
+            btnCancelar.Location = new Point(425, 513);
             btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(147, 67);
+            btnCancelar.Size = new Size(147, 32);
             btnCancelar.TabIndex = 16;
             btnCancelar.Text = "Cancelar";
             btnCancelar.Click += btnCancelar_Click;
             // 
             // EntregaEncomiendaCD
             // 
-            ClientSize = new Size(584, 636);
+            ClientSize = new Size(584, 555);
             Controls.Add(lblTitulo);
             Controls.Add(lblGuia);
             Controls.Add(txtGuia);
