@@ -16,5 +16,10 @@
         {
 
         }
+
+        private void Distribucion_Hdr__Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

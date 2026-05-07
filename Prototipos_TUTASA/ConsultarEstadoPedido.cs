@@ -12,7 +12,7 @@ namespace Prototipos_TUTASA
     {
         public ConsultarEstadoPedido()
         {
-            InicializarComponentes();
+            InitializeComponent();
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -49,6 +49,11 @@ namespace Prototipos_TUTASA
                 "En Tránsito",
                 "El pedido está en camino hacia el destino"
             );
+        }
+
+        private void dgvEstado_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

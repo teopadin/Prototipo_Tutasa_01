@@ -10,7 +10,7 @@ namespace Prototipos_TUTASA
         {
             // https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new ImposicionAgencia_Pantalla2());
+            Application.Run(new ConsultarEstadoPedido());
         }
     }
 }
