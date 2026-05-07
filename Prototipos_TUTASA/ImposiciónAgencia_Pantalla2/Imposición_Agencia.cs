@@ -4,9 +4,9 @@ using System.Windows.Forms;
 
 namespace Prototipos_TUTASA
 {
-    public partial class Imposicion_Agencia : Form
+    public partial class ImposicionAgencia_Pantalla2 : Form
     {
-        public Imposicion_Agencia()
+        public ImposicionAgencia_Pantalla2()
         {
             InitializeComponent();
         }
