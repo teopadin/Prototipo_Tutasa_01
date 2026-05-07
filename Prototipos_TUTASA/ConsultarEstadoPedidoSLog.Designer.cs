@@ -114,7 +114,7 @@
             columnHeader4.Text = "Patente";
             columnHeader4.Width = 180;
             // 
-            // columnHeader5
+            // colEstado
             // 
             columnHeader5.Text = "HDR Asignadas";
             columnHeader5.Width = 120;

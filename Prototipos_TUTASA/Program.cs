@@ -1,3 +1,6 @@
+using Prototipos_TUTASA.EntregaenCD;
+using Prototipos_TUTASA.EntregaenCD_v3;
+
 namespace Prototipos_TUTASA
 {
     internal static class Program
@@ -10,7 +13,7 @@ namespace Prototipos_TUTASA
         {
             // https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Retiro_Teo_());
+            Application.Run(new EntregaEncomiendaCD_v3());
 ;
         }
     }
