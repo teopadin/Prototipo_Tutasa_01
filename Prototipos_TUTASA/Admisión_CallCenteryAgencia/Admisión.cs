@@ -6,11 +6,11 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Prototipos_TUTASA
+namespace Prototipos_TUTASA.Admisión
 {
-    public partial class ImposiciónCallCenter : Form
+    public partial class Admisión : Form
     {
-        public ImposiciónCallCenter()
+        public Admisión()
         {
             InitializeComponent();
         }
