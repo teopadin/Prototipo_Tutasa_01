@@ -39,29 +39,29 @@
             txtNombreDestinatario = new TextBox();
             lblNombreDestinatario = new Label();
             gbTamañoBulto = new GroupBox();
-            radioButton1 = new RadioButton();
-            radioButton2 = new RadioButton();
-            radioButton3 = new RadioButton();
             radioButton4 = new RadioButton();
+            radioButton3 = new RadioButton();
+            radioButton2 = new RadioButton();
+            radioButton1 = new RadioButton();
             groupBox1 = new GroupBox();
-            radioButton5 = new RadioButton();
-            radioButton6 = new RadioButton();
             radioButton7 = new RadioButton();
+            radioButton6 = new RadioButton();
+            radioButton5 = new RadioButton();
             groupBox2 = new GroupBox();
-            groupBox3 = new GroupBox();
-            groupBox4 = new GroupBox();
-            label1 = new Label();
-            textBox1 = new TextBox();
-            label2 = new Label();
-            textBox2 = new TextBox();
-            label3 = new Label();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
-            label4 = new Label();
             textBox5 = new TextBox();
             label5 = new Label();
-            comboBox1 = new ComboBox();
+            textBox4 = new TextBox();
+            label4 = new Label();
+            textBox3 = new TextBox();
+            label3 = new Label();
+            textBox2 = new TextBox();
+            label2 = new Label();
+            textBox1 = new TextBox();
+            label1 = new Label();
+            groupBox3 = new GroupBox();
             label6 = new Label();
+            comboBox1 = new ComboBox();
+            groupBox4 = new GroupBox();
             label7 = new Label();
             comboBox2 = new ComboBox();
             btnGenerarGuia = new Button();
@@ -209,27 +209,16 @@
             gbTamañoBulto.TabStop = false;
             gbTamañoBulto.Text = "Tamaño de Bulto*";
             // 
-            // radioButton1
+            // radioButton4
             // 
-            radioButton1.AutoSize = true;
-            radioButton1.Location = new Point(51, 22);
-            radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(105, 19);
-            radioButton1.TabIndex = 11;
-            radioButton1.TabStop = true;
-            radioButton1.Text = "TIPO S: <2.5 kg";
-            radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            radioButton2.AutoSize = true;
-            radioButton2.Location = new Point(244, 22);
-            radioButton2.Name = "radioButton2";
-            radioButton2.Size = new Size(101, 19);
-            radioButton2.TabIndex = 12;
-            radioButton2.TabStop = true;
-            radioButton2.Text = "TIPO M: <5 kg";
-            radioButton2.UseVisualStyleBackColor = true;
+            radioButton4.AutoSize = true;
+            radioButton4.Location = new Point(618, 22);
+            radioButton4.Name = "radioButton4";
+            radioButton4.Size = new Size(109, 19);
+            radioButton4.TabIndex = 14;
+            radioButton4.TabStop = true;
+            radioButton4.Text = "TIPO XL: <20 kg";
+            radioButton4.UseVisualStyleBackColor = true;
             // 
             // radioButton3
             // 
@@ -242,16 +231,27 @@
             radioButton3.Text = "TIPO L: <10 kg";
             radioButton3.UseVisualStyleBackColor = true;
             // 
-            // radioButton4
+            // radioButton2
             // 
-            radioButton4.AutoSize = true;
-            radioButton4.Location = new Point(618, 22);
-            radioButton4.Name = "radioButton4";
-            radioButton4.Size = new Size(109, 19);
-            radioButton4.TabIndex = 14;
-            radioButton4.TabStop = true;
-            radioButton4.Text = "TIPO XL: <20 kg";
-            radioButton4.UseVisualStyleBackColor = true;
+            radioButton2.AutoSize = true;
+            radioButton2.Location = new Point(244, 22);
+            radioButton2.Name = "radioButton2";
+            radioButton2.Size = new Size(101, 19);
+            radioButton2.TabIndex = 12;
+            radioButton2.TabStop = true;
+            radioButton2.Text = "TIPO M: <5 kg";
+            radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton1
+            // 
+            radioButton1.AutoSize = true;
+            radioButton1.Location = new Point(51, 22);
+            radioButton1.Name = "radioButton1";
+            radioButton1.Size = new Size(105, 19);
+            radioButton1.TabIndex = 11;
+            radioButton1.TabStop = true;
+            radioButton1.Text = "TIPO S: <2.5 kg";
+            radioButton1.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
@@ -265,16 +265,16 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Modalidad de entrega*";
             // 
-            // radioButton5
+            // radioButton7
             // 
-            radioButton5.AutoSize = true;
-            radioButton5.Location = new Point(94, 22);
-            radioButton5.Name = "radioButton5";
-            radioButton5.Size = new Size(105, 19);
-            radioButton5.TabIndex = 0;
-            radioButton5.TabStop = true;
-            radioButton5.Text = "Puerta a puerta";
-            radioButton5.UseVisualStyleBackColor = true;
+            radioButton7.AutoSize = true;
+            radioButton7.Location = new Point(600, 22);
+            radioButton7.Name = "radioButton7";
+            radioButton7.Size = new Size(91, 19);
+            radioButton7.TabIndex = 2;
+            radioButton7.TabStop = true;
+            radioButton7.Text = "Retiro en CD";
+            radioButton7.UseVisualStyleBackColor = true;
             // 
             // radioButton6
             // 
@@ -287,16 +287,16 @@
             radioButton6.Text = "Retiro en Agencia";
             radioButton6.UseVisualStyleBackColor = true;
             // 
-            // radioButton7
+            // radioButton5
             // 
-            radioButton7.AutoSize = true;
-            radioButton7.Location = new Point(600, 22);
-            radioButton7.Name = "radioButton7";
-            radioButton7.Size = new Size(91, 19);
-            radioButton7.TabIndex = 2;
-            radioButton7.TabStop = true;
-            radioButton7.Text = "Retiro en CD";
-            radioButton7.UseVisualStyleBackColor = true;
+            radioButton5.AutoSize = true;
+            radioButton5.Location = new Point(94, 22);
+            radioButton5.Name = "radioButton5";
+            radioButton5.Size = new Size(105, 19);
+            radioButton5.TabIndex = 0;
+            radioButton5.TabStop = true;
+            radioButton5.Text = "Puerta a puerta";
+            radioButton5.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
@@ -318,80 +318,23 @@
             groupBox2.Text = "Puerta a Puerta";
             groupBox2.Enter += groupBox2_Enter;
             // 
-            // groupBox3
+            // textBox5
             // 
-            groupBox3.Controls.Add(label6);
-            groupBox3.Controls.Add(comboBox1);
-            groupBox3.Location = new Point(261, 404);
-            groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(274, 172);
-            groupBox3.TabIndex = 27;
-            groupBox3.TabStop = false;
-            groupBox3.Text = "Retiro en Agencia";
+            textBox5.Location = new Point(6, 133);
+            textBox5.Margin = new Padding(3, 2, 3, 2);
+            textBox5.MaxLength = 40;
+            textBox5.Name = "textBox5";
+            textBox5.Size = new Size(226, 23);
+            textBox5.TabIndex = 31;
             // 
-            // groupBox4
+            // label5
             // 
-            groupBox4.Controls.Add(label7);
-            groupBox4.Controls.Add(comboBox2);
-            groupBox4.Location = new Point(541, 404);
-            groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(244, 172);
-            groupBox4.TabIndex = 27;
-            groupBox4.TabStop = false;
-            groupBox4.Text = "Retiro en CD";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(6, 19);
-            label1.Name = "label1";
-            label1.Size = new Size(38, 15);
-            label1.TabIndex = 27;
-            label1.Text = "Calle*";
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(6, 36);
-            textBox1.Margin = new Padding(3, 2, 3, 2);
-            textBox1.MaxLength = 50;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(226, 23);
-            textBox1.TabIndex = 31;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(6, 70);
-            label2.Name = "label2";
-            label2.Size = new Size(47, 15);
-            label2.TabIndex = 32;
-            label2.Text = "Altura *";
-            // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(6, 87);
-            textBox2.Margin = new Padding(3, 2, 3, 2);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(69, 23);
-            textBox2.TabIndex = 31;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(81, 70);
-            label3.Name = "label3";
-            label3.Size = new Size(29, 15);
-            label3.TabIndex = 33;
-            label3.Text = "Piso";
-            // 
-            // textBox3
-            // 
-            textBox3.Location = new Point(81, 87);
-            textBox3.Margin = new Padding(3, 2, 3, 2);
-            textBox3.MaxLength = 10;
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(49, 23);
-            textBox3.TabIndex = 31;
+            label5.AutoSize = true;
+            label5.Location = new Point(7, 116);
+            label5.Name = "label5";
+            label5.Size = new Size(53, 15);
+            label5.TabIndex = 32;
+            label5.Text = "Ciudad *";
             // 
             // textBox4
             // 
@@ -411,31 +354,69 @@
             label4.TabIndex = 32;
             label4.Text = "Codigo postal *";
             // 
-            // textBox5
+            // textBox3
             // 
-            textBox5.Location = new Point(6, 133);
-            textBox5.Margin = new Padding(3, 2, 3, 2);
-            textBox5.MaxLength = 40;
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(226, 23);
-            textBox5.TabIndex = 31;
+            textBox3.Location = new Point(81, 87);
+            textBox3.Margin = new Padding(3, 2, 3, 2);
+            textBox3.MaxLength = 10;
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(49, 23);
+            textBox3.TabIndex = 31;
             // 
-            // label5
+            // label3
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(7, 116);
-            label5.Name = "label5";
-            label5.Size = new Size(53, 15);
-            label5.TabIndex = 32;
-            label5.Text = "Ciudad *";
+            label3.AutoSize = true;
+            label3.Location = new Point(81, 70);
+            label3.Name = "label3";
+            label3.Size = new Size(29, 15);
+            label3.TabIndex = 33;
+            label3.Text = "Piso";
             // 
-            // comboBox1
+            // textBox2
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(38, 87);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(196, 23);
-            comboBox1.TabIndex = 0;
+            textBox2.Location = new Point(6, 87);
+            textBox2.Margin = new Padding(3, 2, 3, 2);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(69, 23);
+            textBox2.TabIndex = 31;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(6, 70);
+            label2.Name = "label2";
+            label2.Size = new Size(47, 15);
+            label2.TabIndex = 32;
+            label2.Text = "Altura *";
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(6, 36);
+            textBox1.Margin = new Padding(3, 2, 3, 2);
+            textBox1.MaxLength = 50;
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(226, 23);
+            textBox1.TabIndex = 31;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(6, 19);
+            label1.Name = "label1";
+            label1.Size = new Size(38, 15);
+            label1.TabIndex = 27;
+            label1.Text = "Calle*";
+            // 
+            // groupBox3
+            // 
+            groupBox3.Controls.Add(label6);
+            groupBox3.Controls.Add(comboBox1);
+            groupBox3.Location = new Point(261, 404);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(274, 172);
+            groupBox3.TabIndex = 27;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Retiro en Agencia";
             // 
             // label6
             // 
@@ -445,6 +426,25 @@
             label6.Size = new Size(116, 15);
             label6.TabIndex = 1;
             label6.Text = "Seleccionar Agencia:";
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(38, 87);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(196, 23);
+            comboBox1.TabIndex = 0;
+            // 
+            // groupBox4
+            // 
+            groupBox4.Controls.Add(label7);
+            groupBox4.Controls.Add(comboBox2);
+            groupBox4.Location = new Point(541, 404);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Size = new Size(244, 172);
+            groupBox4.TabIndex = 27;
+            groupBox4.TabStop = false;
+            groupBox4.Text = "Retiro en CD";
             // 
             // label7
             // 
