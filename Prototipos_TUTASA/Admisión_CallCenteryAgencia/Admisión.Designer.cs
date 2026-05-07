@@ -37,8 +37,6 @@
             textBox1 = new TextBox();
             label3 = new Label();
             dateTimePicker1 = new DateTimePicker();
-            label4 = new Label();
-            textBox2 = new TextBox();
             label5 = new Label();
             textBox3 = new TextBox();
             textBox4 = new TextBox();
@@ -56,7 +54,7 @@
             // btnGenerar
             // 
             btnGenerar.FlatStyle = FlatStyle.System;
-            btnGenerar.Location = new Point(265, 606);
+            btnGenerar.Location = new Point(252, 500);
             btnGenerar.Name = "btnGenerar";
             btnGenerar.Size = new Size(196, 34);
             btnGenerar.TabIndex = 31;
@@ -64,7 +62,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(467, 606);
+            button1.Location = new Point(467, 500);
             button1.Name = "button1";
             button1.Size = new Size(188, 34);
             button1.TabIndex = 37;
@@ -131,27 +129,10 @@
             dateTimePicker1.Size = new Size(334, 31);
             dateTimePicker1.TabIndex = 44;
             // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(15, 54);
-            label4.Name = "label4";
-            label4.Size = new Size(99, 25);
-            label4.TabIndex = 45;
-            label4.Text = "CD Origen:";
-            // 
-            // textBox2
-            // 
-            textBox2.Enabled = false;
-            textBox2.Location = new Point(180, 54);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(334, 31);
-            textBox2.TabIndex = 46;
-            // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(16, 107);
+            label5.Location = new Point(19, 39);
             label5.Name = "label5";
             label5.Size = new Size(69, 25);
             label5.TabIndex = 47;
@@ -160,7 +141,7 @@
             // textBox3
             // 
             textBox3.Enabled = false;
-            textBox3.Location = new Point(180, 107);
+            textBox3.Location = new Point(183, 39);
             textBox3.Name = "textBox3";
             textBox3.ReadOnly = true;
             textBox3.Size = new Size(334, 31);
@@ -169,7 +150,7 @@
             // textBox4
             // 
             textBox4.Enabled = false;
-            textBox4.Location = new Point(180, 197);
+            textBox4.Location = new Point(183, 129);
             textBox4.Name = "textBox4";
             textBox4.ReadOnly = true;
             textBox4.Size = new Size(334, 31);
@@ -178,7 +159,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(15, 200);
+            label6.Location = new Point(18, 132);
             label6.Name = "label6";
             label6.Size = new Size(111, 25);
             label6.TabIndex = 50;
@@ -187,7 +168,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(15, 253);
+            label7.Location = new Point(18, 185);
             label7.Name = "label7";
             label7.Size = new Size(122, 25);
             label7.TabIndex = 51;
@@ -196,7 +177,7 @@
             // textBox5
             // 
             textBox5.Enabled = false;
-            textBox5.Location = new Point(180, 247);
+            textBox5.Location = new Point(183, 179);
             textBox5.Name = "textBox5";
             textBox5.ReadOnly = true;
             textBox5.Size = new Size(334, 31);
@@ -205,7 +186,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(15, 157);
+            label8.Location = new Point(18, 89);
             label8.Name = "label8";
             label8.Size = new Size(106, 25);
             label8.TabIndex = 53;
@@ -214,7 +195,7 @@
             // textBox6
             // 
             textBox6.Enabled = false;
-            textBox6.Location = new Point(180, 154);
+            textBox6.Location = new Point(183, 86);
             textBox6.Name = "textBox6";
             textBox6.ReadOnly = true;
             textBox6.Size = new Size(334, 31);
@@ -223,7 +204,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(16, 302);
+            label9.Location = new Point(19, 234);
             label9.Name = "label9";
             label9.Size = new Size(141, 25);
             label9.TabIndex = 55;
@@ -232,7 +213,7 @@
             // textBox7
             // 
             textBox7.Enabled = false;
-            textBox7.Location = new Point(180, 299);
+            textBox7.Location = new Point(183, 231);
             textBox7.Name = "textBox7";
             textBox7.ReadOnly = true;
             textBox7.Size = new Size(334, 31);
@@ -242,8 +223,6 @@
             // 
             groupBox1.Controls.Add(label9);
             groupBox1.Controls.Add(textBox7);
-            groupBox1.Controls.Add(label4);
-            groupBox1.Controls.Add(textBox2);
             groupBox1.Controls.Add(textBox6);
             groupBox1.Controls.Add(label5);
             groupBox1.Controls.Add(label8);
@@ -254,7 +233,7 @@
             groupBox1.Controls.Add(label6);
             groupBox1.Location = new Point(12, 191);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(643, 373);
+            groupBox1.Size = new Size(643, 287);
             groupBox1.TabIndex = 57;
             groupBox1.TabStop = false;
             groupBox1.Text = "Información de Guía";
@@ -263,7 +242,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(698, 671);
+            ClientSize = new Size(677, 572);
             Controls.Add(groupBox1);
             Controls.Add(dateTimePicker1);
             Controls.Add(label3);
@@ -293,8 +272,6 @@
         private TextBox textBox1;
         private Label label3;
         private DateTimePicker dateTimePicker1;
-        private Label label4;
-        private TextBox textBox2;
         private Label label5;
         private TextBox textBox3;
         private TextBox textBox4;
