@@ -1,6 +1,6 @@
 ﻿namespace Prototipos_TUTASA
 {
-    partial class EntregaEncomiendaAgencia
+    partial class EntregaEncomiendaCD
     {
         private System.ComponentModel.IContainer components = null;
         protected override void Dispose(bool disposing)
@@ -20,8 +20,6 @@
             colApellido = new ColumnHeader();
             colDNI = new ColumnHeader();
             colEstado = new ColumnHeader();
-            lblAgencia = new Label();
-            txtAgencia = new TextBox();
             lblValidacion = new Label();
             lblNombre = new Label();
             txtNombre = new TextBox();
@@ -39,46 +37,44 @@
             lblTitulo.Font = new Font("Microsoft Sans Serif", 8.25F);
             lblTitulo.Location = new Point(12, 12);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(368, 25);
+            lblTitulo.Size = new Size(308, 34);
             lblTitulo.TabIndex = 0;
-            lblTitulo.Text = "Entrega de Encomienda en Agencia";
+            lblTitulo.Text = "Entrega de Encomienda en CD";
             // 
             // lblGuia
             // 
-            lblGuia.Location = new Point(12, 54);
+            lblGuia.Location = new Point(12, 65);
             lblGuia.Name = "lblGuia";
-            lblGuia.Size = new Size(80, 23);
+            lblGuia.Size = new Size(62, 34);
             lblGuia.TabIndex = 1;
             lblGuia.Text = "Guía";
             // 
             // txtGuia
             // 
-            txtGuia.Location = new Point(98, 51);
+            txtGuia.Location = new Point(80, 62);
             txtGuia.Name = "txtGuia";
-            txtGuia.Size = new Size(169, 26);
+            txtGuia.Size = new Size(120, 26);
             txtGuia.TabIndex = 2;
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new Point(290, 49);
+            btnBuscar.Location = new Point(212, 49);
             btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(102, 37);
+            btnBuscar.Size = new Size(98, 39);
             btnBuscar.TabIndex = 3;
             btnBuscar.Text = "Buscar";
-            btnBuscar.Click += btnBuscar_Click;
             // 
             // lvGuia
             // 
             lvGuia.Columns.AddRange(new ColumnHeader[] { colNombre, colApellido, colDNI, colEstado });
             lvGuia.FullRowSelect = true;
             lvGuia.GridLines = true;
-            lvGuia.Location = new Point(12, 99);
+            lvGuia.Location = new Point(12, 120);
             lvGuia.Name = "lvGuia";
-            lvGuia.Size = new Size(581, 103);
+            lvGuia.Size = new Size(538, 127);
             lvGuia.TabIndex = 4;
             lvGuia.UseCompatibleStateImageBehavior = false;
             lvGuia.View = View.Details;
-            lvGuia.SelectedIndexChanged += lvGuia_SelectedIndexChanged;
             // 
             // colNombre
             // 
@@ -100,110 +96,93 @@
             colEstado.Text = "Estado";
             colEstado.Width = 110;
             // 
-            // lblAgencia
-            // 
-            lblAgencia.Location = new Point(12, 214);
-            lblAgencia.Name = "lblAgencia";
-            lblAgencia.Size = new Size(238, 24);
-            lblAgencia.TabIndex = 5;
-            lblAgencia.Text = "Agencia que entrega";
-            // 
-            // txtAgencia
-            // 
-            txtAgencia.Location = new Point(12, 241);
-            txtAgencia.Name = "txtAgencia";
-            txtAgencia.ReadOnly = true;
-            txtAgencia.Size = new Size(200, 26);
-            txtAgencia.TabIndex = 6;
-            txtAgencia.Text = "Agencia Flores (FIJO)";
-            // 
             // lblValidacion
             // 
-            lblValidacion.Location = new Point(12, 287);
+            lblValidacion.Location = new Point(12, 269);
             lblValidacion.Name = "lblValidacion";
-            lblValidacion.Size = new Size(380, 32);
-            lblValidacion.TabIndex = 9;
-            lblValidacion.Text = "Validación de identidad de quien retira";
+            lblValidacion.Size = new Size(257, 31);
+            lblValidacion.TabIndex = 7;
+            lblValidacion.Text = "Validación de quien retira";
+            lblValidacion.Click += lblValidacion_Click;
             // 
             // lblNombre
             // 
-            lblNombre.Location = new Point(12, 319);
+            lblNombre.Location = new Point(12, 320);
             lblNombre.Name = "lblNombre";
-            lblNombre.Size = new Size(104, 30);
-            lblNombre.TabIndex = 10;
+            lblNombre.Size = new Size(80, 18);
+            lblNombre.TabIndex = 8;
             lblNombre.Text = "Nombre";
             // 
             // txtNombre
             // 
-            txtNombre.Location = new Point(12, 352);
+            txtNombre.Location = new Point(12, 340);
             txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(147, 26);
-            txtNombre.TabIndex = 11;
+            txtNombre.Size = new Size(160, 26);
+            txtNombre.TabIndex = 9;
             // 
             // lblApellido
             // 
-            lblApellido.Location = new Point(170, 319);
+            lblApellido.Location = new Point(189, 320);
             lblApellido.Name = "lblApellido";
-            lblApellido.Size = new Size(97, 31);
-            lblApellido.TabIndex = 12;
+            lblApellido.Size = new Size(80, 18);
+            lblApellido.TabIndex = 10;
             lblApellido.Text = "Apellido";
             // 
             // txtApellido
             // 
-            txtApellido.Location = new Point(170, 353);
+            txtApellido.Location = new Point(189, 340);
             txtApellido.Name = "txtApellido";
-            txtApellido.Size = new Size(147, 26);
-            txtApellido.TabIndex = 13;
+            txtApellido.Size = new Size(174, 26);
+            txtApellido.TabIndex = 11;
             // 
             // lblDNI
             // 
-            lblDNI.Location = new Point(330, 319);
+            lblDNI.Location = new Point(369, 320);
             lblDNI.Name = "lblDNI";
-            lblDNI.Size = new Size(62, 31);
-            lblDNI.TabIndex = 14;
+            lblDNI.Size = new Size(181, 18);
+            lblDNI.TabIndex = 12;
             lblDNI.Text = "DNI";
             // 
             // txtDNI
             // 
-            txtDNI.Location = new Point(330, 353);
+            txtDNI.Location = new Point(369, 340);
             txtDNI.Name = "txtDNI";
-            txtDNI.Size = new Size(137, 26);
-            txtDNI.TabIndex = 15;
+            txtDNI.Size = new Size(181, 26);
+            txtDNI.TabIndex = 13;
             // 
             // chkDNI
             // 
-            chkDNI.Location = new Point(12, 425);
+            chkDNI.Location = new Point(12, 406);
             chkDNI.Name = "chkDNI";
-            chkDNI.Size = new Size(200, 59);
-            chkDNI.TabIndex = 16;
+            chkDNI.Size = new Size(324, 78);
+            chkDNI.TabIndex = 14;
             chkDNI.Text = "Presentó DNI / Cédula";
             // 
             // btnConfirmar
             // 
-            btnConfirmar.Location = new Point(76, 464);
+            btnConfirmar.Location = new Point(232, 513);
             btnConfirmar.Name = "btnConfirmar";
-            btnConfirmar.Size = new Size(174, 70);
-            btnConfirmar.TabIndex = 17;
+            btnConfirmar.Size = new Size(187, 32);
+            btnConfirmar.TabIndex = 15;
             btnConfirmar.Text = "Confirmar Entrega";
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(272, 464);
+            btnCancelar.Location = new Point(425, 513);
             btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(134, 70);
-            btnCancelar.TabIndex = 18;
+            btnCancelar.Size = new Size(147, 32);
+            btnCancelar.TabIndex = 16;
             btnCancelar.Text = "Cancelar";
+            btnCancelar.Click += btnCancelar_Click;
             // 
-            // EntregaEncomiendaAgencia
+            // EntregaEncomiendaCD
             // 
-            ClientSize = new Size(708, 609);
+            ClientSize = new Size(584, 555);
             Controls.Add(lblTitulo);
             Controls.Add(lblGuia);
             Controls.Add(txtGuia);
             Controls.Add(btnBuscar);
             Controls.Add(lvGuia);
-            Controls.Add(lblAgencia);
-            Controls.Add(txtAgencia);
             Controls.Add(lblValidacion);
             Controls.Add(lblNombre);
             Controls.Add(txtNombre);
@@ -217,9 +196,9 @@
             Font = new Font("Microsoft Sans Serif", 8.25F);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
-            Name = "EntregaEncomiendaAgencia";
+            Name = "EntregaEncomiendaCD";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Entrega de Encomienda en Agencia";
+            Text = "Entrega de Encomienda en CD";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -230,8 +209,6 @@
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.ListView lvGuia;
         private System.Windows.Forms.ColumnHeader colNombre, colApellido, colDNI, colEstado;
-        private System.Windows.Forms.Label lblAgencia;
-        private System.Windows.Forms.TextBox txtAgencia;
         private System.Windows.Forms.Label lblValidacion;
         private System.Windows.Forms.Label lblNombre, lblApellido, lblDNI;
         private System.Windows.Forms.TextBox txtNombre, txtApellido, txtDNI;
