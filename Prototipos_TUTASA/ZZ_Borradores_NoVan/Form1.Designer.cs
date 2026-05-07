@@ -1,6 +1,6 @@
 ﻿namespace Prototipos_TUTASA
 {
-    partial class Form1
+    partial class Resumen_HDR
     {
         private System.ComponentModel.IContainer components = null;
 
