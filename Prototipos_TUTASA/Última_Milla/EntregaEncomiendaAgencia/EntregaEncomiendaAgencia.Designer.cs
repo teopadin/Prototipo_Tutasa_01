@@ -60,7 +60,7 @@
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new Point(290, 40);
+            btnBuscar.Location = new Point(290, 49);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(102, 37);
             btnBuscar.TabIndex = 3;
@@ -129,7 +129,7 @@
             // 
             lblNombre.Location = new Point(12, 319);
             lblNombre.Name = "lblNombre";
-            lblNombre.Size = new Size(80, 31);
+            lblNombre.Size = new Size(104, 30);
             lblNombre.TabIndex = 10;
             lblNombre.Text = "Nombre";
             // 
@@ -144,7 +144,7 @@
             // 
             lblApellido.Location = new Point(170, 319);
             lblApellido.Name = "lblApellido";
-            lblApellido.Size = new Size(80, 31);
+            lblApellido.Size = new Size(97, 31);
             lblApellido.TabIndex = 12;
             lblApellido.Text = "Apellido";
             // 
@@ -172,7 +172,7 @@
             // 
             // chkDNI
             // 
-            chkDNI.Location = new Point(12, 399);
+            chkDNI.Location = new Point(12, 425);
             chkDNI.Name = "chkDNI";
             chkDNI.Size = new Size(200, 59);
             chkDNI.TabIndex = 16;
@@ -180,7 +180,7 @@
             // 
             // btnConfirmar
             // 
-            btnConfirmar.Location = new Point(143, 494);
+            btnConfirmar.Location = new Point(76, 464);
             btnConfirmar.Name = "btnConfirmar";
             btnConfirmar.Size = new Size(174, 70);
             btnConfirmar.TabIndex = 17;
@@ -188,7 +188,7 @@
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(339, 494);
+            btnCancelar.Location = new Point(272, 464);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(134, 70);
             btnCancelar.TabIndex = 18;
@@ -196,7 +196,7 @@
             // 
             // EntregaEncomiendaAgencia
             // 
-            ClientSize = new Size(616, 595);
+            ClientSize = new Size(708, 609);
             Controls.Add(lblTitulo);
             Controls.Add(lblGuia);
             Controls.Add(txtGuia);
