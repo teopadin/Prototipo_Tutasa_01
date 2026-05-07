@@ -22,7 +22,6 @@
             colDomicilio = new ColumnHeader();
             colEstado = new ColumnHeader();
             lblFletero = new Label();
-            cboFletero = new ComboBox();
             lblFechaEntrega = new Label();
             dtpFechaEntrega = new DateTimePicker();
             rbEntregada = new RadioButton();
@@ -32,6 +31,7 @@
             btnRegistrar = new Button();
             btnCancelar = new Button();
             groupBox1 = new GroupBox();
+            textBox1 = new TextBox();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -56,7 +56,7 @@
             // 
             txtGuia.Location = new Point(92, 62);
             txtGuia.Name = "txtGuia";
-            txtGuia.Size = new Size(120, 26);
+            txtGuia.Size = new Size(120, 32);
             txtGuia.TabIndex = 2;
             // 
             // btnBuscar
@@ -110,16 +110,7 @@
             lblFletero.Name = "lblFletero";
             lblFletero.Size = new Size(272, 29);
             lblFletero.TabIndex = 5;
-            lblFletero.Text = "Fletero que realizó la entrega";
-            // 
-            // cboFletero
-            // 
-            cboFletero.DropDownStyle = ComboBoxStyle.DropDownList;
-            cboFletero.Items.AddRange(new object[] { "Luis Fernández", "Carlos Romero", "Pablo García" });
-            cboFletero.Location = new Point(12, 265);
-            cboFletero.Name = "cboFletero";
-            cboFletero.Size = new Size(218, 28);
-            cboFletero.TabIndex = 6;
+            lblFletero.Text = "Fletero asignado (FIJO)";
             // 
             // lblFechaEntrega
             // 
@@ -135,7 +126,7 @@
             dtpFechaEntrega.Format = DateTimePickerFormat.Custom;
             dtpFechaEntrega.Location = new Point(350, 267);
             dtpFechaEntrega.Name = "dtpFechaEntrega";
-            dtpFechaEntrega.Size = new Size(257, 26);
+            dtpFechaEntrega.Size = new Size(257, 32);
             dtpFechaEntrega.TabIndex = 8;
             // 
             // rbEntregada
@@ -171,7 +162,7 @@
             cboMotivo.Items.AddRange(new object[] { "Destinatario ausente - 1er intento", "Destinatario ausente - 2do intento", "Dirección incorrecta", "Destinatario rechazó la encomienda" });
             cboMotivo.Location = new Point(279, 149);
             cboMotivo.Name = "cboMotivo";
-            cboMotivo.Size = new Size(300, 28);
+            cboMotivo.Size = new Size(300, 34);
             cboMotivo.TabIndex = 13;
             // 
             // btnRegistrar
@@ -203,9 +194,17 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Resultado de la entrega";
             // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(14, 263);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(200, 32);
+            textBox1.TabIndex = 19;
+            // 
             // EntregaDomicilio
             // 
             ClientSize = new Size(632, 656);
+            Controls.Add(textBox1);
             Controls.Add(groupBox1);
             Controls.Add(lblTitulo);
             Controls.Add(lblGuia);
@@ -213,7 +212,6 @@
             Controls.Add(btnBuscar);
             Controls.Add(lvGuia);
             Controls.Add(lblFletero);
-            Controls.Add(cboFletero);
             Controls.Add(lblFechaEntrega);
             Controls.Add(dtpFechaEntrega);
             Controls.Add(btnRegistrar);
@@ -236,7 +234,6 @@
         private System.Windows.Forms.ListView lvGuia;
         private System.Windows.Forms.ColumnHeader colNombre, colApellido, colDNI, colDomicilio, colEstado;
         private System.Windows.Forms.Label lblFletero;
-        private System.Windows.Forms.ComboBox cboFletero;
         private System.Windows.Forms.Label lblFechaEntrega;
         private System.Windows.Forms.DateTimePicker dtpFechaEntrega;
         private System.Windows.Forms.RadioButton rbEntregada, rbNoEntregada;
@@ -244,5 +241,6 @@
         private System.Windows.Forms.ComboBox cboMotivo;
         private System.Windows.Forms.Button btnRegistrar, btnCancelar;
         private GroupBox groupBox1;
+        private TextBox textBox1;
     }
 }
