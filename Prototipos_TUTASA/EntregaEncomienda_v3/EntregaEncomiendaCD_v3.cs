@@ -17,6 +17,13 @@ namespace Prototipos_TUTASA.EntregaenCD_v3
 
         private void InitializeComponent()
         {
+            SuspendLayout();
+            // 
+            // EntregaEncomiendaCD_v3
+            // 
+            ClientSize = new Size(633, 484);
+            Name = "EntregaEncomiendaCD_v3";
+            ResumeLayout(false);
 
         }
     }
