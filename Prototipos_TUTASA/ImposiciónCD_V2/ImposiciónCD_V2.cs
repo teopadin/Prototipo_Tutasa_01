@@ -24,5 +24,10 @@ namespace Prototipos_TUTASA.ImposiciónCD_V2
         {
 
         }
+
+        private void ImposiciónCD_V2_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

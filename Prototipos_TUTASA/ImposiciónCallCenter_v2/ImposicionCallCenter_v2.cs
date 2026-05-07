@@ -6,13 +6,18 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Prototipos_TUTASA.ImposiciónAgencia_v2
+namespace Prototipos_TUTASA.ImposiciónCallCenter_v2
 {
-    public partial class Form1 : Form
+    public partial class ImposicionCallCenter_v2 : Form
     {
-        public Form1()
+        public ImposicionCallCenter_v2()
         {
             InitializeComponent();
+        }
+
+        private void lblTitulo_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

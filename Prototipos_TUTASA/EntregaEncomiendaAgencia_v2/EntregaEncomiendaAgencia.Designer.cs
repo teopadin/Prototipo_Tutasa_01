@@ -55,7 +55,7 @@
             // 
             txtGuia.Location = new Point(98, 51);
             txtGuia.Name = "txtGuia";
-            txtGuia.Size = new Size(169, 32);
+            txtGuia.Size = new Size(169, 26);
             txtGuia.TabIndex = 2;
             // 
             // btnBuscar
@@ -78,6 +78,7 @@
             lvGuia.TabIndex = 4;
             lvGuia.UseCompatibleStateImageBehavior = false;
             lvGuia.View = View.Details;
+            lvGuia.SelectedIndexChanged += lvGuia_SelectedIndexChanged;
             // 
             // colNombre
             // 
@@ -112,7 +113,7 @@
             txtAgencia.Location = new Point(12, 241);
             txtAgencia.Name = "txtAgencia";
             txtAgencia.ReadOnly = true;
-            txtAgencia.Size = new Size(200, 32);
+            txtAgencia.Size = new Size(200, 26);
             txtAgencia.TabIndex = 6;
             txtAgencia.Text = "Agencia Flores (FIJO)";
             // 
@@ -122,7 +123,7 @@
             lblValidacion.Name = "lblValidacion";
             lblValidacion.Size = new Size(380, 32);
             lblValidacion.TabIndex = 9;
-            lblValidacion.Text = "Validación del destinatario";
+            lblValidacion.Text = "Validación de identidad de quien retira";
             // 
             // lblNombre
             // 
@@ -136,7 +137,7 @@
             // 
             txtNombre.Location = new Point(12, 352);
             txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(147, 32);
+            txtNombre.Size = new Size(147, 26);
             txtNombre.TabIndex = 11;
             // 
             // lblApellido
@@ -151,7 +152,7 @@
             // 
             txtApellido.Location = new Point(170, 353);
             txtApellido.Name = "txtApellido";
-            txtApellido.Size = new Size(147, 32);
+            txtApellido.Size = new Size(147, 26);
             txtApellido.TabIndex = 13;
             // 
             // lblDNI
@@ -166,7 +167,7 @@
             // 
             txtDNI.Location = new Point(330, 353);
             txtDNI.Name = "txtDNI";
-            txtDNI.Size = new Size(137, 32);
+            txtDNI.Size = new Size(137, 26);
             txtDNI.TabIndex = 15;
             // 
             // chkDNI
@@ -179,7 +180,7 @@
             // 
             // btnConfirmar
             // 
-            btnConfirmar.Location = new Point(120, 508);
+            btnConfirmar.Location = new Point(76, 464);
             btnConfirmar.Name = "btnConfirmar";
             btnConfirmar.Size = new Size(174, 70);
             btnConfirmar.TabIndex = 17;
@@ -187,7 +188,7 @@
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(352, 508);
+            btnCancelar.Location = new Point(272, 464);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(134, 70);
             btnCancelar.TabIndex = 18;

@@ -9,5 +9,15 @@ namespace Prototipos_TUTASA
         {
 
         }
+
+        private void lvGuia_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblValidacion_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
