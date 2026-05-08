@@ -66,7 +66,7 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(343, 136);
+            comboBox1.Location = new Point(233, 136);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(194, 33);
             comboBox1.TabIndex = 3;
@@ -76,9 +76,9 @@
             label1.AutoSize = true;
             label1.Location = new Point(30, 139);
             label1.Name = "label1";
-            label1.Size = new Size(297, 25);
+            label1.Size = new Size(197, 25);
             label1.TabIndex = 4;
-            label1.Text = "Nro HDR de Transporte a despachar";
+            label1.Text = "Nro HDR de Transporte";
             // 
             // label3
             // 
