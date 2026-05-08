@@ -29,11 +29,7 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            label2 = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
             label3 = new Label();
-            textBox3 = new TextBox();
             Fletero = new Label();
             listView1 = new ListView();
             HojRut = new ColumnHeader();
@@ -49,6 +45,9 @@
             label5 = new Label();
             button1 = new Button();
             button2 = new Button();
+            comboBox1 = new ComboBox();
+            columnHeader1 = new ColumnHeader();
+            dateTimePicker1 = new DateTimePicker();
             SuspendLayout();
             // 
             // label1
@@ -62,54 +61,20 @@
             label1.TabIndex = 0;
             label1.Text = "Resumen Hoja de Ruta de Retiro";
             // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(30, 130);
-            label2.Margin = new Padding(4, 0, 4, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(144, 25);
-            label2.TabIndex = 1;
-            label2.Text = "CD Emisor (FIJO)";
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(30, 160);
-            textBox1.Margin = new Padding(4, 5, 4, 5);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(141, 31);
-            textBox1.TabIndex = 2;
-            // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(236, 160);
-            textBox2.Margin = new Padding(4, 5, 4, 5);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(141, 31);
-            textBox2.TabIndex = 4;
-            // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(236, 130);
+            label3.Location = new Point(40, 119);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
             label3.Size = new Size(57, 25);
             label3.TabIndex = 3;
             label3.Text = "Fecha";
             // 
-            // textBox3
-            // 
-            textBox3.Location = new Point(451, 160);
-            textBox3.Margin = new Padding(4, 5, 4, 5);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(141, 31);
-            textBox3.TabIndex = 6;
-            // 
             // Fletero
             // 
             Fletero.AutoSize = true;
-            Fletero.Location = new Point(451, 130);
+            Fletero.Location = new Point(384, 119);
             Fletero.Margin = new Padding(4, 0, 4, 0);
             Fletero.Name = "Fletero";
             Fletero.Size = new Size(144, 25);
@@ -118,11 +83,11 @@
             // 
             // listView1
             // 
-            listView1.Columns.AddRange(new ColumnHeader[] { HojRut, Remitente, Calle, Altura, CP, TipoBulto });
+            listView1.Columns.AddRange(new ColumnHeader[] { HojRut, Remitente, columnHeader1, Calle, Altura, CP, TipoBulto });
             listView1.Location = new Point(30, 287);
             listView1.Margin = new Padding(4, 5, 4, 5);
             listView1.Name = "listView1";
-            listView1.Size = new Size(659, 159);
+            listView1.Size = new Size(762, 159);
             listView1.TabIndex = 7;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
@@ -172,6 +137,7 @@
             textBox4.Location = new Point(30, 502);
             textBox4.Margin = new Padding(4, 5, 4, 5);
             textBox4.Name = "textBox4";
+            textBox4.ReadOnly = true;
             textBox4.Size = new Size(193, 31);
             textBox4.TabIndex = 10;
             // 
@@ -180,6 +146,7 @@
             textBox5.Location = new Point(264, 502);
             textBox5.Margin = new Padding(4, 5, 4, 5);
             textBox5.Name = "textBox5";
+            textBox5.ReadOnly = true;
             textBox5.Size = new Size(163, 31);
             textBox5.TabIndex = 12;
             // 
@@ -223,11 +190,34 @@
             button2.Text = "Cancelar";
             button2.UseVisualStyleBackColor = true;
             // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(384, 147);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(182, 33);
+            comboBox1.TabIndex = 15;
+            // 
+            // columnHeader1
+            // 
+            columnHeader1.DisplayIndex = 6;
+            columnHeader1.Text = "Localidad";
+            columnHeader1.Width = 100;
+            // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.Location = new Point(40, 149);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(300, 31);
+            dateTimePicker1.TabIndex = 16;
+            // 
             // Resumen_HDR_Retiro
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(699, 676);
+            ClientSize = new Size(803, 658);
+            Controls.Add(dateTimePicker1);
+            Controls.Add(comboBox1);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(textBox5);
@@ -236,12 +226,8 @@
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(listView1);
-            Controls.Add(textBox3);
             Controls.Add(Fletero);
-            Controls.Add(textBox2);
             Controls.Add(label3);
-            Controls.Add(textBox1);
-            Controls.Add(label2);
             Controls.Add(label1);
             Margin = new Padding(4, 5, 4, 5);
             Name = "Resumen_HDR_Retiro";
@@ -254,14 +240,9 @@
         #endregion
 
         private Label label1;
-        private Label label2;
-        private TextBox textBox1;
-        private TextBox textBox2;
         private Label label3;
-        private TextBox textBox3;
         private Label Fletero;
         private ListView listView1;
-        private ColumnHeader columnHeader1;
         private Label label4;
         private ColumnHeader HojRut;
         private ColumnHeader Remitente;
@@ -275,5 +256,8 @@
         private Label label6;
         private Button button1;
         private Button button2;
+        private ColumnHeader columnHeader1;
+        private ComboBox comboBox1;
+        private DateTimePicker dateTimePicker1;
     }
 }
