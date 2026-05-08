@@ -180,7 +180,7 @@
             // 
             // btnConfirmar
             // 
-            btnConfirmar.Location = new Point(76, 464);
+            btnConfirmar.Location = new Point(330, 491);
             btnConfirmar.Name = "btnConfirmar";
             btnConfirmar.Size = new Size(174, 70);
             btnConfirmar.TabIndex = 17;
@@ -188,7 +188,7 @@
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(272, 464);
+            btnCancelar.Location = new Point(133, 491);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(134, 70);
             btnCancelar.TabIndex = 18;
@@ -196,7 +196,7 @@
             // 
             // EntregaEncomiendaAgencia
             // 
-            ClientSize = new Size(708, 609);
+            ClientSize = new Size(712, 619);
             Controls.Add(lblTitulo);
             Controls.Add(lblGuia);
             Controls.Add(txtGuia);
