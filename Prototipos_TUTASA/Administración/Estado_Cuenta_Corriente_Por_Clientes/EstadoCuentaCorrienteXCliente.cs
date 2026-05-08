@@ -19,5 +19,10 @@ namespace Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrient
         {
 
         }
+
+        private void lblEstadoCuenta_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
