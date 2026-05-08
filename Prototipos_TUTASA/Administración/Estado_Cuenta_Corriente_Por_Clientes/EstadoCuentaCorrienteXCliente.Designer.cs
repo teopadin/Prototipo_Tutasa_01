@@ -2,15 +2,8 @@
 {
     partial class EstadoCuentaCorrienteXCliente
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,224 +13,349 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
-
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             lblTitulo = new Label();
-            groupBox1 = new GroupBox();
+            grpCliente = new GroupBox();
+            btnBuscarCliente = new Button();
+            cboRazonSocial = new ComboBox();
             lblRazonSocial = new Label();
-            txtNombreRem = new TextBox();
-            button1 = new Button();
-            lblCUIT = new Label();
-            txtCUIT = new TextBox();
-            label2 = new Label();
-            listView1 = new ListView();
-            columnHeader1 = new ColumnHeader();
-            columnHeader2 = new ColumnHeader();
-            columnHeader3 = new ColumnHeader();
-            columnHeader4 = new ColumnHeader();
-            textBox1 = new TextBox();
-            label1 = new Label();
-            textBox2 = new TextBox();
-            button2 = new Button();
-            button3 = new Button();
-            groupBox1.SuspendLayout();
+            txtCuit = new TextBox();
+            lblCuit = new Label();
+            txtEstadoCuenta = new TextBox();
+            lblEstadoCuenta = new Label();
+            txtSaldoActual = new TextBox();
+            lblSaldoActual = new Label();
+            txtCondicionFacturacion = new TextBox();
+            lblCondicionFacturacion = new Label();
+            lblServicios = new Label();
+            lvServiciosPendientes = new ListView();
+            colFecha = new ColumnHeader();
+            colNumeroServicio = new ColumnHeader();
+            colTipoServicio = new ColumnHeader();
+            colOrigen = new ColumnHeader();
+            colDestino = new ColumnHeader();
+            colImporte = new ColumnHeader();
+            colEstado = new ColumnHeader();
+            lblCantidadServicios = new Label();
+            txtCantidadServicios = new TextBox();
+            lblTotalFacturar = new Label();
+            txtTotalFacturar = new TextBox();
+            btnEmitirFactura = new Button();
+            btnCancelar = new Button();
+            grpCliente.SuspendLayout();
             SuspendLayout();
             // 
             // lblTitulo
             // 
+            lblTitulo.AutoSize = true;
             lblTitulo.Font = new Font("Segoe UI", 16F);
-            lblTitulo.ForeColor = Color.FromArgb(30, 30, 30);
-            lblTitulo.Location = new Point(12, 9);
+            lblTitulo.Location = new Point(42, 31);
+            lblTitulo.Margin = new Padding(6, 0, 6, 0);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(587, 41);
-            lblTitulo.TabIndex = 40;
-            lblTitulo.Text = "Estado de Cuenta Corriente por Cliente";
+            lblTitulo.Size = new Size(576, 59);
+            lblTitulo.TabIndex = 0;
+            lblTitulo.Text = "Estado de Cuenta por Cliente";
             // 
-            // groupBox1
+            // grpCliente
             // 
-            groupBox1.Controls.Add(textBox2);
-            groupBox1.Controls.Add(label1);
-            groupBox1.Controls.Add(textBox1);
-            groupBox1.Controls.Add(label2);
-            groupBox1.Controls.Add(lblCUIT);
-            groupBox1.Controls.Add(txtCUIT);
-            groupBox1.Controls.Add(button1);
-            groupBox1.Controls.Add(txtNombreRem);
-            groupBox1.Controls.Add(lblRazonSocial);
-            groupBox1.Location = new Point(12, 67);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(597, 182);
-            groupBox1.TabIndex = 41;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Datos del Cliente";
+            grpCliente.Controls.Add(btnBuscarCliente);
+            grpCliente.Controls.Add(cboRazonSocial);
+            grpCliente.Controls.Add(lblRazonSocial);
+            grpCliente.Controls.Add(txtCuit);
+            grpCliente.Controls.Add(lblCuit);
+            grpCliente.Controls.Add(txtEstadoCuenta);
+            grpCliente.Controls.Add(lblEstadoCuenta);
+            grpCliente.Controls.Add(txtSaldoActual);
+            grpCliente.Controls.Add(lblSaldoActual);
+            grpCliente.Controls.Add(txtCondicionFacturacion);
+            grpCliente.Controls.Add(lblCondicionFacturacion);
+            grpCliente.Location = new Point(42, 144);
+            grpCliente.Margin = new Padding(6, 6, 6, 6);
+            grpCliente.Name = "grpCliente";
+            grpCliente.Padding = new Padding(6, 6, 6, 6);
+            grpCliente.Size = new Size(2252, 390);
+            grpCliente.TabIndex = 1;
+            grpCliente.TabStop = false;
+            grpCliente.Text = "Datos del Cliente";
+            // 
+            // btnBuscarCliente
+            // 
+            btnBuscarCliente.Location = new Point(765, 98);
+            btnBuscarCliente.Margin = new Padding(6, 6, 6, 6);
+            btnBuscarCliente.Name = "btnBuscarCliente";
+            btnBuscarCliente.Size = new Size(255, 82);
+            btnBuscarCliente.TabIndex = 2;
+            btnBuscarCliente.Text = "Buscar";
+            btnBuscarCliente.UseVisualStyleBackColor = true;
+            // 
+            // cboRazonSocial
+            // 
+            cboRazonSocial.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboRazonSocial.FormattingEnabled = true;
+            cboRazonSocial.Location = new Point(42, 111);
+            cboRazonSocial.Margin = new Padding(6, 6, 6, 6);
+            cboRazonSocial.Name = "cboRazonSocial";
+            cboRazonSocial.Size = new Size(654, 49);
+            cboRazonSocial.TabIndex = 1;
             // 
             // lblRazonSocial
             // 
-            lblRazonSocial.ForeColor = Color.FromArgb(60, 60, 60);
-            lblRazonSocial.Location = new Point(6, 27);
+            lblRazonSocial.AutoSize = true;
+            lblRazonSocial.Location = new Point(42, 62);
+            lblRazonSocial.Margin = new Padding(6, 0, 6, 0);
             lblRazonSocial.Name = "lblRazonSocial";
-            lblRazonSocial.Size = new Size(150, 28);
-            lblRazonSocial.TabIndex = 23;
-            lblRazonSocial.Text = "Razón social *";
+            lblRazonSocial.Size = new Size(190, 41);
+            lblRazonSocial.TabIndex = 0;
+            lblRazonSocial.Text = "Razón social ";
             // 
-            // txtNombreRem
+            // txtCuit
             // 
-            txtNombreRem.Location = new Point(6, 58);
-            txtNombreRem.Name = "txtNombreRem";
-            txtNombreRem.Size = new Size(170, 31);
-            txtNombreRem.TabIndex = 28;
+            txtCuit.Location = new Point(42, 271);
+            txtCuit.Margin = new Padding(6, 6, 6, 6);
+            txtCuit.Name = "txtCuit";
+            txtCuit.ReadOnly = true;
+            txtCuit.Size = new Size(420, 47);
+            txtCuit.TabIndex = 4;
             // 
-            // button1
+            // lblCuit
             // 
-            button1.Location = new Point(200, 58);
-            button1.Name = "button1";
-            button1.Size = new Size(112, 34);
-            button1.TabIndex = 42;
-            button1.Text = "Buscar";
-            button1.UseVisualStyleBackColor = true;
+            lblCuit.AutoSize = true;
+            lblCuit.Location = new Point(42, 221);
+            lblCuit.Margin = new Padding(6, 0, 6, 0);
+            lblCuit.Name = "lblCuit";
+            lblCuit.Size = new Size(82, 41);
+            lblCuit.TabIndex = 3;
+            lblCuit.Text = "CUIT";
             // 
-            // lblCUIT
+            // txtEstadoCuenta
             // 
-            lblCUIT.ForeColor = Color.FromArgb(60, 60, 60);
-            lblCUIT.Location = new Point(6, 99);
-            lblCUIT.Name = "lblCUIT";
-            lblCUIT.Size = new Size(107, 28);
-            lblCUIT.TabIndex = 43;
-            lblCUIT.Text = "CUIT *";
+            txtEstadoCuenta.Location = new Point(552, 271);
+            txtEstadoCuenta.Margin = new Padding(6, 6, 6, 6);
+            txtEstadoCuenta.Name = "txtEstadoCuenta";
+            txtEstadoCuenta.ReadOnly = true;
+            txtEstadoCuenta.Size = new Size(463, 47);
+            txtEstadoCuenta.TabIndex = 6;
             // 
-            // txtCUIT
+            // lblEstadoCuenta
             // 
-            txtCUIT.Location = new Point(9, 130);
-            txtCUIT.Name = "txtCUIT";
-            txtCUIT.ReadOnly = true;
-            txtCUIT.Size = new Size(167, 31);
-            txtCUIT.TabIndex = 44;
+            lblEstadoCuenta.AutoSize = true;
+            lblEstadoCuenta.Location = new Point(552, 221);
+            lblEstadoCuenta.Margin = new Padding(6, 0, 6, 0);
+            lblEstadoCuenta.Name = "lblEstadoCuenta";
+            lblEstadoCuenta.Size = new Size(251, 41);
+            lblEstadoCuenta.TabIndex = 5;
+            lblEstadoCuenta.Text = "Estado de Cuenta";
+            lblEstadoCuenta.Click += lblEstadoCuenta_Click;
             // 
-            // label2
+            // txtSaldoActual
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(200, 100);
-            label2.Name = "label2";
-            label2.Size = new Size(151, 25);
-            label2.TabIndex = 42;
-            label2.Text = "Estado de Cuenta";
+            txtSaldoActual.Location = new Point(1105, 271);
+            txtSaldoActual.Margin = new Padding(6, 6, 6, 6);
+            txtSaldoActual.Name = "txtSaldoActual";
+            txtSaldoActual.ReadOnly = true;
+            txtSaldoActual.Size = new Size(420, 47);
+            txtSaldoActual.TabIndex = 8;
             // 
-            // listView1
+            // lblSaldoActual
             // 
-            listView1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4 });
-            listView1.Location = new Point(12, 271);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(609, 146);
-            listView1.TabIndex = 45;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.Details;
+            lblSaldoActual.AutoSize = true;
+            lblSaldoActual.Location = new Point(1105, 221);
+            lblSaldoActual.Margin = new Padding(6, 0, 6, 0);
+            lblSaldoActual.Name = "lblSaldoActual";
+            lblSaldoActual.Size = new Size(182, 41);
+            lblSaldoActual.TabIndex = 7;
+            lblSaldoActual.Text = "Saldo Actual";
             // 
-            // columnHeader1
+            // txtCondicionFacturacion
             // 
-            columnHeader1.Text = "Fecha";
-            columnHeader1.Width = 100;
+            txtCondicionFacturacion.Location = new Point(1615, 271);
+            txtCondicionFacturacion.Margin = new Padding(6, 6, 6, 6);
+            txtCondicionFacturacion.Name = "txtCondicionFacturacion";
+            txtCondicionFacturacion.ReadOnly = true;
+            txtCondicionFacturacion.Size = new Size(548, 47);
+            txtCondicionFacturacion.TabIndex = 10;
             // 
-            // columnHeader2
+            // lblCondicionFacturacion
             // 
-            columnHeader2.Text = "Concepto";
-            columnHeader2.Width = 130;
+            lblCondicionFacturacion.AutoSize = true;
+            lblCondicionFacturacion.Location = new Point(1615, 221);
+            lblCondicionFacturacion.Margin = new Padding(6, 0, 6, 0);
+            lblCondicionFacturacion.Name = "lblCondicionFacturacion";
+            lblCondicionFacturacion.Size = new Size(664, 41);
+            lblCondicionFacturacion.TabIndex = 9;
+            lblCondicionFacturacion.Text = "Condición para facturar (habilitado o bloqueado)";
             // 
-            // columnHeader3
+            // lblServicios
             // 
-            columnHeader3.Text = "Debe";
-            columnHeader3.Width = 110;
+            lblServicios.AutoSize = true;
+            lblServicios.Location = new Point(42, 574);
+            lblServicios.Margin = new Padding(6, 0, 6, 0);
+            lblServicios.Name = "lblServicios";
+            lblServicios.Size = new Size(429, 41);
+            lblServicios.TabIndex = 2;
+            lblServicios.Text = "Servicios pendientes de factura";
             // 
-            // columnHeader4
+            // lvServiciosPendientes
             // 
-            columnHeader4.Text = "Haber";
-            columnHeader4.Width = 110;
+            lvServiciosPendientes.Columns.AddRange(new ColumnHeader[] { colFecha, colNumeroServicio, colTipoServicio, colOrigen, colDestino, colImporte, colEstado });
+            lvServiciosPendientes.FullRowSelect = true;
+            lvServiciosPendientes.Location = new Point(42, 625);
+            lvServiciosPendientes.Margin = new Padding(6, 6, 6, 6);
+            lvServiciosPendientes.Name = "lvServiciosPendientes";
+            lvServiciosPendientes.Size = new Size(2248, 529);
+            lvServiciosPendientes.TabIndex = 3;
+            lvServiciosPendientes.UseCompatibleStateImageBehavior = false;
+            lvServiciosPendientes.View = View.Details;
             // 
-            // textBox1
+            // colFecha
             // 
-            textBox1.Location = new Point(408, 130);
-            textBox1.Name = "textBox1";
-            textBox1.ReadOnly = true;
-            textBox1.Size = new Size(150, 31);
-            textBox1.TabIndex = 45;
+            colFecha.Text = "Fecha";
+            colFecha.Width = 100;
             // 
-            // label1
+            // colNumeroServicio
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(408, 99);
-            label1.Name = "label1";
-            label1.Size = new Size(111, 25);
-            label1.TabIndex = 46;
-            label1.Text = "Saldo Actual";
-            label1.Click += label1_Click;
+            colNumeroServicio.Text = "Nro Servicio / Guía";
+            colNumeroServicio.Width = 160;
             // 
-            // textBox2
+            // colTipoServicio
             // 
-            textBox2.Location = new Point(201, 130);
-            textBox2.Name = "textBox2";
-            textBox2.ReadOnly = true;
-            textBox2.Size = new Size(174, 31);
-            textBox2.TabIndex = 47;
+            colTipoServicio.Text = "Tipo Servicio";
+            colTipoServicio.Width = 150;
             // 
-            // button2
+            // colOrigen
             // 
-            button2.Location = new Point(64, 441);
-            button2.Name = "button2";
-            button2.Size = new Size(211, 62);
-            button2.TabIndex = 46;
-            button2.Text = "Registrar Pago";
-            button2.UseVisualStyleBackColor = true;
+            colOrigen.Text = "Origen";
+            colOrigen.Width = 140;
             // 
-            // button3
+            // colDestino
             // 
-            button3.Location = new Point(338, 441);
-            button3.Name = "button3";
-            button3.Size = new Size(232, 62);
-            button3.TabIndex = 47;
-            button3.Text = "Emitir Factura";
-            button3.UseVisualStyleBackColor = true;
+            colDestino.Text = "Destino";
+            colDestino.Width = 140;
+            // 
+            // colImporte
+            // 
+            colImporte.Text = "Importe";
+            colImporte.Width = 120;
+            // 
+            // colEstado
+            // 
+            colEstado.Text = "Estado";
+            colEstado.Width = 140;
+            // 
+            // lblCantidadServicios
+            // 
+            lblCantidadServicios.AutoSize = true;
+            lblCantidadServicios.Location = new Point(42, 1210);
+            lblCantidadServicios.Margin = new Padding(6, 0, 6, 0);
+            lblCantidadServicios.Name = "lblCantidadServicios";
+            lblCantidadServicios.Size = new Size(299, 41);
+            lblCantidadServicios.TabIndex = 4;
+            lblCantidadServicios.Text = "Cantidad de servicios";
+            // 
+            // txtCantidadServicios
+            // 
+            txtCantidadServicios.Location = new Point(382, 1203);
+            txtCantidadServicios.Margin = new Padding(6, 6, 6, 6);
+            txtCantidadServicios.Name = "txtCantidadServicios";
+            txtCantidadServicios.ReadOnly = true;
+            txtCantidadServicios.Size = new Size(208, 47);
+            txtCantidadServicios.TabIndex = 5;
+            // 
+            // lblTotalFacturar
+            // 
+            lblTotalFacturar.AutoSize = true;
+            lblTotalFacturar.Location = new Point(701, 1210);
+            lblTotalFacturar.Margin = new Padding(6, 0, 6, 0);
+            lblTotalFacturar.Name = "lblTotalFacturar";
+            lblTotalFacturar.Size = new Size(212, 41);
+            lblTotalFacturar.TabIndex = 6;
+            lblTotalFacturar.Text = "Total a facturar";
+            // 
+            // txtTotalFacturar
+            // 
+            txtTotalFacturar.Location = new Point(967, 1203);
+            txtTotalFacturar.Margin = new Padding(6, 6, 6, 6);
+            txtTotalFacturar.Name = "txtTotalFacturar";
+            txtTotalFacturar.ReadOnly = true;
+            txtTotalFacturar.Size = new Size(314, 47);
+            txtTotalFacturar.TabIndex = 7;
+            // 
+            // btnEmitirFactura
+            // 
+            btnEmitirFactura.Location = new Point(1615, 1332);
+            btnEmitirFactura.Margin = new Padding(6, 6, 6, 6);
+            btnEmitirFactura.Name = "btnEmitirFactura";
+            btnEmitirFactura.Size = new Size(319, 92);
+            btnEmitirFactura.TabIndex = 8;
+            btnEmitirFactura.Text = "Emitir Factura";
+            btnEmitirFactura.UseVisualStyleBackColor = true;
+            // 
+            // btnCancelar
+            // 
+            btnCancelar.Location = new Point(1976, 1332);
+            btnCancelar.Margin = new Padding(6, 6, 6, 6);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(319, 92);
+            btnCancelar.TabIndex = 9;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.UseVisualStyleBackColor = true;
             // 
             // EstadoCuentaCorrienteXCliente
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(17F, 41F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(644, 536);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(listView1);
-            Controls.Add(groupBox1);
+            ClientSize = new Size(2348, 1476);
+            Controls.Add(btnCancelar);
+            Controls.Add(btnEmitirFactura);
+            Controls.Add(txtTotalFacturar);
+            Controls.Add(lblTotalFacturar);
+            Controls.Add(txtCantidadServicios);
+            Controls.Add(lblCantidadServicios);
+            Controls.Add(lvServiciosPendientes);
+            Controls.Add(lblServicios);
+            Controls.Add(grpCliente);
             Controls.Add(lblTitulo);
+            Margin = new Padding(6, 6, 6, 6);
             Name = "EstadoCuentaCorrienteXCliente";
-            Text = "Estado de CC por Cliente";
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
+            Text = "Estado de Cuenta Corriente por Cliente";
+            grpCliente.ResumeLayout(false);
+            grpCliente.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
-        #endregion
+        #region Windows Form Designer generated code
 
         private Label lblTitulo;
-        private GroupBox groupBox1;
+        private GroupBox grpCliente;
+        private ComboBox cboRazonSocial;
         private Label lblRazonSocial;
-        private Button button1;
-        private TextBox txtNombreRem;
-        private Label lblCUIT;
-        private TextBox txtCUIT;
-        private Label label2;
-        private ListView listView1;
-        private ColumnHeader columnHeader1;
-        private Label label1;
-        private TextBox textBox1;
-        private ColumnHeader columnHeader2;
-        private ColumnHeader columnHeader3;
-        private ColumnHeader columnHeader4;
-        private TextBox textBox2;
-        private Button button2;
-        private Button button3;
+        private Button btnBuscarCliente;
+        private TextBox txtCuit;
+        private Label lblCuit;
+        private TextBox txtEstadoCuenta;
+        private Label lblEstadoCuenta;
+        private TextBox txtSaldoActual;
+        private Label lblSaldoActual;
+        private TextBox txtCondicionFacturacion;
+        private Label lblCondicionFacturacion;
+        private Label lblServicios;
+        private ListView lvServiciosPendientes;
+        private ColumnHeader colFecha;
+        private ColumnHeader colNumeroServicio;
+        private ColumnHeader colTipoServicio;
+        private ColumnHeader colOrigen;
+        private ColumnHeader colDestino;
+        private ColumnHeader colImporte;
+        private ColumnHeader colEstado;
+        private Label lblCantidadServicios;
+        private TextBox txtCantidadServicios;
+        private Label lblTotalFacturar;
+        private TextBox txtTotalFacturar;
+        private Button btnEmitirFactura;
+        private Button btnCancelar;
+
+        #endregion
     }
 }
