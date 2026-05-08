@@ -19,7 +19,6 @@
 
   <ItemGroup>
     <Folder Include="EntregaEncomienda_v3\" />
-    <Folder Include="Generación_Resumen_HDR\Generación_Resumen_HDR_Distribución\" />
     <Folder Include="Generación_Resumen_HDR\Generación_Resumen_HDR_Cumplidas\" />
   </ItemGroup>
 
