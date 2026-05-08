@@ -9,6 +9,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Generación_Resumen_HDR\Generación_Resumen_HDR_Cumplidas\**" />
+    <EmbeddedResource Remove="Generación_Resumen_HDR\Generación_Resumen_HDR_Cumplidas\**" />
+    <None Remove="Generación_Resumen_HDR\Generación_Resumen_HDR_Cumplidas\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Admisión_CallCenteryAgencia_v2\Admisión.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -19,7 +25,6 @@
 
   <ItemGroup>
     <Folder Include="EntregaEncomienda_v3\" />
-    <Folder Include="Generación_Resumen_HDR\Generación_Resumen_HDR_Cumplidas\" />
   </ItemGroup>
 
 </Project>
