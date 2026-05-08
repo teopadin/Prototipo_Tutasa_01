@@ -8,11 +8,16 @@ using System.Windows.Forms;
 
 namespace Prototipos_TUTASA
 {
-    public partial class Resumen_HDR : Form
+    public partial class Resumen_HDR_Retiro : Form
     {
-        public Resumen_HDR()
+        public Resumen_HDR_Retiro()
         {
             InitializeComponent();
+        }
+
+        private void ResumenHDR_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -17,4 +17,8 @@
     </Compile>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="EntregaEncomienda_v3\" />
+  </ItemGroup>
+
 </Project>
