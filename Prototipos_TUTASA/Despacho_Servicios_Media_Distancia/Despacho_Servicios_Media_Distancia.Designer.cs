@@ -66,7 +66,7 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(343, 136);
+            comboBox1.Location = new Point(233, 136);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(194, 33);
             comboBox1.TabIndex = 3;
@@ -76,9 +76,9 @@
             label1.AutoSize = true;
             label1.Location = new Point(30, 139);
             label1.Name = "label1";
-            label1.Size = new Size(297, 25);
+            label1.Size = new Size(197, 25);
             label1.TabIndex = 4;
-            label1.Text = "Nro HDR de Transporte a despachar";
+            label1.Text = "Nro HDR de Transporte";
             // 
             // label3
             // 
@@ -207,13 +207,13 @@
             label7.AutoSize = true;
             label7.Location = new Point(30, 287);
             label7.Name = "label7";
-            label7.Size = new Size(212, 25);
+            label7.Size = new Size(96, 25);
             label7.TabIndex = 40;
-            label7.Text = "Servicio/horario de salida";
+            label7.Text = "ID Servicio";
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(157, 191);
+            textBox3.Location = new Point(221, 197);
             textBox3.Name = "textBox3";
             textBox3.ReadOnly = true;
             textBox3.Size = new Size(150, 31);
@@ -229,7 +229,7 @@
             // 
             // textBox5
             // 
-            textBox5.Location = new Point(248, 287);
+            textBox5.Location = new Point(221, 287);
             textBox5.Name = "textBox5";
             textBox5.ReadOnly = true;
             textBox5.Size = new Size(150, 31);
