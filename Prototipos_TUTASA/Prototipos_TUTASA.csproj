@@ -9,8 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="EntregaEncomienda_v3\**" />
     <Compile Remove="Generación_Resumen_HDR\Generación_Resumen_HDR_Cumplidas\**" />
+    <EmbeddedResource Remove="EntregaEncomienda_v3\**" />
     <EmbeddedResource Remove="Generación_Resumen_HDR\Generación_Resumen_HDR_Cumplidas\**" />
+    <None Remove="EntregaEncomienda_v3\**" />
     <None Remove="Generación_Resumen_HDR\Generación_Resumen_HDR_Cumplidas\**" />
   </ItemGroup>
 
@@ -21,10 +24,6 @@
     <Compile Update="ImposiciónCallCenter_v2\ImposicionCallCenter_v2.cs">
       <SubType>Form</SubType>
     </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="EntregaEncomienda_v3\" />
   </ItemGroup>
 
 </Project>
