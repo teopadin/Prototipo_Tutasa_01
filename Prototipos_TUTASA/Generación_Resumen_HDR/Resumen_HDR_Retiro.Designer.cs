@@ -200,7 +200,6 @@
             // 
             // columnHeader1
             // 
-            columnHeader1.DisplayIndex = 6;
             columnHeader1.Text = "Localidad";
             columnHeader1.Width = 100;
             // 
