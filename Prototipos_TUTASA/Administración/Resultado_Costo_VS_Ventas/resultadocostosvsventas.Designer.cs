@@ -61,7 +61,7 @@
             comboBox1.FormattingEnabled = true;
             comboBox1.Location = new Point(24, 115);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(182, 33);
+            comboBox1.Size = new Size(267, 33);
             comboBox1.TabIndex = 43;
             // 
             // listView1
@@ -69,7 +69,7 @@
             listView1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3 });
             listView1.Location = new Point(24, 185);
             listView1.Name = "listView1";
-            listView1.Size = new Size(397, 146);
+            listView1.Size = new Size(364, 304);
             listView1.TabIndex = 44;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
@@ -93,7 +93,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(468, 450);
+            ClientSize = new Size(464, 501);
             Controls.Add(listView1);
             Controls.Add(comboBox1);
             Controls.Add(label1);
