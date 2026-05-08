@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace Prototipos_TUTASA
 {
-    public partial class Form1 : Form
+    public partial class Resumen_HDR : Form
     {
         private int ultimoCorrelativo = 1;
 
@@ -64,7 +64,7 @@ namespace Prototipos_TUTASA
             }
         };
 
-        public Form1()
+        public Resumen_HDR()
         {
             InitializeComponent();
             CargarCombos();

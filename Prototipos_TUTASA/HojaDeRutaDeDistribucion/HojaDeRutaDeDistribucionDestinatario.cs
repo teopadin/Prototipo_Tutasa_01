@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace Prototipos_TUTASA.HojaDeRutaDeDistribucion
 {
-    public partial class HojaDeRutaDeDistribucion : Form
+    public partial class HojaDeRutaDeDistribucionDestinatario : Form
     {
-        public HojaDeRutaDeDistribucion()
+        public HojaDeRutaDeDistribucionDestinatario()
         {
             InitializeComponent();
         }
