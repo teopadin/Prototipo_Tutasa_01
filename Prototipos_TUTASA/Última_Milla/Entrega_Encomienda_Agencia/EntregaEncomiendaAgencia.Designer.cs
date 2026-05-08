@@ -180,7 +180,7 @@
             // 
             // btnConfirmar
             // 
-            btnConfirmar.Location = new Point(330, 491);
+            btnConfirmar.Location = new Point(130, 490);
             btnConfirmar.Name = "btnConfirmar";
             btnConfirmar.Size = new Size(174, 70);
             btnConfirmar.TabIndex = 17;
@@ -188,7 +188,7 @@
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(133, 491);
+            btnCancelar.Location = new Point(363, 490);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(134, 70);
             btnCancelar.TabIndex = 18;
