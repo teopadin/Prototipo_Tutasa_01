@@ -38,18 +38,25 @@
             button2 = new Button();
             listView1 = new ListView();
             HojRut = new ColumnHeader();
-            Remitente = new ColumnHeader();
+            Remitente_Y_Destinatario = new ColumnHeader();
             Calle = new ColumnHeader();
             Altura = new ColumnHeader();
             CP = new ColumnHeader();
             TipoBulto = new ColumnHeader();
-            columnHeader1 = new ColumnHeader();
             label5 = new Label();
             label2 = new Label();
             textBox4 = new TextBox();
             textBox1 = new TextBox();
             label6 = new Label();
             textBox2 = new TextBox();
+            TipoResumen = new ColumnHeader();
+            groupBox1 = new GroupBox();
+            radioButton1 = new RadioButton();
+            radioButton2 = new RadioButton();
+            comboBox2 = new ComboBox();
+            label7 = new Label();
+            button3 = new Button();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -77,7 +84,7 @@
             // 
             dateTimePicker1.Location = new Point(29, 125);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(300, 31);
+            dateTimePicker1.Size = new Size(327, 31);
             dateTimePicker1.TabIndex = 17;
             // 
             // Fletero
@@ -110,7 +117,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(186, 511);
+            button1.Location = new Point(186, 681);
             button1.Margin = new Padding(4, 5, 4, 5);
             button1.Name = "button1";
             button1.Size = new Size(170, 73);
@@ -120,7 +127,7 @@
             // 
             // button2
             // 
-            button2.Location = new Point(386, 511);
+            button2.Location = new Point(386, 681);
             button2.Margin = new Padding(4, 5, 4, 5);
             button2.Name = "button2";
             button2.Size = new Size(170, 73);
@@ -130,11 +137,11 @@
             // 
             // listView1
             // 
-            listView1.Columns.AddRange(new ColumnHeader[] { HojRut, Remitente, Calle, Altura, CP, TipoBulto, columnHeader1 });
+            listView1.Columns.AddRange(new ColumnHeader[] { HojRut, Remitente_Y_Destinatario, Calle, Altura, CP, TipoBulto, TipoResumen });
             listView1.Location = new Point(13, 234);
             listView1.Margin = new Padding(4, 5, 4, 5);
             listView1.Name = "listView1";
-            listView1.Size = new Size(763, 159);
+            listView1.Size = new Size(802, 159);
             listView1.TabIndex = 23;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
@@ -144,40 +151,40 @@
             HojRut.Text = "Nro de Hoja de Ruta";
             HojRut.Width = 200;
             // 
-            // Remitente
+            // Remitente_Y_Destinatario
             // 
-            Remitente.Text = "Remitente";
-            Remitente.Width = 100;
+            Remitente_Y_Destinatario.DisplayIndex = 2;
+            Remitente_Y_Destinatario.Text = "Remitente / Destinatario";
+            Remitente_Y_Destinatario.Width = 210;
             // 
             // Calle
             // 
+            Calle.DisplayIndex = 3;
             Calle.Text = "Calle";
             Calle.Width = 50;
             // 
             // Altura
             // 
+            Altura.DisplayIndex = 4;
             Altura.Text = "Altura";
             Altura.Width = 70;
             // 
             // CP
             // 
+            CP.DisplayIndex = 5;
             CP.Text = "CP";
             CP.Width = 80;
             // 
             // TipoBulto
             // 
+            TipoBulto.DisplayIndex = 6;
             TipoBulto.Text = "Estado";
             TipoBulto.Width = 100;
-            // 
-            // columnHeader1
-            // 
-            columnHeader1.Text = "Motivo";
-            columnHeader1.Width = 100;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(13, 426);
+            label5.Location = new Point(13, 596);
             label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
             label5.Size = new Size(168, 25);
@@ -188,7 +195,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(231, 426);
+            label2.Location = new Point(282, 596);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
             label2.Size = new Size(180, 25);
@@ -197,26 +204,26 @@
             // 
             // textBox4
             // 
-            textBox4.Location = new Point(13, 456);
+            textBox4.Location = new Point(13, 626);
             textBox4.Margin = new Padding(4, 5, 4, 5);
             textBox4.Name = "textBox4";
             textBox4.ReadOnly = true;
-            textBox4.Size = new Size(193, 31);
+            textBox4.Size = new Size(261, 31);
             textBox4.TabIndex = 26;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(231, 456);
+            textBox1.Location = new Point(282, 626);
             textBox1.Margin = new Padding(4, 5, 4, 5);
             textBox1.Name = "textBox1";
             textBox1.ReadOnly = true;
-            textBox1.Size = new Size(193, 31);
+            textBox1.Size = new Size(255, 31);
             textBox1.TabIndex = 27;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(452, 426);
+            label6.Location = new Point(545, 596);
             label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
             label6.Size = new Size(203, 25);
@@ -225,18 +232,87 @@
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(452, 456);
+            textBox2.Location = new Point(545, 626);
             textBox2.Margin = new Padding(4, 5, 4, 5);
             textBox2.Name = "textBox2";
             textBox2.ReadOnly = true;
-            textBox2.Size = new Size(193, 31);
+            textBox2.Size = new Size(270, 31);
             textBox2.TabIndex = 29;
+            // 
+            // TipoResumen
+            // 
+            TipoResumen.DisplayIndex = 1;
+            TipoResumen.Text = "Tipo";
+            // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(button3);
+            groupBox1.Controls.Add(label7);
+            groupBox1.Controls.Add(comboBox2);
+            groupBox1.Controls.Add(radioButton2);
+            groupBox1.Controls.Add(radioButton1);
+            groupBox1.Location = new Point(16, 400);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(459, 184);
+            groupBox1.TabIndex = 30;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Estado de la HDR seleccionada (\"\")";
+            // 
+            // radioButton1
+            // 
+            radioButton1.AutoSize = true;
+            radioButton1.Location = new Point(43, 47);
+            radioButton1.Name = "radioButton1";
+            radioButton1.Size = new Size(113, 29);
+            radioButton1.TabIndex = 0;
+            radioButton1.TabStop = true;
+            radioButton1.Text = "Cumplida";
+            radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            radioButton2.AutoSize = true;
+            radioButton2.Location = new Point(256, 47);
+            radioButton2.Name = "radioButton2";
+            radioButton2.Size = new Size(139, 29);
+            radioButton2.TabIndex = 1;
+            radioButton2.TabStop = true;
+            radioButton2.Text = "No cumplida";
+            radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // comboBox2
+            // 
+            comboBox2.FormattingEnabled = true;
+            comboBox2.Location = new Point(43, 145);
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(261, 33);
+            comboBox2.TabIndex = 2;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(43, 105);
+            label7.Margin = new Padding(4, 0, 4, 0);
+            label7.Name = "label7";
+            label7.Size = new Size(239, 25);
+            label7.TabIndex = 31;
+            label7.Text = "Motivo (solo si no cumplida)";
+            // 
+            // button3
+            // 
+            button3.Location = new Point(315, 145);
+            button3.Name = "button3";
+            button3.Size = new Size(138, 33);
+            button3.TabIndex = 32;
+            button3.Text = "Aplicar";
+            button3.UseVisualStyleBackColor = true;
             // 
             // Generación_HDR_Rendidas
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(794, 605);
+            ClientSize = new Size(848, 835);
+            Controls.Add(groupBox1);
             Controls.Add(textBox2);
             Controls.Add(label6);
             Controls.Add(textBox1);
@@ -254,6 +330,8 @@
             Controls.Add(label1);
             Name = "Generación_HDR_Rendidas";
             Text = "Generación_HDR_Cumplidas";
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -270,17 +348,23 @@
         private Button button2;
         private ListView listView1;
         private ColumnHeader HojRut;
-        private ColumnHeader Remitente;
+        private ColumnHeader Remitente_Y_Destinatario;
         private ColumnHeader Calle;
         private ColumnHeader Altura;
         private ColumnHeader CP;
         private ColumnHeader TipoBulto;
-        private ColumnHeader columnHeader1;
         private Label label5;
         private Label label2;
         private TextBox textBox4;
         private TextBox textBox1;
         private Label label6;
         private TextBox textBox2;
+        private ColumnHeader TipoResumen;
+        private GroupBox groupBox1;
+        private RadioButton radioButton2;
+        private RadioButton radioButton1;
+        private Button button3;
+        private Label label7;
+        private ComboBox comboBox2;
     }
 }
