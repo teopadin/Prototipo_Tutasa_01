@@ -46,7 +46,6 @@
             button1 = new Button();
             button2 = new Button();
             comboBox1 = new ComboBox();
-            columnHeader1 = new ColumnHeader();
             dateTimePicker1 = new DateTimePicker();
             SuspendLayout();
             // 
@@ -83,11 +82,11 @@
             // 
             // listView1
             // 
-            listView1.Columns.AddRange(new ColumnHeader[] { HojRut, Remitente, columnHeader1, Calle, Altura, CP, TipoBulto });
+            listView1.Columns.AddRange(new ColumnHeader[] { HojRut, Remitente, Calle, Altura, CP, TipoBulto });
             listView1.Location = new Point(30, 287);
             listView1.Margin = new Padding(4, 5, 4, 5);
             listView1.Name = "listView1";
-            listView1.Size = new Size(762, 159);
+            listView1.Size = new Size(668, 159);
             listView1.TabIndex = 7;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
@@ -172,7 +171,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(123, 563);
+            button1.Location = new Point(372, 554);
             button1.Margin = new Padding(4, 5, 4, 5);
             button1.Name = "button1";
             button1.Size = new Size(170, 73);
@@ -182,7 +181,7 @@
             // 
             // button2
             // 
-            button2.Location = new Point(358, 563);
+            button2.Location = new Point(157, 554);
             button2.Margin = new Padding(4, 5, 4, 5);
             button2.Name = "button2";
             button2.Size = new Size(170, 73);
@@ -198,11 +197,6 @@
             comboBox1.Size = new Size(182, 33);
             comboBox1.TabIndex = 15;
             // 
-            // columnHeader1
-            // 
-            columnHeader1.Text = "Localidad";
-            columnHeader1.Width = 100;
-            // 
             // dateTimePicker1
             // 
             dateTimePicker1.Location = new Point(40, 149);
@@ -214,7 +208,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(803, 658);
+            ClientSize = new Size(707, 658);
             Controls.Add(dateTimePicker1);
             Controls.Add(comboBox1);
             Controls.Add(button2);
@@ -255,7 +249,6 @@
         private Label label6;
         private Button button1;
         private Button button2;
-        private ColumnHeader columnHeader1;
         private ComboBox comboBox1;
         private DateTimePicker dateTimePicker1;
     }
