@@ -34,8 +34,6 @@
             colNumeroGuia = new ColumnHeader();
             colTipoBultoLista = new ColumnHeader();
             colFechaGuia = new ColumnHeader();
-            label2 = new Label();
-            label3 = new Label();
             listView1 = new ListView();
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
@@ -45,12 +43,14 @@
             columnHeader4 = new ColumnHeader();
             button1 = new Button();
             columnHeader5 = new ColumnHeader();
+            groupBox1 = new GroupBox();
+            groupBox2 = new GroupBox();
             SuspendLayout();
             // 
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(54, 91);
+            comboBox1.Location = new Point(36, 71);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(242, 49);
             comboBox1.TabIndex = 0;
@@ -58,7 +58,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(54, 47);
+            label1.Location = new Point(36, 27);
             label1.Name = "label1";
             label1.Size = new Size(168, 41);
             label1.TabIndex = 1;
@@ -91,25 +91,6 @@
             // 
             colFechaGuia.Text = "Fecha";
             colFechaGuia.Width = 200;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(54, 181);
-            label2.Name = "label2";
-            label2.Size = new Size(91, 41);
-            label2.TabIndex = 12;
-            label2.Text = "Guias";
-            label2.Click += label2_Click;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(54, 600);
-            label3.Name = "label3";
-            label3.Size = new Size(1328, 41);
-            label3.TabIndex = 14;
-            label3.Text = "Servicios disponibles (criterio: almacenamiento disponible que se selecciono arriba y el CD destino)";
             // 
             // listView1
             // 
@@ -176,6 +157,24 @@
             columnHeader5.Text = "Tipo de Servicio";
             columnHeader5.Width = 200;
             // 
+            // groupBox1
+            // 
+            groupBox1.Location = new Point(12, 176);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(1516, 395);
+            groupBox1.TabIndex = 18;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Guias";
+            // 
+            // groupBox2
+            // 
+            groupBox2.Location = new Point(12, 600);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(1516, 340);
+            groupBox2.TabIndex = 19;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Servicios disponibles (criterio: almacenamiento disponible que se selecciono arriba y el CD destino)";
+            // 
             // HojaDeRutaDeTransporte_v2
             // 
             AutoScaleDimensions = new SizeF(17F, 41F);
@@ -184,12 +183,12 @@
             Controls.Add(button1);
             Controls.Add(textBox1);
             Controls.Add(label4);
-            Controls.Add(label3);
             Controls.Add(listView1);
-            Controls.Add(label2);
             Controls.Add(lvGuiasPendientes);
             Controls.Add(label1);
             Controls.Add(comboBox1);
+            Controls.Add(groupBox1);
+            Controls.Add(groupBox2);
             Name = "HojaDeRutaDeTransporte_v2";
             Text = "HojaDeRutaDeTransporte_v2";
             Load += HojaDeRutaDeTransporte_v2_Load;
@@ -205,8 +204,6 @@
         private ColumnHeader colNumeroGuia;
         private ColumnHeader colTipoBultoLista;
         private ColumnHeader colFechaGuia;
-        private Label label2;
-        private Label label3;
         private ListView listView1;
         private ColumnHeader columnHeader1;
         private ColumnHeader columnHeader2;
@@ -216,5 +213,7 @@
         private ColumnHeader columnHeader4;
         private Button button1;
         private ColumnHeader columnHeader5;
+        private GroupBox groupBox1;
+        private GroupBox groupBox2;
     }
 }
