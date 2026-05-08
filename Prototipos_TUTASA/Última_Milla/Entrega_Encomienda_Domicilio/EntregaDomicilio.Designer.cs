@@ -221,7 +221,8 @@
             MaximizeBox = false;
             Name = "EntregaDomicilio";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Registrar Rendición de Entrega a Domicilio";
+            Text = "Entrega a Domicilio";
+            Load += EntregaDomicilio_Load;
             groupBox1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();

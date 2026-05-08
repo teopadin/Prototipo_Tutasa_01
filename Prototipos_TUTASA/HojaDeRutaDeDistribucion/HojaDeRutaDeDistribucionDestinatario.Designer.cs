@@ -101,7 +101,7 @@
             // 
             // btnGenerarHdr
             // 
-            btnGenerarHdr.Location = new Point(1602, 958);
+            btnGenerarHdr.Location = new Point(1292, 980);
             btnGenerarHdr.Margin = new Padding(7, 8, 7, 8);
             btnGenerarHdr.Name = "btnGenerarHdr";
             btnGenerarHdr.Size = new Size(272, 66);
@@ -191,7 +191,7 @@
             lblFletero.Size = new Size(1562, 41);
             lblFletero.TabIndex = 38;
             lblFletero.Text = "Fletero asignado(criterios: se muestran solos los fleteros que coinciden con el Cod. Postal de las guias seleccionadas)";
-            lblFletero.Click += this.lblFletero_Click;
+            lblFletero.Click += lblFletero_Click;
             // 
             // txtCdEmisor
             // 
@@ -251,7 +251,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(1295, 958);
+            button1.Location = new Point(1602, 980);
             button1.Margin = new Padding(7, 8, 7, 8);
             button1.Name = "button1";
             button1.Size = new Size(272, 66);

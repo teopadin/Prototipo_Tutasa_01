@@ -708,6 +708,10 @@
         private System.Windows.Forms.Button btnGenerarYAdmitir;
         private System.Windows.Forms.Label lblGuiaGen;
         private System.Windows.Forms.TextBox txtGuiaGen;
+        private System.Windows.Forms.Label lblSecDest;
+        private System.Windows.Forms.Panel pnlSepDest;
+        private System.Windows.Forms.Label lblSecEnvio;
+        private System.Windows.Forms.Panel pnlSepEnvio;
         private Label lblSecRem;
         private Panel pnlSep1;
         private Panel pnlSepRem;

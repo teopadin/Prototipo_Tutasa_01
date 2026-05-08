@@ -14,5 +14,11 @@ namespace Prototipos_TUTASA.HojaDeRutaDeDistribucion
         {
             InitializeComponent();
         }
+
+        // Handler referenced by designer. Kept minimal.
+        private void lblFletero_Click(object? sender, EventArgs e)
+        {
+            // no-op
+        }
     }
 }

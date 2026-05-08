@@ -1,5 +1,8 @@
+using System;
+using System.Windows.Forms;
 using Prototipos_TUTASA.EntregaenCD;
 using Prototipos_TUTASA.EntregaenCD_v3;
+using Prototipos_TUTASA.ResultadoCostoVSVentas_v2;
 
 namespace Prototipos_TUTASA
 {
@@ -13,8 +16,7 @@ namespace Prototipos_TUTASA
         {
             // https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new EntregaEncomiendaCD_v3());
-;
+            Application.Run(new resultadocostosvsventas());
         }
     }
 }

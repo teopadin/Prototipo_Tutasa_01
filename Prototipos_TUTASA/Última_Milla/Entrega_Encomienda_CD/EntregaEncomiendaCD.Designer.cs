@@ -53,7 +53,7 @@
             // 
             txtGuia.Location = new Point(80, 62);
             txtGuia.Name = "txtGuia";
-            txtGuia.Size = new Size(120, 26);
+            txtGuia.Size = new Size(120, 32);
             txtGuia.TabIndex = 2;
             // 
             // btnBuscar
@@ -117,14 +117,14 @@
             // 
             txtNombre.Location = new Point(12, 340);
             txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(160, 26);
+            txtNombre.Size = new Size(160, 32);
             txtNombre.TabIndex = 9;
             // 
             // lblApellido
             // 
             lblApellido.Location = new Point(189, 320);
             lblApellido.Name = "lblApellido";
-            lblApellido.Size = new Size(80, 18);
+            lblApellido.Size = new Size(121, 18);
             lblApellido.TabIndex = 10;
             lblApellido.Text = "Apellido";
             // 
@@ -132,7 +132,7 @@
             // 
             txtApellido.Location = new Point(189, 340);
             txtApellido.Name = "txtApellido";
-            txtApellido.Size = new Size(174, 26);
+            txtApellido.Size = new Size(174, 32);
             txtApellido.TabIndex = 11;
             // 
             // lblDNI
@@ -147,7 +147,7 @@
             // 
             txtDNI.Location = new Point(369, 340);
             txtDNI.Name = "txtDNI";
-            txtDNI.Size = new Size(181, 26);
+            txtDNI.Size = new Size(181, 32);
             txtDNI.TabIndex = 13;
             // 
             // chkDNI
@@ -177,7 +177,7 @@
             // 
             // EntregaEncomiendaCD
             // 
-            ClientSize = new Size(584, 555);
+            ClientSize = new Size(630, 621);
             Controls.Add(lblTitulo);
             Controls.Add(lblGuia);
             Controls.Add(txtGuia);
