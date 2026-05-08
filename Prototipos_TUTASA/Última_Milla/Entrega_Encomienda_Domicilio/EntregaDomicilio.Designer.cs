@@ -171,7 +171,7 @@
             btnRegistrar.Name = "btnRegistrar";
             btnRegistrar.Size = new Size(192, 71);
             btnRegistrar.TabIndex = 16;
-            btnRegistrar.Text = "Registrar Rendición";
+            btnRegistrar.Text = "Registrar entrega";
             // 
             // btnCancelar
             // 

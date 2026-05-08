@@ -162,15 +162,15 @@
             // 
             btnConfirmar.Location = new Point(232, 513);
             btnConfirmar.Name = "btnConfirmar";
-            btnConfirmar.Size = new Size(187, 32);
+            btnConfirmar.Size = new Size(187, 70);
             btnConfirmar.TabIndex = 15;
-            btnConfirmar.Text = "Confirmar Entrega";
+            btnConfirmar.Text = "Registrar Entrega";
             // 
             // btnCancelar
             // 
             btnCancelar.Location = new Point(425, 513);
             btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(147, 32);
+            btnCancelar.Size = new Size(147, 70);
             btnCancelar.TabIndex = 16;
             btnCancelar.Text = "Cancelar";
             btnCancelar.Click += btnCancelar_Click;
