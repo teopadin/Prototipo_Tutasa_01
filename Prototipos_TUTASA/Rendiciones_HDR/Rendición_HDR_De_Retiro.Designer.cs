@@ -43,7 +43,6 @@
             Altura = new ColumnHeader();
             CP = new ColumnHeader();
             TipoBulto = new ColumnHeader();
-            TipoResumen = new ColumnHeader();
             label5 = new Label();
             label2 = new Label();
             textBox4 = new TextBox();
@@ -137,7 +136,7 @@
             // 
             // listView1
             // 
-            listView1.Columns.AddRange(new ColumnHeader[] { HojRut, Remitente_Y_Destinatario, Calle, Altura, CP, TipoBulto, TipoResumen });
+            listView1.Columns.AddRange(new ColumnHeader[] { HojRut, Remitente_Y_Destinatario, Calle, Altura, CP, TipoBulto });
             listView1.Location = new Point(13, 234);
             listView1.Margin = new Padding(4, 5, 4, 5);
             listView1.Name = "listView1";
@@ -153,38 +152,28 @@
             // 
             // Remitente_Y_Destinatario
             // 
-            Remitente_Y_Destinatario.DisplayIndex = 2;
-            Remitente_Y_Destinatario.Text = "Remitente / Destinatario";
+            Remitente_Y_Destinatario.Text = "Remitente";
             Remitente_Y_Destinatario.Width = 210;
             // 
             // Calle
             // 
-            Calle.DisplayIndex = 3;
             Calle.Text = "Calle";
             Calle.Width = 50;
             // 
             // Altura
             // 
-            Altura.DisplayIndex = 4;
             Altura.Text = "Altura";
             Altura.Width = 70;
             // 
             // CP
             // 
-            CP.DisplayIndex = 5;
             CP.Text = "CP";
             CP.Width = 80;
             // 
             // TipoBulto
             // 
-            TipoBulto.DisplayIndex = 6;
             TipoBulto.Text = "Estado";
             TipoBulto.Width = 100;
-            // 
-            // TipoResumen
-            // 
-            TipoResumen.DisplayIndex = 1;
-            TipoResumen.Text = "Tipo";
             // 
             // label5
             // 
@@ -307,7 +296,7 @@
             radioButton1.Text = "Cumplida";
             radioButton1.UseVisualStyleBackColor = true;
             // 
-            // Generación_HDR_Rendidas
+            // Rendición_HDR_De_Retiro
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -328,7 +317,7 @@
             Controls.Add(dateTimePicker1);
             Controls.Add(label3);
             Controls.Add(label1);
-            Name = "Generación_HDR_Rendidas";
+            Name = "Rendición_HDR_De_Retiro";
             Text = "Rendición HDR de Retiro";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
@@ -359,7 +348,6 @@
         private TextBox textBox1;
         private Label label6;
         private TextBox textBox2;
-        private ColumnHeader TipoResumen;
         private GroupBox groupBox1;
         private RadioButton radioButton2;
         private RadioButton radioButton1;
