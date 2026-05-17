@@ -317,7 +317,7 @@
             Controls.Add(label3);
             Controls.Add(label1);
             Name = "Rendición_HDR_De_DIstribución";
-            Text = "Rendición HDR De Distribución";
+            Text = "Rendición HDR de Distribución";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);
