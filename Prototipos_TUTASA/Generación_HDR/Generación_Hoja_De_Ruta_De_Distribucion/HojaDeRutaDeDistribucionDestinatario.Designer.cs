@@ -35,16 +35,6 @@
             columnHeader3 = new ColumnHeader();
             columnHeader5 = new ColumnHeader();
             btnGenerarHdr = new Button();
-            lvGuiasPendientes = new ListView();
-            colNumeroGuia = new ColumnHeader();
-            colDestinatario = new ColumnHeader();
-            colCalle = new ColumnHeader();
-            columnHeader8 = new ColumnHeader();
-            columnHeader7 = new ColumnHeader();
-            columnHeader9 = new ColumnHeader();
-            colCiudadLista = new ColumnHeader();
-            colTipoBultoLista = new ColumnHeader();
-            colFechaGuia = new ColumnHeader();
             lblGuiasPendientes = new Label();
             lblFletero = new Label();
             txtCdEmisor = new TextBox();
@@ -56,6 +46,17 @@
             button1 = new Button();
             label1 = new Label();
             textBox1 = new TextBox();
+            listView2 = new ListView();
+            columnHeader4 = new ColumnHeader();
+            colRemitenteLista = new ColumnHeader();
+            columnHeader6 = new ColumnHeader();
+            columnHeader10 = new ColumnHeader();
+            columnHeader11 = new ColumnHeader();
+            columnHeader12 = new ColumnHeader();
+            columnHeader13 = new ColumnHeader();
+            columnHeader14 = new ColumnHeader();
+            columnHeader15 = new ColumnHeader();
+            columnHeader16 = new ColumnHeader();
             SuspendLayout();
             // 
             // label2
@@ -109,78 +110,15 @@
             btnGenerarHdr.Text = "Generar HDR";
             btnGenerarHdr.UseVisualStyleBackColor = true;
             // 
-            // lvGuiasPendientes
-            // 
-            lvGuiasPendientes.Columns.AddRange(new ColumnHeader[] { colNumeroGuia, colDestinatario, colCalle, columnHeader8, columnHeader7, columnHeader9, colCiudadLista, colTipoBultoLista, colFechaGuia });
-            lvGuiasPendientes.FullRowSelect = true;
-            lvGuiasPendientes.Location = new Point(100, 296);
-            lvGuiasPendientes.Margin = new Padding(7, 8, 7, 8);
-            lvGuiasPendientes.Name = "lvGuiasPendientes";
-            lvGuiasPendientes.Size = new Size(1774, 226);
-            lvGuiasPendientes.TabIndex = 40;
-            lvGuiasPendientes.UseCompatibleStateImageBehavior = false;
-            lvGuiasPendientes.View = View.Details;
-            // 
-            // colNumeroGuia
-            // 
-            colNumeroGuia.Text = "Nro Guia";
-            colNumeroGuia.Width = 150;
-            // 
-            // colDestinatario
-            // 
-            colDestinatario.DisplayIndex = 2;
-            colDestinatario.Text = "Destinatario";
-            colDestinatario.Width = 200;
-            // 
-            // colCalle
-            // 
-            colCalle.DisplayIndex = 3;
-            colCalle.Text = "Calle";
-            colCalle.Width = 180;
-            // 
-            // columnHeader8
-            // 
-            columnHeader8.DisplayIndex = 4;
-            columnHeader8.Text = "Altura";
-            columnHeader8.Width = 150;
-            // 
-            // columnHeader7
-            // 
-            columnHeader7.DisplayIndex = 5;
-            columnHeader7.Text = "Piso";
-            columnHeader7.Width = 150;
-            // 
-            // columnHeader9
-            // 
-            columnHeader9.DisplayIndex = 8;
-            columnHeader9.Text = "Codigo postal";
-            columnHeader9.Width = 150;
-            // 
-            // colCiudadLista
-            // 
-            colCiudadLista.Text = "Ciudad";
-            colCiudadLista.Width = 120;
-            // 
-            // colTipoBultoLista
-            // 
-            colTipoBultoLista.Text = "Tipo Bulto";
-            colTipoBultoLista.Width = 150;
-            // 
-            // colFechaGuia
-            // 
-            colFechaGuia.DisplayIndex = 1;
-            colFechaGuia.Text = "Fecha";
-            colFechaGuia.Width = 150;
-            // 
             // lblGuiasPendientes
             // 
             lblGuiasPendientes.AutoSize = true;
             lblGuiasPendientes.Location = new Point(4, 235);
             lblGuiasPendientes.Margin = new Padding(7, 0, 7, 0);
             lblGuiasPendientes.Name = "lblGuiasPendientes";
-            lblGuiasPendientes.Size = new Size(1941, 41);
+            lblGuiasPendientes.Size = new Size(1898, 41);
             lblGuiasPendientes.TabIndex = 39;
-            lblGuiasPendientes.Text = "Guías pendientes de distribucion(FIFO, una vez que selecciona una guia, solo puede seleccionar m'as si comparte los campos direccion, calle, etc)";
+            lblGuiasPendientes.Text = "Guías pendientes de distribución (cuando se seleccione una guía, solo podrá seleccionar otras que compartan: Calle, Altura, Piso, CP y Ciudad)";
             // 
             // lblFletero
             // 
@@ -277,18 +215,83 @@
             textBox1.Size = new Size(242, 47);
             textBox1.TabIndex = 47;
             // 
+            // listView2
+            // 
+            listView2.Columns.AddRange(new ColumnHeader[] { columnHeader4, colRemitenteLista, columnHeader6, columnHeader10, columnHeader11, columnHeader12, columnHeader13, columnHeader14, columnHeader15, columnHeader16 });
+            listView2.FullRowSelect = true;
+            listView2.Location = new Point(68, 284);
+            listView2.Margin = new Padding(7, 8, 7, 8);
+            listView2.Name = "listView2";
+            listView2.Size = new Size(1818, 256);
+            listView2.TabIndex = 48;
+            listView2.UseCompatibleStateImageBehavior = false;
+            listView2.View = View.Details;
+            // 
+            // columnHeader4
+            // 
+            columnHeader4.Text = "Nro Guia";
+            columnHeader4.Width = 150;
+            // 
+            // colRemitenteLista
+            // 
+            colRemitenteLista.Text = "Fecha de Imposición";
+            colRemitenteLista.Width = 300;
+            // 
+            // columnHeader6
+            // 
+            columnHeader6.Text = "Tipo de entrega";
+            columnHeader6.Width = 250;
+            // 
+            // columnHeader10
+            // 
+            columnHeader10.Text = "Razón Social";
+            columnHeader10.Width = 200;
+            // 
+            // columnHeader11
+            // 
+            columnHeader11.Text = "DNI destinatario";
+            columnHeader11.Width = 200;
+            // 
+            // columnHeader12
+            // 
+            columnHeader12.Text = "Calle";
+            columnHeader12.Width = 80;
+            // 
+            // columnHeader13
+            // 
+            columnHeader13.DisplayIndex = 7;
+            columnHeader13.Text = "Altura";
+            columnHeader13.Width = 100;
+            // 
+            // columnHeader14
+            // 
+            columnHeader14.DisplayIndex = 6;
+            columnHeader14.Text = "Piso";
+            columnHeader14.Width = 120;
+            // 
+            // columnHeader15
+            // 
+            columnHeader15.Text = "CP";
+            columnHeader15.Width = 80;
+            // 
+            // columnHeader16
+            // 
+            columnHeader16.Text = "Ciudad";
+            columnHeader16.TextAlign = HorizontalAlignment.Center;
+            columnHeader16.Width = 100;
+            // 
             // HojaDeRutaDeDistribucionDestinatario
             // 
             AutoScaleDimensions = new SizeF(17F, 41F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1942, 1096);
+            Controls.Add(listView2);
             Controls.Add(textBox1);
             Controls.Add(label1);
             Controls.Add(button1);
             Controls.Add(label2);
             Controls.Add(listView1);
             Controls.Add(btnGenerarHdr);
-            Controls.Add(lvGuiasPendientes);
             Controls.Add(lblGuiasPendientes);
             Controls.Add(lblFletero);
             Controls.Add(txtCdEmisor);
@@ -312,16 +315,6 @@
         private ColumnHeader columnHeader3;
         private ColumnHeader columnHeader5;
         private Button btnGenerarHdr;
-        private ListView lvGuiasPendientes;
-        private ColumnHeader colNumeroGuia;
-        private ColumnHeader colDestinatario;
-        private ColumnHeader colCalle;
-        private ColumnHeader columnHeader8;
-        private ColumnHeader columnHeader7;
-        private ColumnHeader columnHeader9;
-        private ColumnHeader colCiudadLista;
-        private ColumnHeader colTipoBultoLista;
-        private ColumnHeader colFechaGuia;
         private Label lblGuiasPendientes;
         private Label lblFletero;
         private TextBox txtCdEmisor;
@@ -333,5 +326,16 @@
         private Button button1;
         private Label label1;
         private TextBox textBox1;
+        private ListView listView2;
+        private ColumnHeader columnHeader4;
+        private ColumnHeader colRemitenteLista;
+        private ColumnHeader columnHeader6;
+        private ColumnHeader columnHeader10;
+        private ColumnHeader columnHeader11;
+        private ColumnHeader columnHeader12;
+        private ColumnHeader columnHeader13;
+        private ColumnHeader columnHeader14;
+        private ColumnHeader columnHeader15;
+        private ColumnHeader columnHeader16;
     }
 }
