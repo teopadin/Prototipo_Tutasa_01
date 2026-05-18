@@ -25,13 +25,14 @@
             lblGuiasPendientes = new Label();
             lvGuiasPendientes = new ListView();
             colNumeroGuia = new ColumnHeader();
-            colFechaGuia = new ColumnHeader();
             colRemitenteLista = new ColumnHeader();
             colCalle = new ColumnHeader();
             columnHeader8 = new ColumnHeader();
             columnHeader7 = new ColumnHeader();
+            columnHeader9 = new ColumnHeader();
             colCiudadLista = new ColumnHeader();
             colTipoBultoLista = new ColumnHeader();
+            colFechaGuia = new ColumnHeader();
             btnGenerarHdr = new Button();
             lblGuiaBase = new Label();
             listView1 = new ListView();
@@ -40,7 +41,7 @@
             columnHeader3 = new ColumnHeader();
             columnHeader5 = new ColumnHeader();
             label2 = new Label();
-            columnHeader9 = new ColumnHeader();
+            columnHeader4 = new ColumnHeader();
             SuspendLayout();
             // 
             // lblTitulo
@@ -113,17 +114,17 @@
             // lblGuiasPendientes
             // 
             lblGuiasPendientes.AutoSize = true;
-            lblGuiasPendientes.Location = new Point(49, 213);
+            lblGuiasPendientes.Location = new Point(16, 211);
             lblGuiasPendientes.Margin = new Padding(7, 0, 7, 0);
             lblGuiasPendientes.Name = "lblGuiasPendientes";
-            lblGuiasPendientes.Size = new Size(1856, 41);
+            lblGuiasPendientes.Size = new Size(1972, 41);
             lblGuiasPendientes.TabIndex = 9;
-            lblGuiasPendientes.Text = "Guías pendientes de retiro(FIFO, una vez que selecciona una guia, solo puede seleccionar m'as si comparte los campos direccion, calle, etc)";
+            lblGuiasPendientes.Text = "Guías pendientes de distribución (Cuando se seleccione una guía, solo podrá seleccionar las que compartan los campos Calle, Altura, Piso y Ciudad)";
             lblGuiasPendientes.Click += lblGuiasPendientes_Click;
             // 
             // lvGuiasPendientes
             // 
-            lvGuiasPendientes.Columns.AddRange(new ColumnHeader[] { colNumeroGuia, colRemitenteLista, colCalle, columnHeader8, columnHeader7, columnHeader9, colCiudadLista, colTipoBultoLista, colFechaGuia });
+            lvGuiasPendientes.Columns.AddRange(new ColumnHeader[] { colNumeroGuia, colRemitenteLista, colCalle, columnHeader8, columnHeader7, columnHeader9, colTipoBultoLista, colCiudadLista, colFechaGuia, columnHeader4 });
             lvGuiasPendientes.FullRowSelect = true;
             lvGuiasPendientes.Location = new Point(49, 274);
             lvGuiasPendientes.Margin = new Padding(7, 8, 7, 8);
@@ -132,34 +133,37 @@
             lvGuiasPendientes.TabIndex = 10;
             lvGuiasPendientes.UseCompatibleStateImageBehavior = false;
             lvGuiasPendientes.View = View.Details;
+            lvGuiasPendientes.SelectedIndexChanged += lvGuiasPendientes_SelectedIndexChanged;
             // 
             // colNumeroGuia
             // 
             colNumeroGuia.Text = "Nro Guia";
-            colNumeroGuia.Width = 100;
-            // 
-            // colFechaGuia
-            // 
-            colFechaGuia.Text = "Fecha";
-            colFechaGuia.Width = 90;
+            colNumeroGuia.Width = 150;
             // 
             // colRemitenteLista
             // 
-            colRemitenteLista.Text = "Remitente";
-            colRemitenteLista.Width = 170;
+            colRemitenteLista.Text = "Tipo de Imposición";
+            colRemitenteLista.Width = 300;
             // 
             // colCalle
             // 
-            colCalle.Text = "Calle";
+            colCalle.Text = "Razón social";
             colCalle.Width = 180;
             // 
             // columnHeader8
             // 
-            columnHeader8.Text = "Altura";
+            columnHeader8.Text = "Calle";
+            columnHeader8.Width = 100;
             // 
             // columnHeader7
             // 
-            columnHeader7.Text = "Piso";
+            columnHeader7.Text = "Altura";
+            columnHeader7.Width = 100;
+            // 
+            // columnHeader9
+            // 
+            columnHeader9.Text = "Piso";
+            columnHeader9.Width = 80;
             // 
             // colCiudadLista
             // 
@@ -168,8 +172,14 @@
             // 
             // colTipoBultoLista
             // 
-            colTipoBultoLista.Text = "Tipo Bulto";
+            colTipoBultoLista.DisplayIndex = 7;
+            colTipoBultoLista.Text = "CP";
             colTipoBultoLista.Width = 90;
+            // 
+            // colFechaGuia
+            // 
+            colFechaGuia.Text = "Tipo de bulto";
+            colFechaGuia.Width = 300;
             // 
             // btnGenerarHdr
             // 
@@ -231,10 +241,11 @@
             label2.Size = new Size(0, 41);
             label2.TabIndex = 32;
             // 
-            // columnHeader9
+            // columnHeader4
             // 
-            columnHeader9.DisplayIndex = 8;
-            columnHeader9.Text = "Codigo postal";
+            columnHeader4.Text = "Fecha Imposición";
+            columnHeader4.TextAlign = HorizontalAlignment.Center;
+            columnHeader4.Width = 300;
             // 
             // GeneracionHojaDeRutaRetiro_v2
             // 
@@ -286,5 +297,6 @@
         private ColumnHeader columnHeader8;
         private Label label2;
         private ColumnHeader columnHeader9;
+        private ColumnHeader columnHeader4;
     }
 }

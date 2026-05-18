@@ -39,5 +39,10 @@ namespace Prototipos_TUTASA.GeneracionHoja_DeRutaRetiro_v2
         {
 
         }
+
+        private void lvGuiasPendientes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

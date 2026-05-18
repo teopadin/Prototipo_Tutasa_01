@@ -14,5 +14,10 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
         {
             InitializeComponent();
         }
+
+        private void lvGuias_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

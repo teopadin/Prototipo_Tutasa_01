@@ -172,11 +172,11 @@
             // 
             // chkDNI
             // 
-            chkDNI.Location = new Point(12, 425);
+            chkDNI.Location = new Point(12, 409);
             chkDNI.Name = "chkDNI";
-            chkDNI.Size = new Size(200, 59);
+            chkDNI.Size = new Size(554, 59);
             chkDNI.TabIndex = 16;
-            chkDNI.Text = "Presentó DNI / Cédula";
+            chkDNI.Text = "Documento de identidad presentado y verificado";
             // 
             // btnConfirmar
             // 
