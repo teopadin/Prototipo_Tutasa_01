@@ -2,6 +2,7 @@ using System;
 using System.Windows.Forms;
 using Prototipos_TUTASA.EntregaenCD;
 using Prototipos_TUTASA.EntregaenCD_v3;
+using Prototipos_TUTASA.ImposiciónCallCenter_v2;
 using Prototipos_TUTASA.ResultadoCostoVSVentas_v2;
 
 namespace Prototipos_TUTASA
@@ -16,7 +17,7 @@ namespace Prototipos_TUTASA
         {
             // https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new resultadocostosvsventas());
+            Application.Run(new ImposicionCallCenter_v2());
         }
     }
 }

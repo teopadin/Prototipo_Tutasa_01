@@ -177,7 +177,7 @@
             // 
             // EntregaEncomiendaCD
             // 
-            ClientSize = new Size(630, 621);
+            ClientSize = new Size(616, 621);
             Controls.Add(lblTitulo);
             Controls.Add(lblGuia);
             Controls.Add(txtGuia);

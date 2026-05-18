@@ -24,5 +24,10 @@ namespace Prototipos_TUTASA.ImposiciónAgencia_v2
         {
 
         }
+
+        private void btnGenerarGuia_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

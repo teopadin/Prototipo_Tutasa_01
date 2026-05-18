@@ -32,17 +32,17 @@
             label1 = new Label();
             lvGuiasPendientes = new ListView();
             colNumeroGuia = new ColumnHeader();
-            colTipoBultoLista = new ColumnHeader();
             colFechaGuia = new ColumnHeader();
+            colTipoBultoLista = new ColumnHeader();
             listView1 = new ListView();
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
+            columnHeader5 = new ColumnHeader();
             columnHeader3 = new ColumnHeader();
+            columnHeader4 = new ColumnHeader();
             label4 = new Label();
             textBox1 = new TextBox();
-            columnHeader4 = new ColumnHeader();
             button1 = new Button();
-            columnHeader5 = new ColumnHeader();
             groupBox1 = new GroupBox();
             groupBox2 = new GroupBox();
             SuspendLayout();
@@ -82,15 +82,15 @@
             colNumeroGuia.Text = "Nro Guia";
             colNumeroGuia.Width = 200;
             // 
-            // colTipoBultoLista
-            // 
-            colTipoBultoLista.Text = "Tipo de Bulto";
-            colTipoBultoLista.Width = 200;
-            // 
             // colFechaGuia
             // 
             colFechaGuia.Text = "Fecha";
             colFechaGuia.Width = 200;
+            // 
+            // colTipoBultoLista
+            // 
+            colTipoBultoLista.Text = "Tipo de Bulto";
+            colTipoBultoLista.Width = 200;
             // 
             // listView1
             // 
@@ -115,10 +115,20 @@
             columnHeader2.Text = "Empresa ";
             columnHeader2.Width = 200;
             // 
+            // columnHeader5
+            // 
+            columnHeader5.Text = "Tipo de Servicio";
+            columnHeader5.Width = 200;
+            // 
             // columnHeader3
             // 
             columnHeader3.Text = "Capacidad disp. (en tamano S)";
             columnHeader3.Width = 400;
+            // 
+            // columnHeader4
+            // 
+            columnHeader4.Text = "Horario salida";
+            columnHeader4.Width = 300;
             // 
             // label4
             // 
@@ -136,12 +146,6 @@
             textBox1.Size = new Size(190, 47);
             textBox1.TabIndex = 16;
             // 
-            // columnHeader4
-            // 
-            columnHeader4.DisplayIndex = 3;
-            columnHeader4.Text = "Horario salida";
-            columnHeader4.Width = 300;
-            // 
             // button1
             // 
             button1.Location = new Point(1214, 960);
@@ -150,12 +154,6 @@
             button1.TabIndex = 17;
             button1.Text = "Generar HDR";
             button1.UseVisualStyleBackColor = true;
-            // 
-            // columnHeader5
-            // 
-            columnHeader5.DisplayIndex = 4;
-            columnHeader5.Text = "Tipo de Servicio";
-            columnHeader5.Width = 200;
             // 
             // groupBox1
             // 

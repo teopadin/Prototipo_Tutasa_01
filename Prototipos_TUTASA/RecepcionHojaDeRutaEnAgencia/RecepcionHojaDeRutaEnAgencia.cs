@@ -14,5 +14,10 @@ namespace Prototipos_TUTASA
         {
             InitializeComponent();
         }
+
+        private void lvGuias_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
