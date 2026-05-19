@@ -48,13 +48,14 @@
             label9 = new Label();
             textBox7 = new TextBox();
             groupBox1 = new GroupBox();
+            button3 = new Button();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // btnGenerar
             // 
             btnGenerar.FlatStyle = FlatStyle.System;
-            btnGenerar.Location = new Point(252, 500);
+            btnGenerar.Location = new Point(116, 500);
             btnGenerar.Name = "btnGenerar";
             btnGenerar.Size = new Size(196, 34);
             btnGenerar.TabIndex = 31;
@@ -62,7 +63,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(467, 500);
+            button1.Location = new Point(318, 500);
             button1.Name = "button1";
             button1.Size = new Size(188, 34);
             button1.TabIndex = 37;
@@ -238,11 +239,21 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Información de Guía";
             // 
+            // button3
+            // 
+            button3.FlatStyle = FlatStyle.System;
+            button3.Location = new Point(512, 500);
+            button3.Name = "button3";
+            button3.Size = new Size(153, 34);
+            button3.TabIndex = 58;
+            button3.Text = "Cancelar";
+            // 
             // Admisión
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(677, 572);
+            Controls.Add(button3);
             Controls.Add(groupBox1);
             Controls.Add(dateTimePicker1);
             Controls.Add(label3);
@@ -283,5 +294,6 @@
         private Label label9;
         private TextBox textBox7;
         private GroupBox groupBox1;
+        private Button button3;
     }
 }
