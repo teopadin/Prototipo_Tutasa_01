@@ -91,6 +91,7 @@
             label8 = new Label();
             comboBox3 = new ComboBox();
             btnGenerarGuia = new Button();
+            button1 = new Button();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -767,20 +768,31 @@
             // 
             // btnGenerarGuia
             // 
-            btnGenerarGuia.Location = new Point(826, 1422);
+            btnGenerarGuia.Location = new Point(992, 1438);
             btnGenerarGuia.Margin = new Padding(7, 5, 7, 5);
             btnGenerarGuia.Name = "btnGenerarGuia";
-            btnGenerarGuia.Size = new Size(573, 151);
+            btnGenerarGuia.Size = new Size(487, 119);
             btnGenerarGuia.TabIndex = 32;
             btnGenerarGuia.Text = "Registrar Imposición";
             btnGenerarGuia.UseVisualStyleBackColor = true;
             btnGenerarGuia.Click += btnGenerarGuia_Click;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(1507, 1438);
+            button1.Margin = new Padding(7, 5, 7, 5);
+            button1.Name = "button1";
+            button1.Size = new Size(487, 119);
+            button1.TabIndex = 33;
+            button1.Text = "Cancelar";
+            button1.UseVisualStyleBackColor = true;
             // 
             // ImposicionAgencia_v2
             // 
             AutoScaleDimensions = new SizeF(17F, 41F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(2101, 1588);
+            Controls.Add(button1);
             Controls.Add(btnGenerarGuia);
             Controls.Add(groupBox7);
             Controls.Add(groupBox6);
@@ -878,5 +890,6 @@
         private Label label8;
         private ComboBox comboBox3;
         private Button btnGenerarGuia;
+        private Button button1;
     }
 }

@@ -88,6 +88,7 @@
             txtDNIRem = new TextBox();
             lblTelRem = new Label();
             txtTelRem = new TextBox();
+            button1 = new Button();
             gbDatosDestinatario.SuspendLayout();
             gbTamañoBulto.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -498,10 +499,10 @@
             // 
             // btnGenerarGuia
             // 
-            btnGenerarGuia.Location = new Point(692, 1569);
+            btnGenerarGuia.Location = new Point(993, 1588);
             btnGenerarGuia.Margin = new Padding(7, 5, 7, 5);
             btnGenerarGuia.Name = "btnGenerarGuia";
-            btnGenerarGuia.Size = new Size(573, 151);
+            btnGenerarGuia.Size = new Size(427, 122);
             btnGenerarGuia.TabIndex = 28;
             btnGenerarGuia.Text = "Registrar Imposición y Confirmar Admisión";
             btnGenerarGuia.UseVisualStyleBackColor = true;
@@ -531,9 +532,9 @@
             groupBox5.Controls.Add(lblTelRem);
             groupBox5.Controls.Add(txtTelRem);
             groupBox5.Location = new Point(41, 156);
-            groupBox5.Margin = new Padding(5, 5, 5, 5);
+            groupBox5.Margin = new Padding(5);
             groupBox5.Name = "groupBox5";
-            groupBox5.Padding = new Padding(5, 5, 5, 5);
+            groupBox5.Padding = new Padding(5);
             groupBox5.Size = new Size(1865, 361);
             groupBox5.TabIndex = 29;
             groupBox5.TabStop = false;
@@ -647,7 +648,7 @@
             // 
             cboRazonSocial.Items.AddRange(new object[] { "Acme SA", "Distribuidora Norte SRL", "Logística del Sur SA" });
             cboRazonSocial.Location = new Point(17, 110);
-            cboRazonSocial.Margin = new Padding(5, 5, 5, 5);
+            cboRazonSocial.Margin = new Padding(5);
             cboRazonSocial.Name = "cboRazonSocial";
             cboRazonSocial.Size = new Size(344, 49);
             cboRazonSocial.TabIndex = 23;
@@ -665,7 +666,7 @@
             // txtCUIT
             // 
             txtCUIT.Location = new Point(386, 110);
-            txtCUIT.Margin = new Padding(5, 5, 5, 5);
+            txtCUIT.Margin = new Padding(5);
             txtCUIT.Name = "txtCUIT";
             txtCUIT.Size = new Size(247, 47);
             txtCUIT.TabIndex = 25;
@@ -683,7 +684,7 @@
             // txtNombreRem
             // 
             txtNombreRem.Location = new Point(651, 110);
-            txtNombreRem.Margin = new Padding(5, 5, 5, 5);
+            txtNombreRem.Margin = new Padding(5);
             txtNombreRem.Name = "txtNombreRem";
             txtNombreRem.Size = new Size(286, 47);
             txtNombreRem.TabIndex = 27;
@@ -701,7 +702,7 @@
             // txtApellidoRem
             // 
             txtApellidoRem.Location = new Point(952, 110);
-            txtApellidoRem.Margin = new Padding(5, 5, 5, 5);
+            txtApellidoRem.Margin = new Padding(5);
             txtApellidoRem.Name = "txtApellidoRem";
             txtApellidoRem.Size = new Size(329, 47);
             txtApellidoRem.TabIndex = 29;
@@ -719,7 +720,7 @@
             // txtDNIRem
             // 
             txtDNIRem.Location = new Point(1297, 110);
-            txtDNIRem.Margin = new Padding(5, 5, 5, 5);
+            txtDNIRem.Margin = new Padding(5);
             txtDNIRem.Name = "txtDNIRem";
             txtDNIRem.Size = new Size(240, 47);
             txtDNIRem.TabIndex = 31;
@@ -737,16 +738,27 @@
             // txtTelRem
             // 
             txtTelRem.Location = new Point(1552, 110);
-            txtTelRem.Margin = new Padding(5, 5, 5, 5);
+            txtTelRem.Margin = new Padding(5);
             txtTelRem.Name = "txtTelRem";
             txtTelRem.Size = new Size(286, 47);
             txtTelRem.TabIndex = 33;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(1434, 1586);
+            button1.Margin = new Padding(7, 5, 7, 5);
+            button1.Name = "button1";
+            button1.Size = new Size(427, 122);
+            button1.TabIndex = 30;
+            button1.Text = "Cancelar";
+            button1.UseVisualStyleBackColor = true;
             // 
             // ImposiciónCD_V2
             // 
             AutoScaleDimensions = new SizeF(17F, 41F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1943, 1722);
+            Controls.Add(button1);
             Controls.Add(groupBox5);
             Controls.Add(btnGenerarGuia);
             Controls.Add(groupBox4);
@@ -838,5 +850,6 @@
         private TextBox txtDNIRem;
         private Label lblTelRem;
         private TextBox txtTelRem;
+        private Button button1;
     }
 }
