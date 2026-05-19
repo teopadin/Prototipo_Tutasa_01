@@ -126,9 +126,9 @@
             lblFletero.Location = new Point(100, 614);
             lblFletero.Margin = new Padding(7, 0, 7, 0);
             lblFletero.Name = "lblFletero";
-            lblFletero.Size = new Size(1562, 41);
+            lblFletero.Size = new Size(1440, 41);
             lblFletero.TabIndex = 38;
-            lblFletero.Text = "Fletero asignado(criterios: se muestran solos los fleteros que coinciden con el Cod. Postal de las guias seleccionadas)";
+            lblFletero.Text = "Fletero asignado(se muestran solos los fleteros que coinciden con el CD destino de las guias seleccionadas)";
             lblFletero.Click += lblFletero_Click;
             // 
             // txtCdEmisor

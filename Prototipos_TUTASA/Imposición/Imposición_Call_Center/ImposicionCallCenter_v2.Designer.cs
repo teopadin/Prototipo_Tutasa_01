@@ -786,8 +786,8 @@
             button1.UseVisualStyleBackColor = true;
             // 
             // ImposicionCallCenter_v2
-            // 
-            AutoScaleDimensions = new SizeF(17F, 41F);
+            // Set autoscale to a standard (100%) baseline so designer won't render at 200% on high-DPI machines.
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(2101, 1609);
             Controls.Add(button1);
