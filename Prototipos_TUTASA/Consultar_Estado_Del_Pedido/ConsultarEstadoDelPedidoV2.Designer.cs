@@ -36,7 +36,6 @@
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
             columnHeader3 = new ColumnHeader();
-            button1 = new Button();
             SuspendLayout();
             // 
             // lblTitulo
@@ -103,22 +102,11 @@
             columnHeader3.Text = "Estado";
             columnHeader3.Width = 400;
             // 
-            // button1
-            // 
-            button1.Location = new Point(502, 400);
-            button1.Margin = new Padding(4, 5, 4, 5);
-            button1.Name = "button1";
-            button1.Size = new Size(145, 38);
-            button1.TabIndex = 7;
-            button1.Text = "Cancelar";
-            button1.UseVisualStyleBackColor = true;
-            // 
             // ConsultarEstadoDelPedidoV2
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(667, 466);
-            Controls.Add(button1);
+            ClientSize = new Size(667, 413);
             Controls.Add(listView1);
             Controls.Add(txtNumeroPedido);
             Controls.Add(btnBuscar);
@@ -140,6 +128,5 @@
         private ColumnHeader columnHeader1;
         private ColumnHeader columnHeader2;
         private ColumnHeader columnHeader3;
-        private Button button1;
     }
 }
