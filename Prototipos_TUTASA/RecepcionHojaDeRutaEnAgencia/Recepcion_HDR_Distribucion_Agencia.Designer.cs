@@ -26,8 +26,6 @@
             txtAgencia = new TextBox();
             lblFletero = new Label();
             txtFletero = new TextBox();
-            lblEstadoHDR = new Label();
-            txtEstadoHDR = new TextBox();
             lblGuias = new Label();
             lblTotalGuias = new Label();
             txtTotalGuias = new TextBox();
@@ -125,30 +123,10 @@
             txtFletero.Size = new Size(480, 47);
             txtFletero.TabIndex = 8;
             // 
-            // lblEstadoHDR
-            // 
-            lblEstadoHDR.AutoSize = true;
-            lblEstadoHDR.Location = new Point(49, 437);
-            lblEstadoHDR.Margin = new Padding(7, 0, 7, 0);
-            lblEstadoHDR.Name = "lblEstadoHDR";
-            lblEstadoHDR.Size = new Size(182, 41);
-            lblEstadoHDR.TabIndex = 9;
-            lblEstadoHDR.Text = "Estado HDR:";
-            // 
-            // txtEstadoHDR
-            // 
-            txtEstadoHDR.BackColor = SystemColors.Control;
-            txtEstadoHDR.Location = new Point(364, 429);
-            txtEstadoHDR.Margin = new Padding(7, 8, 7, 8);
-            txtEstadoHDR.Name = "txtEstadoHDR";
-            txtEstadoHDR.ReadOnly = true;
-            txtEstadoHDR.Size = new Size(480, 47);
-            txtEstadoHDR.TabIndex = 10;
-            // 
             // lblGuias
             // 
             lblGuias.AutoSize = true;
-            lblGuias.Location = new Point(49, 533);
+            lblGuias.Location = new Point(40, 421);
             lblGuias.Margin = new Padding(7, 0, 7, 0);
             lblGuias.Name = "lblGuias";
             lblGuias.Size = new Size(360, 41);
@@ -158,7 +136,7 @@
             // lblTotalGuias
             // 
             lblTotalGuias.AutoSize = true;
-            lblTotalGuias.Location = new Point(49, 1121);
+            lblTotalGuias.Location = new Point(40, 1009);
             lblTotalGuias.Margin = new Padding(7, 0, 7, 0);
             lblTotalGuias.Name = "lblTotalGuias";
             lblTotalGuias.Size = new Size(208, 41);
@@ -168,7 +146,7 @@
             // txtTotalGuias
             // 
             txtTotalGuias.BackColor = SystemColors.Control;
-            txtTotalGuias.Location = new Point(364, 1112);
+            txtTotalGuias.Location = new Point(355, 1000);
             txtTotalGuias.Margin = new Padding(7, 8, 7, 8);
             txtTotalGuias.Name = "txtTotalGuias";
             txtTotalGuias.ReadOnly = true;
@@ -178,7 +156,7 @@
             // 
             // btnConfirmarRecepcion
             // 
-            btnConfirmarRecepcion.Location = new Point(364, 1230);
+            btnConfirmarRecepcion.Location = new Point(236, 1110);
             btnConfirmarRecepcion.Margin = new Padding(7, 8, 7, 8);
             btnConfirmarRecepcion.Name = "btnConfirmarRecepcion";
             btnConfirmarRecepcion.Size = new Size(364, 96);
@@ -187,7 +165,7 @@
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(765, 1230);
+            btnCancelar.Location = new Point(637, 1110);
             btnCancelar.Margin = new Padding(7, 8, 7, 8);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(243, 96);
@@ -197,7 +175,7 @@
             // listView1
             // 
             listView1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2 });
-            listView1.Location = new Point(58, 595);
+            listView1.Location = new Point(49, 483);
             listView1.Name = "listView1";
             listView1.Size = new Size(1024, 474);
             listView1.TabIndex = 16;
@@ -218,7 +196,7 @@
             // 
             AutoScaleDimensions = new SizeF(17F, 41F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1175, 1397);
+            ClientSize = new Size(1175, 1234);
             Controls.Add(listView1);
             Controls.Add(lblNroHDR);
             Controls.Add(txtNroHDR);
@@ -229,8 +207,6 @@
             Controls.Add(txtAgencia);
             Controls.Add(lblFletero);
             Controls.Add(txtFletero);
-            Controls.Add(lblEstadoHDR);
-            Controls.Add(txtEstadoHDR);
             Controls.Add(lblGuias);
             Controls.Add(lblTotalGuias);
             Controls.Add(txtTotalGuias);
@@ -254,8 +230,6 @@
         private System.Windows.Forms.TextBox txtAgencia;
         private System.Windows.Forms.Label lblFletero;
         private System.Windows.Forms.TextBox txtFletero;
-        private System.Windows.Forms.Label lblEstadoHDR;
-        private System.Windows.Forms.TextBox txtEstadoHDR;
         private System.Windows.Forms.Label lblGuias;
         private System.Windows.Forms.Label lblTotalGuias;
         private System.Windows.Forms.TextBox txtTotalGuias;
