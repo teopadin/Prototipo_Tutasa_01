@@ -223,6 +223,9 @@
         private System.Windows.Forms.TextBox txtGuia;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.ListView lvGuia;
+        private System.Windows.Forms.ColumnHeader colNombre;
+        private System.Windows.Forms.ColumnHeader colApellido;
+        private System.Windows.Forms.ColumnHeader colDNI;
         private System.Windows.Forms.Label lblAgencia;
         private System.Windows.Forms.TextBox txtAgencia;
         private System.Windows.Forms.Label lblValidacion;
