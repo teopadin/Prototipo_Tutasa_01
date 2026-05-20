@@ -40,10 +40,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             lblGuiasIncluidas = new Label();
             lvGuias = new ListView();
             colNumeroGuia = new ColumnHeader();
-            colRemitente = new ColumnHeader();
-            colDestinatario = new ColumnHeader();
             colTipoBulto = new ColumnHeader();
-            colEstadoGuia = new ColumnHeader();
             btnConfirmarRecepcion = new Button();
             btnCancelar = new Button();
             SuspendLayout();
@@ -72,7 +69,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             // txtNumeroHojaRuta
             // 
             txtNumeroHojaRuta.Location = new Point(340, 148);
-            txtNumeroHojaRuta.Margin = new Padding(6, 6, 6, 6);
+            txtNumeroHojaRuta.Margin = new Padding(6);
             txtNumeroHojaRuta.Name = "txtNumeroHojaRuta";
             txtNumeroHojaRuta.Size = new Size(378, 47);
             txtNumeroHojaRuta.TabIndex = 2;
@@ -80,7 +77,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             // btnBuscar
             // 
             btnBuscar.Location = new Point(765, 144);
-            btnBuscar.Margin = new Padding(6, 6, 6, 6);
+            btnBuscar.Margin = new Padding(6);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(234, 66);
             btnBuscar.TabIndex = 3;
@@ -101,7 +98,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             // 
             dtpFechaRecepcion.Format = DateTimePickerFormat.Short;
             dtpFechaRecepcion.Location = new Point(1360, 148);
-            dtpFechaRecepcion.Margin = new Padding(6, 6, 6, 6);
+            dtpFechaRecepcion.Margin = new Padding(6);
             dtpFechaRecepcion.Name = "dtpFechaRecepcion";
             dtpFechaRecepcion.Size = new Size(293, 47);
             dtpFechaRecepcion.TabIndex = 5;
@@ -119,7 +116,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             // txtEmpresaTransporte
             // 
             txtEmpresaTransporte.Location = new Point(382, 249);
-            txtEmpresaTransporte.Margin = new Padding(6, 6, 6, 6);
+            txtEmpresaTransporte.Margin = new Padding(6);
             txtEmpresaTransporte.Name = "txtEmpresaTransporte";
             txtEmpresaTransporte.ReadOnly = true;
             txtEmpresaTransporte.Size = new Size(527, 47);
@@ -138,7 +135,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             // txtIdServicio
             // 
             txtIdServicio.Location = new Point(1211, 249);
-            txtIdServicio.Margin = new Padding(6, 6, 6, 6);
+            txtIdServicio.Margin = new Padding(6);
             txtIdServicio.Name = "txtIdServicio";
             txtIdServicio.ReadOnly = true;
             txtIdServicio.Size = new Size(378, 47);
@@ -157,7 +154,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             // txtEstado
             // 
             txtEstado.Location = new Point(340, 341);
-            txtEstado.Margin = new Padding(6, 6, 6, 6);
+            txtEstado.Margin = new Padding(6);
             txtEstado.Name = "txtEstado";
             txtEstado.ReadOnly = true;
             txtEstado.Size = new Size(378, 47);
@@ -176,7 +173,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             // txtOrigen
             // 
             txtOrigen.Location = new Point(340, 434);
-            txtOrigen.Margin = new Padding(6, 6, 6, 6);
+            txtOrigen.Margin = new Padding(6);
             txtOrigen.Name = "txtOrigen";
             txtOrigen.ReadOnly = true;
             txtOrigen.Size = new Size(378, 47);
@@ -195,7 +192,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             // txtCantidadGuias
             // 
             txtCantidadGuias.Location = new Point(1312, 434);
-            txtCantidadGuias.Margin = new Padding(6, 6, 6, 6);
+            txtCantidadGuias.Margin = new Padding(6);
             txtCantidadGuias.Name = "txtCantidadGuias";
             txtCantidadGuias.ReadOnly = true;
             txtCantidadGuias.Size = new Size(208, 47);
@@ -213,45 +210,31 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             // 
             // lvGuias
             // 
-            lvGuias.Columns.AddRange(new ColumnHeader[] { colNumeroGuia, colRemitente, colDestinatario, colTipoBulto, colEstadoGuia });
+            lvGuias.Columns.AddRange(new ColumnHeader[] { colNumeroGuia, colTipoBulto });
             lvGuias.FullRowSelect = true;
             lvGuias.Location = new Point(42, 593);
-            lvGuias.Margin = new Padding(6, 6, 6, 6);
+            lvGuias.Margin = new Padding(6);
             lvGuias.Name = "lvGuias";
             lvGuias.Size = new Size(2036, 508);
             lvGuias.TabIndex = 21;
             lvGuias.UseCompatibleStateImageBehavior = false;
             lvGuias.View = View.Details;
+            lvGuias.SelectedIndexChanged += lvGuias_SelectedIndexChanged;
             // 
             // colNumeroGuia
             // 
             colNumeroGuia.Text = "Nro Guía";
             colNumeroGuia.Width = 140;
             // 
-            // colRemitente
-            // 
-            colRemitente.Text = "Remitente";
-            colRemitente.Width = 200;
-            // 
-            // colDestinatario
-            // 
-            colDestinatario.Text = "Destinatario";
-            colDestinatario.Width = 200;
-            // 
             // colTipoBulto
             // 
             colTipoBulto.Text = "Tipo Bulto";
             colTipoBulto.Width = 180;
             // 
-            // colEstadoGuia
-            // 
-            colEstadoGuia.Text = "Estado";
-            colEstadoGuia.Width = 160;
-            // 
             // btnConfirmarRecepcion
             // 
             btnConfirmarRecepcion.Location = new Point(1615, 1167);
-            btnConfirmarRecepcion.Margin = new Padding(6, 6, 6, 6);
+            btnConfirmarRecepcion.Margin = new Padding(6);
             btnConfirmarRecepcion.Name = "btnConfirmarRecepcion";
             btnConfirmarRecepcion.Size = new Size(319, 86);
             btnConfirmarRecepcion.TabIndex = 22;
@@ -261,7 +244,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             // btnCancelar
             // 
             btnCancelar.Location = new Point(1976, 1167);
-            btnCancelar.Margin = new Padding(6, 6, 6, 6);
+            btnCancelar.Margin = new Padding(6);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(212, 86);
             btnCancelar.TabIndex = 23;
@@ -293,7 +276,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             Controls.Add(txtNumeroHojaRuta);
             Controls.Add(lblNumeroHojaRuta);
             Controls.Add(lblTitulo);
-            Margin = new Padding(6, 6, 6, 6);
+            Margin = new Padding(6);
             Name = "RecepcionMediaDistancia";
             Text = "Recepción de hoja de ruta de media distancia";
             ResumeLayout(false);
@@ -319,10 +302,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
         private Label lblGuiasIncluidas;
         private ListView lvGuias;
         private ColumnHeader colNumeroGuia;
-        private ColumnHeader colRemitente;
-        private ColumnHeader colDestinatario;
         private ColumnHeader colTipoBulto;
-        private ColumnHeader colEstadoGuia;
         private Button btnConfirmarRecepcion;
         private Button btnCancelar;
     }

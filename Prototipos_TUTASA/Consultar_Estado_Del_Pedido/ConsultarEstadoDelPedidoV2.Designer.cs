@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            ListViewItem listViewItem1 = new ListViewItem(new string[] { "07-05-2026", "CD-0001", "Pendiente de Retiro", "CD-0002" }, -1);
-            ListViewItem listViewItem2 = new ListViewItem(new string[] { "07-05-2026", "CD-0002", "Pendiente de Admisión" }, -1);
             lblTitulo = new Label();
             lblNumeroPedido = new Label();
             btnBuscar = new Button();
@@ -81,7 +79,6 @@
             // listView1
             // 
             listView1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3 });
-            listView1.Items.AddRange(new ListViewItem[] { listViewItem1, listViewItem2 });
             listView1.Location = new Point(23, 141);
             listView1.Name = "listView1";
             listView1.Size = new Size(624, 242);
@@ -93,23 +90,23 @@
             // columnHeader1
             // 
             columnHeader1.Text = "Fecha";
-            columnHeader1.Width = 150;
+            columnHeader1.Width = 200;
             // 
             // columnHeader2
             // 
             columnHeader2.Text = "Número de Guía";
-            columnHeader2.Width = 150;
+            columnHeader2.Width = 350;
             // 
             // columnHeader3
             // 
             columnHeader3.Text = "Estado";
-            columnHeader3.Width = 200;
+            columnHeader3.Width = 400;
             // 
             // ConsultarEstadoDelPedidoV2
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(694, 424);
+            ClientSize = new Size(667, 413);
             Controls.Add(listView1);
             Controls.Add(txtNumeroPedido);
             Controls.Add(btnBuscar);

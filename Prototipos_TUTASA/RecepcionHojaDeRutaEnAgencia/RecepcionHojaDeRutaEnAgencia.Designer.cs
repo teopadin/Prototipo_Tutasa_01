@@ -75,7 +75,7 @@ namespace Prototipos_TUTASA
             // txtNumeroHdr
             // 
             txtNumeroHdr.Location = new Point(382, 148);
-            txtNumeroHdr.Margin = new Padding(6, 6, 6, 6);
+            txtNumeroHdr.Margin = new Padding(6);
             txtNumeroHdr.Name = "txtNumeroHdr";
             txtNumeroHdr.Size = new Size(463, 47);
             txtNumeroHdr.TabIndex = 2;
@@ -83,7 +83,7 @@ namespace Prototipos_TUTASA
             // btnBuscar
             // 
             btnBuscar.Location = new Point(892, 144);
-            btnBuscar.Margin = new Padding(6, 6, 6, 6);
+            btnBuscar.Margin = new Padding(6);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(234, 66);
             btnBuscar.TabIndex = 3;
@@ -104,7 +104,7 @@ namespace Prototipos_TUTASA
             // 
             dtpFechaRecepcion.Format = DateTimePickerFormat.Short;
             dtpFechaRecepcion.Location = new Point(1466, 148);
-            dtpFechaRecepcion.Margin = new Padding(6, 6, 6, 6);
+            dtpFechaRecepcion.Margin = new Padding(6);
             dtpFechaRecepcion.Name = "dtpFechaRecepcion";
             dtpFechaRecepcion.Size = new Size(293, 47);
             dtpFechaRecepcion.TabIndex = 5;
@@ -122,7 +122,7 @@ namespace Prototipos_TUTASA
             // txtAgencia
             // 
             txtAgencia.Location = new Point(382, 240);
-            txtAgencia.Margin = new Padding(6, 6, 6, 6);
+            txtAgencia.Margin = new Padding(6);
             txtAgencia.Name = "txtAgencia";
             txtAgencia.ReadOnly = true;
             txtAgencia.Size = new Size(527, 47);
@@ -137,9 +137,9 @@ namespace Prototipos_TUTASA
             groupBox1.Controls.Add(txtFletero);
             groupBox1.Controls.Add(lblFletero);
             groupBox1.Location = new Point(42, 338);
-            groupBox1.Margin = new Padding(6, 6, 6, 6);
+            groupBox1.Margin = new Padding(6);
             groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(6, 6, 6, 6);
+            groupBox1.Padding = new Padding(6);
             groupBox1.Size = new Size(1721, 215);
             groupBox1.TabIndex = 10;
             groupBox1.TabStop = false;
@@ -148,7 +148,7 @@ namespace Prototipos_TUTASA
             // txtTipoMovimiento
             // 
             txtTipoMovimiento.Location = new Point(1190, 102);
-            txtTipoMovimiento.Margin = new Padding(6, 6, 6, 6);
+            txtTipoMovimiento.Margin = new Padding(6);
             txtTipoMovimiento.Name = "txtTipoMovimiento";
             txtTipoMovimiento.ReadOnly = true;
             txtTipoMovimiento.Size = new Size(378, 47);
@@ -167,7 +167,7 @@ namespace Prototipos_TUTASA
             // txtEstadoHdr
             // 
             txtEstadoHdr.Location = new Point(638, 102);
-            txtEstadoHdr.Margin = new Padding(6, 6, 6, 6);
+            txtEstadoHdr.Margin = new Padding(6);
             txtEstadoHdr.Name = "txtEstadoHdr";
             txtEstadoHdr.ReadOnly = true;
             txtEstadoHdr.Size = new Size(378, 47);
@@ -186,7 +186,7 @@ namespace Prototipos_TUTASA
             // txtFletero
             // 
             txtFletero.Location = new Point(42, 102);
-            txtFletero.Margin = new Padding(6, 6, 6, 6);
+            txtFletero.Margin = new Padding(6);
             txtFletero.Name = "txtFletero";
             txtFletero.ReadOnly = true;
             txtFletero.Size = new Size(463, 47);
@@ -217,12 +217,13 @@ namespace Prototipos_TUTASA
             lvGuias.Columns.AddRange(new ColumnHeader[] { colNumeroGuia, colRemitente, colDestinatario, colTipoBulto, colEstado });
             lvGuias.FullRowSelect = true;
             lvGuias.Location = new Point(42, 646);
-            lvGuias.Margin = new Padding(6, 6, 6, 6);
+            lvGuias.Margin = new Padding(6);
             lvGuias.Name = "lvGuias";
             lvGuias.Size = new Size(2248, 508);
             lvGuias.TabIndex = 12;
             lvGuias.UseCompatibleStateImageBehavior = false;
             lvGuias.View = View.Details;
+            lvGuias.SelectedIndexChanged += lvGuias_SelectedIndexChanged;
             // 
             // colNumeroGuia
             // 
@@ -262,7 +263,7 @@ namespace Prototipos_TUTASA
             // txtTotalGuias
             // 
             txtTotalGuias.Location = new Point(276, 1193);
-            txtTotalGuias.Margin = new Padding(6, 6, 6, 6);
+            txtTotalGuias.Margin = new Padding(6);
             txtTotalGuias.Name = "txtTotalGuias";
             txtTotalGuias.ReadOnly = true;
             txtTotalGuias.Size = new Size(208, 47);
@@ -271,7 +272,7 @@ namespace Prototipos_TUTASA
             // btnConfirmarRecepcion
             // 
             btnConfirmarRecepcion.Location = new Point(1742, 1312);
-            btnConfirmarRecepcion.Margin = new Padding(6, 6, 6, 6);
+            btnConfirmarRecepcion.Margin = new Padding(6);
             btnConfirmarRecepcion.Name = "btnConfirmarRecepcion";
             btnConfirmarRecepcion.Size = new Size(319, 86);
             btnConfirmarRecepcion.TabIndex = 15;
@@ -281,7 +282,7 @@ namespace Prototipos_TUTASA
             // btnCancelar
             // 
             btnCancelar.Location = new Point(2104, 1312);
-            btnCancelar.Margin = new Padding(6, 6, 6, 6);
+            btnCancelar.Margin = new Padding(6);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(191, 86);
             btnCancelar.TabIndex = 16;
@@ -308,7 +309,7 @@ namespace Prototipos_TUTASA
             Controls.Add(txtNumeroHdr);
             Controls.Add(lblNumeroHdr);
             Controls.Add(lblTitulo);
-            Margin = new Padding(6, 6, 6, 6);
+            Margin = new Padding(6);
             Name = "RecepcionHojaDeRutaEnAgencia";
             Text = "Recepción de Hoja de Ruta en Agencia";
             groupBox1.ResumeLayout(false);

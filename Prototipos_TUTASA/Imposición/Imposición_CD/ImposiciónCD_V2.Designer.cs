@@ -88,6 +88,7 @@
             txtDNIRem = new TextBox();
             lblTelRem = new Label();
             txtTelRem = new TextBox();
+            button1 = new Button();
             gbDatosDestinatario.SuspendLayout();
             gbTamañoBulto.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -498,12 +499,12 @@
             // 
             // btnGenerarGuia
             // 
-            btnGenerarGuia.Location = new Point(407, 957);
+            btnGenerarGuia.Location = new Point(584, 968);
             btnGenerarGuia.Margin = new Padding(4, 3, 4, 3);
             btnGenerarGuia.Name = "btnGenerarGuia";
-            btnGenerarGuia.Size = new Size(337, 92);
+            btnGenerarGuia.Size = new Size(251, 74);
             btnGenerarGuia.TabIndex = 28;
-            btnGenerarGuia.Text = "Generar Guía y Confirmar Admisión";
+            btnGenerarGuia.Text = "Registrar Imposición y Confirmar Admisión";
             btnGenerarGuia.UseVisualStyleBackColor = true;
             // 
             // groupBox5
@@ -728,11 +729,22 @@
             txtTelRem.Size = new Size(170, 31);
             txtTelRem.TabIndex = 33;
             // 
+            // button1
+            // 
+            button1.Location = new Point(844, 967);
+            button1.Margin = new Padding(4, 3, 4, 3);
+            button1.Name = "button1";
+            button1.Size = new Size(251, 74);
+            button1.TabIndex = 30;
+            button1.Text = "Cancelar";
+            button1.UseVisualStyleBackColor = true;
+            // 
             // ImposiciónCD_V2
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1143, 1050);
+            ClientSize = new Size(1143, 1071);
+            Controls.Add(button1);
             Controls.Add(groupBox5);
             Controls.Add(btnGenerarGuia);
             Controls.Add(groupBox4);
@@ -824,5 +836,6 @@
         private TextBox txtDNIRem;
         private Label lblTelRem;
         private TextBox txtTelRem;
+        private Button button1;
     }
 }

@@ -32,19 +32,20 @@
             label1 = new Label();
             lvGuiasPendientes = new ListView();
             colNumeroGuia = new ColumnHeader();
-            colTipoBultoLista = new ColumnHeader();
             colFechaGuia = new ColumnHeader();
+            colTipoBultoLista = new ColumnHeader();
             listView1 = new ListView();
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
+            columnHeader5 = new ColumnHeader();
             columnHeader3 = new ColumnHeader();
+            columnHeader4 = new ColumnHeader();
             label4 = new Label();
             textBox1 = new TextBox();
-            columnHeader4 = new ColumnHeader();
             button1 = new Button();
-            columnHeader5 = new ColumnHeader();
             groupBox1 = new GroupBox();
             groupBox2 = new GroupBox();
+            button2 = new Button();
             SuspendLayout();
             // 
             // comboBox1
@@ -82,15 +83,15 @@
             colNumeroGuia.Text = "Nro Guia";
             colNumeroGuia.Width = 200;
             // 
-            // colTipoBultoLista
-            // 
-            colTipoBultoLista.Text = "Tipo de Bulto";
-            colTipoBultoLista.Width = 200;
-            // 
             // colFechaGuia
             // 
             colFechaGuia.Text = "Fecha";
             colFechaGuia.Width = 200;
+            // 
+            // colTipoBultoLista
+            // 
+            colTipoBultoLista.Text = "Tipo de Bulto";
+            colTipoBultoLista.Width = 200;
             // 
             // listView1
             // 
@@ -115,10 +116,20 @@
             columnHeader2.Text = "Empresa ";
             columnHeader2.Width = 200;
             // 
+            // columnHeader5
+            // 
+            columnHeader5.Text = "Tipo de Servicio";
+            columnHeader5.Width = 200;
+            // 
             // columnHeader3
             // 
             columnHeader3.Text = "Capacidad disp. (en tamano S)";
             columnHeader3.Width = 400;
+            // 
+            // columnHeader4
+            // 
+            columnHeader4.Text = "Horario salida";
+            columnHeader4.Width = 300;
             // 
             // label4
             // 
@@ -136,26 +147,14 @@
             textBox1.Size = new Size(190, 47);
             textBox1.TabIndex = 16;
             // 
-            // columnHeader4
-            // 
-            columnHeader4.DisplayIndex = 3;
-            columnHeader4.Text = "Horario salida";
-            columnHeader4.Width = 300;
-            // 
             // button1
             // 
-            button1.Location = new Point(1214, 960);
+            button1.Location = new Point(904, 958);
             button1.Name = "button1";
             button1.Size = new Size(270, 70);
             button1.TabIndex = 17;
             button1.Text = "Generar HDR";
             button1.UseVisualStyleBackColor = true;
-            // 
-            // columnHeader5
-            // 
-            columnHeader5.DisplayIndex = 4;
-            columnHeader5.Text = "Tipo de Servicio";
-            columnHeader5.Width = 200;
             // 
             // groupBox1
             // 
@@ -175,11 +174,21 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Servicios disponibles (criterio: almacenamiento disponible que se selecciono arriba y el CD destino)";
             // 
+            // button2
+            // 
+            button2.Location = new Point(1230, 958);
+            button2.Name = "button2";
+            button2.Size = new Size(270, 70);
+            button2.TabIndex = 20;
+            button2.Text = "Cancelar";
+            button2.UseVisualStyleBackColor = true;
+            // 
             // HojaDeRutaDeTransporte_v2
             // 
             AutoScaleDimensions = new SizeF(17F, 41F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1562, 1052);
+            Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(textBox1);
             Controls.Add(label4);
@@ -215,5 +224,6 @@
         private ColumnHeader columnHeader5;
         private GroupBox groupBox1;
         private GroupBox groupBox2;
+        private Button button2;
     }
 }

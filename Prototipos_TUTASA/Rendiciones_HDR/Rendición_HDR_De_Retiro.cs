@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace Prototipos_TUTASA.Generación_Resumen_HDR.Generación_Resumen_HDR_Cumplidas
 {
-    public partial class Generación_HDR_Rendidas : Form
+    public partial class Rendición_HDR_De_Retiro : Form
     {
-        public Generación_HDR_Rendidas()
+        public Rendición_HDR_De_Retiro()
         {
             InitializeComponent();
         }
