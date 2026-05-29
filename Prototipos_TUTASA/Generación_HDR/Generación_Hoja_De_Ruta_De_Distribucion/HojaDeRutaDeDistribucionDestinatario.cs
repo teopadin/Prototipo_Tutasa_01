@@ -20,5 +20,10 @@ namespace Prototipos_TUTASA.HojaDeRutaDeDistribucion
         {
             // no-op
         }
+
+        private void listView2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
