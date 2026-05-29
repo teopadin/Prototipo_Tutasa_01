@@ -206,6 +206,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaEnAgencia
             Controls.Add(btnCancelar);
             Name = "Recepcion_HDR_Retiro_Agencia";
             Text = "Recepción HDR Retiro en Agencia";
+            Load += Recepcion_HDR_Retiro_Agencia_Load;
             ResumeLayout(false);
             PerformLayout();
         }

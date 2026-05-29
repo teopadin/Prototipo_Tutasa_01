@@ -16,5 +16,10 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaEnAgencia
         {
             InitializeComponent();
         }
+
+        private void Recepcion_HDR_Retiro_Agencia_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
