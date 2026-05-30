@@ -93,7 +93,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(464, 501);
+            ClientSize = new Size(457, 517);
             Controls.Add(listView1);
             Controls.Add(comboBox1);
             Controls.Add(label1);

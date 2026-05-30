@@ -17,7 +17,7 @@ namespace Prototipos_TUTASA
         {
             // https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new ImposicionCallCenter_v2());
+            Application.Run(new ConsultarEstadoDelPedido_v2.ConsultarEstadoDelPedido());
         }
     }
 }

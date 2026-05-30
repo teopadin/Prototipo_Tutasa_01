@@ -30,9 +30,10 @@
             columnHeader8 = new ColumnHeader();
             columnHeader7 = new ColumnHeader();
             columnHeader9 = new ColumnHeader();
-            colCiudadLista = new ColumnHeader();
             colTipoBultoLista = new ColumnHeader();
+            colCiudadLista = new ColumnHeader();
             colFechaGuia = new ColumnHeader();
+            columnHeader4 = new ColumnHeader();
             btnGenerarHdr = new Button();
             lblGuiaBase = new Label();
             listView1 = new ListView();
@@ -41,7 +42,7 @@
             columnHeader3 = new ColumnHeader();
             columnHeader5 = new ColumnHeader();
             label2 = new Label();
-            columnHeader4 = new ColumnHeader();
+            button1 = new Button();
             SuspendLayout();
             // 
             // lblTitulo
@@ -107,9 +108,9 @@
             lblFletero.Location = new Point(49, 604);
             lblFletero.Margin = new Padding(7, 0, 7, 0);
             lblFletero.Name = "lblFletero";
-            lblFletero.Size = new Size(1449, 41);
+            lblFletero.Size = new Size(1115, 41);
             lblFletero.TabIndex = 7;
-            lblFletero.Text = "Fletero asignado(criterios: se muestran solos los fleteros que coinciden con el CP de las guias seleccionadas)";
+            lblFletero.Text = "Fletero asignado(se muestran solos los fleteros que coinciden con el CD de origen)";
             // 
             // lblGuiasPendientes
             // 
@@ -117,9 +118,9 @@
             lblGuiasPendientes.Location = new Point(16, 211);
             lblGuiasPendientes.Margin = new Padding(7, 0, 7, 0);
             lblGuiasPendientes.Name = "lblGuiasPendientes";
-            lblGuiasPendientes.Size = new Size(1972, 41);
+            lblGuiasPendientes.Size = new Size(1887, 41);
             lblGuiasPendientes.TabIndex = 9;
-            lblGuiasPendientes.Text = "Guías pendientes de distribución (Cuando se seleccione una guía, solo podrá seleccionar las que compartan los campos Calle, Altura, Piso y Ciudad)";
+            lblGuiasPendientes.Text = "Guías pendientes de retiro (Cuando se seleccione una guía, solo podrá seleccionar las que compartan los campos Calle, Altura, Piso y Ciudad)";
             lblGuiasPendientes.Click += lblGuiasPendientes_Click;
             // 
             // lvGuiasPendientes
@@ -165,25 +166,30 @@
             columnHeader9.Text = "Piso";
             columnHeader9.Width = 80;
             // 
+            // colTipoBultoLista
+            // 
+            colTipoBultoLista.Text = "CP";
+            colTipoBultoLista.Width = 90;
+            // 
             // colCiudadLista
             // 
             colCiudadLista.Text = "Ciudad";
             colCiudadLista.Width = 120;
-            // 
-            // colTipoBultoLista
-            // 
-            colTipoBultoLista.DisplayIndex = 7;
-            colTipoBultoLista.Text = "CP";
-            colTipoBultoLista.Width = 90;
             // 
             // colFechaGuia
             // 
             colFechaGuia.Text = "Tipo de bulto";
             colFechaGuia.Width = 300;
             // 
+            // columnHeader4
+            // 
+            columnHeader4.Text = "Fecha Imposición";
+            columnHeader4.TextAlign = HorizontalAlignment.Center;
+            columnHeader4.Width = 300;
+            // 
             // btnGenerarHdr
             // 
-            btnGenerarHdr.Location = new Point(1551, 978);
+            btnGenerarHdr.Location = new Point(1197, 980);
             btnGenerarHdr.Margin = new Padding(7, 8, 7, 8);
             btnGenerarHdr.Name = "btnGenerarHdr";
             btnGenerarHdr.Size = new Size(316, 96);
@@ -241,17 +247,22 @@
             label2.Size = new Size(0, 41);
             label2.TabIndex = 32;
             // 
-            // columnHeader4
+            // button1
             // 
-            columnHeader4.Text = "Fecha Imposición";
-            columnHeader4.TextAlign = HorizontalAlignment.Center;
-            columnHeader4.Width = 300;
+            button1.Location = new Point(1551, 980);
+            button1.Margin = new Padding(7, 8, 7, 8);
+            button1.Name = "button1";
+            button1.Size = new Size(316, 96);
+            button1.TabIndex = 33;
+            button1.Text = "Cancelar";
+            button1.UseVisualStyleBackColor = true;
             // 
             // GeneracionHojaDeRutaRetiro_v2
             // 
             AutoScaleDimensions = new SizeF(17F, 41F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1953, 1117);
+            Controls.Add(button1);
             Controls.Add(label2);
             Controls.Add(listView1);
             Controls.Add(btnGenerarHdr);
@@ -298,5 +309,6 @@
         private Label label2;
         private ColumnHeader columnHeader9;
         private ColumnHeader columnHeader4;
+        private Button button1;
     }
 }

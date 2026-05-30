@@ -16,10 +16,9 @@
             txtGuia = new TextBox();
             btnBuscar = new Button();
             lvGuia = new ListView();
-            colNombre = new ColumnHeader();
-            colApellido = new ColumnHeader();
-            colDNI = new ColumnHeader();
-            colEstado = new ColumnHeader();
+            this.colNombre = new ColumnHeader();
+            this.colApellido = new ColumnHeader();
+            this.colDNI = new ColumnHeader();
             lblValidacion = new Label();
             lblNombre = new Label();
             txtNombre = new TextBox();
@@ -66,7 +65,7 @@
             // 
             // lvGuia
             // 
-            lvGuia.Columns.AddRange(new ColumnHeader[] { colNombre, colApellido, colDNI, colEstado });
+            lvGuia.Columns.AddRange(new ColumnHeader[] { this.colNombre, this.colApellido, this.colDNI });
             lvGuia.FullRowSelect = true;
             lvGuia.GridLines = true;
             lvGuia.Location = new Point(12, 120);
@@ -78,23 +77,18 @@
             // 
             // colNombre
             // 
-            colNombre.Text = "Nombre";
-            colNombre.Width = 120;
+            this.colNombre.Text = "Nombre";
+            this.colNombre.Width = 120;
             // 
             // colApellido
             // 
-            colApellido.Text = "Apellido";
-            colApellido.Width = 120;
+            this.colApellido.Text = "Apellido";
+            this.colApellido.Width = 120;
             // 
             // colDNI
             // 
-            colDNI.Text = "DNI";
-            colDNI.Width = 110;
-            // 
-            // colEstado
-            // 
-            colEstado.Text = "Estado";
-            colEstado.Width = 110;
+            this.colDNI.Text = "DNI";
+            this.colDNI.Width = 110;
             // 
             // lblValidacion
             // 
@@ -208,7 +202,9 @@
         private System.Windows.Forms.TextBox txtGuia;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.ListView lvGuia;
-        private System.Windows.Forms.ColumnHeader colNombre, colApellido, colDNI, colEstado;
+        private System.Windows.Forms.ColumnHeader colNombre;
+        private System.Windows.Forms.ColumnHeader colApellido;
+        private System.Windows.Forms.ColumnHeader colDNI;
         private System.Windows.Forms.Label lblValidacion;
         private System.Windows.Forms.Label lblNombre, lblApellido, lblDNI;
         private System.Windows.Forms.TextBox txtNombre, txtApellido, txtDNI;

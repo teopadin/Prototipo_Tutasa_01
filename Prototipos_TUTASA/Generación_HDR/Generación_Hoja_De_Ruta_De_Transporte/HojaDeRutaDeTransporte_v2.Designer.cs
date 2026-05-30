@@ -45,6 +45,7 @@
             button1 = new Button();
             groupBox1 = new GroupBox();
             groupBox2 = new GroupBox();
+            button2 = new Button();
             SuspendLayout();
             // 
             // comboBox1
@@ -148,7 +149,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(1214, 960);
+            button1.Location = new Point(904, 958);
             button1.Name = "button1";
             button1.Size = new Size(270, 70);
             button1.TabIndex = 17;
@@ -173,11 +174,21 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Servicios disponibles (criterio: almacenamiento disponible que se selecciono arriba y el CD destino)";
             // 
+            // button2
+            // 
+            button2.Location = new Point(1230, 958);
+            button2.Name = "button2";
+            button2.Size = new Size(270, 70);
+            button2.TabIndex = 20;
+            button2.Text = "Cancelar";
+            button2.UseVisualStyleBackColor = true;
+            // 
             // HojaDeRutaDeTransporte_v2
             // 
             AutoScaleDimensions = new SizeF(17F, 41F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1562, 1052);
+            Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(textBox1);
             Controls.Add(label4);
@@ -213,5 +224,6 @@
         private ColumnHeader columnHeader5;
         private GroupBox groupBox1;
         private GroupBox groupBox2;
+        private Button button2;
     }
 }

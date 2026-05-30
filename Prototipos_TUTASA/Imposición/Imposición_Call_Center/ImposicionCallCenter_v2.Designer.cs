@@ -91,6 +91,7 @@
             radioButton2 = new RadioButton();
             radioButton1 = new RadioButton();
             btnGenerarGuia = new Button();
+            button1 = new Button();
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
             groupBox7.SuspendLayout();
@@ -766,19 +767,30 @@
             // 
             // btnGenerarGuia
             // 
-            btnGenerarGuia.Location = new Point(724, 1422);
+            btnGenerarGuia.Location = new Point(1114, 1452);
             btnGenerarGuia.Margin = new Padding(7, 5, 7, 5);
             btnGenerarGuia.Name = "btnGenerarGuia";
-            btnGenerarGuia.Size = new Size(573, 151);
+            btnGenerarGuia.Size = new Size(421, 115);
             btnGenerarGuia.TabIndex = 38;
             btnGenerarGuia.Text = "Registrar Imposición";
             btnGenerarGuia.UseVisualStyleBackColor = true;
             // 
-            // ImposicionCallCenter_v2
+            // button1
             // 
-            AutoScaleDimensions = new SizeF(17F, 41F);
+            button1.Location = new Point(1576, 1452);
+            button1.Margin = new Padding(7, 5, 7, 5);
+            button1.Name = "button1";
+            button1.Size = new Size(421, 115);
+            button1.TabIndex = 39;
+            button1.Text = "Cancelar";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // ImposicionCallCenter_v2
+            // Set autoscale to a standard (100%) baseline so designer won't render at 200% on high-DPI machines.
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(2101, 1609);
+            Controls.Add(button1);
             Controls.Add(btnGenerarGuia);
             Controls.Add(groupBox7);
             Controls.Add(groupBox6);
@@ -876,5 +888,6 @@
         private RadioButton radioButton2;
         private RadioButton radioButton1;
         private Button btnGenerarGuia;
+        private Button button1;
     }
 }
