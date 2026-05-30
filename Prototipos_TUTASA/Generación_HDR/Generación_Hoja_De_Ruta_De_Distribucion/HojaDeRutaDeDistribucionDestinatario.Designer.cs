@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             label2 = new Label();
-            listView1 = new ListView();
+            listViewFleteros = new ListView();
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
             columnHeader3 = new ColumnHeader();
@@ -44,9 +44,9 @@
             lblFecha = new Label();
             lblGuiaBase = new Label();
             button1 = new Button();
-            label1 = new Label();
-            textBox1 = new TextBox();
-            listView2 = new ListView();
+            lblCantGuias = new Label();
+            txtCantGuias = new TextBox();
+            listViewGuiasADistribuir = new ListView();
             columnHeader4 = new ColumnHeader();
             colRemitenteLista = new ColumnHeader();
             columnHeader6 = new ColumnHeader();
@@ -67,16 +67,16 @@
             label2.Size = new Size(0, 15);
             label2.TabIndex = 44;
             // 
-            // listView1
+            // listViewFleteros
             // 
-            listView1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader5 });
-            listView1.FullRowSelect = true;
-            listView1.Location = new Point(28, 362);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(867, 115);
-            listView1.TabIndex = 43;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.Details;
+            listViewFleteros.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader5 });
+            listViewFleteros.FullRowSelect = true;
+            listViewFleteros.Location = new Point(28, 362);
+            listViewFleteros.Name = "listViewFleteros";
+            listViewFleteros.Size = new Size(867, 115);
+            listViewFleteros.TabIndex = 43;
+            listViewFleteros.UseCompatibleStateImageBehavior = false;
+            listViewFleteros.View = View.Details;
             // 
             // columnHeader1
             // 
@@ -100,7 +100,7 @@
             // 
             // btnGenerarHdr
             // 
-            btnGenerarHdr.Location = new Point(664, 483);
+            btnGenerarHdr.Location = new Point(655, 483);
             btnGenerarHdr.Name = "btnGenerarHdr";
             btnGenerarHdr.Size = new Size(112, 24);
             btnGenerarHdr.TabIndex = 41;
@@ -124,7 +124,6 @@
             lblFletero.Size = new Size(570, 15);
             lblFletero.TabIndex = 38;
             lblFletero.Text = "Fletero asignado(se muestran solos los fleteros que coinciden con el CD destino de las guias seleccionadas)";
-            lblFletero.Click += lblFletero_Click;
             // 
             // txtCdEmisor
             // 
@@ -178,42 +177,41 @@
             // 
             // button1
             // 
-            button1.Location = new Point(792, 483);
+            button1.Location = new Point(783, 483);
             button1.Name = "button1";
             button1.Size = new Size(112, 24);
             button1.TabIndex = 45;
             button1.Text = "Cancelar";
             button1.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // lblCantGuias
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(28, 320);
-            label1.Margin = new Padding(1, 0, 1, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(181, 15);
-            label1.TabIndex = 46;
-            label1.Text = "Cantidad de guias seleccionadas:";
+            lblCantGuias.AutoSize = true;
+            lblCantGuias.Location = new Point(28, 321);
+            lblCantGuias.Margin = new Padding(1, 0, 1, 0);
+            lblCantGuias.Name = "lblCantGuias";
+            lblCantGuias.Size = new Size(181, 15);
+            lblCantGuias.TabIndex = 46;
+            lblCantGuias.Text = "Cantidad de guias seleccionadas:";
             // 
-            // textBox1
+            // txtCantGuias
             // 
-            textBox1.Location = new Point(220, 318);
-            textBox1.Name = "textBox1";
-            textBox1.ReadOnly = true;
-            textBox1.Size = new Size(102, 23);
-            textBox1.TabIndex = 47;
+            txtCantGuias.Location = new Point(220, 317);
+            txtCantGuias.Name = "txtCantGuias";
+            txtCantGuias.ReadOnly = true;
+            txtCantGuias.Size = new Size(102, 23);
+            txtCantGuias.TabIndex = 47;
             // 
-            // listView2
+            // listViewGuiasADistribuir
             // 
-            listView2.Columns.AddRange(new ColumnHeader[] { columnHeader4, colRemitenteLista, columnHeader6, columnHeader10, columnHeader11, columnHeader12, columnHeader13, columnHeader14, columnHeader15, columnHeader16 });
-            listView2.FullRowSelect = true;
-            listView2.Location = new Point(28, 104);
-            listView2.Name = "listView2";
-            listView2.Size = new Size(867, 208);
-            listView2.TabIndex = 48;
-            listView2.UseCompatibleStateImageBehavior = false;
-            listView2.View = View.Details;
-            listView2.SelectedIndexChanged += listView2_SelectedIndexChanged;
+            listViewGuiasADistribuir.Columns.AddRange(new ColumnHeader[] { columnHeader4, colRemitenteLista, columnHeader6, columnHeader10, columnHeader11, columnHeader12, columnHeader13, columnHeader14, columnHeader15, columnHeader16 });
+            listViewGuiasADistribuir.FullRowSelect = true;
+            listViewGuiasADistribuir.Location = new Point(28, 104);
+            listViewGuiasADistribuir.Name = "listViewGuiasADistribuir";
+            listViewGuiasADistribuir.Size = new Size(867, 208);
+            listViewGuiasADistribuir.TabIndex = 48;
+            listViewGuiasADistribuir.UseCompatibleStateImageBehavior = false;
+            listViewGuiasADistribuir.View = View.Details;
             // 
             // columnHeader4
             // 
@@ -249,36 +247,35 @@
             // 
             columnHeader13.DisplayIndex = 7;
             columnHeader13.Text = "Altura";
-            columnHeader13.Width = 100;
+            columnHeader13.Width = 50;
             // 
             // columnHeader14
             // 
             columnHeader14.DisplayIndex = 6;
             columnHeader14.Text = "Piso";
-            columnHeader14.Width = 120;
+            columnHeader14.Width = 50;
             // 
             // columnHeader15
             // 
             columnHeader15.Text = "CP";
-            columnHeader15.Width = 80;
+            columnHeader15.Width = 50;
             // 
             // columnHeader16
             // 
             columnHeader16.Text = "Ciudad";
-            columnHeader16.TextAlign = HorizontalAlignment.Center;
             columnHeader16.Width = 100;
             // 
             // HojaDeRutaDeDistribucionDestinatario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(916, 519);
-            Controls.Add(listView2);
-            Controls.Add(textBox1);
-            Controls.Add(label1);
+            ClientSize = new Size(901, 514);
+            Controls.Add(listViewGuiasADistribuir);
+            Controls.Add(txtCantGuias);
+            Controls.Add(lblCantGuias);
             Controls.Add(button1);
             Controls.Add(label2);
-            Controls.Add(listView1);
+            Controls.Add(listViewFleteros);
             Controls.Add(btnGenerarHdr);
             Controls.Add(lblGuiasPendientes);
             Controls.Add(lblFletero);
@@ -288,9 +285,10 @@
             Controls.Add(dtpFecha);
             Controls.Add(lblFecha);
             Controls.Add(lblGuiaBase);
-            Margin = new Padding(1, 1, 1, 1);
+            Margin = new Padding(1);
             Name = "HojaDeRutaDeDistribucionDestinatario";
             Text = "HojaDeRutaDeDistribucion";
+            Load += HojaDeRutaDeDistribucionDestinatario_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -298,7 +296,7 @@
         #endregion
 
         private Label label2;
-        private ListView listView1;
+        private ListView listViewFleteros;
         private ColumnHeader columnHeader1;
         private ColumnHeader columnHeader2;
         private ColumnHeader columnHeader3;
@@ -313,9 +311,9 @@
         private Label lblFecha;
         private Label lblGuiaBase;
         private Button button1;
-        private Label label1;
-        private TextBox textBox1;
-        private ListView listView2;
+        private Label lblCantGuias;
+        private TextBox txtCantGuias;
+        private ListView listViewGuiasADistribuir;
         private ColumnHeader columnHeader4;
         private ColumnHeader colRemitenteLista;
         private ColumnHeader columnHeader6;
