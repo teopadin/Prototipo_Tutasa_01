@@ -50,9 +50,9 @@
             button2 = new Button();
             button1 = new Button();
             label4 = new Label();
-            comboBox1 = new ComboBox();
+            FleteroCMB = new ComboBox();
             Fletero = new Label();
-            dateTimePicker1 = new DateTimePicker();
+            FechaDtp = new DateTimePicker();
             label3 = new Label();
             label1 = new Label();
             groupBox1.SuspendLayout();
@@ -181,10 +181,10 @@
             // listView1
             // 
             listView1.Columns.AddRange(new ColumnHeader[] { HojRut, Remitente_Y_Destinatario, Calle, Altura, CP, TipoBulto });
-            listView1.Location = new Point(-1, 206);
+            listView1.Location = new Point(15, 206);
             listView1.Margin = new Padding(4, 5, 4, 5);
             listView1.Name = "listView1";
-            listView1.Size = new Size(802, 159);
+            listView1.Size = new Size(737, 159);
             listView1.TabIndex = 39;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
@@ -249,13 +249,13 @@
             label4.TabIndex = 36;
             label4.Text = "Hojas de Ruta rendidas por el Fletero";
             // 
-            // comboBox1
+            // FleteroCMB
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(383, 99);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(182, 33);
-            comboBox1.TabIndex = 35;
+            FleteroCMB.FormattingEnabled = true;
+            FleteroCMB.Location = new Point(383, 99);
+            FleteroCMB.Name = "FleteroCMB";
+            FleteroCMB.Size = new Size(182, 33);
+            FleteroCMB.TabIndex = 35;
             // 
             // Fletero
             // 
@@ -267,12 +267,12 @@
             Fletero.TabIndex = 34;
             Fletero.Text = "Fletero asignado";
             // 
-            // dateTimePicker1
+            // FechaDtp
             // 
-            dateTimePicker1.Location = new Point(15, 97);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(327, 31);
-            dateTimePicker1.TabIndex = 33;
+            FechaDtp.Location = new Point(15, 97);
+            FechaDtp.Name = "FechaDtp";
+            FechaDtp.Size = new Size(327, 31);
+            FechaDtp.TabIndex = 33;
             // 
             // label3
             // 
@@ -299,7 +299,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(810, 741);
+            ClientSize = new Size(820, 741);
             Controls.Add(groupBox1);
             Controls.Add(textBox2);
             Controls.Add(label6);
@@ -311,9 +311,9 @@
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(label4);
-            Controls.Add(comboBox1);
+            Controls.Add(FleteroCMB);
             Controls.Add(Fletero);
-            Controls.Add(dateTimePicker1);
+            Controls.Add(FechaDtp);
             Controls.Add(label3);
             Controls.Add(label1);
             Name = "Rendición_HDR_De_DIstribución";
@@ -348,9 +348,9 @@
         private Button button2;
         private Button button1;
         private Label label4;
-        private ComboBox comboBox1;
+        private ComboBox FleteroCMB;
         private Label Fletero;
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker FechaDtp;
         private Label label3;
         private Label label1;
     }
