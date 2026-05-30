@@ -8,7 +8,7 @@ namespace Prototipos_TUTASA.Consultar_Estado_Del_Pedido
     {
         private List<GuiaEntidad> guias = new List<GuiaEntidad>
         {
-            // Guía 1001 - Recorrido completo entregada en agencia
+            // Guía CD01-0001 - Recorrido completo entregada en agencia
             new GuiaEntidad
             {
                 NroGuia = "CD01-0001",
@@ -27,7 +27,7 @@ namespace Prototipos_TUTASA.Consultar_Estado_Del_Pedido
                     new HistorialEstadoGuiaEntidad { FechaCambio = new DateTime(2026, 5, 21), Estado = EstadoGuia.Entregada, Donde = UbicacionGuia.EnAgencia }
                 }
             },
-            // Guía 1002 - Retiro en CD destino
+            // Guía CD02-0002 - Retiro en CD destino
             new GuiaEntidad
             {
                 NroGuia = "CD02-0002",
@@ -43,7 +43,7 @@ namespace Prototipos_TUTASA.Consultar_Estado_Del_Pedido
                     new HistorialEstadoGuiaEntidad { FechaCambio = new DateTime(2026, 4, 13), Estado = EstadoGuia.Entregada, Donde = UbicacionGuia.EnCDDestino }
                 }
             },
-            // Guía 1003 - Cancelada
+            // Guía AG05-0003 - Cancelada
             new GuiaEntidad
             {
                 NroGuia = "AG05-0003",
@@ -67,6 +67,32 @@ namespace Prototipos_TUTASA.Consultar_Estado_Del_Pedido
                 }
             }
             return null;
+        }
+        public string TextoEstado(EstadoGuia estado)
+        {
+            if (estado == EstadoGuia.Impuesta) return "Impuesta";
+            if (estado == EstadoGuia.PendienteDeRetiroPorTransportista) return "Pendiente de retiro por transportista";
+            if (estado == EstadoGuia.Retirada) return "Retirada";
+            if (estado == EstadoGuia.Admitida) return "Admitida";
+            if (estado == EstadoGuia.PendienteDeDespacho) return "Pendiente de despacho";
+            if (estado == EstadoGuia.EnTransito) return "En tránsito";
+            if (estado == EstadoGuia.EnCDDestino) return "En CD destino";
+            if (estado == EstadoGuia.EnDistribucion) return "En distribución";
+            if (estado == EstadoGuia.PendienteDeRetiroEnAgencia) return "Pendiente de retiro en agencia";
+            if (estado == EstadoGuia.PendienteDeRetiroEnCD) return "Pendiente de retiro en CD";
+            if (estado == EstadoGuia.Entregada) return "Entregada";
+            if (estado == EstadoGuia.Cancelada) return "Cancelada";
+            return "";
+        }
+
+        public string TextoUbicacion(UbicacionGuia ubicacion)
+        {
+            if (ubicacion == UbicacionGuia.EnCDOrigen) return "En CD origen";
+            if (ubicacion == UbicacionGuia.ConTransportistaLocal) return "Con transportista local";
+            if (ubicacion == UbicacionGuia.EnServicioMediaDistancia) return "En servicio media distancia";
+            if (ubicacion == UbicacionGuia.EnCDDestino) return "En CD destino";
+            if (ubicacion == UbicacionGuia.EnAgencia) return "En agencia";
+            return "";
         }
     }
 }
