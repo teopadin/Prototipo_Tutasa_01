@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Prototipos_TUTASA.Consultar_Estado_Del_Pedido
 {
-    internal class ModeloConsultarEstadoDelPedido
+    internal partial class ModeloConsultarEstadoDelPedido
     {
         //Van cosas
     }
