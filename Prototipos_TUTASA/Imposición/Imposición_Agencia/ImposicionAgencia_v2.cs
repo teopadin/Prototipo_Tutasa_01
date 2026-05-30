@@ -29,5 +29,10 @@ namespace Prototipos_TUTASA.ImposiciónAgencia_v2
         {
 
         }
+
+        private void gbTamañoBulto_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
