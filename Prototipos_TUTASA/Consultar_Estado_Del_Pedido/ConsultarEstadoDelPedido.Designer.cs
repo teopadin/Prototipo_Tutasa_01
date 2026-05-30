@@ -31,8 +31,8 @@
             lblTitulo = new Label();
             lblNumeroPedido = new Label();
             btnBuscar = new Button();
-            txtNumeroPedido = new TextBox();
-            listView1 = new ListView();
+            txtNroGuia = new TextBox();
+            lstHistorial = new ListView();
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
             columnHeader3 = new ColumnHeader();
@@ -68,25 +68,26 @@
             btnBuscar.TabIndex = 4;
             btnBuscar.Text = "Buscar";
             btnBuscar.UseVisualStyleBackColor = true;
+            btnBuscar.Click += btnBuscar_Click;
             // 
-            // txtNumeroPedido
+            // txtNroGuia
             // 
-            txtNumeroPedido.Location = new Point(177, 84);
-            txtNumeroPedido.Margin = new Padding(4, 5, 4, 5);
-            txtNumeroPedido.Name = "txtNumeroPedido";
-            txtNumeroPedido.Size = new Size(314, 31);
-            txtNumeroPedido.TabIndex = 5;
+            txtNroGuia.Location = new Point(177, 84);
+            txtNroGuia.Margin = new Padding(4, 5, 4, 5);
+            txtNroGuia.Name = "txtNroGuia";
+            txtNroGuia.Size = new Size(314, 31);
+            txtNroGuia.TabIndex = 5;
             // 
-            // listView1
+            // lstHistorial
             // 
-            listView1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4 });
-            listView1.Location = new Point(23, 141);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(594, 242);
-            listView1.TabIndex = 6;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.Details;
-            listView1.SelectedIndexChanged += listView1_SelectedIndexChanged;
+            lstHistorial.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4 });
+            lstHistorial.Location = new Point(23, 141);
+            lstHistorial.Name = "lstHistorial";
+            lstHistorial.Size = new Size(594, 242);
+            lstHistorial.TabIndex = 6;
+            lstHistorial.UseCompatibleStateImageBehavior = false;
+            lstHistorial.View = View.Details;
+            lstHistorial.SelectedIndexChanged += listView1_SelectedIndexChanged;
             // 
             // columnHeader1
             // 
@@ -113,8 +114,8 @@
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(639, 413);
-            Controls.Add(listView1);
-            Controls.Add(txtNumeroPedido);
+            Controls.Add(lstHistorial);
+            Controls.Add(txtNroGuia);
             Controls.Add(btnBuscar);
             Controls.Add(lblNumeroPedido);
             Controls.Add(lblTitulo);
@@ -129,8 +130,8 @@
         private Label lblTitulo;
         private Label lblNumeroPedido;
         private Button btnBuscar;
-        private TextBox txtNumeroPedido;
-        private ListView listView1;
+        private TextBox txtNroGuia;
+        private ListView lstHistorial;
         private ColumnHeader columnHeader1;
         private ColumnHeader columnHeader2;
         private ColumnHeader columnHeader3;
