@@ -36,6 +36,7 @@
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
             columnHeader3 = new ColumnHeader();
+            columnHeader4 = new ColumnHeader();
             SuspendLayout();
             // 
             // lblTitulo
@@ -60,7 +61,7 @@
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new Point(540, 77);
+            btnBuscar.Location = new Point(510, 80);
             btnBuscar.Margin = new Padding(4, 5, 4, 5);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(107, 38);
@@ -73,15 +74,15 @@
             txtNumeroPedido.Location = new Point(177, 84);
             txtNumeroPedido.Margin = new Padding(4, 5, 4, 5);
             txtNumeroPedido.Name = "txtNumeroPedido";
-            txtNumeroPedido.Size = new Size(355, 31);
+            txtNumeroPedido.Size = new Size(314, 31);
             txtNumeroPedido.TabIndex = 5;
             // 
             // listView1
             // 
-            listView1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3 });
+            listView1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4 });
             listView1.Location = new Point(23, 141);
             listView1.Name = "listView1";
-            listView1.Size = new Size(624, 242);
+            listView1.Size = new Size(594, 242);
             listView1.TabIndex = 6;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
@@ -90,30 +91,35 @@
             // columnHeader1
             // 
             columnHeader1.Text = "Fecha";
-            columnHeader1.Width = 200;
+            columnHeader1.Width = 100;
             // 
             // columnHeader2
             // 
             columnHeader2.Text = "Número de Guía";
-            columnHeader2.Width = 350;
+            columnHeader2.Width = 215;
             // 
             // columnHeader3
             // 
             columnHeader3.Text = "Estado";
-            columnHeader3.Width = 400;
+            columnHeader3.Width = 115;
             // 
-            // ConsultarEstadoDelPedidoV2
+            // columnHeader4
+            // 
+            columnHeader4.Text = "Donde";
+            columnHeader4.Width = 150;
+            // 
+            // ConsultarEstadoDelPedido
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(667, 413);
+            ClientSize = new Size(639, 413);
             Controls.Add(listView1);
             Controls.Add(txtNumeroPedido);
             Controls.Add(btnBuscar);
             Controls.Add(lblNumeroPedido);
             Controls.Add(lblTitulo);
-            Name = "ConsultarEstadoDelPedidoV2";
-            Text = "ConsultarEstadoDelPedidoV2";
+            Name = "ConsultarEstadoDelPedido";
+            Text = "Consultar Estado del Pedido";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -128,5 +134,6 @@
         private ColumnHeader columnHeader1;
         private ColumnHeader columnHeader2;
         private ColumnHeader columnHeader3;
+        private ColumnHeader columnHeader4;
     }
 }
