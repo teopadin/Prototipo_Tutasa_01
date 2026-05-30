@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Prototipos_TUTASA.RecepcionHojaDeRutaEnAgencia
+namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia
 {
     public class DetalleGuiasARetirar
     {
