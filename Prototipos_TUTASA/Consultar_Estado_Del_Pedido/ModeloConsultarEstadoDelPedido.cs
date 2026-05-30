@@ -46,14 +46,16 @@ namespace Prototipos_TUTASA.Consultar_Estado_Del_Pedido
             // Guía AG05-0003 - Cancelada
             new GuiaEntidad
             {
-                NroGuia = "AG05-0003",
-                Estado = EstadoGuia.Cancelada,
-                Historial = new List<HistorialEstadoGuiaEntidad>
+            NroGuia = "AG05-0003",
+            Estado = EstadoGuia.Cancelada,
+            Historial = new List<HistorialEstadoGuiaEntidad>
                 {
-                    new HistorialEstadoGuiaEntidad { FechaCambio = new DateTime(2026, 5, 1), Estado = EstadoGuia.Impuesta, Donde = UbicacionGuia.EnCDOrigen },
-                    new HistorialEstadoGuiaEntidad { FechaCambio = new DateTime(2026, 5, 2), Estado = EstadoGuia.Cancelada, Donde = UbicacionGuia.EnCDOrigen }
+                    new HistorialEstadoGuiaEntidad { FechaCambio = new DateTime(2026, 5, 1), Estado = EstadoGuia.Impuesta, Donde = UbicacionGuia.EnAgencia },
+                    new HistorialEstadoGuiaEntidad { FechaCambio = new DateTime(2026, 5, 2), Estado = EstadoGuia.PendienteDeRetiroPorTransportista, Donde = UbicacionGuia.EnAgencia },
+                    new HistorialEstadoGuiaEntidad { FechaCambio = new DateTime(2026, 5, 3), Estado = EstadoGuia.Cancelada, Donde = UbicacionGuia.ConTransportistaLocal }
                 }
-            }
+}
+
         };
 
         // Busca la guía por número y devuelve su historial. Si no la encuentra, devuelve null.
