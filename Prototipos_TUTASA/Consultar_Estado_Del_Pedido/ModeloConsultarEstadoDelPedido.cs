@@ -11,7 +11,7 @@ namespace Prototipos_TUTASA.Consultar_Estado_Del_Pedido
             // Guía CD01-0001 - Recorrido completo entregada en agencia
             new GuiaEntidad
             {
-                NroGuia = "CD01-0001",
+                NroGuia = "AG01-0001",
                 Estado = EstadoGuia.Entregada,
                 Historial = new List<HistorialEstadoGuiaEntidad>
                 {
