@@ -18,6 +18,8 @@ namespace Prototipos_TUTASA
         {
             // https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
+            Application.Run(new ConsultarEstadoDelPedido_v2.ConsultarEstadoDelPedido());
+            Application.Run(new Admisión.Admisión());
             Application.Run(new Rendir_HDR_De_Retiro());
         }
     }
