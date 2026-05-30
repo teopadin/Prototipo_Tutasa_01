@@ -8,5 +8,6 @@ namespace Prototipos_TUTASA.Consultar_Estado_Del_Pedido
     {
         public DateTime FechaCambio { get; set; }
         public EstadoGuia Estado { get; set; }
+        public UbicacionGuia Donde { get; set; }
     }
 }
