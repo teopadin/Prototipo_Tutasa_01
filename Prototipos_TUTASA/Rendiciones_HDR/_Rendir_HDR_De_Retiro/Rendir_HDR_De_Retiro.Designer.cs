@@ -1,4 +1,4 @@
-﻿namespace Prototipos_TUTASA.Generación_Resumen_HDR.Generación_Resumen_HDR_Cumplidas
+﻿namespace Prototipos_TUTASA.Rendiciones_HDR
 {
     partial class Rendir_HDR_De_Retiro
     {
@@ -30,31 +30,31 @@
         {
             label1 = new Label();
             label3 = new Label();
-            dateTimePicker1 = new DateTimePicker();
+            FechaDtp = new DateTimePicker();
             Fletero = new Label();
-            comboBox1 = new ComboBox();
+            FleteroCmb = new ComboBox();
             label4 = new Label();
-            button1 = new Button();
-            button2 = new Button();
-            listView1 = new ListView();
+            RegistratBtn = new Button();
+            CancelarBtn = new Button();
+            HDRRendidaLst = new ListView();
             HojRut = new ColumnHeader();
-            Remitente_Y_Destinatario = new ColumnHeader();
+            Remitente = new ColumnHeader();
             Calle = new ColumnHeader();
             Altura = new ColumnHeader();
             CP = new ColumnHeader();
             TipoBulto = new ColumnHeader();
             label5 = new Label();
             label2 = new Label();
-            textBox4 = new TextBox();
-            textBox1 = new TextBox();
+            TotalRendidasTxtb = new TextBox();
+            TotalCumplidasTxtb = new TextBox();
             label6 = new Label();
-            textBox2 = new TextBox();
+            TotalNoCumplidasTxtb = new TextBox();
             groupBox1 = new GroupBox();
-            button3 = new Button();
+            AplicarBtn = new Button();
             label7 = new Label();
-            comboBox2 = new ComboBox();
-            radioButton2 = new RadioButton();
-            radioButton1 = new RadioButton();
+            MotivoCmb = new ComboBox();
+            NoCumplidaRdb = new RadioButton();
+            CumplidaRdb = new RadioButton();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -79,12 +79,12 @@
             label3.TabIndex = 4;
             label3.Text = "Fecha";
             // 
-            // dateTimePicker1
+            // FechaDtp
             // 
-            dateTimePicker1.Location = new Point(29, 125);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(327, 31);
-            dateTimePicker1.TabIndex = 17;
+            FechaDtp.Location = new Point(29, 125);
+            FechaDtp.Name = "FechaDtp";
+            FechaDtp.Size = new Size(327, 31);
+            FechaDtp.TabIndex = 17;
             // 
             // Fletero
             // 
@@ -96,13 +96,14 @@
             Fletero.TabIndex = 18;
             Fletero.Text = "Fletero asignado";
             // 
-            // comboBox1
+            // FleteroCmb
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(397, 127);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(182, 33);
-            comboBox1.TabIndex = 19;
+            FleteroCmb.FormattingEnabled = true;
+            FleteroCmb.Location = new Point(397, 127);
+            FleteroCmb.Name = "FleteroCmb";
+            FleteroCmb.Size = new Size(182, 33);
+            FleteroCmb.TabIndex = 19;
+            FleteroCmb.SelectedIndexChanged += FleteroCmb_SelectedIndexChanged;
             // 
             // label4
             // 
@@ -114,46 +115,49 @@
             label4.TabIndex = 20;
             label4.Text = "Hojas de Ruta rendidas por el Fletero";
             // 
-            // button1
+            // RegistratBtn
             // 
-            button1.Location = new Point(186, 681);
-            button1.Margin = new Padding(4, 5, 4, 5);
-            button1.Name = "button1";
-            button1.Size = new Size(170, 73);
-            button1.TabIndex = 21;
-            button1.Text = "Registrar Rendición";
-            button1.UseVisualStyleBackColor = true;
+            RegistratBtn.Location = new Point(186, 681);
+            RegistratBtn.Margin = new Padding(4, 5, 4, 5);
+            RegistratBtn.Name = "RegistratBtn";
+            RegistratBtn.Size = new Size(170, 73);
+            RegistratBtn.TabIndex = 21;
+            RegistratBtn.Text = "Registrar Rendición";
+            RegistratBtn.UseVisualStyleBackColor = true;
+            RegistratBtn.Click += RegistratBtn_Click;
             // 
-            // button2
+            // CancelarBtn
             // 
-            button2.Location = new Point(386, 681);
-            button2.Margin = new Padding(4, 5, 4, 5);
-            button2.Name = "button2";
-            button2.Size = new Size(170, 73);
-            button2.TabIndex = 22;
-            button2.Text = "Cancelar";
-            button2.UseVisualStyleBackColor = true;
+            CancelarBtn.Location = new Point(386, 681);
+            CancelarBtn.Margin = new Padding(4, 5, 4, 5);
+            CancelarBtn.Name = "CancelarBtn";
+            CancelarBtn.Size = new Size(170, 73);
+            CancelarBtn.TabIndex = 22;
+            CancelarBtn.Text = "Cancelar";
+            CancelarBtn.UseVisualStyleBackColor = true;
+            CancelarBtn.Click += CancelarBtn_Click;
             // 
-            // listView1
+            // HDRRendidaLst
             // 
-            listView1.Columns.AddRange(new ColumnHeader[] { HojRut, Remitente_Y_Destinatario, Calle, Altura, CP, TipoBulto });
-            listView1.Location = new Point(13, 234);
-            listView1.Margin = new Padding(4, 5, 4, 5);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(802, 159);
-            listView1.TabIndex = 23;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.Details;
+            HDRRendidaLst.Columns.AddRange(new ColumnHeader[] { HojRut, Remitente, Calle, Altura, CP, TipoBulto });
+            HDRRendidaLst.Location = new Point(13, 234);
+            HDRRendidaLst.Margin = new Padding(4, 5, 4, 5);
+            HDRRendidaLst.Name = "HDRRendidaLst";
+            HDRRendidaLst.Size = new Size(802, 159);
+            HDRRendidaLst.TabIndex = 23;
+            HDRRendidaLst.UseCompatibleStateImageBehavior = false;
+            HDRRendidaLst.View = View.Details;
+            HDRRendidaLst.SelectedIndexChanged += HDRRendidaLst_SelectedIndexChanged;
             // 
             // HojRut
             // 
             HojRut.Text = "Nro de Hoja de Ruta";
             HojRut.Width = 200;
             // 
-            // Remitente_Y_Destinatario
+            // Remitente
             // 
-            Remitente_Y_Destinatario.Text = "Remitente";
-            Remitente_Y_Destinatario.Width = 210;
+            Remitente.Text = "Remitente";
+            Remitente.Width = 210;
             // 
             // Calle
             // 
@@ -184,7 +188,6 @@
             label5.Size = new Size(168, 25);
             label5.TabIndex = 24;
             label5.Text = "Total HDR Rendidas";
-            label5.Click += label5_Click;
             // 
             // label2
             // 
@@ -196,23 +199,23 @@
             label2.TabIndex = 25;
             label2.Text = "Total HDR Cumplidas";
             // 
-            // textBox4
+            // TotalRendidasTxtb
             // 
-            textBox4.Location = new Point(13, 626);
-            textBox4.Margin = new Padding(4, 5, 4, 5);
-            textBox4.Name = "textBox4";
-            textBox4.ReadOnly = true;
-            textBox4.Size = new Size(261, 31);
-            textBox4.TabIndex = 26;
+            TotalRendidasTxtb.Location = new Point(13, 626);
+            TotalRendidasTxtb.Margin = new Padding(4, 5, 4, 5);
+            TotalRendidasTxtb.Name = "TotalRendidasTxtb";
+            TotalRendidasTxtb.ReadOnly = true;
+            TotalRendidasTxtb.Size = new Size(261, 31);
+            TotalRendidasTxtb.TabIndex = 26;
             // 
-            // textBox1
+            // TotalCumplidasTxtb
             // 
-            textBox1.Location = new Point(282, 626);
-            textBox1.Margin = new Padding(4, 5, 4, 5);
-            textBox1.Name = "textBox1";
-            textBox1.ReadOnly = true;
-            textBox1.Size = new Size(255, 31);
-            textBox1.TabIndex = 27;
+            TotalCumplidasTxtb.Location = new Point(282, 626);
+            TotalCumplidasTxtb.Margin = new Padding(4, 5, 4, 5);
+            TotalCumplidasTxtb.Name = "TotalCumplidasTxtb";
+            TotalCumplidasTxtb.ReadOnly = true;
+            TotalCumplidasTxtb.Size = new Size(255, 31);
+            TotalCumplidasTxtb.TabIndex = 27;
             // 
             // label6
             // 
@@ -224,22 +227,22 @@
             label6.TabIndex = 28;
             label6.Text = "Total HDR no cumplidas";
             // 
-            // textBox2
+            // TotalNoCumplidasTxtb
             // 
-            textBox2.Location = new Point(545, 626);
-            textBox2.Margin = new Padding(4, 5, 4, 5);
-            textBox2.Name = "textBox2";
-            textBox2.ReadOnly = true;
-            textBox2.Size = new Size(270, 31);
-            textBox2.TabIndex = 29;
+            TotalNoCumplidasTxtb.Location = new Point(545, 626);
+            TotalNoCumplidasTxtb.Margin = new Padding(4, 5, 4, 5);
+            TotalNoCumplidasTxtb.Name = "TotalNoCumplidasTxtb";
+            TotalNoCumplidasTxtb.ReadOnly = true;
+            TotalNoCumplidasTxtb.Size = new Size(270, 31);
+            TotalNoCumplidasTxtb.TabIndex = 29;
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(button3);
+            groupBox1.Controls.Add(AplicarBtn);
             groupBox1.Controls.Add(label7);
-            groupBox1.Controls.Add(comboBox2);
-            groupBox1.Controls.Add(radioButton2);
-            groupBox1.Controls.Add(radioButton1);
+            groupBox1.Controls.Add(MotivoCmb);
+            groupBox1.Controls.Add(NoCumplidaRdb);
+            groupBox1.Controls.Add(CumplidaRdb);
             groupBox1.Location = new Point(16, 400);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(459, 184);
@@ -247,14 +250,15 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Estado de la HDR seleccionada (\"\")";
             // 
-            // button3
+            // AplicarBtn
             // 
-            button3.Location = new Point(315, 145);
-            button3.Name = "button3";
-            button3.Size = new Size(138, 33);
-            button3.TabIndex = 32;
-            button3.Text = "Aplicar";
-            button3.UseVisualStyleBackColor = true;
+            AplicarBtn.Location = new Point(315, 145);
+            AplicarBtn.Name = "AplicarBtn";
+            AplicarBtn.Size = new Size(138, 33);
+            AplicarBtn.TabIndex = 32;
+            AplicarBtn.Text = "Aplicar";
+            AplicarBtn.UseVisualStyleBackColor = true;
+            AplicarBtn.Click += AplicarBtn_Click;
             // 
             // label7
             // 
@@ -266,59 +270,62 @@
             label7.TabIndex = 31;
             label7.Text = "Motivo (solo si no cumplida)";
             // 
-            // comboBox2
+            // MotivoCmb
             // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(43, 145);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(261, 33);
-            comboBox2.TabIndex = 2;
+            MotivoCmb.FormattingEnabled = true;
+            MotivoCmb.Location = new Point(43, 145);
+            MotivoCmb.Name = "MotivoCmb";
+            MotivoCmb.Size = new Size(261, 33);
+            MotivoCmb.TabIndex = 2;
             // 
-            // radioButton2
+            // NoCumplidaRdb
             // 
-            radioButton2.AutoSize = true;
-            radioButton2.Location = new Point(256, 47);
-            radioButton2.Name = "radioButton2";
-            radioButton2.Size = new Size(139, 29);
-            radioButton2.TabIndex = 1;
-            radioButton2.TabStop = true;
-            radioButton2.Text = "No cumplida";
-            radioButton2.UseVisualStyleBackColor = true;
+            NoCumplidaRdb.AutoSize = true;
+            NoCumplidaRdb.Location = new Point(256, 47);
+            NoCumplidaRdb.Name = "NoCumplidaRdb";
+            NoCumplidaRdb.Size = new Size(139, 29);
+            NoCumplidaRdb.TabIndex = 1;
+            NoCumplidaRdb.TabStop = true;
+            NoCumplidaRdb.Text = "No cumplida";
+            NoCumplidaRdb.UseVisualStyleBackColor = true;
+            NoCumplidaRdb.CheckedChanged += NoCumplidaRdb_CheckedChanged;
             // 
-            // radioButton1
+            // CumplidaRdb
             // 
-            radioButton1.AutoSize = true;
-            radioButton1.Location = new Point(43, 47);
-            radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(113, 29);
-            radioButton1.TabIndex = 0;
-            radioButton1.TabStop = true;
-            radioButton1.Text = "Cumplida";
-            radioButton1.UseVisualStyleBackColor = true;
+            CumplidaRdb.AutoSize = true;
+            CumplidaRdb.Location = new Point(43, 47);
+            CumplidaRdb.Name = "CumplidaRdb";
+            CumplidaRdb.Size = new Size(113, 29);
+            CumplidaRdb.TabIndex = 0;
+            CumplidaRdb.TabStop = true;
+            CumplidaRdb.Text = "Cumplida";
+            CumplidaRdb.UseVisualStyleBackColor = true;
+            CumplidaRdb.CheckedChanged += CumplidaRdb_CheckedChanged;
             // 
-            // Rendición_HDR_De_Retiro
+            // Rendir_HDR_De_Retiro
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(848, 780);
             Controls.Add(groupBox1);
-            Controls.Add(textBox2);
+            Controls.Add(TotalNoCumplidasTxtb);
             Controls.Add(label6);
-            Controls.Add(textBox1);
-            Controls.Add(textBox4);
+            Controls.Add(TotalCumplidasTxtb);
+            Controls.Add(TotalRendidasTxtb);
             Controls.Add(label2);
             Controls.Add(label5);
-            Controls.Add(listView1);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(HDRRendidaLst);
+            Controls.Add(CancelarBtn);
+            Controls.Add(RegistratBtn);
             Controls.Add(label4);
-            Controls.Add(comboBox1);
+            Controls.Add(FleteroCmb);
             Controls.Add(Fletero);
-            Controls.Add(dateTimePicker1);
+            Controls.Add(FechaDtp);
             Controls.Add(label3);
             Controls.Add(label1);
-            Name = "Rendición_HDR_De_Retiro";
+            Name = "Rendir_HDR_De_Retiro";
             Text = "Rendición HDR de Retiro";
+            Load += Rendir_HDR_De_Retiro_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);
@@ -329,30 +336,30 @@
 
         private Label label1;
         private Label label3;
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker FechaDtp;
         private Label Fletero;
-        private ComboBox comboBox1;
+        private ComboBox FleteroCmb;
         private Label label4;
-        private Button button1;
-        private Button button2;
-        private ListView listView1;
+        private Button RegistratBtn;
+        private Button CancelarBtn;
+        private ListView HDRRendidaLst;
         private ColumnHeader HojRut;
-        private ColumnHeader Remitente_Y_Destinatario;
+        private ColumnHeader Remitente;
         private ColumnHeader Calle;
         private ColumnHeader Altura;
         private ColumnHeader CP;
         private ColumnHeader TipoBulto;
         private Label label5;
         private Label label2;
-        private TextBox textBox4;
-        private TextBox textBox1;
+        private TextBox TotalRendidasTxtb;
+        private TextBox TotalCumplidasTxtb;
         private Label label6;
-        private TextBox textBox2;
+        private TextBox TotalNoCumplidasTxtb;
         private GroupBox groupBox1;
-        private RadioButton radioButton2;
-        private RadioButton radioButton1;
-        private Button button3;
+        private RadioButton NoCumplidaRdb;
+        private RadioButton CumplidaRdb;
+        private Button AplicarBtn;
         private Label label7;
-        private ComboBox comboBox2;
+        private ComboBox MotivoCmb;
     }
 }
