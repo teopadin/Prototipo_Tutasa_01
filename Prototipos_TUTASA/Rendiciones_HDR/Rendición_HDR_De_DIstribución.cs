@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace Prototipos_TUTASA.Rendiciones_HDR
 {
-    public partial class Rendición_HDR_De_DIstribución : Form
+    public partial class Rendición_HDR_De_Distribución : Form
     {
-        public Rendición_HDR_De_DIstribución()
+        public Rendición_HDR_De_Distribución()
         {
             InitializeComponent();
         }
