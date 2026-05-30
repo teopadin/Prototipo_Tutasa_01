@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Distribucion;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,18 +11,13 @@ namespace Prototipos_TUTASA.HojaDeRutaDeDistribucion
 {
     public partial class HojaDeRutaDeDistribucionDestinatario : Form
     {
+        private ModeloGenerarHDRDistribucion modelo = new ModeloGenerarHDRDistribucion();
         public HojaDeRutaDeDistribucionDestinatario()
         {
             InitializeComponent();
         }
 
-        // Handler referenced by designer. Kept minimal.
-        private void lblFletero_Click(object? sender, EventArgs e)
-        {
-            // no-op
-        }
-
-        private void listView2_SelectedIndexChanged(object sender, EventArgs e)
+        private void HojaDeRutaDeDistribucionDestinatario_Load(object sender, EventArgs e)
         {
 
         }
