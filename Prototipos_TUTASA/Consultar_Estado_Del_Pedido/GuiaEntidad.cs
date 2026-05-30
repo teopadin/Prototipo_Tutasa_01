@@ -4,7 +4,10 @@ using System.Text;
 
 namespace Prototipos_TUTASA.Consultar_Estado_Del_Pedido
 {
-    internal class GuiaEntidad
+    public class GuiaEntidad
     {
+        public string NroGuia { get; set; }
+        public EstadoGuia Estado { get; set; }
+        public List<EstadoGuia> Estados { get; set; }
     }
 }
