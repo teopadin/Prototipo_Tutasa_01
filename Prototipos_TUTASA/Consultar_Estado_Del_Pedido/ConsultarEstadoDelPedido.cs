@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace Prototipos_TUTASA.ConsultarEstadoDelPedido_v2
 {
-    public partial class ConsultarEstadoDelPedidoV2 : Form
+    public partial class ConsultarEstadoDelPedido : Form
     {
-        public ConsultarEstadoDelPedidoV2()
+        public ConsultarEstadoDelPedido()
         {
             InitializeComponent();
         }

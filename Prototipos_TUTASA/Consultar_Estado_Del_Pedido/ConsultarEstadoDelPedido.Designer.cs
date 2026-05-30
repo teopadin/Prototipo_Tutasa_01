@@ -1,6 +1,6 @@
 ﻿namespace Prototipos_TUTASA.ConsultarEstadoDelPedido_v2
 {
-    partial class ConsultarEstadoDelPedidoV2
+    partial class ConsultarEstadoDelPedido
     {
         /// <summary>
         /// Required designer variable.
