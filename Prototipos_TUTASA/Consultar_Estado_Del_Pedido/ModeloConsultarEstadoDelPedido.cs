@@ -11,7 +11,7 @@ namespace Prototipos_TUTASA.Consultar_Estado_Del_Pedido
             // Guía 1001 - Recorrido completo entregada en agencia
             new GuiaEntidad
             {
-                NroGuia = "1001",
+                NroGuia = "CD01-00001",
                 Estado = EstadoGuia.Entregada,
                 Historial = new List<HistorialEstadoGuiaEntidad>
                 {
@@ -30,7 +30,7 @@ namespace Prototipos_TUTASA.Consultar_Estado_Del_Pedido
             // Guía 1002 - Retiro en CD destino
             new GuiaEntidad
             {
-                NroGuia = "1002",
+                NroGuia = "CD02-00002",
                 Estado = EstadoGuia.Entregada,
                 Historial = new List<HistorialEstadoGuiaEntidad>
                 {
@@ -46,7 +46,7 @@ namespace Prototipos_TUTASA.Consultar_Estado_Del_Pedido
             // Guía 1003 - Cancelada
             new GuiaEntidad
             {
-                NroGuia = "1003",
+                NroGuia = "AG05-00003",
                 Estado = EstadoGuia.Cancelada,
                 Historial = new List<HistorialEstadoGuiaEntidad>
                 {
