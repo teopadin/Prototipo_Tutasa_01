@@ -18,6 +18,11 @@ namespace Prototipos_TUTASA
             // https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new ConsultarEstadoDelPedido_v2.ConsultarEstadoDelPedido());
+            Application.Run(new Admisión.Admisión());
+
+            //// !!!!! LEER :) !!!!!
+            //// Cada uno debería agregar su Run abajo de los que ya están para probar sus pantallas, cuando corra el programa va a correr primero la primera pantalla y asi,
+            //// las van cerrando y se abre la siguiente. Cuando terminemos las ponemos en orden :) 
         }
     }
 }
