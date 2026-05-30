@@ -499,10 +499,10 @@
             // 
             // btnGenerarGuia
             // 
-            btnGenerarGuia.Location = new Point(584, 968);
-            btnGenerarGuia.Margin = new Padding(4, 3, 4, 3);
+            btnGenerarGuia.Location = new Point(692, 1569);
+            btnGenerarGuia.Margin = new Padding(7, 5, 7, 5);
             btnGenerarGuia.Name = "btnGenerarGuia";
-            btnGenerarGuia.Size = new Size(251, 74);
+            btnGenerarGuia.Size = new Size(573, 151);
             btnGenerarGuia.TabIndex = 28;
             btnGenerarGuia.Text = "Registrar Imposición y Confirmar Admisión";
             btnGenerarGuia.UseVisualStyleBackColor = true;
@@ -743,8 +743,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1143, 1071);
-            Controls.Add(button1);
+            ClientSize = new Size(1943, 1722);
             Controls.Add(groupBox5);
             Controls.Add(btnGenerarGuia);
             Controls.Add(groupBox4);

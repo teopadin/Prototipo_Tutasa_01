@@ -5,7 +5,7 @@ using System.Drawing;
 using System.Xml.Linq;
 // removed conflicting static import for MediaTypeNames to avoid symbol ambiguity
 
-namespace Prototipos_TUTASA
+namespace Prototipos_TUTASA.RecepcionHojaDeRutaEnAgencia
 {
     partial class RecepcionHojaDeRutaEnAgencia
     {

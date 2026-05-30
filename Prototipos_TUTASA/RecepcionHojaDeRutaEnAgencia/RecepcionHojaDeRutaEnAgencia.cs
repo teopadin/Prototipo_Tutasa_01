@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Prototipos_TUTASA
+namespace Prototipos_TUTASA.RecepcionHojaDeRutaEnAgencia
 {
     public partial class RecepcionHojaDeRutaEnAgencia : Form
     {

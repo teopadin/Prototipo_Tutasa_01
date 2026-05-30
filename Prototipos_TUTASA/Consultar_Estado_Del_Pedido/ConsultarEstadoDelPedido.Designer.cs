@@ -1,6 +1,6 @@
 ﻿namespace Prototipos_TUTASA.ConsultarEstadoDelPedido_v2
 {
-    partial class ConsultarEstadoDelPedidoV2
+    partial class ConsultarEstadoDelPedido
     {
         /// <summary>
         /// Required designer variable.
@@ -31,11 +31,12 @@
             lblTitulo = new Label();
             lblNumeroPedido = new Label();
             btnBuscar = new Button();
-            txtNumeroPedido = new TextBox();
-            listView1 = new ListView();
+            txtNroGuia = new TextBox();
+            lstHistorial = new ListView();
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
             columnHeader3 = new ColumnHeader();
+            columnHeader4 = new ColumnHeader();
             SuspendLayout();
             // 
             // lblTitulo
@@ -60,60 +61,66 @@
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new Point(540, 77);
+            btnBuscar.Location = new Point(499, 80);
             btnBuscar.Margin = new Padding(4, 5, 4, 5);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(107, 38);
             btnBuscar.TabIndex = 4;
             btnBuscar.Text = "Buscar";
             btnBuscar.UseVisualStyleBackColor = true;
+            btnBuscar.Click += btnBuscar_Click;
             // 
-            // txtNumeroPedido
+            // txtNroGuia
             // 
-            txtNumeroPedido.Location = new Point(177, 84);
-            txtNumeroPedido.Margin = new Padding(4, 5, 4, 5);
-            txtNumeroPedido.Name = "txtNumeroPedido";
-            txtNumeroPedido.Size = new Size(355, 31);
-            txtNumeroPedido.TabIndex = 5;
+            txtNroGuia.Location = new Point(177, 84);
+            txtNroGuia.Margin = new Padding(4, 5, 4, 5);
+            txtNroGuia.Name = "txtNroGuia";
+            txtNroGuia.Size = new Size(314, 31);
+            txtNroGuia.TabIndex = 5;
             // 
-            // listView1
+            // lstHistorial
             // 
-            listView1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3 });
-            listView1.Location = new Point(23, 141);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(624, 242);
-            listView1.TabIndex = 6;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.Details;
-            listView1.SelectedIndexChanged += listView1_SelectedIndexChanged;
+            lstHistorial.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4 });
+            lstHistorial.Location = new Point(23, 141);
+            lstHistorial.Name = "lstHistorial";
+            lstHistorial.Size = new Size(871, 336);
+            lstHistorial.TabIndex = 6;
+            lstHistorial.UseCompatibleStateImageBehavior = false;
+            lstHistorial.View = View.Details;
+            lstHistorial.SelectedIndexChanged += listView1_SelectedIndexChanged;
             // 
             // columnHeader1
             // 
             columnHeader1.Text = "Fecha";
-            columnHeader1.Width = 200;
+            columnHeader1.Width = 100;
             // 
             // columnHeader2
             // 
             columnHeader2.Text = "Número de Guía";
-            columnHeader2.Width = 350;
+            columnHeader2.Width = 180;
             // 
             // columnHeader3
             // 
             columnHeader3.Text = "Estado";
-            columnHeader3.Width = 400;
+            columnHeader3.Width = 300;
             // 
-            // ConsultarEstadoDelPedidoV2
+            // columnHeader4
+            // 
+            columnHeader4.Text = "Donde";
+            columnHeader4.Width = 230;
+            // 
+            // ConsultarEstadoDelPedido
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(667, 413);
-            Controls.Add(listView1);
-            Controls.Add(txtNumeroPedido);
+            ClientSize = new Size(906, 489);
+            Controls.Add(lstHistorial);
+            Controls.Add(txtNroGuia);
             Controls.Add(btnBuscar);
             Controls.Add(lblNumeroPedido);
             Controls.Add(lblTitulo);
-            Name = "ConsultarEstadoDelPedidoV2";
-            Text = "ConsultarEstadoDelPedidoV2";
+            Name = "ConsultarEstadoDelPedido";
+            Text = "Consultar Estado del Pedido";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -123,10 +130,11 @@
         private Label lblTitulo;
         private Label lblNumeroPedido;
         private Button btnBuscar;
-        private TextBox txtNumeroPedido;
-        private ListView listView1;
+        private TextBox txtNroGuia;
+        private ListView lstHistorial;
         private ColumnHeader columnHeader1;
         private ColumnHeader columnHeader2;
         private ColumnHeader columnHeader3;
+        private ColumnHeader columnHeader4;
     }
 }
