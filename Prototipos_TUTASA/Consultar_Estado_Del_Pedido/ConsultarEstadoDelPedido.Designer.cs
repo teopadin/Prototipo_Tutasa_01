@@ -61,7 +61,7 @@
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new Point(510, 80);
+            btnBuscar.Location = new Point(499, 80);
             btnBuscar.Margin = new Padding(4, 5, 4, 5);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(107, 38);
@@ -83,7 +83,7 @@
             lstHistorial.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4 });
             lstHistorial.Location = new Point(23, 141);
             lstHistorial.Name = "lstHistorial";
-            lstHistorial.Size = new Size(594, 242);
+            lstHistorial.Size = new Size(871, 336);
             lstHistorial.TabIndex = 6;
             lstHistorial.UseCompatibleStateImageBehavior = false;
             lstHistorial.View = View.Details;
@@ -97,23 +97,23 @@
             // columnHeader2
             // 
             columnHeader2.Text = "Número de Guía";
-            columnHeader2.Width = 215;
+            columnHeader2.Width = 180;
             // 
             // columnHeader3
             // 
             columnHeader3.Text = "Estado";
-            columnHeader3.Width = 115;
+            columnHeader3.Width = 300;
             // 
             // columnHeader4
             // 
             columnHeader4.Text = "Donde";
-            columnHeader4.Width = 150;
+            columnHeader4.Width = 230;
             // 
             // ConsultarEstadoDelPedido
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(639, 413);
+            ClientSize = new Size(906, 489);
             Controls.Add(lstHistorial);
             Controls.Add(txtNroGuia);
             Controls.Add(btnBuscar);
