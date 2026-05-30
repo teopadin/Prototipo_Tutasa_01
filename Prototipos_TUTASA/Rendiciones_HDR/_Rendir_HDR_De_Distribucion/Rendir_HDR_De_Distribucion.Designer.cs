@@ -1,6 +1,6 @@
 ﻿namespace Prototipos_TUTASA.Rendiciones_HDR
 {
-    partial class Rendición_HDR_De_Distribución
+    partial class Rendir_HDR_De_Distribucion
     {
         /// <summary>
         /// Required designer variable.
@@ -42,7 +42,7 @@
             label5 = new Label();
             HdrRendidasLst = new ListView();
             HojRut = new ColumnHeader();
-            Remitente_Y_Destinatario = new ColumnHeader();
+            Destinatario = new ColumnHeader();
             Calle = new ColumnHeader();
             Altura = new ColumnHeader();
             CP = new ColumnHeader();
@@ -67,24 +67,25 @@
             groupBox1.Controls.Add(CumplidaRdb);
             groupBox1.Location = new Point(2, 372);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(459, 184);
+            groupBox1.Size = new Size(799, 247);
             groupBox1.TabIndex = 46;
             groupBox1.TabStop = false;
             groupBox1.Text = "Estado de la HDR seleccionada (\"\")";
             // 
             // AplicarBtn
             // 
-            AplicarBtn.Location = new Point(315, 145);
+            AplicarBtn.Location = new Point(629, 179);
             AplicarBtn.Name = "AplicarBtn";
-            AplicarBtn.Size = new Size(138, 33);
+            AplicarBtn.Size = new Size(164, 62);
             AplicarBtn.TabIndex = 32;
             AplicarBtn.Text = "Aplicar";
             AplicarBtn.UseVisualStyleBackColor = true;
+            AplicarBtn.Click += AplicarBtn_Click;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(43, 105);
+            label7.Location = new Point(201, 79);
             label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
             label7.Size = new Size(239, 25);
@@ -94,7 +95,7 @@
             // MotivoCmb
             // 
             MotivoCmb.FormattingEnabled = true;
-            MotivoCmb.Location = new Point(43, 145);
+            MotivoCmb.Location = new Point(201, 107);
             MotivoCmb.Name = "MotivoCmb";
             MotivoCmb.Size = new Size(261, 33);
             MotivoCmb.TabIndex = 2;
@@ -102,13 +103,14 @@
             // NoCumplidaRdb
             // 
             NoCumplidaRdb.AutoSize = true;
-            NoCumplidaRdb.Location = new Point(256, 47);
+            NoCumplidaRdb.Location = new Point(201, 47);
             NoCumplidaRdb.Name = "NoCumplidaRdb";
             NoCumplidaRdb.Size = new Size(139, 29);
             NoCumplidaRdb.TabIndex = 1;
             NoCumplidaRdb.TabStop = true;
             NoCumplidaRdb.Text = "No cumplida";
             NoCumplidaRdb.UseVisualStyleBackColor = true;
+            NoCumplidaRdb.CheckedChanged += NoCumplidaRdb_CheckedChanged;
             // 
             // CumplidaRdb
             // 
@@ -120,10 +122,11 @@
             CumplidaRdb.TabStop = true;
             CumplidaRdb.Text = "Cumplida";
             CumplidaRdb.UseVisualStyleBackColor = true;
+            CumplidaRdb.CheckedChanged += CumplidaRdb_CheckedChanged;
             // 
             // TotalNoCumplidasTxtb
             // 
-            TotalNoCumplidasTxtb.Location = new Point(531, 598);
+            TotalNoCumplidasTxtb.Location = new Point(531, 666);
             TotalNoCumplidasTxtb.Margin = new Padding(4, 5, 4, 5);
             TotalNoCumplidasTxtb.Name = "TotalNoCumplidasTxtb";
             TotalNoCumplidasTxtb.ReadOnly = true;
@@ -133,7 +136,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(531, 568);
+            label6.Location = new Point(531, 636);
             label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
             label6.Size = new Size(203, 25);
@@ -142,7 +145,7 @@
             // 
             // TotalCumplidasTxtb
             // 
-            TotalCumplidasTxtb.Location = new Point(268, 598);
+            TotalCumplidasTxtb.Location = new Point(268, 666);
             TotalCumplidasTxtb.Margin = new Padding(4, 5, 4, 5);
             TotalCumplidasTxtb.Name = "TotalCumplidasTxtb";
             TotalCumplidasTxtb.ReadOnly = true;
@@ -151,7 +154,7 @@
             // 
             // TotalRendidasTxtb
             // 
-            TotalRendidasTxtb.Location = new Point(-1, 598);
+            TotalRendidasTxtb.Location = new Point(-1, 666);
             TotalRendidasTxtb.Margin = new Padding(4, 5, 4, 5);
             TotalRendidasTxtb.Name = "TotalRendidasTxtb";
             TotalRendidasTxtb.ReadOnly = true;
@@ -161,7 +164,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(268, 568);
+            label2.Location = new Point(268, 636);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
             label2.Size = new Size(180, 25);
@@ -171,7 +174,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(-1, 568);
+            label5.Location = new Point(-1, 636);
             label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
             label5.Size = new Size(168, 25);
@@ -180,24 +183,25 @@
             // 
             // HdrRendidasLst
             // 
-            HdrRendidasLst.Columns.AddRange(new ColumnHeader[] { HojRut, Remitente_Y_Destinatario, Calle, Altura, CP, TipoBulto });
+            HdrRendidasLst.Columns.AddRange(new ColumnHeader[] { HojRut, Destinatario, Calle, Altura, CP, TipoBulto });
             HdrRendidasLst.Location = new Point(15, 206);
             HdrRendidasLst.Margin = new Padding(4, 5, 4, 5);
             HdrRendidasLst.Name = "HdrRendidasLst";
-            HdrRendidasLst.Size = new Size(737, 159);
+            HdrRendidasLst.Size = new Size(786, 159);
             HdrRendidasLst.TabIndex = 39;
             HdrRendidasLst.UseCompatibleStateImageBehavior = false;
             HdrRendidasLst.View = View.Details;
+            HdrRendidasLst.SelectedIndexChanged += HdrRendidasLst_SelectedIndexChanged;
             // 
             // HojRut
             // 
             HojRut.Text = "Nro de Hoja de Ruta";
             HojRut.Width = 200;
             // 
-            // Remitente_Y_Destinatario
+            // Destinatario
             // 
-            Remitente_Y_Destinatario.Text = "Destinatario";
-            Remitente_Y_Destinatario.Width = 210;
+            Destinatario.Text = "Destinatario";
+            Destinatario.Width = 210;
             // 
             // Calle
             // 
@@ -221,23 +225,25 @@
             // 
             // CancelarBtn
             // 
-            CancelarBtn.Location = new Point(372, 653);
+            CancelarBtn.Location = new Point(372, 716);
             CancelarBtn.Margin = new Padding(4, 5, 4, 5);
             CancelarBtn.Name = "CancelarBtn";
             CancelarBtn.Size = new Size(170, 73);
             CancelarBtn.TabIndex = 38;
             CancelarBtn.Text = "Cancelar";
             CancelarBtn.UseVisualStyleBackColor = true;
+            CancelarBtn.Click += CancelarBtn_Click;
             // 
             // RegistrarBtn
             // 
-            RegistrarBtn.Location = new Point(172, 653);
+            RegistrarBtn.Location = new Point(172, 716);
             RegistrarBtn.Margin = new Padding(4, 5, 4, 5);
             RegistrarBtn.Name = "RegistrarBtn";
             RegistrarBtn.Size = new Size(170, 73);
             RegistrarBtn.TabIndex = 37;
             RegistrarBtn.Text = "Registrar Rendición";
             RegistrarBtn.UseVisualStyleBackColor = true;
+            RegistrarBtn.Click += RegistrarBtn_Click;
             // 
             // label4
             // 
@@ -256,6 +262,7 @@
             FleteroCMB.Name = "FleteroCMB";
             FleteroCMB.Size = new Size(182, 33);
             FleteroCMB.TabIndex = 35;
+            FleteroCMB.SelectedIndexChanged += FleteroCMB_SelectedIndexChanged;
             // 
             // Fletero
             // 
@@ -295,11 +302,11 @@
             label1.TabIndex = 31;
             label1.Text = "Rendición de HDR de Distribución";
             // 
-            // Rendición_HDR_De_Distribución
+            // Rendir_HDR_De_Distribucion
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(820, 741);
+            ClientSize = new Size(820, 803);
             Controls.Add(groupBox1);
             Controls.Add(TotalNoCumplidasTxtb);
             Controls.Add(label6);
@@ -316,8 +323,9 @@
             Controls.Add(FechaDtp);
             Controls.Add(label3);
             Controls.Add(label1);
-            Name = "Rendición_HDR_De_Distribución";
+            Name = "Rendir_HDR_De_Distribucion";
             Text = "Rendición HDR de Distribución";
+            Load += Rendir_HDR_De_Distribucion_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);
@@ -340,7 +348,7 @@
         private Label label5;
         private ListView HdrRendidasLst;
         private ColumnHeader HojRut;
-        private ColumnHeader Remitente_Y_Destinatario;
+        private ColumnHeader Destinatario;
         private ColumnHeader Calle;
         private ColumnHeader Altura;
         private ColumnHeader CP;

@@ -1,6 +1,6 @@
 ﻿namespace Prototipos_TUTASA.Generación_Resumen_HDR.Generación_Resumen_HDR_Cumplidas
 {
-    partial class Rendición_HDR_De_Retiro
+    partial class Rendir_HDR_De_Retiro
     {
         /// <summary>
         /// Required designer variable.

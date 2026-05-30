@@ -18,7 +18,7 @@ namespace Prototipos_TUTASA
         {
             // https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Rendición_HDR_De_Distribución());
+            Application.Run(new Rendir_HDR_De_Distribucion());
         }
     }
 }
