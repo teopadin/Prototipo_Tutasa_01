@@ -43,18 +43,18 @@ namespace Prototipos_TUTASA.Consultar_Estado_Del_Pedido
                     new HistorialEstadoGuiaEntidad { FechaCambio = new DateTime(2026, 4, 13), Estado = EstadoGuia.Entregada, Donde = UbicacionGuia.EnCDDestino }
                 }
             },
-            // Guía AG05-0003 - Cancelada
+            // Guía CD0-0003 - Cancelada
             new GuiaEntidad
             {
-            NroGuia = "AG05-0003",
-            Estado = EstadoGuia.Cancelada,
-            Historial = new List<HistorialEstadoGuiaEntidad>
+                NroGuia = "CD03-0003",
+                Estado = EstadoGuia.Cancelada,
+                Historial = new List<HistorialEstadoGuiaEntidad>
                 {
-                    new HistorialEstadoGuiaEntidad { FechaCambio = new DateTime(2026, 5, 1), Estado = EstadoGuia.Impuesta, Donde = UbicacionGuia.EnAgencia },
-                    new HistorialEstadoGuiaEntidad { FechaCambio = new DateTime(2026, 5, 2), Estado = EstadoGuia.PendienteDeRetiroPorTransportista, Donde = UbicacionGuia.EnAgencia },
+                    new HistorialEstadoGuiaEntidad { FechaCambio = new DateTime(2026, 5, 1), Estado = EstadoGuia.Impuesta, Donde = UbicacionGuia.EnDomicilio },
+                    new HistorialEstadoGuiaEntidad { FechaCambio = new DateTime(2026, 5, 2), Estado = EstadoGuia.PendienteDeRetiroPorTransportista, Donde = UbicacionGuia.EnDomicilio },
                     new HistorialEstadoGuiaEntidad { FechaCambio = new DateTime(2026, 5, 3), Estado = EstadoGuia.Cancelada, Donde = UbicacionGuia.ConTransportistaLocal }
                 }
-}
+            }
 
         };
 
@@ -94,6 +94,7 @@ namespace Prototipos_TUTASA.Consultar_Estado_Del_Pedido
             if (ubicacion == UbicacionGuia.EnServicioMediaDistancia) return "En servicio media distancia";
             if (ubicacion == UbicacionGuia.EnCDDestino) return "En CD destino";
             if (ubicacion == UbicacionGuia.EnAgencia) return "En agencia";
+            if (ubicacion == UbicacionGuia.EnDomicilio) return "En domicilio";
             return "";
         }
     }
