@@ -56,33 +56,33 @@
             lblTelDest = new Label();
             txtTelDest = new TextBox();
             groupBox3 = new GroupBox();
-            radioButton7 = new RadioButton();
-            radioButton6 = new RadioButton();
-            radioButton5 = new RadioButton();
+            rbRetiroCD = new RadioButton();
+            rbRetiroAgencia = new RadioButton();
+            rbPuertaPuerta = new RadioButton();
             gbTamañoBulto = new GroupBox();
-            radioButton4 = new RadioButton();
-            radioButton3 = new RadioButton();
-            radioButton2 = new RadioButton();
-            radioButton1 = new RadioButton();
+            rbXL = new RadioButton();
+            rbL = new RadioButton();
+            rbM = new RadioButton();
+            rbS = new RadioButton();
             groupBox4 = new GroupBox();
-            textBox5 = new TextBox();
+            tbCiudadDest = new TextBox();
             label5 = new Label();
-            textBox4 = new TextBox();
+            tbCDDest = new TextBox();
             label4 = new Label();
-            textBox3 = new TextBox();
+            tbPisoDest = new TextBox();
             label3 = new Label();
-            textBox2 = new TextBox();
+            tbAlturaDest = new TextBox();
             label2 = new Label();
-            textBox1 = new TextBox();
+            tbCalleDest = new TextBox();
             label1 = new Label();
             groupBox5 = new GroupBox();
             label7 = new Label();
-            comboBox2 = new ComboBox();
+            cbCDDestino = new ComboBox();
             groupBox7 = new GroupBox();
             label8 = new Label();
-            comboBox3 = new ComboBox();
+            cbSeleccionarAgencia = new ComboBox();
             btnGenerarGuia = new Button();
-            button1 = new Button();
+            btCancelar = new Button();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -242,7 +242,6 @@
             cboRazonSocial.Name = "cboRazonSocial";
             cboRazonSocial.Size = new Size(233, 40);
             cboRazonSocial.TabIndex = 23;
-            cboRazonSocial.SelectedIndexChanged += cboRazonSocial_SelectedIndexChanged;
             // 
             // lblCUIT
             // 
@@ -316,7 +315,6 @@
             txtNombreDest.Name = "txtNombreDest";
             txtNombreDest.Size = new Size(431, 39);
             txtNombreDest.TabIndex = 33;
-            txtNombreDest.TextChanged += txtNombreDest_TextChanged;
             // 
             // lblApellidoDest
             // 
@@ -335,7 +333,6 @@
             txtApellidoDest.Name = "txtApellidoDest";
             txtApellidoDest.Size = new Size(406, 39);
             txtApellidoDest.TabIndex = 35;
-            txtApellidoDest.TextChanged += txtApellidoDest_TextChanged;
             // 
             // lblDNIDest
             // 
@@ -375,9 +372,9 @@
             // 
             // groupBox3
             // 
-            groupBox3.Controls.Add(radioButton7);
-            groupBox3.Controls.Add(radioButton6);
-            groupBox3.Controls.Add(radioButton5);
+            groupBox3.Controls.Add(rbRetiroCD);
+            groupBox3.Controls.Add(rbRetiroAgencia);
+            groupBox3.Controls.Add(rbPuertaPuerta);
             groupBox3.Location = new Point(17, 601);
             groupBox3.Margin = new Padding(5, 6, 5, 6);
             groupBox3.Name = "groupBox3";
@@ -387,48 +384,48 @@
             groupBox3.TabStop = false;
             groupBox3.Text = "Modalidad de entrega*";
             // 
-            // radioButton7
+            // rbRetiroCD
             // 
-            radioButton7.AutoSize = true;
-            radioButton7.Location = new Point(1222, 50);
-            radioButton7.Margin = new Padding(5, 6, 5, 6);
-            radioButton7.Name = "radioButton7";
-            radioButton7.Size = new Size(180, 36);
-            radioButton7.TabIndex = 2;
-            radioButton7.TabStop = true;
-            radioButton7.Text = "Retiro en CD";
-            radioButton7.UseVisualStyleBackColor = true;
+            rbRetiroCD.AutoSize = true;
+            rbRetiroCD.Location = new Point(1222, 50);
+            rbRetiroCD.Margin = new Padding(5, 6, 5, 6);
+            rbRetiroCD.Name = "rbRetiroCD";
+            rbRetiroCD.Size = new Size(180, 36);
+            rbRetiroCD.TabIndex = 2;
+            rbRetiroCD.TabStop = true;
+            rbRetiroCD.Text = "Retiro en CD";
+            rbRetiroCD.UseVisualStyleBackColor = true;
             // 
-            // radioButton6
+            // rbRetiroAgencia
             // 
-            radioButton6.AutoSize = true;
-            radioButton6.Location = new Point(662, 44);
-            radioButton6.Margin = new Padding(5, 6, 5, 6);
-            radioButton6.Name = "radioButton6";
-            radioButton6.Size = new Size(233, 36);
-            radioButton6.TabIndex = 1;
-            radioButton6.TabStop = true;
-            radioButton6.Text = "Retiro en Agencia";
-            radioButton6.UseVisualStyleBackColor = true;
+            rbRetiroAgencia.AutoSize = true;
+            rbRetiroAgencia.Location = new Point(662, 44);
+            rbRetiroAgencia.Margin = new Padding(5, 6, 5, 6);
+            rbRetiroAgencia.Name = "rbRetiroAgencia";
+            rbRetiroAgencia.Size = new Size(233, 36);
+            rbRetiroAgencia.TabIndex = 1;
+            rbRetiroAgencia.TabStop = true;
+            rbRetiroAgencia.Text = "Retiro en Agencia";
+            rbRetiroAgencia.UseVisualStyleBackColor = true;
             // 
-            // radioButton5
+            // rbPuertaPuerta
             // 
-            radioButton5.AutoSize = true;
-            radioButton5.Location = new Point(135, 50);
-            radioButton5.Margin = new Padding(5, 6, 5, 6);
-            radioButton5.Name = "radioButton5";
-            radioButton5.Size = new Size(208, 36);
-            radioButton5.TabIndex = 0;
-            radioButton5.TabStop = true;
-            radioButton5.Text = "Puerta a puerta";
-            radioButton5.UseVisualStyleBackColor = true;
+            rbPuertaPuerta.AutoSize = true;
+            rbPuertaPuerta.Location = new Point(135, 50);
+            rbPuertaPuerta.Margin = new Padding(5, 6, 5, 6);
+            rbPuertaPuerta.Name = "rbPuertaPuerta";
+            rbPuertaPuerta.Size = new Size(208, 36);
+            rbPuertaPuerta.TabIndex = 0;
+            rbPuertaPuerta.TabStop = true;
+            rbPuertaPuerta.Text = "Puerta a puerta";
+            rbPuertaPuerta.UseVisualStyleBackColor = true;
             // 
             // gbTamañoBulto
             // 
-            gbTamañoBulto.Controls.Add(radioButton4);
-            gbTamañoBulto.Controls.Add(radioButton3);
-            gbTamañoBulto.Controls.Add(radioButton2);
-            gbTamañoBulto.Controls.Add(radioButton1);
+            gbTamañoBulto.Controls.Add(rbXL);
+            gbTamañoBulto.Controls.Add(rbL);
+            gbTamañoBulto.Controls.Add(rbM);
+            gbTamañoBulto.Controls.Add(rbS);
             gbTamañoBulto.Location = new Point(17, 473);
             gbTamañoBulto.Margin = new Padding(5, 6, 5, 6);
             gbTamañoBulto.Name = "gbTamañoBulto";
@@ -437,67 +434,66 @@
             gbTamañoBulto.TabIndex = 26;
             gbTamañoBulto.TabStop = false;
             gbTamañoBulto.Text = "Tipo de Bulto*";
-            gbTamañoBulto.Enter += gbTamañoBulto_Enter;
             // 
-            // radioButton4
+            // rbXL
             // 
-            radioButton4.AutoSize = true;
-            radioButton4.Location = new Point(1233, 44);
-            radioButton4.Margin = new Padding(5, 6, 5, 6);
-            radioButton4.Name = "radioButton4";
-            radioButton4.Size = new Size(214, 36);
-            radioButton4.TabIndex = 14;
-            radioButton4.TabStop = true;
-            radioButton4.Text = "TIPO XL: <20 kg";
-            radioButton4.UseVisualStyleBackColor = true;
+            rbXL.AutoSize = true;
+            rbXL.Location = new Point(1233, 44);
+            rbXL.Margin = new Padding(5, 6, 5, 6);
+            rbXL.Name = "rbXL";
+            rbXL.Size = new Size(214, 36);
+            rbXL.TabIndex = 14;
+            rbXL.TabStop = true;
+            rbXL.Text = "TIPO XL: <20 kg";
+            rbXL.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // rbL
             // 
-            radioButton3.AutoSize = true;
-            radioButton3.Location = new Point(827, 50);
-            radioButton3.Margin = new Padding(5, 6, 5, 6);
-            radioButton3.Name = "radioButton3";
-            radioButton3.Size = new Size(200, 36);
-            radioButton3.TabIndex = 13;
-            radioButton3.TabStop = true;
-            radioButton3.Text = "TIPO L: <10 kg";
-            radioButton3.UseVisualStyleBackColor = true;
+            rbL.AutoSize = true;
+            rbL.Location = new Point(827, 50);
+            rbL.Margin = new Padding(5, 6, 5, 6);
+            rbL.Name = "rbL";
+            rbL.Size = new Size(200, 36);
+            rbL.TabIndex = 13;
+            rbL.TabStop = true;
+            rbL.Text = "TIPO L: <10 kg";
+            rbL.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // rbM
             // 
-            radioButton2.AutoSize = true;
-            radioButton2.Location = new Point(447, 50);
-            radioButton2.Margin = new Padding(5, 6, 5, 6);
-            radioButton2.Name = "radioButton2";
-            radioButton2.Size = new Size(198, 36);
-            radioButton2.TabIndex = 12;
-            radioButton2.TabStop = true;
-            radioButton2.Text = "TIPO M: <5 kg";
-            radioButton2.UseVisualStyleBackColor = true;
+            rbM.AutoSize = true;
+            rbM.Location = new Point(447, 50);
+            rbM.Margin = new Padding(5, 6, 5, 6);
+            rbM.Name = "rbM";
+            rbM.Size = new Size(198, 36);
+            rbM.TabIndex = 12;
+            rbM.TabStop = true;
+            rbM.Text = "TIPO M: <5 kg";
+            rbM.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // rbS
             // 
-            radioButton1.AutoSize = true;
-            radioButton1.Location = new Point(96, 50);
-            radioButton1.Margin = new Padding(5, 6, 5, 6);
-            radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(207, 36);
-            radioButton1.TabIndex = 11;
-            radioButton1.TabStop = true;
-            radioButton1.Text = "TIPO S: <2.5 kg";
-            radioButton1.UseVisualStyleBackColor = true;
+            rbS.AutoSize = true;
+            rbS.Location = new Point(96, 50);
+            rbS.Margin = new Padding(5, 6, 5, 6);
+            rbS.Name = "rbS";
+            rbS.Size = new Size(207, 36);
+            rbS.TabIndex = 11;
+            rbS.TabStop = true;
+            rbS.Text = "TIPO S: <2.5 kg";
+            rbS.UseVisualStyleBackColor = true;
             // 
             // groupBox4
             // 
-            groupBox4.Controls.Add(textBox5);
+            groupBox4.Controls.Add(tbCiudadDest);
             groupBox4.Controls.Add(label5);
-            groupBox4.Controls.Add(textBox4);
+            groupBox4.Controls.Add(tbCDDest);
             groupBox4.Controls.Add(label4);
-            groupBox4.Controls.Add(textBox3);
+            groupBox4.Controls.Add(tbPisoDest);
             groupBox4.Controls.Add(label3);
-            groupBox4.Controls.Add(textBox2);
+            groupBox4.Controls.Add(tbAlturaDest);
             groupBox4.Controls.Add(label2);
-            groupBox4.Controls.Add(textBox1);
+            groupBox4.Controls.Add(tbCalleDest);
             groupBox4.Controls.Add(label1);
             groupBox4.Location = new Point(79, 732);
             groupBox4.Margin = new Padding(5, 6, 5, 6);
@@ -508,14 +504,14 @@
             groupBox4.TabStop = false;
             groupBox4.Text = "Puerta a Puerta";
             // 
-            // textBox5
+            // tbCiudadDest
             // 
-            textBox5.Location = new Point(12, 284);
-            textBox5.Margin = new Padding(5, 4, 5, 4);
-            textBox5.MaxLength = 40;
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(416, 39);
-            textBox5.TabIndex = 31;
+            tbCiudadDest.Location = new Point(12, 284);
+            tbCiudadDest.Margin = new Padding(5, 4, 5, 4);
+            tbCiudadDest.MaxLength = 40;
+            tbCiudadDest.Name = "tbCiudadDest";
+            tbCiudadDest.Size = new Size(416, 39);
+            tbCiudadDest.TabIndex = 31;
             // 
             // label5
             // 
@@ -527,14 +523,14 @@
             label5.TabIndex = 32;
             label5.Text = "Ciudad *";
             // 
-            // textBox4
+            // tbCDDest
             // 
-            textBox4.Location = new Point(268, 186);
-            textBox4.Margin = new Padding(5, 4, 5, 4);
-            textBox4.MaxLength = 10;
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(160, 39);
-            textBox4.TabIndex = 31;
+            tbCDDest.Location = new Point(268, 186);
+            tbCDDest.Margin = new Padding(5, 4, 5, 4);
+            tbCDDest.MaxLength = 10;
+            tbCDDest.Name = "tbCDDest";
+            tbCDDest.Size = new Size(160, 39);
+            tbCDDest.TabIndex = 31;
             // 
             // label4
             // 
@@ -546,14 +542,14 @@
             label4.TabIndex = 32;
             label4.Text = "Codigo postal *";
             // 
-            // textBox3
+            // tbPisoDest
             // 
-            textBox3.Location = new Point(151, 186);
-            textBox3.Margin = new Padding(5, 4, 5, 4);
-            textBox3.MaxLength = 10;
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(87, 39);
-            textBox3.TabIndex = 31;
+            tbPisoDest.Location = new Point(151, 186);
+            tbPisoDest.Margin = new Padding(5, 4, 5, 4);
+            tbPisoDest.MaxLength = 10;
+            tbPisoDest.Name = "tbPisoDest";
+            tbPisoDest.Size = new Size(87, 39);
+            tbPisoDest.TabIndex = 31;
             // 
             // label3
             // 
@@ -565,13 +561,13 @@
             label3.TabIndex = 33;
             label3.Text = "Piso";
             // 
-            // textBox2
+            // tbAlturaDest
             // 
-            textBox2.Location = new Point(12, 186);
-            textBox2.Margin = new Padding(5, 4, 5, 4);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(125, 39);
-            textBox2.TabIndex = 31;
+            tbAlturaDest.Location = new Point(12, 186);
+            tbAlturaDest.Margin = new Padding(5, 4, 5, 4);
+            tbAlturaDest.Name = "tbAlturaDest";
+            tbAlturaDest.Size = new Size(125, 39);
+            tbAlturaDest.TabIndex = 31;
             // 
             // label2
             // 
@@ -583,14 +579,14 @@
             label2.TabIndex = 32;
             label2.Text = "Altura *";
             // 
-            // textBox1
+            // tbCalleDest
             // 
-            textBox1.Location = new Point(12, 77);
-            textBox1.Margin = new Padding(5, 4, 5, 4);
-            textBox1.MaxLength = 50;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(416, 39);
-            textBox1.TabIndex = 31;
+            tbCalleDest.Location = new Point(12, 77);
+            tbCalleDest.Margin = new Padding(5, 4, 5, 4);
+            tbCalleDest.MaxLength = 50;
+            tbCalleDest.Name = "tbCalleDest";
+            tbCalleDest.Size = new Size(416, 39);
+            tbCalleDest.TabIndex = 31;
             // 
             // label1
             // 
@@ -605,7 +601,7 @@
             // groupBox5
             // 
             groupBox5.Controls.Add(label7);
-            groupBox5.Controls.Add(comboBox2);
+            groupBox5.Controls.Add(cbCDDestino);
             groupBox5.Location = new Point(1186, 733);
             groupBox5.Margin = new Padding(5, 6, 5, 6);
             groupBox5.Name = "groupBox5";
@@ -625,20 +621,19 @@
             label7.TabIndex = 3;
             label7.Text = "Seleccionar CD Destino:";
             // 
-            // comboBox2
+            // cbCDDestino
             // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(11, 186);
-            comboBox2.Margin = new Padding(5, 6, 5, 6);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(333, 40);
-            comboBox2.TabIndex = 2;
-            comboBox2.SelectedIndexChanged += comboBox2_SelectedIndexChanged;
+            cbCDDestino.FormattingEnabled = true;
+            cbCDDestino.Location = new Point(11, 186);
+            cbCDDestino.Margin = new Padding(5, 6, 5, 6);
+            cbCDDestino.Name = "cbCDDestino";
+            cbCDDestino.Size = new Size(333, 40);
+            cbCDDestino.TabIndex = 2;
             // 
             // groupBox7
             // 
             groupBox7.Controls.Add(label8);
-            groupBox7.Controls.Add(comboBox3);
+            groupBox7.Controls.Add(cbSeleccionarAgencia);
             groupBox7.Location = new Point(655, 732);
             groupBox7.Margin = new Padding(5, 6, 5, 6);
             groupBox7.Name = "groupBox7";
@@ -647,7 +642,6 @@
             groupBox7.TabIndex = 31;
             groupBox7.TabStop = false;
             groupBox7.Text = "Retiro en Agencia";
-            groupBox7.Enter += groupBox7_Enter;
             // 
             // label8
             // 
@@ -659,14 +653,14 @@
             label8.TabIndex = 1;
             label8.Text = "Seleccionar Agencia:";
             // 
-            // comboBox3
+            // cbSeleccionarAgencia
             // 
-            comboBox3.FormattingEnabled = true;
-            comboBox3.Location = new Point(24, 181);
-            comboBox3.Margin = new Padding(5, 6, 5, 6);
-            comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(360, 40);
-            comboBox3.TabIndex = 0;
+            cbSeleccionarAgencia.FormattingEnabled = true;
+            cbSeleccionarAgencia.Location = new Point(24, 181);
+            cbSeleccionarAgencia.Margin = new Padding(5, 6, 5, 6);
+            cbSeleccionarAgencia.Name = "cbSeleccionarAgencia";
+            cbSeleccionarAgencia.Size = new Size(360, 40);
+            cbSeleccionarAgencia.TabIndex = 0;
             // 
             // btnGenerarGuia
             // 
@@ -679,22 +673,22 @@
             btnGenerarGuia.UseVisualStyleBackColor = true;
             btnGenerarGuia.Click += btnGenerarGuia_Click;
             // 
-            // button1
+            // btCancelar
             // 
-            button1.Location = new Point(1153, 1122);
-            button1.Margin = new Padding(5, 4, 5, 4);
-            button1.Name = "button1";
-            button1.Size = new Size(373, 93);
-            button1.TabIndex = 33;
-            button1.Text = "Cancelar";
-            button1.UseVisualStyleBackColor = true;
+            btCancelar.Location = new Point(1153, 1122);
+            btCancelar.Margin = new Padding(5, 4, 5, 4);
+            btCancelar.Name = "btCancelar";
+            btCancelar.Size = new Size(373, 93);
+            btCancelar.TabIndex = 33;
+            btCancelar.Text = "Cancelar";
+            btCancelar.UseVisualStyleBackColor = true;
             // 
             // ImposicionAgencia_v2
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1607, 1239);
-            Controls.Add(button1);
+            Controls.Add(btCancelar);
             Controls.Add(btnGenerarGuia);
             Controls.Add(groupBox7);
             Controls.Add(groupBox5);
@@ -754,32 +748,32 @@
         private Label lblTelDest;
         private TextBox txtTelDest;
         private GroupBox groupBox3;
-        private RadioButton radioButton7;
-        private RadioButton radioButton6;
-        private RadioButton radioButton5;
+        private RadioButton rbRetiroCD;
+        private RadioButton rbRetiroAgencia;
+        private RadioButton rbPuertaPuerta;
         private GroupBox gbTamañoBulto;
-        private RadioButton radioButton4;
-        private RadioButton radioButton3;
-        private RadioButton radioButton2;
-        private RadioButton radioButton1;
+        private RadioButton rbXL;
+        private RadioButton rbL;
+        private RadioButton rbM;
+        private RadioButton rbS;
         private GroupBox groupBox4;
-        private TextBox textBox5;
+        private TextBox tbCiudadDest;
         private Label label5;
-        private TextBox textBox4;
+        private TextBox tbCDDest;
         private Label label4;
-        private TextBox textBox3;
+        private TextBox tbPisoDest;
         private Label label3;
-        private TextBox textBox2;
+        private TextBox tbAlturaDest;
         private Label label2;
-        private TextBox textBox1;
+        private TextBox tbCalleDest;
         private Label label1;
         private GroupBox groupBox5;
         private Label label7;
-        private ComboBox comboBox2;
+        private ComboBox cbCDDestino;
         private GroupBox groupBox7;
         private Label label8;
-        private ComboBox comboBox3;
+        private ComboBox cbSeleccionarAgencia;
         private Button btnGenerarGuia;
-        private Button button1;
+        private Button btCancelar;
     }
 }

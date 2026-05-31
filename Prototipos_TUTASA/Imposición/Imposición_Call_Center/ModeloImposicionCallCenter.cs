@@ -6,7 +6,7 @@ namespace Prototipos_TUTASA.Imposición.ImposicionCallCenter_v2
 {
     internal class ModeloImposicionCallCenter
 
-        {
+    {
             public List<ClienteEntidad> Clientes { get; set; }
             public List<AgenciaEntidad> Agencias { get; set; }
             public List<CentroDistribucionEntidad> CentrosDeDistribucion { get; set; }
@@ -82,7 +82,6 @@ namespace Prototipos_TUTASA.Imposición.ImposicionCallCenter_v2
                 // Guías generadas al registrar imposiciones (arranca vacía)
                 Guias = new List<GuiaEntidad>();
             }
-        }
+        
     }
-}
 }
