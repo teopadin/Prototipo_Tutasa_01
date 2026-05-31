@@ -102,6 +102,7 @@
             // 
             // lblNombre
             // 
+            lblNombre.AutoSize = true;
             lblNombre.Location = new Point(12, 320);
             lblNombre.Name = "lblNombre";
             lblNombre.Size = new Size(80, 24);
@@ -117,6 +118,7 @@
             // 
             // lblApellido
             // 
+            lblApellido.AutoSize = true;
             lblApellido.Location = new Point(189, 320);
             lblApellido.Name = "lblApellido";
             lblApellido.Size = new Size(121, 24);
@@ -132,6 +134,7 @@
             // 
             // lblDNI
             // 
+            lblDNI.AutoSize = true;
             lblDNI.Location = new Point(369, 320);
             lblDNI.Name = "lblDNI";
             lblDNI.Size = new Size(181, 24);
