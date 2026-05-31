@@ -72,6 +72,7 @@
             listViewFleteros.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader5 });
             listViewFleteros.FullRowSelect = true;
             listViewFleteros.Location = new Point(28, 362);
+            listViewFleteros.MultiSelect = false;
             listViewFleteros.Name = "listViewFleteros";
             listViewFleteros.Size = new Size(867, 115);
             listViewFleteros.TabIndex = 43;
@@ -106,6 +107,7 @@
             btnGenerarHdr.TabIndex = 41;
             btnGenerarHdr.Text = "Generar HDR";
             btnGenerarHdr.UseVisualStyleBackColor = true;
+            btnGenerarHdr.Click += btnGenerarHdr_Click;
             // 
             // lblGuiasPendientes
             // 
@@ -183,6 +185,7 @@
             button1.TabIndex = 45;
             button1.Text = "Cancelar";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click_1;
             // 
             // lblCantGuias
             // 
@@ -204,6 +207,7 @@
             // 
             // listViewGuiasADistribuir
             // 
+            listViewGuiasADistribuir.CheckBoxes = true;
             listViewGuiasADistribuir.Columns.AddRange(new ColumnHeader[] { columnHeader4, colRemitenteLista, columnHeader6, columnHeader10, columnHeader11, columnHeader12, columnHeader13, columnHeader14, columnHeader15, columnHeader16 });
             listViewGuiasADistribuir.FullRowSelect = true;
             listViewGuiasADistribuir.Location = new Point(28, 104);
@@ -212,6 +216,7 @@
             listViewGuiasADistribuir.TabIndex = 48;
             listViewGuiasADistribuir.UseCompatibleStateImageBehavior = false;
             listViewGuiasADistribuir.View = View.Details;
+            listViewGuiasADistribuir.ItemChecked += listViewGuiasADistribuir_ItemChecked;
             // 
             // columnHeader4
             // 
