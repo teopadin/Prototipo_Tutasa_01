@@ -29,12 +29,16 @@
         private void InitializeComponent()
         {
             lblTitulo = new Label();
-            label1 = new Label();
-            comboBox1 = new ComboBox();
-            listView1 = new ListView();
-            columnHeader1 = new ColumnHeader();
-            columnHeader2 = new ColumnHeader();
-            columnHeader3 = new ColumnHeader();
+            lblEmpresaTransporte = new Label();
+            cmbEmpresaTransporte = new ComboBox();
+            lblPeriodo = new Label();
+            dtpPeriodo = new DateTimePicker();
+            btnMostrar = new Button();
+            lvResultados = new ListView();
+            colPeriodo = new ColumnHeader();
+            colVentas = new ColumnHeader();
+            colCostos = new ColumnHeader();
+            colResultado = new ColumnHeader();
             SuspendLayout();
             // 
             // lblTitulo
@@ -47,59 +51,98 @@
             lblTitulo.TabIndex = 41;
             lblTitulo.Text = "Resultado Costos VS Ventas";
             // 
-            // label1
+            // lblEmpresaTransporte
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(24, 76);
-            label1.Name = "label1";
-            label1.Size = new Size(193, 25);
-            label1.TabIndex = 42;
-            label1.Text = "Empresa de Transporte";
+            lblEmpresaTransporte.AutoSize = true;
+            lblEmpresaTransporte.Location = new Point(24, 76);
+            lblEmpresaTransporte.Name = "lblEmpresaTransporte";
+            lblEmpresaTransporte.Size = new Size(193, 25);
+            lblEmpresaTransporte.TabIndex = 42;
+            lblEmpresaTransporte.Text = "Empresa de Transporte";
             // 
-            // comboBox1
+            // cmbEmpresaTransporte
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(24, 115);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(267, 33);
-            comboBox1.TabIndex = 43;
+            cmbEmpresaTransporte.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbEmpresaTransporte.FormattingEnabled = true;
+            cmbEmpresaTransporte.Location = new Point(24, 115);
+            cmbEmpresaTransporte.Name = "cmbEmpresaTransporte";
+            cmbEmpresaTransporte.Size = new Size(267, 33);
+            cmbEmpresaTransporte.TabIndex = 43;
             // 
-            // listView1
+            // lblPeriodo
             // 
-            listView1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3 });
-            listView1.Location = new Point(24, 185);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(364, 304);
-            listView1.TabIndex = 44;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.Details;
+            lblPeriodo.AutoSize = true;
+            lblPeriodo.Location = new Point(321, 76);
+            lblPeriodo.Name = "lblPeriodo";
+            lblPeriodo.Size = new Size(70, 25);
+            lblPeriodo.TabIndex = 44;
+            lblPeriodo.Text = "Periodo";
             // 
-            // columnHeader1
+            // dtpPeriodo
             // 
-            columnHeader1.Text = "Ventas";
-            columnHeader1.Width = 120;
+            dtpPeriodo.CustomFormat = "MM/yyyy";
+            dtpPeriodo.Format = DateTimePickerFormat.Custom;
+            dtpPeriodo.Location = new Point(321, 115);
+            dtpPeriodo.Name = "dtpPeriodo";
+            dtpPeriodo.ShowUpDown = true;
+            dtpPeriodo.Size = new Size(123, 31);
+            dtpPeriodo.TabIndex = 45;
             // 
-            // columnHeader2
+            // btnMostrar
             // 
-            columnHeader2.Text = "Costos";
-            columnHeader2.Width = 120;
+            btnMostrar.Location = new Point(470, 115);
+            btnMostrar.Name = "btnMostrar";
+            btnMostrar.Size = new Size(112, 34);
+            btnMostrar.TabIndex = 46;
+            btnMostrar.Text = "Mostrar";
+            btnMostrar.UseVisualStyleBackColor = true;
+            btnMostrar.Click += btnMostrar_Click;
             // 
-            // columnHeader3
+            // lvResultados
             // 
-            columnHeader3.Text = "Resultado";
-            columnHeader3.Width = 120;
+            lvResultados.Columns.AddRange(new ColumnHeader[] { colPeriodo, colVentas, colCostos, colResultado });
+            lvResultados.Location = new Point(24, 185);
+            lvResultados.Name = "lvResultados";
+            lvResultados.Size = new Size(558, 304);
+            lvResultados.TabIndex = 47;
+            lvResultados.UseCompatibleStateImageBehavior = false;
+            lvResultados.View = View.Details;
+            // 
+            // colPeriodo
+            // 
+            colPeriodo.Text = "Periodo";
+            colPeriodo.Width = 110;
+            // 
+            // colVentas
+            // 
+            colVentas.Text = "Ventas";
+            colVentas.Width = 140;
+            // 
+            // colCostos
+            // 
+            colCostos.Text = "Costos";
+            colCostos.Width = 140;
+            // 
+            // colResultado
+            // 
+            colResultado.Text = "Resultado";
+            colResultado.Width = 140;
             // 
             // resultadocostosvsventas
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(457, 517);
-            Controls.Add(listView1);
-            Controls.Add(comboBox1);
-            Controls.Add(label1);
+            ClientSize = new Size(617, 517);
+            Controls.Add(lvResultados);
+            Controls.Add(btnMostrar);
+            Controls.Add(dtpPeriodo);
+            Controls.Add(lblPeriodo);
+            Controls.Add(cmbEmpresaTransporte);
+            Controls.Add(lblEmpresaTransporte);
             Controls.Add(lblTitulo);
             Name = "resultadocostosvsventas";
             Text = "Resultados Costos VS Ventas";
+            Load += resultadocostosvsventas_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -107,11 +150,15 @@
         #endregion
 
         private Label lblTitulo;
-        private Label label1;
-        private ComboBox comboBox1;
-        private ListView listView1;
-        private ColumnHeader columnHeader1;
-        private ColumnHeader columnHeader2;
-        private ColumnHeader columnHeader3;
+        private Label lblEmpresaTransporte;
+        private ComboBox cmbEmpresaTransporte;
+        private Label lblPeriodo;
+        private DateTimePicker dtpPeriodo;
+        private Button btnMostrar;
+        private ListView lvResultados;
+        private ColumnHeader colPeriodo;
+        private ColumnHeader colVentas;
+        private ColumnHeader colCostos;
+        private ColumnHeader colResultado;
     }
 }
