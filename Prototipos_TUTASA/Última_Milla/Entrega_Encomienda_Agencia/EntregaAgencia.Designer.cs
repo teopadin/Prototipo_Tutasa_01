@@ -2,14 +2,8 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia
 {
     partial class EntregaAgencia
     {
-        /// <summary>
-        /// Variable del diseñador necesaria.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Limpiar los recursos que se estén usando.
-        /// </summary>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))

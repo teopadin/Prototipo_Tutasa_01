@@ -10,16 +10,11 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia
 
         public EntregaAgencia()
         {
-            MessageBox.Show("ESTOY ABRIENDO EntregaAgencia");
             InitializeComponent();
 
             // Paso 1: el nombre de la agencia actual se muestra fijo en pantalla.
             lblAgencia.Text = modelo.AgenciaActual.Nombre;
-
-            this.btnConfirmar.Click += btnConfirmar_Click;
-            this.btnCancelar.Click += btnCancelar_Click;
         }
-
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
@@ -61,7 +56,6 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("HOLA");
             if (guiaSeleccionada == null)
             {
                 MessageBox.Show("Debe buscar una guía válida antes de registrar la entrega.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
