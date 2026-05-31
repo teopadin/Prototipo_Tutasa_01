@@ -88,6 +88,7 @@
             btnBuscarCliente.TabIndex = 2;
             btnBuscarCliente.Text = "Buscar";
             btnBuscarCliente.UseVisualStyleBackColor = true;
+            btnBuscarCliente.Click += btnBuscarCliente_Click;
             // 
             // cboRazonSocial
             // 
@@ -241,7 +242,7 @@
             // colEstado
             // 
             colEstado.Text = "Estado";
-            colEstado.Width = 140;
+            colEstado.Width = 170;
             // 
             // lblCantidadServicios
             // 
@@ -290,6 +291,7 @@
             btnEmitirFactura.TabIndex = 8;
             btnEmitirFactura.Text = "Emitir Factura";
             btnEmitirFactura.UseVisualStyleBackColor = true;
+            btnEmitirFactura.Click += btnEmitirFactura_Click;
             // 
             // btnCancelar
             // 
@@ -300,6 +302,7 @@
             btnCancelar.TabIndex = 9;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // EstadoCuentaCorrienteXCliente
             // 
@@ -319,6 +322,7 @@
             Margin = new Padding(4, 4, 4, 4);
             Name = "EstadoCuentaCorrienteXCliente";
             Text = "Estado de Cuenta Corriente por Cliente";
+            Load += EstadoCuentaCorrienteXCliente_Load;
             grpCliente.ResumeLayout(false);
             grpCliente.PerformLayout();
             ResumeLayout(false);

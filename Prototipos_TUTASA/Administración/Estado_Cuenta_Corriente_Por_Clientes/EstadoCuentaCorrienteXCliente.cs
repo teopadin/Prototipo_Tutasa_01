@@ -10,9 +10,120 @@ namespace Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrient
 {
     public partial class EstadoCuentaCorrienteXCliente : Form
     {
+        private ModeloEstadoCuentaCorrienteXCliente modelo = new ModeloEstadoCuentaCorrienteXCliente();
+        private ClienteCuentaCorrienteEntidad clienteSeleccionado = null;
+
         public EstadoCuentaCorrienteXCliente()
         {
             InitializeComponent();
+        }
+
+        private void EstadoCuentaCorrienteXCliente_Load(object sender, EventArgs e)
+        {
+            CargarClientes();
+            LimpiarDatosCliente();
+        }
+
+        private void CargarClientes()
+        {
+            cboRazonSocial.Items.Clear();
+
+            foreach (ClienteCuentaCorrienteEntidad cliente in modelo.ObtenerClientes())
+            {
+                cboRazonSocial.Items.Add(cliente);
+            }
+
+            cboRazonSocial.DisplayMember = "RazonSocial";
+        }
+
+        private void btnBuscarCliente_Click(object sender, EventArgs e)
+        {
+            if (cboRazonSocial.SelectedItem == null)
+            {
+                MessageBox.Show("Debe seleccionar una razón social para continuar con la operación.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            clienteSeleccionado = (ClienteCuentaCorrienteEntidad)cboRazonSocial.SelectedItem;
+            MostrarDatosCliente(clienteSeleccionado);
+            CargarServiciosPendientes(clienteSeleccionado);
+        }
+
+        private void MostrarDatosCliente(ClienteCuentaCorrienteEntidad cliente)
+        {
+            txtCuit.Text = cliente.Cuit;
+            txtEstadoCuenta.Text = cliente.EstadoCuenta;
+            txtSaldoActual.Text = cliente.SaldoActual.ToString("C");
+            txtCondicionFacturacion.Text = cliente.CondicionFacturacion;
+        }
+
+        private void CargarServiciosPendientes(ClienteCuentaCorrienteEntidad cliente)
+        {
+            lvServiciosPendientes.Items.Clear();
+
+            List<ServicioPendienteFacturaEntidad> servicios = modelo.ObtenerServiciosPendientes(cliente);
+
+            foreach (ServicioPendienteFacturaEntidad servicio in servicios)
+            {
+                ListViewItem item = new ListViewItem(servicio.Fecha.ToShortDateString());
+                item.SubItems.Add(servicio.NroServicioGuia);
+                item.SubItems.Add(servicio.TipoServicio);
+                item.SubItems.Add(servicio.Origen);
+                item.SubItems.Add(servicio.Destino);
+                item.SubItems.Add(servicio.Importe.ToString("C"));
+                item.SubItems.Add("Pendiente de facturación");
+                item.Tag = servicio;
+
+                lvServiciosPendientes.Items.Add(item);
+            }
+
+            txtCantidadServicios.Text = servicios.Count.ToString();
+            txtTotalFacturar.Text = modelo.CalcularTotalAFacturar(cliente).ToString("C");
+        }
+
+        private void btnEmitirFactura_Click(object sender, EventArgs e)
+        {
+            if (clienteSeleccionado == null)
+            {
+                MessageBox.Show("Debe seleccionar una razón social para continuar con la operación.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (modelo.CalcularCantidadServicios(clienteSeleccionado) == 0)
+            {
+                MessageBox.Show("El cliente seleccionado no posee servicios pendientes de facturación.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!clienteSeleccionado.HabilitadoParaFacturar)
+            {
+                MessageBox.Show("El cliente seleccionado no se encuentra habilitado para facturación. No es posible emitir la factura correspondiente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            FacturaEntidad factura = modelo.EmitirFactura(clienteSeleccionado);
+
+            MessageBox.Show("Factura emitida con éxito", "Factura", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            MostrarDatosCliente(clienteSeleccionado);
+            CargarServiciosPendientes(clienteSeleccionado);
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void LimpiarDatosCliente()
+        {
+            clienteSeleccionado = null;
+            txtCuit.Text = "";
+            txtEstadoCuenta.Text = "";
+            txtSaldoActual.Text = "";
+            txtCondicionFacturacion.Text = "";
+            txtCantidadServicios.Text = "0";
+            txtTotalFacturar.Text = "0";
+            lvServiciosPendientes.Items.Clear();
         }
 
         private void label1_Click(object sender, EventArgs e)
