@@ -142,6 +142,9 @@ namespace Prototipos_TUTASA.Generación_Hoja_De_Ruta_De_Transporte
                 item.Tag = servicio;
                 lvServicios.Items.Add(item);
             }
+
+            if (lvServicios.Items.Count == 0 && totalBultos > 0)
+                MessageBox.Show("No hay servicios disponibles con capacidad suficiente para los bultos seleccionados. Modifique la selección de guías.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private void btnGenerarHDR_Click(object sender, EventArgs e)
