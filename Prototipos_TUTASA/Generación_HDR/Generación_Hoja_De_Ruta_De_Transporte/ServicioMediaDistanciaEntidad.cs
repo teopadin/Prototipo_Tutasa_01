@@ -1,0 +1,37 @@
+﻿using Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transporte;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transporte
+{
+    internal class ServicioMediaDistanciaEntidad
+    {
+        public int IdServicio { get; set; }
+        public EmpresaTransporteEntidad Empresa { get; set; }
+        public TipoArrendamiento TipoArrendamiento { get; set; }
+        public int CapacidadUsada { get; set; }
+        public CentroDistribucionEntidad CdOrigen { get; set; }
+        public CentroDistribucionEntidad CdDestino { get; set; }
+
+        public int CapacidadMaxima
+        {
+            get
+            {
+                switch (TipoArrendamiento)
+                {
+                    case TipoArrendamiento.A: return 160;
+                    case TipoArrendamiento.B: return 80;
+                    case TipoArrendamiento.C: return 56;
+                    case TipoArrendamiento.D: return 24;
+                    default: return 0;
+                }
+            }
+        }
+
+        public int CapacidadDisponible
+        {
+            get { return CapacidadMaxima - CapacidadUsada; }
+        }
+    }
+}

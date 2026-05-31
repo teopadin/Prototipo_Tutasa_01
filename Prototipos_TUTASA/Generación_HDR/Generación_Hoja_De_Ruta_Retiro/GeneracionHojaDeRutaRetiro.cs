@@ -1,4 +1,4 @@
-﻿using Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Distribucion;
+﻿using Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_Retiro;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,19 +7,17 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Prototipos_TUTASA.HojaDeRutaDeDistribucion
+namespace Prototipos_TUTASA.HojaDeRutaRetiro
 {
-    public partial class HojaDeRutaDeDistribucionDestinatario : Form
+    public partial class GeneracionHojaDeRutaRetiro : Form
     {
-        private ModeloGenerarHDRDistribucion modelo = new ModeloGenerarHDRDistribucion();
-        private bool actualizando = false;
-
-        public HojaDeRutaDeDistribucionDestinatario()
+        private ModeloGenerarHDRRetiro modelo = new ModeloGenerarHDRRetiro();
+        public GeneracionHojaDeRutaRetiro()
         {
             InitializeComponent();
         }
-
-        private void HojaDeRutaDeDistribucionDestinatario_Load(object sender, EventArgs e)
+        private bool actualizando = false;
+        private void GeneracionHojaDeRutaRetiro_Load(object sender, EventArgs e)
         {
             txtCdEmisor.Text = modelo.CdEmisor.Nombre;
             dtpFecha.Value = DateTime.Today;
@@ -29,32 +27,27 @@ namespace Prototipos_TUTASA.HojaDeRutaDeDistribucion
         private void CargarGuiasPendientes()
         {
             actualizando = true;
-            listViewGuiasADistribuir.Items.Clear();
+            lvGuiasPendientes.Items.Clear();
 
             foreach (var guia in modelo.Guias)
             {
-                bool esEnCDDestino = guia.Estado == EstadoGuia.EnCDDestino && guia.CdDestino.IdCD == modelo.CdEmisor.IdCD;
-                bool esAdmitidaLocal = guia.Estado == EstadoGuia.Admitida && guia.CdOrigen.IdCD == modelo.CdEmisor.IdCD && guia.CdDestino.IdCD == modelo.CdEmisor.IdCD;
-
-                if (!esEnCDDestino && !esAdmitidaLocal)
+                if (guia.Estado != EstadoGuia.Impuesta || guia.CdOrigen.IdCD != modelo.CdEmisor.IdCD)
                     continue;
 
-                string razonSocial, dni, calle, altura, piso, cp, ciudad;
+                string razonSocial, calle, altura, piso, cp, ciudad;
 
                 if (guia.ModalidadEntrega == ModalidadEntrega.PuertaAPuerta)
                 {
-                    razonSocial = $"{guia.Destinatario.Nombre} {guia.Destinatario.Apellido}";
-                    dni = guia.Destinatario.Dni.ToString();
-                    calle = guia.Destinatario.Calle;
-                    altura = guia.Destinatario.Altura.ToString();
-                    piso = guia.Destinatario.Piso;
-                    cp = guia.Destinatario.CodigoPostal;
-                    ciudad = guia.Destinatario.Ciudad;
+                    razonSocial = guia.Cliente.RazonSocial;
+                    calle = guia.Cliente.Calle;
+                    altura = guia.Cliente.Altura.ToString();
+                    piso = guia.Cliente.Piso;
+                    cp = guia.Cliente.CodigoPostal;
+                    ciudad = guia.Cliente.Ciudad;
                 }
                 else
                 {
                     razonSocial = guia.Agencia.RazonSocial;
-                    dni = "-";
                     calle = guia.Agencia.Calle;
                     altura = guia.Agencia.Altura.ToString();
                     piso = guia.Agencia.Piso;
@@ -63,25 +56,26 @@ namespace Prototipos_TUTASA.HojaDeRutaDeDistribucion
                 }
 
                 var item = new ListViewItem(guia.NroGuia);
-                item.SubItems.Add(guia.FechaImposicion.ToShortDateString());
-                item.SubItems.Add(guia.ModalidadEntrega.ToString());
+                item.SubItems.Add(guia.TipoImposicion.ToString());
                 item.SubItems.Add(razonSocial);
-                item.SubItems.Add(dni);
                 item.SubItems.Add(calle);
                 item.SubItems.Add(altura);
                 item.SubItems.Add(piso);
                 item.SubItems.Add(cp);
                 item.SubItems.Add(ciudad);
+                item.SubItems.Add(guia.TipoBulto.ToString());
+                item.SubItems.Add(guia.FechaImposicion.ToShortDateString());
                 item.Tag = guia;
 
-                listViewGuiasADistribuir.Items.Add(item);
+                lvGuiasPendientes.Items.Add(item);
             }
 
             actualizando = false;
         }
 
-        private void listViewGuiasADistribuir_ItemChecked(object sender, ItemCheckedEventArgs e)
+        private void lvGuiasPendientes_ItemChecked(object sender, ItemCheckedEventArgs e)
         {
+
             if (actualizando) return;
 
             if (e.Item.ForeColor == System.Drawing.Color.Gray && e.Item.Checked)
@@ -93,14 +87,13 @@ namespace Prototipos_TUTASA.HojaDeRutaDeDistribucion
             }
 
             ActualizarGuiasFiltradas();
-            ActualizarCantGuias();
             CargarFleteros();
         }
 
         private void ActualizarGuiasFiltradas()
         {
             List<GuiaEntidad> guiasSeleccionadas = new List<GuiaEntidad>();
-            foreach (ListViewItem item in listViewGuiasADistribuir.Items)
+            foreach (ListViewItem item in lvGuiasPendientes.Items)
             {
                 if (item.Checked)
                     guiasSeleccionadas.Add((GuiaEntidad)item.Tag);
@@ -109,7 +102,7 @@ namespace Prototipos_TUTASA.HojaDeRutaDeDistribucion
             if (guiasSeleccionadas.Count == 0)
             {
                 CargarGuiasPendientes();
-                listViewFleteros.Items.Clear();
+                lvFleteros.Items.Clear();
                 return;
             }
 
@@ -118,11 +111,11 @@ namespace Prototipos_TUTASA.HojaDeRutaDeDistribucion
 
             if (guiaReferencia.ModalidadEntrega == ModalidadEntrega.PuertaAPuerta)
             {
-                calleRef = guiaReferencia.Destinatario.Calle;
-                alturaRef = guiaReferencia.Destinatario.Altura.ToString();
-                pisoRef = guiaReferencia.Destinatario.Piso;
-                cpRef = guiaReferencia.Destinatario.CodigoPostal;
-                ciudadRef = guiaReferencia.Destinatario.Ciudad;
+                calleRef = guiaReferencia.Cliente.Calle;
+                alturaRef = guiaReferencia.Cliente.Altura.ToString();
+                pisoRef = guiaReferencia.Cliente.Piso;
+                cpRef = guiaReferencia.Cliente.CodigoPostal;
+                ciudadRef = guiaReferencia.Cliente.Ciudad;
             }
             else
             {
@@ -134,18 +127,18 @@ namespace Prototipos_TUTASA.HojaDeRutaDeDistribucion
             }
 
             actualizando = true;
-            foreach (ListViewItem item in listViewGuiasADistribuir.Items)
+            foreach (ListViewItem item in lvGuiasPendientes.Items)
             {
                 GuiaEntidad guia = (GuiaEntidad)item.Tag;
                 string calle, altura, piso, cp, ciudad;
 
                 if (guia.ModalidadEntrega == ModalidadEntrega.PuertaAPuerta)
                 {
-                    calle = guia.Destinatario.Calle;
-                    altura = guia.Destinatario.Altura.ToString();
-                    piso = guia.Destinatario.Piso;
-                    cp = guia.Destinatario.CodigoPostal;
-                    ciudad = guia.Destinatario.Ciudad;
+                    calle = guia.Cliente.Calle;
+                    altura = guia.Cliente.Altura.ToString();
+                    piso = guia.Cliente.Piso;
+                    cp = guia.Cliente.CodigoPostal;
+                    ciudad = guia.Cliente.Ciudad;
                 }
                 else
                 {
@@ -164,23 +157,13 @@ namespace Prototipos_TUTASA.HojaDeRutaDeDistribucion
             actualizando = false;
         }
 
-        private void ActualizarCantGuias()
-        {
-            int cant = 0;
-            foreach (ListViewItem item in listViewGuiasADistribuir.Items)
-            {
-                if (item.Checked)
-                    cant++;
-            }
-            txtCantGuias.Text = cant.ToString();
-        }
 
         private void CargarFleteros()
         {
-            listViewFleteros.Items.Clear();
+            lvFleteros.Items.Clear();
 
             bool hayGuiasSeleccionadas = false;
-            foreach (ListViewItem item in listViewGuiasADistribuir.Items)
+            foreach (ListViewItem item in lvGuiasPendientes.Items)
             {
                 if (item.Checked)
                 {
@@ -208,7 +191,7 @@ namespace Prototipos_TUTASA.HojaDeRutaDeDistribucion
                 item.SubItems.Add(transportista.Apellido);
                 item.SubItems.Add(transportista.HdrAsignadas.ToString());
                 item.Tag = transportista;
-                listViewFleteros.Items.Add(item);
+                lvFleteros.Items.Add(item);
             }
         }
 
@@ -216,7 +199,7 @@ namespace Prototipos_TUTASA.HojaDeRutaDeDistribucion
         {
             // Validar que haya al menos una guía seleccionada
             List<GuiaEntidad> guiasSeleccionadas = new List<GuiaEntidad>();
-            foreach (ListViewItem item in listViewGuiasADistribuir.Items)
+            foreach (ListViewItem item in lvGuiasPendientes.Items)
             {
                 if (item.Checked)
                     guiasSeleccionadas.Add((GuiaEntidad)item.Tag);
@@ -224,33 +207,33 @@ namespace Prototipos_TUTASA.HojaDeRutaDeDistribucion
 
             if (guiasSeleccionadas.Count == 0)
             {
-                MessageBox.Show("Debe seleccionar al menos una guía y un fletero para generar la Hoja de Ruta de Distribución.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Debe seleccionar al menos una guía y un fletero para generar la Hoja de Ruta de Retiro.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             // Validar que haya un fletero seleccionado
             TransportistaLocalEntidad transportistaSeleccionado = null;
-            if (listViewFleteros.SelectedItems.Count > 0)
-                transportistaSeleccionado = (TransportistaLocalEntidad)listViewFleteros.SelectedItems[0].Tag;
+            if (lvFleteros.SelectedItems.Count > 0)
+                transportistaSeleccionado = (TransportistaLocalEntidad)lvFleteros.SelectedItems[0].Tag;
 
             if (transportistaSeleccionado == null)
             {
-                MessageBox.Show("Debe seleccionar al menos una guía y un fletero para generar la Hoja de Ruta de Distribución.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Debe seleccionar al menos una guía y un fletero para generar la Hoja de Ruta de Retiro.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             // Crear la HDR
-            HojaDeRutaDistribucionEntidad nuevaHDR = new HojaDeRutaDistribucionEntidad();
+            HojaDeRutaRetiroEntidad nuevaHDR = new HojaDeRutaRetiroEntidad();
             nuevaHDR.NroHDR = modelo.HojasDeRuta.Count + 1;
             nuevaHDR.FechaEmision = dtpFecha.Value;
             nuevaHDR.CdEmisor = modelo.CdEmisor;
             nuevaHDR.Transportista = transportistaSeleccionado;
             nuevaHDR.Guias = guiasSeleccionadas;
-            nuevaHDR.Estado = EstadoHojaDeRutaDistribucion.Generada;
+            nuevaHDR.Estado = EstadoHojaDeRutaRetiro.Generada;
 
-            // Cambiar el estado de las guías a EnDistribucion
+            // Cambiar el estado de las guías a PendienteDeRetiroPorTransportista
             foreach (var guia in guiasSeleccionadas)
-                guia.Estado = EstadoGuia.EnDistribucion;
+                guia.Estado = EstadoGuia.PendienteDeRetiroPorTransportista;
 
             // Incrementar las HDR asignadas al transportista
             transportistaSeleccionado.HdrAsignadas++;
@@ -258,18 +241,16 @@ namespace Prototipos_TUTASA.HojaDeRutaDeDistribucion
             // Registrar la HDR
             modelo.HojasDeRuta.Add(nuevaHDR);
 
-            MessageBox.Show($"Hoja de Ruta de Distribución Nro {nuevaHDR.NroHDR} generada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show($"Hoja de Ruta de Retiro Nro {nuevaHDR.NroHDR} generada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             // Limpiar la pantalla para una nueva operación
-            listViewFleteros.Items.Clear();
+            lvFleteros.Items.Clear();
             CargarGuiasPendientes();
-            ActualizarCantGuias();
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
     }
-
 }

@@ -74,6 +74,8 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Distribu
 
                 // En distribución - NO debe aparecer (estado incorrecto)
                 new GuiaEntidad { NroGuia = "CD03-0002", FechaImposicion = new DateTime(2026, 5, 19), ModalidadEntrega = ModalidadEntrega.PuertaAPuerta, Estado = EstadoGuia.EnDistribucion, CdOrigen = cdNorte, CdDestino = cdCapital, Destinatario = dest1, Agencia = null },
+
+                new GuiaEntidad { NroGuia = "CD01-0002", FechaImposicion = new DateTime(2026, 5, 25), ModalidadEntrega = ModalidadEntrega.PuertaAPuerta, Estado = EstadoGuia.Admitida, CdOrigen = cdCapital, CdDestino = cdCapital, Destinatario = dest1, Agencia = null },
             };
 
             HojasDeRuta = new List<HojaDeRutaDistribucionEntidad>();

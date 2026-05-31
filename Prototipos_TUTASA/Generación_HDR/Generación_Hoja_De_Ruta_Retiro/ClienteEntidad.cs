@@ -1,0 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_Retiro
+{
+    internal class ClienteEntidad
+    {
+        
+            public string Cuit { get; set; }
+            public string RazonSocial { get; set; }
+            public string Calle { get; set; }
+            public int Altura { get; set; }
+            public string Piso { get; set; }
+            public string CodigoPostal { get; set; }
+            public string Ciudad { get; set; }
+        
+    }
+}
