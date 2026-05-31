@@ -8,7 +8,8 @@ namespace Prototipos_TUTASA
     public partial class EntregaEncomiendaCD : Form
     {
         private readonly ModeloEntregaEnCD modelo = new ModeloEntregaEnCD();
-        private GuiaEntregaCD guiaSeleccionada = null;
+        private GuiaEntregaCD guiaSeleccionada = new GuiaEntregaCD();
+        private bool hayGuiaSeleccionada = false;
 
         public EntregaEncomiendaCD()
         {
@@ -18,7 +19,7 @@ namespace Prototipos_TUTASA
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             lvGuia.Items.Clear();
-            guiaSeleccionada = null;
+            hayGuiaSeleccionada = false;
 
             string nroGuia = txtGuia.Text.Trim();
             if (string.IsNullOrWhiteSpace(nroGuia))
@@ -27,10 +28,21 @@ namespace Prototipos_TUTASA
                 return;
             }
 
-            GuiaEntregaCD guia = modelo.BuscarGuia(nroGuia);
-            if (guia == null)
+            if (!EsFormatoGuiaValido(nroGuia))
+            {
+                MessageBox.Show("El número de guía debe tener un formato válido, por ejemplo CD02-0002, AG01-0001 o A001-0001.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!modelo.BuscarGuia(nroGuia, out GuiaEntregaCD guia))
             {
                 MessageBox.Show("No se encontró una guía con el número ingresado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (guia.CdDestino == null || guia.Destinatario == null)
+            {
+                MessageBox.Show("La guía no tiene datos completos para registrar la entrega.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -47,6 +59,7 @@ namespace Prototipos_TUTASA
             }
 
             guiaSeleccionada = guia;
+            hayGuiaSeleccionada = true;
 
             var item = new ListViewItem(guia.Destinatario.Nombre);
             item.SubItems.Add(guia.Destinatario.Apellido);
@@ -57,7 +70,7 @@ namespace Prototipos_TUTASA
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
-            if (guiaSeleccionada == null)
+            if (!hayGuiaSeleccionada)
             {
                 MessageBox.Show("Debe buscar una guía válida antes de registrar la entrega.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -73,7 +86,7 @@ namespace Prototipos_TUTASA
                 return;
             }
 
-            if (!int.TryParse(dniTexto, out int dni))
+            if (!EsDniValido(dniTexto, out int dni))
             {
                 MessageBox.Show("El DNI ingresado no tiene un formato válido.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -93,7 +106,7 @@ namespace Prototipos_TUTASA
 
             ReciboEntregaCD recibo = modelo.RegistrarEntrega(guiaSeleccionada, nombre, apellido, dni);
 
-            MessageBox.Show($"Entrega registrada con éxito. Recibo N° {recibo.NroRecibo}.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show($"Guía N° {guiaSeleccionada.NroGuia} entregada correctamente. Recibo N° {recibo.NroRecibo}.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             LimpiarFormulario();
         }
 
@@ -115,7 +128,70 @@ namespace Prototipos_TUTASA
             txtDNI.Clear();
             chkDNI.Checked = false;
             lvGuia.Items.Clear();
-            guiaSeleccionada = null;
+            hayGuiaSeleccionada = false;
+        }
+
+        private static bool EsDniValido(string dniTexto, out int dni)
+        {
+            dni = 0;
+
+            if (dniTexto.Length < 7 || dniTexto.Length > 8)
+            {
+                return false;
+            }
+
+            foreach (char caracter in dniTexto)
+            {
+                if (!char.IsDigit(caracter))
+                {
+                    return false;
+                }
+            }
+
+            return int.TryParse(dniTexto, out dni) && dni > 0;
+        }
+
+        private static bool EsFormatoGuiaValido(string nroGuia)
+        {
+            if (nroGuia.Length != 9 || nroGuia[4] != '-')
+            {
+                return false;
+            }
+
+            int cantidadLetras = 0;
+            while (cantidadLetras < 4 && EsLetraAscii(nroGuia[cantidadLetras]))
+            {
+                cantidadLetras++;
+            }
+
+            if (cantidadLetras < 1 || cantidadLetras > 2)
+            {
+                return false;
+            }
+
+            for (int i = cantidadLetras; i < 4; i++)
+            {
+                if (!char.IsDigit(nroGuia[i]))
+                {
+                    return false;
+                }
+            }
+
+            for (int i = 5; i < nroGuia.Length; i++)
+            {
+                if (!char.IsDigit(nroGuia[i]))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        private static bool EsLetraAscii(char caracter)
+        {
+            return (caracter >= 'A' && caracter <= 'Z')
+                || (caracter >= 'a' && caracter <= 'z');
         }
     }
 
@@ -165,9 +241,19 @@ namespace Prototipos_TUTASA
             };
         }
 
-        public GuiaEntregaCD BuscarGuia(string nroGuia)
+        public bool BuscarGuia(string nroGuia, out GuiaEntregaCD guiaEncontrada)
         {
-            return guias.Find(g => string.Equals(g.NroGuia, nroGuia, StringComparison.OrdinalIgnoreCase));
+            foreach (GuiaEntregaCD guia in guias)
+            {
+                if (string.Equals(guia.NroGuia, nroGuia, StringComparison.OrdinalIgnoreCase))
+                {
+                    guiaEncontrada = guia;
+                    return true;
+                }
+            }
+
+            guiaEncontrada = new GuiaEntregaCD();
+            return false;
         }
 
         public bool CoincideDestinatario(GuiaEntregaCD guia, string nombre, string apellido, int dni)
@@ -187,17 +273,25 @@ namespace Prototipos_TUTASA
 
         public ReciboEntregaCD RegistrarEntrega(GuiaEntregaCD guia, string nombre, string apellido, int dni)
         {
+            DateTime fechaEntrega = DateTime.Now;
+
             var recibo = new ReciboEntregaCD
             {
                 NroRecibo = recibos.Count + 1,
                 NroGuia = guia.NroGuia,
-                FechaEntrega = DateTime.Now,
+                FechaEntrega = fechaEntrega,
                 NombreRetira = nombre,
                 ApellidoRetira = apellido,
                 DniRetira = dni
             };
 
             guia.Estado = EstadoGuiaEntregaCD.Entregada;
+            guia.FechaEntrega = fechaEntrega;
+            guia.Historial.Add(new HistorialEstadoGuiaEntregaCD
+            {
+                FechaCambio = fechaEntrega,
+                Estado = guia.Estado
+            });
             recibos.Add(recibo);
             return recibo;
         }
@@ -209,6 +303,8 @@ namespace Prototipos_TUTASA
         public EstadoGuiaEntregaCD Estado { get; set; }
         public CentroDistribucionEntregaCD CdDestino { get; set; } = null!;
         public DestinatarioEntregaCD Destinatario { get; set; } = null!;
+        public DateTime FechaEntrega { get; set; }
+        public List<HistorialEstadoGuiaEntregaCD> Historial { get; set; } = new List<HistorialEstadoGuiaEntregaCD>();
     }
 
     internal class CentroDistribucionEntregaCD
@@ -232,6 +328,12 @@ namespace Prototipos_TUTASA
         public string NombreRetira { get; set; } = string.Empty;
         public string ApellidoRetira { get; set; } = string.Empty;
         public int DniRetira { get; set; }
+    }
+
+    internal class HistorialEstadoGuiaEntregaCD
+    {
+        public DateTime FechaCambio { get; set; }
+        public EstadoGuiaEntregaCD Estado { get; set; }
     }
 
     internal enum EstadoGuiaEntregaCD
