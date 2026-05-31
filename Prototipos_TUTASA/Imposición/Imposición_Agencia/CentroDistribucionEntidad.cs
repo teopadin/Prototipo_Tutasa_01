@@ -6,5 +6,6 @@ namespace Prototipos_TUTASA.Imposición.Imposición_Agencia
 {
     internal class CentroDistribucionEntidad
     {
+        public string Nom { get; set; }
     }
 }

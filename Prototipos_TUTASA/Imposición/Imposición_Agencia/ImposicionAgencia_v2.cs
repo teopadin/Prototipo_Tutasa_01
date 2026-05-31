@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Prototipos_TUTASA.Imposición.Imposición_Agencia;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,6 +11,7 @@ namespace Prototipos_TUTASA.ImposiciónAgencia_v2
 {
     public partial class ImposicionAgencia_v2 : Form
     {
+        private ModeloImposicionAgencia modelo = new ModeloImposicionAgencia();
         public ImposicionAgencia_v2()
         {
             InitializeComponent();

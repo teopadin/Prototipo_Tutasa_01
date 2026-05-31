@@ -11,8 +11,8 @@ namespace Prototipos_TUTASA.Imposición.Imposición_Agencia
         public int Telefono { get; set; }
         public string Calle { get; set; }
         public int Altura { get; set; }
-        public int Piso { get; set; }
-        public int CodigoPostal { get; set; }
+        public string Piso { get; set; }
+        public string CodigoPostal { get; set; }
         public string Ciudad { get; set; }
     }
 }

@@ -786,10 +786,11 @@
             button1.UseVisualStyleBackColor = true;
             // 
             // ImposicionCallCenter_v2
-            // Set autoscale to a standard (100%) baseline so designer won't render at 200% on high-DPI machines.
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            // Increase client size so all controls fit in the designer
+            AutoScaleDimensions = new SizeF(12F, 30F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(2101, 1609);
+            ClientSize = new Size(2200, 1620);
+            Margin = new Padding(4, 4, 4, 4);
             Controls.Add(button1);
             Controls.Add(btnGenerarGuia);
             Controls.Add(groupBox7);
@@ -890,4 +891,5 @@
         private Button btnGenerarGuia;
         private Button button1;
     }
+
 }
