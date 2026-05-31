@@ -37,19 +37,19 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transpor
             Servicios = new List<ServicioMediaDistanciaEntidad>
             {
                 // Servicio A: Capital -> Norte, capacidad max 160S, ya usó 40S
-                new ServicioMediaDistanciaEntidad { IdServicio = 1, Empresa = empresa1, TipoArrendamiento = TipoArrendamiento.A, CapacidadUsada = 40, CdOrigen = cdCapital, CdDestino = cdNorte },
+                new ServicioMediaDistanciaEntidad { IdServicio = 1, Empresa = empresa1, TipoArrendamiento = TipoArrendamiento.A, CapacidadUsada = 40, CdOrigen = cdCapital, CdDestino = cdNorte, HorarioSalida = new TimeSpan(8, 0, 0) },
 
                 // Servicio B: Capital -> Centro, capacidad max 80S, ya usó 0S
-                new ServicioMediaDistanciaEntidad { IdServicio = 2, Empresa = empresa2, TipoArrendamiento = TipoArrendamiento.B, CapacidadUsada = 0, CdOrigen = cdCapital, CdDestino = cdCentro },
+                new ServicioMediaDistanciaEntidad { IdServicio = 2, Empresa = empresa2, TipoArrendamiento = TipoArrendamiento.B, CapacidadUsada = 0, CdOrigen = cdCapital, CdDestino = cdCentro, HorarioSalida = new TimeSpan(10, 30, 0) },
 
                 // Servicio C: Capital -> Norte, capacidad max 56S, ya usó 50S (casi lleno)
-                new ServicioMediaDistanciaEntidad { IdServicio = 3, Empresa = empresa1, TipoArrendamiento = TipoArrendamiento.C, CapacidadUsada = 50, CdOrigen = cdCapital, CdDestino = cdNorte },
+                new ServicioMediaDistanciaEntidad { IdServicio = 3, Empresa = empresa1, TipoArrendamiento = TipoArrendamiento.C, CapacidadUsada = 50, CdOrigen = cdCapital, CdDestino = cdNorte, HorarioSalida = new TimeSpan(14, 0, 0) },
 
                 // Servicio D: Capital -> Este, capacidad max 24S, ya usó 0S
-                new ServicioMediaDistanciaEntidad { IdServicio = 4, Empresa = empresa2, TipoArrendamiento = TipoArrendamiento.D, CapacidadUsada = 0, CdOrigen = cdCapital, CdDestino = cdEste },
+                new ServicioMediaDistanciaEntidad { IdServicio = 4, Empresa = empresa2, TipoArrendamiento = TipoArrendamiento.D, CapacidadUsada = 0, CdOrigen = cdCapital, CdDestino = cdEste, HorarioSalida = new TimeSpan(16, 0, 0) },
 
                 // Servicio de otro CD - NO debe aparecer
-                new ServicioMediaDistanciaEntidad { IdServicio = 5, Empresa = empresa1, TipoArrendamiento = TipoArrendamiento.A, CapacidadUsada = 0, CdOrigen = cdCentro, CdDestino = cdNorte },
+                new ServicioMediaDistanciaEntidad { IdServicio = 5, Empresa = empresa1, TipoArrendamiento = TipoArrendamiento.A, CapacidadUsada = 0, CdOrigen = cdCentro, CdDestino = cdNorte, HorarioSalida = new TimeSpan(9, 0, 0) },
             };
 
             // Guías en estado Admitida, origen Capital

@@ -13,6 +13,8 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transpor
         public int CapacidadUsada { get; set; }
         public CentroDistribucionEntidad CdOrigen { get; set; }
         public CentroDistribucionEntidad CdDestino { get; set; }
+        public TimeSpan HorarioSalida { get; set; }
+
 
         public int CapacidadMaxima
         {

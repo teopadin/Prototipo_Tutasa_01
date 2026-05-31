@@ -113,7 +113,7 @@
             // columnHeader1
             // 
             columnHeader1.Text = "ID Servicio";
-            columnHeader1.Width = 200;
+            columnHeader1.Width = 100;
             // 
             // columnHeader2
             // 
@@ -123,17 +123,17 @@
             // columnHeader5
             // 
             columnHeader5.Text = "Tipo de Servicio";
-            columnHeader5.Width = 200;
+            columnHeader5.Width = 100;
             // 
             // columnHeader3
             // 
             columnHeader3.Text = "Capacidad disp. (en tamano S)";
-            columnHeader3.Width = 400;
+            columnHeader3.Width = 180;
             // 
             // columnHeader4
             // 
             columnHeader4.Text = "Horario salida";
-            columnHeader4.Width = 300;
+            columnHeader4.Width = 100;
             // 
             // lblBultos
             // 
