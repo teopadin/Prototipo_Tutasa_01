@@ -28,14 +28,14 @@ namespace Prototipos_TUTASA
             //Application.Run(new Despacho_Servicios_Media_Distancia.Despacho_Servicios_Media_Distancia();
             //Recepcion media distancia
             //Application.Run(new HojaDeRutaDeDistribucionDestinatario());
-            Application.Run(new Generacion_Resumen_HDR_Distribucion());
+            //Application.Run(new Generacion_Resumen_HDR_Distribucion());
             //Recepcion HDR distribucion en agencia
             //Rendicion HDR de distribucion
             //Application.Run(new EntregaEncomiendaCD());
             //Application.Run(new Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia.EntregaAgencia());
             //Application.Run(new ConsultarEstadoDelPedido_v2.ConsultarEstadoDelPedido());
-            //Admin costos vs ventas
-            //Admin Estado cuenta corriente
+            //Application.Run(new resultadocostosvsventas());
+            Application.Run(new Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrienteXCliente_v2.EstadoCuentaCorrienteXCliente()); ; 
         }
     }
 }
