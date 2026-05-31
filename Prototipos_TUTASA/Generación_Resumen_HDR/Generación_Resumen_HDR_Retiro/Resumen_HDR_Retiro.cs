@@ -52,6 +52,7 @@ namespace Prototipos_TUTASA
             textBox5.Text = resumen.TotalBultos.ToString();
 
             MessageBox.Show($"Resumen de HDR de Retiro Nro {resumen.NroResumen} generado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            CargarHojasAsignadas();
         }
 
         private void button2_Click(object sender, EventArgs e)

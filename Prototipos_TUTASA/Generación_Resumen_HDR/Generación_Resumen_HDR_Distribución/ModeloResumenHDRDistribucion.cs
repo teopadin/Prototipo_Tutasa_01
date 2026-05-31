@@ -112,6 +112,11 @@ namespace Prototipos_TUTASA
                 TotalBultos = CalcularTotalBultos(hojas)
             };
 
+            foreach (HojaDeRutaDistribucionEntidad hoja in hojas)
+            {
+                hoja.Estado = EstadoHojaDeRutaDistribucion.EnCurso;
+            }
+
             resumenes.Add(resumen);
             return resumen;
         }

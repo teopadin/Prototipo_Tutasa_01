@@ -6,6 +6,7 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Distribu
 {
     internal enum EstadoHojaDeRutaDistribucion
     {
-        Generada
+        Generada,
+        EnCurso
     }
 }

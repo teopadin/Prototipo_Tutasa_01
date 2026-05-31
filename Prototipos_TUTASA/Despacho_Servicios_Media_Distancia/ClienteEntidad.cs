@@ -4,11 +4,9 @@ using System.Text;
 
 namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
 {
-    internal enum EstadoHDRTransporte
+    internal class ClienteEntidad
     {
-        Generada,
-        EnCurso,
-        Despachada,
-        Recibida
+        public int IdCliente { get; set; }
+        public string RazonSocial { get; set; }
     }
 }

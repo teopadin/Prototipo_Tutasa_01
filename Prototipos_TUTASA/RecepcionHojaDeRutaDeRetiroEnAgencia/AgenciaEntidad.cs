@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Prototipos_TUTASA.Imposición.ImposicionCallCenter_v2
+namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia
 {
-    internal class ClienteEntidad
+    internal class AgenciaEntidad
     {
+        public int IdAgencia { get; set; }
         public string RazonSocial { get; set; }
-        public string CUIT { get; set; }
-        public int Telefono { get; set; }
         public string Calle { get; set; }
         public int Altura { get; set; }
         public string Piso { get; set; }
         public string CodigoPostal { get; set; }
         public string Ciudad { get; set; }
+        public CentroDeDistribucionEntidad IdCD { get; set; }
     }
 }
