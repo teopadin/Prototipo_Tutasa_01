@@ -55,6 +55,7 @@
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(334, 31);
             dateTimePicker1.TabIndex = 29;
+            dateTimePicker1.ValueChanged += dateTimePicker1_ValueChanged;
             // 
             // comboBox1
             // 
@@ -63,6 +64,7 @@
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(326, 33);
             comboBox1.TabIndex = 28;
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // button2
             // 
@@ -73,6 +75,7 @@
             button2.TabIndex = 27;
             button2.Text = "Cancelar";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // button1
             // 
@@ -83,6 +86,7 @@
             button1.TabIndex = 26;
             button1.Text = "Generar Resumen";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // textBox5
             // 
@@ -223,6 +227,7 @@
             Controls.Add(label1);
             Name = "Generacion_Reumen_HDR_Distribucion";
             Text = "Generacion_HDR_Distribucion";
+            Load += Generacion_Reumen_HDR_Distribucion_Load;
             ResumeLayout(false);
             PerformLayout();
         }
