@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Distribucion
 {
-    internal enum MotivoNoCumplida
+    internal enum MotivoNoCumplidaDistribucion
     {
         DestinatarioAusente,
         DireccionIncorrecta,

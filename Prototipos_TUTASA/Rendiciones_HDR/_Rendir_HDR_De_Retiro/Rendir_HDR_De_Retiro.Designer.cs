@@ -117,7 +117,7 @@
             // 
             // RegistratBtn
             // 
-            RegistratBtn.Location = new Point(186, 681);
+            RegistratBtn.Location = new Point(203, 772);
             RegistratBtn.Margin = new Padding(4, 5, 4, 5);
             RegistratBtn.Name = "RegistratBtn";
             RegistratBtn.Size = new Size(170, 73);
@@ -128,7 +128,7 @@
             // 
             // CancelarBtn
             // 
-            CancelarBtn.Location = new Point(386, 681);
+            CancelarBtn.Location = new Point(381, 772);
             CancelarBtn.Margin = new Padding(4, 5, 4, 5);
             CancelarBtn.Name = "CancelarBtn";
             CancelarBtn.Size = new Size(170, 73);
@@ -182,7 +182,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(13, 596);
+            label5.Location = new Point(16, 682);
             label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
             label5.Size = new Size(168, 25);
@@ -192,7 +192,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(282, 596);
+            label2.Location = new Point(285, 682);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
             label2.Size = new Size(180, 25);
@@ -201,7 +201,7 @@
             // 
             // TotalRendidasTxtb
             // 
-            TotalRendidasTxtb.Location = new Point(13, 626);
+            TotalRendidasTxtb.Location = new Point(16, 712);
             TotalRendidasTxtb.Margin = new Padding(4, 5, 4, 5);
             TotalRendidasTxtb.Name = "TotalRendidasTxtb";
             TotalRendidasTxtb.ReadOnly = true;
@@ -210,7 +210,7 @@
             // 
             // TotalCumplidasTxtb
             // 
-            TotalCumplidasTxtb.Location = new Point(282, 626);
+            TotalCumplidasTxtb.Location = new Point(285, 712);
             TotalCumplidasTxtb.Margin = new Padding(4, 5, 4, 5);
             TotalCumplidasTxtb.Name = "TotalCumplidasTxtb";
             TotalCumplidasTxtb.ReadOnly = true;
@@ -220,7 +220,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(545, 596);
+            label6.Location = new Point(548, 682);
             label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
             label6.Size = new Size(203, 25);
@@ -229,7 +229,7 @@
             // 
             // TotalNoCumplidasTxtb
             // 
-            TotalNoCumplidasTxtb.Location = new Point(545, 626);
+            TotalNoCumplidasTxtb.Location = new Point(548, 712);
             TotalNoCumplidasTxtb.Margin = new Padding(4, 5, 4, 5);
             TotalNoCumplidasTxtb.Name = "TotalNoCumplidasTxtb";
             TotalNoCumplidasTxtb.ReadOnly = true;
@@ -245,16 +245,16 @@
             groupBox1.Controls.Add(CumplidaRdb);
             groupBox1.Location = new Point(16, 400);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(459, 184);
+            groupBox1.Size = new Size(799, 256);
             groupBox1.TabIndex = 30;
             groupBox1.TabStop = false;
             groupBox1.Text = "Estado de la HDR seleccionada (\"\")";
             // 
             // AplicarBtn
             // 
-            AplicarBtn.Location = new Point(315, 145);
+            AplicarBtn.Location = new Point(646, 190);
             AplicarBtn.Name = "AplicarBtn";
-            AplicarBtn.Size = new Size(138, 33);
+            AplicarBtn.Size = new Size(147, 60);
             AplicarBtn.TabIndex = 32;
             AplicarBtn.Text = "Aplicar";
             AplicarBtn.UseVisualStyleBackColor = true;
@@ -263,7 +263,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(43, 105);
+            label7.Location = new Point(227, 80);
             label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
             label7.Size = new Size(239, 25);
@@ -273,7 +273,7 @@
             // MotivoCmb
             // 
             MotivoCmb.FormattingEnabled = true;
-            MotivoCmb.Location = new Point(43, 145);
+            MotivoCmb.Location = new Point(227, 108);
             MotivoCmb.Name = "MotivoCmb";
             MotivoCmb.Size = new Size(261, 33);
             MotivoCmb.TabIndex = 2;
@@ -281,7 +281,7 @@
             // NoCumplidaRdb
             // 
             NoCumplidaRdb.AutoSize = true;
-            NoCumplidaRdb.Location = new Point(256, 47);
+            NoCumplidaRdb.Location = new Point(227, 48);
             NoCumplidaRdb.Name = "NoCumplidaRdb";
             NoCumplidaRdb.Size = new Size(139, 29);
             NoCumplidaRdb.TabIndex = 1;
@@ -306,7 +306,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(848, 780);
+            ClientSize = new Size(848, 859);
             Controls.Add(groupBox1);
             Controls.Add(TotalNoCumplidasTxtb);
             Controls.Add(label6);

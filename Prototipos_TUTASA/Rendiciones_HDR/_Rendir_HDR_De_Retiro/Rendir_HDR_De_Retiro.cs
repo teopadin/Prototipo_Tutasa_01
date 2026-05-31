@@ -5,15 +5,15 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Distribucion;
 using Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Retiro;
+
 
 namespace Prototipos_TUTASA.Rendiciones_HDR
 {
     public partial class Rendir_HDR_De_Retiro : Form
     {
-        private readonly Rendir_HDR_De_Retiro_Modelo modelo = new Rendir_HDR_De_Retiro_Modelo();
-        private HDRRetiro hdrSeleccionada = null;
+        private readonly ModeloRendirHDRDeRetiro modelo = new ModeloRendirHDRDeRetiro();
+        private HDRRetiroEntidad hdrSeleccionada = null;
 
         public Rendir_HDR_De_Retiro()
         {
@@ -22,14 +22,17 @@ namespace Prototipos_TUTASA.Rendiciones_HDR
 
         private void Rendir_HDR_De_Retiro_Load(object sender, EventArgs e)
         {
+            // Fecha actual
             FechaDtp.Value = DateTime.Today;
             FechaDtp.MaxDate = DateTime.Today;
 
+            // Cargar fleteros y motivos
             FleteroCmb.Items.Clear();
             foreach (var f in modelo.ObtenerFleteros())
             {
                 FleteroCmb.Items.Add(f);
             }
+            FleteroCmb.DisplayMember = "Nombre"; // Asumiendo que TransportistaLocalEntidad tiene una propiedad Nombre para mostrar
 
             MotivoCmb.Items.Clear();
             foreach (var m in modelo.ObtenerMotivos())
@@ -53,7 +56,7 @@ namespace Prototipos_TUTASA.Rendiciones_HDR
 
             if (FleteroCmb.SelectedItem == null) return;
 
-            var fletero = (Fletero)FleteroCmb.SelectedItem;
+            var fletero = (TransportistaLocalEntidad)FleteroCmb.SelectedItem;
             var hdrs = modelo.ObtenerHDRsPorFletero(fletero.Id);
 
             if (hdrs.Count == 0)
@@ -86,13 +89,14 @@ namespace Prototipos_TUTASA.Rendiciones_HDR
                 return;
             }
 
-            hdrSeleccionada = (HDRRetiro)HDRRendidaLst.SelectedItems[0].Tag;
+            hdrSeleccionada = (HDRRetiroEntidad)HDRRendidaLst.SelectedItems[0].Tag;
             groupBox1.Text = "Estado de la HDR seleccionada (" + hdrSeleccionada.NroHDR + ")";
 
             CumplidaRdb.Enabled = true;
             NoCumplidaRdb.Enabled = true;
             AplicarBtn.Enabled = true;
 
+            // Reflejar estado actual de la HDR en los radios
             CumplidaRdb.Checked = hdrSeleccionada.Estado == EstadoHDR.Cumplida;
             NoCumplidaRdb.Checked = hdrSeleccionada.Estado == EstadoHDR.NoCumplida;
 
@@ -123,6 +127,7 @@ namespace Prototipos_TUTASA.Rendiciones_HDR
 
         private void AplicarBtn_Click(object sender, EventArgs e)
         {
+            // Validaciones
             if (hdrSeleccionada == null)
             {
                 MessageBox.Show("Debe seleccionar una HDR de la lista.");
@@ -163,10 +168,11 @@ namespace Prototipos_TUTASA.Rendiciones_HDR
                 return;
             }
 
-            var lista = new List<HDRRetiro>();
+            // Armar lista de HDR a registrar
+            var lista = new List<HDRRetiroEntidad>();
             foreach (ListViewItem item in HDRRendidaLst.Items)
             {
-                lista.Add((HDRRetiro)item.Tag);
+                lista.Add((HDRRetiroEntidad)item.Tag);
             }
 
             if (!modelo.RegistrarRendicion(lista))
@@ -181,13 +187,14 @@ namespace Prototipos_TUTASA.Rendiciones_HDR
             this.Close();
         }
 
+        // AUXILIARES
         private void ActualizarTotales()
         {
             int rendidas = 0, cumplidas = 0, noCumplidas = 0;
 
             foreach (ListViewItem item in HDRRendidaLst.Items)
             {
-                var hdr = (HDRRetiro)item.Tag;
+                var hdr = (HDRRetiroEntidad)item.Tag;
                 if (hdr.Estado == EstadoHDR.Cumplida) { rendidas++; cumplidas++; }
                 else if (hdr.Estado == EstadoHDR.NoCumplida) { rendidas++; noCumplidas++; }
             }
@@ -208,7 +215,5 @@ namespace Prototipos_TUTASA.Rendiciones_HDR
             MotivoCmb.Enabled = false;
             AplicarBtn.Enabled = false;
         }
-
-        private void label5_Click(object sender, EventArgs e) { }
     }
 }

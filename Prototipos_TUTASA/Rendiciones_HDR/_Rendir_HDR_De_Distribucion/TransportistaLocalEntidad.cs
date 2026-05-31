@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Distribucion
 {
-    internal class Fletero
+    internal class TransportistaLocalEntidad
     {
         public int Id { get; set; }
         public string Nombre { get; set; }

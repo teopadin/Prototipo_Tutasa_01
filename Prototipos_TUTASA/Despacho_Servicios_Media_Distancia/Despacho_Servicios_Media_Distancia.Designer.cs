@@ -29,27 +29,27 @@
         private void InitializeComponent()
         {
             lblTitulo = new Label();
-            comboBox1 = new ComboBox();
+            ServicioCmb = new ComboBox();
             label1 = new Label();
             label3 = new Label();
-            dateTimePicker1 = new DateTimePicker();
-            button1 = new Button();
-            button2 = new Button();
-            listView1 = new ListView();
-            HojRut = new ColumnHeader();
+            FechaDtp = new DateTimePicker();
+            ConfirmarBtn = new Button();
+            CancelarBtn = new Button();
+            DespachoLst = new ListView();
+            NroGuia = new ColumnHeader();
             Remitente = new ColumnHeader();
-            CHcalle = new ColumnHeader();
-            Altura = new ColumnHeader();
+            Destinatario = new ColumnHeader();
+            TipoBulto = new ColumnHeader();
             label4 = new Label();
-            textBox1 = new TextBox();
+            BultoTxtb = new TextBox();
             label2 = new Label();
-            textBox2 = new TextBox();
+            TotalBultoTxtb = new TextBox();
             label5 = new Label();
             label6 = new Label();
             label7 = new Label();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
-            textBox5 = new TextBox();
+            CdDestinoTxtb = new TextBox();
+            EmpresaTxtb = new TextBox();
+            IdServicioTxtb = new TextBox();
             label8 = new Label();
             SuspendLayout();
             // 
@@ -63,22 +63,23 @@
             lblTitulo.TabIndex = 2;
             lblTitulo.Text = "Despacho de Servicios de Media Distancia";
             // 
-            // comboBox1
+            // ServicioCmb
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(233, 136);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(194, 33);
-            comboBox1.TabIndex = 3;
+            ServicioCmb.FormattingEnabled = true;
+            ServicioCmb.Location = new Point(233, 136);
+            ServicioCmb.Name = "ServicioCmb";
+            ServicioCmb.Size = new Size(342, 33);
+            ServicioCmb.TabIndex = 3;
+            ServicioCmb.StyleChanged += ServicioCmb_SelectedIndexChanged;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Location = new Point(30, 139);
             label1.Name = "label1";
-            label1.Size = new Size(197, 25);
+            label1.Size = new Size(108, 25);
             label1.TabIndex = 4;
-            label1.Text = "Nro HDR de Transporte";
+            label1.Text = "Nro Servicio";
             // 
             // label3
             // 
@@ -90,63 +91,65 @@
             label3.TabIndex = 19;
             label3.Text = "Fecha de Despacho";
             // 
-            // dateTimePicker1
+            // FechaDtp
             // 
-            dateTimePicker1.Location = new Point(203, 82);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(334, 31);
-            dateTimePicker1.TabIndex = 30;
+            FechaDtp.Location = new Point(233, 82);
+            FechaDtp.Name = "FechaDtp";
+            FechaDtp.Size = new Size(342, 31);
+            FechaDtp.TabIndex = 30;
             // 
-            // button1
+            // ConfirmarBtn
             // 
-            button1.Location = new Point(157, 650);
-            button1.Margin = new Padding(4, 5, 4, 5);
-            button1.Name = "button1";
-            button1.Size = new Size(170, 73);
-            button1.TabIndex = 31;
-            button1.Text = "Confirmar despacho";
-            button1.UseVisualStyleBackColor = true;
+            ConfirmarBtn.Location = new Point(157, 650);
+            ConfirmarBtn.Margin = new Padding(4, 5, 4, 5);
+            ConfirmarBtn.Name = "ConfirmarBtn";
+            ConfirmarBtn.Size = new Size(170, 73);
+            ConfirmarBtn.TabIndex = 31;
+            ConfirmarBtn.Text = "Confirmar despacho";
+            ConfirmarBtn.UseVisualStyleBackColor = true;
+            ConfirmarBtn.Click += ConfirmarBtn_Click;
             // 
-            // button2
+            // CancelarBtn
             // 
-            button2.Location = new Point(405, 650);
-            button2.Margin = new Padding(4, 5, 4, 5);
-            button2.Name = "button2";
-            button2.Size = new Size(170, 73);
-            button2.TabIndex = 32;
-            button2.Text = "Cancelar";
-            button2.UseVisualStyleBackColor = true;
+            CancelarBtn.Location = new Point(405, 650);
+            CancelarBtn.Margin = new Padding(4, 5, 4, 5);
+            CancelarBtn.Name = "CancelarBtn";
+            CancelarBtn.Size = new Size(170, 73);
+            CancelarBtn.TabIndex = 32;
+            CancelarBtn.Text = "Cancelar";
+            CancelarBtn.UseVisualStyleBackColor = true;
+            CancelarBtn.Click += CancelarBtn_Click;
             // 
-            // listView1
+            // DespachoLst
             // 
-            listView1.Columns.AddRange(new ColumnHeader[] { HojRut, Remitente, CHcalle, Altura });
-            listView1.Location = new Point(30, 343);
-            listView1.Margin = new Padding(4, 5, 4, 5);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(713, 181);
-            listView1.TabIndex = 33;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.Details;
+            DespachoLst.Columns.AddRange(new ColumnHeader[] { NroGuia, Remitente, Destinatario, TipoBulto });
+            DespachoLst.Location = new Point(30, 343);
+            DespachoLst.Margin = new Padding(4, 5, 4, 5);
+            DespachoLst.Name = "DespachoLst";
+            DespachoLst.Size = new Size(748, 181);
+            DespachoLst.TabIndex = 33;
+            DespachoLst.UseCompatibleStateImageBehavior = false;
+            DespachoLst.View = View.Details;
             // 
-            // HojRut
+            // NroGuia
             // 
-            HojRut.Text = "Nro Guía";
-            HojRut.Width = 150;
+            NroGuia.Text = "Nro Guía";
+            NroGuia.Width = 150;
             // 
             // Remitente
             // 
             Remitente.Text = "Remitente";
-            Remitente.Width = 120;
+            Remitente.Width = 150;
             // 
-            // CHcalle
+            // Destinatario
             // 
-            CHcalle.Text = "Destinatario";
-            CHcalle.Width = 200;
+            Destinatario.Text = "Destinatario";
+            Destinatario.Width = 200;
             // 
-            // Altura
+            // TipoBulto
             // 
-            Altura.Text = "Tipo de bulto";
-            Altura.Width = 500;
+            TipoBulto.Text = "Tipo de bulto";
+            TipoBulto.Width = 500;
             // 
             // label4
             // 
@@ -158,13 +161,14 @@
             label4.TabIndex = 34;
             label4.Text = "Bultos (equiv. en S)";
             // 
-            // textBox1
+            // BultoTxtb
             // 
-            textBox1.Location = new Point(221, 546);
-            textBox1.Margin = new Padding(2);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(113, 31);
-            textBox1.TabIndex = 35;
+            BultoTxtb.Location = new Point(221, 546);
+            BultoTxtb.Margin = new Padding(2);
+            BultoTxtb.Name = "BultoTxtb";
+            BultoTxtb.ReadOnly = true;
+            BultoTxtb.Size = new Size(113, 31);
+            BultoTxtb.TabIndex = 35;
             // 
             // label2
             // 
@@ -176,13 +180,14 @@
             label2.TabIndex = 36;
             label2.Text = "Total de Bultos";
             // 
-            // textBox2
+            // TotalBultoTxtb
             // 
-            textBox2.Location = new Point(523, 549);
-            textBox2.Margin = new Padding(2);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(113, 31);
-            textBox2.TabIndex = 37;
+            TotalBultoTxtb.Location = new Point(523, 549);
+            TotalBultoTxtb.Margin = new Padding(2);
+            TotalBultoTxtb.Name = "TotalBultoTxtb";
+            TotalBultoTxtb.ReadOnly = true;
+            TotalBultoTxtb.Size = new Size(113, 31);
+            TotalBultoTxtb.TabIndex = 37;
             // 
             // label5
             // 
@@ -211,29 +216,29 @@
             label7.TabIndex = 40;
             label7.Text = "ID Servicio";
             // 
-            // textBox3
+            // CdDestinoTxtb
             // 
-            textBox3.Location = new Point(221, 197);
-            textBox3.Name = "textBox3";
-            textBox3.ReadOnly = true;
-            textBox3.Size = new Size(150, 31);
-            textBox3.TabIndex = 41;
+            CdDestinoTxtb.Location = new Point(233, 191);
+            CdDestinoTxtb.Name = "CdDestinoTxtb";
+            CdDestinoTxtb.ReadOnly = true;
+            CdDestinoTxtb.Size = new Size(342, 31);
+            CdDestinoTxtb.TabIndex = 41;
             // 
-            // textBox4
+            // EmpresaTxtb
             // 
-            textBox4.Location = new Point(221, 239);
-            textBox4.Name = "textBox4";
-            textBox4.ReadOnly = true;
-            textBox4.Size = new Size(150, 31);
-            textBox4.TabIndex = 42;
+            EmpresaTxtb.Location = new Point(233, 239);
+            EmpresaTxtb.Name = "EmpresaTxtb";
+            EmpresaTxtb.ReadOnly = true;
+            EmpresaTxtb.Size = new Size(342, 31);
+            EmpresaTxtb.TabIndex = 42;
             // 
-            // textBox5
+            // IdServicioTxtb
             // 
-            textBox5.Location = new Point(221, 287);
-            textBox5.Name = "textBox5";
-            textBox5.ReadOnly = true;
-            textBox5.Size = new Size(150, 31);
-            textBox5.TabIndex = 43;
+            IdServicioTxtb.Location = new Point(233, 287);
+            IdServicioTxtb.Name = "IdServicioTxtb";
+            IdServicioTxtb.ReadOnly = true;
+            IdServicioTxtb.Size = new Size(342, 31);
+            IdServicioTxtb.TabIndex = 43;
             // 
             // label8
             // 
@@ -248,28 +253,29 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(756, 754);
+            ClientSize = new Size(796, 754);
             Controls.Add(label8);
-            Controls.Add(textBox5);
-            Controls.Add(textBox4);
-            Controls.Add(textBox3);
+            Controls.Add(IdServicioTxtb);
+            Controls.Add(EmpresaTxtb);
+            Controls.Add(CdDestinoTxtb);
             Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label5);
-            Controls.Add(textBox2);
+            Controls.Add(TotalBultoTxtb);
             Controls.Add(label2);
-            Controls.Add(textBox1);
+            Controls.Add(BultoTxtb);
             Controls.Add(label4);
-            Controls.Add(listView1);
-            Controls.Add(button2);
-            Controls.Add(button1);
-            Controls.Add(dateTimePicker1);
+            Controls.Add(DespachoLst);
+            Controls.Add(CancelarBtn);
+            Controls.Add(ConfirmarBtn);
+            Controls.Add(FechaDtp);
             Controls.Add(label3);
             Controls.Add(label1);
-            Controls.Add(comboBox1);
+            Controls.Add(ServicioCmb);
             Controls.Add(lblTitulo);
             Name = "Despacho_Servicios_Media_Distancia";
             Text = "Despacho_Servicios_Media_Distancia";
+            Load += Despacho_Servicios_Media_Distancia_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -277,27 +283,27 @@
         #endregion
 
         private Label lblTitulo;
-        private ComboBox comboBox1;
+        private ComboBox ServicioCmb;
         private Label label1;
         private Label label3;
-        private DateTimePicker dateTimePicker1;
-        private Button button1;
-        private Button button2;
-        private ListView listView1;
-        private ColumnHeader HojRut;
+        private DateTimePicker FechaDtp;
+        private Button ConfirmarBtn;
+        private Button CancelarBtn;
+        private ListView DespachoLst;
+        private ColumnHeader NroGuia;
         private ColumnHeader Remitente;
-        private ColumnHeader CHcalle;
-        private ColumnHeader Altura;
+        private ColumnHeader Destinatario;
+        private ColumnHeader TipoBulto;
         private Label label4;
-        private TextBox textBox1;
+        private TextBox BultoTxtb;
         private Label label2;
-        private TextBox textBox2;
+        private TextBox TotalBultoTxtb;
         private Label label5;
         private Label label6;
         private Label label7;
-        private TextBox textBox3;
-        private TextBox textBox4;
-        private TextBox textBox5;
+        private TextBox CdDestinoTxtb;
+        private TextBox EmpresaTxtb;
+        private TextBox IdServicioTxtb;
         private Label label8;
     }
 }

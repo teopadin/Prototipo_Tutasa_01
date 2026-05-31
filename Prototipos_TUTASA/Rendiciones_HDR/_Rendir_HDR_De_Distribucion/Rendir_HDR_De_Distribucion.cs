@@ -13,8 +13,8 @@ namespace Prototipos_TUTASA.Rendiciones_HDR
     public partial class Rendir_HDR_De_Distribucion : Form
     {
 
-        private readonly Rendir_HDR_De_Distribucion_Modelo modelo = new Rendir_HDR_De_Distribucion_Modelo();
-        private HDRDistribucion hdrSeleccionada = null;
+        private readonly ModeloRendirHDRDeDistribucion modelo = new ModeloRendirHDRDeDistribucion();
+        private HDRDistribucionEntidad hdrSeleccionada = null;
 
         public Rendir_HDR_De_Distribucion()
         {
@@ -60,7 +60,7 @@ namespace Prototipos_TUTASA.Rendiciones_HDR
 
             if (FleteroCMB.SelectedItem == null) return;
 
-            var fletero = (Fletero)FleteroCMB.SelectedItem;
+            var fletero = (TransportistaLocalEntidad)FleteroCMB.SelectedItem;
             var hdrs = modelo.ObtenerHDRsPorFletero(fletero.Id);
 
             if (hdrs.Count == 0)
@@ -93,7 +93,7 @@ namespace Prototipos_TUTASA.Rendiciones_HDR
                 return;
             }
 
-            hdrSeleccionada = (HDRDistribucion)HdrRendidasLst.SelectedItems[0].Tag;
+            hdrSeleccionada = (HDRDistribucionEntidad)HdrRendidasLst.SelectedItems[0].Tag;
             groupBox1.Text = "Estado de la HDR seleccionada (" + hdrSeleccionada.NroHDR + ")";
 
             CumplidaRdb.Enabled = true;
@@ -150,7 +150,7 @@ namespace Prototipos_TUTASA.Rendiciones_HDR
             }
 
             // Si es no cumplida, debe haber motivo
-            MotivoNoCumplida? motivo = null;
+            MotivoNoCumplidaDistribucion? motivo = null;
             if (NoCumplidaRdb.Checked)
             {
                 if (MotivoCmb.SelectedItem == null)
@@ -158,7 +158,7 @@ namespace Prototipos_TUTASA.Rendiciones_HDR
                     MessageBox.Show("Debe seleccionar un motivo cuando la HDR es No Cumplida.");
                     return;
                 }
-                motivo = (MotivoNoCumplida)MotivoCmb.SelectedItem;
+                motivo = (MotivoNoCumplidaDistribucion)MotivoCmb.SelectedItem;
             }
 
             // Pedirle al modelo que aplique
@@ -184,10 +184,10 @@ namespace Prototipos_TUTASA.Rendiciones_HDR
             }
 
             // Armar lista de HDR a registrar
-            var lista = new List<HDRDistribucion>();
+            var lista = new List<HDRDistribucionEntidad>();
             foreach (ListViewItem item in HdrRendidasLst.Items)
             {
-                lista.Add((HDRDistribucion)item.Tag);
+                lista.Add((HDRDistribucionEntidad)item.Tag);
             }
 
             if (!modelo.RegistrarRendicion(lista))
@@ -213,7 +213,7 @@ namespace Prototipos_TUTASA.Rendiciones_HDR
 
             foreach (ListViewItem item in HdrRendidasLst.Items)
             {
-                var hdr = (HDRDistribucion)item.Tag;
+                var hdr = (HDRDistribucionEntidad)item.Tag;
                 if (hdr.Estado == EstadoHDR.Cumplida)
                 {
                     rendidas++;
