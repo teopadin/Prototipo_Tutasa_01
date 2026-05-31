@@ -21,10 +21,10 @@ namespace Prototipos_TUTASA.HojaDeRutaRetiro
         {
             txtCdEmisor.Text = modelo.CdEmisor.Nombre;
             dtpFecha.Value = DateTime.Today;
-            CargarGuiasPendientes();
+            CargarGuiasImpuestas();
         }
 
-        private void CargarGuiasPendientes()
+        private void CargarGuiasImpuestas()
         {
             actualizando = true;
             lvGuiasPendientes.Items.Clear();
@@ -87,7 +87,7 @@ namespace Prototipos_TUTASA.HojaDeRutaRetiro
             }
 
             ActualizarGuiasFiltradas();
-            CargarFleteros();
+            ObtenerTransportistas();
         }
 
         private void ActualizarGuiasFiltradas()
@@ -101,7 +101,7 @@ namespace Prototipos_TUTASA.HojaDeRutaRetiro
 
             if (guiasSeleccionadas.Count == 0)
             {
-                CargarGuiasPendientes();
+                CargarGuiasImpuestas();
                 lvFleteros.Items.Clear();
                 return;
             }
@@ -158,7 +158,7 @@ namespace Prototipos_TUTASA.HojaDeRutaRetiro
         }
 
 
-        private void CargarFleteros()
+        private void ObtenerTransportistas()
         {
             lvFleteros.Items.Clear();
 
@@ -245,7 +245,7 @@ namespace Prototipos_TUTASA.HojaDeRutaRetiro
 
             // Limpiar la pantalla para una nueva operación
             lvFleteros.Items.Clear();
-            CargarGuiasPendientes();
+            CargarGuiasImpuestas();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
