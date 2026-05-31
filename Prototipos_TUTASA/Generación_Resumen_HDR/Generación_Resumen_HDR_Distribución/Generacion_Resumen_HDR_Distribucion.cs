@@ -5,20 +5,21 @@ using System.Windows.Forms;
 
 namespace Prototipos_TUTASA
 {
-    public partial class Generacion_Reumen_HDR_Distribucion : Form
+    public partial class Generacion_Resumen_HDR_Distribucion : Form
     {
         private readonly ModeloResumenHDRDistribucion modelo = new ModeloResumenHDRDistribucion();
         private List<HojaDeRutaDistribucionEntidad> hojasSeleccionadas = new List<HojaDeRutaDistribucionEntidad>();
         private bool hayHojasSeleccionadas = false;
 
-        public Generacion_Reumen_HDR_Distribucion()
+        public Generacion_Resumen_HDR_Distribucion()
         {
             InitializeComponent();
         }
 
-        private void Generacion_Reumen_HDR_Distribucion_Load(object sender, EventArgs e)
+        private void Generacion_Resumen_HDR_Distribucion_Load(object sender, EventArgs e)
         {
             dateTimePicker1.Value = DateTime.Today;
+            dateTimePicker1.Enabled = false;
             CargarFleteros();
             LimpiarResumen();
         }
@@ -52,7 +53,8 @@ namespace Prototipos_TUTASA
             textBox5.Text = resumen.TotalBultos.ToString();
 
             MessageBox.Show($"Resumen de HDR de Distribución Nro {resumen.NroResumen} generado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            CargarHojasAsignadas();
+            CargarFleteros();
+            LimpiarResumen();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -64,7 +66,7 @@ namespace Prototipos_TUTASA
         {
             comboBox1.Items.Clear();
 
-            foreach (var fletero in modelo.Fleteros)
+            foreach (var fletero in modelo.ObtenerFleterosConHojasAsignadas(DateTime.Today))
             {
                 comboBox1.Items.Add(new FleteroResumenItem(fletero));
             }

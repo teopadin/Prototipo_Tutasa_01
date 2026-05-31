@@ -38,6 +38,21 @@ namespace Prototipos_TUTASA
             return hojas.Count > 0;
         }
 
+        public List<TransportistaLocalEntidad> ObtenerFleterosConHojasAsignadas(DateTime fecha)
+        {
+            var fleterosConHojas = new List<TransportistaLocalEntidad>();
+
+            foreach (TransportistaLocalEntidad fletero in Fleteros)
+            {
+                if (BuscarHojasAsignadas(fletero, fecha, out _))
+                {
+                    fleterosConHojas.Add(fletero);
+                }
+            }
+
+            return fleterosConHojas;
+        }
+
         public DatosDestinoResumen ObtenerDatosDestino(GuiaEntidad guia)
         {
             if (guia.ModalidadEntrega == ModalidadEntrega.PuertaAPuerta)
