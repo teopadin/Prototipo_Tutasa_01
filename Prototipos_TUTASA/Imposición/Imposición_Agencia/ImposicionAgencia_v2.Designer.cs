@@ -701,6 +701,7 @@
             Margin = new Padding(4);
             Name = "ImposicionAgencia_v2";
             Text = "Imposición en Agencia";
+            Load += ImposicionAgencia_v2_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
