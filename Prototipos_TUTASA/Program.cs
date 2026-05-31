@@ -24,14 +24,19 @@ namespace Prototipos_TUTASA
             //Resumen HDR
             //Recepcion HDR de retiro en Agencia
             //Application.Run(new Rendir_HDR_De_Retiro());
-            //Application.Run(new ConsultarEstadoDelPedido_v2.ConsultarEstadoDelPedido());
             //Application.Run(new Admisión.Admisión());
-            //Application.Run(new HojaDeRutaDeDistribucionDestinatario());
             //Application.Run(new GenerarHojaDeRutaDeTransporte());
+            //Application.Run(new Despacho_Servicios_Media_Distancia.Despacho_Servicios_Media_Distancia();
+            //Recepcion media distancia
+            //Application.Run(new HojaDeRutaDeDistribucionDestinatario());
+            //Resumen Distribucion
+            //Recepcion HDR distribucion en agencia
+            //Rendicion HDR de distribucion
             //Application.Run(new EntregaEncomiendaCD());
             //Application.Run(new Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia.EntregaAgencia());
-            //Application.Run(new Prototipos_TUTASA.Despacho_Servicios_Media_Distancia.Despacho_Servicios_Media_Distancia());
-            //Application.Run(new Despacho_Servicios_Media_Distancia.Despacho_Servicios_Media_Distancia();
+            //Application.Run(new ConsultarEstadoDelPedido_v2.ConsultarEstadoDelPedido());
+            //Admin costos vs ventas
+            //Admin Estado cuenta corriente
         }
     }
 }
