@@ -7,7 +7,7 @@ namespace Prototipos_TUTASA.Imposición.Imposición_Agencia
     internal class ClienteEntidad
     {
         public string RazonSocial { get; set; }
-        public int CUIT { get; set; }
+        public string CUIT { get; set; }
         public int Telefono { get; set; }
         public string Calle { get; set; }
         public int Altura { get; set; }

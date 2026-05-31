@@ -16,7 +16,10 @@ namespace Prototipos_TUTASA.ImposiciónAgencia_v2
         {
             InitializeComponent();
         }
+        private void cboRazonSocial_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
+        }
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -36,5 +39,17 @@ namespace Prototipos_TUTASA.ImposiciónAgencia_v2
         {
 
         }
+
+        private void txtNombreDest_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtApellidoDest_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        
     }
 }
