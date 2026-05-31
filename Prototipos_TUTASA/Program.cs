@@ -26,11 +26,11 @@ namespace Prototipos_TUTASA
             //Application.Run(new Admisión.Admisión());
             //Application.Run(new GenerarHojaDeRutaDeTransporte());
             //Application.Run(new Despacho_Servicios_Media_Distancia.Despacho_Servicios_Media_Distancia();
-            //Application.Run(new Prototipos_TUTASA.RecepcionMediaDistancia.RecepcionMediaDistancia());
+            // FALTA TERMINAR // Application.Run(new Prototipos_TUTASA.RecepcionMediaDistancia.RecepcionMediaDistancia());
             //Application.Run(new HojaDeRutaDeDistribucionDestinatario());
             //Application.Run(new Generacion_Resumen_HDR_Distribucion());
-            //Application.Run(new Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia.Recepcion_HDR_Distribucion_Agencia());
-            //Rendicion HDR de distribucion
+            // FALTA TERMINAR //Application.Run(new Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia.Recepcion_HDR_Distribucion_Agencia());
+            //Application.Run(new Prototipos_TUTASA.Rendiciones_HDR.Rendir_HDR_De_Distribucion());
             //Application.Run(new EntregaEncomiendaCD());
             //Application.Run(new Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia.EntregaAgencia());
             //Application.Run(new ConsultarEstadoDelPedido_v2.ConsultarEstadoDelPedido());
