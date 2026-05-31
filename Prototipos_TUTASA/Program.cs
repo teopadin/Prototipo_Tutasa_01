@@ -16,6 +16,9 @@ namespace Prototipos_TUTASA
         static void Main()
         {
             ApplicationConfiguration.Initialize();
+            Application.Run(new Prototipos_TUTASA.ImposiciónAgencia_v2.ImposicionAgencia_v2());
+            //Application.Run(new Prototipos_TUTASA.ImposiciónCallCenter_v2.ImposicionCallCenter_v2());
+            //Application.Run(new Prototipos_TUTASA.ImposiciónCD_V2.ImposiciónCD_V2());
             //Application.Run(new ConsultarEstadoDelPedido_v2.ConsultarEstadoDelPedido());
             //Application.Run(new Admisión.Admisión());
             //Application.Run(new Rendir_HDR_De_Retiro());
@@ -26,9 +29,6 @@ namespace Prototipos_TUTASA
             //Application.Run(new Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia.EntregaAgencia());
             //Application.Run(new Prototipos_TUTASA.Despacho_Servicios_Media_Distancia.Despacho_Servicios_Media_Distancia());
             //Application.Run(new Despacho_Servicios_Media_Distancia.Despacho_Servicios_Media_Distancia();
-            Application.Run(new Prototipos_TUTASA.ImposiciónAgencia_v2.ImposicionAgencia_v2());
-            //Application.Run(new Prototipos_TUTASA.ImposiciónCallCenter_v2.ImposicionCallCenter_v2());
-            //Application.Run(new Prototipos_TUTASA.ImposiciónCD_V2.ImposiciónCD_V2());
         }
     }
 }
