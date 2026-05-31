@@ -19,5 +19,10 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
         {
 
         }
+
+        private void lblNumeroHojaRuta_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
