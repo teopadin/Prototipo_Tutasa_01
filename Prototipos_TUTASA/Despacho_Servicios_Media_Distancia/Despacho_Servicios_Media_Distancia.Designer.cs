@@ -70,7 +70,7 @@
             ServicioCmb.Name = "ServicioCmb";
             ServicioCmb.Size = new Size(342, 33);
             ServicioCmb.TabIndex = 3;
-            ServicioCmb.StyleChanged += ServicioCmb_SelectedIndexChanged;
+            ServicioCmb.SelectedIndexChanged += ServicioCmb_SelectedIndexChanged;
             // 
             // label1
             // 
