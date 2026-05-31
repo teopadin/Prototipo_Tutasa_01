@@ -1,8 +1,7 @@
-using Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia;
 using System;
 using System.Collections.Generic;
 
-namespace Prototipos_TUTASA.Entrega_Agencia
+namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia
 {
     public class ModeloEntregaAgencia
     {
@@ -36,7 +35,7 @@ namespace Prototipos_TUTASA.Entrega_Agencia
                 new GuiaEntidad
                 {
                     NroGuia = "CD03-0001",
-                    Estado = EstadoGuia.EnDistribucion,
+                    Estado = EstadoGuia.Entregada,
                     AgenciaDestino = agenciaCapital,
                     Destinatario = new DestinatarioEntidad { Nombre = "María", Apellido = "González", Dni = 42345678 }
                 },
