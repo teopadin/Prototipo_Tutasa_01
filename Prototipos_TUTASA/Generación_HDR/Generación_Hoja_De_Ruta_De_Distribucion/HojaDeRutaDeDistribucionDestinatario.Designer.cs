@@ -210,7 +210,7 @@
             listViewGuiasADistribuir.CheckBoxes = true;
             listViewGuiasADistribuir.Columns.AddRange(new ColumnHeader[] { columnHeader4, colRemitenteLista, columnHeader6, columnHeader10, columnHeader11, columnHeader12, columnHeader13, columnHeader14, columnHeader15, columnHeader16 });
             listViewGuiasADistribuir.FullRowSelect = true;
-            listViewGuiasADistribuir.Location = new Point(28, 104);
+            listViewGuiasADistribuir.Location = new Point(28, 103);
             listViewGuiasADistribuir.Name = "listViewGuiasADistribuir";
             listViewGuiasADistribuir.Size = new Size(867, 208);
             listViewGuiasADistribuir.TabIndex = 48;

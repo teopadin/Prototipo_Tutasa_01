@@ -13,9 +13,9 @@ namespace Prototipos_TUTASA
         static void Main()
         {
             ApplicationConfiguration.Initialize();
-            Application.Run(new ConsultarEstadoDelPedido_v2.ConsultarEstadoDelPedido());
-            Application.Run(new Admisión.Admisión());
-            Application.Run(new Rendir_HDR_De_Retiro());
+            //Application.Run(new ConsultarEstadoDelPedido_v2.ConsultarEstadoDelPedido());
+            //Application.Run(new Admisión.Admisión());
+            //Application.Run(new Rendir_HDR_De_Retiro());
             Application.Run(new HojaDeRutaDeDistribucionDestinatario());
         }
     }
