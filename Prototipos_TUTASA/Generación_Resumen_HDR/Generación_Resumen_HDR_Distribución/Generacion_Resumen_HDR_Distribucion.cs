@@ -65,11 +65,15 @@ namespace Prototipos_TUTASA
         private void CargarFleteros()
         {
             comboBox1.Items.Clear();
+            comboBox1.SelectedIndex = -1;
+            comboBox1.Text = string.Empty;
 
             foreach (var fletero in modelo.ObtenerFleterosConHojasAsignadas(DateTime.Today))
             {
                 comboBox1.Items.Add(new FleteroResumenItem(fletero));
             }
+
+            button1.Enabled = comboBox1.Items.Count > 0;
         }
 
         private void CargarHojasAsignadas()
