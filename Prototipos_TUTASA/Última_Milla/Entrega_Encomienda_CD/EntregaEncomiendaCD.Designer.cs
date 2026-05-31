@@ -62,6 +62,7 @@
             btnBuscar.Size = new Size(98, 39);
             btnBuscar.TabIndex = 3;
             btnBuscar.Text = "Buscar";
+            btnBuscar.Click += btnBuscar_Click;
             // 
             // lvGuia
             // 
@@ -159,6 +160,7 @@
             btnConfirmar.Size = new Size(187, 70);
             btnConfirmar.TabIndex = 15;
             btnConfirmar.Text = "Registrar Entrega";
+            btnConfirmar.Click += btnConfirmar_Click;
             // 
             // btnCancelar
             // 
