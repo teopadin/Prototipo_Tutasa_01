@@ -104,13 +104,13 @@
             // 
             lblNombre.Location = new Point(12, 320);
             lblNombre.Name = "lblNombre";
-            lblNombre.Size = new Size(80, 18);
+            lblNombre.Size = new Size(80, 24);
             lblNombre.TabIndex = 8;
             lblNombre.Text = "Nombre";
             // 
             // txtNombre
             // 
-            txtNombre.Location = new Point(12, 340);
+            txtNombre.Location = new Point(12, 348);
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(160, 32);
             txtNombre.TabIndex = 9;
@@ -119,13 +119,13 @@
             // 
             lblApellido.Location = new Point(189, 320);
             lblApellido.Name = "lblApellido";
-            lblApellido.Size = new Size(121, 18);
+            lblApellido.Size = new Size(121, 24);
             lblApellido.TabIndex = 10;
             lblApellido.Text = "Apellido";
             // 
             // txtApellido
             // 
-            txtApellido.Location = new Point(189, 340);
+            txtApellido.Location = new Point(189, 348);
             txtApellido.Name = "txtApellido";
             txtApellido.Size = new Size(174, 32);
             txtApellido.TabIndex = 11;
@@ -134,20 +134,20 @@
             // 
             lblDNI.Location = new Point(369, 320);
             lblDNI.Name = "lblDNI";
-            lblDNI.Size = new Size(181, 18);
+            lblDNI.Size = new Size(181, 24);
             lblDNI.TabIndex = 12;
             lblDNI.Text = "DNI";
             // 
             // txtDNI
             // 
-            txtDNI.Location = new Point(369, 340);
+            txtDNI.Location = new Point(369, 348);
             txtDNI.Name = "txtDNI";
             txtDNI.Size = new Size(181, 32);
             txtDNI.TabIndex = 13;
             // 
             // chkDNI
             // 
-            chkDNI.Location = new Point(12, 406);
+            chkDNI.Location = new Point(12, 414);
             chkDNI.Name = "chkDNI";
             chkDNI.Size = new Size(538, 78);
             chkDNI.TabIndex = 14;
