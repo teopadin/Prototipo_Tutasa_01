@@ -19,11 +19,14 @@ namespace Prototipos_TUTASA
             Application.Run(new Prototipos_TUTASA.ImposiciónAgencia_v2.ImposicionAgencia_v2());
             //Application.Run(new Prototipos_TUTASA.ImposiciónCallCenter_v2.ImposicionCallCenter_v2());
             //Application.Run(new Prototipos_TUTASA.ImposiciónCD_V2.ImposiciónCD_V2());
+            //Application.Run(new GeneracionHojaDeRutaRetiro());
+            //Resumen HDR
+            //Resumen HDR
+            //Recepcion HDR de retiro en Agencia
+            //Application.Run(new Rendir_HDR_De_Retiro());
             //Application.Run(new ConsultarEstadoDelPedido_v2.ConsultarEstadoDelPedido());
             //Application.Run(new Admisión.Admisión());
-            //Application.Run(new Rendir_HDR_De_Retiro());
             //Application.Run(new HojaDeRutaDeDistribucionDestinatario());
-            //Application.Run(new GeneracionHojaDeRutaRetiro());
             //Application.Run(new GenerarHojaDeRutaDeTransporte());
             //Application.Run(new EntregaEncomiendaCD());
             //Application.Run(new Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia.EntregaAgencia());
