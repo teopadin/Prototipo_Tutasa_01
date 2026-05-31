@@ -35,6 +35,12 @@ namespace Prototipos_TUTASA.Generación_Hoja_De_Ruta_De_Transporte
             }
 
             cmbCDDestino.DisplayMember = "Nombre";
+
+            if (cmbCDDestino.Items.Count == 0)
+            {
+                MessageBox.Show("No hay centros de distribución habilitados disponibles.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Close();
+            }
         }
 
         private void cmbCDDestino_SelectedIndexChanged(object sender, EventArgs e)
@@ -48,6 +54,9 @@ namespace Prototipos_TUTASA.Generación_Hoja_De_Ruta_De_Transporte
                 return;
 
             CargarGuiasPendientes();
+
+            if (lvGuiasPendientes.Items.Count == 0)
+                MessageBox.Show("No hay encomiendas pendientes para ese CD destino.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private void CargarGuiasPendientes()

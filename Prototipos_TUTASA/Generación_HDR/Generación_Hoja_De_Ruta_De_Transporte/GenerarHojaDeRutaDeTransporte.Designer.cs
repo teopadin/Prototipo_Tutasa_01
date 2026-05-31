@@ -53,7 +53,7 @@
             // cmbCDDestino
             // 
             cmbCDDestino.FormattingEnabled = true;
-            cmbCDDestino.Location = new Point(15, 26);
+            cmbCDDestino.Location = new Point(12, 20);
             cmbCDDestino.Margin = new Padding(1);
             cmbCDDestino.Name = "cmbCDDestino";
             cmbCDDestino.Size = new Size(102, 23);
@@ -63,7 +63,7 @@
             // lblCDDestino
             // 
             lblCDDestino.AutoSize = true;
-            lblCDDestino.Location = new Point(15, 10);
+            lblCDDestino.Location = new Point(12, 4);
             lblCDDestino.Margin = new Padding(1, 0, 1, 0);
             lblCDDestino.Name = "lblCDDestino";
             lblCDDestino.Size = new Size(66, 15);
@@ -75,9 +75,9 @@
             lvGuiasPendientes.CheckBoxes = true;
             lvGuiasPendientes.Columns.AddRange(new ColumnHeader[] { colNumeroGuia, colFechaGuia, colTipoBultoLista });
             lvGuiasPendientes.FullRowSelect = true;
-            lvGuiasPendientes.Location = new Point(22, 84);
+            lvGuiasPendientes.Location = new Point(12, 77);
             lvGuiasPendientes.Name = "lvGuiasPendientes";
-            lvGuiasPendientes.Size = new Size(916, 223);
+            lvGuiasPendientes.Size = new Size(926, 223);
             lvGuiasPendientes.TabIndex = 11;
             lvGuiasPendientes.UseCompatibleStateImageBehavior = false;
             lvGuiasPendientes.View = View.Details;
@@ -168,7 +168,7 @@
             // 
             gbxGuias.Controls.Add(txtBultos);
             gbxGuias.Controls.Add(lblBultos);
-            gbxGuias.Location = new Point(5, 64);
+            gbxGuias.Location = new Point(5, 57);
             gbxGuias.Margin = new Padding(1);
             gbxGuias.Name = "gbxGuias";
             gbxGuias.Padding = new Padding(1);
