@@ -178,6 +178,7 @@
             button1.TabIndex = 13;
             button1.Text = "Generar Resumen";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // button2
             // 
@@ -188,6 +189,7 @@
             button2.TabIndex = 14;
             button2.Text = "Cancelar";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // comboBox1
             // 
@@ -196,6 +198,7 @@
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(182, 33);
             comboBox1.TabIndex = 15;
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // dateTimePicker1
             // 
@@ -203,6 +206,7 @@
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(300, 31);
             dateTimePicker1.TabIndex = 16;
+            dateTimePicker1.ValueChanged += dateTimePicker1_ValueChanged;
             // 
             // Resumen_HDR_Retiro
             // 
