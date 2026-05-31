@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Prototipos_TUTASA.Imposición.Imposición_CD;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,6 +11,7 @@ namespace Prototipos_TUTASA.ImposiciónCD_V2
 {
     public partial class ImposiciónCD_V2 : Form
     {
+        private ModeloImposicionCD modelo = new ModeloImposicionCD();
         public ImposiciónCD_V2()
         {
             InitializeComponent();
