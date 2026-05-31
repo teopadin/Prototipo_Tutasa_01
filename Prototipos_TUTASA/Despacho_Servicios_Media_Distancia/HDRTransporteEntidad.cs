@@ -16,7 +16,7 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
 
         public override string ToString()
         {
-            return "HDR " + NroHDR;
+            return " " + NroHDR;
         }
     }
 }
