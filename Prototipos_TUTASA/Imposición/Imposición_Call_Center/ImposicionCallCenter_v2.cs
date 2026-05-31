@@ -1,5 +1,5 @@
 ﻿using Prototipos_TUTASA.Imposición.Imposición_Agencia;
-using Prototipos_TUTASA.Imposición.Imposición_Call_Center;
+using Prototipos_TUTASA.Imposición.ImposicionCallCenter_v2;
 using Prototipos_TUTASA.Imposición.Imposición_CD;
 using System;
 using System.Collections.Generic;
