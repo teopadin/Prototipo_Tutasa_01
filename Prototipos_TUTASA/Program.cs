@@ -15,12 +15,14 @@ namespace Prototipos_TUTASA
         static void Main()
         {
             ApplicationConfiguration.Initialize();
-           //Application.Run(new ConsultarEstadoDelPedido_v2.ConsultarEstadoDelPedido());
-           //Application.Run(new Admisión.Admisión());
-           //Application.Run(new Rendir_HDR_De_Retiro());
-           //Application.Run(new HojaDeRutaDeDistribucionDestinatario());
+            //Application.Run(new ConsultarEstadoDelPedido_v2.ConsultarEstadoDelPedido());
+            //Application.Run(new Admisión.Admisión());
+            //Application.Run(new Rendir_HDR_De_Retiro());
+            //Application.Run(new HojaDeRutaDeDistribucionDestinatario());
             //Application.Run(new GeneracionHojaDeRutaRetiro());
             //Application.Run(new GenerarHojaDeRutaDeTransporte());
+            //Application.Run(new EntregaEncomiendaCD());
+            Application.Run(new Prototipos_TUTASA.Entrega_Agencia.EntregaAgencia());
         }
     }
 }
