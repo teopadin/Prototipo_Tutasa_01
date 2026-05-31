@@ -16,40 +16,9 @@ namespace Prototipos_TUTASA.ImposiciónAgencia_v2
         {
             InitializeComponent();
         }
-        private void cboRazonSocial_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox7_Enter(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnGenerarGuia_Click(object sender, EventArgs e)
         {
 
         }
-
-        private void gbTamañoBulto_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtNombreDest_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtApellidoDest_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        
     }
 }

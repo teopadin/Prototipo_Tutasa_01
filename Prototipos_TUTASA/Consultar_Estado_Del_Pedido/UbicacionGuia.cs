@@ -10,6 +10,7 @@ namespace Prototipos_TUTASA.Consultar_Estado_Del_Pedido
         ConTransportistaLocal,
         EnServicioMediaDistancia,
         EnCDDestino,
-        EnAgencia
+        EnAgencia,
+        EnDomicilio
     }
 }
