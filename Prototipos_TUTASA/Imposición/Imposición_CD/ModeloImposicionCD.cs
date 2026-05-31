@@ -85,5 +85,51 @@ namespace Prototipos_TUTASA.Imposición.Imposición_CD
             // Guías generadas al registrar imposiciones (arranca vacía)
             Guias = new List<GuiaEntidad>();
         }
+
+        public CentroDistribucionEntidad ObtenerCentroDistribucionPorCiudad(string ciudad)
+        {
+            string ciudadNormalizada = (ciudad ?? string.Empty).ToLower();
+
+            if (ciudadNormalizada.Contains("córdoba") || ciudadNormalizada.Contains("cordoba"))
+                return CentrosDeDistribucion[1];
+
+            if (ciudadNormalizada.Contains("tucumán") || ciudadNormalizada.Contains("tucuman"))
+                return CentrosDeDistribucion[2];
+
+            if (ciudadNormalizada.Contains("corrientes"))
+                return CentrosDeDistribucion[3];
+
+            if (ciudadNormalizada.Contains("neuquén") || ciudadNormalizada.Contains("neuquen"))
+                return CentrosDeDistribucion[4];
+
+            if (ciudadNormalizada.Contains("viedma"))
+                return CentrosDeDistribucion[5];
+
+            return CdOrigen;
+        }
+
+        public GuiaEntidad RegistrarImposicion(TipoBulto tipoBulto, ModalidadEntrega modalidadEntrega, DestinatarioEntidad destinatario, CentroDistribucionEntidad cdDestino, AgenciaEntidad agenciaDestino)
+        {
+            GuiaEntidad guia = new GuiaEntidad
+            {
+                NroGuia = GenerarNumeroGuia(),
+                FechaImposicion = DateTime.Today,
+                TipoBulto = tipoBulto,
+                ModalidadEntrega = modalidadEntrega,
+                Estado = EstadoGuia.Admitida,
+                CdOrigen = CdOrigen,
+                CdDestino = cdDestino,
+                Destinatario = destinatario,
+                Agencia = agenciaDestino
+            };
+
+            Guias.Add(guia);
+            return guia;
+        }
+
+        private string GenerarNumeroGuia()
+        {
+            return "CD" + CdOrigen.IdCD.ToString("00") + "-" + (Guias.Count + 1).ToString("0000");
+        }
     }
 }

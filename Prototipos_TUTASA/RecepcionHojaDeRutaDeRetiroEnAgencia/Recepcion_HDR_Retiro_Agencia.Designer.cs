@@ -44,33 +44,38 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia
             // lblNroHDR
             // 
             lblNroHDR.AutoSize = true;
-            lblNroHDR.Location = new Point(20, 20);
+            lblNroHDR.Location = new Point(29, 33);
+            lblNroHDR.Margin = new Padding(4, 0, 4, 0);
             lblNroHDR.Name = "lblNroHDR";
-            lblNroHDR.Size = new Size(101, 15);
+            lblNroHDR.Size = new Size(154, 25);
             lblNroHDR.TabIndex = 0;
             lblNroHDR.Text = "Nro Hoja de Ruta:";
             // 
             // txtNroHDR
             // 
-            txtNroHDR.Location = new Point(150, 17);
+            txtNroHDR.Location = new Point(214, 28);
+            txtNroHDR.Margin = new Padding(4, 5, 4, 5);
             txtNroHDR.Name = "txtNroHDR";
-            txtNroHDR.Size = new Size(150, 23);
+            txtNroHDR.Size = new Size(213, 31);
             txtNroHDR.TabIndex = 1;
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new Point(310, 15);
+            btnBuscar.Location = new Point(443, 25);
+            btnBuscar.Margin = new Padding(4, 5, 4, 5);
             btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(80, 27);
+            btnBuscar.Size = new Size(114, 45);
             btnBuscar.TabIndex = 2;
             btnBuscar.Text = "Buscar";
+            btnBuscar.Click += btnBuscar_Click;
             // 
             // lblFechaRecepcion
             // 
             lblFechaRecepcion.AutoSize = true;
-            lblFechaRecepcion.Location = new Point(20, 55);
+            lblFechaRecepcion.Location = new Point(29, 92);
+            lblFechaRecepcion.Margin = new Padding(4, 0, 4, 0);
             lblFechaRecepcion.Name = "lblFechaRecepcion";
-            lblFechaRecepcion.Size = new Size(96, 15);
+            lblFechaRecepcion.Size = new Size(142, 25);
             lblFechaRecepcion.TabIndex = 3;
             lblFechaRecepcion.Text = "Fecha recepción:";
             // 
@@ -78,98 +83,110 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia
             // 
             dtpFechaRecepcion.Enabled = false;
             dtpFechaRecepcion.Format = DateTimePickerFormat.Short;
-            dtpFechaRecepcion.Location = new Point(150, 52);
+            dtpFechaRecepcion.Location = new Point(214, 87);
+            dtpFechaRecepcion.Margin = new Padding(4, 5, 4, 5);
             dtpFechaRecepcion.Name = "dtpFechaRecepcion";
-            dtpFechaRecepcion.Size = new Size(200, 23);
+            dtpFechaRecepcion.Size = new Size(284, 31);
             dtpFechaRecepcion.TabIndex = 4;
             // 
             // lblAgencia
             // 
             lblAgencia.AutoSize = true;
-            lblAgencia.Location = new Point(20, 90);
+            lblAgencia.Location = new Point(29, 150);
+            lblAgencia.Margin = new Padding(4, 0, 4, 0);
             lblAgencia.Name = "lblAgencia";
-            lblAgencia.Size = new Size(53, 15);
+            lblAgencia.Size = new Size(79, 25);
             lblAgencia.TabIndex = 5;
             lblAgencia.Text = "Agencia:";
             // 
             // txtAgencia
             // 
             txtAgencia.BackColor = SystemColors.Control;
-            txtAgencia.Location = new Point(150, 87);
+            txtAgencia.Location = new Point(214, 145);
+            txtAgencia.Margin = new Padding(4, 5, 4, 5);
             txtAgencia.Name = "txtAgencia";
             txtAgencia.ReadOnly = true;
-            txtAgencia.Size = new Size(200, 23);
+            txtAgencia.Size = new Size(284, 31);
             txtAgencia.TabIndex = 6;
             // 
             // lblFletero
             // 
             lblFletero.AutoSize = true;
-            lblFletero.Location = new Point(20, 125);
+            lblFletero.Location = new Point(29, 208);
+            lblFletero.Margin = new Padding(4, 0, 4, 0);
             lblFletero.Name = "lblFletero";
-            lblFletero.Size = new Size(46, 15);
+            lblFletero.Size = new Size(70, 25);
             lblFletero.TabIndex = 7;
             lblFletero.Text = "Fletero:";
             // 
             // txtFletero
             // 
             txtFletero.BackColor = SystemColors.Control;
-            txtFletero.Location = new Point(150, 122);
+            txtFletero.Location = new Point(214, 203);
+            txtFletero.Margin = new Padding(4, 5, 4, 5);
             txtFletero.Name = "txtFletero";
             txtFletero.ReadOnly = true;
-            txtFletero.Size = new Size(200, 23);
+            txtFletero.Size = new Size(284, 31);
             txtFletero.TabIndex = 8;
             // 
             // lblGuias
             // 
             lblGuias.AutoSize = true;
-            lblGuias.Location = new Point(16, 160);
+            lblGuias.Location = new Point(23, 267);
+            lblGuias.Margin = new Padding(4, 0, 4, 0);
             lblGuias.Name = "lblGuias";
-            lblGuias.Size = new Size(144, 15);
+            lblGuias.Size = new Size(216, 25);
             lblGuias.TabIndex = 11;
             lblGuias.Text = "Guías incluidas en la HDR:";
             // 
             // lblTotalGuias
             // 
             lblTotalGuias.AutoSize = true;
-            lblTotalGuias.Location = new Point(20, 374);
+            lblTotalGuias.Location = new Point(29, 623);
+            lblTotalGuias.Margin = new Padding(4, 0, 4, 0);
             lblTotalGuias.Name = "lblTotalGuias";
-            lblTotalGuias.Size = new Size(83, 15);
+            lblTotalGuias.Size = new Size(125, 25);
             lblTotalGuias.TabIndex = 12;
             lblTotalGuias.Text = "Total de guías:";
             // 
             // txtTotalGuias
             // 
             txtTotalGuias.BackColor = SystemColors.Control;
-            txtTotalGuias.Location = new Point(150, 371);
+            txtTotalGuias.Location = new Point(214, 618);
+            txtTotalGuias.Margin = new Padding(4, 5, 4, 5);
             txtTotalGuias.Name = "txtTotalGuias";
             txtTotalGuias.ReadOnly = true;
-            txtTotalGuias.Size = new Size(80, 23);
+            txtTotalGuias.Size = new Size(113, 31);
             txtTotalGuias.TabIndex = 13;
             txtTotalGuias.TextAlign = HorizontalAlignment.Right;
             // 
             // btnConfirmarRecepcion
             // 
-            btnConfirmarRecepcion.Location = new Point(150, 414);
+            btnConfirmarRecepcion.Location = new Point(214, 690);
+            btnConfirmarRecepcion.Margin = new Padding(4, 5, 4, 5);
             btnConfirmarRecepcion.Name = "btnConfirmarRecepcion";
-            btnConfirmarRecepcion.Size = new Size(150, 35);
+            btnConfirmarRecepcion.Size = new Size(214, 58);
             btnConfirmarRecepcion.TabIndex = 14;
             btnConfirmarRecepcion.Text = "Confirmar Recepción";
+            btnConfirmarRecepcion.Click += btnConfirmarRecepcion_Click;
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(315, 414);
+            btnCancelar.Location = new Point(450, 690);
+            btnCancelar.Margin = new Padding(4, 5, 4, 5);
             btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(100, 35);
+            btnCancelar.Size = new Size(143, 58);
             btnCancelar.TabIndex = 15;
             btnCancelar.Text = "Cancelar";
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // listViewGuiasRetiradas
             // 
             listViewGuiasRetiradas.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2 });
-            listViewGuiasRetiradas.Location = new Point(20, 183);
-            listViewGuiasRetiradas.Margin = new Padding(1);
+            listViewGuiasRetiradas.Location = new Point(29, 305);
+            listViewGuiasRetiradas.Margin = new Padding(1, 2, 1, 2);
             listViewGuiasRetiradas.Name = "listViewGuiasRetiradas";
-            listViewGuiasRetiradas.Size = new Size(424, 176);
+            listViewGuiasRetiradas.Size = new Size(604, 291);
             listViewGuiasRetiradas.TabIndex = 16;
             listViewGuiasRetiradas.UseCompatibleStateImageBehavior = false;
             listViewGuiasRetiradas.View = View.Details;
@@ -186,9 +203,9 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia
             // 
             // Recepcion_HDR_Retiro_Agencia
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(459, 486);
+            ClientSize = new Size(656, 810);
             Controls.Add(listViewGuiasRetiradas);
             Controls.Add(lblNroHDR);
             Controls.Add(txtNroHDR);
@@ -204,6 +221,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia
             Controls.Add(txtTotalGuias);
             Controls.Add(btnConfirmarRecepcion);
             Controls.Add(btnCancelar);
+            Margin = new Padding(4, 5, 4, 5);
             Name = "Recepcion_HDR_Retiro_Agencia";
             Text = "Recepción HDR Retiro en Agencia";
             Load += Recepcion_HDR_Retiro_Agencia_Load;

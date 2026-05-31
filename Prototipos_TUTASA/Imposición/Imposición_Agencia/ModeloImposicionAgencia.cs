@@ -9,7 +9,10 @@ namespace Prototipos_TUTASA.Imposición.Imposición_Agencia
         public List<ClienteEntidad> Clientes { get; set; }
         public List<AgenciaEntidad> Agencias { get; set; }
         public List<CentroDistribucionEntidad> CentrosDeDistribucion { get; set; }
+        public AgenciaEntidad AgenciaOperadora { get; set; }
+        public CentroDistribucionEntidad CdOrigen { get; set; }
         public List<GuiaEntidad> Guias { get; set; }
+        public List<RendicionAgenciaEntidad> RendicionesAgencia { get; set; }
 
         public ModeloImposicionAgencia()
         {
@@ -75,9 +78,69 @@ namespace Prototipos_TUTASA.Imposición.Imposición_Agencia
             };
 
             Agencias = new List<AgenciaEntidad> { agencia1, agencia2 };
+            AgenciaOperadora = agencia1;
+            CdOrigen = AgenciaOperadora.CD;
 
             // Guías ya impuestas (lista que se va llenando al registrar)
             Guias = new List<GuiaEntidad>();
+            RendicionesAgencia = new List<RendicionAgenciaEntidad>();
+        }
+
+        public CentroDistribucionEntidad ObtenerCentroDistribucionPorCiudad(string ciudad)
+        {
+            string ciudadNormalizada = (ciudad ?? string.Empty).ToLower();
+
+            if (ciudadNormalizada.Contains("córdoba") || ciudadNormalizada.Contains("cordoba"))
+                return CentrosDeDistribucion[1];
+
+            if (ciudadNormalizada.Contains("tucumán") || ciudadNormalizada.Contains("tucuman"))
+                return CentrosDeDistribucion[2];
+
+            if (ciudadNormalizada.Contains("corrientes"))
+                return CentrosDeDistribucion[3];
+
+            if (ciudadNormalizada.Contains("neuquén") || ciudadNormalizada.Contains("neuquen"))
+                return CentrosDeDistribucion[4];
+
+            if (ciudadNormalizada.Contains("viedma"))
+                return CentrosDeDistribucion[5];
+
+            return CdOrigen;
+        }
+
+        public GuiaEntidad RegistrarImposicion(ClienteEntidad cliente, TipoBulto tipoBulto, ModalidadEntrega modalidadEntrega, DestinatarioEntidad destinatario, CentroDistribucionEntidad cdDestino, AgenciaEntidad agenciaDestino)
+        {
+            GuiaEntidad guia = new GuiaEntidad
+            {
+                NroGuia = GenerarNumeroGuia(),
+                FechaImposicion = DateTime.Today,
+                TipoBulto = tipoBulto,
+                ModalidadEntrega = modalidadEntrega,
+                Estado = EstadoGuia.Impuesta,
+                CdOrigen = CdOrigen,
+                CdDestino = cdDestino,
+                Destinatario = destinatario,
+                Agencia = agenciaDestino
+            };
+
+            Guias.Add(guia);
+
+            RendicionesAgencia.Add(new RendicionAgenciaEntidad
+            {
+                Agencia = AgenciaOperadora,
+                Cliente = cliente,
+                Fecha = DateTime.Today,
+                TipoBulto = tipoBulto,
+                CantidadBultos = 1,
+                NroGuia = guia.NroGuia
+            });
+
+            return guia;
+        }
+
+        private string GenerarNumeroGuia()
+        {
+            return "A" + AgenciaOperadora.IdAgencia.ToString("000") + "-" + (Guias.Count + 1).ToString("0000");
         }
     }
     

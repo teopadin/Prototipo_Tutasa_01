@@ -19,6 +19,7 @@ namespace Prototipos_TUTASA
         private void ResumenHDR_Load(object sender, EventArgs e)
         {
             dateTimePicker1.Value = DateTime.Today;
+            dateTimePicker1.Enabled = false;
             CargarFleteros();
             LimpiarResumen();
         }
@@ -52,7 +53,8 @@ namespace Prototipos_TUTASA
             textBox5.Text = resumen.TotalBultos.ToString();
 
             MessageBox.Show($"Resumen de HDR de Retiro Nro {resumen.NroResumen} generado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            CargarHojasAsignadas();
+            CargarFleteros();
+            LimpiarResumen();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -63,11 +65,15 @@ namespace Prototipos_TUTASA
         private void CargarFleteros()
         {
             comboBox1.Items.Clear();
+            comboBox1.SelectedIndex = -1;
+            comboBox1.Text = string.Empty;
 
-            foreach (var fletero in modelo.Fleteros)
+            foreach (var fletero in modelo.ObtenerFleterosConHojasAsignadas(DateTime.Today))
             {
                 comboBox1.Items.Add(new FleteroResumenRetiroItem(fletero));
             }
+
+            button1.Enabled = comboBox1.Items.Count > 0;
         }
 
         private void CargarHojasAsignadas()

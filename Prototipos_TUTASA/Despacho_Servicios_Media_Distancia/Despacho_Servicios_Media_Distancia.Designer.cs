@@ -51,6 +51,8 @@
             EmpresaTxtb = new TextBox();
             IdServicioTxtb = new TextBox();
             label8 = new Label();
+            label9 = new Label();
+            TotalGeneralTxtb = new TextBox();
             SuspendLayout();
             // 
             // lblTitulo
@@ -68,7 +70,7 @@
             ServicioCmb.FormattingEnabled = true;
             ServicioCmb.Location = new Point(233, 136);
             ServicioCmb.Name = "ServicioCmb";
-            ServicioCmb.Size = new Size(342, 33);
+            ServicioCmb.Size = new Size(393, 33);
             ServicioCmb.TabIndex = 3;
             ServicioCmb.SelectedIndexChanged += ServicioCmb_SelectedIndexChanged;
             // 
@@ -95,12 +97,12 @@
             // 
             FechaDtp.Location = new Point(233, 82);
             FechaDtp.Name = "FechaDtp";
-            FechaDtp.Size = new Size(342, 31);
+            FechaDtp.Size = new Size(393, 31);
             FechaDtp.TabIndex = 30;
             // 
             // ConfirmarBtn
             // 
-            ConfirmarBtn.Location = new Point(157, 650);
+            ConfirmarBtn.Location = new Point(278, 704);
             ConfirmarBtn.Margin = new Padding(4, 5, 4, 5);
             ConfirmarBtn.Name = "ConfirmarBtn";
             ConfirmarBtn.Size = new Size(170, 73);
@@ -111,7 +113,7 @@
             // 
             // CancelarBtn
             // 
-            CancelarBtn.Location = new Point(405, 650);
+            CancelarBtn.Location = new Point(456, 704);
             CancelarBtn.Margin = new Padding(4, 5, 4, 5);
             CancelarBtn.Name = "CancelarBtn";
             CancelarBtn.Size = new Size(170, 73);
@@ -126,7 +128,7 @@
             DespachoLst.Location = new Point(30, 343);
             DespachoLst.Margin = new Padding(4, 5, 4, 5);
             DespachoLst.Name = "DespachoLst";
-            DespachoLst.Size = new Size(748, 181);
+            DespachoLst.Size = new Size(945, 181);
             DespachoLst.TabIndex = 33;
             DespachoLst.UseCompatibleStateImageBehavior = false;
             DespachoLst.View = View.Details;
@@ -154,7 +156,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(55, 549);
+            label4.Location = new Point(23, 549);
             label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
             label4.Size = new Size(162, 25);
@@ -163,17 +165,17 @@
             // 
             // BultoTxtb
             // 
-            BultoTxtb.Location = new Point(221, 546);
+            BultoTxtb.Location = new Point(189, 546);
             BultoTxtb.Margin = new Padding(2);
             BultoTxtb.Name = "BultoTxtb";
             BultoTxtb.ReadOnly = true;
-            BultoTxtb.Size = new Size(113, 31);
+            BultoTxtb.Size = new Size(110, 31);
             BultoTxtb.TabIndex = 35;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(391, 549);
+            label2.Location = new Point(320, 552);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
             label2.Size = new Size(128, 25);
@@ -182,11 +184,11 @@
             // 
             // TotalBultoTxtb
             // 
-            TotalBultoTxtb.Location = new Point(523, 549);
+            TotalBultoTxtb.Location = new Point(452, 546);
             TotalBultoTxtb.Margin = new Padding(2);
             TotalBultoTxtb.Name = "TotalBultoTxtb";
             TotalBultoTxtb.ReadOnly = true;
-            TotalBultoTxtb.Size = new Size(113, 31);
+            TotalBultoTxtb.Size = new Size(109, 31);
             TotalBultoTxtb.TabIndex = 37;
             // 
             // label5
@@ -221,7 +223,7 @@
             CdDestinoTxtb.Location = new Point(233, 191);
             CdDestinoTxtb.Name = "CdDestinoTxtb";
             CdDestinoTxtb.ReadOnly = true;
-            CdDestinoTxtb.Size = new Size(342, 31);
+            CdDestinoTxtb.Size = new Size(393, 31);
             CdDestinoTxtb.TabIndex = 41;
             // 
             // EmpresaTxtb
@@ -229,7 +231,7 @@
             EmpresaTxtb.Location = new Point(233, 239);
             EmpresaTxtb.Name = "EmpresaTxtb";
             EmpresaTxtb.ReadOnly = true;
-            EmpresaTxtb.Size = new Size(342, 31);
+            EmpresaTxtb.Size = new Size(393, 31);
             EmpresaTxtb.TabIndex = 42;
             // 
             // IdServicioTxtb
@@ -237,23 +239,44 @@
             IdServicioTxtb.Location = new Point(233, 287);
             IdServicioTxtb.Name = "IdServicioTxtb";
             IdServicioTxtb.ReadOnly = true;
-            IdServicioTxtb.Size = new Size(342, 31);
+            IdServicioTxtb.Size = new Size(393, 31);
             IdServicioTxtb.TabIndex = 43;
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(124, 610);
+            label8.Location = new Point(244, 661);
             label8.Name = "label8";
             label8.Size = new Size(473, 25);
             label8.TabIndex = 44;
             label8.Text = "Al confirmar, se emitirán 3 copias de la HDR de Transporte";
             // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(592, 552);
+            label9.Margin = new Padding(2, 0, 2, 0);
+            label9.Name = "label9";
+            label9.Size = new Size(260, 25);
+            label9.TabIndex = 45;
+            label9.Text = "Bultos Pendientes de Despacho";
+            // 
+            // TotalGeneralTxtb
+            // 
+            TotalGeneralTxtb.Location = new Point(856, 549);
+            TotalGeneralTxtb.Margin = new Padding(2);
+            TotalGeneralTxtb.Name = "TotalGeneralTxtb";
+            TotalGeneralTxtb.ReadOnly = true;
+            TotalGeneralTxtb.Size = new Size(119, 31);
+            TotalGeneralTxtb.TabIndex = 46;
+            // 
             // Despacho_Servicios_Media_Distancia
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(796, 754);
+            ClientSize = new Size(988, 791);
+            Controls.Add(TotalGeneralTxtb);
+            Controls.Add(label9);
             Controls.Add(label8);
             Controls.Add(IdServicioTxtb);
             Controls.Add(EmpresaTxtb);
@@ -305,5 +328,7 @@
         private TextBox EmpresaTxtb;
         private TextBox IdServicioTxtb;
         private Label label8;
+        private Label label9;
+        private TextBox TotalGeneralTxtb;
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Prototipos_TUTASA
 {
-    partial class Generacion_Reumen_HDR_Distribucion
+    partial class Generacion_Resumen_HDR_Distribucion
     {
         /// <summary>
         /// Required designer variable.
@@ -207,7 +207,7 @@
             label1.TabIndex = 17;
             label1.Text = "Resumen Hoja de Ruta de Distribución";
             // 
-            // Generacion_Reumen_HDR_Distribucion
+            // Generacion_Resumen_HDR_Distribucion
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -225,9 +225,9 @@
             Controls.Add(Fletero);
             Controls.Add(label3);
             Controls.Add(label1);
-            Name = "Generacion_Reumen_HDR_Distribucion";
+            Name = "Generacion_Resumen_HDR_Distribucion";
             Text = "Generacion_HDR_Distribucion";
-            Load += Generacion_Reumen_HDR_Distribucion_Load;
+            Load += Generacion_Resumen_HDR_Distribucion_Load;
             ResumeLayout(false);
             PerformLayout();
         }

@@ -57,7 +57,7 @@
             cmbCDDestino.Margin = new Padding(1);
             cmbCDDestino.Name = "cmbCDDestino";
             cmbCDDestino.Size = new Size(102, 23);
-            cmbCDDestino.TabIndex = 0;
+            cmbCDDestino.TabIndex = 1;
             cmbCDDestino.SelectedIndexChanged += cmbCDDestino_SelectedIndexChanged;
             // 
             // lblCDDestino
@@ -67,7 +67,7 @@
             lblCDDestino.Margin = new Padding(1, 0, 1, 0);
             lblCDDestino.Name = "lblCDDestino";
             lblCDDestino.Size = new Size(66, 15);
-            lblCDDestino.TabIndex = 1;
+            lblCDDestino.TabIndex = 0;
             lblCDDestino.Text = "CD Destino";
             // 
             // lvGuiasPendientes
@@ -78,7 +78,7 @@
             lvGuiasPendientes.Location = new Point(12, 77);
             lvGuiasPendientes.Name = "lvGuiasPendientes";
             lvGuiasPendientes.Size = new Size(926, 223);
-            lvGuiasPendientes.TabIndex = 11;
+            lvGuiasPendientes.TabIndex = 3;
             lvGuiasPendientes.UseCompatibleStateImageBehavior = false;
             lvGuiasPendientes.View = View.Details;
             lvGuiasPendientes.ItemChecked += lvGuiasPendientes_ItemChecked;
@@ -106,14 +106,14 @@
             lvServicios.MultiSelect = false;
             lvServicios.Name = "lvServicios";
             lvServicios.Size = new Size(926, 120);
-            lvServicios.TabIndex = 13;
+            lvServicios.TabIndex = 0;
             lvServicios.UseCompatibleStateImageBehavior = false;
             lvServicios.View = View.Details;
             // 
             // columnHeader1
             // 
             columnHeader1.Text = "ID Servicio";
-            columnHeader1.Width = 200;
+            columnHeader1.Width = 100;
             // 
             // columnHeader2
             // 
@@ -123,17 +123,17 @@
             // columnHeader5
             // 
             columnHeader5.Text = "Tipo de Servicio";
-            columnHeader5.Width = 200;
+            columnHeader5.Width = 100;
             // 
             // columnHeader3
             // 
             columnHeader3.Text = "Capacidad disp. (en tamano S)";
-            columnHeader3.Width = 400;
+            columnHeader3.Width = 180;
             // 
             // columnHeader4
             // 
             columnHeader4.Text = "Horario salida";
-            columnHeader4.Width = 300;
+            columnHeader4.Width = 100;
             // 
             // lblBultos
             // 
@@ -142,7 +142,7 @@
             lblBultos.Margin = new Padding(1, 0, 1, 0);
             lblBultos.Name = "lblBultos";
             lblBultos.Size = new Size(185, 15);
-            lblBultos.TabIndex = 15;
+            lblBultos.TabIndex = 0;
             lblBultos.Text = "Bultos seleccionados (equiv. en S)";
             // 
             // txtBultos
@@ -151,7 +151,7 @@
             txtBultos.Margin = new Padding(1);
             txtBultos.Name = "txtBultos";
             txtBultos.Size = new Size(81, 23);
-            txtBultos.TabIndex = 16;
+            txtBultos.TabIndex = 1;
             // 
             // btnGenerarHDR
             // 
@@ -159,7 +159,7 @@
             btnGenerarHDR.Margin = new Padding(1);
             btnGenerarHDR.Name = "btnGenerarHDR";
             btnGenerarHDR.Size = new Size(111, 26);
-            btnGenerarHDR.TabIndex = 17;
+            btnGenerarHDR.TabIndex = 5;
             btnGenerarHDR.Text = "Generar HDR";
             btnGenerarHDR.UseVisualStyleBackColor = true;
             btnGenerarHDR.Click += btnGenerarHDR_Click;
@@ -173,7 +173,7 @@
             gbxGuias.Name = "gbxGuias";
             gbxGuias.Padding = new Padding(1);
             gbxGuias.Size = new Size(937, 277);
-            gbxGuias.TabIndex = 18;
+            gbxGuias.TabIndex = 2;
             gbxGuias.TabStop = false;
             gbxGuias.Text = "Guias";
             // 
@@ -185,7 +185,7 @@
             gbxServicios.Name = "gbxServicios";
             gbxServicios.Padding = new Padding(1);
             gbxServicios.Size = new Size(937, 147);
-            gbxServicios.TabIndex = 19;
+            gbxServicios.TabIndex = 4;
             gbxServicios.TabStop = false;
             gbxServicios.Text = "Servicios disponibles";
             // 
@@ -195,7 +195,7 @@
             btnCancelar.Margin = new Padding(1);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(111, 26);
-            btnCancelar.TabIndex = 20;
+            btnCancelar.TabIndex = 6;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
             btnCancelar.Click += btnCancelar_Click;
