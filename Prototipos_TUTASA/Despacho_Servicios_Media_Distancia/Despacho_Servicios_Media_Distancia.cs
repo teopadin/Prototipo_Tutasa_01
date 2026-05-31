@@ -36,12 +36,17 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
             {
                 ServicioCmb.Items.Add(hdr);
             }
+
+            // ASIGNACIÓN AQUÍ: Actualiza el total general con lo que hay en el modelo
+            TotalGeneralTxtb.Text = modelo.CalcularTotalGeneralPendiente().ToString();
         }
 
         private void ServicioCmb_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ServicioCmb.SelectedItem == null)
             {
+                // ASIGNACIÓN AQUÍ: Por seguridad si queda vacío el combo
+                TotalGeneralTxtb.Text = modelo.CalcularTotalGeneralPendiente().ToString();
                 LimpiarPantalla();
                 return;
             }
@@ -116,6 +121,9 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
             DespachoLst.Items.Clear();
             BultoTxtb.Text = "";
             TotalBultoTxtb.Text = "";
+
+            // ASIGNACIÓN AQUÍ: Mantiene el valor general visible aunque no haya selección
+            TotalGeneralTxtb.Text = modelo.CalcularTotalGeneralPendiente().ToString();
         }
     }
 }

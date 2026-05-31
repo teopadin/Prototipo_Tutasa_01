@@ -200,5 +200,15 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
 
             return true;
         }
+
+        internal int CalcularTotalGeneralPendiente()
+        {
+            int acumulador = 0;
+            foreach (var hdr in ObtenerHDRsPendientes())
+            {
+                acumulador += hdr.Guias.Count;
+            }
+            return acumulador;
+        }
     }
 }
