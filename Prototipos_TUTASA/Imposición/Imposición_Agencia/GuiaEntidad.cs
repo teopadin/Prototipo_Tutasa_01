@@ -13,7 +13,7 @@ namespace Prototipos_TUTASA.Imposición.Imposición_Agencia
         public EstadoGuia Estado { get; set; }
         public CentroDistribucionEntidad CdOrigen { get; set; }
         public CentroDistribucionEntidad CdDestino { get; set; }
-        public DestinatarioEntidad Destinatario { get; set; }  // null si es Retiro en Agencia
-        public AgenciaEntidad Agencia { get; set; }            // null si es Puerta a Puerta
+        public DestinatarioEntidad Destinatario { get; set; }  
+        public AgenciaEntidad Agencia { get; set; }           
     }
 }

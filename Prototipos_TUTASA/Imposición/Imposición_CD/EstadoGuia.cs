@@ -4,7 +4,9 @@ using System.Text;
 
 namespace Prototipos_TUTASA.Imposición.Imposición_CD
 {
-    internal class EstadoGuia
+    internal enum EstadoGuia
     {
+       Admitida
+
     }
 }
