@@ -82,7 +82,6 @@ namespace Prototipos_TUTASA.Imposición.ImposicionCallCenter_v2
                 // Guías generadas al registrar imposiciones (arranca vacía)
                 Guias = new List<GuiaEntidad>();
             }
-        }
+        
     }
-}
 }
