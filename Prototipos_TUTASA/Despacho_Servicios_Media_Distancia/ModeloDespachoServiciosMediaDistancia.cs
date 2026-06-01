@@ -8,158 +8,155 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
 {
     internal class ModeloDespachoServiciosMediaDistancia
     {
-        // DATOS DE PRUEBA ADAPTADOS AL NUEVO DIAGRAMA
-        private List<HojaRutaTransporte> hdrs = new List<HojaRutaTransporte>
+        // 1. LISTA DE EJEMPLOS ADAPTADA (Sin atributos de más)
+        private List<HDRTransporte> hdrs = new List<HDRTransporte>
         {
-            new HojaRutaTransporte
-            {NroHDR = 3001,
-            CDDestino = new CentroDistribucion { IdCD = 1, Nombre = "CD Córdoba - Terminal Central" },
-            Empresa = "Nueva Chevallier S.A.",
-            IdServicio = "CH-CBA-2200",
-            Guias = new List<Guia>
+            // Ejemplo 1: Destino Córdoba
+            new HDRTransporte
             {
-                new Guia {
-                    NroGuia = "G-1001",
-                    TipoBulto = TiposBulto.S, // 1 bulto en S
-                    Estado = EstadoGuia.PendienteDeDespacho,
-                    ClienteRemitente = new Cliente { RazonSocial = "Techint Logística" },
-                    DestinatarioFinal = new Destinatario { Nombre = "Carlos", Apellido = "Paz" }
-                },
-                new Guia {
-                    NroGuia = "G-1002",
-                    TipoBulto = TiposBulto.M, // 2 bultos en S
-                    Estado = EstadoGuia.PendienteDeDespacho,
-                    ClienteRemitente = new Cliente { RazonSocial = "Arcor S.A.I.C." },
-                    DestinatarioFinal = new Destinatario { Nombre = "Laura", Apellido = "Martínez" }
+                NroHDR = 3001,
+                CDDestino = new CentroDistribucion { Nombre = "CD Córdoba - Terminal Central" },
+                Empresa = "Nueva Chevallier S.A.",
+                IdServicio = "CH-CBA-2200",
+                Guias = new List<Guia>
+                {
+                    new Guia {
+                        NroGuia = "G-1001",
+                        TipoBulto = TiposBulto.S,
+                        Estado = EstadoGuia.PendienteDeDespacho,
+                        ClienteRemitente = new Cliente { RazonSocial = "Techint Logística" },
+                        DestinatarioFinal = new Destinatario { NombreCompleto = "Carlos Paz" }
+                    },
+                    new Guia {
+                        NroGuia = "G-1002",
+                        TipoBulto = TiposBulto.M,
+                        Estado = EstadoGuia.PendienteDeDespacho,
+                        ClienteRemitente = new Cliente { RazonSocial = "Arcor S.A.I.C." },
+                        DestinatarioFinal = new Destinatario { NombreCompleto = "Laura Martínez" }
+                    }
                 }
-            }, // Total bultos en S = 3 | Total Guías = 2
-        },
-            // Ejemplo 2: Destino Mendoza - Caja grande tipo L
-            new HojaRutaTransporte
+            },
+
+            // Ejemplo 2: Destino Mendoza
+            new HDRTransporte
             {
                 NroHDR = 3002,
-                CDDestino = new CentroDistribucion { IdCD = 2, Nombre = "CD Mendoza - Terminal Del Sol" },
+                CDDestino = new CentroDistribucion { Nombre = "CD Mendoza - Terminal Del Sol" },
                 Empresa = "Andesmar",
                 IdServicio = "AND-MDZ-2315",
                 Guias = new List<Guia>
                 {
-                    new Guia 
-                    {
+                    new Guia {
                         NroGuia = "G-2041",
-                        TipoBulto = TiposBulto.L, // 4 bultos en S
+                        TipoBulto = TiposBulto.L,
                         Estado = EstadoGuia.PendienteDeDespacho,
                         ClienteRemitente = new Cliente { RazonSocial = "Bodegas López" },
-                        DestinatarioFinal = new Destinatario { Nombre = "Federico", Apellido = "Quintana" }
+                        DestinatarioFinal = new Destinatario { NombreCompleto = "Federico Quintana" }
                     }
-                } // Total bultos en S = 4 | Total Guías = 1
+                }
             },
 
-            // Ejemplo 3: Destino Rosario - Carga pesada corporativa (XL y M)
-            new HojaRutaTransporte
+            // Ejemplo 3: Destino Rosario
+            new HDRTransporte
             {
                 NroHDR = 3003,
-                CDDestino = new CentroDistribucion { IdCD = 3, Nombre = "CD Rosario - Terminal Mariano Moreno" },
+                CDDestino = new CentroDistribucion { Nombre = "CD Rosario - Terminal Mariano Moreno" },
                 Empresa = "Empresa Argentina",
                 IdServicio = "EA-ROS-2130",
                 Guias = new List<Guia>
                 {
                     new Guia {
                         NroGuia = "G-3110",
-                        TipoBulto = TiposBulto.XL, // 8 bultos en S
+                        TipoBulto = TiposBulto.XL,
                         Estado = EstadoGuia.PendienteDeDespacho,
                         ClienteRemitente = new Cliente { RazonSocial = "Unilever S.A." },
-                        DestinatarioFinal = new Destinatario { Nombre = "Alberto", Apellido = "Rossi" }
+                        DestinatarioFinal = new Destinatario { NombreCompleto = "Alberto Rossi" }
                     },
-                    new Guia 
-                    {
+                    new Guia {
                         NroGuia = "G-3111",
-                        TipoBulto = TiposBulto.M, // 2 bultos en S
+                        TipoBulto = TiposBulto.M,
                         Estado = EstadoGuia.PendienteDeDespacho,
                         ClienteRemitente = new Cliente { RazonSocial = "Bazar Avenida" },
-                        DestinatarioFinal = new Destinatario { Nombre = "Marta", Apellido = "Gómez" }
+                        DestinatarioFinal = new Destinatario { NombreCompleto = "Marta Gómez" }
                     }
-                } // Total bultos en S = 10 | Total Guías = 2
+                }
             },
 
-            // Ejemplo 4: Destino Mar del Plata - Ecommerce puro (Muchos bultos S)
-            new HojaRutaTransporte
+            // Ejemplo 4: Destino Mar del Plata
+            new HDRTransporte
             {
                 NroHDR = 3004,
-                CDDestino = new CentroDistribucion { IdCD = 4, Nombre = "CD Mar del Plata - Terminal Ferroautomotora" },
+                CDDestino = new CentroDistribucion { Nombre = "CD Mar del Plata - Terminal Ferroautomotora" },
                 Empresa = "Plusmar",
                 IdServicio = "PM-MDP-2345",
                 Guias = new List<Guia>
                 {
-                    new Guia 
-                    {
+                    new Guia {
                         NroGuia = "G-4001",
-                        TipoBulto = TiposBulto.S, // 1 bulto en S
+                        TipoBulto = TiposBulto.S,
                         Estado = EstadoGuia.PendienteDeDespacho,
                         ClienteRemitente = new Cliente { RazonSocial = "MercadoLibre SRL" },
-                        DestinatarioFinal = new Destinatario { Nombre = "Esteban", Apellido = "Quito" }
+                        DestinatarioFinal = new Destinatario { NombreCompleto = "Esteban Quito" }
                     },
-                    new Guia 
-                    {
+                    new Guia {
                         NroGuia = "G-4002",
-                        TipoBulto = TiposBulto.S, // 1 bulto en S
+                        TipoBulto = TiposBulto.S,
                         Estado = EstadoGuia.PendienteDeDespacho,
                         ClienteRemitente = new Cliente { RazonSocial = "MercadoLibre SRL" },
-                        DestinatarioFinal = new Destinatario { Nombre = "Ramiro", Apellido = "Díaz" }
+                        DestinatarioFinal = new Destinatario { NombreCompleto = "Ramiro Díaz" }
                     },
-                    new Guia 
-                    {
+                    new Guia {
                         NroGuia = "G-4003",
-                        TipoBulto = TiposBulto.S, // 1 bulto en S
+                        TipoBulto = TiposBulto.S,
                         Estado = EstadoGuia.PendienteDeDespacho,
                         ClienteRemitente = new Cliente { RazonSocial = "Frávega S.A." },
-                        DestinatarioFinal = new Destinatario { Nombre = "Clara", Apellido = "Benítez" }
+                        DestinatarioFinal = new Destinatario { NombreCompleto = "Clara Benítez" }
                     }
-                } // Total bultos en S = 3 | Total Guías = 3
+                }
             },
 
-            // Ejemplo 5: Destino Bariloche - Remisión intercorporativa de largo alcance
-            new HojaRutaTransporte
+            // Ejemplo 5: Destino Bariloche
+            new HDRTransporte
             {
                 NroHDR = 3005,
-                CDDestino = new CentroDistribucion { IdCD = 5, Nombre = "CD Bariloche - Terminal Río Negro" },
+                CDDestino = new CentroDistribucion { Nombre = "CD Bariloche - Terminal Río Negro" },
                 Empresa = "Via Bariloche",
                 IdServicio = "VB-BAR-1900",
                 Guias = new List<Guia>
                 {
-                    new Guia 
-                    {
+                    new Guia {
                         NroGuia = "G-5501",
-                        TipoBulto = TiposBulto.L, // 4 bultos en S
+                        TipoBulto = TiposBulto.L,
                         Estado = EstadoGuia.PendienteDeDespacho,
                         ClienteRemitente = new Cliente { RazonSocial = "INVAP S.E." },
-                        DestinatarioFinal = new Destinatario { Nombre = "Jorge", Apellido = "Sabat" }
+                        DestinatarioFinal = new Destinatario { NombreCompleto = "Jorge Sabat" }
                     },
-                    new Guia 
-                    {
+                    new Guia {
                         NroGuia = "G-5502",
-                        TipoBulto = TiposBulto.XL, // 8 bultos en S
+                        TipoBulto = TiposBulto.XL,
                         Estado = EstadoGuia.PendienteDeDespacho,
                         ClienteRemitente = new Cliente { RazonSocial = "Aluar S.A." },
-                        DestinatarioFinal = new Destinatario { Nombre = "Enrique", Apellido = "Pinti" }
+                        DestinatarioFinal = new Destinatario { NombreCompleto = "Enrique Pinti" }
                     }
-                } // Total bultos en S = 12 | Total Guías = 2
+                }
             }
         };
 
-        internal List<HojaRutaTransporte> ObtenerHDRsPendientes()
+        // 2. MÉTODOS DEL MODELO ACTUALIZADOS A "HDRTransporte"
+        internal List<HDRTransporte> ObtenerHDRsPendientes()
         {
-            var resultado = new List<HojaRutaTransporte>();
-            foreach (var hdr in hdrs)
+            List<HDRTransporte> temporales = new List<HDRTransporte>();
+            foreach (var h in hdrs)
             {
-                if (!hdr.Despachada)
+                if (!h.Despachada)
                 {
-                    resultado.Add(hdr);
+                    temporales.Add(h);
                 }
             }
-            return resultado;
+            return temporales;
         }
 
-        internal int CalcularBultosEnS(HojaRutaTransporte hdr)
+        internal int CalcularBultosEnS(HDRTransporte hdr)
         {
             int total = 0;
             foreach (var g in hdr.Guias)
@@ -172,12 +169,23 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
             return total;
         }
 
-        internal int CalcularTotalBultos(HojaRutaTransporte hdr)
+        internal int CalcularTotalBultos(HDRTransporte hdr)
         {
+            if (hdr == null) return 0;
             return hdr.Guias.Count;
         }
 
-        internal bool ConfirmarDespacho(HojaRutaTransporte hdr)
+        internal int CalcularTotalGeneralPendiente()
+        {
+            int acumulador = 0;
+            foreach (var h in ObtenerHDRsPendientes())
+            {
+                acumulador += h.Guias.Count;
+            }
+            return acumulador;
+        }
+
+        internal bool ConfirmarDespacho(HDRTransporte hdr)
         {
             if (hdr == null)
             {
@@ -185,13 +193,6 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
                 return false;
             }
 
-            if (hdr.Guias.Count == 0)
-            {
-                MessageBox.Show("El servicio seleccionado no tiene guías para despachar.");
-                return false;
-            }
-
-            // Cambiamos el estado de las guías a En Transito según el diagrama y marcamos la HDR como despachada
             foreach (var guia in hdr.Guias)
             {
                 guia.Estado = EstadoGuia.EnTransito;
@@ -199,16 +200,6 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
             hdr.Despachada = true;
 
             return true;
-        }
-
-        internal int CalcularTotalGeneralPendiente()
-        {
-            int acumulador = 0;
-            foreach (var hdr in ObtenerHDRsPendientes())
-            {
-                acumulador += hdr.Guias.Count;
-            }
-            return acumulador;
         }
     }
 }

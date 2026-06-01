@@ -6,7 +6,6 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
 {
     internal class CentroDistribucion
     {
-        public int IdCD { get; set; }
         public string Nombre { get; set; }
     }
 }

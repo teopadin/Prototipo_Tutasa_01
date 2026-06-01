@@ -13,7 +13,6 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
     public partial class Despacho_Servicios_Media_Distancia : Form
     {
         private readonly ModeloDespachoServiciosMediaDistancia modelo = new ModeloDespachoServiciosMediaDistancia();
-        private HojaRutaTransporte hdrSeleccionada = null;
 
         public Despacho_Servicios_Media_Distancia()
         {
@@ -37,7 +36,6 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
                 ServicioCmb.Items.Add(hdr);
             }
 
-            // ASIGNACIÓN AQUÍ: Actualiza el total general con lo que hay en el modelo
             TotalGeneralTxtb.Text = modelo.CalcularTotalGeneralPendiente().ToString();
         }
 
@@ -45,15 +43,13 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
         {
             if (ServicioCmb.SelectedItem == null)
             {
-                // ASIGNACIÓN AQUÍ: Por seguridad si queda vacío el combo
                 TotalGeneralTxtb.Text = modelo.CalcularTotalGeneralPendiente().ToString();
                 LimpiarPantalla();
                 return;
             }
 
-            hdrSeleccionada = (HojaRutaTransporte)ServicioCmb.SelectedItem;
+            var hdrSeleccionada = (HDRTransporte)ServicioCmb.SelectedItem;
 
-            // Autocompletar usando los nuevos objetos
             CdDestinoTxtb.Text = hdrSeleccionada.CDDestino.Nombre;
             EmpresaTxtb.Text = hdrSeleccionada.Empresa;
             IdServicioTxtb.Text = hdrSeleccionada.IdServicio;
@@ -74,6 +70,9 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
 
         private void ConfirmarBtn_Click(object sender, EventArgs e)
         {
+            // Instanciamos la selección localmente para verificar
+            var hdrSeleccionada = ServicioCmb.SelectedItem as HDRTransporte;
+
             if (hdrSeleccionada == null)
             {
                 MessageBox.Show("Debe seleccionar un Servicio.");
@@ -95,6 +94,7 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
 
             if (confirma != DialogResult.Yes) return;
 
+            // Le pasamos la HDR seleccionada al modelo
             if (!modelo.ConfirmarDespacho(hdrSeleccionada))
             {
                 return;
@@ -102,7 +102,6 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
 
             MessageBox.Show("Despacho registrado con éxito. Se emiten 3 copias de la HDR " + hdrSeleccionada.NroHDR + ".");
 
-            // Recargamos para que desaparezca la que acabamos de despachar
             CargarCombobox();
             LimpiarPantalla();
         }
@@ -114,7 +113,7 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
 
         private void LimpiarPantalla()
         {
-            hdrSeleccionada = null;
+            // Ya no hay que limpiar "hdrSeleccionada = null" porque ya no existe a nivel global
             CdDestinoTxtb.Text = "";
             EmpresaTxtb.Text = "";
             IdServicioTxtb.Text = "";
@@ -122,7 +121,6 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
             BultoTxtb.Text = "";
             TotalBultoTxtb.Text = "";
 
-            // ASIGNACIÓN AQUÍ: Mantiene el valor general visible aunque no haya selección
             TotalGeneralTxtb.Text = modelo.CalcularTotalGeneralPendiente().ToString();
         }
     }
