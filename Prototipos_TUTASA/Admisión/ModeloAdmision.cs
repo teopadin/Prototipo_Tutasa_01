@@ -23,13 +23,6 @@ namespace Prototipos_TUTASA.Admisión
             new CentroDistribucion { IdCD = 3, Nombre = "CD Mendoza" }
         };
 
-        private List<Destinatario> destinatarios = new List<Destinatario>
-        {
-            new Destinatario { Dni = 30111222, Nombre = "Juan", Apellido = "Pérez" },
-            new Destinatario { Dni = 28444555, Nombre = "María", Apellido = "González" },
-            new Destinatario { Dni = 35777888, Nombre = "Carlos", Apellido = "López" }
-        };
-
         private List<Guia> guias = new List<Guia>
         {
             // Guía 1: caso general → quedará "Admitida"
@@ -38,7 +31,7 @@ namespace Prototipos_TUTASA.Admisión
                 NroGuia = "CD01-0001",
                 IdCliente = 100,
                 IdCDDestino = 2,
-                DniDestinatario = 30111222,
+                Destinatario = new Destinatario { Dni = 30111222, Nombre = "Juan", Apellido = "Pérez" },
                 TipoBulto = TiposBulto.M,
                 ModalidadEntrega = ModalidadesEntrega.PuertaAPuerta,
                 Estado = EstadoGuia.Retirada
@@ -49,7 +42,7 @@ namespace Prototipos_TUTASA.Admisión
                 NroGuia = "CD01-0002",
                 IdCliente = 200,
                 IdCDDestino = 1,
-                DniDestinatario = 28444555,
+                Destinatario = new Destinatario { Dni = 28444555, Nombre = "María", Apellido = "González" },
                 TipoBulto = TiposBulto.S,
                 ModalidadEntrega = ModalidadesEntrega.RetiroEnCD,
                 Estado = EstadoGuia.Retirada
@@ -60,7 +53,7 @@ namespace Prototipos_TUTASA.Admisión
                 NroGuia = "CD01-0003",
                 IdCliente = 300,
                 IdCDDestino = 1,
-                DniDestinatario = 35777888,
+                Destinatario = new Destinatario { Dni = 35777888, Nombre = "Carlos", Apellido = "López" },
                 TipoBulto = TiposBulto.L,
                 ModalidadEntrega = ModalidadesEntrega.PuertaAPuerta,
                 Estado = EstadoGuia.Retirada
@@ -71,7 +64,7 @@ namespace Prototipos_TUTASA.Admisión
                 NroGuia = "CD01-0004",
                 IdCliente = 100,
                 IdCDDestino = 3,
-                DniDestinatario = 30111222,
+                Destinatario = new Destinatario { Dni = 30111222, Nombre = "Juan", Apellido = "Pérez" },
                 TipoBulto = TiposBulto.XL,
                 ModalidadEntrega = ModalidadesEntrega.RetiroEnAgencia,
                 Estado = EstadoGuia.Admitida
@@ -112,19 +105,6 @@ namespace Prototipos_TUTASA.Admisión
                 if (cd.IdCD == idCD)
                 {
                     return cd;
-                }
-            }
-            return null;
-        }
-
-        // Busca un destinatario por su DNI.
-        public Destinatario BuscarDestinatario(int dni)
-        {
-            foreach (Destinatario dest in destinatarios)
-            {
-                if (dest.Dni == dni)
-                {
-                    return dest;
                 }
             }
             return null;
