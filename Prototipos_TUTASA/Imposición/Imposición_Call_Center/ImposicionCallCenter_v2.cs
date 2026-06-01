@@ -43,7 +43,7 @@ namespace Prototipos_TUTASA.ImposiciónCallCenter_v2
 
         private void btnGenerarGuia_Click(object sender, EventArgs e)
         {
-            ClienteEntidad cliente = cboRazonSocial.SelectedItem as ClienteEntidad;
+            Cliente cliente = cboRazonSocial.SelectedItem as Cliente;
             if (cliente == null)
             {
                 MostrarAviso("Debe completar todos los campos obligatorios.");
@@ -86,14 +86,14 @@ namespace Prototipos_TUTASA.ImposiciónCallCenter_v2
                 return;
             }
 
-            CentroDistribucionEntidad cdOrigen = comboBox1.SelectedItem as CentroDistribucionEntidad;
+            CentroDistribucion cdOrigen = comboBox1.SelectedItem as CentroDistribucion;
             if (cdOrigen == null)
             {
                 MostrarAviso("Debe completar todos los campos obligatorios.");
                 return;
             }
 
-            DestinatarioEntidad destinatario = new DestinatarioEntidad
+            Destinatario destinatario = new Destinatario
             {
                 Dni = dniDestinatario,
                 Nombre = txtNombreDest.Text.Trim(),
@@ -101,8 +101,8 @@ namespace Prototipos_TUTASA.ImposiciónCallCenter_v2
                 Telefono = txtTelDest.Text.Trim()
             };
 
-            AgenciaEntidad agenciaDestino = null;
-            CentroDistribucionEntidad cdDestino = null;
+            Agencia agenciaDestino = null;
+            CentroDistribucion cdDestino = null;
 
             if (modalidadEntrega == ModalidadEntrega.PuertaPuerta)
             {
@@ -114,27 +114,22 @@ namespace Prototipos_TUTASA.ImposiciónCallCenter_v2
                 destinatario.Piso = textBox3.Text.Trim();
                 destinatario.CodigoPostal = textBox4.Text.Trim();
                 destinatario.Ciudad = textBox5.Text.Trim();
-                cdDestino = modelo.ObtenerCentroDistribucionPorCiudad(destinatario.Ciudad);
             }
+
             else if (modalidadEntrega == ModalidadEntrega.RetiroAgencia)
             {
-                agenciaDestino = comboBox3.SelectedItem as AgenciaEntidad;
+                agenciaDestino = comboBox3.SelectedItem as Agencia;
                 if (agenciaDestino == null)
                 {
                     MostrarAviso("Debe completar todos los campos obligatorios.");
                     return;
                 }
 
-                destinatario.Calle = agenciaDestino.Calle;
-                destinatario.Altura = agenciaDestino.Altura;
-                destinatario.Piso = agenciaDestino.Piso;
-                destinatario.CodigoPostal = agenciaDestino.CodigoPostal;
-                destinatario.Ciudad = agenciaDestino.Ciudad;
                 cdDestino = agenciaDestino.CD;
             }
             else if (modalidadEntrega == ModalidadEntrega.RetiroCD)
             {
-                cdDestino = comboBox2.SelectedItem as CentroDistribucionEntidad;
+                cdDestino = comboBox2.SelectedItem as CentroDistribucion;
                 if (cdDestino == null)
                 {
                     MostrarAviso("Debe completar todos los campos obligatorios.");
@@ -148,14 +143,14 @@ namespace Prototipos_TUTASA.ImposiciónCallCenter_v2
                 destinatario.Ciudad = cdDestino.Nombre;
             }
 
-            GuiaEntidad guia = modelo.RegistrarImposicion(tipoBulto, modalidadEntrega, destinatario, cdOrigen, cdDestino, agenciaDestino);
+            Guia guia = modelo.RegistrarImposicion(tipoBulto, modalidadEntrega, destinatario, cdOrigen, cdDestino, agenciaDestino);
             MessageBox.Show("Guía N° " + guia.NroGuia + " generada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Close();
         }
 
         private void cboRazonSocial_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ClienteEntidad cliente = cboRazonSocial.SelectedItem as ClienteEntidad;
+            Cliente cliente = cboRazonSocial.SelectedItem as Cliente;
             if (cliente == null)
             {
                 LimpiarDatosRemitente();
@@ -194,7 +189,7 @@ namespace Prototipos_TUTASA.ImposiciónCallCenter_v2
             cboRazonSocial.DataSource = null;
             cboRazonSocial.Items.Clear();
             cboRazonSocial.DisplayMember = "RazonSocial";
-            cboRazonSocial.DataSource = new List<ClienteEntidad>(modelo.Clientes);
+            cboRazonSocial.DataSource = new List<Cliente>(modelo.Clientes);
             cboRazonSocial.SelectedIndex = -1;
         }
 
@@ -203,7 +198,7 @@ namespace Prototipos_TUTASA.ImposiciónCallCenter_v2
             comboBox3.DataSource = null;
             comboBox3.Items.Clear();
             comboBox3.DisplayMember = "RazonSocial";
-            comboBox3.DataSource = new List<AgenciaEntidad>(modelo.Agencias);
+            comboBox3.DataSource = new List<Agencia>(modelo.Agencias);
             comboBox3.SelectedIndex = -1;
         }
 
@@ -212,13 +207,13 @@ namespace Prototipos_TUTASA.ImposiciónCallCenter_v2
             comboBox1.DataSource = null;
             comboBox1.Items.Clear();
             comboBox1.DisplayMember = "Nombre";
-            comboBox1.DataSource = new List<CentroDistribucionEntidad>(modelo.CentrosDeDistribucion);
+            comboBox1.DataSource = new List<CentroDistribucion>(modelo.CentrosDeDistribucion);
             comboBox1.SelectedIndex = -1;
 
             comboBox2.DataSource = null;
             comboBox2.Items.Clear();
             comboBox2.DisplayMember = "Nombre";
-            comboBox2.DataSource = new List<CentroDistribucionEntidad>(modelo.CentrosDeDistribucion);
+            comboBox2.DataSource = new List<CentroDistribucion>(modelo.CentrosDeDistribucion);
             comboBox2.SelectedIndex = -1;
         }
 

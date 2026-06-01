@@ -4,9 +4,8 @@ using System.Text;
 
 namespace Prototipos_TUTASA.Imposición.Imposición_Agencia
 {
-    internal class CentroDistribucionEntidad
+    internal class Guia
     {
-        public int IdCD { get; set; }
-        public string Nombre { get; set; }
+        public string NroGuia { get; set; }         
     }
 }

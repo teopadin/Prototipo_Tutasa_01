@@ -1,10 +1,6 @@
 ﻿using Prototipos_TUTASA.Imposición.Imposición_Agencia;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Prototipos_TUTASA.ImposiciónAgencia_v2
@@ -37,7 +33,7 @@ namespace Prototipos_TUTASA.ImposiciónAgencia_v2
 
         private void btnGenerarGuia_Click(object sender, EventArgs e)
         {
-            ClienteEntidad cliente = cboRazonSocial.SelectedItem as ClienteEntidad;
+            Cliente cliente = cboRazonSocial.SelectedItem as Cliente;
             if (cliente == null)
             {
                 MostrarAviso("Debe completar todos los campos obligatorios.");
@@ -80,7 +76,7 @@ namespace Prototipos_TUTASA.ImposiciónAgencia_v2
                 return;
             }
 
-            DestinatarioEntidad destinatario = new DestinatarioEntidad
+            Destinatario destinatario = new Destinatario
             {
                 Dni = dniDestinatario,
                 Nombre = txtNombreDest.Text.Trim(),
@@ -88,40 +84,41 @@ namespace Prototipos_TUTASA.ImposiciónAgencia_v2
                 Telefono = txtTelDest.Text.Trim()
             };
 
-            AgenciaEntidad agenciaDestino = null;
-            CentroDistribucionEntidad cdDestino = null;
+            Agencia agenciaDestino = null;
+            CentroDistribucion cdDestino = null;
 
             if (modalidadEntrega == ModalidadEntrega.PuertaPuerta)
             {
                 if (!ValidarDomicilioPuertaPuerta())
                     return;
 
+                cdDestino = cbCDDestino.SelectedItem as CentroDistribucion;
+                if (cdDestino == null)
+                {
+                    MostrarAviso("Debe seleccionar un centro de distribución destino.");
+                    return;
+                }
+
                 destinatario.Calle = tbCalleDest.Text.Trim();
                 destinatario.Altura = int.Parse(tbAlturaDest.Text.Trim());
                 destinatario.Piso = tbPisoDest.Text.Trim();
                 destinatario.CodigoPostal = tbCDDest.Text.Trim();
                 destinatario.Ciudad = tbCiudadDest.Text.Trim();
-                cdDestino = modelo.ObtenerCentroDistribucionPorCiudad(destinatario.Ciudad);
             }
             else if (modalidadEntrega == ModalidadEntrega.RetiroAgencia)
             {
-                agenciaDestino = cbSeleccionarAgencia.SelectedItem as AgenciaEntidad;
+                agenciaDestino = cbSeleccionarAgencia.SelectedItem as Agencia;
                 if (agenciaDestino == null)
                 {
                     MostrarAviso("Debe completar todos los campos obligatorios.");
                     return;
                 }
 
-                destinatario.Calle = agenciaDestino.Calle;
-                destinatario.Altura = agenciaDestino.Altura;
-                destinatario.Piso = agenciaDestino.Piso;
-                destinatario.CodigoPostal = agenciaDestino.CodigoPostal;
-                destinatario.Ciudad = agenciaDestino.Ciudad;
                 cdDestino = agenciaDestino.CD;
             }
             else if (modalidadEntrega == ModalidadEntrega.RetiroCD)
             {
-                cdDestino = cbCDDestino.SelectedItem as CentroDistribucionEntidad;
+                cdDestino = cbCDDestino.SelectedItem as CentroDistribucion;
                 if (cdDestino == null)
                 {
                     MostrarAviso("Debe completar todos los campos obligatorios.");
@@ -135,14 +132,21 @@ namespace Prototipos_TUTASA.ImposiciónAgencia_v2
                 destinatario.Ciudad = cdDestino.Nombre;
             }
 
-            GuiaEntidad guia = modelo.RegistrarImposicion(cliente, tipoBulto, modalidadEntrega, destinatario, cdDestino, agenciaDestino);
-            MessageBox.Show("Guía N° " + guia.NroGuia + " generada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Guia guia = modelo.RegistrarImposicion();
+
+            MessageBox.Show(
+                "Guía N° " + guia.NroGuia + " generada con éxito.",
+                "Éxito",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+            );
+
             Close();
         }
 
         private void cboRazonSocial_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ClienteEntidad cliente = cboRazonSocial.SelectedItem as ClienteEntidad;
+            Cliente cliente = cboRazonSocial.SelectedItem as Cliente;
             if (cliente == null)
             {
                 LimpiarDatosRemitente();
@@ -180,7 +184,7 @@ namespace Prototipos_TUTASA.ImposiciónAgencia_v2
             cboRazonSocial.DataSource = null;
             cboRazonSocial.Items.Clear();
             cboRazonSocial.DisplayMember = "RazonSocial";
-            cboRazonSocial.DataSource = new List<ClienteEntidad>(modelo.Clientes);
+            cboRazonSocial.DataSource = new List<Cliente>(modelo.Clientes);
             cboRazonSocial.SelectedIndex = -1;
         }
 
@@ -189,7 +193,7 @@ namespace Prototipos_TUTASA.ImposiciónAgencia_v2
             cbSeleccionarAgencia.DataSource = null;
             cbSeleccionarAgencia.Items.Clear();
             cbSeleccionarAgencia.DisplayMember = "RazonSocial";
-            cbSeleccionarAgencia.DataSource = new List<AgenciaEntidad>(modelo.Agencias);
+            cbSeleccionarAgencia.DataSource = new List<Agencia>(modelo.Agencias);
             cbSeleccionarAgencia.SelectedIndex = -1;
         }
 
@@ -198,7 +202,7 @@ namespace Prototipos_TUTASA.ImposiciónAgencia_v2
             cbCDDestino.DataSource = null;
             cbCDDestino.Items.Clear();
             cbCDDestino.DisplayMember = "Nombre";
-            cbCDDestino.DataSource = new List<CentroDistribucionEntidad>(modelo.CentrosDeDistribucion);
+            cbCDDestino.DataSource = new List<CentroDistribucion>(modelo.CentrosDeDistribucion);
             cbCDDestino.SelectedIndex = -1;
         }
 
@@ -228,7 +232,7 @@ namespace Prototipos_TUTASA.ImposiciónAgencia_v2
         {
             groupBox4.Enabled = rbPuertaPuerta.Checked;
             groupBox7.Enabled = rbRetiroAgencia.Checked;
-            groupBox5.Enabled = rbRetiroCD.Checked;
+            groupBox5.Enabled = rbPuertaPuerta.Checked || rbRetiroCD.Checked;
 
             if (!rbPuertaPuerta.Checked)
                 LimpiarDomicilioPuertaPuerta();
@@ -236,7 +240,7 @@ namespace Prototipos_TUTASA.ImposiciónAgencia_v2
             if (!rbRetiroAgencia.Checked)
                 cbSeleccionarAgencia.SelectedIndex = -1;
 
-            if (!rbRetiroCD.Checked)
+            if (!rbPuertaPuerta.Checked && !rbRetiroCD.Checked)
                 cbCDDestino.SelectedIndex = -1;
         }
 

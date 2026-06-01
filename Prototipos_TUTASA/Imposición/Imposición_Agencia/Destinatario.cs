@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Prototipos_TUTASA.Imposición.ImposicionCallCenter_v2
+namespace Prototipos_TUTASA.Imposición.Imposición_Agencia
 {
-    internal class DestinatarioEntidad
+    internal class Destinatario
     {
         public int Dni { get; set; }
         public string Nombre { get; set; }
@@ -14,6 +14,6 @@ namespace Prototipos_TUTASA.Imposición.ImposicionCallCenter_v2
         public string Piso { get; set; }
         public string CodigoPostal { get; set; }
         public string Ciudad { get; set; }
-        public string Telefono { get; set; }
+        public string Telefono { get; set; }    
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Prototipos_TUTASA.Imposición.ImposicionCallCenter_v2
 {
-    internal class ClienteEntidad
+    internal class Cliente
     {
         public string RazonSocial { get; set; }
         public string CUIT { get; set; }

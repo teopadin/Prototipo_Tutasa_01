@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Prototipos_TUTASA.Imposición.Imposición_Agencia
+namespace Prototipos_TUTASA.Imposición.ImposicionCallCenter_v2
 {
-    internal class AgenciaEntidad
+    internal class Destinatario
     {
-        public int IdAgencia { get; set; }
-        public string RazonSocial { get; set; }
+        public int Dni { get; set; }
+        public string Nombre { get; set; }
+        public string Apellido { get; set; }
         public string Calle { get; set; }
         public int Altura { get; set; }
         public string Piso { get; set; }
         public string CodigoPostal { get; set; }
         public string Ciudad { get; set; }
-        public CentroDistribucionEntidad CD { get; set; }
+        public string Telefono { get; set; }
     }
 }
-

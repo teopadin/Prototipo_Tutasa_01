@@ -61,22 +61,12 @@ namespace Prototipos_TUTASA.Imposición.Imposición_CD
             {
                 IdAgencia = 1,
                 RazonSocial = "Agencia Norte SA",
-                Calle = "Av. Corrientes",
-                Altura = 1234,
-                Piso = "PB",
-                CodigoPostal = "1043",
-                Ciudad = "Buenos Aires",
                 CD = cdCapital
             };
             var agencia2 = new AgenciaEntidad
             {
                 IdAgencia = 2,
                 RazonSocial = "Agencia Sur SRL",
-                Calle = "San Martín",
-                Altura = 500,
-                Piso = "1",
-                CodigoPostal = "1043",
-                Ciudad = "Buenos Aires",
                 CD = cdCapital
             };
 
@@ -113,14 +103,6 @@ namespace Prototipos_TUTASA.Imposición.Imposición_CD
             GuiaEntidad guia = new GuiaEntidad
             {
                 NroGuia = GenerarNumeroGuia(),
-                FechaImposicion = DateTime.Today,
-                TipoBulto = tipoBulto,
-                ModalidadEntrega = modalidadEntrega,
-                Estado = EstadoGuia.Admitida,
-                CdOrigen = CdOrigen,
-                CdDestino = cdDestino,
-                Destinatario = destinatario,
-                Agencia = agenciaDestino
             };
 
             Guias.Add(guia);

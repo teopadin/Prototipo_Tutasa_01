@@ -1,147 +1,98 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Prototipos_TUTASA.Imposición.Imposición_Agencia
 {
-        internal class ModeloImposicionAgencia
+    internal class ModeloImposicionAgencia
     {
-        public List<ClienteEntidad> Clientes { get; set; }
-        public List<AgenciaEntidad> Agencias { get; set; }
-        public List<CentroDistribucionEntidad> CentrosDeDistribucion { get; set; }
-        public AgenciaEntidad AgenciaOperadora { get; set; }
-        public CentroDistribucionEntidad CdOrigen { get; set; }
-        public List<GuiaEntidad> Guias { get; set; }
-        public List<RendicionAgenciaEntidad> RendicionesAgencia { get; set; }
+        public List<Cliente> Clientes { get; set; }
+        public List<Agencia> Agencias { get; set; }
+        public List<CentroDistribucion> CentrosDeDistribucion { get; set; }
+        public Agencia AgenciaOperadora { get; set; }
+        public CentroDistribucion CdOrigen { get; set; }
+        public List<Guia> Guias { get; set; }
 
         public ModeloImposicionAgencia()
         {
-            // CDs
-            var cdCapital    = new CentroDistribucionEntidad { IdCD = 1, Nombre = "Capital y GBA" };
-            var cdCentro     = new CentroDistribucionEntidad { IdCD = 2, Nombre = "Centro - Córdoba" };
-            var cdNorte      = new CentroDistribucionEntidad { IdCD = 3, Nombre = "Norte - Tucumán" };
-            var cdEste       = new CentroDistribucionEntidad { IdCD = 4, Nombre = "Este - Corrientes" };
-            var cdCordillera = new CentroDistribucionEntidad { IdCD = 5, Nombre = "Cordillera - Neuquén" };
-            var cdSur        = new CentroDistribucionEntidad { IdCD = 6, Nombre = "Sur - Viedma" };
+            var cdCapital = new CentroDistribucion { IdCD = 1, Nombre = "Capital y GBA" };
+            var cdCentro = new CentroDistribucion { IdCD = 2, Nombre = "Centro - Córdoba" };
+            var cdNorte = new CentroDistribucion { IdCD = 3, Nombre = "Norte - Tucumán" };
+            var cdEste = new CentroDistribucion { IdCD = 4, Nombre = "Este - Corrientes" };
+            var cdCordillera = new CentroDistribucion { IdCD = 5, Nombre = "Cordillera - Neuquén" };
+            var cdSur = new CentroDistribucion { IdCD = 6, Nombre = "Sur - Viedma" };
 
-            CentrosDeDistribucion = new List<CentroDistribucionEntidad>
+            CentrosDeDistribucion = new List<CentroDistribucion>
             {
-                cdCapital, cdCentro, cdNorte, cdEste, cdCordillera, cdSur
+                cdCapital,
+                cdCentro,
+                cdNorte,
+                cdEste,
+                cdCordillera,
+                cdSur
             };
 
-            // Clientes (remitentes)
-            var cliente1 = new ClienteEntidad { RazonSocial  = "Distribuidora El Sol SRL",
-                CUIT         = "30712345678",
-                Telefono     = 1145678901,
-                Calle        = "Av. Corrientes",
-                Altura       = 1500,
-                Piso         = "PB",
+            var cliente1 = new Cliente
+            {
+                RazonSocial = "Distribuidora El Sol SRL",
+                CUIT = "30712345678",
+                Telefono = 1145678901,
+                Calle = "Av. Corrientes",
+                Altura = 1500,
+                Piso = "PB",
                 CodigoPostal = "1043",
-                Ciudad       = "Buenos Aires"
+                Ciudad = "Buenos Aires"
             };
-            var cliente2 = new ClienteEntidad
+
+            var cliente2 = new Cliente
             {
-                RazonSocial  = "Importadora del Norte SA",
-                CUIT         = "30787654321",
-                Telefono     = 1167890123,
-                Calle        = "San Martín",
-                Altura       = 320,
-                Piso         = "2",
+                RazonSocial = "Importadora del Norte SA",
+                CUIT = "30787654321",
+                Telefono = 1167890123,
+                Calle = "San Martín",
+                Altura = 320,
+                Piso = "2",
                 CodigoPostal = "1004",
-                Ciudad       = "Buenos Aires"
+                Ciudad = "Buenos Aires"
             };
 
-            Clientes = new List<ClienteEntidad> { cliente1, cliente2 };
+            Clientes = new List<Cliente> { cliente1, cliente2 };
 
-            // Agencias
-            var agencia1 = new AgenciaEntidad
+            var agencia1 = new Agencia
             {
-                IdAgencia    = 1,
-                RazonSocial  = "Agencia Norte SA",
-                Calle        = "Av. Corrientes",
-                Altura       = 1234,
-                Piso         = "PB",
-                CodigoPostal = "1043",
-                Ciudad       = "Buenos Aires",
-                CD           = cdCapital
-            };
-            var agencia2 = new AgenciaEntidad
-            {
-                IdAgencia    = 2,
-                RazonSocial  = "Agencia Sur SRL",
-                Calle        = "San Martín",
-                Altura       = 500,
-                Piso         = "1",
-                CodigoPostal = "1043",
-                Ciudad       = "Buenos Aires",
-                CD           = cdCapital
+                IdAgencia = 1,
+                RazonSocial = "Agencia Norte SA",
+                CD = cdCapital
             };
 
-            Agencias = new List<AgenciaEntidad> { agencia1, agencia2 };
+            var agencia2 = new Agencia
+            {
+                IdAgencia = 2,
+                RazonSocial = "Agencia Sur SRL",
+                CD = cdCapital
+            };
+
+            Agencias = new List<Agencia> { agencia1, agencia2 };
             AgenciaOperadora = agencia1;
             CdOrigen = AgenciaOperadora.CD;
-
-            // Guías ya impuestas (lista que se va llenando al registrar)
-            Guias = new List<GuiaEntidad>();
-            RendicionesAgencia = new List<RendicionAgenciaEntidad>();
+            Guias = new List<Guia>();
         }
 
-        public CentroDistribucionEntidad ObtenerCentroDistribucionPorCiudad(string ciudad)
+        public Guia RegistrarImposicion()
         {
-            string ciudadNormalizada = (ciudad ?? string.Empty).ToLower();
-
-            if (ciudadNormalizada.Contains("córdoba") || ciudadNormalizada.Contains("cordoba"))
-                return CentrosDeDistribucion[1];
-
-            if (ciudadNormalizada.Contains("tucumán") || ciudadNormalizada.Contains("tucuman"))
-                return CentrosDeDistribucion[2];
-
-            if (ciudadNormalizada.Contains("corrientes"))
-                return CentrosDeDistribucion[3];
-
-            if (ciudadNormalizada.Contains("neuquén") || ciudadNormalizada.Contains("neuquen"))
-                return CentrosDeDistribucion[4];
-
-            if (ciudadNormalizada.Contains("viedma"))
-                return CentrosDeDistribucion[5];
-
-            return CdOrigen;
-        }
-
-        public GuiaEntidad RegistrarImposicion(ClienteEntidad cliente, TipoBulto tipoBulto, ModalidadEntrega modalidadEntrega, DestinatarioEntidad destinatario, CentroDistribucionEntidad cdDestino, AgenciaEntidad agenciaDestino)
-        {
-            GuiaEntidad guia = new GuiaEntidad
+            Guia guia = new Guia
             {
-                NroGuia = GenerarNumeroGuia(),
-                FechaImposicion = DateTime.Today,
-                TipoBulto = tipoBulto,
-                ModalidadEntrega = modalidadEntrega,
-                Estado = EstadoGuia.Impuesta,
-                CdOrigen = CdOrigen,
-                CdDestino = cdDestino,
-                Destinatario = destinatario,
-                Agencia = agenciaDestino
+                NroGuia = GenerarNumeroGuia()
             };
 
             Guias.Add(guia);
-
-            RendicionesAgencia.Add(new RendicionAgenciaEntidad
-            {
-                Agencia = AgenciaOperadora,
-                Cliente = cliente,
-                Fecha = DateTime.Today,
-                TipoBulto = tipoBulto,
-                CantidadBultos = 1,
-                NroGuia = guia.NroGuia
-            });
 
             return guia;
         }
 
         private string GenerarNumeroGuia()
         {
-            return "A" + AgenciaOperadora.IdAgencia.ToString("000") + "-" + (Guias.Count + 1).ToString("0000");
+            int proximoNumero = Guias.Count + 1;
+
+            return "AG" + AgenciaOperadora.IdAgencia.ToString("000") + "-" + proximoNumero.ToString("0000");
         }
     }
-    
 }

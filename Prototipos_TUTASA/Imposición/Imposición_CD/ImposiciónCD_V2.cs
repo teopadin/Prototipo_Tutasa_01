@@ -123,11 +123,6 @@ namespace Prototipos_TUTASA.ImposiciónCD_V2
                     return;
                 }
 
-                destinatario.Calle = agenciaDestino.Calle;
-                destinatario.Altura = agenciaDestino.Altura;
-                destinatario.Piso = agenciaDestino.Piso;
-                destinatario.CodigoPostal = agenciaDestino.CodigoPostal;
-                destinatario.Ciudad = agenciaDestino.Ciudad;
                 cdDestino = agenciaDestino.CD;
             }
             else if (modalidadEntrega == ModalidadEntrega.RetiroCD)
