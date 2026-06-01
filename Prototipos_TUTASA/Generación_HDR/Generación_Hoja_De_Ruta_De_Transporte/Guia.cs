@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transporte
 {
-    internal class GuiaEntidad
+    internal class Guia
     {
         public string NroGuia { get; set; }
         public DateTime FechaImposicion { get; set; }

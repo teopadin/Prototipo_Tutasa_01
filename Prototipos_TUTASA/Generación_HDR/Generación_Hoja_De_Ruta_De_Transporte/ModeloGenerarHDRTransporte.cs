@@ -8,9 +8,8 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transpor
     {
         public CentroDistribucion CdEmisor { get; set; }
         public List<CentroDistribucion> CentrosDeDistribucion { get; set; }
-        public List<GuiaEntidad> Guias { get; set; }
+        public List<Guia> Guias { get; set; }
         public List<ServicioMediaDistancia> Servicios { get; set; }
-        public List<HojaDeRutaTransporte> HojasDeRuta { get; set; }
 
         public bool Actualizando { get; set; } = false;
 
@@ -55,28 +54,27 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transpor
             };
 
             // Guías en estado Admitida, origen Capital
-            Guias = new List<GuiaEntidad>
+            Guias = new List<Guia>
             {
                 // Destino Norte
-                new GuiaEntidad { NroGuia = "CD01-0001", FechaImposicion = new DateTime(2026, 5, 20), TipoBulto = TipoBulto.M, Estado = EstadoGuia.Admitida, CdOrigen = cdCapital, CdDestino = cdNorte },
-                new GuiaEntidad { NroGuia = "CD01-0002", FechaImposicion = new DateTime(2026, 5, 21), TipoBulto = TipoBulto.L, Estado = EstadoGuia.Admitida, CdOrigen = cdCapital, CdDestino = cdNorte },
-                new GuiaEntidad { NroGuia = "CD01-0003", FechaImposicion = new DateTime(2026, 5, 22), TipoBulto = TipoBulto.XL, Estado = EstadoGuia.Admitida, CdOrigen = cdCapital, CdDestino = cdNorte },
+                new Guia { NroGuia = "CD01-0001", FechaImposicion = new DateTime(2026, 5, 20), TipoBulto = TipoBulto.M, Estado = EstadoGuia.Admitida, CdOrigen = cdCapital, CdDestino = cdNorte },
+                new Guia { NroGuia = "CD01-0002", FechaImposicion = new DateTime(2026, 5, 21), TipoBulto = TipoBulto.L, Estado = EstadoGuia.Admitida, CdOrigen = cdCapital, CdDestino = cdNorte },
+                new Guia { NroGuia = "CD01-0003", FechaImposicion = new DateTime(2026, 5, 22), TipoBulto = TipoBulto.XL, Estado = EstadoGuia.Admitida, CdOrigen = cdCapital, CdDestino = cdNorte },
 
                 // Destino Centro
-                new GuiaEntidad { NroGuia = "CD01-0004", FechaImposicion = new DateTime(2026, 5, 20), TipoBulto = TipoBulto.S, Estado = EstadoGuia.Admitida, CdOrigen = cdCapital, CdDestino = cdCentro },
-                new GuiaEntidad { NroGuia = "CD01-0005", FechaImposicion = new DateTime(2026, 5, 21), TipoBulto = TipoBulto.M, Estado = EstadoGuia.Admitida, CdOrigen = cdCapital, CdDestino = cdCentro },
+                new Guia { NroGuia = "CD01-0004", FechaImposicion = new DateTime(2026, 5, 20), TipoBulto = TipoBulto.S, Estado = EstadoGuia.Admitida, CdOrigen = cdCapital, CdDestino = cdCentro },
+                new Guia { NroGuia = "CD01-0005", FechaImposicion = new DateTime(2026, 5, 21), TipoBulto = TipoBulto.M, Estado = EstadoGuia.Admitida, CdOrigen = cdCapital, CdDestino = cdCentro },
 
                 // Destino Este
-                new GuiaEntidad { NroGuia = "CD01-0006", FechaImposicion = new DateTime(2026, 5, 22), TipoBulto = TipoBulto.S, Estado = EstadoGuia.Admitida, CdOrigen = cdCapital, CdDestino = cdEste },
+                new Guia { NroGuia = "CD01-0006", FechaImposicion = new DateTime(2026, 5, 22), TipoBulto = TipoBulto.S, Estado = EstadoGuia.Admitida, CdOrigen = cdCapital, CdDestino = cdEste },
 
                 // Otro estado - NO debe aparecer
-                new GuiaEntidad { NroGuia = "CD01-0007", FechaImposicion = new DateTime(2026, 5, 19), TipoBulto = TipoBulto.M, Estado = EstadoGuia.PendienteDeDespacho, CdOrigen = cdCapital, CdDestino = cdNorte },
+                new Guia { NroGuia = "CD01-0007", FechaImposicion = new DateTime(2026, 5, 19), TipoBulto = TipoBulto.M, Estado = EstadoGuia.PendienteDeDespacho, CdOrigen = cdCapital, CdDestino = cdNorte },
 
                 // Otro CD origen - NO debe aparecer
-                new GuiaEntidad { NroGuia = "CD02-0001", FechaImposicion = new DateTime(2026, 5, 20), TipoBulto = TipoBulto.S, Estado = EstadoGuia.Admitida, CdOrigen = cdCentro, CdDestino = cdNorte },
+                new Guia { NroGuia = "CD02-0001", FechaImposicion = new DateTime(2026, 5, 20), TipoBulto = TipoBulto.S, Estado = EstadoGuia.Admitida, CdOrigen = cdCentro, CdDestino = cdNorte },
             };
 
-            HojasDeRuta = new List<HojaDeRutaTransporte>();
         }
     }
 }

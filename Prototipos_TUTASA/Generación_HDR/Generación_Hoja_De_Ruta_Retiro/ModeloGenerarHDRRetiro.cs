@@ -10,7 +10,6 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_Retiro
             public List<CentroDistribucion> CentrosDeDistribucion { get; set; }
             public List<Guia> Guias { get; set; }
             public List<TransportistaLocal> Transportistas { get; set; }
-            public List<HojaDeRutaRetiro> HojasDeRuta { get; set; }
             public bool Actualizando { get; set; } = false;
 
         public ModeloGenerarHDRRetiro()
@@ -65,7 +64,6 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_Retiro
                 new Guia { NroGuia = "CD01-0003", FechaImposicion = new DateTime(2026, 5, 19), TipoImposicion = TipoImposicion.CallCenter, TipoBulto = TipoBulto.L, ModalidadEntrega = ModalidadEntrega.PuertaAPuerta, Estado = EstadoGuia.PendienteDeRetiroPorTransportista, CdOrigen = cdCapital, CdDestino = cdNorte, Cliente = cliente1, Agencia = null },
             };
 
-            HojasDeRuta = new List<HojaDeRutaRetiro>();
         }
     }
 }

@@ -222,14 +222,6 @@ namespace Prototipos_TUTASA.HojaDeRutaRetiro
                 return;
             }
 
-            // Crear la HDR
-            Generación_HDR.Generación_Hoja_De_Ruta_Retiro.HojaDeRutaRetiro nuevaHDR = new Generación_HDR.Generación_Hoja_De_Ruta_Retiro.HojaDeRutaRetiro();
-            nuevaHDR.NroHDR = modelo.HojasDeRuta.Count + 1;
-            nuevaHDR.FechaEmision = dtpFecha.Value;
-            nuevaHDR.CdEmisor = modelo.CdEmisor;
-            nuevaHDR.Transportista = transportistaSeleccionado;
-            nuevaHDR.Guias = guiasSeleccionadas;
-            nuevaHDR.Estado = EstadoHojaDeRutaRetiro.Generada;
 
             // Cambiar el estado de las guías a PendienteDeRetiroPorTransportista
             foreach (var guia in guiasSeleccionadas)
@@ -238,10 +230,8 @@ namespace Prototipos_TUTASA.HojaDeRutaRetiro
             // Incrementar las HDR asignadas al transportista
             transportistaSeleccionado.HdrAsignadas++;
 
-            // Registrar la HDR
-            modelo.HojasDeRuta.Add(nuevaHDR);
 
-            MessageBox.Show($"Hoja de Ruta de Retiro Nro {nuevaHDR.NroHDR} generada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show($"Hoja de Ruta de Retiro generada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             // Limpiar la pantalla para una nueva operación
             lvFleteros.Items.Clear();

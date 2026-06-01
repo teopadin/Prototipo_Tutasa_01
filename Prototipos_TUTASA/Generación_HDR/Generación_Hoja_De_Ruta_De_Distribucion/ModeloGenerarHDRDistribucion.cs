@@ -16,7 +16,6 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Distribu
         public List<CentroDistribucion> CentrosDeDistribucion { get; set; }
         public List<Guia> Guias { get; set; }
         public List<TransportistaLocal> Transportistas { get; set; }
-        public List<HojaDeRutaDistribucion> HojasDeRuta { get; set; }
         public bool Actualizando { get; set; } = false;
 
         public ModeloGenerarHDRDistribucion()
@@ -79,7 +78,6 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Distribu
                 new Guia { NroGuia = "CD01-0002", FechaImposicion = new DateTime(2026, 5, 25), ModalidadEntrega = ModalidadEntrega.PuertaAPuerta, Estado = EstadoGuia.Admitida, CdOrigen = cdCapital, CdDestino = cdCapital, Destinatario = dest1, Agencia = null },
             };
 
-            HojasDeRuta = new List<HojaDeRutaDistribucion>();
         }
     }
 } 

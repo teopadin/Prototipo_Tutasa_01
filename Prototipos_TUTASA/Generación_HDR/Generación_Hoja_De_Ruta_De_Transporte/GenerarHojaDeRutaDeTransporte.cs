@@ -96,7 +96,7 @@ namespace Prototipos_TUTASA.Generación_Hoja_De_Ruta_De_Transporte
             {
                 if (item.Checked)
                 {
-                    GuiaEntidad guia = (GuiaEntidad)item.Tag;
+                    Guia guia = (Guia)item.Tag;
                     totalBultos += guia.EquivalenteS;
                 }
             }
@@ -115,7 +115,7 @@ namespace Prototipos_TUTASA.Generación_Hoja_De_Ruta_De_Transporte
             {
                 if (item.Checked)
                 {
-                    GuiaEntidad guia = (GuiaEntidad)item.Tag;
+                    Guia guia = (Guia)item.Tag;
                     totalBultos += guia.EquivalenteS;
                 }
             }
@@ -149,11 +149,11 @@ namespace Prototipos_TUTASA.Generación_Hoja_De_Ruta_De_Transporte
         private void btnGenerarHDR_Click(object sender, EventArgs e)
         {
             // Validar que haya al menos una guía seleccionada
-            List<GuiaEntidad> guiasSeleccionadas = new List<GuiaEntidad>();
+            List<Guia> guiasSeleccionadas = new List<Guia>();
             foreach (ListViewItem item in lvGuiasPendientes.Items)
             {
                 if (item.Checked)
-                    guiasSeleccionadas.Add((GuiaEntidad)item.Tag);
+                    guiasSeleccionadas.Add((Guia)item.Tag);
             }
 
             if (guiasSeleccionadas.Count == 0)
@@ -173,16 +173,6 @@ namespace Prototipos_TUTASA.Generación_Hoja_De_Ruta_De_Transporte
                 return;
             }
 
-            // Crear la HDR
-            HojaDeRutaTransporte nuevaHDR = new HojaDeRutaTransporte();
-            nuevaHDR.NroHDR = modelo.HojasDeRuta.Count + 1;
-            nuevaHDR.FechaEmision = DateTime.Today;
-            nuevaHDR.CdOrigen = modelo.CdEmisor;
-            nuevaHDR.CdDestino = (CentroDistribucion)cmbCDDestino.SelectedItem;
-            nuevaHDR.Servicio = servicioSeleccionado;
-            nuevaHDR.Guias = guiasSeleccionadas;
-            nuevaHDR.Estado = EstadoHojaDeRutaTransporte.Generada;
-
             // Actualizar capacidad usada del servicio
             int totalBultos = 0;
             foreach (var guia in guiasSeleccionadas)
@@ -192,10 +182,7 @@ namespace Prototipos_TUTASA.Generación_Hoja_De_Ruta_De_Transporte
             }
             servicioSeleccionado.CapacidadUsada += totalBultos;
 
-            // Registrar la HDR
-            modelo.HojasDeRuta.Add(nuevaHDR);
-
-            MessageBox.Show($"Hoja de Ruta de Transporte Nro {nuevaHDR.NroHDR} generada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show($"Hoja de Ruta de Transporte generada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             // Limpiar la pantalla para una nueva operación
             lvServicios.Items.Clear();
