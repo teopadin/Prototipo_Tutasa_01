@@ -4,16 +4,15 @@ using System.Text;
 
 namespace Prototipos_TUTASA.Imposición.Imposición_CD
 {
-    internal class DestinatarioEntidad
+    internal class Cliente
     {
-        public int Dni { get; set; }
-        public string Nombre { get; set; }
-        public string Apellido { get; set; }
+        public string RazonSocial { get; set; }
+        public string CUIT { get; set; }
+        public int Telefono { get; set; }
         public string Calle { get; set; }
         public int Altura { get; set; }
         public string Piso { get; set; }
         public string CodigoPostal { get; set; }
         public string Ciudad { get; set; }
-        public string Telefono { get; set; }
     }
 }

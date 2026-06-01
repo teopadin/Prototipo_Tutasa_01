@@ -4,10 +4,10 @@ using System.Text;
 
 namespace Prototipos_TUTASA.Imposición.Imposición_CD
 {
-    internal class AgenciaEntidad
+    internal class Agencia
     {
         public int IdAgencia { get; set; }
         public string RazonSocial { get; set; }
-        public CentroDistribucionEntidad CD { get; set; }
+        public CentroDistribucion CD { get; set; }
     }
 }
