@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Prototipos_TUTASA.Admisión
 {
-    public class HistorialEstadoGuiaEntidad
+    public class HistorialEstadoGuia
     {
         public DateTime FechaCambio { get; set; }
         public EstadoGuia Estado { get; set; }

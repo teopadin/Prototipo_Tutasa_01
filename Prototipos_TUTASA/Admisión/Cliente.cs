@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Prototipos_TUTASA.Admisión
 {
-    public class ClienteEntidad
+    public class Cliente
     {
         public int IdCliente { get; set; }
         public string RazonSocial { get; set; }

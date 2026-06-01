@@ -23,7 +23,7 @@ namespace Prototipos_TUTASA
             //Application.Run(new Resumen_HDR_Retiro());
             //Application.Run(new Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia.Recepcion_HDR_Retiro_Agencia());
             //Application.Run(new Rendir_HDR_De_Retiro());
-            //Application.Run(new Admisión.Admisión());
+            Application.Run(new Admisión.Admisión());
             //Application.Run(new GenerarHojaDeRutaDeTransporte());
             Application.Run(new Despacho_Servicios_Media_Distancia.Despacho_Servicios_Media_Distancia());
             // FALTA TERMINAR // Application.Run(new Prototipos_TUTASA.RecepcionMediaDistancia.RecepcionMediaDistancia());

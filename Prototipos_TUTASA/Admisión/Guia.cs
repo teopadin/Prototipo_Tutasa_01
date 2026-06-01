@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Prototipos_TUTASA.Admisión
 {
-    public class GuiaEntidad
+    public class Guia
     {
         public string NroGuia { get; set; }
         public int IdCliente { get; set; }
@@ -14,6 +14,6 @@ namespace Prototipos_TUTASA.Admisión
         public TiposBulto TipoBulto { get; set; }
         public ModalidadesEntrega ModalidadEntrega { get; set; }
         public EstadoGuia Estado { get; set; }
-        public List<HistorialEstadoGuiaEntidad> Historial { get; set; }
+        public List<HistorialEstadoGuia> Historial { get; set; }
     }
 }
