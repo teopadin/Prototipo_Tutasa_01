@@ -38,7 +38,7 @@ namespace Prototipos_TUTASA
             //Application.Run(new ConsultarEstadoDelPedido_v2.ConsultarEstadoDelPedido());
             //Application.Run(new resultadocostosvsventas());
             //Application.Run(new Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrienteXCliente_v2.EstadoCuentaCorrienteXCliente());
-            Application.Run(new EntregaAgencia());
+            //Application.Run(new EntregaAgencia());
         }
     }
 }
