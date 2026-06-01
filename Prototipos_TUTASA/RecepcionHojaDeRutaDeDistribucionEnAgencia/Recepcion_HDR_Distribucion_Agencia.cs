@@ -13,7 +13,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
     {
         private ModeloRecibirHDRDistribucionAgencia modelo = new ModeloRecibirHDRDistribucionAgencia();
 
-        private HojaDeRutaDistribucion hdrActual;
+
 
         public Recepcion_HDR_Distribucion_Agencia()
         {
@@ -100,14 +100,14 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
                 return;
             }
 
-            hdrActual = hdr;
+            modelo.HdrActual = hdr;
 
             CargarHDR(hdr);
         }
 
         private void btnConfirmarRecepcion_Click(object sender, EventArgs e)
         {
-            if (hdrActual == null)
+            if (modelo.HdrActual == null)
             {
                 MessageBox.Show(
                     "Debe buscar una HDR antes de confirmar la recepción.");
@@ -115,17 +115,17 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
                 return;
             }
 
-            hdrActual.Estado = EstadoHojaDeRuta.Recibida;
+            modelo.HdrActual.Estado = EstadoHojaDeRuta.Recibida;
 
-            hdrActual.FechaRecepcion = DateTime.Now;
+            modelo.HdrActual.FechaRecepcion = DateTime.Now;
 
-            foreach (var guia in hdrActual.Guias)
+            foreach (var guia in modelo.HdrActual.Guias)
             {
                 guia.Estado = EstadoGuia.PendienteDeRetiroEnAgencia;
             }
 
             MessageBox.Show(
-                $"Recepción de HDR N° {hdrActual.NroHDR} confirmada con éxito.",
+                $"Recepción de HDR N° {modelo.HdrActual.NroHDR} confirmada con éxito.",
                 "Éxito",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information);

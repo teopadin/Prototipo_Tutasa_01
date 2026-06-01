@@ -18,6 +18,8 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
 
         public List<HojaDeRutaDistribucion> HojasDeRutaDistribucion { get; set; }
 
+        public HojaDeRutaDistribucion HdrActual { get; set; }
+
         public ModeloRecibirHDRDistribucionAgencia()
         {
             // CDs
@@ -92,28 +94,32 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
             {
                 NroGuia = "GD-0001",
                 TipoBulto = TiposBulto.S,
-                Agencia = agencia1
+                Agencia = agencia1,
+                Estado = EstadoGuia.EnDistribucion
             };
 
             var g2 = new Guia
             {
                 NroGuia = "GD-0002",
                 TipoBulto = TiposBulto.M,
-                Agencia = agencia1
+                Agencia = agencia1,
+                Estado = EstadoGuia.EnDistribucion
             };
 
             var g3 = new Guia
             {
                 NroGuia = "GD-0003",
                 TipoBulto = TiposBulto.L,
-                Agencia = agencia1
+                Agencia = agencia1,
+                Estado = EstadoGuia.EnDistribucion
             };
 
             var g4 = new Guia
             {
                 NroGuia = "GD-0004",
                 TipoBulto = TiposBulto.XL,
-                Agencia = agencia2
+                Agencia = agencia2,
+                Estado = EstadoGuia.EnDistribucion
             };
 
             Guias = new List<Guia>
