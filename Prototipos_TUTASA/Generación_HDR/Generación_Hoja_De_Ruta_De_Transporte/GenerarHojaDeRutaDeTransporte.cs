@@ -13,7 +13,6 @@ namespace Prototipos_TUTASA.Generación_Hoja_De_Ruta_De_Transporte
     public partial class GenerarHojaDeRutaDeTransporte : Form
     {
         private ModeloGenerarHDRTransporte modelo = new ModeloGenerarHDRTransporte();
-        private bool actualizando = false;
         public GenerarHojaDeRutaDeTransporte()
         {
             InitializeComponent();
@@ -61,7 +60,7 @@ namespace Prototipos_TUTASA.Generación_Hoja_De_Ruta_De_Transporte
 
         private void CargarGuiasPendientes()
         {
-            actualizando = true;
+            modelo.Actualizando = true;
             lvGuiasPendientes.Items.Clear();
 
             CentroDistribucionEntidad cdSeleccionado = (CentroDistribucionEntidad)cmbCDDestino.SelectedItem;
@@ -79,12 +78,12 @@ namespace Prototipos_TUTASA.Generación_Hoja_De_Ruta_De_Transporte
                 lvGuiasPendientes.Items.Add(item);
             }
 
-            actualizando = false;
+            modelo.Actualizando = false;
         }
 
         private void lvGuiasPendientes_ItemChecked(object sender, ItemCheckedEventArgs e)
         {
-            if (actualizando) return;
+            if (modelo.Actualizando) return;
 
             ActualizarBultos();
             CargarServicios();

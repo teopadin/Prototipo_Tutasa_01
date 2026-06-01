@@ -17,6 +17,7 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Distribu
         public List<GuiaEntidad> Guias { get; set; }
         public List<TransportistaLocalEntidad> Transportistas { get; set; }
         public List<HojaDeRutaDistribucionEntidad> HojasDeRuta { get; set; }
+        public bool Actualizando { get; set; } = false;
 
         public ModeloGenerarHDRDistribucion()
         {

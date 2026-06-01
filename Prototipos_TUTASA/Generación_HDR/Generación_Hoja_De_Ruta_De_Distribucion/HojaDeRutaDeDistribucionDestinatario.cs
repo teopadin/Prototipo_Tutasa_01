@@ -12,7 +12,6 @@ namespace Prototipos_TUTASA.HojaDeRutaDeDistribucion
     public partial class HojaDeRutaDeDistribucionDestinatario : Form
     {
         private ModeloGenerarHDRDistribucion modelo = new ModeloGenerarHDRDistribucion();
-        private bool actualizando = false;
 
         public HojaDeRutaDeDistribucionDestinatario()
         {
@@ -28,7 +27,7 @@ namespace Prototipos_TUTASA.HojaDeRutaDeDistribucion
 
         private void CargarGuiasPendientes()
         {
-            actualizando = true;
+            modelo.Actualizando = true;
             listViewGuiasADistribuir.Items.Clear();
 
             foreach (var guia in modelo.Guias)
@@ -77,18 +76,18 @@ namespace Prototipos_TUTASA.HojaDeRutaDeDistribucion
                 listViewGuiasADistribuir.Items.Add(item);
             }
 
-            actualizando = false;
+            modelo.Actualizando = false;
         }
 
         private void listViewGuiasADistribuir_ItemChecked(object sender, ItemCheckedEventArgs e)
         {
-            if (actualizando) return;
+            if (modelo.Actualizando) return;
 
             if (e.Item.ForeColor == System.Drawing.Color.Gray && e.Item.Checked)
             {
-                actualizando = true;
+                modelo.Actualizando = true;
                 e.Item.Checked = false;
-                actualizando = false;
+                modelo.Actualizando = false;
                 return;
             }
 
@@ -133,7 +132,7 @@ namespace Prototipos_TUTASA.HojaDeRutaDeDistribucion
                 ciudadRef = guiaReferencia.Agencia.Ciudad;
             }
 
-            actualizando = true;
+            modelo.Actualizando = true;
             foreach (ListViewItem item in listViewGuiasADistribuir.Items)
             {
                 GuiaEntidad guia = (GuiaEntidad)item.Tag;
@@ -161,7 +160,7 @@ namespace Prototipos_TUTASA.HojaDeRutaDeDistribucion
                 else
                     item.ForeColor = System.Drawing.Color.Black;
             }
-            actualizando = false;
+            modelo.Actualizando = false;
         }
 
         private void ActualizarCantGuias()

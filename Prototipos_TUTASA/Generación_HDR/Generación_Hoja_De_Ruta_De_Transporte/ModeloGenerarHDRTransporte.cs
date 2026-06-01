@@ -12,6 +12,8 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transpor
         public List<ServicioMediaDistanciaEntidad> Servicios { get; set; }
         public List<HojaDeRutaTransporteEntidad> HojasDeRuta { get; set; }
 
+        public bool Actualizando { get; set; } = false;
+
         public ModeloGenerarHDRTransporte()
         {
             // CDs
