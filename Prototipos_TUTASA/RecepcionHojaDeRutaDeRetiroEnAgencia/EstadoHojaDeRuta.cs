@@ -6,10 +6,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia
 {
     public enum EstadoHojaDeRuta
     {
-        Generada,
         EnCurso,
         Recibida,
-        Cumplida,
-        NoCumplida
     }
 }

@@ -8,9 +8,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia
     internal class HojaDeRutaRetiro
     {
         public int NroHDR { get; set; }
-        public DateTime FechaEmision { get; set; }
         public DateTime FechaRecepcion { get; set; }
-        public CentroDeDistribucion CdEmisor { get; set; }
         public Agencia Agencia { get; set; }
         public TransportistaLocal Transportista { get; set; }
         public List<Guia> Guias { get; set; }

@@ -8,11 +8,5 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia
     {
         public int IdAgencia { get; set; }
         public string RazonSocial { get; set; }
-        public string Calle { get; set; }
-        public int Altura { get; set; }
-        public string Piso { get; set; }
-        public string CodigoPostal { get; set; }
-        public string Ciudad { get; set; }
-        public CentroDeDistribucion IdCD { get; set; }
     }
 }
