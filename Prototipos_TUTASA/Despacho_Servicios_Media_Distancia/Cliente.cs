@@ -4,9 +4,9 @@ using System.Text;
 
 namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
 {
-    internal class CentroDistribucionEntidad
+    internal class Cliente
     {
-        public int IdCD { get; set; }
-        public string Nombre { get; set; }
+        public int IdCliente { get; set; }
+        public string RazonSocial { get; set; }
     }
 }

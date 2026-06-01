@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Retiro
 {
-    internal class TransportistaLocalEntidad
+    internal class TransportistaLocal
     {
         public int Id { get; set; }
         public string Nombre { get; set; }

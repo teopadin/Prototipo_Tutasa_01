@@ -13,7 +13,7 @@ namespace Prototipos_TUTASA.Rendiciones_HDR
     public partial class Rendir_HDR_De_Retiro : Form
     {
         private readonly ModeloRendirHDRDeRetiro modelo = new ModeloRendirHDRDeRetiro();
-        private HDRRetiroEntidad hdrSeleccionada = null;
+        private HDRRetiro hdrSeleccionada = null;
 
         public Rendir_HDR_De_Retiro()
         {
@@ -56,7 +56,7 @@ namespace Prototipos_TUTASA.Rendiciones_HDR
 
             if (FleteroCmb.SelectedItem == null) return;
 
-            var fletero = (TransportistaLocalEntidad)FleteroCmb.SelectedItem;
+            var fletero = (TransportistaLocal)FleteroCmb.SelectedItem;
             var hdrs = modelo.ObtenerHDRsPorFletero(fletero.Id);
 
             if (hdrs.Count == 0)
@@ -89,7 +89,7 @@ namespace Prototipos_TUTASA.Rendiciones_HDR
                 return;
             }
 
-            hdrSeleccionada = (HDRRetiroEntidad)HDRRendidaLst.SelectedItems[0].Tag;
+            hdrSeleccionada = (HDRRetiro)HDRRendidaLst.SelectedItems[0].Tag;
             groupBox1.Text = "Estado de la HDR seleccionada (" + hdrSeleccionada.NroHDR + ")";
 
             CumplidaRdb.Enabled = true;
@@ -169,10 +169,10 @@ namespace Prototipos_TUTASA.Rendiciones_HDR
             }
 
             // Armar lista de HDR a registrar
-            var lista = new List<HDRRetiroEntidad>();
+            var lista = new List<HDRRetiro>();
             foreach (ListViewItem item in HDRRendidaLst.Items)
             {
-                lista.Add((HDRRetiroEntidad)item.Tag);
+                lista.Add((HDRRetiro)item.Tag);
             }
 
             if (!modelo.RegistrarRendicion(lista))
@@ -194,7 +194,7 @@ namespace Prototipos_TUTASA.Rendiciones_HDR
 
             foreach (ListViewItem item in HDRRendidaLst.Items)
             {
-                var hdr = (HDRRetiroEntidad)item.Tag;
+                var hdr = (HDRRetiro)item.Tag;
                 if (hdr.Estado == EstadoHDR.Cumplida) { rendidas++; cumplidas++; }
                 else if (hdr.Estado == EstadoHDR.NoCumplida) { rendidas++; noCumplidas++; }
             }

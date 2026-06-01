@@ -9,49 +9,49 @@ namespace Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Retiro
     internal class ModeloRendirHDRDeRetiro
     {
         // DATOS DE PRUEBA (despues se reemplazan por almacenes)
-        private List<TransportistaLocalEntidad> fleteros = new List<TransportistaLocalEntidad>
+        private List<TransportistaLocal> fleteros = new List<TransportistaLocal>
         {
-            new TransportistaLocalEntidad { Id = 1, Nombre = "Juan",    Apellido = "Perez"     },
-            new TransportistaLocalEntidad { Id = 2, Nombre = "Maria",   Apellido = "Gomez"     },
-            new TransportistaLocalEntidad { Id = 3, Nombre = "Carlos",  Apellido = "Rodriguez" },
-            new TransportistaLocalEntidad { Id = 4, Nombre = "Lucia",   Apellido = "Fernandez" },
-            new TransportistaLocalEntidad { Id = 5, Nombre = "Roberto", Apellido = "Lopez"     }
+            new TransportistaLocal { Id = 1, Nombre = "Juan",    Apellido = "Perez"     },
+            new TransportistaLocal { Id = 2, Nombre = "Maria",   Apellido = "Gomez"     },
+            new TransportistaLocal { Id = 3, Nombre = "Carlos",  Apellido = "Rodriguez" },
+            new TransportistaLocal { Id = 4, Nombre = "Lucia",   Apellido = "Fernandez" },
+            new TransportistaLocal { Id = 5, Nombre = "Roberto", Apellido = "Lopez"     }
         };
 
-        private List<HDRRetiroEntidad> hdrs = new List<HDRRetiroEntidad>
+        private List<HDRRetiro> hdrs = new List<HDRRetiro>
         {
             // Juan Perez (Id 1) - 3 HDR pendientes
-            new HDRRetiroEntidad { NroHDR = 2001, IdFletero = 1, Remitente = "Empresa ABC S.A.",   Calle = "Av. Corrientes", Altura = 1234, CP = "1043", Estado = EstadoHDR.EnCurso  },
-            new HDRRetiroEntidad { NroHDR = 2002, IdFletero = 1, Remitente = "Distribuidora XYZ",  Calle = "Lavalle",        Altura = 567,  CP = "1047", Estado = EstadoHDR.EnCurso  },
-            new HDRRetiroEntidad { NroHDR = 2003, IdFletero = 1, Remitente = "Importadora Sur",    Calle = "Florida",        Altura = 890,  CP = "1005", Estado = EstadoHDR.Recibida },
+            new HDRRetiro { NroHDR = 2001, IdFletero = 1, Remitente = "Empresa ABC S.A.",   Calle = "Av. Corrientes", Altura = 1234, CP = "1043", Estado = EstadoHDR.EnCurso  },
+            new HDRRetiro { NroHDR = 2002, IdFletero = 1, Remitente = "Distribuidora XYZ",  Calle = "Lavalle",        Altura = 567,  CP = "1047", Estado = EstadoHDR.EnCurso  },
+            new HDRRetiro { NroHDR = 2003, IdFletero = 1, Remitente = "Importadora Sur",    Calle = "Florida",        Altura = 890,  CP = "1005", Estado = EstadoHDR.Recibida },
 
             // Maria Gomez (Id 2) - 2 HDR pendientes
-            new HDRRetiroEntidad { NroHDR = 2004, IdFletero = 2, Remitente = "Logistica Norte",    Calle = "Santa Fe",       Altura = 2345, CP = "1123", Estado = EstadoHDR.EnCurso  },
-            new HDRRetiroEntidad { NroHDR = 2005, IdFletero = 2, Remitente = "Comercial Este",     Calle = "Cordoba",        Altura = 678,  CP = "1054", Estado = EstadoHDR.Recibida },
+            new HDRRetiro { NroHDR = 2004, IdFletero = 2, Remitente = "Logistica Norte",    Calle = "Santa Fe",       Altura = 2345, CP = "1123", Estado = EstadoHDR.EnCurso  },
+            new HDRRetiro { NroHDR = 2005, IdFletero = 2, Remitente = "Comercial Este",     Calle = "Cordoba",        Altura = 678,  CP = "1054", Estado = EstadoHDR.Recibida },
 
             // Carlos Rodriguez (Id 3) - 4 HDR pendientes
-            new HDRRetiroEntidad { NroHDR = 2006, IdFletero = 3, Remitente = "Empresa DEF S.R.L.", Calle = "Rivadavia",      Altura = 4567, CP = "1407", Estado = EstadoHDR.EnCurso  },
-            new HDRRetiroEntidad { NroHDR = 2007, IdFletero = 3, Remitente = "Distribuidora ABC",  Calle = "Belgrano",       Altura = 1100, CP = "1092", Estado = EstadoHDR.EnCurso  },
-            new HDRRetiroEntidad { NroHDR = 2008, IdFletero = 3, Remitente = "Importadora Norte",  Calle = "Callao",         Altura = 230,  CP = "1022", Estado = EstadoHDR.Recibida },
-            new HDRRetiroEntidad { NroHDR = 2009, IdFletero = 3, Remitente = "Comercial Sur",      Calle = "Pueyrredon",     Altura = 1500, CP = "1118", Estado = EstadoHDR.EnCurso  },
+            new HDRRetiro { NroHDR = 2006, IdFletero = 3, Remitente = "Empresa DEF S.R.L.", Calle = "Rivadavia",      Altura = 4567, CP = "1407", Estado = EstadoHDR.EnCurso  },
+            new HDRRetiro { NroHDR = 2007, IdFletero = 3, Remitente = "Distribuidora ABC",  Calle = "Belgrano",       Altura = 1100, CP = "1092", Estado = EstadoHDR.EnCurso  },
+            new HDRRetiro { NroHDR = 2008, IdFletero = 3, Remitente = "Importadora Norte",  Calle = "Callao",         Altura = 230,  CP = "1022", Estado = EstadoHDR.Recibida },
+            new HDRRetiro { NroHDR = 2009, IdFletero = 3, Remitente = "Comercial Sur",      Calle = "Pueyrredon",     Altura = 1500, CP = "1118", Estado = EstadoHDR.EnCurso  },
 
             // Lucia Fernandez (Id 4) - 2 HDR pendientes
-            new HDRRetiroEntidad { NroHDR = 2010, IdFletero = 4, Remitente = "Empresa GHI S.A.",   Calle = "Pueyrredon",     Altura = 1500, CP = "1118", Estado = EstadoHDR.EnCurso  },
-            new HDRRetiroEntidad { NroHDR = 2011, IdFletero = 4, Remitente = "Logistica Central",  Calle = "Scalabrini",     Altura = 980,  CP = "1414", Estado = EstadoHDR.Recibida },
+            new HDRRetiro { NroHDR = 2010, IdFletero = 4, Remitente = "Empresa GHI S.A.",   Calle = "Pueyrredon",     Altura = 1500, CP = "1118", Estado = EstadoHDR.EnCurso  },
+            new HDRRetiro { NroHDR = 2011, IdFletero = 4, Remitente = "Logistica Central",  Calle = "Scalabrini",     Altura = 980,  CP = "1414", Estado = EstadoHDR.Recibida },
 
             // Roberto Lopez (Id 5) - SIN HDR para probar el mensaje
         };
 
         // METODOS QUE USA EL FORM
 
-        internal List<TransportistaLocalEntidad> ObtenerFleteros()
+        internal List<TransportistaLocal> ObtenerFleteros()
         {
             return fleteros;
         }
 
-        internal List<HDRRetiroEntidad> ObtenerHDRsPorFletero(int idFletero)
+        internal List<HDRRetiro> ObtenerHDRsPorFletero(int idFletero)
         {
-            var resultado = new List<HDRRetiroEntidad>();
+            var resultado = new List<HDRRetiro>();
             foreach (var hdr in hdrs)
             {
                 if (hdr.IdFletero == idFletero &&
@@ -74,7 +74,7 @@ namespace Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Retiro
             };
         }
 
-        internal bool AplicarEstado(HDRRetiroEntidad hdr, bool cumplida, MotivoNoCumplidaRetiro? motivo)
+        internal bool AplicarEstado(HDRRetiro hdr, bool cumplida, MotivoNoCumplidaRetiro? motivo)
         {
             if (!cumplida && motivo == null)
             {
@@ -95,7 +95,7 @@ namespace Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Retiro
             return true;
         }
 
-        internal bool RegistrarRendicion(List<HDRRetiroEntidad> hdrsDeLaLista)
+        internal bool RegistrarRendicion(List<HDRRetiro> hdrsDeLaLista)
         {
             // Validar que todas las HDR tengan un estado aplicado
             foreach (var hdr in hdrsDeLaLista)

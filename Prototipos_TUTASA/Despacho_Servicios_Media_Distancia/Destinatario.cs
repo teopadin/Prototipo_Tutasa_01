@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
 {
-    internal class DestinatarioEntidad
+    internal class Destinatario
     {
         public int Dni { get; set; }
         public string Nombre { get; set; }
