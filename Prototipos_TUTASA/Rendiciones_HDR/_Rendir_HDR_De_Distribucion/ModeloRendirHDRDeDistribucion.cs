@@ -9,49 +9,49 @@ namespace Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Distribucion
     internal class ModeloRendirHDRDeDistribucion
     {
         // DATOS DE PRUEBA (despues se reemplazan por almacenes)
-        private List<TransportistaLocalEntidad> fleteros = new List<TransportistaLocalEntidad>
+        private List<TransportistaLocal> fleteros = new List<TransportistaLocal>
         {
-            new TransportistaLocalEntidad { Id = 1, Nombre = "Juan",    Apellido = "Perez"    },
-            new TransportistaLocalEntidad { Id = 2, Nombre = "Maria",   Apellido = "Gomez"    },
-            new TransportistaLocalEntidad { Id = 3, Nombre = "Carlos",  Apellido = "Rodriguez"},
-            new TransportistaLocalEntidad { Id = 4, Nombre = "Lucia",   Apellido = "Fernandez"},
-            new TransportistaLocalEntidad { Id = 5, Nombre = "Roberto", Apellido = "Lopez"    }
+            new TransportistaLocal { Id = 1, Nombre = "Juan",    Apellido = "Perez"    },
+            new TransportistaLocal { Id = 2, Nombre = "Maria",   Apellido = "Gomez"    },
+            new TransportistaLocal { Id = 3, Nombre = "Carlos",  Apellido = "Rodriguez"},
+            new TransportistaLocal { Id = 4, Nombre = "Lucia",   Apellido = "Fernandez"},
+            new TransportistaLocal { Id = 5, Nombre = "Roberto", Apellido = "Lopez"    }
         };
 
-        private List<HDRDistribucionEntidad> hdrs = new List<HDRDistribucionEntidad>
+        private List<HDRDistribucion> hdrs = new List<HDRDistribucion>
         {
             // Juan Perez (Id 1) - tiene 3 HDR pendientes
-            new HDRDistribucionEntidad { NroHDR = 1001, IdFletero = 1, Destinatario = "Ana Garcia",     Calle = "Av. Corrientes", Altura = 1234, CP = "1043", Estado = EstadoHDR.EnCurso  },
-            new HDRDistribucionEntidad { NroHDR = 1002, IdFletero = 1, Destinatario = "Pedro Suarez",   Calle = "Lavalle",        Altura = 567,  CP = "1047", Estado = EstadoHDR.EnCurso  },
-            new HDRDistribucionEntidad { NroHDR = 1003, IdFletero = 1, Destinatario = "Laura Martinez", Calle = "Florida",        Altura = 890,  CP = "1005", Estado = EstadoHDR.Recibida },
+            new HDRDistribucion { NroHDR = 1001, IdFletero = 1, Destinatario = "Ana Garcia",     Calle = "Av. Corrientes", Altura = 1234, CP = "1043", Estado = EstadoHDR.EnCurso  },
+            new HDRDistribucion { NroHDR = 1002, IdFletero = 1, Destinatario = "Pedro Suarez",   Calle = "Lavalle",        Altura = 567,  CP = "1047", Estado = EstadoHDR.EnCurso  },
+            new HDRDistribucion { NroHDR = 1003, IdFletero = 1, Destinatario = "Laura Martinez", Calle = "Florida",        Altura = 890,  CP = "1005", Estado = EstadoHDR.Recibida },
 
             // Maria Gomez (Id 2) - tiene 2 HDR pendientes
-            new HDRDistribucionEntidad { NroHDR = 1004, IdFletero = 2, Destinatario = "Diego Ramirez",  Calle = "Santa Fe",       Altura = 2345, CP = "1123", Estado = EstadoHDR.EnCurso  },
-            new HDRDistribucionEntidad { NroHDR = 1005, IdFletero = 2, Destinatario = "Sofia Torres",   Calle = "Cordoba",        Altura = 678,  CP = "1054", Estado = EstadoHDR.Recibida },
+            new HDRDistribucion { NroHDR = 1004, IdFletero = 2, Destinatario = "Diego Ramirez",  Calle = "Santa Fe",       Altura = 2345, CP = "1123", Estado = EstadoHDR.EnCurso  },
+            new HDRDistribucion { NroHDR = 1005, IdFletero = 2, Destinatario = "Sofia Torres",   Calle = "Cordoba",        Altura = 678,  CP = "1054", Estado = EstadoHDR.Recibida },
 
             // Carlos Rodriguez (Id 3) - tiene 4 HDR pendientes
-            new HDRDistribucionEntidad { NroHDR = 1006, IdFletero = 3, Destinatario = "Martin Diaz",    Calle = "Rivadavia",      Altura = 4567, CP = "1407", Estado = EstadoHDR.EnCurso  },
-            new HDRDistribucionEntidad { NroHDR = 1007, IdFletero = 3, Destinatario = "Carla Romero",   Calle = "Belgrano",       Altura = 1100, CP = "1092", Estado = EstadoHDR.EnCurso  },
-            new HDRDistribucionEntidad { NroHDR = 1008, IdFletero = 3, Destinatario = "Hugo Pereyra",   Calle = "Callao",         Altura = 230,  CP = "1022", Estado = EstadoHDR.Recibida },
-            new HDRDistribucionEntidad { NroHDR = 1009, IdFletero = 3, Destinatario = "Elena Vidal",    Calle = "Pueyrredon",     Altura = 1500, CP = "1118", Estado = EstadoHDR.EnCurso  },
+            new HDRDistribucion { NroHDR = 1006, IdFletero = 3, Destinatario = "Martin Diaz",    Calle = "Rivadavia",      Altura = 4567, CP = "1407", Estado = EstadoHDR.EnCurso  },
+            new HDRDistribucion { NroHDR = 1007, IdFletero = 3, Destinatario = "Carla Romero",   Calle = "Belgrano",       Altura = 1100, CP = "1092", Estado = EstadoHDR.EnCurso  },
+            new HDRDistribucion { NroHDR = 1008, IdFletero = 3, Destinatario = "Hugo Pereyra",   Calle = "Callao",         Altura = 230,  CP = "1022", Estado = EstadoHDR.Recibida },
+            new HDRDistribucion { NroHDR = 1009, IdFletero = 3, Destinatario = "Elena Vidal",    Calle = "Pueyrredon",     Altura = 1500, CP = "1118", Estado = EstadoHDR.EnCurso  },
 
             // Lucia Fernandez (Id 4) - tiene 2 HDR pendientes
-            new HDRDistribucionEntidad { NroHDR = 1010, IdFletero = 4, Destinatario = "Jorge Acosta",   Calle = "Pueyrredon",     Altura = 1500, CP = "1118", Estado = EstadoHDR.EnCurso  },
-            new HDRDistribucionEntidad { NroHDR = 1011, IdFletero = 4, Destinatario = "Paula Mendez",   Calle = "Scalabrini",     Altura = 980,  CP = "1414", Estado = EstadoHDR.Recibida },
+            new HDRDistribucion { NroHDR = 1010, IdFletero = 4, Destinatario = "Jorge Acosta",   Calle = "Pueyrredon",     Altura = 1500, CP = "1118", Estado = EstadoHDR.EnCurso  },
+            new HDRDistribucion { NroHDR = 1011, IdFletero = 4, Destinatario = "Paula Mendez",   Calle = "Scalabrini",     Altura = 980,  CP = "1414", Estado = EstadoHDR.Recibida },
 
             // Roberto Lopez (Id 5) - SIN HDR pendientes (para probar el caso "no tiene HDR")
         };
 
         // METODOS QUE USA EL FORM
 
-        internal List<TransportistaLocalEntidad> ObtenerFleteros()
+        internal List<TransportistaLocal> ObtenerFleteros()
         {
             return fleteros;
         }
 
-        internal List<HDRDistribucionEntidad> ObtenerHDRsPorFletero(int idFletero)
+        internal List<HDRDistribucion> ObtenerHDRsPorFletero(int idFletero)
         {
-            var resultado = new List<HDRDistribucionEntidad>();
+            var resultado = new List<HDRDistribucion>();
             foreach (var hdr in hdrs)
             {
                 if (hdr.IdFletero == idFletero &&
@@ -74,7 +74,7 @@ namespace Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Distribucion
             };
         }
 
-        internal bool AplicarEstado(HDRDistribucionEntidad hdr, bool cumplida, MotivoNoCumplidaDistribucion? motivo)
+        internal bool AplicarEstado(HDRDistribucion hdr, bool cumplida, MotivoNoCumplidaDistribucion? motivo)
         {
             // Validaciones
             if (!cumplida && motivo == null)
@@ -97,7 +97,7 @@ namespace Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Distribucion
             return true;
         }
 
-        internal bool RegistrarRendicion(List<HDRDistribucionEntidad> hdrsDeLaLista)
+        internal bool RegistrarRendicion(List<HDRDistribucion> hdrsDeLaLista)
         {
             // Validar que TODAS hayan sido marcadas
             foreach (var hdr in hdrsDeLaLista)

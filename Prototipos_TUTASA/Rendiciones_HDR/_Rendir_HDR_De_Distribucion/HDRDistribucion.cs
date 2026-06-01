@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Distribucion
 {
-    internal class HDRDistribucionEntidad
+    internal class HDRDistribucion
     {
         public int NroHDR { get; set; }
         public int IdFletero { get; set; }

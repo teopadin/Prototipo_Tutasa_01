@@ -26,7 +26,7 @@ namespace Prototipos_TUTASA.Admisión
                 return;
             }
 
-            GuiaEntidad guia = modelo.BuscarGuia(nroGuia);
+            Guia guia = modelo.BuscarGuia(nroGuia);
 
             if (guia == null)
             {
@@ -43,9 +43,9 @@ namespace Prototipos_TUTASA.Admisión
             }
 
             // Búsqueda de los datos relacionados
-            ClienteEntidad cliente = modelo.BuscarCliente(guia.IdCliente);
-            CentroDistribucionEntidad cd = modelo.BuscarCD(guia.IdCDDestino);
-            DestinatarioEntidad dest = modelo.BuscarDestinatario(guia.DniDestinatario);
+            Cliente cliente = modelo.BuscarCliente(guia.IdCliente);
+            CentroDistribucion cd = modelo.BuscarCD(guia.IdCDDestino);
+            Destinatario dest = modelo.BuscarDestinatario(guia.DniDestinatario);
 
             // Mostrar info en pantalla
             txtCliente.Text = cliente.RazonSocial;

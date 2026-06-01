@@ -4,10 +4,10 @@ using System.Text;
 
 namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia
 {
-    internal class GuiaEntidad
+    internal class Guia
     {
         public string NroGuia { get; set; }
         public TiposBulto TipoBulto { get; set; }
-        public AgenciaEntidad Agencia { get; set; }
+        public Agencia Agencia { get; set; }
     }
 }

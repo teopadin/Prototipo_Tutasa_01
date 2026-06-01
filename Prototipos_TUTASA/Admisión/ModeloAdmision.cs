@@ -9,31 +9,31 @@ namespace Prototipos_TUTASA.Admisión
         // CD desde el que se realiza la admisión (fijo para el prototipo)
         private int idCDAdmisionActual = 1;
 
-        private List<ClienteEntidad> clientes = new List<ClienteEntidad>
+        private List<Cliente> clientes = new List<Cliente>
         {
-            new ClienteEntidad { IdCliente = 100, RazonSocial = "Tecno Distribuciones S.A." },
-            new ClienteEntidad { IdCliente = 200, RazonSocial = "Importadora del Sur SRL" },
-            new ClienteEntidad { IdCliente = 300, RazonSocial = "Comercial Norte" }
+            new Cliente { IdCliente = 100, RazonSocial = "Tecno Distribuciones S.A." },
+            new Cliente { IdCliente = 200, RazonSocial = "Importadora del Sur SRL" },
+            new Cliente { IdCliente = 300, RazonSocial = "Comercial Norte" }
         };
 
-        private List<CentroDistribucionEntidad> cds = new List<CentroDistribucionEntidad>
+        private List<CentroDistribucion> cds = new List<CentroDistribucion>
         {
-            new CentroDistribucionEntidad { IdCD = 1, Nombre = "CD Buenos Aires" },
-            new CentroDistribucionEntidad { IdCD = 2, Nombre = "CD Córdoba" },
-            new CentroDistribucionEntidad { IdCD = 3, Nombre = "CD Mendoza" }
+            new CentroDistribucion { IdCD = 1, Nombre = "CD Buenos Aires" },
+            new CentroDistribucion { IdCD = 2, Nombre = "CD Córdoba" },
+            new CentroDistribucion { IdCD = 3, Nombre = "CD Mendoza" }
         };
 
-        private List<DestinatarioEntidad> destinatarios = new List<DestinatarioEntidad>
+        private List<Destinatario> destinatarios = new List<Destinatario>
         {
-            new DestinatarioEntidad { Dni = 30111222, Nombre = "Juan", Apellido = "Pérez" },
-            new DestinatarioEntidad { Dni = 28444555, Nombre = "María", Apellido = "González" },
-            new DestinatarioEntidad { Dni = 35777888, Nombre = "Carlos", Apellido = "López" }
+            new Destinatario { Dni = 30111222, Nombre = "Juan", Apellido = "Pérez" },
+            new Destinatario { Dni = 28444555, Nombre = "María", Apellido = "González" },
+            new Destinatario { Dni = 35777888, Nombre = "Carlos", Apellido = "López" }
         };
 
-        private List<GuiaEntidad> guias = new List<GuiaEntidad>
+        private List<Guia> guias = new List<Guia>
         {
             // Guía 1: caso general → quedará "Admitida"
-            new GuiaEntidad
+            new Guia
             {
                 NroGuia = "CD01-0001",
                 IdCliente = 100,
@@ -43,10 +43,10 @@ namespace Prototipos_TUTASA.Admisión
                 TipoBulto = TiposBulto.M,
                 ModalidadEntrega = ModalidadesEntrega.PuertaAPuerta,
                 Estado = EstadoGuia.Retirada,
-                Historial = new List<HistorialEstadoGuiaEntidad>()
+                Historial = new List<HistorialEstadoGuia>()
             },
             // Guía 2: caso especial → quedará "Pendiente de retiro en CD"
-            new GuiaEntidad
+            new Guia
             {
                 NroGuia = "CD01-0002",
                 IdCliente = 200,
@@ -56,10 +56,10 @@ namespace Prototipos_TUTASA.Admisión
                 TipoBulto = TiposBulto.S,
                 ModalidadEntrega = ModalidadesEntrega.RetiroEnCD,
                 Estado = EstadoGuia.Retirada,
-                Historial = new List<HistorialEstadoGuiaEntidad>()
+                Historial = new List<HistorialEstadoGuia>()
             },
             // Guía 3: caso general (mismo CD pero no es Retiro en CD)
-            new GuiaEntidad
+            new Guia
             {
                 NroGuia = "CD01-0003",
                 IdCliente = 300,
@@ -69,10 +69,10 @@ namespace Prototipos_TUTASA.Admisión
                 TipoBulto = TiposBulto.L,
                 ModalidadEntrega = ModalidadesEntrega.PuertaAPuerta,
                 Estado = EstadoGuia.Retirada,
-                Historial = new List<HistorialEstadoGuiaEntidad>()
+                Historial = new List<HistorialEstadoGuia>()
             },
             // Guía 4: estado distinto a "Retirada" → no se puede admitir
-            new GuiaEntidad
+            new Guia
             {
                 NroGuia = "CD01-0004",
                 IdCliente = 100,
@@ -82,14 +82,14 @@ namespace Prototipos_TUTASA.Admisión
                 TipoBulto = TiposBulto.XL,
                 ModalidadEntrega = ModalidadesEntrega.RetiroEnAgencia,
                 Estado = EstadoGuia.Entregada,
-                Historial = new List<HistorialEstadoGuiaEntidad>()
+                Historial = new List<HistorialEstadoGuia>()
             }
         };
 
         // Busca una guía por su número. Devuelve null si no existe.
-        public GuiaEntidad BuscarGuia(string nroGuia)
+        public Guia BuscarGuia(string nroGuia)
         {
-            foreach (GuiaEntidad guia in guias)
+            foreach (Guia guia in guias)
             {
                 if (guia.NroGuia == nroGuia)
                 {
@@ -100,9 +100,9 @@ namespace Prototipos_TUTASA.Admisión
         }
 
         // Busca un cliente por su ID.
-        public ClienteEntidad BuscarCliente(int idCliente)
+        public Cliente BuscarCliente(int idCliente)
         {
-            foreach (ClienteEntidad cliente in clientes)
+            foreach (Cliente cliente in clientes)
             {
                 if (cliente.IdCliente == idCliente)
                 {
@@ -113,9 +113,9 @@ namespace Prototipos_TUTASA.Admisión
         }
 
         // Busca un CD por su ID.
-        public CentroDistribucionEntidad BuscarCD(int idCD)
+        public CentroDistribucion BuscarCD(int idCD)
         {
-            foreach (CentroDistribucionEntidad cd in cds)
+            foreach (CentroDistribucion cd in cds)
             {
                 if (cd.IdCD == idCD)
                 {
@@ -126,9 +126,9 @@ namespace Prototipos_TUTASA.Admisión
         }
 
         // Busca un destinatario por su DNI.
-        public DestinatarioEntidad BuscarDestinatario(int dni)
+        public Destinatario BuscarDestinatario(int dni)
         {
-            foreach (DestinatarioEntidad dest in destinatarios)
+            foreach (Destinatario dest in destinatarios)
             {
                 if (dest.Dni == dni)
                 {
@@ -141,7 +141,7 @@ namespace Prototipos_TUTASA.Admisión
         // Confirma la admisión de una guía
         public void ConfirmarAdmision(string nroGuia, DateTime fechaAdmision)
         {
-            GuiaEntidad guia = BuscarGuia(nroGuia);
+            Guia guia = BuscarGuia(nroGuia);
             if (guia == null) return;
 
             // Caso especial: el CD destino es el mismo que el CD de admisión Y modalidad es Retiro en CD
@@ -155,7 +155,7 @@ namespace Prototipos_TUTASA.Admisión
             }
 
             // Registrar el cambio en el historial
-            HistorialEstadoGuiaEntidad cambio = new HistorialEstadoGuiaEntidad
+            HistorialEstadoGuia cambio = new HistorialEstadoGuia
             {
                 FechaCambio = fechaAdmision,
                 Estado = guia.Estado
@@ -166,12 +166,12 @@ namespace Prototipos_TUTASA.Admisión
         // Rechaza la admisión: pasa la guía a "Cancelada"
         public void RechazarAdmision(string nroGuia, DateTime fechaAdmision)
         {
-            GuiaEntidad guia = BuscarGuia(nroGuia);
+            Guia guia = BuscarGuia(nroGuia);
             if (guia == null) return;
 
             guia.Estado = EstadoGuia.Cancelada;
 
-            HistorialEstadoGuiaEntidad cambio = new HistorialEstadoGuiaEntidad
+            HistorialEstadoGuia cambio = new HistorialEstadoGuia
             {
                 FechaCambio = fechaAdmision,
                 Estado = guia.Estado

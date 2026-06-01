@@ -5,15 +5,15 @@ using System.Text;
 
 namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia
 {
-    internal class HojaDeRutaRetiroEntidad
+    internal class HojaDeRutaRetiro
     {
         public int NroHDR { get; set; }
         public DateTime FechaEmision { get; set; }
         public DateTime FechaRecepcion { get; set; }
-        public CentroDeDistribucionEntidad CdEmisor { get; set; }
-        public AgenciaEntidad Agencia { get; set; }
-        public TransportistaLocalEntidad Transportista { get; set; }
-        public List<GuiaEntidad> Guias { get; set; }
+        public CentroDeDistribucion CdEmisor { get; set; }
+        public Agencia Agencia { get; set; }
+        public TransportistaLocal Transportista { get; set; }
+        public List<Guia> Guias { get; set; }
         public EstadoHojaDeRuta Estado { get; set; }
     }
 }

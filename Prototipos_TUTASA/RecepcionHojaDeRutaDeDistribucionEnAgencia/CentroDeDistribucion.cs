@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
+namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
 {
-    internal class CentroDistribucionEntidad
+    internal class CentroDeDistribucion
     {
         public int IdCD { get; set; }
         public string Nombre { get; set; }

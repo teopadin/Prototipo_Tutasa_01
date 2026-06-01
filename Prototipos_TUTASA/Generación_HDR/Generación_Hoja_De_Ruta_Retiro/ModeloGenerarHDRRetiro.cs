@@ -11,6 +11,7 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_Retiro
             public List<GuiaEntidad> Guias { get; set; }
             public List<TransportistaLocalEntidad> Transportistas { get; set; }
             public List<HojaDeRutaRetiroEntidad> HojasDeRuta { get; set; }
+            public bool Actualizando { get; set; } = false;
 
         public ModeloGenerarHDRRetiro()
         {

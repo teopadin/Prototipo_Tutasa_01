@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Prototipos_TUTASA.Consultar_Estado_Del_Pedido
+namespace Prototipos_TUTASA.Admisión
 {
-    public class HistorialEstadoGuiaEntidad
+    public class HistorialEstadoGuia
     {
         public DateTime FechaCambio { get; set; }
         public EstadoGuia Estado { get; set; }
-        public UbicacionGuia Donde { get; set; }
     }
 }

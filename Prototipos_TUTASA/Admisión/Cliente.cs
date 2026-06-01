@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
+namespace Prototipos_TUTASA.Admisión
 {
-    internal class ClienteEntidad
+    public class Cliente
     {
         public int IdCliente { get; set; }
         public string RazonSocial { get; set; }

@@ -23,7 +23,7 @@ namespace Prototipos_TUTASA.ConsultarEstadoDelPedido_v2
                 return;
             }
 
-            List<HistorialEstadoGuiaEntidad> historial = modelo.ConsultarEstado(nroGuia);
+            List<HistorialEstadoGuia> historial = modelo.ConsultarEstado(nroGuia);
 
             if (historial == null)
             {
@@ -33,7 +33,7 @@ namespace Prototipos_TUTASA.ConsultarEstadoDelPedido_v2
             }
 
             lstHistorial.Items.Clear();
-            foreach (HistorialEstadoGuiaEntidad item in historial)
+            foreach (HistorialEstadoGuia item in historial)
             {
                 ListViewItem fila = new ListViewItem(item.FechaCambio.ToShortDateString());
                 fila.SubItems.Add(nroGuia);
