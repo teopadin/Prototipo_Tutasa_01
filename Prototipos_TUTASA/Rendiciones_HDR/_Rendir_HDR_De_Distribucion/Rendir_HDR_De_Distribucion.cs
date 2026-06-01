@@ -12,9 +12,7 @@ namespace Prototipos_TUTASA.Rendiciones_HDR
 {
     public partial class Rendir_HDR_De_Distribucion : Form
     {
-
-        private readonly ModeloRendirHDRDeDistribucion modelo = new ModeloRendirHDRDeDistribucion();
-        private HDRDistribucion hdrSeleccionada = null;
+        private readonly Rendir_HDR_De_Distribucion_Modelo modelo = new Rendir_HDR_De_Distribucion_Modelo();
 
         public Rendir_HDR_De_Distribucion()
         {
@@ -23,49 +21,43 @@ namespace Prototipos_TUTASA.Rendiciones_HDR
 
         private void Rendir_HDR_De_Distribucion_Load(object sender, EventArgs e)
         {
-            // Fecha actual
-            FechaDtp.Value = DateTime.Now;
+            FechaDtp.Value = DateTime.Today;
             FechaDtp.MaxDate = DateTime.Today;
 
-            // Cargar fleteros
             FleteroCMB.Items.Clear();
-            foreach (var f in modelo.ObtenerFleteros())
+            foreach (var t in modelo.ObtenerTransportistas())
             {
-                FleteroCMB.Items.Add(f);
+                FleteroCMB.Items.Add(t);
             }
-            FleteroCMB.DisplayMember = "Nombre"; // Usa ToString() igualmente
 
-            // Cargar motivos
             MotivoCmb.Items.Clear();
             foreach (var m in modelo.ObtenerMotivos())
             {
                 MotivoCmb.Items.Add(m);
             }
 
-            // Estado inicial: motivo y aplicar deshabilitados hasta que seleccionen HDR
             MotivoCmb.Enabled = false;
             CumplidaRdb.Enabled = false;
             NoCumplidaRdb.Enabled = false;
             AplicarBtn.Enabled = false;
 
-            // Inicializar totales
             ActualizarTotales();
         }
 
         private void FleteroCMB_SelectedIndexChanged(object sender, EventArgs e)
         {
             HdrRendidasLst.Items.Clear();
-            hdrSeleccionada = null;
+            modelo.SetHdrSeleccionada(null);
             LimpiarGroupBox();
 
             if (FleteroCMB.SelectedItem == null) return;
 
-            var fletero = (TransportistaLocal)FleteroCMB.SelectedItem;
-            var hdrs = modelo.ObtenerHDRsPorFletero(fletero.Id);
+            var transportista = (TransportistaLocal)FleteroCMB.SelectedItem;
+            var hdrs = modelo.ObtenerHDRsPorTransportista(transportista.DniTransportista);
 
             if (hdrs.Count == 0)
             {
-                MessageBox.Show("El fletero seleccionado no tiene HDR de distribucion pendientes de rendicion.");
+                MessageBox.Show("El transportista seleccionado no tiene HDR de distribucion pendientes de rendicion.");
                 return;
             }
 
@@ -88,30 +80,27 @@ namespace Prototipos_TUTASA.Rendiciones_HDR
         {
             if (HdrRendidasLst.SelectedItems.Count == 0)
             {
-                hdrSeleccionada = null;
+                modelo.SetHdrSeleccionada(null);
                 LimpiarGroupBox();
                 return;
             }
 
-            hdrSeleccionada = (HDRDistribucion)HdrRendidasLst.SelectedItems[0].Tag;
-            groupBox1.Text = "Estado de la HDR seleccionada (" + hdrSeleccionada.NroHDR + ")";
+            modelo.SetHdrSeleccionada((HDRDistribucion)HdrRendidasLst.SelectedItems[0].Tag);
+            var hdr = modelo.GetHdrSeleccionada();
+
+            groupBox1.Text = "Estado de la HDR seleccionada (" + hdr.NroHDR + ")";
 
             CumplidaRdb.Enabled = true;
             NoCumplidaRdb.Enabled = true;
             AplicarBtn.Enabled = true;
 
-            // Reflejar estado actual de la HDR en los radios
-            CumplidaRdb.Checked = hdrSeleccionada.Estado == EstadoHDR.Cumplida;
-            NoCumplidaRdb.Checked = hdrSeleccionada.Estado == EstadoHDR.NoCumplida;
+            CumplidaRdb.Checked = hdr.Estado == EstadoHDR.Cumplida;
+            NoCumplidaRdb.Checked = hdr.Estado == EstadoHDR.NoCumplida;
 
-            if (hdrSeleccionada.MotivoNoCumplida != null)
-            {
-                MotivoCmb.SelectedItem = hdrSeleccionada.MotivoNoCumplida;
-            }
+            if (hdr.MotivoNoCumplida != null)
+                MotivoCmb.SelectedItem = hdr.MotivoNoCumplida;
             else
-            {
                 MotivoCmb.SelectedIndex = -1;
-            }
 
             MotivoCmb.Enabled = NoCumplidaRdb.Checked;
         }
@@ -128,28 +117,23 @@ namespace Prototipos_TUTASA.Rendiciones_HDR
         private void NoCumplidaRdb_CheckedChanged(object sender, EventArgs e)
         {
             if (NoCumplidaRdb.Checked)
-            {
                 MotivoCmb.Enabled = true;
-            }
         }
 
         private void AplicarBtn_Click(object sender, EventArgs e)
         {
-            // Validar que haya una HDR seleccionada
-            if (hdrSeleccionada == null)
+            if (modelo.GetHdrSeleccionada() == null)
             {
                 MessageBox.Show("Debe seleccionar una HDR de la lista.");
                 return;
             }
 
-            // Validar que haya seleccionado un estado
             if (!CumplidaRdb.Checked && !NoCumplidaRdb.Checked)
             {
                 MessageBox.Show("Debe seleccionar Cumplida o No Cumplida para la HDR.");
                 return;
             }
 
-            // Si es no cumplida, debe haber motivo
             MotivoNoCumplidaDistribucion? motivo = null;
             if (NoCumplidaRdb.Checked)
             {
@@ -161,17 +145,12 @@ namespace Prototipos_TUTASA.Rendiciones_HDR
                 motivo = (MotivoNoCumplidaDistribucion)MotivoCmb.SelectedItem;
             }
 
-            // Pedirle al modelo que aplique
-            if (!modelo.AplicarEstado(hdrSeleccionada, CumplidaRdb.Checked, motivo))
-            {
+            if (!modelo.AplicarEstado(CumplidaRdb.Checked, motivo))
                 return;
-            }
 
-            // Actualizar la fila de la lista
             var item = HdrRendidasLst.SelectedItems[0];
-            item.SubItems[5].Text = hdrSeleccionada.Estado.ToString();
+            item.SubItems[5].Text = modelo.GetHdrSeleccionada().Estado.ToString();
 
-            // Recalcular totales
             ActualizarTotales();
         }
 
@@ -183,7 +162,6 @@ namespace Prototipos_TUTASA.Rendiciones_HDR
                 return;
             }
 
-            // Armar lista de HDR a registrar
             var lista = new List<HDRDistribucion>();
             foreach (ListViewItem item in HdrRendidasLst.Items)
             {
@@ -191,9 +169,7 @@ namespace Prototipos_TUTASA.Rendiciones_HDR
             }
 
             if (!modelo.RegistrarRendicion(lista))
-            {
                 return;
-            }
 
             MessageBox.Show("Rendicion registrada con exito. Total HDR rendidas: " + lista.Count);
             this.Close();
@@ -204,26 +180,15 @@ namespace Prototipos_TUTASA.Rendiciones_HDR
             this.Close();
         }
 
-        // AUXILIARES
         private void ActualizarTotales()
         {
-            int rendidas = 0;
-            int cumplidas = 0;
-            int noCumplidas = 0;
+            int rendidas = 0, cumplidas = 0, noCumplidas = 0;
 
             foreach (ListViewItem item in HdrRendidasLst.Items)
             {
                 var hdr = (HDRDistribucion)item.Tag;
-                if (hdr.Estado == EstadoHDR.Cumplida)
-                {
-                    rendidas++;
-                    cumplidas++;
-                }
-                else if (hdr.Estado == EstadoHDR.NoCumplida)
-                {
-                    rendidas++;
-                    noCumplidas++;
-                }
+                if (hdr.Estado == EstadoHDR.Cumplida) { rendidas++; cumplidas++; }
+                else if (hdr.Estado == EstadoHDR.NoCumplida) { rendidas++; noCumplidas++; }
             }
 
             TotalRendidasTxtb.Text = rendidas.ToString();

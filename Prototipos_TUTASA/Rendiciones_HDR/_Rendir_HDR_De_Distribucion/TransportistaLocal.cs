@@ -6,7 +6,7 @@ namespace Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Distribucion
 {
     internal class TransportistaLocal
     {
-        public int Id { get; set; }
+        public int DniTransportista { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
 

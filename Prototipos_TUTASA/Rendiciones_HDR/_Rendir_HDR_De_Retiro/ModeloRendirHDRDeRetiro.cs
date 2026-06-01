@@ -9,52 +9,54 @@ namespace Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Retiro
     internal class ModeloRendirHDRDeRetiro
     {
         // DATOS DE PRUEBA (despues se reemplazan por almacenes)
-        private List<TransportistaLocal> fleteros = new List<TransportistaLocal>
+        private HDRRetiro hdrSeleccionada = null;
+
+        private List<TransportistaLocal> transportistas = new List<TransportistaLocal>
         {
-            new TransportistaLocal { Id = 1, Nombre = "Juan",    Apellido = "Perez"     },
-            new TransportistaLocal { Id = 2, Nombre = "Maria",   Apellido = "Gomez"     },
-            new TransportistaLocal { Id = 3, Nombre = "Carlos",  Apellido = "Rodriguez" },
-            new TransportistaLocal { Id = 4, Nombre = "Lucia",   Apellido = "Fernandez" },
-            new TransportistaLocal { Id = 5, Nombre = "Roberto", Apellido = "Lopez"     }
+            new TransportistaLocal { DniTransportista = 11111111, Nombre = "Juan",    Apellido = "Perez"     },
+            new TransportistaLocal { DniTransportista = 22222222, Nombre = "Maria",   Apellido = "Gomez"     },
+            new TransportistaLocal { DniTransportista = 33333333, Nombre = "Carlos",  Apellido = "Rodriguez" },
+            new TransportistaLocal { DniTransportista = 44444444, Nombre = "Lucia",   Apellido = "Fernandez" },
+            new TransportistaLocal { DniTransportista = 55555555, Nombre = "Roberto", Apellido = "Lopez"     }
         };
 
         private List<HDRRetiro> hdrs = new List<HDRRetiro>
         {
-            // Juan Perez (Id 1) - 3 HDR pendientes
-            new HDRRetiro { NroHDR = 2001, IdFletero = 1, Remitente = "Empresa ABC S.A.",   Calle = "Av. Corrientes", Altura = 1234, CP = "1043", Estado = EstadoHDR.EnCurso  },
-            new HDRRetiro { NroHDR = 2002, IdFletero = 1, Remitente = "Distribuidora XYZ",  Calle = "Lavalle",        Altura = 567,  CP = "1047", Estado = EstadoHDR.EnCurso  },
-            new HDRRetiro { NroHDR = 2003, IdFletero = 1, Remitente = "Importadora Sur",    Calle = "Florida",        Altura = 890,  CP = "1005", Estado = EstadoHDR.Recibida },
-
-            // Maria Gomez (Id 2) - 2 HDR pendientes
-            new HDRRetiro { NroHDR = 2004, IdFletero = 2, Remitente = "Logistica Norte",    Calle = "Santa Fe",       Altura = 2345, CP = "1123", Estado = EstadoHDR.EnCurso  },
-            new HDRRetiro { NroHDR = 2005, IdFletero = 2, Remitente = "Comercial Este",     Calle = "Cordoba",        Altura = 678,  CP = "1054", Estado = EstadoHDR.Recibida },
-
-            // Carlos Rodriguez (Id 3) - 4 HDR pendientes
-            new HDRRetiro { NroHDR = 2006, IdFletero = 3, Remitente = "Empresa DEF S.R.L.", Calle = "Rivadavia",      Altura = 4567, CP = "1407", Estado = EstadoHDR.EnCurso  },
-            new HDRRetiro { NroHDR = 2007, IdFletero = 3, Remitente = "Distribuidora ABC",  Calle = "Belgrano",       Altura = 1100, CP = "1092", Estado = EstadoHDR.EnCurso  },
-            new HDRRetiro { NroHDR = 2008, IdFletero = 3, Remitente = "Importadora Norte",  Calle = "Callao",         Altura = 230,  CP = "1022", Estado = EstadoHDR.Recibida },
-            new HDRRetiro { NroHDR = 2009, IdFletero = 3, Remitente = "Comercial Sur",      Calle = "Pueyrredon",     Altura = 1500, CP = "1118", Estado = EstadoHDR.EnCurso  },
-
-            // Lucia Fernandez (Id 4) - 2 HDR pendientes
-            new HDRRetiro { NroHDR = 2010, IdFletero = 4, Remitente = "Empresa GHI S.A.",   Calle = "Pueyrredon",     Altura = 1500, CP = "1118", Estado = EstadoHDR.EnCurso  },
-            new HDRRetiro { NroHDR = 2011, IdFletero = 4, Remitente = "Logistica Central",  Calle = "Scalabrini",     Altura = 980,  CP = "1414", Estado = EstadoHDR.Recibida },
-
-            // Roberto Lopez (Id 5) - SIN HDR para probar el mensaje
+            new HDRRetiro { NroHDR = 2001, DniTransportistaAsignado = 11111111, Remitente = "Empresa ABC S.A.",   Calle = "Av. Corrientes", Altura = 1234, CP = "1043", Estado = EstadoHDR.EnCurso  },
+            new HDRRetiro { NroHDR = 2002, DniTransportistaAsignado = 11111111, Remitente = "Distribuidora XYZ",  Calle = "Lavalle",        Altura = 567,  CP = "1047", Estado = EstadoHDR.EnCurso  },
+            new HDRRetiro { NroHDR = 2003, DniTransportistaAsignado = 11111111, Remitente = "Importadora Sur",    Calle = "Florida",        Altura = 890,  CP = "1005", Estado = EstadoHDR.Recibida },
+            new HDRRetiro { NroHDR = 2004, DniTransportistaAsignado = 22222222, Remitente = "Logistica Norte",    Calle = "Santa Fe",       Altura = 2345, CP = "1123", Estado = EstadoHDR.EnCurso  },
+            new HDRRetiro { NroHDR = 2005, DniTransportistaAsignado = 22222222, Remitente = "Comercial Este",     Calle = "Cordoba",        Altura = 678,  CP = "1054", Estado = EstadoHDR.Recibida },
+            new HDRRetiro { NroHDR = 2006, DniTransportistaAsignado = 33333333, Remitente = "Empresa DEF S.R.L.", Calle = "Rivadavia",      Altura = 4567, CP = "1407", Estado = EstadoHDR.EnCurso  },
+            new HDRRetiro { NroHDR = 2007, DniTransportistaAsignado = 33333333, Remitente = "Distribuidora ABC",  Calle = "Belgrano",       Altura = 1100, CP = "1092", Estado = EstadoHDR.EnCurso  },
+            new HDRRetiro { NroHDR = 2008, DniTransportistaAsignado = 33333333, Remitente = "Importadora Norte",  Calle = "Callao",         Altura = 230,  CP = "1022", Estado = EstadoHDR.Recibida },
+            new HDRRetiro { NroHDR = 2009, DniTransportistaAsignado = 33333333, Remitente = "Comercial Sur",      Calle = "Pueyrredon",     Altura = 1500, CP = "1118", Estado = EstadoHDR.EnCurso  },
+            new HDRRetiro { NroHDR = 2010, DniTransportistaAsignado = 44444444, Remitente = "Empresa GHI S.A.",   Calle = "Pueyrredon",     Altura = 1500, CP = "1118", Estado = EstadoHDR.EnCurso  },
+            new HDRRetiro { NroHDR = 2011, DniTransportistaAsignado = 44444444, Remitente = "Logistica Central",  Calle = "Scalabrini",     Altura = 980,  CP = "1414", Estado = EstadoHDR.Recibida },
+            // Roberto Lopez (55555555) sin HDR para probar el mensaje
         };
 
-        // METODOS QUE USA EL FORM
-
-        internal List<TransportistaLocal> ObtenerFleteros()
+        internal void SetHdrSeleccionada(HDRRetiro hdr)
         {
-            return fleteros;
+            hdrSeleccionada = hdr;
         }
 
-        internal List<HDRRetiro> ObtenerHDRsPorFletero(int idFletero)
+        internal HDRRetiro GetHdrSeleccionada()
+        {
+            return hdrSeleccionada;
+        }
+
+        internal List<TransportistaLocal> ObtenerTransportistas()
+        {
+            return transportistas;
+        }
+
+        internal List<HDRRetiro> ObtenerHDRsPorTransportista(int dniTransportista)
         {
             var resultado = new List<HDRRetiro>();
             foreach (var hdr in hdrs)
             {
-                if (hdr.IdFletero == idFletero &&
+                if (hdr.DniTransportistaAsignado == dniTransportista &&
                     (hdr.Estado == EstadoHDR.EnCurso || hdr.Estado == EstadoHDR.Recibida))
                 {
                     resultado.Add(hdr);
@@ -74,7 +76,7 @@ namespace Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Retiro
             };
         }
 
-        internal bool AplicarEstado(HDRRetiro hdr, bool cumplida, MotivoNoCumplidaRetiro? motivo)
+        internal bool AplicarEstado(bool cumplida, MotivoNoCumplidaRetiro? motivo)
         {
             if (!cumplida && motivo == null)
             {
@@ -84,21 +86,20 @@ namespace Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Retiro
 
             if (cumplida)
             {
-                hdr.Estado = EstadoHDR.Cumplida;
-                hdr.MotivoNoCumplida = null;
+                hdrSeleccionada.Estado = EstadoHDR.Cumplida;
+                hdrSeleccionada.MotivoNoCumplida = null;
             }
             else
             {
-                hdr.Estado = EstadoHDR.NoCumplida;
-                hdr.MotivoNoCumplida = motivo;
+                hdrSeleccionada.Estado = EstadoHDR.NoCumplida;
+                hdrSeleccionada.MotivoNoCumplida = motivo;
             }
             return true;
         }
 
-        internal bool RegistrarRendicion(List<HDRRetiro> hdrsDeLaLista)
+        internal bool RegistrarRendicion(List<HDRRetiro> lista)
         {
-            // Validar que todas las HDR tengan un estado aplicado
-            foreach (var hdr in hdrsDeLaLista)
+            foreach (var hdr in lista)
             {
                 if (hdr.Estado != EstadoHDR.Cumplida && hdr.Estado != EstadoHDR.NoCumplida)
                 {

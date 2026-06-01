@@ -6,55 +6,56 @@ using System.Windows.Forms;
 
 namespace Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Distribucion
 {
-    internal class ModeloRendirHDRDeDistribucion
+
+    internal class Rendir_HDR_De_Distribucion_Modelo
     {
-        // DATOS DE PRUEBA (despues se reemplazan por almacenes)
-        private List<TransportistaLocal> fleteros = new List<TransportistaLocal>
-        {
-            new TransportistaLocal { Id = 1, Nombre = "Juan",    Apellido = "Perez"    },
-            new TransportistaLocal { Id = 2, Nombre = "Maria",   Apellido = "Gomez"    },
-            new TransportistaLocal { Id = 3, Nombre = "Carlos",  Apellido = "Rodriguez"},
-            new TransportistaLocal { Id = 4, Nombre = "Lucia",   Apellido = "Fernandez"},
-            new TransportistaLocal { Id = 5, Nombre = "Roberto", Apellido = "Lopez"    }
-        };
+        private HDRDistribucion hdrSeleccionada = null;
+
+        private List<TransportistaLocal> transportistas = new List<TransportistaLocal>
+    {
+        new TransportistaLocal { DniTransportista = 11111111, Nombre = "Juan",    Apellido = "Perez"     },
+        new TransportistaLocal { DniTransportista = 22222222, Nombre = "Maria",   Apellido = "Gomez"     },
+        new TransportistaLocal { DniTransportista = 33333333, Nombre = "Carlos",  Apellido = "Rodriguez" },
+        new TransportistaLocal { DniTransportista = 44444444, Nombre = "Lucia",   Apellido = "Fernandez" },
+        new TransportistaLocal { DniTransportista = 55555555, Nombre = "Roberto", Apellido = "Lopez"     }
+    };
 
         private List<HDRDistribucion> hdrs = new List<HDRDistribucion>
+    {
+        new HDRDistribucion { NroHDR = 1001, DniTransportistaAsignado = 11111111, Destinatario = "Ana Garcia",     Calle = "Av. Corrientes", Altura = 1234, CP = "1043", Estado = EstadoHDR.EnCurso  },
+        new HDRDistribucion { NroHDR = 1002, DniTransportistaAsignado = 11111111, Destinatario = "Pedro Suarez",   Calle = "Lavalle",        Altura = 567,  CP = "1047", Estado = EstadoHDR.EnCurso  },
+        new HDRDistribucion { NroHDR = 1003, DniTransportistaAsignado = 11111111, Destinatario = "Laura Martinez", Calle = "Florida",        Altura = 890,  CP = "1005", Estado = EstadoHDR.Recibida },
+        new HDRDistribucion { NroHDR = 1004, DniTransportistaAsignado = 22222222, Destinatario = "Diego Ramirez",  Calle = "Santa Fe",       Altura = 2345, CP = "1123", Estado = EstadoHDR.EnCurso  },
+        new HDRDistribucion { NroHDR = 1005, DniTransportistaAsignado = 22222222, Destinatario = "Sofia Torres",   Calle = "Cordoba",        Altura = 678,  CP = "1054", Estado = EstadoHDR.Recibida },
+        new HDRDistribucion { NroHDR = 1006, DniTransportistaAsignado = 33333333, Destinatario = "Martin Diaz",    Calle = "Rivadavia",      Altura = 4567, CP = "1407", Estado = EstadoHDR.EnCurso  },
+        new HDRDistribucion { NroHDR = 1007, DniTransportistaAsignado = 33333333, Destinatario = "Carla Romero",   Calle = "Belgrano",       Altura = 1100, CP = "1092", Estado = EstadoHDR.EnCurso  },
+        new HDRDistribucion { NroHDR = 1008, DniTransportistaAsignado = 33333333, Destinatario = "Hugo Pereyra",   Calle = "Callao",         Altura = 230,  CP = "1022", Estado = EstadoHDR.Recibida },
+        new HDRDistribucion { NroHDR = 1009, DniTransportistaAsignado = 33333333, Destinatario = "Elena Vidal",    Calle = "Pueyrredon",     Altura = 1500, CP = "1118", Estado = EstadoHDR.EnCurso  },
+        new HDRDistribucion { NroHDR = 1010, DniTransportistaAsignado = 44444444, Destinatario = "Jorge Acosta",   Calle = "Pueyrredon",     Altura = 1500, CP = "1118", Estado = EstadoHDR.EnCurso  },
+        new HDRDistribucion { NroHDR = 1011, DniTransportistaAsignado = 44444444, Destinatario = "Paula Mendez",   Calle = "Scalabrini",     Altura = 980,  CP = "1414", Estado = EstadoHDR.Recibida },
+    };
+
+        internal void SetHdrSeleccionada(HDRDistribucion hdr)
         {
-            // Juan Perez (Id 1) - tiene 3 HDR pendientes
-            new HDRDistribucion { NroHDR = 1001, IdFletero = 1, Destinatario = "Ana Garcia",     Calle = "Av. Corrientes", Altura = 1234, CP = "1043", Estado = EstadoHDR.EnCurso  },
-            new HDRDistribucion { NroHDR = 1002, IdFletero = 1, Destinatario = "Pedro Suarez",   Calle = "Lavalle",        Altura = 567,  CP = "1047", Estado = EstadoHDR.EnCurso  },
-            new HDRDistribucion { NroHDR = 1003, IdFletero = 1, Destinatario = "Laura Martinez", Calle = "Florida",        Altura = 890,  CP = "1005", Estado = EstadoHDR.Recibida },
-
-            // Maria Gomez (Id 2) - tiene 2 HDR pendientes
-            new HDRDistribucion { NroHDR = 1004, IdFletero = 2, Destinatario = "Diego Ramirez",  Calle = "Santa Fe",       Altura = 2345, CP = "1123", Estado = EstadoHDR.EnCurso  },
-            new HDRDistribucion { NroHDR = 1005, IdFletero = 2, Destinatario = "Sofia Torres",   Calle = "Cordoba",        Altura = 678,  CP = "1054", Estado = EstadoHDR.Recibida },
-
-            // Carlos Rodriguez (Id 3) - tiene 4 HDR pendientes
-            new HDRDistribucion { NroHDR = 1006, IdFletero = 3, Destinatario = "Martin Diaz",    Calle = "Rivadavia",      Altura = 4567, CP = "1407", Estado = EstadoHDR.EnCurso  },
-            new HDRDistribucion { NroHDR = 1007, IdFletero = 3, Destinatario = "Carla Romero",   Calle = "Belgrano",       Altura = 1100, CP = "1092", Estado = EstadoHDR.EnCurso  },
-            new HDRDistribucion { NroHDR = 1008, IdFletero = 3, Destinatario = "Hugo Pereyra",   Calle = "Callao",         Altura = 230,  CP = "1022", Estado = EstadoHDR.Recibida },
-            new HDRDistribucion { NroHDR = 1009, IdFletero = 3, Destinatario = "Elena Vidal",    Calle = "Pueyrredon",     Altura = 1500, CP = "1118", Estado = EstadoHDR.EnCurso  },
-
-            // Lucia Fernandez (Id 4) - tiene 2 HDR pendientes
-            new HDRDistribucion { NroHDR = 1010, IdFletero = 4, Destinatario = "Jorge Acosta",   Calle = "Pueyrredon",     Altura = 1500, CP = "1118", Estado = EstadoHDR.EnCurso  },
-            new HDRDistribucion { NroHDR = 1011, IdFletero = 4, Destinatario = "Paula Mendez",   Calle = "Scalabrini",     Altura = 980,  CP = "1414", Estado = EstadoHDR.Recibida },
-
-            // Roberto Lopez (Id 5) - SIN HDR pendientes (para probar el caso "no tiene HDR")
-        };
-
-        // METODOS QUE USA EL FORM
-
-        internal List<TransportistaLocal> ObtenerFleteros()
-        {
-            return fleteros;
+            hdrSeleccionada = hdr;
         }
 
-        internal List<HDRDistribucion> ObtenerHDRsPorFletero(int idFletero)
+        internal HDRDistribucion GetHdrSeleccionada()
+        {
+            return hdrSeleccionada;
+        }
+
+        internal List<TransportistaLocal> ObtenerTransportistas()
+        {
+            return transportistas;
+        }
+
+        internal List<HDRDistribucion> ObtenerHDRsPorTransportista(int dniTransportista)
         {
             var resultado = new List<HDRDistribucion>();
             foreach (var hdr in hdrs)
             {
-                if (hdr.IdFletero == idFletero &&
+                if (hdr.DniTransportistaAsignado == dniTransportista &&
                     (hdr.Estado == EstadoHDR.EnCurso || hdr.Estado == EstadoHDR.Recibida))
                 {
                     resultado.Add(hdr);
@@ -66,41 +67,38 @@ namespace Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Distribucion
         internal List<MotivoNoCumplidaDistribucion> ObtenerMotivos()
         {
             return new List<MotivoNoCumplidaDistribucion>
-            {
-                MotivoNoCumplidaDistribucion.DestinatarioAusente,
-                MotivoNoCumplidaDistribucion.DireccionIncorrecta,
-                MotivoNoCumplidaDistribucion.AgenciaCerrada,
-                MotivoNoCumplidaDistribucion.RechazoDeEncomienda
-            };
+        {
+            MotivoNoCumplidaDistribucion.DestinatarioAusente,
+            MotivoNoCumplidaDistribucion.DireccionIncorrecta,
+            MotivoNoCumplidaDistribucion.AgenciaCerrada,
+            MotivoNoCumplidaDistribucion.RechazoDeEncomienda
+        };
         }
 
-        internal bool AplicarEstado(HDRDistribucion hdr, bool cumplida, MotivoNoCumplidaDistribucion? motivo)
+        internal bool AplicarEstado(bool cumplida, MotivoNoCumplidaDistribucion? motivo)
         {
-            // Validaciones
             if (!cumplida && motivo == null)
             {
                 MessageBox.Show("Debe seleccionar un motivo para marcar la HDR como No Cumplida.");
                 return false;
             }
 
-            // Aplicar
             if (cumplida)
             {
-                hdr.Estado = EstadoHDR.Cumplida;
-                hdr.MotivoNoCumplida = null;
+                hdrSeleccionada.Estado = EstadoHDR.Cumplida;
+                hdrSeleccionada.MotivoNoCumplida = null;
             }
             else
             {
-                hdr.Estado = EstadoHDR.NoCumplida;
-                hdr.MotivoNoCumplida = motivo;
+                hdrSeleccionada.Estado = EstadoHDR.NoCumplida;
+                hdrSeleccionada.MotivoNoCumplida = motivo;
             }
             return true;
         }
 
-        internal bool RegistrarRendicion(List<HDRDistribucion> hdrsDeLaLista)
+        internal bool RegistrarRendicion(List<HDRDistribucion> lista)
         {
-            // Validar que TODAS hayan sido marcadas
-            foreach (var hdr in hdrsDeLaLista)
+            foreach (var hdr in lista)
             {
                 if (hdr.Estado != EstadoHDR.Cumplida && hdr.Estado != EstadoHDR.NoCumplida)
                 {
@@ -108,8 +106,6 @@ namespace Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Distribucion
                     return false;
                 }
             }
-
-            // Aca despues vamos a persistir en almacenes
             return true;
         }
     }

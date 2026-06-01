@@ -206,7 +206,7 @@
             // Calle
             // 
             Calle.Text = "Calle";
-            Calle.Width = 50;
+            Calle.Width = 100;
             // 
             // Altura
             // 
