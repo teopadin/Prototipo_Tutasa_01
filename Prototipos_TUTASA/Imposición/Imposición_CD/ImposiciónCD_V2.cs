@@ -48,7 +48,7 @@ namespace Prototipos_TUTASA.ImposiciónCD_V2
 
         private void btnGenerarGuia_Click(object sender, EventArgs e)
         {
-            ClienteEntidad cliente = cboRazonSocial.SelectedItem as ClienteEntidad;
+            Cliente cliente = cboRazonSocial.SelectedItem as Cliente;
             if (cliente == null)
             {
                 MostrarAviso("Debe completar todos los campos obligatorios.");
@@ -91,7 +91,7 @@ namespace Prototipos_TUTASA.ImposiciónCD_V2
                 return;
             }
 
-            DestinatarioEntidad destinatario = new DestinatarioEntidad
+            Destinatario destinatario = new Destinatario
             {
                 Dni = dniDestinatario,
                 Nombre = txtNombreDestinatario.Text.Trim(),
@@ -99,8 +99,8 @@ namespace Prototipos_TUTASA.ImposiciónCD_V2
                 Telefono = txtTelefonoDestinatario.Text.Trim()
             };
 
-            AgenciaEntidad agenciaDestino = null;
-            CentroDistribucionEntidad cdDestino = null;
+            Agencia agenciaDestino = null;
+            CentroDistribucion cdDestino = null;
 
             if (modalidadEntrega == ModalidadEntrega.PuertaPuerta)
             {
@@ -116,7 +116,7 @@ namespace Prototipos_TUTASA.ImposiciónCD_V2
             }
             else if (modalidadEntrega == ModalidadEntrega.RetiroAgencia)
             {
-                agenciaDestino = comboBox1.SelectedItem as AgenciaEntidad;
+                agenciaDestino = comboBox1.SelectedItem as Agencia;
                 if (agenciaDestino == null)
                 {
                     MostrarAviso("Debe completar todos los campos obligatorios.");
@@ -127,7 +127,7 @@ namespace Prototipos_TUTASA.ImposiciónCD_V2
             }
             else if (modalidadEntrega == ModalidadEntrega.RetiroCD)
             {
-                cdDestino = comboBox2.SelectedItem as CentroDistribucionEntidad;
+                cdDestino = comboBox2.SelectedItem as CentroDistribucion;
                 if (cdDestino == null)
                 {
                     MostrarAviso("Debe completar todos los campos obligatorios.");
@@ -141,14 +141,14 @@ namespace Prototipos_TUTASA.ImposiciónCD_V2
                 destinatario.Ciudad = cdDestino.Nombre;
             }
 
-            GuiaEntidad guia = modelo.RegistrarImposicion(tipoBulto, modalidadEntrega, destinatario, cdDestino, agenciaDestino);
+            Guia guia = modelo.RegistrarImposicion(tipoBulto, modalidadEntrega, destinatario, cdDestino, agenciaDestino);
             MessageBox.Show("Guía N° " + guia.NroGuia + " generada y admitida con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Close();
         }
 
         private void cboRazonSocial_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ClienteEntidad cliente = cboRazonSocial.SelectedItem as ClienteEntidad;
+            Cliente cliente = cboRazonSocial.SelectedItem as Cliente;
             if (cliente == null)
             {
                 LimpiarDatosRemitente();
@@ -186,7 +186,7 @@ namespace Prototipos_TUTASA.ImposiciónCD_V2
             cboRazonSocial.DataSource = null;
             cboRazonSocial.Items.Clear();
             cboRazonSocial.DisplayMember = "RazonSocial";
-            cboRazonSocial.DataSource = new List<ClienteEntidad>(modelo.Clientes);
+            cboRazonSocial.DataSource = new List<Cliente>(modelo.Clientes);
             cboRazonSocial.SelectedIndex = -1;
         }
 
@@ -195,7 +195,7 @@ namespace Prototipos_TUTASA.ImposiciónCD_V2
             comboBox1.DataSource = null;
             comboBox1.Items.Clear();
             comboBox1.DisplayMember = "RazonSocial";
-            comboBox1.DataSource = new List<AgenciaEntidad>(modelo.Agencias);
+            comboBox1.DataSource = new List<Agencia>(modelo.Agencias);
             comboBox1.SelectedIndex = -1;
         }
 
@@ -204,7 +204,7 @@ namespace Prototipos_TUTASA.ImposiciónCD_V2
             comboBox2.DataSource = null;
             comboBox2.Items.Clear();
             comboBox2.DisplayMember = "Nombre";
-            comboBox2.DataSource = new List<CentroDistribucionEntidad>(modelo.CentrosDeDistribucion);
+            comboBox2.DataSource = new List<CentroDistribucion>(modelo.CentrosDeDistribucion);
             comboBox2.SelectedIndex = -1;
         }
 

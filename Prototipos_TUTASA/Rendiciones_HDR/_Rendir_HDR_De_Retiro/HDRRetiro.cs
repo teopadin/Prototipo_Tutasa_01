@@ -9,11 +9,9 @@ namespace Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Retiro
     {
         public int NroHDR { get; set; }
         public int DniTransportistaAsignado { get; set; }
-        public string Remitente { get; set; }
-        public string Calle { get; set; }
-        public int Altura { get; set; }
-        public string CP { get; set; }
         public EstadoHDR Estado { get; set; }
         public MotivoNoCumplidaRetiro? MotivoNoCumplida { get; set; }
+        public List<DetalleGuiasARetirar> Detalles { get; set; } = new List<DetalleGuiasARetirar>();
     }
 }
+ 

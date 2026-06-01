@@ -6,23 +6,23 @@ namespace Prototipos_TUTASA.Imposición.Imposición_CD
 {
     internal class ModeloImposicionCD
     {
-        public List<ClienteEntidad> Clientes { get; set; }
-        public List<AgenciaEntidad> Agencias { get; set; }
-        public List<CentroDistribucionEntidad> CentrosDeDistribucion { get; set; }
-        public CentroDistribucionEntidad CdOrigen { get; set; }
-        public List<GuiaEntidad> Guias { get; set; }
+        public List<Cliente> Clientes { get; set; }
+        public List<Agencia> Agencias { get; set; }
+        public List<CentroDistribucion> CentrosDeDistribucion { get; set; }
+        public CentroDistribucion CdOrigen { get; set; }
+        public List<Guia> Guias { get; set; }
 
         public ModeloImposicionCD()
         {
             // CDs
-            var cdCapital = new CentroDistribucionEntidad { IdCD = 1, Nombre = "Capital y GBA" };
-            var cdCentro = new CentroDistribucionEntidad { IdCD = 2, Nombre = "Centro - Córdoba" };
-            var cdNorte = new CentroDistribucionEntidad { IdCD = 3, Nombre = "Norte - Tucumán" };
-            var cdEste = new CentroDistribucionEntidad { IdCD = 4, Nombre = "Este - Corrientes" };
-            var cdCordillera = new CentroDistribucionEntidad { IdCD = 5, Nombre = "Cordillera - Neuquén" };
-            var cdSur = new CentroDistribucionEntidad { IdCD = 6, Nombre = "Sur - Viedma" };
+            var cdCapital = new CentroDistribucion { IdCD = 1, Nombre = "Capital y GBA" };
+            var cdCentro = new CentroDistribucion { IdCD = 2, Nombre = "Centro - Córdoba" };
+            var cdNorte = new CentroDistribucion { IdCD = 3, Nombre = "Norte - Tucumán" };
+            var cdEste = new CentroDistribucion { IdCD = 4, Nombre = "Este - Corrientes" };
+            var cdCordillera = new CentroDistribucion { IdCD = 5, Nombre = "Cordillera - Neuquén" };
+            var cdSur = new CentroDistribucion { IdCD = 6, Nombre = "Sur - Viedma" };
 
-            CentrosDeDistribucion = new List<CentroDistribucionEntidad>
+            CentrosDeDistribucion = new List<CentroDistribucion>
             {
                 cdCapital, cdCentro, cdNorte, cdEste, cdCordillera, cdSur
             };
@@ -31,7 +31,7 @@ namespace Prototipos_TUTASA.Imposición.Imposición_CD
             CdOrigen = cdCapital;
 
             // Clientes (remitentes)
-            var cliente1 = new ClienteEntidad
+            var cliente1 = new Cliente
             {
                 RazonSocial = "Distribuidora El Sol SRL",
                 CUIT = "30712345678",
@@ -42,7 +42,7 @@ namespace Prototipos_TUTASA.Imposición.Imposición_CD
                 CodigoPostal = "1043",
                 Ciudad = "Buenos Aires"
             };
-            var cliente2 = new ClienteEntidad
+            var cliente2 = new Cliente
             {
                 RazonSocial = "Importadora del Norte SA",
                 CUIT = "30798765432",
@@ -54,29 +54,29 @@ namespace Prototipos_TUTASA.Imposición.Imposición_CD
                 Ciudad = "Buenos Aires"
             };
 
-            Clientes = new List<ClienteEntidad> { cliente1, cliente2 };
+            Clientes = new List<Cliente> { cliente1, cliente2 };
 
             // Agencias (para modalidad Retiro en Agencia)
-            var agencia1 = new AgenciaEntidad
+            var agencia1 = new Agencia
             {
                 IdAgencia = 1,
                 RazonSocial = "Agencia Norte SA",
                 CD = cdCapital
             };
-            var agencia2 = new AgenciaEntidad
+            var agencia2 = new Agencia
             {
                 IdAgencia = 2,
                 RazonSocial = "Agencia Sur SRL",
                 CD = cdCapital
             };
 
-            Agencias = new List<AgenciaEntidad> { agencia1, agencia2 };
+            Agencias = new List<Agencia> { agencia1, agencia2 };
 
             // Guías generadas al registrar imposiciones (arranca vacía)
-            Guias = new List<GuiaEntidad>();
+            Guias = new List<Guia>();
         }
 
-        public CentroDistribucionEntidad ObtenerCentroDistribucionPorCiudad(string ciudad)
+        public CentroDistribucion ObtenerCentroDistribucionPorCiudad(string ciudad)
         {
             string ciudadNormalizada = (ciudad ?? string.Empty).ToLower();
 
@@ -98,9 +98,9 @@ namespace Prototipos_TUTASA.Imposición.Imposición_CD
             return CdOrigen;
         }
 
-        public GuiaEntidad RegistrarImposicion(TipoBulto tipoBulto, ModalidadEntrega modalidadEntrega, DestinatarioEntidad destinatario, CentroDistribucionEntidad cdDestino, AgenciaEntidad agenciaDestino)
+        public Guia RegistrarImposicion(TipoBulto tipoBulto, ModalidadEntrega modalidadEntrega, Destinatario destinatario, CentroDistribucion cdDestino, Agencia agenciaDestino)
         {
-            GuiaEntidad guia = new GuiaEntidad
+            Guia guia = new Guia
             {
                 NroGuia = GenerarNumeroGuia(),
             };
