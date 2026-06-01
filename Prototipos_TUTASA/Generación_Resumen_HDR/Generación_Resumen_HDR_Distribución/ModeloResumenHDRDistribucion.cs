@@ -9,9 +9,9 @@ namespace Prototipos_TUTASA
     {
         private readonly ModeloGenerarHDRDistribucion modeloBase = new ModeloGenerarHDRDistribucion();
         private readonly List<ResumenHDRDistribucion> resumenes = new List<ResumenHDRDistribucion>();
-        private List<HojaDeRutaDistribucionEntidad> hojasSeleccionadas = new List<HojaDeRutaDistribucionEntidad>();
+        private List<HojaDeRutaDistribucion> hojasSeleccionadas = new List<HojaDeRutaDistribucion>();
 
-        private List<TransportistaLocalEntidad> Fleteros
+        private List<TransportistaLocal> Fleteros
         {
             get { return modeloBase.Transportistas.Where(t => t.CD.IdCD == modeloBase.CdEmisor.IdCD).ToList(); }
         }
@@ -25,11 +25,11 @@ namespace Prototipos_TUTASA
             CargarHojasDeRutaDePrueba();
         }
 
-        private bool BuscarHojasAsignadas(TransportistaLocalEntidad fletero, DateTime fecha, out List<HojaDeRutaDistribucionEntidad> hojas)
+        private bool BuscarHojasAsignadas(TransportistaLocal fletero, DateTime fecha, out List<HojaDeRutaDistribucion> hojas)
         {
-            hojas = new List<HojaDeRutaDistribucionEntidad>();
+            hojas = new List<HojaDeRutaDistribucion>();
 
-            foreach (HojaDeRutaDistribucionEntidad hdr in modeloBase.HojasDeRuta)
+            foreach (HojaDeRutaDistribucion hdr in modeloBase.HojasDeRuta)
             {
                 if (hdr.Transportista.DniTransportista == fletero.DniTransportista
                     && hdr.FechaEmision.Date == fecha.Date
@@ -43,11 +43,11 @@ namespace Prototipos_TUTASA
             return hojas.Count > 0;
         }
 
-        public bool SeleccionarHojasAsignadas(TransportistaLocalEntidad fletero, DateTime fecha)
+        public bool SeleccionarHojasAsignadas(TransportistaLocal fletero, DateTime fecha)
         {
             LimpiarSeleccion();
 
-            if (!BuscarHojasAsignadas(fletero, fecha, out List<HojaDeRutaDistribucionEntidad> hojas))
+            if (!BuscarHojasAsignadas(fletero, fecha, out List<HojaDeRutaDistribucion> hojas))
             {
                 return false;
             }
@@ -56,11 +56,11 @@ namespace Prototipos_TUTASA
             return true;
         }
 
-        public List<TransportistaLocalEntidad> ObtenerFleterosConHojasAsignadas(DateTime fecha)
+        public List<TransportistaLocal> ObtenerFleterosConHojasAsignadas(DateTime fecha)
         {
-            var fleterosConHojas = new List<TransportistaLocalEntidad>();
+            var fleterosConHojas = new List<TransportistaLocal>();
 
-            foreach (TransportistaLocalEntidad fletero in Fleteros)
+            foreach (TransportistaLocal fletero in Fleteros)
             {
                 if (BuscarHojasAsignadas(fletero, fecha, out _))
                 {
@@ -71,7 +71,7 @@ namespace Prototipos_TUTASA
             return fleterosConHojas;
         }
 
-        private DatosDestinoResumen ObtenerDatosDestino(GuiaEntidad guia)
+        private DatosDestinoResumen ObtenerDatosDestino(Guia guia)
         {
             if (guia.ModalidadEntrega == ModalidadEntrega.PuertaAPuerta)
             {
@@ -97,7 +97,7 @@ namespace Prototipos_TUTASA
         {
             var datosHojas = new List<DatosDestinoResumen>();
 
-            foreach (HojaDeRutaDistribucionEntidad hoja in hojasSeleccionadas)
+            foreach (HojaDeRutaDistribucion hoja in hojasSeleccionadas)
             {
                 if (hoja.Guias == null || hoja.Guias.Count == 0)
                 {
@@ -113,7 +113,7 @@ namespace Prototipos_TUTASA
             return datosHojas;
         }
 
-        private int CalcularTotalBultos(HojaDeRutaDistribucionEntidad hoja)
+        private int CalcularTotalBultos(HojaDeRutaDistribucion hoja)
         {
             if (hoja.Guias == null)
             {
@@ -123,11 +123,11 @@ namespace Prototipos_TUTASA
             return hoja.Guias.Count;
         }
 
-        private int CalcularTotalBultos(List<HojaDeRutaDistribucionEntidad> hojas)
+        private int CalcularTotalBultos(List<HojaDeRutaDistribucion> hojas)
         {
             int total = 0;
 
-            foreach (HojaDeRutaDistribucionEntidad hoja in hojas)
+            foreach (HojaDeRutaDistribucion hoja in hojas)
             {
                 total += CalcularTotalBultos(hoja);
             }
@@ -135,11 +135,11 @@ namespace Prototipos_TUTASA
             return total;
         }
 
-        private int CalcularTotalDomicilios(List<HojaDeRutaDistribucionEntidad> hojas)
+        private int CalcularTotalDomicilios(List<HojaDeRutaDistribucion> hojas)
         {
             var domicilios = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
-            foreach (HojaDeRutaDistribucionEntidad hoja in hojas)
+            foreach (HojaDeRutaDistribucion hoja in hojas)
             {
                 if (hoja.Guias == null || hoja.Guias.Count == 0)
                 {
@@ -172,7 +172,7 @@ namespace Prototipos_TUTASA
                 TotalBultos = TotalBultosSeleccionados
             };
 
-            foreach (HojaDeRutaDistribucionEntidad hoja in hojasSeleccionadas)
+            foreach (HojaDeRutaDistribucion hoja in hojasSeleccionadas)
             {
                 hoja.Estado = EstadoHojaDeRutaDistribucion.EnCurso;
             }
@@ -184,17 +184,17 @@ namespace Prototipos_TUTASA
 
         public void LimpiarSeleccion()
         {
-            hojasSeleccionadas = new List<HojaDeRutaDistribucionEntidad>();
+            hojasSeleccionadas = new List<HojaDeRutaDistribucion>();
         }
 
         private void CargarHojasDeRutaDePrueba()
         {
-            if (!BuscarTransportista(12345678, out TransportistaLocalEntidad carlos))
+            if (!BuscarTransportista(12345678, out TransportistaLocal carlos))
             {
                 return;
             }
 
-            bool existeLaura = BuscarTransportista(23456789, out TransportistaLocalEntidad laura);
+            bool existeLaura = BuscarTransportista(23456789, out TransportistaLocal laura);
 
             AgregarHojaDeRuta(1, DateTime.Today, carlos, PrepararGuias("CD03-0001", "CD03-0002"));
             AgregarHojaDeRuta(2, DateTime.Today, carlos, PrepararGuias("A001-0001", "A001-0002"));
@@ -207,9 +207,9 @@ namespace Prototipos_TUTASA
             AgregarHojaDeRuta(4, DateTime.Today.AddDays(1), carlos, PrepararGuias("A002-0001"));
         }
 
-        private bool BuscarTransportista(int dni, out TransportistaLocalEntidad transportistaEncontrado)
+        private bool BuscarTransportista(int dni, out TransportistaLocal transportistaEncontrado)
         {
-            foreach (TransportistaLocalEntidad transportista in modeloBase.Transportistas)
+            foreach (TransportistaLocal transportista in modeloBase.Transportistas)
             {
                 if (transportista.DniTransportista == dni)
                 {
@@ -218,13 +218,13 @@ namespace Prototipos_TUTASA
                 }
             }
 
-            transportistaEncontrado = new TransportistaLocalEntidad();
+            transportistaEncontrado = new TransportistaLocal();
             return false;
         }
 
-        private bool BuscarGuia(string nroGuia, out GuiaEntidad guiaEncontrada)
+        private bool BuscarGuia(string nroGuia, out Guia guiaEncontrada)
         {
-            foreach (GuiaEntidad guia in modeloBase.Guias)
+            foreach (Guia guia in modeloBase.Guias)
             {
                 if (string.Equals(guia.NroGuia, nroGuia, StringComparison.OrdinalIgnoreCase))
                 {
@@ -233,17 +233,17 @@ namespace Prototipos_TUTASA
                 }
             }
 
-            guiaEncontrada = new GuiaEntidad();
+            guiaEncontrada = new Guia();
             return false;
         }
 
-        private List<GuiaEntidad> PrepararGuias(params string[] numerosGuia)
+        private List<Guia> PrepararGuias(params string[] numerosGuia)
         {
-            var guias = new List<GuiaEntidad>();
+            var guias = new List<Guia>();
 
             foreach (string nroGuia in numerosGuia)
             {
-                if (BuscarGuia(nroGuia, out GuiaEntidad guia))
+                if (BuscarGuia(nroGuia, out Guia guia))
                 {
                     guia.Estado = EstadoGuia.EnDistribucion;
                     guias.Add(guia);
@@ -253,14 +253,14 @@ namespace Prototipos_TUTASA
             return guias;
         }
 
-        private void AgregarHojaDeRuta(int nroHDR, DateTime fecha, TransportistaLocalEntidad fletero, List<GuiaEntidad> guias)
+        private void AgregarHojaDeRuta(int nroHDR, DateTime fecha, TransportistaLocal fletero, List<Guia> guias)
         {
             if (guias.Count == 0)
             {
                 return;
             }
 
-            modeloBase.HojasDeRuta.Add(new HojaDeRutaDistribucionEntidad
+            modeloBase.HojasDeRuta.Add(new HojaDeRutaDistribucion
             {
                 NroHDR = nroHDR,
                 FechaEmision = fecha,

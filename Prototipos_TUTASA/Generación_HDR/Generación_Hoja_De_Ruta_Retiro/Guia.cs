@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_Retiro
 {
-    internal class GuiaEntidad
+    internal class Guia
     {
         public string NroGuia { get; set; }
         public TipoImposicion TipoImposicion { get; set; }
@@ -12,9 +12,9 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_Retiro
         public DateTime FechaImposicion { get; set; }
         public ModalidadEntrega ModalidadEntrega { get; set; }
         public EstadoGuia Estado { get; set; }
-        public CentroDistribucionEntidad CdOrigen { get; set; }
-        public CentroDistribucionEntidad CdDestino { get; set; }
-        public ClienteEntidad Cliente { get; set; }   // null si es Retiro en Agencia
-        public AgenciaEntidad Agencia { get; set; }   // null si es domicilio del cliente
+        public CentroDistribucion CdOrigen { get; set; }
+        public CentroDistribucion CdDestino { get; set; }
+        public Cliente Cliente { get; set; }   // null si es Retiro en Agencia
+        public Agencia Agencia { get; set; }   // null si es domicilio del cliente
     }
 }

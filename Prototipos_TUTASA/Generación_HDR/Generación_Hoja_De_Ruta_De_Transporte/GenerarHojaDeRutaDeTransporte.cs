@@ -63,7 +63,7 @@ namespace Prototipos_TUTASA.Generación_Hoja_De_Ruta_De_Transporte
             modelo.Actualizando = true;
             lvGuiasPendientes.Items.Clear();
 
-            CentroDistribucionEntidad cdSeleccionado = (CentroDistribucionEntidad)cmbCDDestino.SelectedItem;
+            CentroDistribucion cdSeleccionado = (CentroDistribucion)cmbCDDestino.SelectedItem;
 
             foreach (var guia in modelo.Guias)
             {
@@ -123,7 +123,7 @@ namespace Prototipos_TUTASA.Generación_Hoja_De_Ruta_De_Transporte
             if (totalBultos == 0)
                 return;
 
-            CentroDistribucionEntidad cdSeleccionado = (CentroDistribucionEntidad)cmbCDDestino.SelectedItem;
+            CentroDistribucion cdSeleccionado = (CentroDistribucion)cmbCDDestino.SelectedItem;
 
             foreach (var servicio in modelo.Servicios)
             {
@@ -163,9 +163,9 @@ namespace Prototipos_TUTASA.Generación_Hoja_De_Ruta_De_Transporte
             }
 
             // Validar que haya un servicio seleccionado
-            ServicioMediaDistanciaEntidad servicioSeleccionado = null;
+            ServicioMediaDistancia servicioSeleccionado = null;
             if (lvServicios.SelectedItems.Count > 0)
-                servicioSeleccionado = (ServicioMediaDistanciaEntidad)lvServicios.SelectedItems[0].Tag;
+                servicioSeleccionado = (ServicioMediaDistancia)lvServicios.SelectedItems[0].Tag;
 
             if (servicioSeleccionado == null)
             {
@@ -174,11 +174,11 @@ namespace Prototipos_TUTASA.Generación_Hoja_De_Ruta_De_Transporte
             }
 
             // Crear la HDR
-            HojaDeRutaTransporteEntidad nuevaHDR = new HojaDeRutaTransporteEntidad();
+            HojaDeRutaTransporte nuevaHDR = new HojaDeRutaTransporte();
             nuevaHDR.NroHDR = modelo.HojasDeRuta.Count + 1;
             nuevaHDR.FechaEmision = DateTime.Today;
             nuevaHDR.CdOrigen = modelo.CdEmisor;
-            nuevaHDR.CdDestino = (CentroDistribucionEntidad)cmbCDDestino.SelectedItem;
+            nuevaHDR.CdDestino = (CentroDistribucion)cmbCDDestino.SelectedItem;
             nuevaHDR.Servicio = servicioSeleccionado;
             nuevaHDR.Guias = guiasSeleccionadas;
             nuevaHDR.Estado = EstadoHojaDeRutaTransporte.Generada;

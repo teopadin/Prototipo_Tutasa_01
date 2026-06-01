@@ -98,11 +98,11 @@ namespace Prototipos_TUTASA.HojaDeRutaDeDistribucion
 
         private void ActualizarGuiasFiltradas()
         {
-            List<GuiaEntidad> guiasSeleccionadas = new List<GuiaEntidad>();
+            List<Guia> guiasSeleccionadas = new List<Guia>();
             foreach (ListViewItem item in listViewGuiasADistribuir.Items)
             {
                 if (item.Checked)
-                    guiasSeleccionadas.Add((GuiaEntidad)item.Tag);
+                    guiasSeleccionadas.Add((Guia)item.Tag);
             }
 
             if (guiasSeleccionadas.Count == 0)
@@ -112,7 +112,7 @@ namespace Prototipos_TUTASA.HojaDeRutaDeDistribucion
                 return;
             }
 
-            GuiaEntidad guiaReferencia = guiasSeleccionadas[0];
+            Guia guiaReferencia = guiasSeleccionadas[0];
             string calleRef, alturaRef, pisoRef, cpRef, ciudadRef;
 
             if (guiaReferencia.ModalidadEntrega == ModalidadEntrega.PuertaAPuerta)
@@ -135,7 +135,7 @@ namespace Prototipos_TUTASA.HojaDeRutaDeDistribucion
             modelo.Actualizando = true;
             foreach (ListViewItem item in listViewGuiasADistribuir.Items)
             {
-                GuiaEntidad guia = (GuiaEntidad)item.Tag;
+                Guia guia = (Guia)item.Tag;
                 string calle, altura, piso, cp, ciudad;
 
                 if (guia.ModalidadEntrega == ModalidadEntrega.PuertaAPuerta)
@@ -191,7 +191,7 @@ namespace Prototipos_TUTASA.HojaDeRutaDeDistribucion
             if (!hayGuiasSeleccionadas)
                 return;
 
-            List<TransportistaLocalEntidad> transportistasFiltrados = new List<TransportistaLocalEntidad>();
+            List<TransportistaLocal> transportistasFiltrados = new List<TransportistaLocal>();
             foreach (var transportista in modelo.Transportistas)
             {
                 if (transportista.CD.IdCD == modelo.CdEmisor.IdCD)
@@ -214,11 +214,11 @@ namespace Prototipos_TUTASA.HojaDeRutaDeDistribucion
         private void btnGenerarHdr_Click(object sender, EventArgs e)
         {
             // Validar que haya al menos una guía seleccionada
-            List<GuiaEntidad> guiasSeleccionadas = new List<GuiaEntidad>();
+            List<Guia> guiasSeleccionadas = new List<Guia>();
             foreach (ListViewItem item in listViewGuiasADistribuir.Items)
             {
                 if (item.Checked)
-                    guiasSeleccionadas.Add((GuiaEntidad)item.Tag);
+                    guiasSeleccionadas.Add((Guia)item.Tag);
             }
 
             if (guiasSeleccionadas.Count == 0)
@@ -228,9 +228,9 @@ namespace Prototipos_TUTASA.HojaDeRutaDeDistribucion
             }
 
             // Validar que haya un fletero seleccionado
-            TransportistaLocalEntidad transportistaSeleccionado = null;
+            TransportistaLocal transportistaSeleccionado = null;
             if (listViewFleteros.SelectedItems.Count > 0)
-                transportistaSeleccionado = (TransportistaLocalEntidad)listViewFleteros.SelectedItems[0].Tag;
+                transportistaSeleccionado = (TransportistaLocal)listViewFleteros.SelectedItems[0].Tag;
 
             if (transportistaSeleccionado == null)
             {
@@ -239,7 +239,7 @@ namespace Prototipos_TUTASA.HojaDeRutaDeDistribucion
             }
 
             // Crear la HDR
-            HojaDeRutaDistribucionEntidad nuevaHDR = new HojaDeRutaDistribucionEntidad();
+            HojaDeRutaDistribucion nuevaHDR = new HojaDeRutaDistribucion();
             nuevaHDR.NroHDR = modelo.HojasDeRuta.Count + 1;
             nuevaHDR.FechaEmision = dtpFecha.Value;
             nuevaHDR.CdEmisor = modelo.CdEmisor;

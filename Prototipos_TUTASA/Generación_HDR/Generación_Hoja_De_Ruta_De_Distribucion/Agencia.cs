@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_Retiro
+namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Distribucion
 {
-    internal class AgenciaEntidad
+    internal class Agencia
     {
         public int IdAgencia { get; set; }
         public string RazonSocial { get; set; }
@@ -13,6 +13,6 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_Retiro
         public string Piso { get; set; }
         public string CodigoPostal { get; set; }
         public string Ciudad { get; set; }
-        public CentroDistribucionEntidad CD { get; set; }
+        public CentroDistribucion CD { get; set; }
     }
 }

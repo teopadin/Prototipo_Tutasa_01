@@ -1,6 +1,6 @@
 ﻿namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Distribucion
 {
-    internal class DestinatarioEntidad
+    internal class Destinatario
     {
         public int Dni { get; set; }
         public string Nombre { get; set; }

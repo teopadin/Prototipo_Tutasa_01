@@ -4,9 +4,9 @@ namespace Prototipos_TUTASA
 {
     internal class FleteroResumenRetiroItem
     {
-        public TransportistaLocalEntidad Fletero { get; }
+        public TransportistaLocal Fletero { get; }
 
-        public FleteroResumenRetiroItem(TransportistaLocalEntidad fletero)
+        public FleteroResumenRetiroItem(TransportistaLocal fletero)
         {
             Fletero = fletero;
         }

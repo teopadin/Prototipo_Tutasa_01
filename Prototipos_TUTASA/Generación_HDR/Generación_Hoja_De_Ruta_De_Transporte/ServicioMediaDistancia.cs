@@ -5,14 +5,14 @@ using System.Text;
 
 namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transporte
 {
-    internal class ServicioMediaDistanciaEntidad
+    internal class ServicioMediaDistancia
     {
         public int IdServicio { get; set; }
-        public EmpresaTransporteEntidad Empresa { get; set; }
+        public EmpresaTransporte Empresa { get; set; }
         public TipoArrendamiento TipoArrendamiento { get; set; }
         public int CapacidadUsada { get; set; }
-        public CentroDistribucionEntidad CdOrigen { get; set; }
-        public CentroDistribucionEntidad CdDestino { get; set; }
+        public CentroDistribucion CdOrigen { get; set; }
+        public CentroDistribucion CdDestino { get; set; }
         public TimeSpan HorarioSalida { get; set; }
 
 
