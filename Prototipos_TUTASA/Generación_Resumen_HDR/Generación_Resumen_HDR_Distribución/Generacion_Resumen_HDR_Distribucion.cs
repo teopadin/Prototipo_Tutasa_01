@@ -1,6 +1,4 @@
-﻿using Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Distribucion;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Windows.Forms;
 
 namespace Prototipos_TUTASA
@@ -8,8 +6,6 @@ namespace Prototipos_TUTASA
     public partial class Generacion_Resumen_HDR_Distribucion : Form
     {
         private readonly ModeloResumenHDRDistribucion modelo = new ModeloResumenHDRDistribucion();
-        private List<HojaDeRutaDistribucionEntidad> hojasSeleccionadas = new List<HojaDeRutaDistribucionEntidad>();
-        private bool hayHojasSeleccionadas = false;
 
         public Generacion_Resumen_HDR_Distribucion()
         {
@@ -42,13 +38,18 @@ namespace Prototipos_TUTASA
                 return;
             }
 
-            if (!hayHojasSeleccionadas)
+            if (!modelo.HayHojasSeleccionadas)
             {
                 MessageBox.Show("No hay Hojas de Ruta de Distribución asignadas al fletero para la fecha seleccionada.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            ResumenHDRDistribucionEntidad resumen = modelo.GenerarResumen(hojasSeleccionadas);
+            if (!modelo.GenerarResumen(out ResumenHDRDistribucion resumen, out string mensaje))
+            {
+                MessageBox.Show(mensaje, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             textBox4.Text = resumen.TotalDomicilios.ToString();
             textBox5.Text = resumen.TotalBultos.ToString();
 
@@ -85,40 +86,29 @@ namespace Prototipos_TUTASA
                 return;
             }
 
-            if (!modelo.BuscarHojasAsignadas(itemSeleccionado.Fletero, dateTimePicker1.Value.Date, out List<HojaDeRutaDistribucionEntidad> hojas))
+            if (!modelo.SeleccionarHojasAsignadas(itemSeleccionado.Fletero, dateTimePicker1.Value.Date))
             {
                 return;
             }
 
-            hojasSeleccionadas = hojas;
-            hayHojasSeleccionadas = true;
-
-            foreach (HojaDeRutaDistribucionEntidad hoja in hojasSeleccionadas)
+            foreach (DatosDestinoResumen datos in modelo.ObtenerDatosHojasSeleccionadas())
             {
-                if (hoja.Guias == null || hoja.Guias.Count == 0)
-                {
-                    continue;
-                }
-
-                DatosDestinoResumen datos = modelo.ObtenerDatosDestino(hoja.Guias[0]);
-                var item = new ListViewItem(hoja.NroHDR.ToString());
+                var item = new ListViewItem(datos.NroHDR.ToString());
                 item.SubItems.Add(datos.Nombre);
                 item.SubItems.Add(datos.Calle);
                 item.SubItems.Add(datos.Altura.ToString());
                 item.SubItems.Add(datos.CodigoPostal);
-                item.SubItems.Add(modelo.CalcularTotalBultos(hoja).ToString());
-                item.Tag = hoja;
+                item.SubItems.Add(datos.CantidadBultos.ToString());
                 listView1.Items.Add(item);
             }
 
-            textBox4.Text = modelo.CalcularTotalDomicilios(hojasSeleccionadas).ToString();
-            textBox5.Text = modelo.CalcularTotalBultos(hojasSeleccionadas).ToString();
+            textBox4.Text = modelo.TotalDomiciliosSeleccionados.ToString();
+            textBox5.Text = modelo.TotalBultosSeleccionados.ToString();
         }
 
         private void LimpiarResumen()
         {
-            hojasSeleccionadas = new List<HojaDeRutaDistribucionEntidad>();
-            hayHojasSeleccionadas = false;
+            modelo.LimpiarSeleccion();
             listView1.Items.Clear();
             textBox4.Text = "0";
             textBox5.Text = "0";

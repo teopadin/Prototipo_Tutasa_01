@@ -8,19 +8,24 @@ namespace Prototipos_TUTASA
     internal class ModeloResumenHDRRetiro
     {
         private readonly ModeloGenerarHDRRetiro modeloBase = new ModeloGenerarHDRRetiro();
-        private readonly List<ResumenHDRRetiroEntidad> resumenes = new List<ResumenHDRRetiroEntidad>();
+        private readonly List<ResumenHDRRetiro> resumenes = new List<ResumenHDRRetiro>();
+        private List<HojaDeRutaRetiroEntidad> hojasSeleccionadas = new List<HojaDeRutaRetiroEntidad>();
 
-        public List<TransportistaLocalEntidad> Fleteros
+        private List<TransportistaLocalEntidad> Fleteros
         {
             get { return modeloBase.Transportistas.Where(t => t.CD.IdCD == modeloBase.CdEmisor.IdCD).ToList(); }
         }
+
+        public bool HayHojasSeleccionadas => hojasSeleccionadas.Count > 0;
+        public int TotalDomiciliosSeleccionados => CalcularTotalDomicilios(hojasSeleccionadas);
+        public int TotalBultosSeleccionados => CalcularTotalBultos(hojasSeleccionadas);
 
         public ModeloResumenHDRRetiro()
         {
             CargarHojasDeRutaDePrueba();
         }
 
-        public bool BuscarHojasAsignadas(TransportistaLocalEntidad fletero, DateTime fecha, out List<HojaDeRutaRetiroEntidad> hojas)
+        private bool BuscarHojasAsignadas(TransportistaLocalEntidad fletero, DateTime fecha, out List<HojaDeRutaRetiroEntidad> hojas)
         {
             hojas = new List<HojaDeRutaRetiroEntidad>();
 
@@ -38,6 +43,19 @@ namespace Prototipos_TUTASA
             return hojas.Count > 0;
         }
 
+        public bool SeleccionarHojasAsignadas(TransportistaLocalEntidad fletero, DateTime fecha)
+        {
+            LimpiarSeleccion();
+
+            if (!BuscarHojasAsignadas(fletero, fecha, out List<HojaDeRutaRetiroEntidad> hojas))
+            {
+                return false;
+            }
+
+            hojasSeleccionadas = hojas;
+            return true;
+        }
+
         public List<TransportistaLocalEntidad> ObtenerFleterosConHojasAsignadas(DateTime fecha)
         {
             var fleterosConHojas = new List<TransportistaLocalEntidad>();
@@ -53,7 +71,7 @@ namespace Prototipos_TUTASA
             return fleterosConHojas;
         }
 
-        public DatosRetiroResumen ObtenerDatosRetiro(GuiaEntidad guia)
+        private DatosRetiroResumen ObtenerDatosRetiro(GuiaEntidad guia)
         {
             if (guia.ModalidadEntrega == ModalidadEntrega.PuertaAPuerta)
             {
@@ -75,7 +93,27 @@ namespace Prototipos_TUTASA
             };
         }
 
-        public int CalcularTotalBultos(HojaDeRutaRetiroEntidad hoja)
+        public List<DatosRetiroResumen> ObtenerDatosHojasSeleccionadas()
+        {
+            var datosHojas = new List<DatosRetiroResumen>();
+
+            foreach (HojaDeRutaRetiroEntidad hoja in hojasSeleccionadas)
+            {
+                if (hoja.Guias == null || hoja.Guias.Count == 0)
+                {
+                    continue;
+                }
+
+                DatosRetiroResumen datos = ObtenerDatosRetiro(hoja.Guias[0]);
+                datos.NroHDR = hoja.NroHDR;
+                datos.CantidadBultos = CalcularTotalBultos(hoja);
+                datosHojas.Add(datos);
+            }
+
+            return datosHojas;
+        }
+
+        private int CalcularTotalBultos(HojaDeRutaRetiroEntidad hoja)
         {
             if (hoja.Guias == null)
             {
@@ -85,7 +123,7 @@ namespace Prototipos_TUTASA
             return hoja.Guias.Count;
         }
 
-        public int CalcularTotalBultos(List<HojaDeRutaRetiroEntidad> hojas)
+        private int CalcularTotalBultos(List<HojaDeRutaRetiroEntidad> hojas)
         {
             int total = 0;
 
@@ -97,7 +135,7 @@ namespace Prototipos_TUTASA
             return total;
         }
 
-        public int CalcularTotalDomicilios(List<HojaDeRutaRetiroEntidad> hojas)
+        private int CalcularTotalDomicilios(List<HojaDeRutaRetiroEntidad> hojas)
         {
             var domicilios = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
@@ -115,25 +153,38 @@ namespace Prototipos_TUTASA
             return domicilios.Count;
         }
 
-        public ResumenHDRRetiroEntidad GenerarResumen(List<HojaDeRutaRetiroEntidad> hojas)
+        public bool GenerarResumen(out ResumenHDRRetiro resumen, out string mensaje)
         {
-            ResumenHDRRetiroEntidad resumen = new ResumenHDRRetiroEntidad
+            resumen = new ResumenHDRRetiro();
+            mensaje = string.Empty;
+
+            if (!HayHojasSeleccionadas)
+            {
+                mensaje = "No hay Hojas de Ruta de Retiro asignadas al fletero para la fecha seleccionada.";
+                return false;
+            }
+
+            resumen = new ResumenHDRRetiro
             {
                 NroResumen = resumenes.Count + 1,
                 FechaGeneracion = DateTime.Now,
-                HojasDeRuta = new List<HojaDeRutaRetiroEntidad>(hojas),
-                Fletero = hojas[0].Transportista,
-                TotalDomicilios = CalcularTotalDomicilios(hojas),
-                TotalBultos = CalcularTotalBultos(hojas)
+                TotalDomicilios = TotalDomiciliosSeleccionados,
+                TotalBultos = TotalBultosSeleccionados
             };
 
-            foreach (HojaDeRutaRetiroEntidad hoja in hojas)
+            foreach (HojaDeRutaRetiroEntidad hoja in hojasSeleccionadas)
             {
                 hoja.Estado = EstadoHojaDeRutaRetiro.EnCurso;
             }
 
             resumenes.Add(resumen);
-            return resumen;
+            LimpiarSeleccion();
+            return true;
+        }
+
+        public void LimpiarSeleccion()
+        {
+            hojasSeleccionadas = new List<HojaDeRutaRetiroEntidad>();
         }
 
         private void CargarHojasDeRutaDePrueba()

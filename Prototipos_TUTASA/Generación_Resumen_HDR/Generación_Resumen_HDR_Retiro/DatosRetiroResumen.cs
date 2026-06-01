@@ -2,10 +2,12 @@ namespace Prototipos_TUTASA
 {
     internal class DatosRetiroResumen
     {
+        public int NroHDR { get; set; }
         public string Nombre { get; set; }
         public string Calle { get; set; }
         public int Altura { get; set; }
         public string CodigoPostal { get; set; }
+        public int CantidadBultos { get; set; }
 
         public string ClaveDomicilio
         {
