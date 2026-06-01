@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Prototipos_TUTASA.Admisión
 {
-    public enum TiposBulto
+    internal enum TiposBulto
     {
         S,
         M,

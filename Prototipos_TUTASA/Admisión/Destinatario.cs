@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Prototipos_TUTASA.Admisión
 {
-    public class Destinatario
+    internal class Destinatario
     {
         public int Dni { get; set; }
         public string Nombre { get; set; }

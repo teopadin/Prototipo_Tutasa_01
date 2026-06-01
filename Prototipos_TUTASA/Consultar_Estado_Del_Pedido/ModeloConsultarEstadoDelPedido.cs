@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Prototipos_TUTASA.Consultar_Estado_Del_Pedido
 {
-    internal partial class ModeloConsultarEstadoDelPedido
+    internal class ModeloConsultarEstadoDelPedido
     {
         private List<Guia> guias = new List<Guia>
         {
@@ -12,7 +12,6 @@ namespace Prototipos_TUTASA.Consultar_Estado_Del_Pedido
             new Guia
             {
                 NroGuia = "AG01-0001",
-                Estado = EstadoGuia.Entregada,
                 Historial = new List<HistorialEstadoGuia>
                 {
                         new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 5, 10), Estado = EstadoGuia.Impuesta, Donde = UbicacionGuia.EnAgencia },
@@ -31,7 +30,6 @@ namespace Prototipos_TUTASA.Consultar_Estado_Del_Pedido
             new Guia
             {
                 NroGuia = "CD02-0002",
-                Estado = EstadoGuia.Entregada,
                 Historial = new List<HistorialEstadoGuia>
                 {
                     new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 4, 5), Estado = EstadoGuia.Impuesta, Donde = UbicacionGuia.EnCDOrigen },
@@ -47,7 +45,6 @@ namespace Prototipos_TUTASA.Consultar_Estado_Del_Pedido
             new Guia
             {
                 NroGuia = "CD03-0003",
-                Estado = EstadoGuia.Cancelada,
                 Historial = new List<HistorialEstadoGuia>
                 {
                     new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 5, 1), Estado = EstadoGuia.Impuesta, Donde = UbicacionGuia.EnDomicilio },
