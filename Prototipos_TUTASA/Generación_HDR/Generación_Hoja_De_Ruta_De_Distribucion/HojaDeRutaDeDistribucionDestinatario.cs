@@ -32,8 +32,8 @@ namespace Prototipos_TUTASA.HojaDeRutaDeDistribucion
 
             foreach (var guia in modelo.Guias)
             {
-                bool esEnCDDestino = guia.Estado == EstadoGuia.EnCDDestino && guia.CdDestino.IdCD == modelo.CdEmisor.IdCD;
-                bool esAdmitidaLocal = guia.Estado == EstadoGuia.Admitida && guia.CdOrigen.IdCD == modelo.CdEmisor.IdCD && guia.CdDestino.IdCD == modelo.CdEmisor.IdCD;
+                bool esEnCDDestino = guia.Estado == EstadoGuia.EnCDDestino && guia.CdDestino.Nombre == modelo.CdEmisor.Nombre;
+                bool esAdmitidaLocal = guia.Estado == EstadoGuia.Admitida && guia.CdOrigen.Nombre == modelo.CdEmisor.Nombre && guia.CdDestino.Nombre == modelo.CdEmisor.Nombre;
 
                 if (!esEnCDDestino && !esAdmitidaLocal)
                     continue;
@@ -194,7 +194,7 @@ namespace Prototipos_TUTASA.HojaDeRutaDeDistribucion
             List<TransportistaLocal> transportistasFiltrados = new List<TransportistaLocal>();
             foreach (var transportista in modelo.Transportistas)
             {
-                if (transportista.CD.IdCD == modelo.CdEmisor.IdCD)
+                if (transportista.CD.Nombre == modelo.CdEmisor.Nombre)
                     transportistasFiltrados.Add(transportista);
             }
 

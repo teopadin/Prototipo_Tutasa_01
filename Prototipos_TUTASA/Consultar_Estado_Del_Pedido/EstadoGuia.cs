@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Prototipos_TUTASA.Consultar_Estado_Del_Pedido
 {
-    public enum EstadoGuia
+    internal enum EstadoGuia
     {
         Impuesta,
         PendienteDeRetiroPorTransportista,

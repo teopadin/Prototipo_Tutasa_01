@@ -4,9 +4,9 @@ using System.Text;
 
 namespace Prototipos_TUTASA.Admisión
 {
-    internal partial class ModeloAdmision
+    internal class ModeloAdmision
     {
-        // CD desde el que se realiza la admisión (fijo para el prototipo)
+        // CD desde el que se realiza la admisión (lo reconoce el sistema)
         private int idCDAdmisionActual = 1;
 
         private List<Cliente> clientes = new List<Cliente>
@@ -38,12 +38,10 @@ namespace Prototipos_TUTASA.Admisión
                 NroGuia = "CD01-0001",
                 IdCliente = 100,
                 IdCDDestino = 2,
-                IdCDAdmision = 1,
                 DniDestinatario = 30111222,
                 TipoBulto = TiposBulto.M,
                 ModalidadEntrega = ModalidadesEntrega.PuertaAPuerta,
-                Estado = EstadoGuia.Retirada,
-                Historial = new List<HistorialEstadoGuia>()
+                Estado = EstadoGuia.Retirada
             },
             // Guía 2: caso especial → quedará "Pendiente de retiro en CD"
             new Guia
@@ -51,12 +49,10 @@ namespace Prototipos_TUTASA.Admisión
                 NroGuia = "CD01-0002",
                 IdCliente = 200,
                 IdCDDestino = 1,
-                IdCDAdmision = 1,
                 DniDestinatario = 28444555,
                 TipoBulto = TiposBulto.S,
                 ModalidadEntrega = ModalidadesEntrega.RetiroEnCD,
-                Estado = EstadoGuia.Retirada,
-                Historial = new List<HistorialEstadoGuia>()
+                Estado = EstadoGuia.Retirada
             },
             // Guía 3: caso general (mismo CD pero no es Retiro en CD)
             new Guia
@@ -64,12 +60,10 @@ namespace Prototipos_TUTASA.Admisión
                 NroGuia = "CD01-0003",
                 IdCliente = 300,
                 IdCDDestino = 1,
-                IdCDAdmision = 1,
                 DniDestinatario = 35777888,
                 TipoBulto = TiposBulto.L,
                 ModalidadEntrega = ModalidadesEntrega.PuertaAPuerta,
-                Estado = EstadoGuia.Retirada,
-                Historial = new List<HistorialEstadoGuia>()
+                Estado = EstadoGuia.Retirada
             },
             // Guía 4: estado distinto a "Retirada" → no se puede admitir
             new Guia
@@ -77,12 +71,10 @@ namespace Prototipos_TUTASA.Admisión
                 NroGuia = "CD01-0004",
                 IdCliente = 100,
                 IdCDDestino = 3,
-                IdCDAdmision = 1,
                 DniDestinatario = 30111222,
                 TipoBulto = TiposBulto.XL,
                 ModalidadEntrega = ModalidadesEntrega.RetiroEnAgencia,
-                Estado = EstadoGuia.Entregada,
-                Historial = new List<HistorialEstadoGuia>()
+                Estado = EstadoGuia.Admitida
             }
         };
 
@@ -145,7 +137,7 @@ namespace Prototipos_TUTASA.Admisión
             if (guia == null) return;
 
             // Caso especial: el CD destino es el mismo que el CD de admisión Y modalidad es Retiro en CD
-            if (guia.IdCDDestino == guia.IdCDAdmision && guia.ModalidadEntrega == ModalidadesEntrega.RetiroEnCD)
+            if (guia.IdCDDestino == idCDAdmisionActual && guia.ModalidadEntrega == ModalidadesEntrega.RetiroEnCD)
             {
                 guia.Estado = EstadoGuia.PendienteDeRetiroEnCD;
             }
@@ -153,14 +145,6 @@ namespace Prototipos_TUTASA.Admisión
             {
                 guia.Estado = EstadoGuia.Admitida;
             }
-
-            // Registrar el cambio en el historial
-            HistorialEstadoGuia cambio = new HistorialEstadoGuia
-            {
-                FechaCambio = fechaAdmision,
-                Estado = guia.Estado
-            };
-            guia.Historial.Add(cambio);
         }
 
         // Rechaza la admisión: pasa la guía a "Cancelada"
@@ -170,13 +154,6 @@ namespace Prototipos_TUTASA.Admisión
             if (guia == null) return;
 
             guia.Estado = EstadoGuia.Cancelada;
-
-            HistorialEstadoGuia cambio = new HistorialEstadoGuia
-            {
-                FechaCambio = fechaAdmision,
-                Estado = guia.Estado
-            };
-            guia.Historial.Add(cambio);
         }
 
         // Métodos de formato para mostrar en pantalla

@@ -16,12 +16,12 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transpor
         public ModeloGenerarHDRTransporte()
         {
             // CDs
-            var cdCapital = new CentroDistribucion { IdCD = 1, Nombre = "Capital y GBA" };
-            var cdCentro = new CentroDistribucion { IdCD = 2, Nombre = "Centro - Córdoba" };
-            var cdNorte = new CentroDistribucion { IdCD = 3, Nombre = "Norte - Tucumán" };
-            var cdEste = new CentroDistribucion { IdCD = 4, Nombre = "Este - Corrientes" };
-            var cdCordillera = new CentroDistribucion { IdCD = 5, Nombre = "Cordillera - Neuquén" };
-            var cdSur = new CentroDistribucion { IdCD = 6, Nombre = "Sur - Viedma" };
+            var cdCapital = new CentroDistribucion { Nombre = "Capital y GBA" };
+            var cdCentro = new CentroDistribucion { Nombre = "Centro - Córdoba" };
+            var cdNorte = new CentroDistribucion { Nombre = "Norte - Tucumán" };
+            var cdEste = new CentroDistribucion { Nombre = "Este - Corrientes" };
+            var cdCordillera = new CentroDistribucion { Nombre = "Cordillera - Neuquén" };
+            var cdSur = new CentroDistribucion { Nombre = "Sur - Viedma" };
 
             CentrosDeDistribucion = new List<CentroDistribucion>
             {
@@ -31,8 +31,8 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transpor
             CdEmisor = cdCapital;
 
             // Empresas de transporte
-            var empresa1 = new EmpresaTransporte { IdEmpresa = 1, RazonSocial = "Transportes del Sur SA" };
-            var empresa2 = new EmpresaTransporte { IdEmpresa = 2, RazonSocial = "Logística Norte SRL" };
+            var empresa1 = new EmpresaTransporte { RazonSocial = "Transportes del Sur SA" };
+            var empresa2 = new EmpresaTransporte { RazonSocial = "Logística Norte SRL" };
 
             // Servicios
             Servicios = new List<ServicioMediaDistancia>
