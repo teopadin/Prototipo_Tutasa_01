@@ -6,20 +6,19 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia
     public partial class EntregaAgencia : Form
     {
         private readonly ModeloEntregaAgencia modelo = new ModeloEntregaAgencia();
-        private GuiaEntidad guiaSeleccionada = null;
 
         public EntregaAgencia()
         {
             InitializeComponent();
 
             // Paso 1: el nombre de la agencia actual se muestra fijo en pantalla.
-            lblAgencia.Text = modelo.AgenciaActual.Nombre;
+            // Protegemos contra valores nulos que podrían venir desde el modelo.
+            lblAgencia.Text = modelo.AgenciaActual?.Nombre ?? string.Empty;
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             lvGuia.Items.Clear();
-            guiaSeleccionada = null;
 
             string nroGuia = txtGuia.Text.Trim();
             if (string.IsNullOrWhiteSpace(nroGuia))
@@ -28,7 +27,7 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia
                 return;
             }
 
-            GuiaEntidad guia = modelo.BuscarGuia(nroGuia);
+             ClaseGuia guia = modelo.BuscarGuia(nroGuia);
 
             // Excepción 1: la guía no existe.
             if (guia == null)
@@ -44,8 +43,6 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia
                 return;
             }
 
-            guiaSeleccionada = guia;
-
             // Paso 4: muestra Nombre, Apellido y DNI del destinatario.
             var item = new ListViewItem(guia.Destinatario.Nombre);
             item.SubItems.Add(guia.Destinatario.Apellido);
@@ -56,9 +53,17 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
-            if (guiaSeleccionada == null)
+            if (lvGuia.Items.Count == 0)
             {
                 MessageBox.Show("Debe buscar una guía válida antes de registrar la entrega.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // El Tag puede ser nulo o de otro tipo; validamos antes de continuar.
+            ClaseGuia? guia = lvGuia.Items[0].Tag as ClaseGuia;
+            if (guia == null)
+            {
+                MessageBox.Show("La guía seleccionada no es válida.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -81,10 +86,10 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia
             }
 
             // Paso 8: registra la entrega y pasa la guía a "Entregada".
-            modelo.RegistrarEntrega(guiaSeleccionada, nombre, apellido, dni);
+            modelo.RegistrarEntrega(guia, nombre, apellido, dni);
 
             // Paso 9: mensaje de éxito referenciando el número de guía.
-            MessageBox.Show($"Entrega registrada con éxito para la guía N° {guiaSeleccionada.NroGuia}.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show($"Entrega registrada con éxito para la guía N° {guia.NroGuia}.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             LimpiarFormulario();
         }
 
@@ -101,7 +106,6 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia
             txtDNI.Clear();
             chkDNI.Checked = false;
             lvGuia.Items.Clear();
-            guiaSeleccionada = null;
         }
     }
 }
