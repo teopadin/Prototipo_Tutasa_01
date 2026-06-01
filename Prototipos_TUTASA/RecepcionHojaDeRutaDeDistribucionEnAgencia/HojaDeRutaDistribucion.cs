@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
 {
-    internal class HojaDeRutaDistribucionEntidad
+    internal class HojaDeRutaDistribucion
     {
         public int NroHDR { get; set; }
 
@@ -13,11 +13,11 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
 
         public DateTime FechaRecepcion { get; set; }
 
-        public AgenciaEntidad Agencia { get; set; }
+        public Agencia Agencia { get; set; }
 
-        public TransportistaLocalEntidad Transportista { get; set; }
+        public TransportistaLocal Transportista { get; set; }
 
-        public List<GuiaEntidad> Guias { get; set; }
+        public List<Guia> Guias { get; set; }
 
         public EstadoHojaDeRuta Estado { get; set; }
     }

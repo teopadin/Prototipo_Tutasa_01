@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
 {
-    internal class CentroDeDistribucionEntidad
+    internal class CentroDeDistribucion
     {
         public int IdCD { get; set; }
         public string Nombre { get; set; }

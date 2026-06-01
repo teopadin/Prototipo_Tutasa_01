@@ -13,7 +13,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
     {
         private ModeloRecibirHDRDistribucionAgencia modelo = new ModeloRecibirHDRDistribucionAgencia();
 
-        private HojaDeRutaDistribucionEntidad hdrActual;
+        private HojaDeRutaDistribucion hdrActual;
 
         public Recepcion_HDR_Distribucion_Agencia()
         {
@@ -30,7 +30,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
 
             listView1.Items.Clear();
         }
-        private void CargarHDR(HojaDeRutaDistribucionEntidad hdr)
+        private void CargarHDR(HojaDeRutaDistribucion hdr)
         {
             txtAgencia.Text = hdr.Agencia.RazonSocial;
 
