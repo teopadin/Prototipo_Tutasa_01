@@ -1,4 +1,3 @@
-using Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Distribucion;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,14 +6,10 @@ namespace Prototipos_TUTASA
 {
     internal class ModeloResumenHDRDistribucion
     {
-        private readonly ModeloGenerarHDRDistribucion modeloBase = new ModeloGenerarHDRDistribucion();
+        private readonly List<FleteroResumen> fleteros = new List<FleteroResumen>();
+        private readonly List<HojaDeRutaDistribucionResumen> hojasDeRuta = new List<HojaDeRutaDistribucionResumen>();
         private readonly List<ResumenHDRDistribucion> resumenes = new List<ResumenHDRDistribucion>();
-        private List<HojaDeRutaDistribucion> hojasSeleccionadas = new List<HojaDeRutaDistribucion>();
-
-        private List<TransportistaLocal> Fleteros
-        {
-            get { return modeloBase.Transportistas.Where(t => t.CD.IdCD == modeloBase.CdEmisor.IdCD).ToList(); }
-        }
+        private List<HojaDeRutaDistribucionResumen> hojasSeleccionadas = new List<HojaDeRutaDistribucionResumen>();
 
         public bool HayHojasSeleccionadas => hojasSeleccionadas.Count > 0;
         public int TotalDomiciliosSeleccionados => CalcularTotalDomicilios(hojasSeleccionadas);
@@ -22,32 +17,26 @@ namespace Prototipos_TUTASA
 
         public ModeloResumenHDRDistribucion()
         {
-            CargarHojasDeRutaDePrueba();
+            CargarDatosDePrueba();
         }
 
-        private bool BuscarHojasAsignadas(TransportistaLocal fletero, DateTime fecha, out List<HojaDeRutaDistribucion> hojas)
+        private bool BuscarHojasAsignadas(FleteroResumen fletero, DateTime fecha, out List<HojaDeRutaDistribucionResumen> hojas)
         {
-            hojas = new List<HojaDeRutaDistribucion>();
+            hojas = hojasDeRuta
+                .Where(h => h.Fletero.Dni == fletero.Dni
+                    && h.FechaEmision.Date == fecha.Date
+                    && h.Estado == EstadoHojaDeRutaResumen.Generada)
+                .OrderBy(h => h.NroHDR)
+                .ToList();
 
-            foreach (HojaDeRutaDistribucion hdr in modeloBase.HojasDeRuta)
-            {
-                if (hdr.Transportista.DniTransportista == fletero.DniTransportista
-                    && hdr.FechaEmision.Date == fecha.Date
-                    && hdr.Estado == EstadoHojaDeRutaDistribucion.Generada)
-                {
-                    hojas.Add(hdr);
-                }
-            }
-
-            hojas = hojas.OrderBy(h => h.NroHDR).ToList();
             return hojas.Count > 0;
         }
 
-        public bool SeleccionarHojasAsignadas(TransportistaLocal fletero, DateTime fecha)
+        public bool SeleccionarHojasAsignadas(FleteroResumen fletero, DateTime fecha)
         {
             LimpiarSeleccion();
 
-            if (!BuscarHojasAsignadas(fletero, fecha, out List<HojaDeRutaDistribucion> hojas))
+            if (!BuscarHojasAsignadas(fletero, fecha, out List<HojaDeRutaDistribucionResumen> hojas))
             {
                 return false;
             }
@@ -56,11 +45,11 @@ namespace Prototipos_TUTASA
             return true;
         }
 
-        public List<TransportistaLocal> ObtenerFleterosConHojasAsignadas(DateTime fecha)
+        public List<FleteroResumen> ObtenerFleterosConHojasAsignadas(DateTime fecha)
         {
-            var fleterosConHojas = new List<TransportistaLocal>();
+            var fleterosConHojas = new List<FleteroResumen>();
 
-            foreach (TransportistaLocal fletero in Fleteros)
+            foreach (FleteroResumen fletero in fleteros)
             {
                 if (BuscarHojasAsignadas(fletero, fecha, out _))
                 {
@@ -71,35 +60,13 @@ namespace Prototipos_TUTASA
             return fleterosConHojas;
         }
 
-        private DatosDestinoResumen ObtenerDatosDestino(Guia guia)
-        {
-            if (guia.ModalidadEntrega == ModalidadEntrega.PuertaAPuerta)
-            {
-                return new DatosDestinoResumen
-                {
-                    Nombre = $"{guia.Destinatario.Nombre} {guia.Destinatario.Apellido}",
-                    Calle = guia.Destinatario.Calle,
-                    Altura = guia.Destinatario.Altura,
-                    CodigoPostal = guia.Destinatario.CodigoPostal
-                };
-            }
-
-            return new DatosDestinoResumen
-            {
-                Nombre = guia.Agencia.RazonSocial,
-                Calle = guia.Agencia.Calle,
-                Altura = guia.Agencia.Altura,
-                CodigoPostal = guia.Agencia.CodigoPostal
-            };
-        }
-
         public List<DatosDestinoResumen> ObtenerDatosHojasSeleccionadas()
         {
             var datosHojas = new List<DatosDestinoResumen>();
 
-            foreach (HojaDeRutaDistribucion hoja in hojasSeleccionadas)
+            foreach (HojaDeRutaDistribucionResumen hoja in hojasSeleccionadas)
             {
-                if (hoja.Guias == null || hoja.Guias.Count == 0)
+                if (hoja.Guias.Count == 0)
                 {
                     continue;
                 }
@@ -111,46 +78,6 @@ namespace Prototipos_TUTASA
             }
 
             return datosHojas;
-        }
-
-        private int CalcularTotalBultos(HojaDeRutaDistribucion hoja)
-        {
-            if (hoja.Guias == null)
-            {
-                return 0;
-            }
-
-            return hoja.Guias.Count;
-        }
-
-        private int CalcularTotalBultos(List<HojaDeRutaDistribucion> hojas)
-        {
-            int total = 0;
-
-            foreach (HojaDeRutaDistribucion hoja in hojas)
-            {
-                total += CalcularTotalBultos(hoja);
-            }
-
-            return total;
-        }
-
-        private int CalcularTotalDomicilios(List<HojaDeRutaDistribucion> hojas)
-        {
-            var domicilios = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
-
-            foreach (HojaDeRutaDistribucion hoja in hojas)
-            {
-                if (hoja.Guias == null || hoja.Guias.Count == 0)
-                {
-                    continue;
-                }
-
-                DatosDestinoResumen datos = ObtenerDatosDestino(hoja.Guias[0]);
-                domicilios.Add(datos.ClaveDomicilio);
-            }
-
-            return domicilios.Count;
         }
 
         public bool GenerarResumen(out ResumenHDRDistribucion resumen, out string mensaje)
@@ -172,9 +99,9 @@ namespace Prototipos_TUTASA
                 TotalBultos = TotalBultosSeleccionados
             };
 
-            foreach (HojaDeRutaDistribucion hoja in hojasSeleccionadas)
+            foreach (HojaDeRutaDistribucionResumen hoja in hojasSeleccionadas)
             {
-                hoja.Estado = EstadoHojaDeRutaDistribucion.EnCurso;
+                hoja.Estado = EstadoHojaDeRutaResumen.EnCurso;
             }
 
             resumenes.Add(resumen);
@@ -184,90 +111,95 @@ namespace Prototipos_TUTASA
 
         public void LimpiarSeleccion()
         {
-            hojasSeleccionadas = new List<HojaDeRutaDistribucion>();
+            hojasSeleccionadas = new List<HojaDeRutaDistribucionResumen>();
         }
 
-        private void CargarHojasDeRutaDePrueba()
+        private DatosDestinoResumen ObtenerDatosDestino(GuiaDistribucionResumen guia)
         {
-            if (!BuscarTransportista(12345678, out TransportistaLocal carlos))
+            return new DatosDestinoResumen
             {
-                return;
-            }
-
-            bool existeLaura = BuscarTransportista(23456789, out TransportistaLocal laura);
-
-            AgregarHojaDeRuta(1, DateTime.Today, carlos, PrepararGuias("CD03-0001", "CD03-0002"));
-            AgregarHojaDeRuta(2, DateTime.Today, carlos, PrepararGuias("A001-0001", "A001-0002"));
-
-            if (existeLaura)
-            {
-                AgregarHojaDeRuta(3, DateTime.Today, laura, PrepararGuias("CD02-0001"));
-            }
-
-            AgregarHojaDeRuta(4, DateTime.Today.AddDays(1), carlos, PrepararGuias("A002-0001"));
+                Nombre = guia.Destinatario,
+                Calle = guia.Calle,
+                Altura = guia.Altura,
+                CodigoPostal = guia.CodigoPostal
+            };
         }
 
-        private bool BuscarTransportista(int dni, out TransportistaLocal transportistaEncontrado)
+        private int CalcularTotalBultos(HojaDeRutaDistribucionResumen hoja)
         {
-            foreach (TransportistaLocal transportista in modeloBase.Transportistas)
+            return hoja.Guias.Count;
+        }
+
+        private int CalcularTotalBultos(List<HojaDeRutaDistribucionResumen> hojas)
+        {
+            int total = 0;
+
+            foreach (HojaDeRutaDistribucionResumen hoja in hojas)
             {
-                if (transportista.DniTransportista == dni)
+                total += CalcularTotalBultos(hoja);
+            }
+
+            return total;
+        }
+
+        private int CalcularTotalDomicilios(List<HojaDeRutaDistribucionResumen> hojas)
+        {
+            var domicilios = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
+            foreach (HojaDeRutaDistribucionResumen hoja in hojas)
+            {
+                if (hoja.Guias.Count == 0)
                 {
-                    transportistaEncontrado = transportista;
-                    return true;
+                    continue;
                 }
+
+                DatosDestinoResumen datos = ObtenerDatosDestino(hoja.Guias[0]);
+                domicilios.Add(datos.ClaveDomicilio);
             }
 
-            transportistaEncontrado = new TransportistaLocal();
-            return false;
+            return domicilios.Count;
         }
 
-        private bool BuscarGuia(string nroGuia, out Guia guiaEncontrada)
+        private void CargarDatosDePrueba()
         {
-            foreach (Guia guia in modeloBase.Guias)
-            {
-                if (string.Equals(guia.NroGuia, nroGuia, StringComparison.OrdinalIgnoreCase))
-                {
-                    guiaEncontrada = guia;
-                    return true;
-                }
-            }
+            var carlos = new FleteroResumen { Dni = 12345678, Nombre = "Carlos", Apellido = "Gomez" };
+            var laura = new FleteroResumen { Dni = 23456789, Nombre = "Laura", Apellido = "Martinez" };
 
-            guiaEncontrada = new Guia();
-            return false;
+            fleteros.Add(carlos);
+            fleteros.Add(laura);
+
+            AgregarHojaDeRuta(1, DateTime.Today, carlos, new List<GuiaDistribucionResumen>
+            {
+                new GuiaDistribucionResumen { NroGuia = "CD03-0001", Destinatario = "Ana Perez", Calle = "Av. Rivadavia", Altura = 3200, CodigoPostal = "1406" },
+                new GuiaDistribucionResumen { NroGuia = "CD03-0002", Destinatario = "Ana Perez", Calle = "Av. Rivadavia", Altura = 3200, CodigoPostal = "1406" }
+            });
+
+            AgregarHojaDeRuta(2, DateTime.Today, carlos, new List<GuiaDistribucionResumen>
+            {
+                new GuiaDistribucionResumen { NroGuia = "A001-0001", Destinatario = "Agencia Norte SA", Calle = "Av. Corrientes", Altura = 1234, CodigoPostal = "1043" },
+                new GuiaDistribucionResumen { NroGuia = "A001-0002", Destinatario = "Agencia Norte SA", Calle = "Av. Corrientes", Altura = 1234, CodigoPostal = "1043" }
+            });
+
+            AgregarHojaDeRuta(3, DateTime.Today, laura, new List<GuiaDistribucionResumen>
+            {
+                new GuiaDistribucionResumen { NroGuia = "CD02-0001", Destinatario = "Luis Gomez", Calle = "Belgrano", Altura = 750, CodigoPostal = "5000" }
+            });
+
+            AgregarHojaDeRuta(4, DateTime.Today.AddDays(1), carlos, new List<GuiaDistribucionResumen>
+            {
+                new GuiaDistribucionResumen { NroGuia = "A002-0001", Destinatario = "Agencia Sur SRL", Calle = "San Martin", Altura = 500, CodigoPostal = "1043" }
+            });
         }
 
-        private List<Guia> PrepararGuias(params string[] numerosGuia)
+        private void AgregarHojaDeRuta(int nroHDR, DateTime fecha, FleteroResumen fletero, List<GuiaDistribucionResumen> guias)
         {
-            var guias = new List<Guia>();
-
-            foreach (string nroGuia in numerosGuia)
-            {
-                if (BuscarGuia(nroGuia, out Guia guia))
-                {
-                    guia.Estado = EstadoGuia.EnDistribucion;
-                    guias.Add(guia);
-                }
-            }
-
-            return guias;
-        }
-
-        private void AgregarHojaDeRuta(int nroHDR, DateTime fecha, TransportistaLocal fletero, List<Guia> guias)
-        {
-            if (guias.Count == 0)
-            {
-                return;
-            }
-
-            modeloBase.HojasDeRuta.Add(new HojaDeRutaDistribucion
+            hojasDeRuta.Add(new HojaDeRutaDistribucionResumen
             {
                 NroHDR = nroHDR,
                 FechaEmision = fecha,
-                CdEmisor = modeloBase.CdEmisor,
-                Transportista = fletero,
+                Fletero = fletero,
                 Guias = guias,
-                Estado = EstadoHojaDeRutaDistribucion.Generada
+                Estado = EstadoHojaDeRutaResumen.Generada
             });
         }
     }
