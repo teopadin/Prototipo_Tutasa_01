@@ -6,7 +6,6 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_Retiro
 {
     internal enum EstadoHojaDeRutaRetiro
     {
-        Generada,
-        EnCurso
+        Generada
     }
 }

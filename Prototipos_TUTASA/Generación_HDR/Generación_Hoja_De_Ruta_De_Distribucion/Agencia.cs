@@ -6,7 +6,6 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Distribu
 {
     internal class Agencia
     {
-        public int IdAgencia { get; set; }
         public string RazonSocial { get; set; }
         public string Calle { get; set; }
         public int Altura { get; set; }

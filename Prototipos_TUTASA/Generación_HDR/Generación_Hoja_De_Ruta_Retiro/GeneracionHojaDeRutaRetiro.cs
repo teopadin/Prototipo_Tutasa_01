@@ -31,12 +31,12 @@ namespace Prototipos_TUTASA.HojaDeRutaRetiro
 
             foreach (var guia in modelo.Guias)
             {
-                if (guia.Estado != EstadoGuia.Impuesta || guia.CdOrigen.IdCD != modelo.CdEmisor.IdCD)
+                if (guia.Estado != EstadoGuia.Impuesta || guia.CdOrigen.Nombre != modelo.CdEmisor.Nombre)
                     continue;
 
                 string razonSocial, calle, altura, piso, cp, ciudad;
 
-                if (guia.ModalidadEntrega == ModalidadEntrega.PuertaAPuerta)
+                if (guia.TipoImposicion == TipoImposicion.CallCenter)
                 {
                     razonSocial = guia.Cliente.RazonSocial;
                     calle = guia.Cliente.Calle;
@@ -109,7 +109,7 @@ namespace Prototipos_TUTASA.HojaDeRutaRetiro
             Guia guiaReferencia = guiasSeleccionadas[0];
             string calleRef, alturaRef, pisoRef, cpRef, ciudadRef;
 
-            if (guiaReferencia.ModalidadEntrega == ModalidadEntrega.PuertaAPuerta)
+            if (guiaReferencia.TipoImposicion == TipoImposicion.CallCenter)
             {
                 calleRef = guiaReferencia.Cliente.Calle;
                 alturaRef = guiaReferencia.Cliente.Altura.ToString();
@@ -132,7 +132,7 @@ namespace Prototipos_TUTASA.HojaDeRutaRetiro
                 Guia guia = (Guia)item.Tag;
                 string calle, altura, piso, cp, ciudad;
 
-                if (guia.ModalidadEntrega == ModalidadEntrega.PuertaAPuerta)
+                if (guia.TipoImposicion == TipoImposicion.CallCenter)
                 {
                     calle = guia.Cliente.Calle;
                     altura = guia.Cliente.Altura.ToString();
@@ -178,7 +178,7 @@ namespace Prototipos_TUTASA.HojaDeRutaRetiro
             List<TransportistaLocal> transportistasFiltrados = new List<TransportistaLocal>();
             foreach (var transportista in modelo.Transportistas)
             {
-                if (transportista.CD.IdCD == modelo.CdEmisor.IdCD)
+                if (transportista.CD.Nombre == modelo.CdEmisor.Nombre)
                     transportistasFiltrados.Add(transportista);
             }
 

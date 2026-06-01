@@ -21,12 +21,12 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Distribu
         public ModeloGenerarHDRDistribucion()
         {
             // CDs
-            var cdCapital = new CentroDistribucion { IdCD = 1, Nombre = "Capital y GBA" };
-            var cdCentro = new CentroDistribucion { IdCD = 2, Nombre = "Centro - Córdoba" };
-            var cdNorte = new CentroDistribucion { IdCD = 3, Nombre = "Norte - Tucumán" };
-            var cdEste = new CentroDistribucion { IdCD = 4, Nombre = "Este - Corrientes" };
-            var cdCordillera = new CentroDistribucion { IdCD = 5, Nombre = "Cordillera - Neuquén" };
-            var cdSur = new CentroDistribucion { IdCD = 6, Nombre = "Sur - Viedma" };
+            var cdCapital = new CentroDistribucion { Nombre = "Capital y GBA" };
+            var cdCentro = new CentroDistribucion { Nombre = "Centro - Córdoba" };
+            var cdNorte = new CentroDistribucion { Nombre = "Norte - Tucumán" };
+            var cdEste = new CentroDistribucion { Nombre = "Este - Corrientes" };
+            var cdCordillera = new CentroDistribucion { Nombre = "Cordillera - Neuquén" };
+            var cdSur = new CentroDistribucion { Nombre = "Sur - Viedma" };
 
             CentrosDeDistribucion = new List<CentroDistribucion>
             {
@@ -43,8 +43,8 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Distribu
             Transportistas = new List<TransportistaLocal> { t1, t2, t3 };
 
             // Agencias
-            var agencia1 = new Agencia { IdAgencia = 1, RazonSocial = "Agencia Norte SA", Calle = "Av. Corrientes", Altura = 1234, Piso = "PB", CodigoPostal = "1043", Ciudad = "Buenos Aires", CD = cdCapital };
-            var agencia2 = new Agencia { IdAgencia = 2, RazonSocial = "Agencia Sur SRL", Calle = "San Martín", Altura = 500, Piso = "1", CodigoPostal = "1043", Ciudad = "Buenos Aires", CD = cdCapital };
+            var agencia1 = new Agencia { RazonSocial = "Agencia Norte SA", Calle = "Av. Corrientes", Altura = 1234, Piso = "PB", CodigoPostal = "1043", Ciudad = "Buenos Aires", CD = cdCapital };
+            var agencia2 = new Agencia { RazonSocial = "Agencia Sur SRL", Calle = "San Martín", Altura = 500, Piso = "1", CodigoPostal = "1043", Ciudad = "Buenos Aires", CD = cdCapital };
 
             // Destinatarios
             var dest1 = new Destinatario { Dni = 40123456, Nombre = "Ana", Apellido = "Pérez", Calle = "Av. Rivadavia", Altura = 3200, Piso = "3B", CodigoPostal = "1406", Ciudad = "Buenos Aires" };

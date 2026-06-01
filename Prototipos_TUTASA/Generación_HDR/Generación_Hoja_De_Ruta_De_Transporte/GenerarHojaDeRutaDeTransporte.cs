@@ -29,7 +29,7 @@ namespace Prototipos_TUTASA.Generación_Hoja_De_Ruta_De_Transporte
 
             foreach (var cd in modelo.CentrosDeDistribucion)
             {
-                if (cd.IdCD != modelo.CdEmisor.IdCD)
+                if (cd.Nombre != modelo.CdEmisor.Nombre)
                     cmbCDDestino.Items.Add(cd);
             }
 
@@ -67,7 +67,7 @@ namespace Prototipos_TUTASA.Generación_Hoja_De_Ruta_De_Transporte
 
             foreach (var guia in modelo.Guias)
             {
-                if (guia.Estado != EstadoGuia.Admitida || guia.CdOrigen.IdCD != modelo.CdEmisor.IdCD || guia.CdDestino.IdCD != cdSeleccionado.IdCD)
+                if (guia.Estado != EstadoGuia.Admitida || guia.CdOrigen.Nombre != modelo.CdEmisor.Nombre || guia.CdDestino.Nombre != cdSeleccionado.Nombre)
                     continue;
 
                 var item = new ListViewItem(guia.NroGuia);
@@ -127,7 +127,7 @@ namespace Prototipos_TUTASA.Generación_Hoja_De_Ruta_De_Transporte
 
             foreach (var servicio in modelo.Servicios)
             {
-                if (servicio.CdOrigen.IdCD != modelo.CdEmisor.IdCD || servicio.CdDestino.IdCD != cdSeleccionado.IdCD)
+                if (servicio.CdOrigen.Nombre != modelo.CdEmisor.Nombre || servicio.CdDestino.Nombre != cdSeleccionado.Nombre)
                     continue;
 
                 if (servicio.CapacidadDisponible < totalBultos)
