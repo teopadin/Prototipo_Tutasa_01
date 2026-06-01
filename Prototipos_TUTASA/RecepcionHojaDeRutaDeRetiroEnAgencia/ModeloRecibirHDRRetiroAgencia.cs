@@ -11,6 +11,8 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia
 
         public List<CentroDeDistribucion> CentrosDeDistribucion { get; set; }
 
+        public HojaDeRutaRetiro HdrActual { get; set; }
+
         public List<Agencia> Agencias { get; set; }
 
         public List<HojaDeRutaRetiro> HojasDeRutaRetiro { get; set; }
