@@ -16,7 +16,7 @@ namespace Prototipos_TUTASA.HojaDeRutaRetiro
         {
             InitializeComponent();
         }
-        private bool actualizando = false;
+
         private void GeneracionHojaDeRutaRetiro_Load(object sender, EventArgs e)
         {
             txtCdEmisor.Text = modelo.CdEmisor.Nombre;
@@ -26,7 +26,7 @@ namespace Prototipos_TUTASA.HojaDeRutaRetiro
 
         private void CargarGuiasImpuestas()
         {
-            actualizando = true;
+            modelo.Actualizando = true;
             lvGuiasPendientes.Items.Clear();
 
             foreach (var guia in modelo.Guias)
@@ -70,19 +70,19 @@ namespace Prototipos_TUTASA.HojaDeRutaRetiro
                 lvGuiasPendientes.Items.Add(item);
             }
 
-            actualizando = false;
+            modelo.Actualizando = false;
         }
 
         private void lvGuiasPendientes_ItemChecked(object sender, ItemCheckedEventArgs e)
         {
 
-            if (actualizando) return;
+            if (modelo.Actualizando) return;
 
             if (e.Item.ForeColor == System.Drawing.Color.Gray && e.Item.Checked)
             {
-                actualizando = true;
+                modelo.Actualizando = true;
                 e.Item.Checked = false;
-                actualizando = false;
+                modelo.Actualizando = false;
                 return;
             }
 
@@ -126,7 +126,7 @@ namespace Prototipos_TUTASA.HojaDeRutaRetiro
                 ciudadRef = guiaReferencia.Agencia.Ciudad;
             }
 
-            actualizando = true;
+            modelo.Actualizando = true;
             foreach (ListViewItem item in lvGuiasPendientes.Items)
             {
                 GuiaEntidad guia = (GuiaEntidad)item.Tag;
@@ -154,7 +154,7 @@ namespace Prototipos_TUTASA.HojaDeRutaRetiro
                 else
                     item.ForeColor = System.Drawing.Color.Black;
             }
-            actualizando = false;
+            modelo.Actualizando = false;
         }
 
 
