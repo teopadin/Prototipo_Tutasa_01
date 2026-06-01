@@ -29,7 +29,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia
             listViewGuiasRetiradas.Items.Clear();
         }
 
-        private void CargarHDR(HojaDeRutaRetiroEntidad hdr)
+        private void CargarHDR(HojaDeRutaRetiro hdr)
         {
             txtAgencia.Text = hdr.Agencia.RazonSocial;
 
@@ -48,7 +48,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia
 
             txtTotalGuias.Text = hdr.Guias.Count.ToString();
         }
-        private HojaDeRutaRetiroEntidad hdrActual;
+        private HojaDeRutaRetiro hdrActual;
 
 
 

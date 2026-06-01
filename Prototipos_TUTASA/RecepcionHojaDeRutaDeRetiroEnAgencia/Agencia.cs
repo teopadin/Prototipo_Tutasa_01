@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia
 {
-    internal class AgenciaEntidad
+    internal class Agencia
     {
         public int IdAgencia { get; set; }
         public string RazonSocial { get; set; }
@@ -13,6 +13,6 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia
         public string Piso { get; set; }
         public string CodigoPostal { get; set; }
         public string Ciudad { get; set; }
-        public CentroDeDistribucionEntidad IdCD { get; set; }
+        public CentroDeDistribucion IdCD { get; set; }
     }
 }
