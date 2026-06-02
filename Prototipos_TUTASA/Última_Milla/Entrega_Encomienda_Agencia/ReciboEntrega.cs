@@ -2,7 +2,7 @@ using System;
 
 namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia
 {
-    public class ReciboEntregaEntidad
+    public class ReciboEntrega
     {
         public string NroGuia { get; set; } = string.Empty;
         public DateTime FechaEntrega { get; set; }

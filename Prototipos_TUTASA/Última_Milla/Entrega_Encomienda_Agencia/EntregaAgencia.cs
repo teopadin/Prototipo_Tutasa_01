@@ -43,6 +43,13 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia
                 return;
             }
 
+            // La guía debe pertenecer a la agencia actual.
+            if (guia.AgenciaDestino == null || guia.AgenciaDestino.Nombre != modelo.AgenciaActual.Nombre)
+            {
+                MessageBox.Show("La guía no pertenece a esta agencia.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             // Paso 4: muestra Nombre, Apellido y DNI del destinatario.
             var item = new ListViewItem(guia.Destinatario.Nombre);
             item.SubItems.Add(guia.Destinatario.Apellido);

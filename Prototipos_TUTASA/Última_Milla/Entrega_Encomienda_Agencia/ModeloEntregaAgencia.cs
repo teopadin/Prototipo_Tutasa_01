@@ -7,7 +7,7 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia
     {
         public ClaseAgencia AgenciaActual { get; }
         private readonly List<ClaseGuia> guias;
-        private readonly List<ReciboEntregaEntidad> recibos = new List<ReciboEntregaEntidad>();
+        private readonly List<ReciboEntrega> recibos = new List<ReciboEntrega>();
 
         public ModeloEntregaAgencia()
         {
@@ -56,7 +56,7 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia
 
         public void RegistrarEntrega(ClaseGuia guia, string nombre, string apellido, string dni)
         {
-            var recibo = new ReciboEntregaEntidad
+            var recibo = new ReciboEntrega
             {
                 NroGuia = guia.NroGuia,
                 FechaEntrega = DateTime.Now,
