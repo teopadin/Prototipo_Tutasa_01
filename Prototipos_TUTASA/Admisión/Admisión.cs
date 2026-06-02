@@ -45,7 +45,7 @@ namespace Prototipos_TUTASA.Admisión
             // Búsqueda de los datos relacionados
             Cliente cliente = modelo.BuscarCliente(guia.IdCliente);
             CentroDistribucion cd = modelo.BuscarCD(guia.IdCDDestino);
-            Destinatario dest = modelo.BuscarDestinatario(guia.DniDestinatario);
+            Destinatario dest = guia.Destinatario;
 
             // Mostrar info en pantalla
             txtCliente.Text = cliente.RazonSocial;

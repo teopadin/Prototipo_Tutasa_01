@@ -63,7 +63,7 @@ namespace Prototipos_TUTASA.Rendiciones_HDR
 
             foreach (var hdr in hdrs)
             {
-                var detalle = hdr.Detalles[0]; // tomamos el primer detalle
+                var detalle = hdr.DetalleGuias[0]; // tomamos el primer detalle
                 var item = new ListViewItem(hdr.NroHDR.ToString());
                 item.SubItems.Add(detalle.Remitente);
                 item.SubItems.Add(detalle.Calle);
