@@ -4,8 +4,10 @@ using System.Text;
 
 namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
 {
-    internal class Destinatario
+    internal class DestinatarioGuia
     {
-        public string NombreCompleto { get; set; }
+        public string Nombre { get; set; }
+        public string Apellido { get; set; }
+
     }
 }

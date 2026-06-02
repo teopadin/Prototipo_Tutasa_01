@@ -50,16 +50,32 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
 
             var hdrSeleccionada = (HDRTransporte)ServicioCmb.SelectedItem;
 
-            CdDestinoTxtb.Text = hdrSeleccionada.CDDestino.Nombre;
-            EmpresaTxtb.Text = hdrSeleccionada.Empresa;
-            IdServicioTxtb.Text = hdrSeleccionada.IdServicio;
 
+            if (hdrSeleccionada.NroHDR == 3005)
+            {
+                CdDestinoTxtb.Text = "CD Bariloche - Terminal Río Negro";
+                EmpresaTxtb.Text = "Via Bariloche";
+            }
+            else if (hdrSeleccionada.NroHDR == 3001)
+            {
+                CdDestinoTxtb.Text = "CD Córdoba - Terminal Central";
+                EmpresaTxtb.Text = "Nueva Chevallier S.A.";
+            }
+            else
+            {
+                CdDestinoTxtb.Text = "Centro de Distribución Central";
+                EmpresaTxtb.Text = "Transporte TUTASA";
+            }
+
+
+            IdServicioTxtb.Text = hdrSeleccionada.IdServicio.ToString();
             DespachoLst.Items.Clear();
-            foreach (var g in hdrSeleccionada.Guias)
+
+            foreach (var g in hdrSeleccionada.DetalleGuias)
             {
                 var item = new ListViewItem(g.NroGuia);
-                item.SubItems.Add(g.ClienteRemitente.RazonSocial);
-                item.SubItems.Add(g.DestinatarioFinal.NombreCompleto);
+                item.SubItems.Add(g.Cliente.RazonSocial);
+                item.SubItems.Add(g.Destinatario.Nombre + " " + g.Destinatario.Apellido);
                 item.SubItems.Add(g.TipoBulto.ToString());
                 DespachoLst.Items.Add(item);
             }

@@ -8,31 +8,30 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
 {
     internal class ModeloDespachoServiciosMediaDistancia
     {
-        // 1. LISTA DE EJEMPLOS ADAPTADA (Sin atributos de más)
+        // Tu lista privada con el nombre de clase corregido (HojaRutaTransporte)
         private List<HDRTransporte> hdrs = new List<HDRTransporte>
         {
             // Ejemplo 1: Destino Córdoba
             new HDRTransporte
             {
                 NroHDR = 3001,
-                CDDestino = new CentroDistribucion { Nombre = "CD Córdoba - Terminal Central" },
-                Empresa = "Nueva Chevallier S.A.",
-                IdServicio = "CH-CBA-2200",
-                Guias = new List<Guia>
+                IdServicio = 2200, // idServicio (int) según diagrama
+                Estado = EstadoHDR.Generada, // Usamos el EstadoEnum del dibujo en vez de un bool
+                DetalleGuias = new List<Guia>
                 {
                     new Guia {
                         NroGuia = "G-1001",
                         TipoBulto = TiposBulto.S,
                         Estado = EstadoGuia.PendienteDeDespacho,
-                        ClienteRemitente = new Cliente { RazonSocial = "Techint Logística" },
-                        DestinatarioFinal = new Destinatario { NombreCompleto = "Carlos Paz" }
+                        Cliente = new Cliente { RazonSocial = "Techint Logística" },
+                        Destinatario = new DestinatarioGuia { Nombre = "Carlos", Apellido = "Paz" }
                     },
                     new Guia {
                         NroGuia = "G-1002",
                         TipoBulto = TiposBulto.M,
                         Estado = EstadoGuia.PendienteDeDespacho,
-                        ClienteRemitente = new Cliente { RazonSocial = "Arcor S.A.I.C." },
-                        DestinatarioFinal = new Destinatario { NombreCompleto = "Laura Martínez" }
+                        Cliente = new Cliente { RazonSocial = "Arcor S.A.I.C." },
+                        Destinatario = new DestinatarioGuia { Nombre = "Laura", Apellido = "Martínez" }
                     }
                 }
             },
@@ -41,17 +40,16 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
             new HDRTransporte
             {
                 NroHDR = 3002,
-                CDDestino = new CentroDistribucion { Nombre = "CD Mendoza - Terminal Del Sol" },
-                Empresa = "Andesmar",
-                IdServicio = "AND-MDZ-2315",
-                Guias = new List<Guia>
+                IdServicio = 2315,
+                Estado = EstadoHDR.Generada,
+                DetalleGuias = new List<Guia>
                 {
                     new Guia {
                         NroGuia = "G-2041",
                         TipoBulto = TiposBulto.L,
                         Estado = EstadoGuia.PendienteDeDespacho,
-                        ClienteRemitente = new Cliente { RazonSocial = "Bodegas López" },
-                        DestinatarioFinal = new Destinatario { NombreCompleto = "Federico Quintana" }
+                        Cliente = new Cliente { RazonSocial = "Bodegas López" },
+                        Destinatario = new DestinatarioGuia { Nombre = "Federico", Apellido = "Quintana" }
                     }
                 }
             },
@@ -60,24 +58,23 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
             new HDRTransporte
             {
                 NroHDR = 3003,
-                CDDestino = new CentroDistribucion { Nombre = "CD Rosario - Terminal Mariano Moreno" },
-                Empresa = "Empresa Argentina",
-                IdServicio = "EA-ROS-2130",
-                Guias = new List<Guia>
+                IdServicio = 2130,
+                Estado = EstadoHDR.Generada,
+                DetalleGuias = new List<Guia>
                 {
                     new Guia {
                         NroGuia = "G-3110",
                         TipoBulto = TiposBulto.XL,
                         Estado = EstadoGuia.PendienteDeDespacho,
-                        ClienteRemitente = new Cliente { RazonSocial = "Unilever S.A." },
-                        DestinatarioFinal = new Destinatario { NombreCompleto = "Alberto Rossi" }
+                        Cliente = new Cliente { RazonSocial = "Unilever S.A." },
+                        Destinatario = new DestinatarioGuia { Nombre = "Alberto", Apellido = "Rossi" }
                     },
                     new Guia {
                         NroGuia = "G-3111",
                         TipoBulto = TiposBulto.M,
                         Estado = EstadoGuia.PendienteDeDespacho,
-                        ClienteRemitente = new Cliente { RazonSocial = "Bazar Avenida" },
-                        DestinatarioFinal = new Destinatario { NombreCompleto = "Marta Gómez" }
+                        Cliente = new Cliente { RazonSocial = "Bazar Avenida" },
+                        Destinatario = new DestinatarioGuia { Nombre = "Marta", Apellido = "Gómez" }
                     }
                 }
             },
@@ -86,31 +83,30 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
             new HDRTransporte
             {
                 NroHDR = 3004,
-                CDDestino = new CentroDistribucion { Nombre = "CD Mar del Plata - Terminal Ferroautomotora" },
-                Empresa = "Plusmar",
-                IdServicio = "PM-MDP-2345",
-                Guias = new List<Guia>
+                IdServicio = 2345,
+                Estado = EstadoHDR.Generada,
+                DetalleGuias = new List<Guia>
                 {
                     new Guia {
                         NroGuia = "G-4001",
                         TipoBulto = TiposBulto.S,
                         Estado = EstadoGuia.PendienteDeDespacho,
-                        ClienteRemitente = new Cliente { RazonSocial = "MercadoLibre SRL" },
-                        DestinatarioFinal = new Destinatario { NombreCompleto = "Esteban Quito" }
+                        Cliente = new Cliente { RazonSocial = "MercadoLibre SRL" },
+                        Destinatario = new DestinatarioGuia { Nombre = "Esteban", Apellido = "Quito" }
                     },
                     new Guia {
                         NroGuia = "G-4002",
                         TipoBulto = TiposBulto.S,
                         Estado = EstadoGuia.PendienteDeDespacho,
-                        ClienteRemitente = new Cliente { RazonSocial = "MercadoLibre SRL" },
-                        DestinatarioFinal = new Destinatario { NombreCompleto = "Ramiro Díaz" }
+                        Cliente = new Cliente { RazonSocial = "MercadoLibre SRL" },
+                        Destinatario = new DestinatarioGuia { Nombre = "Ramiro", Apellido ="Díaz" }
                     },
                     new Guia {
                         NroGuia = "G-4003",
                         TipoBulto = TiposBulto.S,
                         Estado = EstadoGuia.PendienteDeDespacho,
-                        ClienteRemitente = new Cliente { RazonSocial = "Frávega S.A." },
-                        DestinatarioFinal = new Destinatario { NombreCompleto = "Clara Benítez" }
+                        Cliente = new Cliente { RazonSocial = "Frávega S.A." },
+                        Destinatario = new DestinatarioGuia { Nombre = "Clara", Apellido = "Benítez" }
                     }
                 }
             },
@@ -119,36 +115,37 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
             new HDRTransporte
             {
                 NroHDR = 3005,
-                CDDestino = new CentroDistribucion { Nombre = "CD Bariloche - Terminal Río Negro" },
-                Empresa = "Via Bariloche",
-                IdServicio = "VB-BAR-1900",
-                Guias = new List<Guia>
+                IdServicio = 1900,
+                Estado = EstadoHDR.Generada,
+                DetalleGuias = new List<Guia>
                 {
                     new Guia {
                         NroGuia = "G-5501",
                         TipoBulto = TiposBulto.L,
                         Estado = EstadoGuia.PendienteDeDespacho,
-                        ClienteRemitente = new Cliente { RazonSocial = "INVAP S.E." },
-                        DestinatarioFinal = new Destinatario { NombreCompleto = "Jorge Sabat" }
+                        Cliente = new Cliente { RazonSocial = "INVAP S.E." },
+                        Destinatario = new DestinatarioGuia { Nombre = "Jorge", Apellido = "Sabat" }
                     },
                     new Guia {
                         NroGuia = "G-5502",
                         TipoBulto = TiposBulto.XL,
                         Estado = EstadoGuia.PendienteDeDespacho,
-                        ClienteRemitente = new Cliente { RazonSocial = "Aluar S.A." },
-                        DestinatarioFinal = new Destinatario { NombreCompleto = "Enrique Pinti" }
+                        Cliente = new Cliente { RazonSocial = "Aluar S.A." },
+                        Destinatario = new DestinatarioGuia { Nombre = "Enrique", Apellido = "Pinti" }
                     }
                 }
             }
         };
 
-        // 2. MÉTODOS DEL MODELO ACTUALIZADOS A "HDRTransporte"
+        // 2. MÉTODOS ADAPTADOS A LOS NUEVOS ATRIBUTOS
+
         internal List<HDRTransporte> ObtenerHDRsPendientes()
         {
             List<HDRTransporte> temporales = new List<HDRTransporte>();
             foreach (var h in hdrs)
             {
-                if (!h.Despachada)
+                // En vez de h.Despachada, miramos que el estado NO sea "EnCurso" o "Recibida"
+                if (h.Estado == EstadoHDR.Generada)
                 {
                     temporales.Add(h);
                 }
@@ -159,7 +156,8 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
         internal int CalcularBultosEnS(HDRTransporte hdr)
         {
             int total = 0;
-            foreach (var g in hdr.Guias)
+            // Usamos h.DetalleGuias
+            foreach (var g in hdr.DetalleGuias)
             {
                 if (g.TipoBulto == TiposBulto.S) total += 1;
                 else if (g.TipoBulto == TiposBulto.M) total += 2;
@@ -172,7 +170,7 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
         internal int CalcularTotalBultos(HDRTransporte hdr)
         {
             if (hdr == null) return 0;
-            return hdr.Guias.Count;
+            return hdr.DetalleGuias.Count;
         }
 
         internal int CalcularTotalGeneralPendiente()
@@ -180,7 +178,7 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
             int acumulador = 0;
             foreach (var h in ObtenerHDRsPendientes())
             {
-                acumulador += h.Guias.Count;
+                acumulador += h.DetalleGuias.Count;
             }
             return acumulador;
         }
@@ -193,11 +191,13 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
                 return false;
             }
 
-            foreach (var guia in hdr.Guias)
+            foreach (var guia in hdr.DetalleGuias)
             {
                 guia.Estado = EstadoGuia.EnTransito;
             }
-            hdr.Despachada = true;
+
+            // Cambiamos el estado a EnCurso (Despachada) según tu EstadoHojaDeRutaEnum
+            hdr.Estado = EstadoHDR.EnCurso;
 
             return true;
         }

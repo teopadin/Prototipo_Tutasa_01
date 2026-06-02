@@ -8,11 +8,10 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
     internal class HDRTransporte
     {
         public int NroHDR { get; set; }
-        public CentroDistribucion CDDestino { get; set; }
-        public string Empresa { get; set; }
-        public string IdServicio { get; set; }
-        public bool Despachada { get; set; } = false;
-        public List<Guia> Guias { get; set; } = new List<Guia>();
+        public EstadoHDR Estado { get; set; }
+
+        public int IdServicio { get; set; }
+        public List<Guia> DetalleGuias { get; set; }
 
         public override string ToString()
         {
