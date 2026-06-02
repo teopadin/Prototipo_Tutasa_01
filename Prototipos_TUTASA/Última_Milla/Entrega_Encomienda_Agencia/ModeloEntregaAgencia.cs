@@ -5,56 +5,56 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia
 {
     public class ModeloEntregaAgencia
     {
-        public ClaseAgencia AgenciaActual { get; }
-        private readonly List<ClaseGuia> guias;
+        public Agencia AgenciaActual { get; }
+        private readonly List<Guia> guias;
         private readonly List<ReciboEntrega> recibos = new List<ReciboEntrega>();
 
         public ModeloEntregaAgencia()
         {
-            var agenciaCapital = new ClaseAgencia { IdAgencia = 1, Nombre = "Capital y GBA" };
-            var agenciaCentro = new ClaseAgencia { IdAgencia = 2, Nombre = "Centro - Córdoba" };
+            var agenciaCapital = new Agencia { IdAgencia = 1, Nombre = "Capital y GBA" };
+            var agenciaCentro = new Agencia { IdAgencia = 2, Nombre = "Centro - Córdoba" };
 
             AgenciaActual = agenciaCapital;
 
-            guias = new List<ClaseGuia>
+            guias = new List<Guia>
             {
-                new ClaseGuia
+                new Guia
                 {
                     NroGuia = "CD02-0002",
                     Estado = EstadoGuiaEnum.PendienteDeRetiroEnAgencia,
                     AgenciaDestino = agenciaCapital,
-                    Destinatario = new ClaseDestinatarioGuia { Nombre = "Ana", Apellido = "Pérez", Dni = 40123456 }
+                    Destinatario = new DestinatarioGuia { Nombre = "Ana", Apellido = "Pérez", Dni = 40123456 }
                 },
-                new ClaseGuia
+                new Guia
                 {
                     NroGuia = "CD01-0007",
                     Estado = EstadoGuiaEnum.PendienteDeRetiroEnAgencia,
                     AgenciaDestino = agenciaCapital,
-                    Destinatario = new ClaseDestinatarioGuia { Nombre = "Juan", Apellido = "Rodríguez", Dni = 41234567 }
+                    Destinatario = new DestinatarioGuia { Nombre = "Juan", Apellido = "Rodríguez", Dni = 41234567 }
                 },
-                new ClaseGuia
+                new Guia
                 {
                     NroGuia = "CD03-0001",
                     Estado = EstadoGuiaEnum.Entregada,
                     AgenciaDestino = agenciaCapital,
-                    Destinatario = new ClaseDestinatarioGuia { Nombre = "María", Apellido = "González", Dni = 42345678 }
+                    Destinatario = new DestinatarioGuia { Nombre = "María", Apellido = "González", Dni = 42345678 }
                 },
-                new ClaseGuia
+                new Guia
                 {
                     NroGuia = "CD02-0009",
                     Estado = EstadoGuiaEnum.PendienteDeRetiroEnAgencia,
                     AgenciaDestino = agenciaCentro,
-                    Destinatario = new ClaseDestinatarioGuia { Nombre = "Carlos", Apellido = "López", Dni = 43567890 }
+                    Destinatario = new DestinatarioGuia { Nombre = "Carlos", Apellido = "López", Dni = 43567890 }
                 }
             };
         }
 
-        public ClaseGuia BuscarGuia(string nroGuia)
+        public Guia BuscarGuia(string nroGuia)
         {
             return guias.Find(g => string.Equals(g.NroGuia, nroGuia, StringComparison.OrdinalIgnoreCase));
         }
 
-        public void RegistrarEntrega(ClaseGuia guia, string nombre, string apellido, string dni)
+        public void RegistrarEntrega(Guia guia, string nombre, string apellido, string dni)
         {
             var recibo = new ReciboEntrega
             {
@@ -69,5 +69,12 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia
             guia.Estado = EstadoGuiaEnum.Entregada;
             recibos.Add(recibo);
         }
+    }
+
+    internal class ClaseDestinatario
+    {
+        public string Nombre { get; set; }
+        public string Apellido { get; set; }
+        public int Dni { get; set; }
     }
 }

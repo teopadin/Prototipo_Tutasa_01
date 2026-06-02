@@ -27,7 +27,7 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia
                 return;
             }
 
-             ClaseGuia guia = modelo.BuscarGuia(nroGuia);
+             Guia guia = modelo.BuscarGuia(nroGuia);
 
             // Excepción 1: la guía no existe.
             if (guia == null)
@@ -67,7 +67,7 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia
             }
 
             // El Tag puede ser nulo o de otro tipo; validamos antes de continuar.
-            ClaseGuia? guia = lvGuia.Items[0].Tag as ClaseGuia;
+            Guia? guia = lvGuia.Items[0].Tag as Guia;
             if (guia == null)
             {
                 MessageBox.Show("La guía seleccionada no es válida.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
