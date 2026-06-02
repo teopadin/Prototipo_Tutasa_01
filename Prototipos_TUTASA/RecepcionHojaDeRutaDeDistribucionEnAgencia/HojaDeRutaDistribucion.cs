@@ -12,7 +12,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
 
         public DateTime FechaRecepcion { get; set; }
 
-        public Agencia Agencia { get; set; }
+        public Agencia AgenciaHDR { get; set; }
 
         public TransportistaLocal Transportista { get; set; }
 

@@ -50,7 +50,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
             {
                 NroGuia = "GD-0001",
                 TipoBulto = TiposBulto.S,
-                Agencia = agencia1,
+                AgenciaGuia = agencia1,
                 Estado = EstadoGuia.EnDistribucion
             };
 
@@ -58,7 +58,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
             {
                 NroGuia = "GD-0002",
                 TipoBulto = TiposBulto.M,
-                Agencia = agencia1,
+                AgenciaGuia = agencia1,
                 Estado = EstadoGuia.EnDistribucion
             };
 
@@ -66,7 +66,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
             {
                 NroGuia = "GD-0003",
                 TipoBulto = TiposBulto.L,
-                Agencia = agencia1,
+                AgenciaGuia = agencia1,
                 Estado = EstadoGuia.EnDistribucion
             };
 
@@ -74,7 +74,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
             {
                 NroGuia = "GD-0004",
                 TipoBulto = TiposBulto.XL,
-                Agencia = agencia2,
+                AgenciaGuia = agencia2,
                 Estado = EstadoGuia.EnDistribucion
             };
 
@@ -82,7 +82,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
             var hdr1 = new HojaDeRutaDistribucion
             {
                 NroHDR = 1001,
-                Agencia = agencia1,
+                AgenciaHDR = agencia1,
                 Transportista = t1,
                 Guias = new List<Guia>
                 {
@@ -96,7 +96,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
             var hdr2 = new HojaDeRutaDistribucion
             {
                 NroHDR = 1002,
-                Agencia = agencia1,
+                AgenciaHDR = agencia1,
                 Transportista = t2,
                 Guias = new List<Guia>
                 {
@@ -109,7 +109,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
             var hdr3 = new HojaDeRutaDistribucion
             {
                 NroHDR = 1003,
-                Agencia = agencia2,
+                AgenciaHDR = agencia2,
                 Transportista = t1,
                 Guias = new List<Guia>
                 {
@@ -122,7 +122,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
             var hdr4 = new HojaDeRutaDistribucion
             {
                 NroHDR = 1004,
-                Agencia = agencia1,
+                AgenciaHDR = agencia1,
                 Transportista = t2,
                 Guias = new List<Guia>
                 {

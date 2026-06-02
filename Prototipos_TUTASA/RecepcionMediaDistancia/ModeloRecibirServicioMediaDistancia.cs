@@ -37,7 +37,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             {
                 NroGuia = "G0001",
                 TipoBulto = TiposBulto.S,
-                Modalidad = ModalidadEntrega.PuertaAPuerta,
+                ModalidadEntrega = ModalidadEntrega.PuertaAPuerta,
                 CDOrigen = cdCordoba,
                 Estado = EstadoGuia.EnTransito
             };
@@ -46,7 +46,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             {
                 NroGuia = "G0002",
                 TipoBulto = TiposBulto.M,
-                Modalidad = ModalidadEntrega.RetiroEnAgencia,
+                ModalidadEntrega = ModalidadEntrega.RetiroEnAgencia,
                 CDOrigen = cdCordoba,
                 Estado = EstadoGuia.EnTransito
             };
@@ -55,7 +55,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             {
                 NroGuia = "G0003",
                 TipoBulto = TiposBulto.XL,
-                Modalidad = ModalidadEntrega.RetiroEnCD,
+                ModalidadEntrega = ModalidadEntrega.RetiroEnCD,
                 CDOrigen = cdCordoba,
                 Estado = EstadoGuia.EnTransito
             };
@@ -100,7 +100,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             {
                 NroGuia = "G0004",
                 TipoBulto = TiposBulto.L,
-                Modalidad = ModalidadEntrega.PuertaAPuerta,
+                ModalidadEntrega = ModalidadEntrega.PuertaAPuerta,
                 CDOrigen = cdMendoza,
                 Estado = EstadoGuia.EnTransito
             };
@@ -109,7 +109,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             {
                 NroGuia = "G0005",
                 TipoBulto = TiposBulto.M,
-                Modalidad = ModalidadEntrega.RetiroEnCD,
+                ModalidadEntrega = ModalidadEntrega.RetiroEnCD,
                 CDOrigen = cdMendoza,
                 Estado = EstadoGuia.EnTransito
             };
@@ -142,7 +142,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             {
                 NroGuia = "G0006",
                 TipoBulto = TiposBulto.S,
-                Modalidad = ModalidadEntrega.PuertaAPuerta,
+                ModalidadEntrega = ModalidadEntrega.PuertaAPuerta,
                 Estado = EstadoGuia.EnTransito,
                 CDOrigen = cdCordoba
             };

@@ -49,28 +49,28 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia
             {
                 NroGuia = "A001-0001",
                 TipoBulto = TiposBulto.S,
-                Agencia = agencia1
+                AgenciaGuia = agencia1
             };
 
             var guia2 = new Guia
             {
                 NroGuia = "A001-0002",
                 TipoBulto = TiposBulto.XL,
-                Agencia = agencia1
+                AgenciaGuia = agencia1
             };
 
             var guia3 = new Guia
             {
                 NroGuia = "A002-0001",
                 TipoBulto = TiposBulto.M,
-                Agencia = agencia2
+                AgenciaGuia = agencia2
             };
 
             // HDR válida
             var hdr1 = new HojaDeRutaRetiro
             {
                 NroHDR = 1001,
-                Agencia = agencia1,
+                AgenciaHDR = agencia1,
                 Transportista = t1,
                 Estado = EstadoHojaDeRuta.EnCurso,
                 Guias = new List<Guia>
@@ -84,7 +84,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia
             var hdr2 = new HojaDeRutaRetiro
             {
                 NroHDR = 1002,
-                Agencia = agencia2,
+                AgenciaHDR = agencia2,
                 Transportista = t2,
                 Estado = EstadoHojaDeRuta.EnCurso,
                 Guias = new List<Guia>
@@ -98,7 +98,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia
             {
                 NroHDR = 1003,
                 FechaRecepcion = new DateTime(2026, 5, 25),
-                Agencia = agencia1,
+                AgenciaHDR = agencia1,
                 Transportista = t1,
                 Estado = EstadoHojaDeRuta.Recibida,
                 Guias = new List<Guia>
