@@ -69,9 +69,9 @@ namespace Prototipos_TUTASA
             comboBox1.SelectedIndex = -1;
             comboBox1.Text = string.Empty;
 
-            foreach (var fletero in modelo.ObtenerFleterosConHojasAsignadas(DateTime.Today))
+            foreach (var transportista in modelo.ObtenerTransportistasConHojasAsignadas(DateTime.Today))
             {
-                comboBox1.Items.Add(new FleteroResumenItem(fletero));
+                comboBox1.Items.Add(transportista);
             }
 
             button1.Enabled = comboBox1.Items.Count > 0;
@@ -81,12 +81,12 @@ namespace Prototipos_TUTASA
         {
             LimpiarResumen();
 
-            if (comboBox1.SelectedItem is not FleteroResumenItem itemSeleccionado)
+            if (comboBox1.SelectedItem is not TransportistaLocal transportistaSeleccionado)
             {
                 return;
             }
 
-            if (!modelo.SeleccionarHojasAsignadas(itemSeleccionado.Fletero, dateTimePicker1.Value.Date))
+            if (!modelo.SeleccionarHojasAsignadas(transportistaSeleccionado, dateTimePicker1.Value.Date))
             {
                 return;
             }
