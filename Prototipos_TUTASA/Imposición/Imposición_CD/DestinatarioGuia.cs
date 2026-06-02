@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Prototipos_TUTASA.Imposición.ImposicionCallCenter_v2
+namespace Prototipos_TUTASA.Imposición.Imposición_CD
 {
-    internal class Destinatario
+    internal class DestinatarioGuia
     {
         public int Dni { get; set; }
         public string Nombre { get; set; }

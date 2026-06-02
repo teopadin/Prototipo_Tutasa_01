@@ -93,7 +93,7 @@ namespace Prototipos_TUTASA.ImposiciónCallCenter_v2
                 return;
             }
 
-            Destinatario destinatario = new Destinatario
+            DestinatarioGuia destinatario = new DestinatarioGuia
             {
                 Dni = dniDestinatario,
                 Nombre = txtNombreDest.Text.Trim(),

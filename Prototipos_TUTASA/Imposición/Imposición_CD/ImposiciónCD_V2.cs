@@ -91,7 +91,7 @@ namespace Prototipos_TUTASA.ImposiciónCD_V2
                 return;
             }
 
-            Destinatario destinatario = new Destinatario
+            DestinatarioGuia destinatario = new DestinatarioGuia
             {
                 Dni = dniDestinatario,
                 Nombre = txtNombreDestinatario.Text.Trim(),
