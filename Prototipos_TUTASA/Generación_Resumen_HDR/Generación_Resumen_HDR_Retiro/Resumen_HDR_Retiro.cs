@@ -95,12 +95,12 @@ namespace Prototipos_TUTASA
 
             foreach (HojaRetiroResumen hoja in modelo.ObtenerHojasSeleccionadas())
             {
-                if (hoja.Guias.Count == 0)
+                if (hoja.DetalleGuias.Count == 0)
                 {
                     continue;
                 }
 
-                Guia guia = hoja.Guias[0];
+                DetalleGuiaRetiro guia = hoja.DetalleGuias[0];
                 var item = new ListViewItem(hoja.NroHDR.ToString());
                 item.SubItems.Add(guia.Remitente);
                 item.SubItems.Add(guia.Calle);

@@ -30,28 +30,28 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_CD
                 {
                     NroGuia = "CD02-0002",
                     Estado = EstadoGuiaEnum.PendienteDeRetiroEnCD,
-                    CdDestino = cdCapital,
+                    IdCDDestino = cdCapital.IdCD,
                     Destinatario = new DestinatarioGuia { Nombre = "Ana", Apellido = "Pérez", Dni = 40123456 }
                 },
                 new Guia
                 {
                     NroGuia = "CD01-0007",
                     Estado = EstadoGuiaEnum.PendienteDeRetiroEnCD,
-                    CdDestino = cdCapital,
+                    IdCDDestino = cdCapital.IdCD,
                     Destinatario = new DestinatarioGuia { Nombre = "Juan", Apellido = "Rodríguez", Dni = 41234567 }
                 },
                 new Guia
                 {
                     NroGuia = "CD03-0001",
                     Estado = EstadoGuiaEnum.EnDistribucion,
-                    CdDestino = cdCapital,
+                    IdCDDestino = cdCapital.IdCD,
                     Destinatario = new DestinatarioGuia { Nombre = "María", Apellido = "González", Dni = 42345678 }
                 },
                 new Guia
                 {
                     NroGuia = "CD02-0009",
                     Estado = EstadoGuiaEnum.PendienteDeRetiroEnCD,
-                    CdDestino = cdCentro,
+                    IdCDDestino = cdCentro.IdCD,
                     Destinatario = new DestinatarioGuia { Nombre = "Carlos", Apellido = "López", Dni = 43567890 }
                 }
             };
@@ -80,13 +80,13 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_CD
                 return false;
             }
 
-            if (guia.CdDestino == null || guia.Destinatario == null)
+            if (guia.IdCDDestino <= 0 || guia.Destinatario == null)
             {
                 mensaje = "La guía no tiene datos completos para registrar la entrega.";
                 return false;
             }
 
-            if (guia.CdDestino.IdCD != cdActual.IdCD)
+            if (guia.IdCDDestino != cdActual.IdCD)
             {
                 mensaje = "La guía ingresada no corresponde al Centro de Distribución actual.";
                 return false;

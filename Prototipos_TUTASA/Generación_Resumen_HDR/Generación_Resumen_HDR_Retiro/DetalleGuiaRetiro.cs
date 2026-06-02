@@ -1,15 +1,15 @@
-namespace Prototipos_TUTASA.ClasesResumenHDRDistribucion
+namespace Prototipos_TUTASA.ClasesResumenHDRRetiro
 {
-    internal class Guia
+    internal class DetalleGuiaRetiro
     {
-        public string Destinatario { get; set; }
+        public string Remitente { get; set; }
         public string Calle { get; set; }
         public int Altura { get; set; }
         public string CodigoPostal { get; set; }
 
-        public Guia()
+        public DetalleGuiaRetiro()
         {
-            Destinatario = string.Empty;
+            Remitente = string.Empty;
             Calle = string.Empty;
             CodigoPostal = string.Empty;
         }

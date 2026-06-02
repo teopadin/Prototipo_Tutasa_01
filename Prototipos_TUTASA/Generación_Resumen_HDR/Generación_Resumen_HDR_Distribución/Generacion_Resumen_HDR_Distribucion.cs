@@ -94,12 +94,12 @@ namespace Prototipos_TUTASA
 
             foreach (HojaDeRutaDistribucion hoja in modelo.ObtenerHojasSeleccionadas())
             {
-                if (hoja.Guias.Count == 0)
+                if (hoja.DetalleGuias.Count == 0)
                 {
                     continue;
                 }
 
-                Guia guia = hoja.Guias[0];
+                DetalleGuiaDistribucion guia = hoja.DetalleGuias[0];
                 var item = new ListViewItem(hoja.NroHDR.ToString());
                 item.SubItems.Add(guia.Destinatario);
                 item.SubItems.Add(guia.Calle);

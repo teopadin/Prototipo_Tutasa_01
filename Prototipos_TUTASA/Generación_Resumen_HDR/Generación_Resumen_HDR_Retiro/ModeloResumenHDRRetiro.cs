@@ -102,7 +102,7 @@ namespace Prototipos_TUTASA
 
         public int ObtenerCantidadBultos(HojaRetiroResumen hoja)
         {
-            return hoja.Guias.Count;
+            return hoja.DetalleGuias.Count;
         }
 
         private int CalcularTotalBultos(List<HojaRetiroResumen> hojas)
@@ -123,18 +123,18 @@ namespace Prototipos_TUTASA
 
             foreach (HojaRetiroResumen hoja in hojas)
             {
-                if (hoja.Guias.Count == 0)
+                if (hoja.DetalleGuias.Count == 0)
                 {
                     continue;
                 }
 
-                domicilios.Add(ObtenerClaveDomicilio(hoja.Guias[0]));
+                domicilios.Add(ObtenerClaveDomicilio(hoja.DetalleGuias[0]));
             }
 
             return domicilios.Count;
         }
 
-        private string ObtenerClaveDomicilio(Guia guia)
+        private string ObtenerClaveDomicilio(DetalleGuiaRetiro guia)
         {
             return $"{guia.Calle}|{guia.Altura}|{guia.CodigoPostal}".ToUpperInvariant();
         }
@@ -147,32 +147,32 @@ namespace Prototipos_TUTASA
             transportistas.Add(carlos);
             transportistas.Add(laura);
 
-            AgregarHojaDeRuta(1, DateTime.Today, carlos, new List<Guia>
+            AgregarHojaDeRuta(1, DateTime.Today, carlos, new List<DetalleGuiaRetiro>
             {
-                new Guia { Remitente = "Empresa ABC SA", Calle = "Av. Rivadavia", Altura = 3200, CodigoPostal = "1406" },
-                new Guia { Remitente = "Empresa ABC SA", Calle = "Av. Rivadavia", Altura = 3200, CodigoPostal = "1406" }
+                new DetalleGuiaRetiro { Remitente = "Empresa ABC SA", Calle = "Av. Rivadavia", Altura = 3200, CodigoPostal = "1406" },
+                new DetalleGuiaRetiro { Remitente = "Empresa ABC SA", Calle = "Av. Rivadavia", Altura = 3200, CodigoPostal = "1406" }
             });
 
-            AgregarHojaDeRuta(2, DateTime.Today, carlos, new List<Guia>
+            AgregarHojaDeRuta(2, DateTime.Today, carlos, new List<DetalleGuiaRetiro>
             {
-                new Guia { Remitente = "Agencia Norte SA", Calle = "Av. Corrientes", Altura = 1234, CodigoPostal = "1043" },
-                new Guia { Remitente = "Agencia Norte SA", Calle = "Av. Corrientes", Altura = 1234, CodigoPostal = "1043" }
+                new DetalleGuiaRetiro { Remitente = "Agencia Norte SA", Calle = "Av. Corrientes", Altura = 1234, CodigoPostal = "1043" },
+                new DetalleGuiaRetiro { Remitente = "Agencia Norte SA", Calle = "Av. Corrientes", Altura = 1234, CodigoPostal = "1043" }
             });
 
-            AgregarHojaDeRuta(3, DateTime.Today, laura, new List<Guia>
+            AgregarHojaDeRuta(3, DateTime.Today, laura, new List<DetalleGuiaRetiro>
             {
-                new Guia { Remitente = "Agencia Sur SRL", Calle = "San Martin", Altura = 500, CodigoPostal = "1043" }
+                new DetalleGuiaRetiro { Remitente = "Agencia Sur SRL", Calle = "San Martin", Altura = 500, CodigoPostal = "1043" }
             });
         }
 
-        private void AgregarHojaDeRuta(int nroHDR, DateTime fecha, TransportistaLocal transportista, List<Guia> guias)
+        private void AgregarHojaDeRuta(int nroHDR, DateTime fecha, TransportistaLocal transportista, List<DetalleGuiaRetiro> detalleGuias)
         {
             hojasDeRuta.Add(new HojaRetiroResumen
             {
                 NroHDR = nroHDR,
                 FechaEmision = fecha,
                 DniTransportistaAsignado = transportista.DniTransportista,
-                Guias = guias,
+                DetalleGuias = detalleGuias,
                 Estado = EstadoHojaDeRutaEnum.Generada
             });
         }

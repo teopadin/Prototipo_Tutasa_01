@@ -101,7 +101,7 @@ namespace Prototipos_TUTASA
 
         public int ObtenerCantidadBultos(HojaDeRutaDistribucion hoja)
         {
-            return hoja.Guias.Count;
+            return hoja.DetalleGuias.Count;
         }
 
         private int CalcularTotalBultos(List<HojaDeRutaDistribucion> hojas)
@@ -122,18 +122,18 @@ namespace Prototipos_TUTASA
 
             foreach (HojaDeRutaDistribucion hoja in hojas)
             {
-                if (hoja.Guias.Count == 0)
+                if (hoja.DetalleGuias.Count == 0)
                 {
                     continue;
                 }
 
-                domicilios.Add(ObtenerClaveDomicilio(hoja.Guias[0]));
+                domicilios.Add(ObtenerClaveDomicilio(hoja.DetalleGuias[0]));
             }
 
             return domicilios.Count;
         }
 
-        private string ObtenerClaveDomicilio(Guia guia)
+        private string ObtenerClaveDomicilio(DetalleGuiaDistribucion guia)
         {
             return $"{guia.Calle}|{guia.Altura}|{guia.CodigoPostal}".ToUpperInvariant();
         }
@@ -146,37 +146,37 @@ namespace Prototipos_TUTASA
             transportistas.Add(carlos);
             transportistas.Add(laura);
 
-            AgregarHojaDeRuta(1, DateTime.Today, carlos, new List<Guia>
+            AgregarHojaDeRuta(1, DateTime.Today, carlos, new List<DetalleGuiaDistribucion>
             {
-                new Guia { Destinatario = "Ana Perez", Calle = "Av. Rivadavia", Altura = 3200, CodigoPostal = "1406" },
-                new Guia { Destinatario = "Ana Perez", Calle = "Av. Rivadavia", Altura = 3200, CodigoPostal = "1406" }
+                new DetalleGuiaDistribucion { Destinatario = "Ana Perez", Calle = "Av. Rivadavia", Altura = 3200, CodigoPostal = "1406" },
+                new DetalleGuiaDistribucion { Destinatario = "Ana Perez", Calle = "Av. Rivadavia", Altura = 3200, CodigoPostal = "1406" }
             });
 
-            AgregarHojaDeRuta(2, DateTime.Today, carlos, new List<Guia>
+            AgregarHojaDeRuta(2, DateTime.Today, carlos, new List<DetalleGuiaDistribucion>
             {
-                new Guia { Destinatario = "Agencia Norte SA", Calle = "Av. Corrientes", Altura = 1234, CodigoPostal = "1043" },
-                new Guia { Destinatario = "Agencia Norte SA", Calle = "Av. Corrientes", Altura = 1234, CodigoPostal = "1043" }
+                new DetalleGuiaDistribucion { Destinatario = "Agencia Norte SA", Calle = "Av. Corrientes", Altura = 1234, CodigoPostal = "1043" },
+                new DetalleGuiaDistribucion { Destinatario = "Agencia Norte SA", Calle = "Av. Corrientes", Altura = 1234, CodigoPostal = "1043" }
             });
 
-            AgregarHojaDeRuta(3, DateTime.Today, laura, new List<Guia>
+            AgregarHojaDeRuta(3, DateTime.Today, laura, new List<DetalleGuiaDistribucion>
             {
-                new Guia { Destinatario = "Luis Gomez", Calle = "Belgrano", Altura = 750, CodigoPostal = "5000" }
+                new DetalleGuiaDistribucion { Destinatario = "Luis Gomez", Calle = "Belgrano", Altura = 750, CodigoPostal = "5000" }
             });
 
-            AgregarHojaDeRuta(4, DateTime.Today.AddDays(1), carlos, new List<Guia>
+            AgregarHojaDeRuta(4, DateTime.Today.AddDays(1), carlos, new List<DetalleGuiaDistribucion>
             {
-                new Guia { Destinatario = "Agencia Sur SRL", Calle = "San Martin", Altura = 500, CodigoPostal = "1043" }
+                new DetalleGuiaDistribucion { Destinatario = "Agencia Sur SRL", Calle = "San Martin", Altura = 500, CodigoPostal = "1043" }
             });
         }
 
-        private void AgregarHojaDeRuta(int nroHDR, DateTime fecha, TransportistaLocal transportista, List<Guia> guias)
+        private void AgregarHojaDeRuta(int nroHDR, DateTime fecha, TransportistaLocal transportista, List<DetalleGuiaDistribucion> detalleGuias)
         {
             hojasDeRuta.Add(new HojaDeRutaDistribucion
             {
                 NroHDR = nroHDR,
                 FechaEmision = fecha,
                 DniTransportistaAsignado = transportista.DniTransportista,
-                Guias = guias,
+                DetalleGuias = detalleGuias,
                 Estado = EstadoHojaDeRutaEnum.Generada
             });
         }
