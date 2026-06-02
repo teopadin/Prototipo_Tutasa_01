@@ -11,7 +11,7 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
         public EstadoGuia Estado { get; set; }
 
         // La conexión real con la clase Cliente (la flecha "Es remitente de")
-        public Cliente ClienteGuia { get; set; }
+        public Cliente Cliente { get; set; }
 
         // La conexión real con la clase DestinatarioGuia
         public DestinatarioGuia Destinatario { get; set; }

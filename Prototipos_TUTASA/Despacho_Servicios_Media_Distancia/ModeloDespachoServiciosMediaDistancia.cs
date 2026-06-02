@@ -23,14 +23,21 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
                         NroGuia = "G-1001",
                         TipoBulto = TiposBulto.S,
                         Estado = EstadoGuia.PendienteDeDespacho,
-                        ClienteGuia = new Cliente { RazonSocial = "Techint Logística" },
+                        Cliente = new Cliente { RazonSocial = "Techint Logística" },
                         Destinatario = new DestinatarioGuia { Nombre = "Carlos", Apellido = "Paz" }
                     },
                     new Guia {
                         NroGuia = "G-1002",
                         TipoBulto = TiposBulto.M,
                         Estado = EstadoGuia.PendienteDeDespacho,
-                        ClienteGuia = new Cliente { RazonSocial = "Arcor S.A.I.C." },
+                        Cliente = new Cliente { RazonSocial = "Arcor S.A.I.C." },
+                        Destinatario = new DestinatarioGuia { Nombre = "Laura", Apellido = "Martínez" }
+                    },
+                    new Guia {
+                        NroGuia = "G-1003",
+                        TipoBulto = TiposBulto.M,
+                        Estado = EstadoGuia.PendienteDeDespacho,
+                        Cliente = new Cliente { RazonSocial = "Arcor S.A.I.C." },
                         Destinatario = new DestinatarioGuia { Nombre = "Laura", Apellido = "Martínez" }
                     }
                 }
@@ -48,7 +55,7 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
                         NroGuia = "G-2041",
                         TipoBulto = TiposBulto.L,
                         Estado = EstadoGuia.PendienteDeDespacho,
-                        ClienteGuia = new Cliente { RazonSocial = "Bodegas López" },
+                        Cliente = new Cliente { RazonSocial = "Bodegas López" },
                         Destinatario = new DestinatarioGuia { Nombre = "Federico", Apellido = "Quintana" }
                     }
                 }
@@ -66,14 +73,14 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
                         NroGuia = "G-3110",
                         TipoBulto = TiposBulto.XL,
                         Estado = EstadoGuia.PendienteDeDespacho,
-                        ClienteGuia = new Cliente { RazonSocial = "Unilever S.A." },
+                        Cliente = new Cliente { RazonSocial = "Unilever S.A." },
                         Destinatario = new DestinatarioGuia { Nombre = "Alberto", Apellido = "Rossi" }
                     },
                     new Guia {
                         NroGuia = "G-3111",
                         TipoBulto = TiposBulto.M,
                         Estado = EstadoGuia.PendienteDeDespacho,
-                        ClienteGuia = new Cliente { RazonSocial = "Bazar Avenida" },
+                        Cliente = new Cliente { RazonSocial = "Bazar Avenida" },
                         Destinatario = new DestinatarioGuia { Nombre = "Marta", Apellido = "Gómez" }
                     }
                 }
@@ -91,21 +98,21 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
                         NroGuia = "G-4001",
                         TipoBulto = TiposBulto.S,
                         Estado = EstadoGuia.PendienteDeDespacho,
-                        ClienteGuia = new Cliente { RazonSocial = "MercadoLibre SRL" },
+                        Cliente = new Cliente { RazonSocial = "MercadoLibre SRL" },
                         Destinatario = new DestinatarioGuia { Nombre = "Esteban", Apellido = "Quito" }
                     },
                     new Guia {
                         NroGuia = "G-4002",
                         TipoBulto = TiposBulto.S,
                         Estado = EstadoGuia.PendienteDeDespacho,
-                        ClienteGuia = new Cliente { RazonSocial = "MercadoLibre SRL" },
+                        Cliente = new Cliente { RazonSocial = "MercadoLibre SRL" },
                         Destinatario = new DestinatarioGuia { Nombre = "Ramiro", Apellido ="Díaz" }
                     },
                     new Guia {
                         NroGuia = "G-4003",
                         TipoBulto = TiposBulto.S,
                         Estado = EstadoGuia.PendienteDeDespacho,
-                        ClienteGuia = new Cliente { RazonSocial = "Frávega S.A." },
+                        Cliente = new Cliente { RazonSocial = "Frávega S.A." },
                         Destinatario = new DestinatarioGuia { Nombre = "Clara", Apellido = "Benítez" }
                     }
                 }
@@ -123,14 +130,14 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
                         NroGuia = "G-5501",
                         TipoBulto = TiposBulto.L,
                         Estado = EstadoGuia.PendienteDeDespacho,
-                        ClienteGuia = new Cliente { RazonSocial = "INVAP S.E." },
+                        Cliente = new Cliente { RazonSocial = "INVAP S.E." },
                         Destinatario = new DestinatarioGuia { Nombre = "Jorge", Apellido = "Sabat" }
                     },
                     new Guia {
                         NroGuia = "G-5502",
                         TipoBulto = TiposBulto.XL,
                         Estado = EstadoGuia.PendienteDeDespacho,
-                        ClienteGuia = new Cliente { RazonSocial = "Aluar S.A." },
+                        Cliente = new Cliente { RazonSocial = "Aluar S.A." },
                         Destinatario = new DestinatarioGuia { Nombre = "Enrique", Apellido = "Pinti" }
                     }
                 }
