@@ -8,6 +8,5 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
     {
         EnDistribucion,
         PendienteDeRetiroEnAgencia,
-        Entregada
     }
 }
