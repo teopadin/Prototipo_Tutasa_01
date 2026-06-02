@@ -133,7 +133,7 @@ namespace Prototipos_TUTASA
             return domicilios.Count;
         }
 
-        private string ObtenerClaveDomicilio(DetalleGuiaDistribucion guia)
+        private string ObtenerClaveDomicilio(DestinatarioGuia guia)
         {
             return $"{guia.Calle}|{guia.Altura}|{guia.CodigoPostal}".ToUpperInvariant();
         }
@@ -146,30 +146,30 @@ namespace Prototipos_TUTASA
             transportistas.Add(carlos);
             transportistas.Add(laura);
 
-            AgregarHojaDeRuta(1, DateTime.Today, carlos, new List<DetalleGuiaDistribucion>
+            AgregarHojaDeRuta(1, DateTime.Today, carlos, new List<DestinatarioGuia>
             {
-                new DetalleGuiaDistribucion { Destinatario = "Ana Perez", Calle = "Av. Rivadavia", Altura = 3200, CodigoPostal = "1406" },
-                new DetalleGuiaDistribucion { Destinatario = "Ana Perez", Calle = "Av. Rivadavia", Altura = 3200, CodigoPostal = "1406" }
+                new DestinatarioGuia { Destinatario = "Ana Perez", Calle = "Av. Rivadavia", Altura = 3200, CodigoPostal = "1406" },
+                new DestinatarioGuia { Destinatario = "Ana Perez", Calle = "Av. Rivadavia", Altura = 3200, CodigoPostal = "1406" }
             });
 
-            AgregarHojaDeRuta(2, DateTime.Today, carlos, new List<DetalleGuiaDistribucion>
+            AgregarHojaDeRuta(2, DateTime.Today, carlos, new List<DestinatarioGuia>
             {
-                new DetalleGuiaDistribucion { Destinatario = "Agencia Norte SA", Calle = "Av. Corrientes", Altura = 1234, CodigoPostal = "1043" },
-                new DetalleGuiaDistribucion { Destinatario = "Agencia Norte SA", Calle = "Av. Corrientes", Altura = 1234, CodigoPostal = "1043" }
+                new DestinatarioGuia { Destinatario = "Agencia Norte SA", Calle = "Av. Corrientes", Altura = 1234, CodigoPostal = "1043" },
+                new DestinatarioGuia { Destinatario = "Agencia Norte SA", Calle = "Av. Corrientes", Altura = 1234, CodigoPostal = "1043" }
             });
 
-            AgregarHojaDeRuta(3, DateTime.Today, laura, new List<DetalleGuiaDistribucion>
+            AgregarHojaDeRuta(3, DateTime.Today, laura, new List<DestinatarioGuia>
             {
-                new DetalleGuiaDistribucion { Destinatario = "Luis Gomez", Calle = "Belgrano", Altura = 750, CodigoPostal = "5000" }
+                new DestinatarioGuia { Destinatario = "Luis Gomez", Calle = "Belgrano", Altura = 750, CodigoPostal = "5000" }
             });
 
-            AgregarHojaDeRuta(4, DateTime.Today.AddDays(1), carlos, new List<DetalleGuiaDistribucion>
+            AgregarHojaDeRuta(4, DateTime.Today.AddDays(1), carlos, new List<DestinatarioGuia>
             {
-                new DetalleGuiaDistribucion { Destinatario = "Agencia Sur SRL", Calle = "San Martin", Altura = 500, CodigoPostal = "1043" }
+                new DestinatarioGuia { Destinatario = "Agencia Sur SRL", Calle = "San Martin", Altura = 500, CodigoPostal = "1043" }
             });
         }
 
-        private void AgregarHojaDeRuta(int nroHDR, DateTime fecha, TransportistaLocal transportista, List<DetalleGuiaDistribucion> detalleGuias)
+        private void AgregarHojaDeRuta(int nroHDR, DateTime fecha, TransportistaLocal transportista, List<DestinatarioGuia> detalleGuias)
         {
             hojasDeRuta.Add(new HojaDeRutaDistribucion
             {

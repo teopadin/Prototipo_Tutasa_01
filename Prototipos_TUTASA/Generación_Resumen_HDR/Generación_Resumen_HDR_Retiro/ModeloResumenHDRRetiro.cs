@@ -134,7 +134,7 @@ namespace Prototipos_TUTASA
             return domicilios.Count;
         }
 
-        private string ObtenerClaveDomicilio(DetalleGuiaRetiro guia)
+        private string ObtenerClaveDomicilio(Cliente guia)
         {
             return $"{guia.Calle}|{guia.Altura}|{guia.CodigoPostal}".ToUpperInvariant();
         }
@@ -147,25 +147,25 @@ namespace Prototipos_TUTASA
             transportistas.Add(carlos);
             transportistas.Add(laura);
 
-            AgregarHojaDeRuta(1, DateTime.Today, carlos, new List<DetalleGuiaRetiro>
+            AgregarHojaDeRuta(1, DateTime.Today, carlos, new List<Cliente>
             {
-                new DetalleGuiaRetiro { Remitente = "Empresa ABC SA", Calle = "Av. Rivadavia", Altura = 3200, CodigoPostal = "1406" },
-                new DetalleGuiaRetiro { Remitente = "Empresa ABC SA", Calle = "Av. Rivadavia", Altura = 3200, CodigoPostal = "1406" }
+                new Cliente { Remitente = "Empresa ABC SA", Calle = "Av. Rivadavia", Altura = 3200, CodigoPostal = "1406" },
+                new Cliente { Remitente = "Empresa ABC SA", Calle = "Av. Rivadavia", Altura = 3200, CodigoPostal = "1406" }
             });
 
-            AgregarHojaDeRuta(2, DateTime.Today, carlos, new List<DetalleGuiaRetiro>
+            AgregarHojaDeRuta(2, DateTime.Today, carlos, new List<Cliente>
             {
-                new DetalleGuiaRetiro { Remitente = "Agencia Norte SA", Calle = "Av. Corrientes", Altura = 1234, CodigoPostal = "1043" },
-                new DetalleGuiaRetiro { Remitente = "Agencia Norte SA", Calle = "Av. Corrientes", Altura = 1234, CodigoPostal = "1043" }
+                new Cliente { Remitente = "Agencia Norte SA", Calle = "Av. Corrientes", Altura = 1234, CodigoPostal = "1043" },
+                new Cliente { Remitente = "Agencia Norte SA", Calle = "Av. Corrientes", Altura = 1234, CodigoPostal = "1043" }
             });
 
-            AgregarHojaDeRuta(3, DateTime.Today, laura, new List<DetalleGuiaRetiro>
+            AgregarHojaDeRuta(3, DateTime.Today, laura, new List<Cliente>
             {
-                new DetalleGuiaRetiro { Remitente = "Agencia Sur SRL", Calle = "San Martin", Altura = 500, CodigoPostal = "1043" }
+                new Cliente { Remitente = "Agencia Sur SRL", Calle = "San Martin", Altura = 500, CodigoPostal = "1043" }
             });
         }
 
-        private void AgregarHojaDeRuta(int nroHDR, DateTime fecha, TransportistaLocal transportista, List<DetalleGuiaRetiro> detalleGuias)
+        private void AgregarHojaDeRuta(int nroHDR, DateTime fecha, TransportistaLocal transportista, List<Cliente> detalleGuias)
         {
             hojasDeRuta.Add(new HojaRetiroResumen
             {

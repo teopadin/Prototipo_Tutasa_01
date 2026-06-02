@@ -100,7 +100,7 @@ namespace Prototipos_TUTASA
                     continue;
                 }
 
-                DetalleGuiaRetiro guia = hoja.DetalleGuias[0];
+                Cliente guia = hoja.DetalleGuias[0];
                 var item = new ListViewItem(hoja.NroHDR.ToString());
                 item.SubItems.Add(guia.Remitente);
                 item.SubItems.Add(guia.Calle);
