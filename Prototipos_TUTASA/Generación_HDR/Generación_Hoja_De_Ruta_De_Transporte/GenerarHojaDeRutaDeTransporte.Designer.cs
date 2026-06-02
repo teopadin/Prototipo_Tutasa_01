@@ -127,7 +127,7 @@
             // 
             // columnHeader3
             // 
-            columnHeader3.Text = "Capacidad disp. (en tamano S)";
+            columnHeader3.Text = "Capacidad disp. (en tamaño S)";
             columnHeader3.Width = 180;
             // 
             // columnHeader4
