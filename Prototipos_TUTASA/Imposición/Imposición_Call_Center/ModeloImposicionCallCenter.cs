@@ -75,7 +75,7 @@ namespace Prototipos_TUTASA.Imposición.ImposicionCallCenter_v2
         }
 
 
-        public Guia RegistrarImposicion(TipoBulto tipoBulto, ModalidadEntrega modalidadEntrega, Destinatario destinatario, CentroDistribucion cdOrigen, CentroDistribucion cdDestino, Agencia agenciaDestino)
+        public Guia RegistrarImposicion(TipoBulto tipoBulto, ModalidadEntrega modalidadEntrega, DestinatarioGuia destinatario, CentroDistribucion cdOrigen, CentroDistribucion cdDestino, Agencia agenciaDestino)
         {
             Guia guia = new Guia
             {
