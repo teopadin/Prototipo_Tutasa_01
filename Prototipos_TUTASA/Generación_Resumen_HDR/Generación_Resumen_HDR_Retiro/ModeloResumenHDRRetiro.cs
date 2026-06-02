@@ -1,16 +1,16 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using TransportistaLocal = Prototipos_TUTASA.ClasesResumenHDRRetiro.TransportistaLocal;
+using Prototipos_TUTASA.ClasesResumenHDRRetiro;
 
 namespace Prototipos_TUTASA
 {
     internal class ModeloResumenHDRRetiro
     {
         private readonly List<TransportistaLocal> transportistas = new List<TransportistaLocal>();
-        private readonly List<HojaDeRutaRetiroResumen> hojasDeRuta = new List<HojaDeRutaRetiroResumen>();
+        private readonly List<HojaDeRutaRetiro> hojasDeRuta = new List<HojaDeRutaRetiro>();
         private readonly List<ResumenHDRRetiro> resumenes = new List<ResumenHDRRetiro>();
-        private List<HojaDeRutaRetiroResumen> hojasSeleccionadas = new List<HojaDeRutaRetiroResumen>();
+        private List<HojaDeRutaRetiro> hojasSeleccionadas = new List<HojaDeRutaRetiro>();
 
         public bool HayHojasSeleccionadas => hojasSeleccionadas.Count > 0;
         public int TotalDomiciliosSeleccionados => CalcularTotalDomicilios(hojasSeleccionadas);
@@ -21,12 +21,12 @@ namespace Prototipos_TUTASA
             CargarDatosDePrueba();
         }
 
-        private bool BuscarHojasAsignadas(TransportistaLocal transportista, DateTime fecha, out List<HojaDeRutaRetiroResumen> hojas)
+        private bool BuscarHojasAsignadas(TransportistaLocal transportista, DateTime fecha, out List<HojaDeRutaRetiro> hojas)
         {
             hojas = hojasDeRuta
-                .Where(h => h.Transportista.DniTransportista == transportista.DniTransportista
+                .Where(h => h.DniTransportistaAsignado == transportista.DniTransportista
                     && h.FechaEmision.Date == fecha.Date
-                    && h.Estado == EstadoHojaDeRutaResumen.Generada)
+                    && h.Estado == EstadoHojaDeRutaEnum.Generada)
                 .OrderBy(h => h.NroHDR)
                 .ToList();
 
@@ -37,7 +37,7 @@ namespace Prototipos_TUTASA
         {
             LimpiarSeleccion();
 
-            if (!BuscarHojasAsignadas(transportista, fecha, out List<HojaDeRutaRetiroResumen> hojas))
+            if (!BuscarHojasAsignadas(transportista, fecha, out List<HojaDeRutaRetiro> hojas))
             {
                 return false;
             }
@@ -61,24 +61,9 @@ namespace Prototipos_TUTASA
             return transportistasConHojas;
         }
 
-        public List<DatosRetiroResumen> ObtenerDatosHojasSeleccionadas()
+        public List<HojaDeRutaRetiro> ObtenerHojasSeleccionadas()
         {
-            var datosHojas = new List<DatosRetiroResumen>();
-
-            foreach (HojaDeRutaRetiroResumen hoja in hojasSeleccionadas)
-            {
-                if (hoja.Guias.Count == 0)
-                {
-                    continue;
-                }
-
-                DatosRetiroResumen datos = ObtenerDatosRetiro(hoja.Guias[0]);
-                datos.NroHDR = hoja.NroHDR;
-                datos.CantidadBultos = CalcularTotalBultos(hoja);
-                datosHojas.Add(datos);
-            }
-
-            return datosHojas;
+            return hojasSeleccionadas.ToList();
         }
 
         public bool GenerarResumen(out ResumenHDRRetiro resumen, out string mensaje)
@@ -95,14 +80,13 @@ namespace Prototipos_TUTASA
             resumen = new ResumenHDRRetiro
             {
                 NroResumen = resumenes.Count + 1,
-                FechaGeneracion = DateTime.Now,
                 TotalDomicilios = TotalDomiciliosSeleccionados,
                 TotalBultos = TotalBultosSeleccionados
             };
 
-            foreach (HojaDeRutaRetiroResumen hoja in hojasSeleccionadas)
+            foreach (HojaDeRutaRetiro hoja in hojasSeleccionadas)
             {
-                hoja.Estado = EstadoHojaDeRutaResumen.EnCurso;
+                hoja.Estado = EstadoHojaDeRutaEnum.EnCurso;
             }
 
             resumenes.Add(resumen);
@@ -112,53 +96,46 @@ namespace Prototipos_TUTASA
 
         public void LimpiarSeleccion()
         {
-            hojasSeleccionadas = new List<HojaDeRutaRetiroResumen>();
+            hojasSeleccionadas = new List<HojaDeRutaRetiro>();
         }
 
-        private DatosRetiroResumen ObtenerDatosRetiro(GuiaRetiroResumen guia)
-        {
-            return new DatosRetiroResumen
-            {
-                Nombre = guia.Remitente,
-                Calle = guia.Calle,
-                Altura = guia.Altura,
-                CodigoPostal = guia.CodigoPostal
-            };
-        }
-
-        private int CalcularTotalBultos(HojaDeRutaRetiroResumen hoja)
+        public int ObtenerCantidadBultos(HojaDeRutaRetiro hoja)
         {
             return hoja.Guias.Count;
         }
 
-        private int CalcularTotalBultos(List<HojaDeRutaRetiroResumen> hojas)
+        private int CalcularTotalBultos(List<HojaDeRutaRetiro> hojas)
         {
             int total = 0;
 
-            foreach (HojaDeRutaRetiroResumen hoja in hojas)
+            foreach (HojaDeRutaRetiro hoja in hojas)
             {
-                total += CalcularTotalBultos(hoja);
+                total += ObtenerCantidadBultos(hoja);
             }
 
             return total;
         }
 
-        private int CalcularTotalDomicilios(List<HojaDeRutaRetiroResumen> hojas)
+        private int CalcularTotalDomicilios(List<HojaDeRutaRetiro> hojas)
         {
             var domicilios = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
-            foreach (HojaDeRutaRetiroResumen hoja in hojas)
+            foreach (HojaDeRutaRetiro hoja in hojas)
             {
                 if (hoja.Guias.Count == 0)
                 {
                     continue;
                 }
 
-                DatosRetiroResumen datos = ObtenerDatosRetiro(hoja.Guias[0]);
-                domicilios.Add(datos.ClaveDomicilio);
+                domicilios.Add(ObtenerClaveDomicilio(hoja.Guias[0]));
             }
 
             return domicilios.Count;
+        }
+
+        private string ObtenerClaveDomicilio(Guia guia)
+        {
+            return $"{guia.Calle}|{guia.Altura}|{guia.CodigoPostal}".ToUpperInvariant();
         }
 
         private void CargarDatosDePrueba()
@@ -169,33 +146,33 @@ namespace Prototipos_TUTASA
             transportistas.Add(carlos);
             transportistas.Add(laura);
 
-            AgregarHojaDeRuta(1, DateTime.Today, carlos, new List<GuiaRetiroResumen>
+            AgregarHojaDeRuta(1, DateTime.Today, carlos, new List<Guia>
             {
-                new GuiaRetiroResumen { NroGuia = "CD01-0001", Remitente = "Empresa ABC SA", Calle = "Av. Rivadavia", Altura = 3200, CodigoPostal = "1406" },
-                new GuiaRetiroResumen { NroGuia = "CD01-0002", Remitente = "Empresa ABC SA", Calle = "Av. Rivadavia", Altura = 3200, CodigoPostal = "1406" }
+                new Guia { Remitente = "Empresa ABC SA", Calle = "Av. Rivadavia", Altura = 3200, CodigoPostal = "1406" },
+                new Guia { Remitente = "Empresa ABC SA", Calle = "Av. Rivadavia", Altura = 3200, CodigoPostal = "1406" }
             });
 
-            AgregarHojaDeRuta(2, DateTime.Today, carlos, new List<GuiaRetiroResumen>
+            AgregarHojaDeRuta(2, DateTime.Today, carlos, new List<Guia>
             {
-                new GuiaRetiroResumen { NroGuia = "A001-0001", Remitente = "Agencia Norte SA", Calle = "Av. Corrientes", Altura = 1234, CodigoPostal = "1043" },
-                new GuiaRetiroResumen { NroGuia = "A001-0002", Remitente = "Agencia Norte SA", Calle = "Av. Corrientes", Altura = 1234, CodigoPostal = "1043" }
+                new Guia { Remitente = "Agencia Norte SA", Calle = "Av. Corrientes", Altura = 1234, CodigoPostal = "1043" },
+                new Guia { Remitente = "Agencia Norte SA", Calle = "Av. Corrientes", Altura = 1234, CodigoPostal = "1043" }
             });
 
-            AgregarHojaDeRuta(3, DateTime.Today, laura, new List<GuiaRetiroResumen>
+            AgregarHojaDeRuta(3, DateTime.Today, laura, new List<Guia>
             {
-                new GuiaRetiroResumen { NroGuia = "A002-0001", Remitente = "Agencia Sur SRL", Calle = "San Martin", Altura = 500, CodigoPostal = "1043" }
+                new Guia { Remitente = "Agencia Sur SRL", Calle = "San Martin", Altura = 500, CodigoPostal = "1043" }
             });
         }
 
-        private void AgregarHojaDeRuta(int nroHDR, DateTime fecha, TransportistaLocal transportista, List<GuiaRetiroResumen> guias)
+        private void AgregarHojaDeRuta(int nroHDR, DateTime fecha, TransportistaLocal transportista, List<Guia> guias)
         {
-            hojasDeRuta.Add(new HojaDeRutaRetiroResumen
+            hojasDeRuta.Add(new HojaDeRutaRetiro
             {
                 NroHDR = nroHDR,
                 FechaEmision = fecha,
-                Transportista = transportista,
+                DniTransportistaAsignado = transportista.DniTransportista,
                 Guias = guias,
-                Estado = EstadoHojaDeRutaResumen.Generada
+                Estado = EstadoHojaDeRutaEnum.Generada
             });
         }
     }
