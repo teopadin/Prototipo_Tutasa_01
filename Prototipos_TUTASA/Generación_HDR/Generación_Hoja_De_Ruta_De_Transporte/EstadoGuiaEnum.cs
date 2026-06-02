@@ -4,11 +4,9 @@ using System.Text;
 
 namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transporte
 {
-    internal enum TipoBulto
+    internal enum EstadoGuiaEnum
     {
-        S,
-        M,
-        L,
-        XL
+        Admitida,
+        PendienteDeDespacho
     }
 }

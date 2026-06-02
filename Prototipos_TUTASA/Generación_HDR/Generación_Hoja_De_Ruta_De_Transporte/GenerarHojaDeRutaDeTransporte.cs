@@ -67,7 +67,7 @@ namespace Prototipos_TUTASA.Generación_Hoja_De_Ruta_De_Transporte
 
             foreach (var guia in modelo.Guias)
             {
-                if (guia.Estado != EstadoGuia.Admitida || guia.CdOrigen.Nombre != modelo.CdEmisor.Nombre || guia.CdDestino.Nombre != cdSeleccionado.Nombre)
+                if (guia.Estado != EstadoGuiaEnum.Admitida || guia.CdOrigen.Nombre != modelo.CdEmisor.Nombre || guia.CdDestino.Nombre != cdSeleccionado.Nombre)
                     continue;
 
                 var item = new ListViewItem(guia.NroGuia);
@@ -173,16 +173,19 @@ namespace Prototipos_TUTASA.Generación_Hoja_De_Ruta_De_Transporte
                 return;
             }
 
+            modelo.UltimoNroHDR++;
+
             // Actualizar capacidad usada del servicio
             int totalBultos = 0;
             foreach (var guia in guiasSeleccionadas)
             {
                 totalBultos += guia.EquivalenteS;
-                guia.Estado = EstadoGuia.PendienteDeDespacho;
+                guia.Estado = EstadoGuiaEnum.PendienteDeDespacho;
             }
             servicioSeleccionado.CapacidadUsada += totalBultos;
 
-            MessageBox.Show($"Hoja de Ruta de Transporte generada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            MessageBox.Show($"Hoja de Ruta de Transporte {modelo.UltimoNroHDR} generada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             // Limpiar la pantalla para una nueva operación
             lvServicios.Items.Clear();

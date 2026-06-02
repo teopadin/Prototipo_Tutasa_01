@@ -11,6 +11,7 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_Retiro
             public List<Guia> Guias { get; set; }
             public List<TransportistaLocal> Transportistas { get; set; }
             public bool Actualizando { get; set; } = false;
+            public int UltimoNroHDR { get; set; } = 0;
 
         public ModeloGenerarHDRRetiro()
         {
@@ -49,19 +50,19 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_Retiro
             Guias = new List<Guia>
             {
                 // Domicilio cliente, origen Capital - misma dirección para probar filtro
-                new Guia { NroGuia = "CD01-0001", FechaImposicion = new DateTime(2026, 5, 20), TipoImposicion = TipoImposicion.CallCenter, TipoBulto = TipoBulto.M, Estado = EstadoGuia.Impuesta, CdOrigen = cdCapital, CdDestino = cdNorte, Cliente = cliente1, Agencia = null },
-                new Guia { NroGuia = "CD01-0002", FechaImposicion = new DateTime(2026, 5, 21), TipoImposicion = TipoImposicion.CallCenter, TipoBulto = TipoBulto.L, Estado = EstadoGuia.Impuesta, CdOrigen = cdCapital, CdDestino = cdCentro, Cliente = cliente2, Agencia = null },
+                new Guia { NroGuia = "CD01-0001", FechaImposicion = new DateTime(2026, 5, 20), TipoImposicion = TipoImposicion.CallCenter, TipoBulto = TipoBulto.M, Estado = EstadoGuia.Impuesta, CdOrigen = cdCapital, CdDestino = cdNorte, ClienteGuia = cliente1, Agencia = null },
+                new Guia { NroGuia = "CD01-0002", FechaImposicion = new DateTime(2026, 5, 21), TipoImposicion = TipoImposicion.CallCenter, TipoBulto = TipoBulto.L, Estado = EstadoGuia.Impuesta, CdOrigen = cdCapital, CdDestino = cdCentro, ClienteGuia = cliente2, Agencia = null },
 
                 // Retiro en agencia, origen Capital
-                new Guia { NroGuia = "A001-0001", FechaImposicion = new DateTime(2026, 5, 22), TipoImposicion = TipoImposicion.Agencia, TipoBulto = TipoBulto.S, Estado = EstadoGuia.Impuesta, CdOrigen = cdCapital, CdDestino = cdNorte, Cliente = null, Agencia = agencia1 },
-                new Guia { NroGuia = "A001-0002", FechaImposicion = new DateTime(2026, 5, 23), TipoImposicion = TipoImposicion.Agencia, TipoBulto = TipoBulto.XL, Estado = EstadoGuia.Impuesta, CdOrigen = cdCapital, CdDestino = cdEste, Cliente = null, Agencia = agencia1 },
-                new Guia { NroGuia = "A002-0001", FechaImposicion = new DateTime(2026, 5, 24), TipoImposicion = TipoImposicion.Agencia, TipoBulto = TipoBulto.M, Estado = EstadoGuia.Impuesta, CdOrigen = cdCapital, CdDestino = cdSur, Cliente = null, Agencia = agencia2 },
+                new Guia { NroGuia = "A001-0001", FechaImposicion = new DateTime(2026, 5, 22), TipoImposicion = TipoImposicion.Agencia, TipoBulto = TipoBulto.S, Estado = EstadoGuia.Impuesta, CdOrigen = cdCapital, CdDestino = cdNorte, ClienteGuia = null, Agencia = agencia1 },
+                new Guia { NroGuia = "A001-0002", FechaImposicion = new DateTime(2026, 5, 23), TipoImposicion = TipoImposicion.Agencia, TipoBulto = TipoBulto.XL, Estado = EstadoGuia.Impuesta, CdOrigen = cdCapital, CdDestino = cdEste, ClienteGuia = null, Agencia = agencia1 },
+                new Guia { NroGuia = "A002-0001", FechaImposicion = new DateTime(2026, 5, 24), TipoImposicion = TipoImposicion.Agencia, TipoBulto = TipoBulto.M, Estado = EstadoGuia.Impuesta, CdOrigen = cdCapital, CdDestino = cdSur, ClienteGuia = null, Agencia = agencia2 },
 
                 // Domicilio cliente, origen Córdoba - NO debe aparecer (CD origen != CD emisor)
-                new Guia { NroGuia = "CD02-0001", FechaImposicion = new DateTime(2026, 5, 22), TipoImposicion = TipoImposicion.CallCenter, TipoBulto = TipoBulto.S, Estado = EstadoGuia.Impuesta, CdOrigen = cdCentro, CdDestino = cdNorte, Cliente = cliente3, Agencia = null },
+                new Guia { NroGuia = "CD02-0001", FechaImposicion = new DateTime(2026, 5, 22), TipoImposicion = TipoImposicion.CallCenter, TipoBulto = TipoBulto.S, Estado = EstadoGuia.Impuesta, CdOrigen = cdCentro, CdDestino = cdNorte, ClienteGuia = cliente3, Agencia = null },
 
                 // En otro estado - NO debe aparecer
-                new Guia { NroGuia = "CD01-0003", FechaImposicion = new DateTime(2026, 5, 19), TipoImposicion = TipoImposicion.CallCenter, TipoBulto = TipoBulto.L, Estado = EstadoGuia.PendienteDeRetiroPorTransportista, CdOrigen = cdCapital, CdDestino = cdNorte, Cliente = cliente1, Agencia = null },
+                new Guia { NroGuia = "CD01-0003", FechaImposicion = new DateTime(2026, 5, 19), TipoImposicion = TipoImposicion.CallCenter, TipoBulto = TipoBulto.L, Estado = EstadoGuia.PendienteDeRetiroPorTransportista, CdOrigen = cdCapital, CdDestino = cdNorte, ClienteGuia = cliente1, Agencia = null },
             };
 
         }

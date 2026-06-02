@@ -13,7 +13,7 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_Retiro
         public EstadoGuia Estado { get; set; }
         public CentroDistribucion CdOrigen { get; set; }
         public CentroDistribucion CdDestino { get; set; }
-        public Cliente Cliente { get; set; }   // null si es Retiro en Agencia
+        public Cliente ClienteGuia { get; set; }   // null si es Retiro en Agencia
         public Agencia Agencia { get; set; }   // null si es domicilio del cliente
     }
 }

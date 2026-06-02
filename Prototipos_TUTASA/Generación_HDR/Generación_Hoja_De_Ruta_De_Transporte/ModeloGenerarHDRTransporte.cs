@@ -12,6 +12,7 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transpor
         public List<ServicioMediaDistancia> Servicios { get; set; }
 
         public bool Actualizando { get; set; } = false;
+        public int UltimoNroHDR { get; set; } = 0;
 
         public ModeloGenerarHDRTransporte()
         {
@@ -38,41 +39,41 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transpor
             Servicios = new List<ServicioMediaDistancia>
             {
                 // Servicio A: Capital -> Norte, capacidad max 160S, ya usó 40S
-                new ServicioMediaDistancia { IdServicio = 1, Empresa = empresa1, TipoArrendamiento = TipoArrendamiento.A, CapacidadUsada = 40, CdOrigen = cdCapital, CdDestino = cdNorte, HorarioSalida = new TimeSpan(8, 0, 0) },
+                new ServicioMediaDistancia { IdServicio = 1, Empresa = empresa1, TipoArrendamiento = TipoArrendamientoEnum.A, CapacidadUsada = 40, CdOrigen = cdCapital, CdDestino = cdNorte, HorarioSalida = new TimeSpan(8, 0, 0) },
 
                 // Servicio B: Capital -> Centro, capacidad max 80S, ya usó 0S
-                new ServicioMediaDistancia { IdServicio = 2, Empresa = empresa2, TipoArrendamiento = TipoArrendamiento.B, CapacidadUsada = 0, CdOrigen = cdCapital, CdDestino = cdCentro, HorarioSalida = new TimeSpan(10, 30, 0) },
+                new ServicioMediaDistancia { IdServicio = 2, Empresa = empresa2, TipoArrendamiento = TipoArrendamientoEnum.B, CapacidadUsada = 0, CdOrigen = cdCapital, CdDestino = cdCentro, HorarioSalida = new TimeSpan(10, 30, 0) },
 
                 // Servicio C: Capital -> Norte, capacidad max 56S, ya usó 50S (casi lleno)
-                new ServicioMediaDistancia { IdServicio = 3, Empresa = empresa1, TipoArrendamiento = TipoArrendamiento.C, CapacidadUsada = 50, CdOrigen = cdCapital, CdDestino = cdNorte, HorarioSalida = new TimeSpan(14, 0, 0) },
+                new ServicioMediaDistancia { IdServicio = 3, Empresa = empresa1, TipoArrendamiento = TipoArrendamientoEnum.C, CapacidadUsada = 50, CdOrigen = cdCapital, CdDestino = cdNorte, HorarioSalida = new TimeSpan(14, 0, 0) },
 
                 // Servicio D: Capital -> Este, capacidad max 24S, ya usó 0S
-                new ServicioMediaDistancia { IdServicio = 4, Empresa = empresa2, TipoArrendamiento = TipoArrendamiento.D, CapacidadUsada = 0, CdOrigen = cdCapital, CdDestino = cdEste, HorarioSalida = new TimeSpan(16, 0, 0) },
+                new ServicioMediaDistancia { IdServicio = 4, Empresa = empresa2, TipoArrendamiento = TipoArrendamientoEnum.D, CapacidadUsada = 0, CdOrigen = cdCapital, CdDestino = cdEste, HorarioSalida = new TimeSpan(16, 0, 0) },
 
                 // Servicio de otro CD - NO debe aparecer
-                new ServicioMediaDistancia { IdServicio = 5, Empresa = empresa1, TipoArrendamiento = TipoArrendamiento.A, CapacidadUsada = 0, CdOrigen = cdCentro, CdDestino = cdNorte, HorarioSalida = new TimeSpan(9, 0, 0) },
+                new ServicioMediaDistancia { IdServicio = 5, Empresa = empresa1, TipoArrendamiento = TipoArrendamientoEnum.A, CapacidadUsada = 0, CdOrigen = cdCentro, CdDestino = cdNorte, HorarioSalida = new TimeSpan(9, 0, 0) },
             };
 
             // Guías en estado Admitida, origen Capital
             Guias = new List<Guia>
             {
                 // Destino Norte
-                new Guia { NroGuia = "CD01-0001", FechaImposicion = new DateTime(2026, 5, 20), TipoBulto = TipoBulto.M, Estado = EstadoGuia.Admitida, CdOrigen = cdCapital, CdDestino = cdNorte },
-                new Guia { NroGuia = "CD01-0002", FechaImposicion = new DateTime(2026, 5, 21), TipoBulto = TipoBulto.L, Estado = EstadoGuia.Admitida, CdOrigen = cdCapital, CdDestino = cdNorte },
-                new Guia { NroGuia = "CD01-0003", FechaImposicion = new DateTime(2026, 5, 22), TipoBulto = TipoBulto.XL, Estado = EstadoGuia.Admitida, CdOrigen = cdCapital, CdDestino = cdNorte },
+                new Guia { NroGuia = "CD01-0001", FechaImposicion = new DateTime(2026, 5, 20), TipoBulto = TiposBultoEnum.M, Estado = EstadoGuiaEnum.Admitida, CdOrigen = cdCapital, CdDestino = cdNorte },
+                new Guia { NroGuia = "CD01-0002", FechaImposicion = new DateTime(2026, 5, 21), TipoBulto = TiposBultoEnum.L, Estado = EstadoGuiaEnum.Admitida, CdOrigen = cdCapital, CdDestino = cdNorte },
+                new Guia { NroGuia = "CD01-0003", FechaImposicion = new DateTime(2026, 5, 22), TipoBulto = TiposBultoEnum.XL, Estado = EstadoGuiaEnum.Admitida, CdOrigen = cdCapital, CdDestino = cdNorte },
 
                 // Destino Centro
-                new Guia { NroGuia = "CD01-0004", FechaImposicion = new DateTime(2026, 5, 20), TipoBulto = TipoBulto.S, Estado = EstadoGuia.Admitida, CdOrigen = cdCapital, CdDestino = cdCentro },
-                new Guia { NroGuia = "CD01-0005", FechaImposicion = new DateTime(2026, 5, 21), TipoBulto = TipoBulto.M, Estado = EstadoGuia.Admitida, CdOrigen = cdCapital, CdDestino = cdCentro },
+                new Guia { NroGuia = "CD01-0004", FechaImposicion = new DateTime(2026, 5, 20), TipoBulto = TiposBultoEnum.S, Estado = EstadoGuiaEnum.Admitida, CdOrigen = cdCapital, CdDestino = cdCentro },
+                new Guia { NroGuia = "CD01-0005", FechaImposicion = new DateTime(2026, 5, 21), TipoBulto = TiposBultoEnum.M, Estado = EstadoGuiaEnum.Admitida, CdOrigen = cdCapital, CdDestino = cdCentro },
 
                 // Destino Este
-                new Guia { NroGuia = "CD01-0006", FechaImposicion = new DateTime(2026, 5, 22), TipoBulto = TipoBulto.S, Estado = EstadoGuia.Admitida, CdOrigen = cdCapital, CdDestino = cdEste },
+                new Guia { NroGuia = "CD01-0006", FechaImposicion = new DateTime(2026, 5, 22), TipoBulto = TiposBultoEnum.S, Estado = EstadoGuiaEnum.Admitida, CdOrigen = cdCapital, CdDestino = cdEste },
 
                 // Otro estado - NO debe aparecer
-                new Guia { NroGuia = "CD01-0007", FechaImposicion = new DateTime(2026, 5, 19), TipoBulto = TipoBulto.M, Estado = EstadoGuia.PendienteDeDespacho, CdOrigen = cdCapital, CdDestino = cdNorte },
+                new Guia { NroGuia = "CD01-0007", FechaImposicion = new DateTime(2026, 5, 19), TipoBulto = TiposBultoEnum.M, Estado = EstadoGuiaEnum.PendienteDeDespacho, CdOrigen = cdCapital, CdDestino = cdNorte },
 
                 // Otro CD origen - NO debe aparecer
-                new Guia { NroGuia = "CD02-0001", FechaImposicion = new DateTime(2026, 5, 20), TipoBulto = TipoBulto.S, Estado = EstadoGuia.Admitida, CdOrigen = cdCentro, CdDestino = cdNorte },
+                new Guia { NroGuia = "CD02-0001", FechaImposicion = new DateTime(2026, 5, 20), TipoBulto = TiposBultoEnum.S, Estado = EstadoGuiaEnum.Admitida, CdOrigen = cdCentro, CdDestino = cdNorte },
             };
 
         }

@@ -4,10 +4,8 @@ using System.Text;
 
 namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Distribucion
 {
-    internal enum EstadoGuia
+    internal enum EstadoHojaDeRutaEnum
     {
-        EnCDDestino,
-        EnDistribucion,
-        Admitida
+        Generada
     }
 }

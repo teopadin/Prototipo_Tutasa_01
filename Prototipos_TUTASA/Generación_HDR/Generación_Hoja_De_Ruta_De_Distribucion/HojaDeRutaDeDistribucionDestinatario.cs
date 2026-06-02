@@ -32,15 +32,15 @@ namespace Prototipos_TUTASA.HojaDeRutaDeDistribucion
 
             foreach (var guia in modelo.Guias)
             {
-                bool esEnCDDestino = guia.Estado == EstadoGuia.EnCDDestino && guia.CdDestino.Nombre == modelo.CdEmisor.Nombre;
-                bool esAdmitidaLocal = guia.Estado == EstadoGuia.Admitida && guia.CdOrigen.Nombre == modelo.CdEmisor.Nombre && guia.CdDestino.Nombre == modelo.CdEmisor.Nombre;
+                bool esEnCDDestino = guia.Estado == EstadoGuiaEnum.EnCDDestino && guia.CdDestino.Nombre == modelo.CdEmisor.Nombre;
+                bool esAdmitidaLocal = guia.Estado == EstadoGuiaEnum.Admitida && guia.CdOrigen.Nombre == modelo.CdEmisor.Nombre && guia.CdDestino.Nombre == modelo.CdEmisor.Nombre;
 
                 if (!esEnCDDestino && !esAdmitidaLocal)
                     continue;
 
                 string razonSocial, dni, calle, altura, piso, cp, ciudad;
 
-                if (guia.ModalidadEntrega == ModalidadEntrega.PuertaAPuerta)
+                if (guia.ModalidadEntrega == ModalidadEntregaEnum.PuertaAPuerta)
                 {
                     razonSocial = $"{guia.Destinatario.Nombre} {guia.Destinatario.Apellido}";
                     dni = guia.Destinatario.Dni.ToString();
@@ -52,13 +52,13 @@ namespace Prototipos_TUTASA.HojaDeRutaDeDistribucion
                 }
                 else
                 {
-                    razonSocial = guia.Agencia.RazonSocial;
+                    razonSocial = guia.AgenciaGuia.RazonSocial;
                     dni = "-";
-                    calle = guia.Agencia.Calle;
-                    altura = guia.Agencia.Altura.ToString();
-                    piso = guia.Agencia.Piso;
-                    cp = guia.Agencia.CodigoPostal;
-                    ciudad = guia.Agencia.Ciudad;
+                    calle = guia.AgenciaGuia.Calle;
+                    altura = guia.AgenciaGuia.Altura.ToString();
+                    piso = guia.AgenciaGuia.Piso;
+                    cp = guia.AgenciaGuia.CodigoPostal;
+                    ciudad = guia.AgenciaGuia.Ciudad;
                 }
 
                 var item = new ListViewItem(guia.NroGuia);
@@ -115,7 +115,7 @@ namespace Prototipos_TUTASA.HojaDeRutaDeDistribucion
             Guia guiaReferencia = guiasSeleccionadas[0];
             string calleRef, alturaRef, pisoRef, cpRef, ciudadRef;
 
-            if (guiaReferencia.ModalidadEntrega == ModalidadEntrega.PuertaAPuerta)
+            if (guiaReferencia.ModalidadEntrega == ModalidadEntregaEnum.PuertaAPuerta)
             {
                 calleRef = guiaReferencia.Destinatario.Calle;
                 alturaRef = guiaReferencia.Destinatario.Altura.ToString();
@@ -125,11 +125,11 @@ namespace Prototipos_TUTASA.HojaDeRutaDeDistribucion
             }
             else
             {
-                calleRef = guiaReferencia.Agencia.Calle;
-                alturaRef = guiaReferencia.Agencia.Altura.ToString();
-                pisoRef = guiaReferencia.Agencia.Piso;
-                cpRef = guiaReferencia.Agencia.CodigoPostal;
-                ciudadRef = guiaReferencia.Agencia.Ciudad;
+                calleRef = guiaReferencia.AgenciaGuia.Calle;
+                alturaRef = guiaReferencia.AgenciaGuia.Altura.ToString();
+                pisoRef = guiaReferencia.AgenciaGuia.Piso;
+                cpRef = guiaReferencia.AgenciaGuia.CodigoPostal;
+                ciudadRef = guiaReferencia.AgenciaGuia.Ciudad;
             }
 
             modelo.Actualizando = true;
@@ -138,7 +138,7 @@ namespace Prototipos_TUTASA.HojaDeRutaDeDistribucion
                 Guia guia = (Guia)item.Tag;
                 string calle, altura, piso, cp, ciudad;
 
-                if (guia.ModalidadEntrega == ModalidadEntrega.PuertaAPuerta)
+                if (guia.ModalidadEntrega == ModalidadEntregaEnum.PuertaAPuerta)
                 {
                     calle = guia.Destinatario.Calle;
                     altura = guia.Destinatario.Altura.ToString();
@@ -148,11 +148,11 @@ namespace Prototipos_TUTASA.HojaDeRutaDeDistribucion
                 }
                 else
                 {
-                    calle = guia.Agencia.Calle;
-                    altura = guia.Agencia.Altura.ToString();
-                    piso = guia.Agencia.Piso;
-                    cp = guia.Agencia.CodigoPostal;
-                    ciudad = guia.Agencia.Ciudad;
+                    calle = guia.AgenciaGuia.Calle;
+                    altura = guia.AgenciaGuia.Altura.ToString();
+                    piso = guia.AgenciaGuia.Piso;
+                    cp = guia.AgenciaGuia.CodigoPostal;
+                    ciudad = guia.AgenciaGuia.Ciudad;
                 }
 
                 if (calle != calleRef || altura != alturaRef || piso != pisoRef || cp != cpRef || ciudad != ciudadRef)
@@ -238,14 +238,17 @@ namespace Prototipos_TUTASA.HojaDeRutaDeDistribucion
                 return;
             }
 
+            HojaDeRutaDistribucion nuevaHDR = new HojaDeRutaDistribucion();
+            modelo.UltimoNroHDR++;
+
             // Cambiar el estado de las guías a EnDistribucion
             foreach (var guia in guiasSeleccionadas)
-                guia.Estado = EstadoGuia.EnDistribucion;
+                guia.Estado = EstadoGuiaEnum.EnDistribucion;
 
             // Incrementar las HDR asignadas al transportista
             transportistaSeleccionado.HdrAsignadas++;
 
-            MessageBox.Show($"Hoja de Ruta de Distribución generada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show($"Hoja de Ruta de Distribución {modelo.UltimoNroHDR} generada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             // Limpiar la pantalla para una nueva operación
             listViewFleteros.Items.Clear();

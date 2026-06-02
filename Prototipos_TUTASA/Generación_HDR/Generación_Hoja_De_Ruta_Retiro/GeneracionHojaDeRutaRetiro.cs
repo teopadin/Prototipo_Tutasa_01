@@ -38,12 +38,12 @@ namespace Prototipos_TUTASA.HojaDeRutaRetiro
 
                 if (guia.TipoImposicion == TipoImposicion.CallCenter)
                 {
-                    razonSocial = guia.Cliente.RazonSocial;
-                    calle = guia.Cliente.Calle;
-                    altura = guia.Cliente.Altura.ToString();
-                    piso = guia.Cliente.Piso;
-                    cp = guia.Cliente.CodigoPostal;
-                    ciudad = guia.Cliente.Ciudad;
+                    razonSocial = guia.ClienteGuia.RazonSocial;
+                    calle = guia.ClienteGuia.Calle;
+                    altura = guia.ClienteGuia.Altura.ToString();
+                    piso = guia.ClienteGuia.Piso;
+                    cp = guia.ClienteGuia.CodigoPostal;
+                    ciudad = guia.ClienteGuia.Ciudad;
                 }
                 else
                 {
@@ -111,11 +111,11 @@ namespace Prototipos_TUTASA.HojaDeRutaRetiro
 
             if (guiaReferencia.TipoImposicion == TipoImposicion.CallCenter)
             {
-                calleRef = guiaReferencia.Cliente.Calle;
-                alturaRef = guiaReferencia.Cliente.Altura.ToString();
-                pisoRef = guiaReferencia.Cliente.Piso;
-                cpRef = guiaReferencia.Cliente.CodigoPostal;
-                ciudadRef = guiaReferencia.Cliente.Ciudad;
+                calleRef = guiaReferencia.ClienteGuia.Calle;
+                alturaRef = guiaReferencia.ClienteGuia.Altura.ToString();
+                pisoRef = guiaReferencia.ClienteGuia.Piso;
+                cpRef = guiaReferencia.ClienteGuia.CodigoPostal;
+                ciudadRef = guiaReferencia.ClienteGuia.Ciudad;
             }
             else
             {
@@ -134,11 +134,11 @@ namespace Prototipos_TUTASA.HojaDeRutaRetiro
 
                 if (guia.TipoImposicion == TipoImposicion.CallCenter)
                 {
-                    calle = guia.Cliente.Calle;
-                    altura = guia.Cliente.Altura.ToString();
-                    piso = guia.Cliente.Piso;
-                    cp = guia.Cliente.CodigoPostal;
-                    ciudad = guia.Cliente.Ciudad;
+                    calle = guia.ClienteGuia.Calle;
+                    altura = guia.ClienteGuia.Altura.ToString();
+                    piso = guia.ClienteGuia.Piso;
+                    cp = guia.ClienteGuia.CodigoPostal;
+                    ciudad = guia.ClienteGuia.Ciudad;
                 }
                 else
                 {
@@ -222,6 +222,7 @@ namespace Prototipos_TUTASA.HojaDeRutaRetiro
                 return;
             }
 
+            modelo.UltimoNroHDR++;
 
             // Cambiar el estado de las guías a PendienteDeRetiroPorTransportista
             foreach (var guia in guiasSeleccionadas)
@@ -231,7 +232,7 @@ namespace Prototipos_TUTASA.HojaDeRutaRetiro
             transportistaSeleccionado.HdrAsignadas++;
 
 
-            MessageBox.Show($"Hoja de Ruta de Retiro generada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show($"Hoja de Ruta de Retiro {modelo.UltimoNroHDR} generada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             // Limpiar la pantalla para una nueva operación
             lvFleteros.Items.Clear();
