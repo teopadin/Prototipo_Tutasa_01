@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using TransportistaLocal = Prototipos_TUTASA.ClasesResumenHDRDistribucion.TransportistaLocal;
 
 namespace Prototipos_TUTASA
 {

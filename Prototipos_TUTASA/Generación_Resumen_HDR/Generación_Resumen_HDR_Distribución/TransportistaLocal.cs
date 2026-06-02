@@ -1,4 +1,4 @@
-namespace Prototipos_TUTASA
+namespace Prototipos_TUTASA.ClasesResumenHDRDistribucion
 {
     internal class TransportistaLocal
     {
