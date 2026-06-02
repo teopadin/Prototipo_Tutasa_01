@@ -11,6 +11,7 @@ using Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia;
 using Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia;
 using Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia;
 using Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_CD;
+using Prototipos_TUTASA.RecepcionMediaDistancia;
 
 namespace Prototipos_TUTASA
 {
@@ -31,7 +32,7 @@ namespace Prototipos_TUTASA
             //Application.Run(new GenerarHojaDeRutaDeTransporte());
             //Application.Run(new Despacho_Servicios_Media_Distancia.Despacho_Servicios_Media_Distancia());
             //Application.Run(new Prototipos_TUTASA.RecepcionMediaDistancia.RecepcionMediaDistancia());
-            Application.Run(new HojaDeRutaDeDistribucionDestinatario());
+            //Application.Run(new HojaDeRutaDeDistribucionDestinatario());
             //Application.Run(new Generacion_Resumen_HDR_Distribucion());
             //Application.Run(new Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia.Recepcion_HDR_Distribucion_Agencia());
             //Application.Run(new Prototipos_TUTASA.Rendiciones_HDR.Rendir_HDR_De_Distribucion());
