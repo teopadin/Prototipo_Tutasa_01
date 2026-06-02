@@ -9,7 +9,7 @@ namespace Prototipos_TUTASA.Admisión
         public string NroGuia { get; set; }
         public int IdCliente { get; set; }
         public int IdCDDestino { get; set; }
-        public Destinatario Destinatario { get; set; }
+        public DestinatarioGuia Destinatario { get; set; }
         public TiposBulto TipoBulto { get; set; }
         public ModalidadesEntrega ModalidadEntrega { get; set; }
         public EstadoGuia Estado { get; set; }

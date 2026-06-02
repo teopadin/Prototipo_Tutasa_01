@@ -31,7 +31,7 @@ namespace Prototipos_TUTASA.Admisión
                 NroGuia = "CD01-0001",
                 IdCliente = 100,
                 IdCDDestino = 2,
-                Destinatario = new Destinatario { Dni = 30111222, Nombre = "Juan", Apellido = "Pérez" },
+                Destinatario = new DestinatarioGuia { Dni = 30111222, Nombre = "Juan", Apellido = "Pérez" },
                 TipoBulto = TiposBulto.M,
                 ModalidadEntrega = ModalidadesEntrega.PuertaAPuerta,
                 Estado = EstadoGuia.Retirada
@@ -42,7 +42,7 @@ namespace Prototipos_TUTASA.Admisión
                 NroGuia = "CD01-0002",
                 IdCliente = 200,
                 IdCDDestino = 1,
-                Destinatario = new Destinatario { Dni = 28444555, Nombre = "María", Apellido = "González" },
+                Destinatario = new DestinatarioGuia { Dni = 28444555, Nombre = "María", Apellido = "González" },
                 TipoBulto = TiposBulto.S,
                 ModalidadEntrega = ModalidadesEntrega.RetiroEnCD,
                 Estado = EstadoGuia.Retirada
@@ -53,7 +53,7 @@ namespace Prototipos_TUTASA.Admisión
                 NroGuia = "CD01-0003",
                 IdCliente = 300,
                 IdCDDestino = 1,
-                Destinatario = new Destinatario { Dni = 35777888, Nombre = "Carlos", Apellido = "López" },
+                Destinatario = new DestinatarioGuia { Dni = 35777888, Nombre = "Carlos", Apellido = "López" },
                 TipoBulto = TiposBulto.L,
                 ModalidadEntrega = ModalidadesEntrega.PuertaAPuerta,
                 Estado = EstadoGuia.Retirada
@@ -64,7 +64,7 @@ namespace Prototipos_TUTASA.Admisión
                 NroGuia = "CD01-0004",
                 IdCliente = 100,
                 IdCDDestino = 3,
-                Destinatario = new Destinatario { Dni = 30111222, Nombre = "Juan", Apellido = "Pérez" },
+                Destinatario = new DestinatarioGuia { Dni = 30111222, Nombre = "Juan", Apellido = "Pérez" },
                 TipoBulto = TiposBulto.XL,
                 ModalidadEntrega = ModalidadesEntrega.RetiroEnAgencia,
                 Estado = EstadoGuia.Admitida
