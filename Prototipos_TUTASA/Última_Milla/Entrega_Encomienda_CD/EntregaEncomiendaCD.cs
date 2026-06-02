@@ -1,7 +1,7 @@
 using System;
 using System.Windows.Forms;
 
-namespace Prototipos_TUTASA
+namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_CD
 {
     public partial class EntregaEncomiendaCD : Form
     {

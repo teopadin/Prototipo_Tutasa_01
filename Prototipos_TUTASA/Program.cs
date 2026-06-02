@@ -10,6 +10,7 @@ using Prototipos_TUTASA.Despacho_Servicios_Media_Distancia;
 using Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia;
 using Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia;
 using Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia;
+using Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_CD;
 
 namespace Prototipos_TUTASA
 {
@@ -30,7 +31,7 @@ namespace Prototipos_TUTASA
             //Application.Run(new GenerarHojaDeRutaDeTransporte());
             //Application.Run(new Despacho_Servicios_Media_Distancia.Despacho_Servicios_Media_Distancia());
             //Application.Run(new Prototipos_TUTASA.RecepcionMediaDistancia.RecepcionMediaDistancia());
-            //Application.Run(new HojaDeRutaDeDistribucionDestinatario());
+            Application.Run(new HojaDeRutaDeDistribucionDestinatario());
             //Application.Run(new Generacion_Resumen_HDR_Distribucion());
             //Application.Run(new Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia.Recepcion_HDR_Distribucion_Agencia());
             //Application.Run(new Prototipos_TUTASA.Rendiciones_HDR.Rendir_HDR_De_Distribucion());
@@ -38,7 +39,7 @@ namespace Prototipos_TUTASA
             //Application.Run(new ConsultarEstadoDelPedido_v2.ConsultarEstadoDelPedido());
             //Application.Run(new resultadocostosvsventas());
             //Application.Run(new Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrienteXCliente_v2.EstadoCuentaCorrienteXCliente());
-            Application.Run(new EntregaAgencia());
+            //Application.Run(new EntregaAgencia());
         }
     }
 }

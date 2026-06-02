@@ -232,6 +232,7 @@ namespace Prototipos_TUTASA.HojaDeRutaRetiro
             // Incrementar las HDR asignadas al transportista
             transportistaSeleccionado.HdrAsignadas++;
 
+            modelo.HojasDeRuta.Add(nuevaHDR);
 
             MessageBox.Show($"Hoja de Ruta de Retiro  {nuevaHDR.NroHDR} generada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

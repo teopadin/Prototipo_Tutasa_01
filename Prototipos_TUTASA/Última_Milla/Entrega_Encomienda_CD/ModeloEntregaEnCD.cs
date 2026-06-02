@@ -2,14 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 
-namespace Prototipos_TUTASA
+namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_CD
 {
     internal class ModeloEntregaEnCD
     {
-        private readonly CentroDistribucionEntregaCD cdActual;
-        private readonly List<GuiaEntregaCD> guias;
+        private readonly CentroDistribucion cdActual;
+        private readonly List<Guia> guias;
         private readonly List<ReciboEntregaCD> recibos = new List<ReciboEntregaCD>();
-        private GuiaEntregaCD guiaSeleccionada = new GuiaEntregaCD();
+        private Guia guiaSeleccionada = new Guia();
 
         public bool HayGuiaSeleccionada { get; private set; }
         public string NroGuiaSeleccionada => HayGuiaSeleccionada ? guiaSeleccionada.NroGuia : string.Empty;
@@ -19,40 +19,40 @@ namespace Prototipos_TUTASA
 
         public ModeloEntregaEnCD()
         {
-            var cdCapital = new CentroDistribucionEntregaCD { IdCD = 1, Nombre = "Capital y GBA" };
-            var cdCentro = new CentroDistribucionEntregaCD { IdCD = 2, Nombre = "Centro - Córdoba" };
+            var cdCapital = new CentroDistribucion { IdCD = 1, Nombre = "Capital y GBA" };
+            var cdCentro = new CentroDistribucion { IdCD = 2, Nombre = "Centro - Córdoba" };
 
             cdActual = cdCapital;
 
-            guias = new List<GuiaEntregaCD>
+            guias = new List<Guia>
             {
-                new GuiaEntregaCD
+                new Guia
                 {
                     NroGuia = "CD02-0002",
-                    Estado = EstadoGuiaEntregaCD.PendienteDeRetiroEnCD,
+                    Estado = EstadoGuiaEnum.PendienteDeRetiroEnCD,
                     CdDestino = cdCapital,
-                    Destinatario = new DestinatarioEntregaCD { Nombre = "Ana", Apellido = "Pérez", Dni = 40123456 }
+                    Destinatario = new DestinatarioGuia { Nombre = "Ana", Apellido = "Pérez", Dni = 40123456 }
                 },
-                new GuiaEntregaCD
+                new Guia
                 {
                     NroGuia = "CD01-0007",
-                    Estado = EstadoGuiaEntregaCD.PendienteDeRetiroEnCD,
+                    Estado = EstadoGuiaEnum.PendienteDeRetiroEnCD,
                     CdDestino = cdCapital,
-                    Destinatario = new DestinatarioEntregaCD { Nombre = "Juan", Apellido = "Rodríguez", Dni = 41234567 }
+                    Destinatario = new DestinatarioGuia { Nombre = "Juan", Apellido = "Rodríguez", Dni = 41234567 }
                 },
-                new GuiaEntregaCD
+                new Guia
                 {
                     NroGuia = "CD03-0001",
-                    Estado = EstadoGuiaEntregaCD.EnDistribucion,
+                    Estado = EstadoGuiaEnum.EnDistribucion,
                     CdDestino = cdCapital,
-                    Destinatario = new DestinatarioEntregaCD { Nombre = "María", Apellido = "González", Dni = 42345678 }
+                    Destinatario = new DestinatarioGuia { Nombre = "María", Apellido = "González", Dni = 42345678 }
                 },
-                new GuiaEntregaCD
+                new Guia
                 {
                     NroGuia = "CD02-0009",
-                    Estado = EstadoGuiaEntregaCD.PendienteDeRetiroEnCD,
+                    Estado = EstadoGuiaEnum.PendienteDeRetiroEnCD,
                     CdDestino = cdCentro,
-                    Destinatario = new DestinatarioEntregaCD { Nombre = "Carlos", Apellido = "López", Dni = 43567890 }
+                    Destinatario = new DestinatarioGuia { Nombre = "Carlos", Apellido = "López", Dni = 43567890 }
                 }
             };
         }
@@ -74,7 +74,7 @@ namespace Prototipos_TUTASA
                 return false;
             }
 
-            if (!BuscarGuiaDisponible(nroGuia, out GuiaEntregaCD guia))
+            if (!BuscarGuiaDisponible(nroGuia, out Guia guia))
             {
                 mensaje = "No se encontró una guía con el número ingresado.";
                 return false;
@@ -92,7 +92,7 @@ namespace Prototipos_TUTASA
                 return false;
             }
 
-            if (guia.Estado != EstadoGuiaEntregaCD.PendienteDeRetiroEnCD)
+            if (guia.Estado != EstadoGuiaEnum.PendienteDeRetiroEnCD)
             {
                 mensaje = "La guía no se encuentra pendiente de retiro en CD.";
                 return false;
@@ -156,13 +156,13 @@ namespace Prototipos_TUTASA
 
         public void LimpiarSeleccion()
         {
-            guiaSeleccionada = new GuiaEntregaCD();
+            guiaSeleccionada = new Guia();
             HayGuiaSeleccionada = false;
         }
 
-        private bool BuscarGuiaDisponible(string nroGuia, out GuiaEntregaCD guiaEncontrada)
+        private bool BuscarGuiaDisponible(string nroGuia, out Guia guiaEncontrada)
         {
-            foreach (GuiaEntregaCD guia in guias)
+            foreach (Guia guia in guias)
             {
                 if (string.Equals(guia.NroGuia, nroGuia, StringComparison.OrdinalIgnoreCase))
                 {
@@ -171,7 +171,7 @@ namespace Prototipos_TUTASA
                 }
             }
 
-            guiaEncontrada = new GuiaEntregaCD();
+            guiaEncontrada = new Guia();
             return false;
         }
 
@@ -196,9 +196,9 @@ namespace Prototipos_TUTASA
                 DniRetira = dni
             };
 
-            guiaSeleccionada.Estado = EstadoGuiaEntregaCD.Entregada;
+            guiaSeleccionada.Estado = EstadoGuiaEnum.Entregada;
             guiaSeleccionada.FechaEntrega = fechaEntrega;
-            guiaSeleccionada.Historial.Add(new HistorialEstadoGuiaEntregaCD
+            guiaSeleccionada.Historial.Add(new HistorialEstadoGuia
             {
                 FechaCambio = fechaEntrega,
                 Estado = guiaSeleccionada.Estado

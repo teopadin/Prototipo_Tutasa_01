@@ -185,6 +185,7 @@ namespace Prototipos_TUTASA.Generación_Hoja_De_Ruta_De_Transporte
             }
             servicioSeleccionado.CapacidadUsada += totalBultos;
 
+            modelo.HojasDeRuta.Add(nuevaHDR);
 
             MessageBox.Show($"Hoja de Ruta de Transporte {nuevaHDR.NroHDR} generada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

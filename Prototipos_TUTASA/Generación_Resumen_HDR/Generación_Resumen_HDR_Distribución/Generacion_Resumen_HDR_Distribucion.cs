@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using TransportistaLocal = Prototipos_TUTASA.ClasesResumenHDRDistribucion.TransportistaLocal;
+using Prototipos_TUTASA.ClasesResumenHDRDistribucion;
 
 namespace Prototipos_TUTASA
 {
@@ -92,14 +92,20 @@ namespace Prototipos_TUTASA
                 return;
             }
 
-            foreach (DatosDestinoResumen datos in modelo.ObtenerDatosHojasSeleccionadas())
+            foreach (HojaDeRutaDistribucion hoja in modelo.ObtenerHojasSeleccionadas())
             {
-                var item = new ListViewItem(datos.NroHDR.ToString());
-                item.SubItems.Add(datos.Nombre);
-                item.SubItems.Add(datos.Calle);
-                item.SubItems.Add(datos.Altura.ToString());
-                item.SubItems.Add(datos.CodigoPostal);
-                item.SubItems.Add(datos.CantidadBultos.ToString());
+                if (hoja.Guias.Count == 0)
+                {
+                    continue;
+                }
+
+                Guia guia = hoja.Guias[0];
+                var item = new ListViewItem(hoja.NroHDR.ToString());
+                item.SubItems.Add(guia.Destinatario);
+                item.SubItems.Add(guia.Calle);
+                item.SubItems.Add(guia.Altura.ToString());
+                item.SubItems.Add(guia.CodigoPostal);
+                item.SubItems.Add(modelo.ObtenerCantidadBultos(hoja).ToString());
                 listView1.Items.Add(item);
             }
 
