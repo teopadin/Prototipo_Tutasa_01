@@ -23,28 +23,28 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia
                     NroGuia = "CD02-0002",
                     Estado = EstadoGuiaEnum.PendienteDeRetiroEnAgencia,
                     AgenciaDestino = agenciaCapital,
-                    Destinatario = new ClaseDestinatario { Nombre = "Ana", Apellido = "Pérez", Dni = 40123456 }
+                    Destinatario = new ClaseDestinatarioGuia { Nombre = "Ana", Apellido = "Pérez", Dni = 40123456 }
                 },
                 new ClaseGuia
                 {
                     NroGuia = "CD01-0007",
                     Estado = EstadoGuiaEnum.PendienteDeRetiroEnAgencia,
                     AgenciaDestino = agenciaCapital,
-                    Destinatario = new ClaseDestinatario { Nombre = "Juan", Apellido = "Rodríguez", Dni = 41234567 }
+                    Destinatario = new ClaseDestinatarioGuia { Nombre = "Juan", Apellido = "Rodríguez", Dni = 41234567 }
                 },
                 new ClaseGuia
                 {
                     NroGuia = "CD03-0001",
                     Estado = EstadoGuiaEnum.Entregada,
                     AgenciaDestino = agenciaCapital,
-                    Destinatario = new ClaseDestinatario { Nombre = "María", Apellido = "González", Dni = 42345678 }
+                    Destinatario = new ClaseDestinatarioGuia { Nombre = "María", Apellido = "González", Dni = 42345678 }
                 },
                 new ClaseGuia
                 {
                     NroGuia = "CD02-0009",
                     Estado = EstadoGuiaEnum.PendienteDeRetiroEnAgencia,
                     AgenciaDestino = agenciaCentro,
-                    Destinatario = new ClaseDestinatario { Nombre = "Carlos", Apellido = "López", Dni = 43567890 }
+                    Destinatario = new ClaseDestinatarioGuia { Nombre = "Carlos", Apellido = "López", Dni = 43567890 }
                 }
             };
         }
@@ -69,12 +69,5 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia
             guia.Estado = EstadoGuiaEnum.Entregada;
             recibos.Add(recibo);
         }
-    }
-
-    internal class ClaseDestinatario
-    {
-        public string Nombre { get; set; }
-        public string Apellido { get; set; }
-        public int Dni { get; set; }
     }
 }

@@ -37,7 +37,7 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia
             }
 
             // Paso 3 / Excepción 2: la guía debe estar en estado "Pendiente de retiro en Agencia".
-            if (guia.Estado != EstadoGuia.PendienteDeRetiroEnAgencia)
+            if (guia.Estado != EstadoGuiaEnum.PendienteDeRetiroEnAgencia)
             {
                 MessageBox.Show("La guía ingresada no se encuentra en estado \"Pendiente de retiro en Agencia\".", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
