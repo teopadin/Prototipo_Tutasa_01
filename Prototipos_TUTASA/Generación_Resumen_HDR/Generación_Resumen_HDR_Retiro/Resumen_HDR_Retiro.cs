@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using Prototipos_TUTASA.ClasesResumenHDRRetiro;
+using HojaRetiroResumen = Prototipos_TUTASA.ClasesResumenHDRRetiro.HojaDeRutaRetiro;
 
 namespace Prototipos_TUTASA
 {
@@ -92,7 +93,7 @@ namespace Prototipos_TUTASA
                 return;
             }
 
-            foreach (HojaDeRutaRetiro hoja in modelo.ObtenerHojasSeleccionadas())
+            foreach (HojaRetiroResumen hoja in modelo.ObtenerHojasSeleccionadas())
             {
                 if (hoja.Guias.Count == 0)
                 {

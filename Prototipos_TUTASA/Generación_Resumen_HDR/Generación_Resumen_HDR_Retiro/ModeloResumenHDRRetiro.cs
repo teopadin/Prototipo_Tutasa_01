@@ -2,15 +2,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Prototipos_TUTASA.ClasesResumenHDRRetiro;
+using HojaRetiroResumen = Prototipos_TUTASA.ClasesResumenHDRRetiro.HojaDeRutaRetiro;
 
 namespace Prototipos_TUTASA
 {
     internal class ModeloResumenHDRRetiro
     {
         private readonly List<TransportistaLocal> transportistas = new List<TransportistaLocal>();
-        private readonly List<HojaDeRutaRetiro> hojasDeRuta = new List<HojaDeRutaRetiro>();
+        private readonly List<HojaRetiroResumen> hojasDeRuta = new List<HojaRetiroResumen>();
         private readonly List<ResumenHDRRetiro> resumenes = new List<ResumenHDRRetiro>();
-        private List<HojaDeRutaRetiro> hojasSeleccionadas = new List<HojaDeRutaRetiro>();
+        private List<HojaRetiroResumen> hojasSeleccionadas = new List<HojaRetiroResumen>();
 
         public bool HayHojasSeleccionadas => hojasSeleccionadas.Count > 0;
         public int TotalDomiciliosSeleccionados => CalcularTotalDomicilios(hojasSeleccionadas);
@@ -21,7 +22,7 @@ namespace Prototipos_TUTASA
             CargarDatosDePrueba();
         }
 
-        private bool BuscarHojasAsignadas(TransportistaLocal transportista, DateTime fecha, out List<HojaDeRutaRetiro> hojas)
+        private bool BuscarHojasAsignadas(TransportistaLocal transportista, DateTime fecha, out List<HojaRetiroResumen> hojas)
         {
             hojas = hojasDeRuta
                 .Where(h => h.DniTransportistaAsignado == transportista.DniTransportista
@@ -37,7 +38,7 @@ namespace Prototipos_TUTASA
         {
             LimpiarSeleccion();
 
-            if (!BuscarHojasAsignadas(transportista, fecha, out List<HojaDeRutaRetiro> hojas))
+            if (!BuscarHojasAsignadas(transportista, fecha, out List<HojaRetiroResumen> hojas))
             {
                 return false;
             }
@@ -61,7 +62,7 @@ namespace Prototipos_TUTASA
             return transportistasConHojas;
         }
 
-        public List<HojaDeRutaRetiro> ObtenerHojasSeleccionadas()
+        public List<HojaRetiroResumen> ObtenerHojasSeleccionadas()
         {
             return hojasSeleccionadas.ToList();
         }
@@ -84,7 +85,7 @@ namespace Prototipos_TUTASA
                 TotalBultos = TotalBultosSeleccionados
             };
 
-            foreach (HojaDeRutaRetiro hoja in hojasSeleccionadas)
+            foreach (HojaRetiroResumen hoja in hojasSeleccionadas)
             {
                 hoja.Estado = EstadoHojaDeRutaEnum.EnCurso;
             }
@@ -96,19 +97,19 @@ namespace Prototipos_TUTASA
 
         public void LimpiarSeleccion()
         {
-            hojasSeleccionadas = new List<HojaDeRutaRetiro>();
+            hojasSeleccionadas = new List<HojaRetiroResumen>();
         }
 
-        public int ObtenerCantidadBultos(HojaDeRutaRetiro hoja)
+        public int ObtenerCantidadBultos(HojaRetiroResumen hoja)
         {
             return hoja.Guias.Count;
         }
 
-        private int CalcularTotalBultos(List<HojaDeRutaRetiro> hojas)
+        private int CalcularTotalBultos(List<HojaRetiroResumen> hojas)
         {
             int total = 0;
 
-            foreach (HojaDeRutaRetiro hoja in hojas)
+            foreach (HojaRetiroResumen hoja in hojas)
             {
                 total += ObtenerCantidadBultos(hoja);
             }
@@ -116,11 +117,11 @@ namespace Prototipos_TUTASA
             return total;
         }
 
-        private int CalcularTotalDomicilios(List<HojaDeRutaRetiro> hojas)
+        private int CalcularTotalDomicilios(List<HojaRetiroResumen> hojas)
         {
             var domicilios = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
-            foreach (HojaDeRutaRetiro hoja in hojas)
+            foreach (HojaRetiroResumen hoja in hojas)
             {
                 if (hoja.Guias.Count == 0)
                 {
@@ -166,7 +167,7 @@ namespace Prototipos_TUTASA
 
         private void AgregarHojaDeRuta(int nroHDR, DateTime fecha, TransportistaLocal transportista, List<Guia> guias)
         {
-            hojasDeRuta.Add(new HojaDeRutaRetiro
+            hojasDeRuta.Add(new HojaRetiroResumen
             {
                 NroHDR = nroHDR,
                 FechaEmision = fecha,
