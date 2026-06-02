@@ -2,7 +2,6 @@ namespace Prototipos_TUTASA.ClasesResumenHDRDistribucion
 {
     internal class Guia
     {
-        public string NroGuia { get; set; }
         public string Destinatario { get; set; }
         public string Calle { get; set; }
         public int Altura { get; set; }
@@ -10,7 +9,6 @@ namespace Prototipos_TUTASA.ClasesResumenHDRDistribucion
 
         public Guia()
         {
-            NroGuia = string.Empty;
             Destinatario = string.Empty;
             Calle = string.Empty;
             CodigoPostal = string.Empty;

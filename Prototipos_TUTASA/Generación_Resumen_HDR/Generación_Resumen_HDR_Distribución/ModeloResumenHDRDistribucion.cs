@@ -80,7 +80,6 @@ namespace Prototipos_TUTASA
             resumen = new ResumenHDRDistribucion
             {
                 NroResumen = resumenes.Count + 1,
-                FechaGeneracion = DateTime.Now,
                 TotalDomicilios = TotalDomiciliosSeleccionados,
                 TotalBultos = TotalBultosSeleccionados
             };
@@ -149,24 +148,24 @@ namespace Prototipos_TUTASA
 
             AgregarHojaDeRuta(1, DateTime.Today, carlos, new List<Guia>
             {
-                new Guia { NroGuia = "CD03-0001", Destinatario = "Ana Perez", Calle = "Av. Rivadavia", Altura = 3200, CodigoPostal = "1406" },
-                new Guia { NroGuia = "CD03-0002", Destinatario = "Ana Perez", Calle = "Av. Rivadavia", Altura = 3200, CodigoPostal = "1406" }
+                new Guia { Destinatario = "Ana Perez", Calle = "Av. Rivadavia", Altura = 3200, CodigoPostal = "1406" },
+                new Guia { Destinatario = "Ana Perez", Calle = "Av. Rivadavia", Altura = 3200, CodigoPostal = "1406" }
             });
 
             AgregarHojaDeRuta(2, DateTime.Today, carlos, new List<Guia>
             {
-                new Guia { NroGuia = "A001-0001", Destinatario = "Agencia Norte SA", Calle = "Av. Corrientes", Altura = 1234, CodigoPostal = "1043" },
-                new Guia { NroGuia = "A001-0002", Destinatario = "Agencia Norte SA", Calle = "Av. Corrientes", Altura = 1234, CodigoPostal = "1043" }
+                new Guia { Destinatario = "Agencia Norte SA", Calle = "Av. Corrientes", Altura = 1234, CodigoPostal = "1043" },
+                new Guia { Destinatario = "Agencia Norte SA", Calle = "Av. Corrientes", Altura = 1234, CodigoPostal = "1043" }
             });
 
             AgregarHojaDeRuta(3, DateTime.Today, laura, new List<Guia>
             {
-                new Guia { NroGuia = "CD02-0001", Destinatario = "Luis Gomez", Calle = "Belgrano", Altura = 750, CodigoPostal = "5000" }
+                new Guia { Destinatario = "Luis Gomez", Calle = "Belgrano", Altura = 750, CodigoPostal = "5000" }
             });
 
             AgregarHojaDeRuta(4, DateTime.Today.AddDays(1), carlos, new List<Guia>
             {
-                new Guia { NroGuia = "A002-0001", Destinatario = "Agencia Sur SRL", Calle = "San Martin", Altura = 500, CodigoPostal = "1043" }
+                new Guia { Destinatario = "Agencia Sur SRL", Calle = "San Martin", Altura = 500, CodigoPostal = "1043" }
             });
         }
 
