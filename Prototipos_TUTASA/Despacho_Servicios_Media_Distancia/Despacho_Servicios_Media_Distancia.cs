@@ -74,7 +74,7 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
             foreach (var g in hdrSeleccionada.DetalleGuias)
             {
                 var item = new ListViewItem(g.NroGuia);
-                item.SubItems.Add(g.Cliente.RazonSocial);
+                item.SubItems.Add(g.ClienteGuia.RazonSocial);
                 item.SubItems.Add(g.Destinatario.Nombre + " " + g.Destinatario.Apellido);
                 item.SubItems.Add(g.TipoBulto.ToString());
                 DespachoLst.Items.Add(item);
