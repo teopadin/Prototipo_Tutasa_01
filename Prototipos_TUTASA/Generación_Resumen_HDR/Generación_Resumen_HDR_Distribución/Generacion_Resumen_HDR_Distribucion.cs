@@ -99,7 +99,7 @@ namespace Prototipos_TUTASA
                     continue;
                 }
 
-                DetalleGuiaDistribucion guia = hoja.DetalleGuias[0];
+                DestinatarioGuia guia = hoja.DetalleGuias[0];
                 var item = new ListViewItem(hoja.NroHDR.ToString());
                 item.SubItems.Add(guia.Destinatario);
                 item.SubItems.Add(guia.Calle);
