@@ -41,6 +41,7 @@
             Remitente = new ColumnHeader();
             Calle = new ColumnHeader();
             Altura = new ColumnHeader();
+            Piso = new ColumnHeader();
             CP = new ColumnHeader();
             TipoBulto = new ColumnHeader();
             label5 = new Label();
@@ -139,7 +140,7 @@
             // 
             // HDRRendidaLst
             // 
-            HDRRendidaLst.Columns.AddRange(new ColumnHeader[] { HojRut, Remitente, Calle, Altura, CP, TipoBulto });
+            HDRRendidaLst.Columns.AddRange(new ColumnHeader[] { HojRut, Remitente, Calle, Altura, Piso, CP, TipoBulto });
             HDRRendidaLst.Location = new Point(13, 234);
             HDRRendidaLst.Margin = new Padding(4, 5, 4, 5);
             HDRRendidaLst.Name = "HDRRendidaLst";
@@ -162,12 +163,16 @@
             // Calle
             // 
             Calle.Text = "Calle";
-            Calle.Width = 50;
+            Calle.Width = 100;
             // 
             // Altura
             // 
             Altura.Text = "Altura";
             Altura.Width = 70;
+            // 
+            // Piso
+            // 
+            Piso.Text = "Piso";
             // 
             // CP
             // 
@@ -361,5 +366,6 @@
         private Button AplicarBtn;
         private Label label7;
         private ComboBox MotivoCmb;
+        private ColumnHeader Piso;
     }
 }

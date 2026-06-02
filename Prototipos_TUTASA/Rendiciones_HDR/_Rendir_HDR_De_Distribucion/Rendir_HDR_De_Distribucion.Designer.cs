@@ -46,6 +46,7 @@
             Calle = new ColumnHeader();
             Altura = new ColumnHeader();
             CP = new ColumnHeader();
+            Piso = new ColumnHeader();
             TipoBulto = new ColumnHeader();
             CancelarBtn = new Button();
             RegistrarBtn = new Button();
@@ -67,14 +68,14 @@
             groupBox1.Controls.Add(CumplidaRdb);
             groupBox1.Location = new Point(2, 372);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(799, 247);
+            groupBox1.Size = new Size(906, 247);
             groupBox1.TabIndex = 46;
             groupBox1.TabStop = false;
             groupBox1.Text = "Estado de la HDR seleccionada (\"\")";
             // 
             // AplicarBtn
             // 
-            AplicarBtn.Location = new Point(629, 179);
+            AplicarBtn.Location = new Point(736, 179);
             AplicarBtn.Name = "AplicarBtn";
             AplicarBtn.Size = new Size(164, 62);
             AplicarBtn.TabIndex = 32;
@@ -183,11 +184,11 @@
             // 
             // HdrRendidasLst
             // 
-            HdrRendidasLst.Columns.AddRange(new ColumnHeader[] { HojRut, Destinatario, Calle, Altura, CP, TipoBulto });
+            HdrRendidasLst.Columns.AddRange(new ColumnHeader[] { HojRut, Destinatario, Calle, Altura, Piso, CP, TipoBulto });
             HdrRendidasLst.Location = new Point(15, 206);
             HdrRendidasLst.Margin = new Padding(4, 5, 4, 5);
             HdrRendidasLst.Name = "HdrRendidasLst";
-            HdrRendidasLst.Size = new Size(786, 159);
+            HdrRendidasLst.Size = new Size(893, 159);
             HdrRendidasLst.TabIndex = 39;
             HdrRendidasLst.UseCompatibleStateImageBehavior = false;
             HdrRendidasLst.View = View.Details;
@@ -215,11 +216,18 @@
             // 
             // CP
             // 
+            CP.DisplayIndex = 4;
             CP.Text = "CP";
             CP.Width = 80;
             // 
+            // Piso
+            // 
+            Piso.Text = "Piso";
+            Piso.Width = 80;
+            // 
             // TipoBulto
             // 
+            TipoBulto.DisplayIndex = 5;
             TipoBulto.Text = "Estado";
             TipoBulto.Width = 100;
             // 
@@ -306,7 +314,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(820, 803);
+            ClientSize = new Size(914, 803);
             Controls.Add(groupBox1);
             Controls.Add(TotalNoCumplidasTxtb);
             Controls.Add(label6);
@@ -361,5 +369,6 @@
         private DateTimePicker FechaDtp;
         private Label label3;
         private Label label1;
+        private ColumnHeader Piso;
     }
 }

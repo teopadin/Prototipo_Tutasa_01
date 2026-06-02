@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
+using Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Retiro;
 
 namespace Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Distribucion
 {
@@ -22,83 +23,18 @@ namespace Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Distribucion
 
         private List<HDRDistribucion> hdrs = new List<HDRDistribucion>
         {
-            new HDRDistribucion
-            {
-                NroHDR = 1001, DniTransportistaAsignado = 11111111, Estado = EstadoHDR.EnCurso,
-                DetalleGuias = new List<DetalleGuiasADistribuir>
-                {
-                    new DetalleGuiasADistribuir { Destinatario = "Ana Garcia",     Calle = "Av. Corrientes", Altura = 1234, CP = "1043" },
-                    new DetalleGuiasADistribuir { Destinatario = "Pedro Suarez",   Calle = "Lavalle",        Altura = 567,  CP = "1047" }
-                }
-            },
-            new HDRDistribucion
-            {
-                NroHDR = 1002, DniTransportistaAsignado = 11111111, Estado = EstadoHDR.EnCurso,
-                DetalleGuias = new List<DetalleGuiasADistribuir>
-                {
-                    new DetalleGuiasADistribuir { Destinatario = "Laura Martinez", Calle = "Florida",    Altura = 890,  CP = "1005" }
-                }
-            },
-            new HDRDistribucion
-            {
-                NroHDR = 1003, DniTransportistaAsignado = 11111111, Estado = EstadoHDR.Recibida,
-                DetalleGuias = new List<DetalleGuiasADistribuir>
-                {
-                    new DetalleGuiasADistribuir { Destinatario = "Diego Ramirez",  Calle = "Santa Fe",   Altura = 2345, CP = "1123" }
-                }
-            },
-            new HDRDistribucion
-            {
-                NroHDR = 1004, DniTransportistaAsignado = 22222222, Estado = EstadoHDR.EnCurso,
-                DetalleGuias = new List<DetalleGuiasADistribuir>
-                {
-                    new DetalleGuiasADistribuir { Destinatario = "Sofia Torres",   Calle = "Cordoba",    Altura = 678,  CP = "1054" },
-                    new DetalleGuiasADistribuir { Destinatario = "Martin Diaz",    Calle = "Rivadavia",  Altura = 4567, CP = "1407" }
-                }
-            },
-            new HDRDistribucion
-            {
-                NroHDR = 1005, DniTransportistaAsignado = 22222222, Estado = EstadoHDR.Recibida,
-                DetalleGuias = new List<DetalleGuiasADistribuir>
-                {
-                    new DetalleGuiasADistribuir { Destinatario = "Carla Romero",   Calle = "Belgrano",   Altura = 1100, CP = "1092" }
-                }
-            },
-            new HDRDistribucion
-            {
-                NroHDR = 1006, DniTransportistaAsignado = 33333333, Estado = EstadoHDR.EnCurso,
-                DetalleGuias = new List<DetalleGuiasADistribuir>
-                {
-                    new DetalleGuiasADistribuir { Destinatario = "Hugo Pereyra",   Calle = "Callao",     Altura = 230,  CP = "1022" },
-                    new DetalleGuiasADistribuir { Destinatario = "Elena Vidal",    Calle = "Pueyrredon", Altura = 1500, CP = "1118" }
-                }
-            },
-            new HDRDistribucion
-            {
-                NroHDR = 1007, DniTransportistaAsignado = 33333333, Estado = EstadoHDR.EnCurso,
-                DetalleGuias = new List<DetalleGuiasADistribuir>
-                {
-                    new DetalleGuiasADistribuir { Destinatario = "Jorge Acosta",   Calle = "Pueyrredon", Altura = 1500, CP = "1118" }
-                }
-            },
-            new HDRDistribucion
-            {
-                NroHDR = 1008, DniTransportistaAsignado = 44444444, Estado = EstadoHDR.EnCurso,
-                DetalleGuias = new List<DetalleGuiasADistribuir>
-                {
-                    new DetalleGuiasADistribuir { Destinatario = "Paula Mendez",   Calle = "Scalabrini", Altura = 980,  CP = "1414" }
-                }
-            },
-            new HDRDistribucion
-            {
-                NroHDR = 1009, DniTransportistaAsignado = 44444444, Estado = EstadoHDR.Recibida,
-                DetalleGuias = new List<DetalleGuiasADistribuir>
-                {
-                    new DetalleGuiasADistribuir { Destinatario = "Lucia Peralta",  Calle = "Callao",     Altura = 450,  CP = "1022" }
-                }
-            },
-            // Roberto Lopez (55555555) sin HDR para probar el mensaje
-        };
+            new HDRDistribucion { NroHDR = 1001, DniTransportistaAsignado = 11111111, Destinatario = "Ana Garcia",     Calle = "Av. Corrientes", Altura = 1234, Piso = "1",  CP = "1043", Estado = EstadoHDR.EnCurso  },
+            new HDRDistribucion { NroHDR = 1002, DniTransportistaAsignado = 11111111, Destinatario = "Pedro Suarez",   Calle = "Lavalle",        Altura = 567,  Piso = "3",  CP = "1047", Estado = EstadoHDR.EnCurso  },
+            new HDRDistribucion { NroHDR = 1003, DniTransportistaAsignado = 11111111, Destinatario = "Laura Martinez", Calle = "Florida",        Altura = 890,  Piso = "PB", CP = "1005", Estado = EstadoHDR.Recibida },
+            new HDRDistribucion { NroHDR = 1004, DniTransportistaAsignado = 22222222, Destinatario = "Diego Ramirez",  Calle = "Santa Fe",       Altura = 2345, Piso = "2",  CP = "1123", Estado = EstadoHDR.EnCurso  },
+            new HDRDistribucion { NroHDR = 1005, DniTransportistaAsignado = 22222222, Destinatario = "Sofia Torres",   Calle = "Cordoba",        Altura = 678,  Piso = "4",  CP = "1054", Estado = EstadoHDR.Recibida },
+            new HDRDistribucion { NroHDR = 1006, DniTransportistaAsignado = 33333333, Destinatario = "Martin Diaz",    Calle = "Rivadavia",      Altura = 4567, Piso = "5",  CP = "1407", Estado = EstadoHDR.EnCurso  },
+            new HDRDistribucion { NroHDR = 1007, DniTransportistaAsignado = 33333333, Destinatario = "Carla Romero",   Calle = "Belgrano",       Altura = 1100, Piso = "PB", CP = "1092", Estado = EstadoHDR.EnCurso  },
+            new HDRDistribucion { NroHDR = 1008, DniTransportistaAsignado = 33333333, Destinatario = "Hugo Pereyra",   Calle = "Callao",         Altura = 230,  Piso = "1",  CP = "1022", Estado = EstadoHDR.Recibida },
+            new HDRDistribucion { NroHDR = 1009, DniTransportistaAsignado = 33333333, Destinatario = "Elena Vidal",    Calle = "Pueyrredon",     Altura = 1500, Piso = "2",  CP = "1118", Estado = EstadoHDR.EnCurso  },
+            new HDRDistribucion { NroHDR = 1010, DniTransportistaAsignado = 44444444, Destinatario = "Jorge Acosta",   Calle = "Pueyrredon",     Altura = 1500, Piso = "3",  CP = "1118", Estado = EstadoHDR.EnCurso  },
+            new HDRDistribucion { NroHDR = 1011, DniTransportistaAsignado = 44444444, Destinatario = "Paula Mendez",   Calle = "Scalabrini",     Altura = 980,  Piso = "PB", CP = "1414", Estado = EstadoHDR.Recibida },
+                };
 
         internal void SetHdrSeleccionada(HDRDistribucion hdr)
         {

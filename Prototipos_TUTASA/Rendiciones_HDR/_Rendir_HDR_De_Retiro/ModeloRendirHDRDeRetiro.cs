@@ -8,7 +8,6 @@ namespace Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Retiro
 {
     internal class ModeloRendirHDRDeRetiro
     {
-        // DATOS DE PRUEBA (despues se reemplazan por almacenes)
         private HDRRetiro hdrSeleccionada = null;
 
         private List<TransportistaLocal> transportistas = new List<TransportistaLocal>
@@ -22,81 +21,16 @@ namespace Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Retiro
 
         private List<HDRRetiro> hdrs = new List<HDRRetiro>
         {
-            new HDRRetiro
-            {
-                NroHDR = 2001, DniTransportistaAsignado = 11111111, Estado = EstadoHDR.EnCurso,
-                DetalleGuias = new List<DetalleGuiasARetirar>
-                {
-                    new DetalleGuiasARetirar { Remitente = "Empresa ABC S.A.",  Calle = "Av. Corrientes", Altura = 1234, CP = "1043" },
-                    new DetalleGuiasARetirar { Remitente = "Distribuidora XYZ", Calle = "Lavalle",        Altura = 567,  CP = "1047" }
-                }
-            },
-            new HDRRetiro
-            {
-                NroHDR = 2002, DniTransportistaAsignado = 11111111, Estado = EstadoHDR.EnCurso,
-                DetalleGuias = new List<DetalleGuiasARetirar>
-                {
-                    new DetalleGuiasARetirar { Remitente = "Importadora Sur",   Calle = "Florida",    Altura = 890,  CP = "1005" }
-                }
-            },
-            new HDRRetiro
-            {
-                NroHDR = 2003, DniTransportistaAsignado = 11111111, Estado = EstadoHDR.Recibida,
-                DetalleGuias = new List<DetalleGuiasARetirar>
-                {
-                    new DetalleGuiasARetirar { Remitente = "Logistica Norte",   Calle = "Santa Fe",   Altura = 2345, CP = "1123" }
-                }
-            },
-            new HDRRetiro
-            {
-                NroHDR = 2004, DniTransportistaAsignado = 22222222, Estado = EstadoHDR.EnCurso,
-                DetalleGuias = new List<DetalleGuiasARetirar>
-                {
-                    new DetalleGuiasARetirar { Remitente = "Comercial Este",    Calle = "Cordoba",    Altura = 678,  CP = "1054" },
-                    new DetalleGuiasARetirar { Remitente = "Empresa DEF S.R.L.", Calle = "Rivadavia", Altura = 4567, CP = "1407" }
-                }
-            },
-            new HDRRetiro
-            {
-                NroHDR = 2005, DniTransportistaAsignado = 22222222, Estado = EstadoHDR.Recibida,
-                DetalleGuias = new List<DetalleGuiasARetirar>
-                {
-                    new DetalleGuiasARetirar { Remitente = "Distribuidora ABC", Calle = "Belgrano",   Altura = 1100, CP = "1092" }
-                }
-            },
-            new HDRRetiro
-            {
-                NroHDR = 2006, DniTransportistaAsignado = 33333333, Estado = EstadoHDR.EnCurso,
-                DetalleGuias = new List<DetalleGuiasARetirar>
-                {
-                    new DetalleGuiasARetirar { Remitente = "Importadora Norte", Calle = "Callao",     Altura = 230,  CP = "1022" },
-                    new DetalleGuiasARetirar { Remitente = "Comercial Sur",     Calle = "Pueyrredon", Altura = 1500, CP = "1118" }
-                }
-            },
-            new HDRRetiro
-            {
-                NroHDR = 2007, DniTransportistaAsignado = 33333333, Estado = EstadoHDR.EnCurso,
-                DetalleGuias = new List<DetalleGuiasARetirar>
-                {
-                    new DetalleGuiasARetirar { Remitente = "Empresa GHI S.A.", Calle = "Scalabrini", Altura = 980, CP = "1414" }
-                }
-            },
-            new HDRRetiro
-            {
-                NroHDR = 2008, DniTransportistaAsignado = 44444444, Estado = EstadoHDR.EnCurso,
-                DetalleGuias = new List<DetalleGuiasARetirar>
-                {
-                    new DetalleGuiasARetirar { Remitente = "Logistica Central", Calle = "Callao",    Altura = 450,  CP = "1022" }
-                }
-            },
-            new HDRRetiro
-            {
-                NroHDR = 2009, DniTransportistaAsignado = 44444444, Estado = EstadoHDR.Recibida,
-                DetalleGuias = new List<DetalleGuiasARetirar>
-                {
-                    new DetalleGuiasARetirar { Remitente = "Empresa JKL S.A.", Calle = "Florida",    Altura = 320,  CP = "1005" }
-                }
-            },
+            new HDRRetiro { NroHDR = 2001, DniTransportistaAsignado = 11111111, Remitente = "Empresa ABC S.A.",   Calle = "Av. Corrientes", Altura = 1234, Piso = "1",  CP = "1043", Estado = EstadoHDR.EnCurso  },
+            new HDRRetiro { NroHDR = 2002, DniTransportistaAsignado = 11111111, Remitente = "Distribuidora XYZ",  Calle = "Lavalle",        Altura = 567,  Piso = "3",  CP = "1047", Estado = EstadoHDR.EnCurso  },
+            new HDRRetiro { NroHDR = 2003, DniTransportistaAsignado = 11111111, Remitente = "Importadora Sur",    Calle = "Florida",        Altura = 890,  Piso = "PB", CP = "1005", Estado = EstadoHDR.Recibida },
+            new HDRRetiro { NroHDR = 2004, DniTransportistaAsignado = 22222222, Remitente = "Logistica Norte",    Calle = "Santa Fe",       Altura = 2345, Piso = "2",  CP = "1123", Estado = EstadoHDR.EnCurso  },
+            new HDRRetiro { NroHDR = 2005, DniTransportistaAsignado = 22222222, Remitente = "Comercial Este",     Calle = "Cordoba",        Altura = 678,  Piso = "4",  CP = "1054", Estado = EstadoHDR.Recibida },
+            new HDRRetiro { NroHDR = 2006, DniTransportistaAsignado = 33333333, Remitente = "Empresa DEF S.R.L.", Calle = "Rivadavia",      Altura = 4567, Piso = "5",  CP = "1407", Estado = EstadoHDR.EnCurso  },
+            new HDRRetiro { NroHDR = 2007, DniTransportistaAsignado = 33333333, Remitente = "Distribuidora ABC",  Calle = "Belgrano",       Altura = 1100, Piso = "PB", CP = "1092", Estado = EstadoHDR.EnCurso  },
+            new HDRRetiro { NroHDR = 2008, DniTransportistaAsignado = 33333333, Remitente = "Importadora Norte",  Calle = "Callao",         Altura = 230,  Piso = "1",  CP = "1022", Estado = EstadoHDR.Recibida },
+            new HDRRetiro { NroHDR = 2009, DniTransportistaAsignado = 44444444, Remitente = "Empresa GHI S.A.",   Calle = "Pueyrredon",     Altura = 1500, Piso = "3",  CP = "1118", Estado = EstadoHDR.EnCurso  },
+            new HDRRetiro { NroHDR = 2010, DniTransportistaAsignado = 44444444, Remitente = "Logistica Central",  Calle = "Scalabrini",     Altura = 980,  Piso = "PB", CP = "1414", Estado = EstadoHDR.Recibida },
             // Roberto Lopez (55555555) sin HDR para probar el mensaje
         };
 

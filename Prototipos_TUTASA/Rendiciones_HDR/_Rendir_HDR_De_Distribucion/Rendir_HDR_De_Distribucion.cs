@@ -63,12 +63,12 @@ namespace Prototipos_TUTASA.Rendiciones_HDR
 
             foreach (var hdr in hdrs)
             {
-                var detalle = hdr.DetalleGuias[0];
                 var item = new ListViewItem(hdr.NroHDR.ToString());
-                item.SubItems.Add(detalle.Destinatario);
-                item.SubItems.Add(detalle.Calle);
-                item.SubItems.Add(detalle.Altura.ToString());
-                item.SubItems.Add(detalle.CP);
+                item.SubItems.Add(hdr.Destinatario);
+                item.SubItems.Add(hdr.Calle);
+                item.SubItems.Add(hdr.Altura.ToString());
+                item.SubItems.Add(hdr.Piso);
+                item.SubItems.Add(hdr.CP);
                 item.SubItems.Add(hdr.Estado.ToString());
                 item.Tag = hdr;
                 HdrRendidasLst.Items.Add(item);
@@ -150,7 +150,7 @@ namespace Prototipos_TUTASA.Rendiciones_HDR
                 return;
 
             var item = HdrRendidasLst.SelectedItems[0];
-            item.SubItems[5].Text = modelo.GetHdrSeleccionada().Estado.ToString();
+            item.SubItems[6].Text = modelo.GetHdrSeleccionada().Estado.ToString();
 
             ActualizarTotales();
         }
