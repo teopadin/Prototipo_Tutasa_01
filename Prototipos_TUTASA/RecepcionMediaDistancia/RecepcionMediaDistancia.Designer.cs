@@ -32,10 +32,12 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             colNumeroGuia = new ColumnHeader();
             colTipoBulto = new ColumnHeader();
             colNroHDR = new ColumnHeader();
+            colCDOrigen = new ColumnHeader();
             btnConfirmarRecepcion = new Button();
             btnCancelar = new Button();
-            comboBox1 = new ComboBox();
-            colCDOrigen = new ColumnHeader();
+            cmboIDServicio = new ComboBox();
+            dateTimeFechaDespacho = new DateTimePicker();
+            lblFechaDespacho = new Label();
             SuspendLayout();
             // 
             // lblTitulo
@@ -58,7 +60,6 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             lblNumeroHojaRuta.Size = new Size(303, 25);
             lblNumeroHojaRuta.TabIndex = 1;
             lblNumeroHojaRuta.Text = "ID Servicios Pendientes de Despacho";
-            lblNumeroHojaRuta.Click += lblNumeroHojaRuta_Click;
             // 
             // lblEmpresaTransporte
             // 
@@ -119,7 +120,6 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             lvGuias.TabIndex = 21;
             lvGuias.UseCompatibleStateImageBehavior = false;
             lvGuias.View = View.Details;
-            lvGuias.SelectedIndexChanged += lvGuias_SelectedIndexChanged;
             // 
             // colNumeroGuia
             // 
@@ -136,6 +136,11 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             colNroHDR.Text = "Nro HDR a la que pertenece";
             colNroHDR.Width = 250;
             // 
+            // colCDOrigen
+            // 
+            colCDOrigen.Text = "CD Origen";
+            colCDOrigen.Width = 120;
+            // 
             // btnConfirmarRecepcion
             // 
             btnConfirmarRecepcion.Location = new Point(465, 645);
@@ -145,6 +150,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             btnConfirmarRecepcion.TabIndex = 22;
             btnConfirmarRecepcion.Text = "Confirmar recepción";
             btnConfirmarRecepcion.UseVisualStyleBackColor = true;
+            btnConfirmarRecepcion.Click += btnConfirmarRecepcion_Click;
             // 
             // btnCancelar
             // 
@@ -155,26 +161,41 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             btnCancelar.TabIndex = 23;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
-            // comboBox1
+            // cmboIDServicio
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(335, 86);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(227, 33);
-            comboBox1.TabIndex = 24;
+            cmboIDServicio.FormattingEnabled = true;
+            cmboIDServicio.Location = new Point(335, 86);
+            cmboIDServicio.Name = "cmboIDServicio";
+            cmboIDServicio.Size = new Size(227, 33);
+            cmboIDServicio.TabIndex = 24;
+            cmboIDServicio.SelectedIndexChanged += cmboIDServicio_SelectedIndexChanged;
             // 
-            // colCDOrigen
+            // dateTimeFechaDespacho
             // 
-            colCDOrigen.Text = "CD Origen";
-            colCDOrigen.Width = 120;
+            dateTimeFechaDespacho.Location = new Point(763, 155);
+            dateTimeFechaDespacho.Name = "dateTimeFechaDespacho";
+            dateTimeFechaDespacho.Size = new Size(300, 31);
+            dateTimeFechaDespacho.TabIndex = 25;
+            // 
+            // lblFechaDespacho
+            // 
+            lblFechaDespacho.AutoSize = true;
+            lblFechaDespacho.Location = new Point(605, 161);
+            lblFechaDespacho.Name = "lblFechaDespacho";
+            lblFechaDespacho.Size = new Size(141, 25);
+            lblFechaDespacho.TabIndex = 26;
+            lblFechaDespacho.Text = "Fecha Despacho";
             // 
             // RecepcionMediaDistancia
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1302, 721);
-            Controls.Add(comboBox1);
+            Controls.Add(lblFechaDespacho);
+            Controls.Add(dateTimeFechaDespacho);
+            Controls.Add(cmboIDServicio);
             Controls.Add(btnCancelar);
             Controls.Add(btnConfirmarRecepcion);
             Controls.Add(lvGuias);
@@ -204,8 +225,10 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
         private ColumnHeader colTipoBulto;
         private Button btnConfirmarRecepcion;
         private Button btnCancelar;
-        private ComboBox comboBox1;
+        private ComboBox cmboIDServicio;
         private ColumnHeader colNroHDR;
         private ColumnHeader colCDOrigen;
+        private DateTimePicker dateTimeFechaDespacho;
+        private Label lblFechaDespacho;
     }
 }
