@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Prototipos_TUTASA.ResultadoCostoVSVentas_v2;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -12,7 +13,7 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transpor
         public List<ServicioMediaDistancia> Servicios { get; set; }
 
         public bool Actualizando { get; set; } = false;
-        public int UltimoNroHDR { get; set; } = 0;
+        public List<HojaDeRutaTransporte> HojasDeRuta { get; set; } = new List<HojaDeRutaTransporte>();
 
         public ModeloGenerarHDRTransporte()
         {

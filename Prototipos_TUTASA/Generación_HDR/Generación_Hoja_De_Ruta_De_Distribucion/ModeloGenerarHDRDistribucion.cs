@@ -17,7 +17,7 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Distribu
         public List<Guia> Guias { get; set; }
         public List<TransportistaLocal> Transportistas { get; set; }
         public bool Actualizando { get; set; } = false;
-        public int UltimoNroHDR { get; set; } = 0;
+        public List<HojaDeRutaDistribucion> HojasDeRuta { get; set; } = new List<HojaDeRutaDistribucion>();
 
         public ModeloGenerarHDRDistribucion()
         {

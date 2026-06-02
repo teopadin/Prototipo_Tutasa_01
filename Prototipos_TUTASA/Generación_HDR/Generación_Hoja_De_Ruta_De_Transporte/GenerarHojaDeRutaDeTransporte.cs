@@ -173,7 +173,8 @@ namespace Prototipos_TUTASA.Generación_Hoja_De_Ruta_De_Transporte
                 return;
             }
 
-            modelo.UltimoNroHDR++;
+            HojaDeRutaTransporte nuevaHDR = new HojaDeRutaTransporte();
+            nuevaHDR.NroHDR = modelo.HojasDeRuta.Count + 1;
 
             // Actualizar capacidad usada del servicio
             int totalBultos = 0;
@@ -185,7 +186,7 @@ namespace Prototipos_TUTASA.Generación_Hoja_De_Ruta_De_Transporte
             servicioSeleccionado.CapacidadUsada += totalBultos;
 
 
-            MessageBox.Show($"Hoja de Ruta de Transporte {modelo.UltimoNroHDR} generada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show($"Hoja de Ruta de Transporte {nuevaHDR.NroHDR} generada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             // Limpiar la pantalla para una nueva operación
             lvServicios.Items.Clear();

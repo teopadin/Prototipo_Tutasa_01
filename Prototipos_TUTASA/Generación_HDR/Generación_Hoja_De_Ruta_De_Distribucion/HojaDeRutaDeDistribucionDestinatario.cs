@@ -239,7 +239,7 @@ namespace Prototipos_TUTASA.HojaDeRutaDeDistribucion
             }
 
             HojaDeRutaDistribucion nuevaHDR = new HojaDeRutaDistribucion();
-            modelo.UltimoNroHDR++;
+            nuevaHDR.NroHDR = modelo.HojasDeRuta.Count + 1;
 
             // Cambiar el estado de las guías a EnDistribucion
             foreach (var guia in guiasSeleccionadas)
@@ -248,7 +248,7 @@ namespace Prototipos_TUTASA.HojaDeRutaDeDistribucion
             // Incrementar las HDR asignadas al transportista
             transportistaSeleccionado.HdrAsignadas++;
 
-            MessageBox.Show($"Hoja de Ruta de Distribución {modelo.UltimoNroHDR} generada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show($"Hoja de Ruta de Distribución {nuevaHDR.NroHDR} generada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             // Limpiar la pantalla para una nueva operación
             listViewFleteros.Items.Clear();
