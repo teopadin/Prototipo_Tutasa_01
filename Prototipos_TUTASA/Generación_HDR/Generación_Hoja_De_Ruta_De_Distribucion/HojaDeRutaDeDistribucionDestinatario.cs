@@ -248,6 +248,8 @@ namespace Prototipos_TUTASA.HojaDeRutaDeDistribucion
             // Incrementar las HDR asignadas al transportista
             transportistaSeleccionado.HdrAsignadas++;
 
+            modelo.HojasDeRuta.Add(nuevaHDR);
+
             MessageBox.Show($"Hoja de Ruta de Distribución {nuevaHDR.NroHDR} generada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             // Limpiar la pantalla para una nueva operación
