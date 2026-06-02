@@ -1,6 +1,6 @@
 namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia
 {
-    public enum EstadoGuia
+    public enum EstadoGuiaEnum
     {
         PendienteDeRetiroEnAgencia,
         Entregada
