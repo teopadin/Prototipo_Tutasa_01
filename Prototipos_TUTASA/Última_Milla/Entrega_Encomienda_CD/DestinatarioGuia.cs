@@ -1,6 +1,6 @@
-namespace Prototipos_TUTASA
+namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_CD
 {
-    internal class DestinatarioEntregaCD
+    internal class DestinatarioGuia
     {
         public string Nombre { get; set; } = string.Empty;
         public string Apellido { get; set; } = string.Empty;

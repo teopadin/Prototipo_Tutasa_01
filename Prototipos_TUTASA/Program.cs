@@ -10,6 +10,7 @@ using Prototipos_TUTASA.Despacho_Servicios_Media_Distancia;
 using Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia;
 using Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia;
 using Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia;
+using Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_CD;
 
 namespace Prototipos_TUTASA
 {
