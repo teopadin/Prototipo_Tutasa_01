@@ -44,7 +44,7 @@ namespace Prototipos_TUTASA.Admisión
                 IdCDDestino = 1,
                 Destinatario = new DestinatarioGuia { Dni = 28444555, Nombre = "María", Apellido = "González" },
                 TipoBulto = TiposBulto.S,
-                ModalidadEntrega = ModalidadEntrega.RetiroEnCD,
+                ModalidadEntrega = ModalidadEntrega.RetiroCD,
                 Estado = EstadoGuia.Retirada
             },
             // Guía 3: caso general (mismo CD pero no es Retiro en CD)
@@ -66,7 +66,7 @@ namespace Prototipos_TUTASA.Admisión
                 IdCDDestino = 3,
                 Destinatario = new DestinatarioGuia { Dni = 30111222, Nombre = "Juan", Apellido = "Pérez" },
                 TipoBulto = TiposBulto.XL,
-                ModalidadEntrega = ModalidadEntrega.RetiroEnAgencia,
+                ModalidadEntrega = ModalidadEntrega.RetiroAgencia,
                 Estado = EstadoGuia.Admitida
             }
         };
@@ -117,7 +117,7 @@ namespace Prototipos_TUTASA.Admisión
             if (guia == null) return;
 
             // Caso especial: el CD destino es el mismo que el CD de admisión Y modalidad es Retiro en CD
-            if (guia.IdCDDestino == idCDAdmisionActual && guia.ModalidadEntrega == ModalidadEntrega.RetiroEnCD)
+            if (guia.IdCDDestino == idCDAdmisionActual && guia.ModalidadEntrega == ModalidadEntrega.RetiroCD)
             {
                 guia.Estado = EstadoGuia.PendienteDeRetiroEnCD;
             }
@@ -149,8 +149,8 @@ namespace Prototipos_TUTASA.Admisión
         public string TextoModalidad(ModalidadEntrega modalidad)
         {
             if (modalidad == ModalidadEntrega.PuertaAPuerta) return "Puerta a Puerta";
-            if (modalidad == ModalidadEntrega.RetiroEnAgencia) return "Retiro en Agencia";
-            if (modalidad == ModalidadEntrega.RetiroEnCD) return "Retiro en CD";
+            if (modalidad == ModalidadEntrega.RetiroAgencia) return "Retiro en Agencia";
+            if (modalidad == ModalidadEntrega.RetiroCD) return "Retiro en CD";
             return "";
         }
     }
