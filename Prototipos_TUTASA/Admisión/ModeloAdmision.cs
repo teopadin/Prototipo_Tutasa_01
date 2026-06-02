@@ -33,7 +33,7 @@ namespace Prototipos_TUTASA.Admisión
                 IdCDDestino = 2,
                 Destinatario = new DestinatarioGuia { Dni = 30111222, Nombre = "Juan", Apellido = "Pérez" },
                 TipoBulto = TiposBulto.M,
-                ModalidadEntrega = ModalidadesEntrega.PuertaAPuerta,
+                ModalidadEntrega = ModalidadEntrega.PuertaAPuerta,
                 Estado = EstadoGuia.Retirada
             },
             // Guía 2: caso especial → quedará "Pendiente de retiro en CD"
@@ -44,7 +44,7 @@ namespace Prototipos_TUTASA.Admisión
                 IdCDDestino = 1,
                 Destinatario = new DestinatarioGuia { Dni = 28444555, Nombre = "María", Apellido = "González" },
                 TipoBulto = TiposBulto.S,
-                ModalidadEntrega = ModalidadesEntrega.RetiroEnCD,
+                ModalidadEntrega = ModalidadEntrega.RetiroEnCD,
                 Estado = EstadoGuia.Retirada
             },
             // Guía 3: caso general (mismo CD pero no es Retiro en CD)
@@ -55,7 +55,7 @@ namespace Prototipos_TUTASA.Admisión
                 IdCDDestino = 1,
                 Destinatario = new DestinatarioGuia { Dni = 35777888, Nombre = "Carlos", Apellido = "López" },
                 TipoBulto = TiposBulto.L,
-                ModalidadEntrega = ModalidadesEntrega.PuertaAPuerta,
+                ModalidadEntrega = ModalidadEntrega.PuertaAPuerta,
                 Estado = EstadoGuia.Retirada
             },
             // Guía 4: estado distinto a "Retirada" → no se puede admitir
@@ -66,7 +66,7 @@ namespace Prototipos_TUTASA.Admisión
                 IdCDDestino = 3,
                 Destinatario = new DestinatarioGuia { Dni = 30111222, Nombre = "Juan", Apellido = "Pérez" },
                 TipoBulto = TiposBulto.XL,
-                ModalidadEntrega = ModalidadesEntrega.RetiroEnAgencia,
+                ModalidadEntrega = ModalidadEntrega.RetiroEnAgencia,
                 Estado = EstadoGuia.Admitida
             }
         };
@@ -117,7 +117,7 @@ namespace Prototipos_TUTASA.Admisión
             if (guia == null) return;
 
             // Caso especial: el CD destino es el mismo que el CD de admisión Y modalidad es Retiro en CD
-            if (guia.IdCDDestino == idCDAdmisionActual && guia.ModalidadEntrega == ModalidadesEntrega.RetiroEnCD)
+            if (guia.IdCDDestino == idCDAdmisionActual && guia.ModalidadEntrega == ModalidadEntrega.RetiroEnCD)
             {
                 guia.Estado = EstadoGuia.PendienteDeRetiroEnCD;
             }
@@ -146,11 +146,11 @@ namespace Prototipos_TUTASA.Admisión
             return "";
         }
 
-        public string TextoModalidad(ModalidadesEntrega modalidad)
+        public string TextoModalidad(ModalidadEntrega modalidad)
         {
-            if (modalidad == ModalidadesEntrega.PuertaAPuerta) return "Puerta a Puerta";
-            if (modalidad == ModalidadesEntrega.RetiroEnAgencia) return "Retiro en Agencia";
-            if (modalidad == ModalidadesEntrega.RetiroEnCD) return "Retiro en CD";
+            if (modalidad == ModalidadEntrega.PuertaAPuerta) return "Puerta a Puerta";
+            if (modalidad == ModalidadEntrega.RetiroEnAgencia) return "Retiro en Agencia";
+            if (modalidad == ModalidadEntrega.RetiroEnCD) return "Retiro en CD";
             return "";
         }
     }

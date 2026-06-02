@@ -11,7 +11,7 @@ namespace Prototipos_TUTASA.Admisión
         public int IdCDDestino { get; set; }
         public DestinatarioGuia Destinatario { get; set; }
         public TiposBulto TipoBulto { get; set; }
-        public ModalidadesEntrega ModalidadEntrega { get; set; }
+        public ModalidadEntrega ModalidadEntrega { get; set; }
         public EstadoGuia Estado { get; set; }
     }
 }

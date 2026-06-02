@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Prototipos_TUTASA.Admisión
 {
-    internal enum ModalidadesEntrega
+    internal enum ModalidadEntrega
     {
         PuertaAPuerta,
         RetiroEnAgencia,
