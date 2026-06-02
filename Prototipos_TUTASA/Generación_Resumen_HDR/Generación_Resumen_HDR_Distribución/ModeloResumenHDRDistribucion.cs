@@ -6,7 +6,7 @@ namespace Prototipos_TUTASA
 {
     internal class ModeloResumenHDRDistribucion
     {
-        private readonly List<FleteroResumen> fleteros = new List<FleteroResumen>();
+        private readonly List<TransportistaLocal> transportistas = new List<TransportistaLocal>();
         private readonly List<HojaDeRutaDistribucionResumen> hojasDeRuta = new List<HojaDeRutaDistribucionResumen>();
         private readonly List<ResumenHDRDistribucion> resumenes = new List<ResumenHDRDistribucion>();
         private List<HojaDeRutaDistribucionResumen> hojasSeleccionadas = new List<HojaDeRutaDistribucionResumen>();
@@ -20,10 +20,10 @@ namespace Prototipos_TUTASA
             CargarDatosDePrueba();
         }
 
-        private bool BuscarHojasAsignadas(FleteroResumen fletero, DateTime fecha, out List<HojaDeRutaDistribucionResumen> hojas)
+        private bool BuscarHojasAsignadas(TransportistaLocal transportista, DateTime fecha, out List<HojaDeRutaDistribucionResumen> hojas)
         {
             hojas = hojasDeRuta
-                .Where(h => h.Fletero.Dni == fletero.Dni
+                .Where(h => h.Transportista.DniTransportista == transportista.DniTransportista
                     && h.FechaEmision.Date == fecha.Date
                     && h.Estado == EstadoHojaDeRutaResumen.Generada)
                 .OrderBy(h => h.NroHDR)
@@ -32,11 +32,11 @@ namespace Prototipos_TUTASA
             return hojas.Count > 0;
         }
 
-        public bool SeleccionarHojasAsignadas(FleteroResumen fletero, DateTime fecha)
+        public bool SeleccionarHojasAsignadas(TransportistaLocal transportista, DateTime fecha)
         {
             LimpiarSeleccion();
 
-            if (!BuscarHojasAsignadas(fletero, fecha, out List<HojaDeRutaDistribucionResumen> hojas))
+            if (!BuscarHojasAsignadas(transportista, fecha, out List<HojaDeRutaDistribucionResumen> hojas))
             {
                 return false;
             }
@@ -45,19 +45,19 @@ namespace Prototipos_TUTASA
             return true;
         }
 
-        public List<FleteroResumen> ObtenerFleterosConHojasAsignadas(DateTime fecha)
+        public List<TransportistaLocal> ObtenerTransportistasConHojasAsignadas(DateTime fecha)
         {
-            var fleterosConHojas = new List<FleteroResumen>();
+            var transportistasConHojas = new List<TransportistaLocal>();
 
-            foreach (FleteroResumen fletero in fleteros)
+            foreach (TransportistaLocal transportista in transportistas)
             {
-                if (BuscarHojasAsignadas(fletero, fecha, out _))
+                if (BuscarHojasAsignadas(transportista, fecha, out _))
                 {
-                    fleterosConHojas.Add(fletero);
+                    transportistasConHojas.Add(transportista);
                 }
             }
 
-            return fleterosConHojas;
+            return transportistasConHojas;
         }
 
         public List<DatosDestinoResumen> ObtenerDatosHojasSeleccionadas()
@@ -162,11 +162,11 @@ namespace Prototipos_TUTASA
 
         private void CargarDatosDePrueba()
         {
-            var carlos = new FleteroResumen { Dni = 12345678, Nombre = "Carlos", Apellido = "Gomez" };
-            var laura = new FleteroResumen { Dni = 23456789, Nombre = "Laura", Apellido = "Martinez" };
+            var carlos = new TransportistaLocal { DniTransportista = 12345678, Nombre = "Carlos", Apellido = "Gomez" };
+            var laura = new TransportistaLocal { DniTransportista = 23456789, Nombre = "Laura", Apellido = "Martinez" };
 
-            fleteros.Add(carlos);
-            fleteros.Add(laura);
+            transportistas.Add(carlos);
+            transportistas.Add(laura);
 
             AgregarHojaDeRuta(1, DateTime.Today, carlos, new List<GuiaDistribucionResumen>
             {
@@ -191,13 +191,13 @@ namespace Prototipos_TUTASA
             });
         }
 
-        private void AgregarHojaDeRuta(int nroHDR, DateTime fecha, FleteroResumen fletero, List<GuiaDistribucionResumen> guias)
+        private void AgregarHojaDeRuta(int nroHDR, DateTime fecha, TransportistaLocal transportista, List<GuiaDistribucionResumen> guias)
         {
             hojasDeRuta.Add(new HojaDeRutaDistribucionResumen
             {
                 NroHDR = nroHDR,
                 FechaEmision = fecha,
-                Fletero = fletero,
+                Transportista = transportista,
                 Guias = guias,
                 Estado = EstadoHojaDeRutaResumen.Generada
             });

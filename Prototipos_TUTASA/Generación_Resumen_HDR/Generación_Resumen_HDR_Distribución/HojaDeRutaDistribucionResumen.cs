@@ -7,13 +7,13 @@ namespace Prototipos_TUTASA
     {
         public int NroHDR { get; set; }
         public DateTime FechaEmision { get; set; }
-        public FleteroResumen Fletero { get; set; }
+        public TransportistaLocal Transportista { get; set; }
         public List<GuiaDistribucionResumen> Guias { get; set; }
         public EstadoHojaDeRutaResumen Estado { get; set; }
 
         public HojaDeRutaDistribucionResumen()
         {
-            Fletero = new FleteroResumen();
+            Transportista = new TransportistaLocal();
             Guias = new List<GuiaDistribucionResumen>();
         }
     }
