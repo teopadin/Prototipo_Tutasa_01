@@ -18,11 +18,11 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
             // 1. Inicializamos los servicios auxiliares con sus empresas (Uso real de objetos)
             servicios = new List<ServicioMediaDistancia>
             {
-                new ServicioMediaDistancia { IdServicio = 2200, Empresa = new EmpresaTransporte { RazonSocial = "Nueva Chevallier S.A." } },
-                new ServicioMediaDistancia { IdServicio = 2315, Empresa = new EmpresaTransporte { RazonSocial = "Andesmar" } },
-                new ServicioMediaDistancia { IdServicio = 2130, Empresa = new EmpresaTransporte { RazonSocial = "Empresa Argentina" } },
-                new ServicioMediaDistancia { IdServicio = 2345, Empresa = new EmpresaTransporte { RazonSocial = "Plusmar" } },
-                new ServicioMediaDistancia { IdServicio = 1900, Empresa = new EmpresaTransporte { RazonSocial = "Via Bariloche" } }
+                new ServicioMediaDistancia { IdServicio = 2200, Empresa = new EmpresaTransporte { IdEmpresa = 10, RazonSocial = "Nueva Chevallier S.A." } },
+                new ServicioMediaDistancia { IdServicio = 2315, Empresa = new EmpresaTransporte { IdEmpresa = 20, RazonSocial = "Andesmar" } },
+                new ServicioMediaDistancia { IdServicio = 2130, Empresa = new EmpresaTransporte { IdEmpresa = 30, RazonSocial = "Empresa Argentina" } },
+                new ServicioMediaDistancia { IdServicio = 2345, Empresa = new EmpresaTransporte { IdEmpresa = 40, RazonSocial = "Plusmar" } },
+                new ServicioMediaDistancia { IdServicio = 1900, Empresa = new EmpresaTransporte { IdEmpresa = 50, RazonSocial = "Via Bariloche" } }
             };
 
             // 2. Inicializamos tus 5 Hojas de Ruta usando solo los IDs del diagrama
