@@ -49,7 +49,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
 
             foreach (var hdr in servicio.HDRs)
             {
-                foreach (var guia in hdr.Guias)
+                foreach (var guia in hdr.DetalleGuias)
                 {
                     ListViewItem item = new ListViewItem(guia.NroGuia);
                     item.SubItems.Add(guia.TipoBulto.ToString());
@@ -87,7 +87,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             {
                 actualizarEstadoHDR(hdr);
 
-                foreach (var guia in hdr.Guias)
+                foreach (var guia in hdr.DetalleGuias)
                 {
                     actualizarEstadoGuia(guia);
                 }

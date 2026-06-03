@@ -64,7 +64,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             {
                 NroHDR = 1001,
                 Estado = EstadoHojaDeRuta.EnCurso,
-                Guias = new List<Guia>
+                DetalleGuias = new List<Guia>
                 {
                     guia1,
                     guia2
@@ -75,7 +75,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             {
                 NroHDR = 1002,
                 Estado = EstadoHojaDeRuta.EnCurso,
-                Guias = new List<Guia>
+                DetalleGuias = new List<Guia>
                 {
                     guia3
                 }
@@ -118,7 +118,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             {
                 NroHDR = 2001,
                 Estado = EstadoHojaDeRuta.EnCurso,
-                Guias = new List<Guia>
+                DetalleGuias = new List<Guia>
                 {
                     guia4,
                     guia5
@@ -151,7 +151,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             {
                 NroHDR = 3001,
                 Estado = EstadoHojaDeRuta.EnCurso,
-                Guias = new List<Guia>
+                DetalleGuias = new List<Guia>
                 {
                     guia6
                 }
