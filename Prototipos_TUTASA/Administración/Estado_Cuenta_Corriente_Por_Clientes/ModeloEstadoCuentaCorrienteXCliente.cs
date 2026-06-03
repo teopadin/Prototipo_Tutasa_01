@@ -10,6 +10,7 @@ namespace Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrient
         public List<ClienteCuentaCorrienteEntidad> Clientes { get; set; }
         public List<ServicioPendienteFacturaEntidad> ServiciosPendientesFactura { get; set; }
         public List<FacturaEntidad> FacturasAPagar { get; set; }
+        public ClienteCuentaCorrienteEntidad ClienteSeleccionado { get; private set; }
 
         public ModeloEstadoCuentaCorrienteXCliente()
         {
@@ -68,6 +69,7 @@ namespace Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrient
             };
 
             FacturasAPagar = new List<FacturaEntidad>();
+            ClienteSeleccionado = null;
         }
 
         public List<ClienteCuentaCorrienteEntidad> ObtenerClientes()
@@ -75,6 +77,16 @@ namespace Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrient
             return Clientes
                 .OrderBy(c => c.RazonSocial)
                 .ToList();
+        }
+
+        public void SeleccionarCliente(ClienteCuentaCorrienteEntidad cliente)
+        {
+            ClienteSeleccionado = cliente;
+        }
+
+        public void LimpiarSeleccion()
+        {
+            ClienteSeleccionado = null;
         }
 
         public List<ServicioPendienteFacturaEntidad> ObtenerServiciosPendientes(ClienteCuentaCorrienteEntidad cliente)

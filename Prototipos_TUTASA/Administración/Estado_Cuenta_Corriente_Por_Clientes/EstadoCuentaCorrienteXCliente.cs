@@ -11,7 +11,6 @@ namespace Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrient
     public partial class EstadoCuentaCorrienteXCliente : Form
     {
         private ModeloEstadoCuentaCorrienteXCliente modelo = new ModeloEstadoCuentaCorrienteXCliente();
-        private ClienteCuentaCorrienteEntidad clienteSeleccionado = null;
 
         public EstadoCuentaCorrienteXCliente()
         {
@@ -44,9 +43,9 @@ namespace Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrient
                 return;
             }
 
-            clienteSeleccionado = (ClienteCuentaCorrienteEntidad)cboRazonSocial.SelectedItem;
-            MostrarDatosCliente(clienteSeleccionado);
-            CargarServiciosPendientes(clienteSeleccionado);
+            modelo.SeleccionarCliente((ClienteCuentaCorrienteEntidad)cboRazonSocial.SelectedItem);
+            MostrarDatosCliente(modelo.ClienteSeleccionado);
+            CargarServiciosPendientes(modelo.ClienteSeleccionado);
         }
 
         private void MostrarDatosCliente(ClienteCuentaCorrienteEntidad cliente)
@@ -83,30 +82,30 @@ namespace Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrient
 
         private void btnEmitirFactura_Click(object sender, EventArgs e)
         {
-            if (clienteSeleccionado == null)
+            if (modelo.ClienteSeleccionado == null)
             {
                 MessageBox.Show("Debe seleccionar una razón social para continuar con la operación.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            if (modelo.CalcularCantidadServicios(clienteSeleccionado) == 0)
+            if (modelo.CalcularCantidadServicios(modelo.ClienteSeleccionado) == 0)
             {
                 MessageBox.Show("El cliente seleccionado no posee servicios pendientes de facturación.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            if (!clienteSeleccionado.HabilitadoParaFacturar)
+            if (!modelo.ClienteSeleccionado.HabilitadoParaFacturar)
             {
                 MessageBox.Show("El cliente seleccionado no se encuentra habilitado para facturación. No es posible emitir la factura correspondiente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            FacturaEntidad factura = modelo.EmitirFactura(clienteSeleccionado);
+            FacturaEntidad factura = modelo.EmitirFactura(modelo.ClienteSeleccionado);
 
             MessageBox.Show("Factura emitida con éxito", "Factura", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            MostrarDatosCliente(clienteSeleccionado);
-            CargarServiciosPendientes(clienteSeleccionado);
+            MostrarDatosCliente(modelo.ClienteSeleccionado);
+            CargarServiciosPendientes(modelo.ClienteSeleccionado);
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -116,7 +115,7 @@ namespace Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrient
 
         private void LimpiarDatosCliente()
         {
-            clienteSeleccionado = null;
+            modelo.LimpiarSeleccion();
             txtCuit.Text = "";
             txtEstadoCuenta.Text = "";
             txtSaldoActual.Text = "";
