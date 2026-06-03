@@ -52,29 +52,30 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtNroHDR.Text))
+            buscarHDR(txtNroHDR.Text);
+        }
+
+        private void buscarHDR(string nroHDRTexto)
+        {
+            if (string.IsNullOrWhiteSpace(nroHDRTexto))
             {
-                MessageBox.Show(
-                    "Debe ingresar un número de HDR para realizar la búsqueda.");
+                MessageBox.Show("Debe ingresar un número de HDR para realizar la búsqueda.");
                 return;
             }
 
             int nroHDR;
 
-            if (!int.TryParse(txtNroHDR.Text, out nroHDR))
+            if (!int.TryParse(nroHDRTexto, out nroHDR))
             {
-                MessageBox.Show(
-                    "Debe ingresar un número de HDR válido.");
+                MessageBox.Show("Debe ingresar un número de HDR válido.");
                 return;
             }
 
-            var hdr = modelo.HojasDeRutaDistribucion
-                .FirstOrDefault(h => h.NroHDR == nroHDR);
+            var hdr = modelo.HojasDeRutaDistribucion.FirstOrDefault(h => h.NroHDR == nroHDR);
 
             if (hdr == null)
             {
-                MessageBox.Show(
-                    "No se encontró ninguna hoja de ruta con el número ingresado. Verifique e intente nuevamente.");
+                MessageBox.Show("No se encontró ninguna hoja de ruta con el número ingresado. Verifique e intente nuevamente.");
 
                 txtNroHDR.Clear();
                 return;
@@ -83,8 +84,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
             // Excepción 3
             if (hdr.AgenciaHDR.IdAgencia != modelo.AgenciaLogueada.IdAgencia)
             {
-                MessageBox.Show(
-                    "La hoja de ruta ingresada no corresponde a su agencia.");
+                MessageBox.Show("La hoja de ruta ingresada no corresponde a su agencia.");
 
                 txtNroHDR.Clear();
                 return;
@@ -93,8 +93,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
             // Excepción 4
             if (hdr.Estado == EstadoHojaDeRuta.Recibida)
             {
-                MessageBox.Show(
-                    "La hoja de ruta ingresada ya fue confirmada como recibida.");
+                MessageBox.Show("La hoja de ruta ingresada ya fue confirmada como recibida.");
 
                 txtNroHDR.Clear();
                 return;
@@ -109,37 +108,48 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
         {
             if (modelo.HdrActual == null)
             {
-                MessageBox.Show(
-                    "Debe buscar una HDR antes de confirmar la recepción.");
+                MessageBox.Show("Debe buscar una HDR antes de confirmar la recepción.");
 
                 return;
             }
 
-            modelo.HdrActual.Estado = EstadoHojaDeRuta.Recibida;
+            confirmarRecepcion();
 
-            modelo.HdrActual.FechaRecepcion = DateTime.Now;
-
-            foreach (var guia in modelo.HdrActual.Guias)
-            {
-                guia.Estado = EstadoGuia.PendienteDeRetiroEnAgencia;
-            }
-
-            MessageBox.Show(
-                $"Recepción de HDR N° {modelo.HdrActual.NroHDR} confirmada con éxito.",
-                "Éxito",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+            MessageBox.Show($"Recepción de HDR N° {modelo.HdrActual.NroHDR} confirmada con éxito.","Éxito",MessageBoxButtons.OK,MessageBoxIcon.Information);
 
             this.Close();
         }
 
+        private void confirmarRecepcion()
+        {
+            registrarRecepcion();
+
+            actualizarEstadoHDR(modelo.HdrActual);
+
+            actualizarEstadoGuia(modelo.HdrActual);
+        }
+
+        private void registrarRecepcion()
+        {
+            modelo.HdrActual.FechaRecepcion = DateTime.Now;
+        }
+
+        private void actualizarEstadoHDR(HojaDeRutaDistribucion hdr)
+        {
+            hdr.Estado = EstadoHojaDeRuta.Recibida;
+        }
+
+        private void actualizarEstadoGuia(HojaDeRutaDistribucion hdr)
+        {
+            foreach (var guia in hdr.Guias)
+            {
+                guia.Estado = EstadoGuia.PendienteDeRetiroEnAgencia;
+            }
+        }
+
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            DialogResult r = MessageBox.Show(
-                "La recepción no será registrada. ¿Desea continuar?",
-                "Confirmación",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
+            DialogResult r = MessageBox.Show("La recepción no será registrada. ¿Desea continuar?","Confirmación",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
 
             if (r == DialogResult.Yes)
             {
