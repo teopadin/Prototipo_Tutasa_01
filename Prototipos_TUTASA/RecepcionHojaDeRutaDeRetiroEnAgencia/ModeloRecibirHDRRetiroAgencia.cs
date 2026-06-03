@@ -73,7 +73,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia
                 AgenciaHDR = agencia1,
                 Transportista = t1,
                 Estado = EstadoHojaDeRuta.EnCurso,
-                Guias = new List<Guia>
+                DetalleGuias = new List<Guia>
                 {
                     guia1,
                     guia2
@@ -87,7 +87,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia
                 AgenciaHDR = agencia2,
                 Transportista = t2,
                 Estado = EstadoHojaDeRuta.EnCurso,
-                Guias = new List<Guia>
+                DetalleGuias = new List<Guia>
                 {
                     guia3
                 }
@@ -101,7 +101,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia
                 AgenciaHDR = agencia1,
                 Transportista = t1,
                 Estado = EstadoHojaDeRuta.Recibida,
-                Guias = new List<Guia>
+                DetalleGuias = new List<Guia>
                 {
                     guia1
                 }

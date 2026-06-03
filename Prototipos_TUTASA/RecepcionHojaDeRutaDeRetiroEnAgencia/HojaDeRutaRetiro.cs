@@ -11,7 +11,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia
         public DateTime FechaRecepcion { get; set; }
         public Agencia AgenciaHDR { get; set; }
         public TransportistaLocal Transportista { get; set; }
-        public List<Guia> Guias { get; set; }
+        public List<Guia> DetalleGuias { get; set; }
         public EstadoHojaDeRuta Estado { get; set; }
     }
 }
