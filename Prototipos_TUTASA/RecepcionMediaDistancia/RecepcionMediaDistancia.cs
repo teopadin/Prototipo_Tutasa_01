@@ -20,7 +20,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
         {
             cmboIDServicio.DisplayMember = "IdServicio";
             cmboIDServicio.ValueMember = "IdServicio";
-            cmboIDServicio.DataSource = modelo.Servicios.FindAll(s => s.FechaDespacho != null && s.FechaRecepcion == null);
+            cmboIDServicio.DataSource = modelo.Servicios.FindAll(s => s.FechaLlegada != null && s.FechaRecepcion == null);
             txtEmpresaTransporte.Clear();
             txtCantidadGuias.Clear();
             dateTimeFechaDespacho.Value = DateTime.Today;
@@ -43,7 +43,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             ServicioMediaDistancia servicio = (ServicioMediaDistancia)cmboIDServicio.SelectedItem;
             modelo.ServicioActual = servicio;
             txtEmpresaTransporte.Text = servicio.EmpresaTransporte.RazonSocial;
-            dateTimeFechaDespacho.Value = servicio.FechaDespacho.Value;
+            dateTimeFechaDespacho.Value = servicio.FechaLlegada.Value;
             lvGuias.Items.Clear();
             int cantidadGuias = 0;
 
