@@ -38,7 +38,7 @@ namespace Prototipos_TUTASA.ConsultarEstadoDelPedido_v2
                 ListViewItem fila = new ListViewItem(item.FechaCambio.ToShortDateString());
                 fila.SubItems.Add(nroGuia);
                 fila.SubItems.Add(modelo.TextoEstado(item.Estado));
-                fila.SubItems.Add(modelo.TextoUbicacion(item.Donde));
+                fila.SubItems.Add(item.Donde);
                 lstHistorial.Items.Add(fila);
             }
         }

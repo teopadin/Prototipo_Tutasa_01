@@ -7,7 +7,7 @@ namespace Prototipos_TUTASA.Consultar_Estado_Del_Pedido
     internal enum EstadoGuia
     {
         Impuesta,
-        PendienteDeRetiroPorTransportista,
+        IncluidaEnHDRRetiro,
         Retirada,
         Admitida,
         PendienteDeDespacho,

@@ -6,8 +6,8 @@ namespace Prototipos_TUTASA.Admisión
 {
     internal enum ModalidadEntrega
     {
-        PuertaAPuerta,
-        RetiroAgencia,
-        RetiroCD
+        EntregaDomicilio,
+        EntregaAgencia,
+        EntregaCD
     }
 }

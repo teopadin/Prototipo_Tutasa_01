@@ -155,8 +155,8 @@ namespace Prototipos_TUTASA.ImposiciónCD_V2
                 return;
             }
 
-            txtCUIT.Text = cliente.CUIT;
-            txtTelRem.Text = cliente.Telefono.ToString();
+            txtCUIT.Text = cliente.CUIT.ToString();
+            txtTelRem.Text = cliente.Telefono;
             txtCalleRemitente.Text = cliente.Calle;
             txtAlturaRemitente.Text = cliente.Altura.ToString();
             txtPisoRemitente.Text = cliente.Piso;
@@ -268,7 +268,7 @@ namespace Prototipos_TUTASA.ImposiciónCD_V2
                 return false;
             }
 
-            if (!EsSoloNumerico(txtCUIT.Text))
+            if (!long.TryParse(txtCUIT.Text.Trim(), out long cuit) || cuit <= 0)
             {
                 MostrarAviso("El campo CUIT ingresado no es válido.");
                 return false;
@@ -392,6 +392,11 @@ namespace Prototipos_TUTASA.ImposiciónCD_V2
         private void MostrarAviso(string mensaje)
         {
             MessageBox.Show(mensaje, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+        }
+
+        private void radioButton5_CheckedChanged(object sender, EventArgs e)
+        {
 
         }
     }

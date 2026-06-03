@@ -386,7 +386,7 @@
             groupBox7.Size = new Size(393, 362);
             groupBox7.TabIndex = 37;
             groupBox7.TabStop = false;
-            groupBox7.Text = "Retiro en Agencia";
+            groupBox7.Text = "Entrega en Agencia";
             // 
             // label8
             // 
@@ -450,7 +450,7 @@
             groupBox5.Size = new Size(342, 362);
             groupBox5.TabIndex = 35;
             groupBox5.TabStop = false;
-            groupBox5.Text = "Retiro en CD";
+            groupBox5.Text = "Entrega en CD";
             // 
             // label7
             // 
@@ -490,7 +490,7 @@
             groupBox4.Size = new Size(430, 362);
             groupBox4.TabIndex = 34;
             groupBox4.TabStop = false;
-            groupBox4.Text = "Puerta a Puerta";
+            groupBox4.Text = "Entrega a Domicilio";
             // 
             // textBox5
             // 
@@ -606,10 +606,10 @@
             radioButton7.Location = new Point(1162, 51);
             radioButton7.Margin = new Padding(4);
             radioButton7.Name = "radioButton7";
-            radioButton7.Size = new Size(180, 36);
+            radioButton7.Size = new Size(199, 36);
             radioButton7.TabIndex = 2;
             radioButton7.TabStop = true;
-            radioButton7.Text = "Retiro en CD";
+            radioButton7.Text = "Entrega en CD";
             radioButton7.UseVisualStyleBackColor = true;
             // 
             // radioButton6
@@ -618,10 +618,10 @@
             radioButton6.Location = new Point(629, 46);
             radioButton6.Margin = new Padding(4);
             radioButton6.Name = "radioButton6";
-            radioButton6.Size = new Size(233, 36);
+            radioButton6.Size = new Size(252, 36);
             radioButton6.TabIndex = 1;
             radioButton6.TabStop = true;
-            radioButton6.Text = "Retiro en Agencia";
+            radioButton6.Text = "Entrega en Agencia";
             radioButton6.UseVisualStyleBackColor = true;
             // 
             // radioButton5
@@ -630,10 +630,10 @@
             radioButton5.Location = new Point(129, 51);
             radioButton5.Margin = new Padding(4);
             radioButton5.Name = "radioButton5";
-            radioButton5.Size = new Size(208, 36);
+            radioButton5.Size = new Size(253, 36);
             radioButton5.TabIndex = 0;
             radioButton5.TabStop = true;
-            radioButton5.Text = "Puerta a puerta";
+            radioButton5.Text = "Entrega a Domicilio";
             radioButton5.UseVisualStyleBackColor = true;
             // 
             // gbTamañoBulto
