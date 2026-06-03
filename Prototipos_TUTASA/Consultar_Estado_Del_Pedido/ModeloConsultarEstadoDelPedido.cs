@@ -15,7 +15,7 @@ namespace Prototipos_TUTASA.Consultar_Estado_Del_Pedido
                 Historial = new List<HistorialEstadoGuia>
                 {
                         new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 5, 10), Estado = EstadoGuia.Impuesta, Donde = UbicacionGuia.EnAgencia },
-                        new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 5, 11), Estado = EstadoGuia.PendienteDeRetiroPorTransportista, Donde = UbicacionGuia.EnAgencia },
+                        new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 5, 11), Estado = EstadoGuia.IncluidaEnHDRRetiro, Donde = UbicacionGuia.EnAgencia },
                         new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 5, 12), Estado = EstadoGuia.Retirada, Donde = UbicacionGuia.ConTransportistaLocal },
                         new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 5, 13), Estado = EstadoGuia.Admitida, Donde = UbicacionGuia.EnCDOrigen },
                         new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 5, 14), Estado = EstadoGuia.PendienteDeDespacho, Donde = UbicacionGuia.EnCDOrigen },
@@ -48,7 +48,7 @@ namespace Prototipos_TUTASA.Consultar_Estado_Del_Pedido
                 Historial = new List<HistorialEstadoGuia>
                 {
                     new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 5, 1), Estado = EstadoGuia.Impuesta, Donde = UbicacionGuia.EnDomicilio },
-                    new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 5, 2), Estado = EstadoGuia.PendienteDeRetiroPorTransportista, Donde = UbicacionGuia.EnDomicilio },
+                    new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 5, 2), Estado = EstadoGuia.IncluidaEnHDRRetiro, Donde = UbicacionGuia.EnDomicilio },
                     new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 5, 3), Estado = EstadoGuia.Cancelada, Donde = UbicacionGuia.ConTransportistaLocal }
                 }
             }
@@ -70,7 +70,7 @@ namespace Prototipos_TUTASA.Consultar_Estado_Del_Pedido
         public string TextoEstado(EstadoGuia estado)
         {
             if (estado == EstadoGuia.Impuesta) return "Impuesta";
-            if (estado == EstadoGuia.PendienteDeRetiroPorTransportista) return "Pendiente de retiro por transportista";
+            if (estado == EstadoGuia.IncluidaEnHDRRetiro) return "Incluida en HDR de retiro";
             if (estado == EstadoGuia.Retirada) return "Retirada";
             if (estado == EstadoGuia.Admitida) return "Admitida";
             if (estado == EstadoGuia.PendienteDeDespacho) return "Pendiente de despacho";
