@@ -8,22 +8,22 @@ namespace Prototipos_TUTASA.Consultar_Estado_Del_Pedido
     {
         private List<Guia> guias = new List<Guia>
         {
-            // Guía CD01-0001 - Recorrido completo entregada en agencia
+ // Guía CD01-0001 - Recorrido completo entregada en agencia
             new Guia
             {
                 NroGuia = "AG01-0001",
                 Historial = new List<HistorialEstadoGuia>
                 {
-                        new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 5, 10), Estado = EstadoGuia.Impuesta, Donde = UbicacionGuia.EnAgencia },
-                        new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 5, 11), Estado = EstadoGuia.IncluidaEnHDRRetiro, Donde = UbicacionGuia.EnAgencia },
-                        new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 5, 12), Estado = EstadoGuia.Retirada, Donde = UbicacionGuia.ConTransportistaLocal },
-                        new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 5, 13), Estado = EstadoGuia.Admitida, Donde = UbicacionGuia.EnCDOrigen },
-                        new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 5, 14), Estado = EstadoGuia.PendienteDeDespacho, Donde = UbicacionGuia.EnCDOrigen },
-                        new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 5, 15), Estado = EstadoGuia.EnTransito, Donde = UbicacionGuia.EnServicioMediaDistancia },
-                        new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 5, 17), Estado = EstadoGuia.EnCDDestino, Donde = UbicacionGuia.EnCDDestino },
-                        new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 5, 18), Estado = EstadoGuia.EnDistribucion, Donde = UbicacionGuia.ConTransportistaLocal },
-                        new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 5, 19), Estado = EstadoGuia.PendienteDeRetiroEnAgencia, Donde = UbicacionGuia.EnAgencia },
-                        new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 5, 21), Estado = EstadoGuia.Entregada, Donde = UbicacionGuia.EnAgencia }
+                        new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 5, 10), Estado = EstadoGuia.Impuesta, Donde = "En agencia" },
+                        new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 5, 11), Estado = EstadoGuia.IncluidaEnHDRRetiro, Donde = "En agencia" },
+                        new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 5, 12), Estado = EstadoGuia.Retirada, Donde = "Con transportista local" },
+                        new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 5, 13), Estado = EstadoGuia.Admitida, Donde = "En CD origen" },
+                        new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 5, 14), Estado = EstadoGuia.PendienteDeDespacho, Donde = "En CD origen" },
+                        new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 5, 15), Estado = EstadoGuia.EnTransito, Donde = "En servicio media distancia" },
+                        new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 5, 17), Estado = EstadoGuia.EnCDDestino, Donde = "En CD destino" },
+                        new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 5, 18), Estado = EstadoGuia.EnDistribucion, Donde = "Con transportista local" },
+                        new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 5, 19), Estado = EstadoGuia.PendienteDeRetiroEnAgencia, Donde = "En agencia" },
+                        new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 5, 21), Estado = EstadoGuia.Entregada, Donde = "En agencia" }
                 }
             },
             // Guía CD02-0002 - Retiro en CD destino
@@ -32,13 +32,13 @@ namespace Prototipos_TUTASA.Consultar_Estado_Del_Pedido
                 NroGuia = "CD02-0002",
                 Historial = new List<HistorialEstadoGuia>
                 {
-                    new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 4, 5), Estado = EstadoGuia.Impuesta, Donde = UbicacionGuia.EnCDOrigen },
-                    new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 4, 6), Estado = EstadoGuia.Admitida, Donde = UbicacionGuia.EnCDOrigen },
-                    new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 4, 7), Estado = EstadoGuia.PendienteDeDespacho, Donde = UbicacionGuia.EnCDOrigen },
-                    new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 4, 8), Estado = EstadoGuia.EnTransito, Donde = UbicacionGuia.EnServicioMediaDistancia },
-                    new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 4, 10), Estado = EstadoGuia.EnCDDestino, Donde = UbicacionGuia.EnCDDestino },
-                    new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 4, 11), Estado = EstadoGuia.PendienteDeRetiroEnCD, Donde = UbicacionGuia.EnCDDestino },
-                    new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 4, 13), Estado = EstadoGuia.Entregada, Donde = UbicacionGuia.EnCDDestino }
+                    new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 4, 5), Estado = EstadoGuia.Impuesta, Donde = "En CD origen" },
+                    new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 4, 6), Estado = EstadoGuia.Admitida, Donde = "En CD origen" },
+                    new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 4, 7), Estado = EstadoGuia.PendienteDeDespacho, Donde = "En CD origen" },
+                    new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 4, 8), Estado = EstadoGuia.EnTransito, Donde = "En servicio media distancia" },
+                    new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 4, 10), Estado = EstadoGuia.EnCDDestino, Donde = "En CD destino" },
+                    new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 4, 11), Estado = EstadoGuia.PendienteDeRetiroEnCD, Donde = "En CD destino" },
+                    new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 4, 13), Estado = EstadoGuia.Entregada, Donde = "En CD destino" }
                 }
             },
             // Guía CD0-0003 - Cancelada
@@ -47,9 +47,9 @@ namespace Prototipos_TUTASA.Consultar_Estado_Del_Pedido
                 NroGuia = "CD03-0003",
                 Historial = new List<HistorialEstadoGuia>
                 {
-                    new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 5, 1), Estado = EstadoGuia.Impuesta, Donde = UbicacionGuia.EnDomicilio },
-                    new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 5, 2), Estado = EstadoGuia.IncluidaEnHDRRetiro, Donde = UbicacionGuia.EnDomicilio },
-                    new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 5, 3), Estado = EstadoGuia.Cancelada, Donde = UbicacionGuia.ConTransportistaLocal }
+                    new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 5, 1), Estado = EstadoGuia.Impuesta, Donde = "En domicilio" },
+                    new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 5, 2), Estado = EstadoGuia.IncluidaEnHDRRetiro, Donde = "En domicilio" },
+                    new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 5, 3), Estado = EstadoGuia.Cancelada, Donde = "Con transportista local" }
                 }
             }
 
@@ -81,17 +81,6 @@ namespace Prototipos_TUTASA.Consultar_Estado_Del_Pedido
             if (estado == EstadoGuia.PendienteDeRetiroEnCD) return "Pendiente de retiro en CD";
             if (estado == EstadoGuia.Entregada) return "Entregada";
             if (estado == EstadoGuia.Cancelada) return "Cancelada";
-            return "";
-        }
-
-        public string TextoUbicacion(UbicacionGuia ubicacion)
-        {
-            if (ubicacion == UbicacionGuia.EnCDOrigen) return "En CD origen";
-            if (ubicacion == UbicacionGuia.ConTransportistaLocal) return "Con transportista local";
-            if (ubicacion == UbicacionGuia.EnServicioMediaDistancia) return "En servicio media distancia";
-            if (ubicacion == UbicacionGuia.EnCDDestino) return "En CD destino";
-            if (ubicacion == UbicacionGuia.EnAgencia) return "En agencia";
-            if (ubicacion == UbicacionGuia.EnDomicilio) return "En domicilio";
             return "";
         }
     }
