@@ -394,5 +394,10 @@ namespace Prototipos_TUTASA.ImposiciónCD_V2
             MessageBox.Show(mensaje, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
         }
+
+        private void radioButton5_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

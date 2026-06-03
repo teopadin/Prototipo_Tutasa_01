@@ -281,10 +281,10 @@
             radioButton7.Location = new Point(1114, 47);
             radioButton7.Margin = new Padding(5, 6, 5, 6);
             radioButton7.Name = "radioButton7";
-            radioButton7.Size = new Size(180, 36);
+            radioButton7.Size = new Size(199, 36);
             radioButton7.TabIndex = 2;
             radioButton7.TabStop = true;
-            radioButton7.Text = "Retiro en CD";
+            radioButton7.Text = "Entrega en CD";
             radioButton7.UseVisualStyleBackColor = true;
             // 
             // radioButton6
@@ -293,10 +293,10 @@
             radioButton6.Location = new Point(619, 47);
             radioButton6.Margin = new Padding(5, 6, 5, 6);
             radioButton6.Name = "radioButton6";
-            radioButton6.Size = new Size(233, 36);
+            radioButton6.Size = new Size(252, 36);
             radioButton6.TabIndex = 1;
             radioButton6.TabStop = true;
-            radioButton6.Text = "Retiro en Agencia";
+            radioButton6.Text = "Entrega en Agencia";
             radioButton6.UseVisualStyleBackColor = true;
             // 
             // radioButton5
@@ -305,11 +305,12 @@
             radioButton5.Location = new Point(174, 47);
             radioButton5.Margin = new Padding(5, 6, 5, 6);
             radioButton5.Name = "radioButton5";
-            radioButton5.Size = new Size(208, 36);
+            radioButton5.Size = new Size(253, 36);
             radioButton5.TabIndex = 0;
             radioButton5.TabStop = true;
-            radioButton5.Text = "Puerta a puerta";
+            radioButton5.Text = "Entrega a Domicilio";
             radioButton5.UseVisualStyleBackColor = true;
+            radioButton5.CheckedChanged += radioButton5_CheckedChanged;
             // 
             // groupBox2
             // 
@@ -330,7 +331,7 @@
             groupBox2.Size = new Size(442, 367);
             groupBox2.TabIndex = 26;
             groupBox2.TabStop = false;
-            groupBox2.Text = "Puerta a Puerta";
+            groupBox2.Text = "Entrega a Domicilio";
             groupBox2.Enter += groupBox2_Enter;
             // 
             // textBox5
@@ -438,7 +439,7 @@
             groupBox3.Size = new Size(508, 367);
             groupBox3.TabIndex = 27;
             groupBox3.TabStop = false;
-            groupBox3.Text = "Retiro en Agencia";
+            groupBox3.Text = "Entrega en Agencia";
             // 
             // label6
             // 
@@ -470,7 +471,7 @@
             groupBox4.Size = new Size(454, 367);
             groupBox4.TabIndex = 27;
             groupBox4.TabStop = false;
-            groupBox4.Text = "Retiro en CD";
+            groupBox4.Text = "Entrega en CD";
             // 
             // label7
             // 
@@ -520,9 +521,9 @@
             groupBox5.Controls.Add(lblTelRem);
             groupBox5.Controls.Add(txtTelRem);
             groupBox5.Location = new Point(31, 122);
-            groupBox5.Margin = new Padding(4, 4, 4, 4);
+            groupBox5.Margin = new Padding(4);
             groupBox5.Name = "groupBox5";
-            groupBox5.Padding = new Padding(4, 4, 4, 4);
+            groupBox5.Padding = new Padding(4);
             groupBox5.Size = new Size(1426, 282);
             groupBox5.TabIndex = 29;
             groupBox5.TabStop = false;
@@ -636,7 +637,7 @@
             // 
             cboRazonSocial.Items.AddRange(new object[] { "Acme SA", "Distribuidora Norte SRL", "Logística del Sur SA" });
             cboRazonSocial.Location = new Point(13, 86);
-            cboRazonSocial.Margin = new Padding(4, 4, 4, 4);
+            cboRazonSocial.Margin = new Padding(4);
             cboRazonSocial.Name = "cboRazonSocial";
             cboRazonSocial.Size = new Size(264, 40);
             cboRazonSocial.TabIndex = 23;
@@ -654,7 +655,7 @@
             // txtCUIT
             // 
             txtCUIT.Location = new Point(313, 86);
-            txtCUIT.Margin = new Padding(4, 4, 4, 4);
+            txtCUIT.Margin = new Padding(4);
             txtCUIT.Name = "txtCUIT";
             txtCUIT.Size = new Size(190, 39);
             txtCUIT.TabIndex = 25;
@@ -672,7 +673,7 @@
             // txtTelRem
             // 
             txtTelRem.Location = new Point(560, 86);
-            txtTelRem.Margin = new Padding(4, 4, 4, 4);
+            txtTelRem.Margin = new Padding(4);
             txtTelRem.Name = "txtTelRem";
             txtTelRem.Size = new Size(220, 39);
             txtTelRem.TabIndex = 33;
