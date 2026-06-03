@@ -37,7 +37,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             {
                 NroGuia = "G0001",
                 TipoBulto = TiposBulto.S,
-                ModalidadEntrega = ModalidadEntrega.PuertaAPuerta,
+                ModalidadEntrega = ModalidadEntrega.EntregaDomicilio,
                 CDOrigen = cdCordoba,
                 Estado = EstadoGuia.EnTransito
             };
@@ -46,7 +46,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             {
                 NroGuia = "G0002",
                 TipoBulto = TiposBulto.M,
-                ModalidadEntrega = ModalidadEntrega.RetiroEnAgencia,
+                ModalidadEntrega = ModalidadEntrega.EntregaAgencia,
                 CDOrigen = cdCordoba,
                 Estado = EstadoGuia.EnTransito
             };
@@ -55,7 +55,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             {
                 NroGuia = "G0003",
                 TipoBulto = TiposBulto.XL,
-                ModalidadEntrega = ModalidadEntrega.RetiroEnCD,
+                ModalidadEntrega = ModalidadEntrega.EntregaCD,
                 CDOrigen = cdCordoba,
                 Estado = EstadoGuia.EnTransito
             };
@@ -100,7 +100,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             {
                 NroGuia = "G0004",
                 TipoBulto = TiposBulto.L,
-                ModalidadEntrega = ModalidadEntrega.PuertaAPuerta,
+                ModalidadEntrega = ModalidadEntrega.EntregaDomicilio,
                 CDOrigen = cdMendoza,
                 Estado = EstadoGuia.EnTransito
             };
@@ -109,7 +109,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             {
                 NroGuia = "G0005",
                 TipoBulto = TiposBulto.M,
-                ModalidadEntrega = ModalidadEntrega.RetiroEnCD,
+                ModalidadEntrega = ModalidadEntrega.EntregaCD,
                 CDOrigen = cdMendoza,
                 Estado = EstadoGuia.EnTransito
             };
@@ -142,7 +142,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             {
                 NroGuia = "G0006",
                 TipoBulto = TiposBulto.S,
-                ModalidadEntrega = ModalidadEntrega.PuertaAPuerta,
+                ModalidadEntrega = ModalidadEntrega.EntregaDomicilio,
                 Estado = EstadoGuia.EnTransito,
                 CDOrigen = cdCordoba
             };
