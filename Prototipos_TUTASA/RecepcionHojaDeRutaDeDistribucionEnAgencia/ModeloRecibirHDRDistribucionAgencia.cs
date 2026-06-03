@@ -84,7 +84,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
                 NroHDR = 1001,
                 AgenciaHDR = agencia1,
                 Transportista = t1,
-                Guias = new List<Guia>
+                DetalleGuias = new List<Guia>
                 {
                     g1,
                     g2
@@ -98,7 +98,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
                 NroHDR = 1002,
                 AgenciaHDR = agencia1,
                 Transportista = t2,
-                Guias = new List<Guia>
+                DetalleGuias = new List<Guia>
                 {
                     g3
                 },
@@ -111,7 +111,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
                 NroHDR = 1003,
                 AgenciaHDR = agencia2,
                 Transportista = t1,
-                Guias = new List<Guia>
+                DetalleGuias = new List<Guia>
                 {
                     g4
                 },
@@ -124,7 +124,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
                 NroHDR = 1004,
                 AgenciaHDR = agencia1,
                 Transportista = t2,
-                Guias = new List<Guia>
+                DetalleGuias = new List<Guia>
                 {
                     g1
                 },

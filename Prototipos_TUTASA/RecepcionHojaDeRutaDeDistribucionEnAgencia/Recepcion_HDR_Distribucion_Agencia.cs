@@ -39,7 +39,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
 
             listView1.Items.Clear();
 
-            foreach (var guia in hdr.Guias)
+            foreach (var guia in hdr.DetalleGuias)
             {
                 ListViewItem item = new ListViewItem(guia.NroGuia);
                 item.SubItems.Add(guia.TipoBulto.ToString());
@@ -47,7 +47,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
                 listView1.Items.Add(item);
             }
 
-            txtTotalGuias.Text = hdr.Guias.Count.ToString();
+            txtTotalGuias.Text = hdr.DetalleGuias.Count.ToString();
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
