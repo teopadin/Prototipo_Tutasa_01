@@ -33,8 +33,8 @@ namespace Prototipos_TUTASA.Imposición.Imposición_Agencia
             var cliente1 = new Cliente
             {
                 RazonSocial = "Distribuidora El Sol SRL",
-                CUIT = "30712345678",
-                Telefono = 1145678901,
+                CUIT = 30712345678,
+                Telefono = "1145678901",
                 Calle = "Av. Corrientes",
                 Altura = 1500,
                 Piso = "PB",
@@ -45,8 +45,8 @@ namespace Prototipos_TUTASA.Imposición.Imposición_Agencia
             var cliente2 = new Cliente
             {
                 RazonSocial = "Importadora del Norte SA",
-                CUIT = "30787654321",
-                Telefono = 1167890123,
+                CUIT = 30787654321,
+                Telefono = "1167890123",
                 Calle = "San Martín",
                 Altura = 320,
                 Piso = "2",
