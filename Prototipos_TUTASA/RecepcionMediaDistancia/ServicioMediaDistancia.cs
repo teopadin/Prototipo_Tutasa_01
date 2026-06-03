@@ -10,6 +10,6 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
         public EmpresaTransporte EmpresaTransporte { get; set; }
         public DateTime? FechaLlegada { get; set; }
         public DateTime? FechaRecepcion { get; set; }
-        public List<HojaDeRutaTransporte> HDRs { get; set; }
+        public List<HojaDeRutaTransporte> DetalleHDRs { get; set; }
     }
 }

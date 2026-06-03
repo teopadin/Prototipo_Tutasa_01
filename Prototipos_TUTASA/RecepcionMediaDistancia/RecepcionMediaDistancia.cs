@@ -47,7 +47,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             lvGuias.Items.Clear();
             int cantidadGuias = 0;
 
-            foreach (var hdr in servicio.HDRs)
+            foreach (var hdr in servicio.DetalleHDRs)
             {
                 foreach (var guia in hdr.DetalleGuias)
                 {
@@ -83,7 +83,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
         {
             registrarRecepcion();
 
-            foreach (var hdr in modelo.ServicioActual.HDRs)
+            foreach (var hdr in modelo.ServicioActual.DetalleHDRs)
             {
                 actualizarEstadoHDR(hdr);
 

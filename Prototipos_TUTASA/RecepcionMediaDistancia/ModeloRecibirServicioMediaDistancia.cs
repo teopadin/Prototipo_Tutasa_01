@@ -87,7 +87,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
                 EmpresaTransporte = empresa1,
                 FechaLlegada= new DateTime(2026, 6, 2, 8, 30, 0),
                 FechaRecepcion= null,
-                HDRs = new List<HojaDeRutaTransporte>
+                DetalleHDRs = new List<HojaDeRutaTransporte>
                 {
                     hdr1,
                     hdr2
@@ -131,7 +131,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
                 EmpresaTransporte = empresa2,
                 FechaLlegada = new DateTime(2026, 5, 29, 16, 30, 0),
                 FechaRecepcion = null,
-                HDRs = new List<HojaDeRutaTransporte>
+                DetalleHDRs = new List<HojaDeRutaTransporte>
                 {
                     hdr3
                 }
@@ -163,7 +163,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
                 EmpresaTransporte = empresa1,
                 FechaLlegada = new DateTime(2026, 5, 25, 11, 30, 0),
                 FechaRecepcion = new DateTime(2026, 5, 30, 15, 30, 0),
-                HDRs = new List<HojaDeRutaTransporte>
+                DetalleHDRs = new List<HojaDeRutaTransporte>
                 {
                     hdr4
                 }
