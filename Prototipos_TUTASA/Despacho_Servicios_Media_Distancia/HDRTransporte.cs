@@ -11,6 +11,7 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
         public EstadoHDR Estado { get; set; }
 
         public int IdServicio { get; set; }
+        public int IdCDDestino { get; set; }
         public List<Guia> DetalleGuias { get; set; }
 
         public override string ToString()

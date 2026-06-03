@@ -6,7 +6,7 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
 {
     internal class ServicioMediaDistancia
     {
-        public string IdServicio { get; set; }
+        public int IdServicio { get; set; }
         public EmpresaTransporte Empresa { get; set; }
     }
 }

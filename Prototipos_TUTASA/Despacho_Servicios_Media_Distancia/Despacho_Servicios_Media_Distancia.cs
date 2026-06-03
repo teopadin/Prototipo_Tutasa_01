@@ -50,25 +50,32 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
 
             var hdrSeleccionada = (HDRTransporte)ServicioCmb.SelectedItem;
 
-
-            if (hdrSeleccionada.NroHDR == 3005)
+            // 1. Destino dinámico según el IdCDDestino del diagrama
+            switch (hdrSeleccionada.IdCDDestino)
             {
-                CdDestinoTxtb.Text = "CD Bariloche - Terminal Río Negro";
-                EmpresaTxtb.Text = "Via Bariloche";
+                case 1: CdDestinoTxtb.Text = "CD Córdoba - Terminal Central"; break;
+                case 2: CdDestinoTxtb.Text = "CD Mendoza - Terminal Del Sol"; break;
+                case 3: CdDestinoTxtb.Text = "CD Rosario - Terminal Mariano Moreno"; break;
+                case 4: CdDestinoTxtb.Text = "CD Mar del Plata - Terminal Ferroautomotora"; break;
+                case 5: CdDestinoTxtb.Text = "CD Bariloche - Terminal Río Negro"; break;
+                default: CdDestinoTxtb.Text = "Centro de Distribución Desconocido"; break;
             }
-            else if (hdrSeleccionada.NroHDR == 3001)
+
+            // 2. Mostramos el ID del Servicio directo en el TextBox
+            IdServicioTxtb.Text = hdrSeleccionada.IdServicio.ToString();
+
+            // 3. Buscamos el objeto Servicio real en el modelo mediante la conexión del ID
+            var servicioAsociado = modelo.BuscarServicioPorId(hdrSeleccionada.IdServicio);
+            if (servicioAsociado != null)
             {
-                CdDestinoTxtb.Text = "CD Córdoba - Terminal Central";
-                EmpresaTxtb.Text = "Nueva Chevallier S.A.";
+                // Pintamos la Razón Social de la empresa asociada a ese servicio
+                EmpresaTxtb.Text = servicioAsociado.Empresa.RazonSocial;
             }
             else
             {
-                CdDestinoTxtb.Text = "Centro de Distribución Central";
-                EmpresaTxtb.Text = "Transporte TUTASA";
+                EmpresaTxtb.Text = "Sin Empresa Asignada";
             }
 
-
-            IdServicioTxtb.Text = hdrSeleccionada.IdServicio.ToString();
             DespachoLst.Items.Clear();
 
             foreach (var g in hdrSeleccionada.DetalleGuias)
