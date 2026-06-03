@@ -33,6 +33,11 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
         }
         private void cmboIDServicio_SelectedIndexChanged(object sender, EventArgs e)
         {
+            seleccionarServicio();
+        }
+
+        private void seleccionarServicio()
+        {
             if (cmboIDServicio.SelectedItem == null)
                 return;
             ServicioMediaDistancia servicio = (ServicioMediaDistancia)cmboIDServicio.SelectedItem;
@@ -41,6 +46,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             dateTimeFechaDespacho.Value = servicio.FechaDespacho.Value;
             lvGuias.Items.Clear();
             int cantidadGuias = 0;
+
             foreach (var hdr in servicio.HDRs)
             {
                 foreach (var guia in hdr.Guias)
@@ -53,42 +59,66 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
                     cantidadGuias++;
                 }
             }
+
             txtCantidadGuias.Text = cantidadGuias.ToString();
+
             btnConfirmarRecepcion.Enabled = true;
         }
 
-        private void btnConfirmarRecepcion_Click(object sender, EventArgs e)
+        private void btnConfirmarRecepcion_Click(object sender,EventArgs e)
         {
             if (modelo.ServicioActual == null)
             {
                 MessageBox.Show("Debe seleccionar un servicio.");
                 return;
             }
-            modelo.ServicioActual.FechaRecepcion = DateTime.Now;
+
+            confirmarRecepcion();
+
+            MessageBox.Show($"Servicio Nº {modelo.ServicioActual.IdServicio} recibido con éxito.","Éxito",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            this.Close();
+        }
+
+        private void confirmarRecepcion()
+        {
+            registrarRecepcion();
+
             foreach (var hdr in modelo.ServicioActual.HDRs)
             {
-                hdr.Estado = EstadoHojaDeRuta.Recibida;
+                actualizarEstadoHDR(hdr);
 
                 foreach (var guia in hdr.Guias)
                 {
-                    if (guia.ModalidadEntrega == ModalidadEntrega.RetiroEnCD)
-                    {
-                        guia.Estado = EstadoGuia.PendienteDeRetiroEnCD;
-                    }
-                    else
-                    {
-                        guia.Estado = EstadoGuia.EnCDDestino;
-                    }
+                    actualizarEstadoGuia(guia);
                 }
             }
-            MessageBox.Show($"Servicio Nº {modelo.ServicioActual.IdServicio} recibido con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
 
-            this.Close();
+        private void registrarRecepcion()
+        {
+            modelo.ServicioActual.FechaRecepcion = DateTime.Now;
+        }
+
+        private void actualizarEstadoHDR(HojaDeRutaTransporte hdr)
+        {
+            hdr.Estado = EstadoHojaDeRuta.Recibida;
+        }
+
+        private void actualizarEstadoGuia(Guia guia)
+        {
+            if (guia.ModalidadEntrega == ModalidadEntrega.RetiroEnCD)
+            {
+                guia.Estado = EstadoGuia.PendienteDeRetiroEnCD;
+            }
+            else
+            {
+                guia.Estado = EstadoGuia.EnCDDestino;
+            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            DialogResult r = MessageBox.Show("La recepción no será registrada. ¿Desea continuar?","Confirmación",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+            DialogResult r = MessageBox.Show("La recepción no será registrada. ¿Desea continuar?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (r == DialogResult.Yes)
             {

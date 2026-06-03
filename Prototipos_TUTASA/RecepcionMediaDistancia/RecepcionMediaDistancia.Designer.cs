@@ -209,6 +209,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             Margin = new Padding(4);
             Name = "RecepcionMediaDistancia";
             Text = "Recepción de hoja de ruta de media distancia";
+            Load += RecepcionMediaDistancia_Load;
             ResumeLayout(false);
             PerformLayout();
         }
