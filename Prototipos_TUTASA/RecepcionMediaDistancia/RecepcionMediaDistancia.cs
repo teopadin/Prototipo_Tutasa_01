@@ -71,7 +71,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
 
                 foreach (var guia in hdr.Guias)
                 {
-                    if (guia.Modalidad == ModalidadEntrega.RetiroEnCD)
+                    if (guia.ModalidadEntrega == ModalidadEntrega.RetiroEnCD)
                     {
                         guia.Estado = EstadoGuia.PendienteDeRetiroEnCD;
                     }
