@@ -66,14 +66,20 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
 
             // 3. Buscamos el objeto Servicio real en el modelo mediante la conexión del ID
             var servicioAsociado = modelo.BuscarServicioPorId(hdrSeleccionada.IdServicio);
+
             if (servicioAsociado != null)
             {
-                // Pintamos la Razón Social de la empresa asociada a ese servicio
-                EmpresaTxtb.Text = servicioAsociado.Empresa.RazonSocial;
-            }
-            else
-            {
-                EmpresaTxtb.Text = "Sin Empresa Asignada";
+                // ALINEADO: Usamos el ID para buscar a la empresa en su respectivo almacén
+                var empresaAsociada = modelo.BuscarEmpresa(servicioAsociado.IdEmpresa);
+
+                if (empresaAsociada != null)
+                {
+                    EmpresaTxtb.Text = empresaAsociada.RazonSocial;
+                }
+                else
+                {
+                    EmpresaTxtb.Text = "Empresa no encontrada";
+                }
             }
 
             DespachoLst.Items.Clear();

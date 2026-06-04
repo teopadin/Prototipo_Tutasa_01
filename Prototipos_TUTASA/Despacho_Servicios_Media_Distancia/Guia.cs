@@ -7,6 +7,7 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
     internal class Guia
     {
         public string NroGuia { get; set; }
+        public int IdCliente { get; set; }
         public TiposBulto TipoBulto { get; set; }
         public EstadoGuia Estado { get; set; }
 
