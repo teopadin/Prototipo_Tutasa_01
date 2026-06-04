@@ -9,6 +9,5 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
         EnTransito,
         EnCDDestino,
         PendienteDeRetiroEnCD,
-        PendienteDeRetiroEnAgencia
     }
 }

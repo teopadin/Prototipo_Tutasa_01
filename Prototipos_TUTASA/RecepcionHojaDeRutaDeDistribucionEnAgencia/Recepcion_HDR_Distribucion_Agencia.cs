@@ -141,7 +141,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
 
         private void actualizarEstadoGuia(HojaDeRutaDistribucion hdr)
         {
-            foreach (var guia in hdr.Guias)
+            foreach (var guia in hdr.DetalleGuias)
             {
                 guia.Estado = EstadoGuia.PendienteDeRetiroEnAgencia;
             }
