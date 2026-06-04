@@ -9,12 +9,13 @@ namespace Prototipos_TUTASA
     {
         private readonly List<TransportistaLocal> transportistas = new List<TransportistaLocal>();
         private readonly List<HojaDeRutaDistribucion> hojasDeRuta = new List<HojaDeRutaDistribucion>();
-        private readonly List<ResumenHDRDistribucion> resumenes = new List<ResumenHDRDistribucion>();
         private List<HojaDeRutaDistribucion> hojasSeleccionadas = new List<HojaDeRutaDistribucion>();
+        private int ultimoNroResumen;
 
         public bool HayHojasSeleccionadas => hojasSeleccionadas.Count > 0;
         public int TotalDomiciliosSeleccionados => CalcularTotalDomicilios(hojasSeleccionadas);
         public int TotalBultosSeleccionados => CalcularTotalBultos(hojasSeleccionadas);
+        public int UltimoNroResumenGenerado => ultimoNroResumen;
 
         public ModeloResumenHDRDistribucion()
         {
@@ -66,9 +67,8 @@ namespace Prototipos_TUTASA
             return hojasSeleccionadas.ToList();
         }
 
-        public bool GenerarResumen(out ResumenHDRDistribucion resumen, out string mensaje)
+        public bool GenerarResumen(out string mensaje)
         {
-            resumen = new ResumenHDRDistribucion();
             mensaje = string.Empty;
 
             if (!HayHojasSeleccionadas)
@@ -77,19 +77,13 @@ namespace Prototipos_TUTASA
                 return false;
             }
 
-            resumen = new ResumenHDRDistribucion
-            {
-                NroResumen = resumenes.Count + 1,
-                TotalDomicilios = TotalDomiciliosSeleccionados,
-                TotalBultos = TotalBultosSeleccionados
-            };
+            ultimoNroResumen++;
 
             foreach (HojaDeRutaDistribucion hoja in hojasSeleccionadas)
             {
                 hoja.Estado = EstadoHojaDeRutaEnum.EnCurso;
             }
 
-            resumenes.Add(resumen);
             LimpiarSeleccion();
             return true;
         }

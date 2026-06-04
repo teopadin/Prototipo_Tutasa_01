@@ -36,9 +36,7 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_CD
                 return;
             }
 
-            string nroGuia = modelo.NroGuiaSeleccionada;
-
-            MessageBox.Show($"Guía N° {nroGuia} entregada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Entrega en CD se ha generado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             LimpiarFormulario();
         }
 
