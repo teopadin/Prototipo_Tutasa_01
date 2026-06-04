@@ -30,7 +30,7 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_CD
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
-            if (!modelo.RegistrarEntrega(txtGuia.Text, txtNombre.Text, txtApellido.Text, txtDNI.Text, chkDNI.Checked, out string mensaje, out int nroRecibo))
+            if (!modelo.RegistrarEntrega(txtGuia.Text, txtNombre.Text, txtApellido.Text, txtDNI.Text, chkDNI.Checked, out string mensaje))
             {
                 MessageBox.Show(mensaje, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -38,7 +38,7 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_CD
 
             string nroGuia = modelo.NroGuiaSeleccionada;
 
-            MessageBox.Show($"Guía N° {nroGuia} entregada correctamente. Recibo N° {nroRecibo}.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show($"Guía N° {nroGuia} entregada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             LimpiarFormulario();
         }
 
