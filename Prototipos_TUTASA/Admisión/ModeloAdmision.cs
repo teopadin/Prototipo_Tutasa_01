@@ -23,6 +23,23 @@ namespace Prototipos_TUTASA.Admisión
             new CentroDistribucion { IdCD = 3, Nombre = "CD Mendoza" }
         };
 
+        // Tarifas por cliente: precio del flete según cliente, CDOrigen, CDDestino y tipo de bulto
+        private List<TarifaPorCliente> tarifasPorCliente = new List<TarifaPorCliente>
+        {
+            new TarifaPorCliente { IdTarifa = 1, IdCliente = 100, IdCDOrigen = 1, IdCDDestino = 2, TipoBulto = TiposBulto.M, PrecioFlete = 1500m },
+            new TarifaPorCliente { IdTarifa = 2, IdCliente = 200, IdCDOrigen = 1, IdCDDestino = 1, TipoBulto = TiposBulto.S, PrecioFlete = 500m },
+            new TarifaPorCliente { IdTarifa = 3, IdCliente = 300, IdCDOrigen = 1, IdCDDestino = 1, TipoBulto = TiposBulto.L, PrecioFlete = 1000m },
+            new TarifaPorCliente { IdTarifa = 4, IdCliente = 100, IdCDOrigen = 1, IdCDDestino = 3, TipoBulto = TiposBulto.XL, PrecioFlete = 3000m }
+        };
+
+        // Costos extras fijos del sistema (montos por concepto)
+        private List<CostoExtra> costosExtra = new List<CostoExtra>
+        {
+            new CostoExtra { IdCostoExtra = 1, Tipo = TipoCostoExtra.RetiroDomicilio, Monto = 500m },
+            new CostoExtra { IdCostoExtra = 2, Tipo = TipoCostoExtra.EntregaDomicilio, Monto = 800m },
+            new CostoExtra { IdCostoExtra = 3, Tipo = TipoCostoExtra.EntregaAgencia, Monto = 400m }
+        };
+
         private List<Guia> guias = new List<Guia>
         {
             // Guía 1: caso general → quedará "Admitida"
@@ -30,6 +47,7 @@ namespace Prototipos_TUTASA.Admisión
             {
                 NroGuia = "CD01-0001",
                 IdCliente = 100,
+                TipoImposicion = TipoImposicion.CallCenter,
                 IdCDDestino = 2,
                 Destinatario = new DestinatarioGuia { Dni = 30111222, Nombre = "Juan", Apellido = "Pérez" },
                 TipoBulto = TiposBulto.M,
@@ -41,6 +59,7 @@ namespace Prototipos_TUTASA.Admisión
             {
                 NroGuia = "CD01-0002",
                 IdCliente = 200,
+                TipoImposicion = TipoImposicion.Agencia,
                 IdCDDestino = 1,
                 Destinatario = new DestinatarioGuia { Dni = 28444555, Nombre = "María", Apellido = "González" },
                 TipoBulto = TiposBulto.S,
@@ -52,6 +71,7 @@ namespace Prototipos_TUTASA.Admisión
             {
                 NroGuia = "CD01-0003",
                 IdCliente = 300,
+                TipoImposicion = TipoImposicion.Agencia,
                 IdCDDestino = 1,
                 Destinatario = new DestinatarioGuia { Dni = 35777888, Nombre = "Carlos", Apellido = "López" },
                 TipoBulto = TiposBulto.L,
@@ -63,6 +83,7 @@ namespace Prototipos_TUTASA.Admisión
             {
                 NroGuia = "CD01-0004",
                 IdCliente = 100,
+                TipoImposicion = TipoImposicion.CD,
                 IdCDDestino = 3,
                 Destinatario = new DestinatarioGuia { Dni = 30111222, Nombre = "Juan", Apellido = "Pérez" },
                 TipoBulto = TiposBulto.XL,
@@ -110,11 +131,93 @@ namespace Prototipos_TUTASA.Admisión
             return null;
         }
 
+        // Busca la tarifa por cliente que matchea la combinación cliente/CDOrigen/CDDestino/tipoBulto
+        public TarifaPorCliente BuscarTarifa(int idCliente, int idCDOrigen, int idCDDestino, TiposBulto tipoBulto)
+        {
+            foreach (TarifaPorCliente tarifa in tarifasPorCliente)
+            {
+                if (tarifa.IdCliente == idCliente
+                    && tarifa.IdCDOrigen == idCDOrigen
+                    && tarifa.IdCDDestino == idCDDestino
+                    && tarifa.TipoBulto == tipoBulto)
+                {
+                    return tarifa;
+                }
+            }
+            return null;
+        }
+
+        // Busca el costo extra fijo por tipo
+        public CostoExtra BuscarCostoExtra(TipoCostoExtra tipo)
+        {
+            foreach (CostoExtra costo in costosExtra)
+            {
+                if (costo.Tipo == tipo)
+                {
+                    return costo;
+                }
+            }
+            return null;
+        }
+
+        // Calcula la tarifa total de una guía: flete + extras según TipoImposicion y ModalidadEntrega
+        public TarifaCalculadaGuia CalcularTarifa(Guia guia)
+        {
+            TarifaCalculadaGuia tarifaCalc = new TarifaCalculadaGuia();
+
+            // Flete según combinación cliente/origen/destino/bulto
+            TarifaPorCliente tarifa = BuscarTarifa(guia.IdCliente, idCDAdmisionActual, guia.IdCDDestino, guia.TipoBulto);
+            if (tarifa != null)
+            {
+                tarifaCalc.PrecioFlete = tarifa.PrecioFlete;
+            }
+
+            // Extra retiro a domicilio (solo si la imposición fue por CallCenter)
+            if (guia.TipoImposicion == TipoImposicion.CallCenter)
+            {
+                CostoExtra extraRetiro = BuscarCostoExtra(TipoCostoExtra.RetiroDomicilio);
+                if (extraRetiro != null)
+                {
+                    tarifaCalc.ExtraRetiroDomicilio = extraRetiro.Monto;
+                }
+            }
+
+            // Extra entrega: solo aplica uno según la modalidad
+            if (guia.ModalidadEntrega == ModalidadEntrega.EntregaDomicilio)
+            {
+                CostoExtra extraEntrega = BuscarCostoExtra(TipoCostoExtra.EntregaDomicilio);
+                if (extraEntrega != null)
+                {
+                    tarifaCalc.ExtraEntregaDomicilio = extraEntrega.Monto;
+                }
+            }
+            else if (guia.ModalidadEntrega == ModalidadEntrega.EntregaAgencia)
+            {
+                CostoExtra extraEntrega = BuscarCostoExtra(TipoCostoExtra.EntregaAgencia);
+                if (extraEntrega != null)
+                {
+                    tarifaCalc.ExtraEntregaAgencia = extraEntrega.Monto;
+                }
+            }
+            // Si es EntregaCD no aplica ningún extra de entrega
+
+            // Total
+            tarifaCalc.TarifaTotal = tarifaCalc.PrecioFlete
+                                   + tarifaCalc.ExtraRetiroDomicilio
+                                   + tarifaCalc.ExtraEntregaDomicilio
+                                   + tarifaCalc.ExtraEntregaAgencia;
+
+            return tarifaCalc;
+        }
+
         // Confirma la admisión de una guía
         public void ConfirmarAdmision(string nroGuia, DateTime fechaAdmision)
         {
             Guia guia = BuscarGuia(nroGuia);
             if (guia == null) return;
+
+            // Calcula y guarda la tarifa en la guía (la pantalla no la muestra pero el sistema la necesita)
+            guia.TarifaCalculada = CalcularTarifa(guia);
 
             // Caso especial: el CD destino es el mismo que el CD de admisión Y modalidad es Retiro en CD
             if (guia.IdCDDestino == idCDAdmisionActual && guia.ModalidadEntrega == ModalidadEntrega.EntregaCD)
