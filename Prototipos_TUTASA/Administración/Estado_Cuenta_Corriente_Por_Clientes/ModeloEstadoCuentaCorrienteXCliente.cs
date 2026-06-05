@@ -7,20 +7,20 @@ namespace Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrient
 {
     internal class ModeloEstadoCuentaCorrienteXCliente
     {
-        public List<ClienteCuentaCorriente> Clientes { get; set; }
+        public List<Cliente> Clientes { get; set; }
         public List<CuentaCorrienteCliente> CuentasCorrientes { get; set; }
         public List<ServicioPendienteFacturaEntidad> ServiciosPendientesFactura { get; set; }
         public List<Factura> Facturas { get; set; }
-        public ClienteCuentaCorriente ClienteSeleccionado { get; private set; }
+        public Cliente ClienteSeleccionado { get; private set; }
 
         public ModeloEstadoCuentaCorrienteXCliente()
         {
-            ClienteCuentaCorriente cliente1 = new ClienteCuentaCorriente { IdCliente = 1, RazonSocial = "Electro Centro SA", Cuit = "30-71112223-4" };
-            ClienteCuentaCorriente cliente2 = new ClienteCuentaCorriente { IdCliente = 2, RazonSocial = "Textiles Norte SRL", Cuit = "30-70001112-8" };
-            ClienteCuentaCorriente cliente3 = new ClienteCuentaCorriente { IdCliente = 3, RazonSocial = "Mercado Sur", Cuit = "27-18889999-1" };
-            ClienteCuentaCorriente cliente4 = new ClienteCuentaCorriente { IdCliente = 4, RazonSocial = "Cliente Sin Pendientes SA", Cuit = "30-69998887-0" };
+            Cliente cliente1 = new Cliente { IdCliente = 1, RazonSocial = "Electro Centro SA", Cuit = "30-71112223-4" };
+            Cliente cliente2 = new Cliente { IdCliente = 2, RazonSocial = "Textiles Norte SRL", Cuit = "30-70001112-8" };
+            Cliente cliente3 = new Cliente { IdCliente = 3, RazonSocial = "Mercado Sur", Cuit = "27-18889999-1" };
+            Cliente cliente4 = new Cliente { IdCliente = 4, RazonSocial = "Cliente Sin Pendientes SA", Cuit = "30-69998887-0" };
 
-            Clientes = new List<ClienteCuentaCorriente>
+            Clientes = new List<Cliente>
             {
                 cliente1, cliente2, cliente3, cliente4
             };
@@ -46,14 +46,14 @@ namespace Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrient
             ClienteSeleccionado = null;
         }
 
-        public List<ClienteCuentaCorriente> ObtenerClientes()
+        public List<Cliente> ObtenerClientes()
         {
             return Clientes
                 .OrderBy(c => c.RazonSocial)
                 .ToList();
         }
 
-        public void SeleccionarCliente(ClienteCuentaCorriente cliente)
+        public void SeleccionarCliente(Cliente cliente)
         {
             ClienteSeleccionado = cliente;
         }
@@ -63,13 +63,13 @@ namespace Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrient
             ClienteSeleccionado = null;
         }
 
-        public CuentaCorrienteCliente ObtenerCuentaCorriente(ClienteCuentaCorriente cliente)
+        public CuentaCorrienteCliente ObtenerCuentaCorriente(Cliente cliente)
         {
             return CuentasCorrientes
                 .FirstOrDefault(c => c.Cliente.IdCliente == cliente.IdCliente);
         }
 
-        public List<ServicioPendienteFacturaEntidad> ObtenerServiciosPendientes(ClienteCuentaCorriente cliente)
+        public List<ServicioPendienteFacturaEntidad> ObtenerServiciosPendientes(Cliente cliente)
         {
             return ServiciosPendientesFactura
                 .Where(s => s.Cliente.IdCliente == cliente.IdCliente)
@@ -78,12 +78,12 @@ namespace Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrient
                 .ToList();
         }
 
-        public int CalcularCantidadServicios(ClienteCuentaCorriente cliente)
+        public int CalcularCantidadServicios(Cliente cliente)
         {
             return ObtenerServiciosPendientes(cliente).Count;
         }
 
-        public decimal CalcularTotalAFacturar(ClienteCuentaCorriente cliente)
+        public decimal CalcularTotalAFacturar(Cliente cliente)
         {
             decimal total = 0;
 
@@ -95,7 +95,7 @@ namespace Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrient
             return total;
         }
 
-        public Factura EmitirFactura(ClienteCuentaCorriente cliente)
+        public Factura EmitirFactura(Cliente cliente)
         {
             List<ServicioPendienteFacturaEntidad> servicios = ObtenerServiciosPendientes(cliente);
 
@@ -126,7 +126,7 @@ namespace Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrient
             return factura;
         }
 
-        private ServicioPendienteFacturaEntidad CrearServicio(int idServicio, ClienteCuentaCorriente cliente, DateTime fecha, string nroGuia, string tipoServicio, string origen, string destino, decimal importe)
+        private ServicioPendienteFacturaEntidad CrearServicio(int idServicio, Cliente cliente, DateTime fecha, string nroGuia, string tipoServicio, string origen, string destino, decimal importe)
         {
             return new ServicioPendienteFacturaEntidad
             {

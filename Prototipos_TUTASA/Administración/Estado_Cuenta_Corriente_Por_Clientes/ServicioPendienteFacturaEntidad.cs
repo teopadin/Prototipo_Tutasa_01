@@ -14,6 +14,6 @@ namespace Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrient
         public string Destino { get; set; }
         public decimal Importe { get; set; }
         public bool Facturado { get; set; }
-        public ClienteCuentaCorriente Cliente { get; set; }
+        public Cliente Cliente { get; set; }
     }
 }

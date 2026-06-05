@@ -7,7 +7,7 @@ namespace Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrient
     internal class CuentaCorrienteCliente
     {
         public int IdCuentaCorriente { get; set; }
-        public ClienteCuentaCorriente Cliente { get; set; }
+        public Cliente Cliente { get; set; }
         public decimal SaldoActual { get; set; }
         public EstadoCuentaCorriente EstadoCuenta { get; set; }
 

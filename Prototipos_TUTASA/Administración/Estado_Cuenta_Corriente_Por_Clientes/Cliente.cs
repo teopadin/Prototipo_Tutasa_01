@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrienteXCliente_v2
 {
-    internal class ClienteCuentaCorriente
+    internal class Cliente
     {
         public int IdCliente { get; set; }
         public string RazonSocial { get; set; }

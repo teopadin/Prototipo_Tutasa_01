@@ -27,7 +27,7 @@ namespace Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrient
         {
             cboRazonSocial.Items.Clear();
 
-            foreach (ClienteCuentaCorriente cliente in modelo.ObtenerClientes())
+            foreach (Cliente cliente in modelo.ObtenerClientes())
             {
                 cboRazonSocial.Items.Add(cliente);
             }
@@ -43,12 +43,12 @@ namespace Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrient
                 return;
             }
 
-            modelo.SeleccionarCliente((ClienteCuentaCorriente)cboRazonSocial.SelectedItem);
+            modelo.SeleccionarCliente((Cliente)cboRazonSocial.SelectedItem);
             MostrarDatosCliente(modelo.ClienteSeleccionado);
             CargarServiciosPendientes(modelo.ClienteSeleccionado);
         }
 
-        private void MostrarDatosCliente(ClienteCuentaCorriente cliente)
+        private void MostrarDatosCliente(Cliente cliente)
         {
             CuentaCorrienteCliente cuenta = modelo.ObtenerCuentaCorriente(cliente);
 
@@ -58,7 +58,7 @@ namespace Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrient
             txtCondicionFacturacion.Text = cuenta.CondicionFacturacion;
         }
 
-        private void CargarServiciosPendientes(ClienteCuentaCorriente cliente)
+        private void CargarServiciosPendientes(Cliente cliente)
         {
             lvServiciosPendientes.Items.Clear();
 
