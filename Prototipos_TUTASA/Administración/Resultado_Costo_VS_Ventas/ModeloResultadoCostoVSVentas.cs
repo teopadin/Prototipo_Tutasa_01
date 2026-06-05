@@ -7,81 +7,80 @@ namespace Prototipos_TUTASA.ResultadoCostoVSVentas_v2
 {
     internal class ModeloResultadoCostoVSVentas
     {
-        public List<EmpresaTransporteEntidad> EmpresasTransporte { get; set; }
-        public List<ServicioMediaDistanciaEntidad> Servicios { get; set; }
-        public List<HojaDeRutaTransporteEntidad> HojasDeRutaTransporte { get; set; }
-        public List<ArrendamientoBodegaEntidad> ArrendamientosBodega { get; set; }
+        public List<EmpresaTransporte> EmpresasTransporte { get; set; }
+        public List<ServicioMediaDistancia> Servicios { get; set; }
+        public List<HojaDeRutaTransporte> HojasDeRutaTransporte { get; set; }
+        public List<ArrendamientoBodega> ArrendamientosBodega { get; set; }
 
         public ModeloResultadoCostoVSVentas()
         {
-            EmpresaTransporteEntidad empresaSur = new EmpresaTransporteEntidad { IdEmpresa = 1, RazonSocial = "Transportes del Sur SA", ConvenioVigente = true };
-            EmpresaTransporteEntidad empresaNorte = new EmpresaTransporteEntidad { IdEmpresa = 2, RazonSocial = "Logística Norte SRL", ConvenioVigente = true };
-            EmpresaTransporteEntidad empresaEste = new EmpresaTransporteEntidad { IdEmpresa = 3, RazonSocial = "Rápido del Este", ConvenioVigente = true };
+            EmpresaTransporte empresaSur = new EmpresaTransporte { IdEmpresa = 1, RazonSocial = "Transportes del Sur SA", ConvenioVigente = true };
+            EmpresaTransporte empresaNorte = new EmpresaTransporte { IdEmpresa = 2, RazonSocial = "Logística Norte SRL", ConvenioVigente = true };
+            EmpresaTransporte empresaEste = new EmpresaTransporte { IdEmpresa = 3, RazonSocial = "Rápido del Este", ConvenioVigente = true };
 
-            EmpresasTransporte = new List<EmpresaTransporteEntidad>
+            EmpresasTransporte = new List<EmpresaTransporte>
             {
                 empresaSur, empresaNorte, empresaEste
             };
 
-            ServicioMediaDistanciaEntidad servicioSur = new ServicioMediaDistanciaEntidad { IdServicio = 1, Empresa = empresaSur };
-            ServicioMediaDistanciaEntidad servicioNorte = new ServicioMediaDistanciaEntidad { IdServicio = 2, Empresa = empresaNorte };
+            ServicioMediaDistancia servicioSur = new ServicioMediaDistancia { IdServicio = 1, Empresa = empresaSur, TipoArrendamiento = TipoArrendamiento.A };
+            ServicioMediaDistancia servicioNorte = new ServicioMediaDistancia { IdServicio = 2, Empresa = empresaNorte, TipoArrendamiento = TipoArrendamiento.B };
 
-            Servicios = new List<ServicioMediaDistanciaEntidad>
+            Servicios = new List<ServicioMediaDistancia>
             {
                 servicioSur, servicioNorte
             };
 
-            HojasDeRutaTransporte = new List<HojaDeRutaTransporteEntidad>
+            HojasDeRutaTransporte = new List<HojaDeRutaTransporte>
             {
-                new HojaDeRutaTransporteEntidad
+                CrearHDR(100, new DateTime(2026, 5, 3), servicioSur, new List<GuiaResultado>
                 {
-                    NroHDR = 100,
-                    FechaGeneracion = new DateTime(2026, 5, 3),
-                    FechaDespacho = new DateTime(2026, 5, 3),
-                    FechaRecepcion = new DateTime(2026, 5, 4),
-                    Servicio = servicioSur,
-                    Guias = new List<GuiaResultadoEntidad>
-                    {
-                        new GuiaResultadoEntidad { NroGuia = "CD01-0001", FechaImposicion = new DateTime(2026, 5, 1), FechaEntrega = new DateTime(2026, 5, 5), ImporteVenta = 15000, Estado = EstadoGuiaResultado.Entregada },
-                        new GuiaResultadoEntidad { NroGuia = "CD01-0002", FechaImposicion = new DateTime(2026, 5, 2), FechaEntrega = new DateTime(2026, 5, 6), ImporteVenta = 21000, Estado = EstadoGuiaResultado.Entregada },
-                        new GuiaResultadoEntidad { NroGuia = "CD01-0003", FechaImposicion = new DateTime(2026, 5, 2), FechaEntrega = DateTime.MinValue, ImporteVenta = 18000, Estado = EstadoGuiaResultado.EnTransito }
-                    }
-                },
-                new HojaDeRutaTransporteEntidad
+                    CrearGuia("CD01-0001", new DateTime(2026, 5, 1), new DateTime(2026, 5, 5), 15000, EstadoGuiaResultado.Entregada),
+                    CrearGuia("CD01-0002", new DateTime(2026, 5, 2), new DateTime(2026, 5, 6), 21000, EstadoGuiaResultado.Entregada),
+                    CrearGuia("CD01-0003", new DateTime(2026, 5, 2), DateTime.MinValue, 18000, EstadoGuiaResultado.EnTransito)
+                }),
+                CrearHDR(101, new DateTime(2026, 5, 10), servicioNorte, new List<GuiaResultado>
                 {
-                    NroHDR = 101,
-                    FechaGeneracion = new DateTime(2026, 5, 10),
-                    FechaDespacho = new DateTime(2026, 5, 10),
-                    FechaRecepcion = new DateTime(2026, 5, 11),
-                    Servicio = servicioNorte,
-                    Guias = new List<GuiaResultadoEntidad>
-                    {
-                        new GuiaResultadoEntidad { NroGuia = "CD02-0001", FechaImposicion = new DateTime(2026, 5, 9), FechaEntrega = new DateTime(2026, 5, 12), ImporteVenta = 30000, Estado = EstadoGuiaResultado.Entregada }
-                    }
-                },
-                new HojaDeRutaTransporteEntidad
+                    CrearGuia("CD02-0001", new DateTime(2026, 5, 9), new DateTime(2026, 5, 12), 30000, EstadoGuiaResultado.Entregada)
+                }),
+                CrearHDR(102, new DateTime(2026, 4, 20), servicioSur, new List<GuiaResultado>
                 {
-                    NroHDR = 102,
-                    FechaGeneracion = new DateTime(2026, 4, 20),
-                    FechaDespacho = new DateTime(2026, 4, 20),
-                    FechaRecepcion = new DateTime(2026, 4, 21),
-                    Servicio = servicioSur,
-                    Guias = new List<GuiaResultadoEntidad>
-                    {
-                        new GuiaResultadoEntidad { NroGuia = "CD01-0090", FechaImposicion = new DateTime(2026, 4, 19), FechaEntrega = new DateTime(2026, 4, 22), ImporteVenta = 19000, Estado = EstadoGuiaResultado.Entregada }
-                    }
-                }
+                    CrearGuia("CD01-0090", new DateTime(2026, 4, 19), new DateTime(2026, 4, 22), 19000, EstadoGuiaResultado.Entregada)
+                }),
+                CrearHDR(103, new DateTime(2026, 3, 15), servicioSur, new List<GuiaResultado>
+                {
+                    CrearGuia("CD01-0080", new DateTime(2026, 3, 14), new DateTime(2026, 3, 18), 22000, EstadoGuiaResultado.Entregada),
+                    CrearGuia("CD01-0081", new DateTime(2026, 3, 15), new DateTime(2026, 3, 20), 17500, EstadoGuiaResultado.Entregada)
+                }),
+                CrearHDR(104, new DateTime(2026, 3, 22), servicioNorte, new List<GuiaResultado>
+                {
+                    CrearGuia("CD02-0080", new DateTime(2026, 3, 21), new DateTime(2026, 3, 25), 28700, EstadoGuiaResultado.Entregada)
+                }),
+                CrearHDR(105, new DateTime(2026, 2, 8), servicioNorte, new List<GuiaResultado>
+                {
+                    CrearGuia("CD02-0070", new DateTime(2026, 2, 7), new DateTime(2026, 2, 11), 26500, EstadoGuiaResultado.Entregada),
+                    CrearGuia("CD02-0071", new DateTime(2026, 2, 8), new DateTime(2026, 2, 13), 31200, EstadoGuiaResultado.Entregada)
+                }),
+                CrearHDR(106, new DateTime(2026, 1, 12), servicioSur, new List<GuiaResultado>
+                {
+                    CrearGuia("CD01-0060", new DateTime(2026, 1, 10), new DateTime(2026, 1, 14), 20500, EstadoGuiaResultado.Entregada),
+                    CrearGuia("CD01-0061", new DateTime(2026, 1, 11), new DateTime(2026, 1, 16), 18500, EstadoGuiaResultado.Entregada)
+                })
             };
 
-            ArrendamientosBodega = new List<ArrendamientoBodegaEntidad>
+            ArrendamientosBodega = new List<ArrendamientoBodega>
             {
-                new ArrendamientoBodegaEntidad { IdArrendamiento = 1, Empresa = empresaSur, Periodo = new DateTime(2026, 5, 1), ImporteMensual = 26000 },
-                new ArrendamientoBodegaEntidad { IdArrendamiento = 2, Empresa = empresaNorte, Periodo = new DateTime(2026, 5, 1), ImporteMensual = 18000 },
-                new ArrendamientoBodegaEntidad { IdArrendamiento = 3, Empresa = empresaSur, Periodo = new DateTime(2026, 4, 1), ImporteMensual = 24000 }
+                CrearArrendamiento(1, servicioSur, new DateTime(2026, 5, 1), 26000),
+                CrearArrendamiento(2, servicioNorte, new DateTime(2026, 5, 1), 18000),
+                CrearArrendamiento(3, servicioSur, new DateTime(2026, 4, 1), 24000),
+                CrearArrendamiento(4, servicioSur, new DateTime(2026, 3, 1), 23500),
+                CrearArrendamiento(5, servicioNorte, new DateTime(2026, 3, 1), 18500),
+                CrearArrendamiento(6, servicioNorte, new DateTime(2026, 2, 1), 19500),
+                CrearArrendamiento(7, servicioSur, new DateTime(2026, 1, 1), 22500)
             };
         }
 
-        public List<EmpresaTransporteEntidad> ObtenerEmpresasTransporte()
+        public List<EmpresaTransporte> ObtenerEmpresasTransporte()
         {
             return EmpresasTransporte
                 .Where(e => e.ConvenioVigente)
@@ -89,15 +88,26 @@ namespace Prototipos_TUTASA.ResultadoCostoVSVentas_v2
                 .ToList();
         }
 
-        public ResultadoCostoVentaEntidad ConsultarResultado(EmpresaTransporteEntidad empresa, DateTime periodo)
+        public bool PeriodoEsFuturo(DateTime periodo)
         {
+            DateTime periodoNormalizado = new DateTime(periodo.Year, periodo.Month, 1);
+            DateTime mesActual = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
+
+            return periodoNormalizado > mesActual;
+        }
+
+        public ResultadoCostoVenta ConsultarResultado(EmpresaTransporte empresa, DateTime periodo)
+        {
+            if (empresa == null || PeriodoEsFuturo(periodo))
+                return null;
+
             decimal ventas = ObtenerVentas(empresa, periodo);
             decimal costos = ObtenerCostos(empresa, periodo);
 
             if (ventas == 0 && costos == 0)
                 return null;
 
-            return new ResultadoCostoVentaEntidad
+            return new ResultadoCostoVenta
             {
                 Empresa = empresa,
                 Periodo = new DateTime(periodo.Year, periodo.Month, 1),
@@ -106,16 +116,16 @@ namespace Prototipos_TUTASA.ResultadoCostoVSVentas_v2
             };
         }
 
-        private decimal ObtenerVentas(EmpresaTransporteEntidad empresa, DateTime periodo)
+        private decimal ObtenerVentas(EmpresaTransporte empresa, DateTime periodo)
         {
             decimal totalVentas = 0;
 
-            foreach (HojaDeRutaTransporteEntidad hdr in HojasDeRutaTransporte)
+            foreach (HojaDeRutaTransporte hdr in HojasDeRutaTransporte)
             {
                 if (hdr.Servicio.Empresa.IdEmpresa != empresa.IdEmpresa)
                     continue;
 
-                foreach (GuiaResultadoEntidad guia in hdr.Guias)
+                foreach (GuiaResultado guia in hdr.Guias)
                 {
                     if (guia.Estado != EstadoGuiaResultado.Entregada)
                         continue;
@@ -130,13 +140,13 @@ namespace Prototipos_TUTASA.ResultadoCostoVSVentas_v2
             return totalVentas;
         }
 
-        private decimal ObtenerCostos(EmpresaTransporteEntidad empresa, DateTime periodo)
+        private decimal ObtenerCostos(EmpresaTransporte empresa, DateTime periodo)
         {
             decimal totalCostos = 0;
 
-            foreach (ArrendamientoBodegaEntidad arrendamiento in ArrendamientosBodega)
+            foreach (ArrendamientoBodega arrendamiento in ArrendamientosBodega)
             {
-                if (arrendamiento.Empresa.IdEmpresa != empresa.IdEmpresa)
+                if (arrendamiento.Servicio.Empresa.IdEmpresa != empresa.IdEmpresa)
                     continue;
 
                 if (arrendamiento.Periodo.Year != periodo.Year || arrendamiento.Periodo.Month != periodo.Month)
@@ -146,6 +156,43 @@ namespace Prototipos_TUTASA.ResultadoCostoVSVentas_v2
             }
 
             return totalCostos;
+        }
+
+        private HojaDeRutaTransporte CrearHDR(int nroHDR, DateTime fecha, ServicioMediaDistancia servicio, List<GuiaResultado> guias)
+        {
+            return new HojaDeRutaTransporte
+            {
+                NroHDR = nroHDR,
+                FechaGeneracion = fecha,
+                FechaDespacho = fecha,
+                FechaRecepcion = fecha.AddDays(1),
+                Servicio = servicio,
+                Guias = guias
+            };
+        }
+
+        private GuiaResultado CrearGuia(string nroGuia, DateTime fechaImposicion, DateTime fechaEntrega, decimal importeVenta, EstadoGuiaResultado estado)
+        {
+            return new GuiaResultado
+            {
+                NroGuia = nroGuia,
+                FechaImposicion = fechaImposicion,
+                FechaEntrega = fechaEntrega,
+                ImporteVenta = importeVenta,
+                Estado = estado
+            };
+        }
+
+        private ArrendamientoBodega CrearArrendamiento(int id, ServicioMediaDistancia servicio, DateTime periodo, decimal importeMensual)
+        {
+            return new ArrendamientoBodega
+            {
+                IdArrendamiento = id,
+                Servicio = servicio,
+                Periodo = periodo,
+                TipoArrendamiento = servicio.TipoArrendamiento,
+                ImporteMensual = importeMensual
+            };
         }
     }
 }

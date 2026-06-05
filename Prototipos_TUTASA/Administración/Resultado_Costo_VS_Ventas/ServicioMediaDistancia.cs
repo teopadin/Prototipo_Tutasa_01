@@ -4,9 +4,10 @@ using System.Text;
 
 namespace Prototipos_TUTASA.ResultadoCostoVSVentas_v2
 {
-    internal class ServicioMediaDistanciaEntidad
+    internal class ServicioMediaDistancia
     {
         public int IdServicio { get; set; }
-        public EmpresaTransporteEntidad Empresa { get; set; }
+        public EmpresaTransporte Empresa { get; set; }
+        public TipoArrendamiento TipoArrendamiento { get; set; }
     }
 }

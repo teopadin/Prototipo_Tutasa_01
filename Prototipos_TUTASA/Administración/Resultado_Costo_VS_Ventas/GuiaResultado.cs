@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Prototipos_TUTASA.ResultadoCostoVSVentas_v2
 {
-    internal class GuiaResultadoEntidad
+    internal class GuiaResultado
     {
         public string NroGuia { get; set; }
         public DateTime FechaImposicion { get; set; }

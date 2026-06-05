@@ -28,7 +28,7 @@ namespace Prototipos_TUTASA.ResultadoCostoVSVentas_v2
         {
             cmbEmpresaTransporte.Items.Clear();
 
-            foreach (EmpresaTransporteEntidad empresa in modelo.ObtenerEmpresasTransporte())
+            foreach (EmpresaTransporte empresa in modelo.ObtenerEmpresasTransporte())
             {
                 cmbEmpresaTransporte.Items.Add(empresa);
             }
@@ -46,14 +46,20 @@ namespace Prototipos_TUTASA.ResultadoCostoVSVentas_v2
                 return;
             }
 
-            EmpresaTransporteEntidad empresaSeleccionada = (EmpresaTransporteEntidad)cmbEmpresaTransporte.SelectedItem;
+            EmpresaTransporte empresaSeleccionada = (EmpresaTransporte)cmbEmpresaTransporte.SelectedItem;
             DateTime periodo = dtpPeriodo.Value;
 
-            ResultadoCostoVentaEntidad resultado = modelo.ConsultarResultado(empresaSeleccionada, periodo);
+            if (modelo.PeriodoEsFuturo(periodo))
+            {
+                MessageBox.Show("Ingrese un periodo válido.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            ResultadoCostoVenta resultado = modelo.ConsultarResultado(empresaSeleccionada, periodo);
 
             if (resultado == null)
             {
-                MessageBox.Show("No existen movimientos registrados para la empresa de transporte seleccionada.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("No existe información disponible para la empresa y el periodo seleccionados.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 

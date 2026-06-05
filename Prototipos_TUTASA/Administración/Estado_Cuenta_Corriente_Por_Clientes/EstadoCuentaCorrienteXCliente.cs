@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,7 +11,6 @@ namespace Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrient
     public partial class EstadoCuentaCorrienteXCliente : Form
     {
         private ModeloEstadoCuentaCorrienteXCliente modelo = new ModeloEstadoCuentaCorrienteXCliente();
-        private ClienteCuentaCorrienteEntidad clienteSeleccionado = null;
 
         public EstadoCuentaCorrienteXCliente()
         {
@@ -28,7 +27,7 @@ namespace Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrient
         {
             cboRazonSocial.Items.Clear();
 
-            foreach (ClienteCuentaCorrienteEntidad cliente in modelo.ObtenerClientes())
+            foreach (ClienteCuentaCorriente cliente in modelo.ObtenerClientes())
             {
                 cboRazonSocial.Items.Add(cliente);
             }
@@ -44,20 +43,22 @@ namespace Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrient
                 return;
             }
 
-            clienteSeleccionado = (ClienteCuentaCorrienteEntidad)cboRazonSocial.SelectedItem;
-            MostrarDatosCliente(clienteSeleccionado);
-            CargarServiciosPendientes(clienteSeleccionado);
+            modelo.SeleccionarCliente((ClienteCuentaCorriente)cboRazonSocial.SelectedItem);
+            MostrarDatosCliente(modelo.ClienteSeleccionado);
+            CargarServiciosPendientes(modelo.ClienteSeleccionado);
         }
 
-        private void MostrarDatosCliente(ClienteCuentaCorrienteEntidad cliente)
+        private void MostrarDatosCliente(ClienteCuentaCorriente cliente)
         {
+            CuentaCorrienteCliente cuenta = modelo.ObtenerCuentaCorriente(cliente);
+
             txtCuit.Text = cliente.Cuit;
-            txtEstadoCuenta.Text = cliente.EstadoCuenta;
-            txtSaldoActual.Text = cliente.SaldoActual.ToString("C");
-            txtCondicionFacturacion.Text = cliente.CondicionFacturacion;
+            txtEstadoCuenta.Text = cuenta.EstadoCuenta.ToString();
+            txtSaldoActual.Text = cuenta.SaldoActual.ToString("C");
+            txtCondicionFacturacion.Text = cuenta.CondicionFacturacion;
         }
 
-        private void CargarServiciosPendientes(ClienteCuentaCorrienteEntidad cliente)
+        private void CargarServiciosPendientes(ClienteCuentaCorriente cliente)
         {
             lvServiciosPendientes.Items.Clear();
 
@@ -83,30 +84,31 @@ namespace Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrient
 
         private void btnEmitirFactura_Click(object sender, EventArgs e)
         {
-            if (clienteSeleccionado == null)
+            if (modelo.ClienteSeleccionado == null)
             {
                 MessageBox.Show("Debe seleccionar una razón social para continuar con la operación.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            if (modelo.CalcularCantidadServicios(clienteSeleccionado) == 0)
+            if (modelo.CalcularCantidadServicios(modelo.ClienteSeleccionado) == 0)
             {
                 MessageBox.Show("El cliente seleccionado no posee servicios pendientes de facturación.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            if (!clienteSeleccionado.HabilitadoParaFacturar)
+            CuentaCorrienteCliente cuenta = modelo.ObtenerCuentaCorriente(modelo.ClienteSeleccionado);
+            if (!cuenta.HabilitadoParaFacturar)
             {
                 MessageBox.Show("El cliente seleccionado no se encuentra habilitado para facturación. No es posible emitir la factura correspondiente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            FacturaEntidad factura = modelo.EmitirFactura(clienteSeleccionado);
+            Factura factura = modelo.EmitirFactura(modelo.ClienteSeleccionado);
 
             MessageBox.Show("Factura emitida con éxito", "Factura", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            MostrarDatosCliente(clienteSeleccionado);
-            CargarServiciosPendientes(clienteSeleccionado);
+            MostrarDatosCliente(modelo.ClienteSeleccionado);
+            CargarServiciosPendientes(modelo.ClienteSeleccionado);
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -116,7 +118,7 @@ namespace Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrient
 
         private void LimpiarDatosCliente()
         {
-            clienteSeleccionado = null;
+            modelo.LimpiarSeleccion();
             txtCuit.Text = "";
             txtEstadoCuenta.Text = "";
             txtSaldoActual.Text = "";

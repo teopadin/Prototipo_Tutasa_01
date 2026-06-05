@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Prototipos_TUTASA.ResultadoCostoVSVentas_v2
 {
-    internal class EmpresaTransporteEntidad
+    internal class EmpresaTransporte
     {
         public int IdEmpresa { get; set; }
         public string RazonSocial { get; set; }

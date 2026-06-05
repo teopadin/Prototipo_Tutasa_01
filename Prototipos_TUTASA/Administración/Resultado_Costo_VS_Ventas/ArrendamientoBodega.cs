@@ -4,11 +4,12 @@ using System.Text;
 
 namespace Prototipos_TUTASA.ResultadoCostoVSVentas_v2
 {
-    internal class ArrendamientoBodegaEntidad
+    internal class ArrendamientoBodega
     {
         public int IdArrendamiento { get; set; }
-        public EmpresaTransporteEntidad Empresa { get; set; }
+        public ServicioMediaDistancia Servicio { get; set; }
         public DateTime Periodo { get; set; }
+        public TipoArrendamiento TipoArrendamiento { get; set; }
         public decimal ImporteMensual { get; set; }
     }
 }

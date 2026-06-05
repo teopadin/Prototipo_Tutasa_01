@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -13,7 +13,7 @@ namespace Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrient
         public string Origen { get; set; }
         public string Destino { get; set; }
         public decimal Importe { get; set; }
-        public EstadoServicioFacturacion Estado { get; set; }
-        public ClienteCuentaCorrienteEntidad Cliente { get; set; }
+        public bool Facturado { get; set; }
+        public ClienteCuentaCorriente Cliente { get; set; }
     }
 }
