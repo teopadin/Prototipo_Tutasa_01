@@ -5,7 +5,7 @@ using Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Distribucion;
 
 namespace Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Retiro
 {
-    internal class HDRRetiro
+    internal class HojaDeRutaRetiro
     {
         public int NroHDR { get; set; }
         public int DniTransportistaAsignado { get; set; }

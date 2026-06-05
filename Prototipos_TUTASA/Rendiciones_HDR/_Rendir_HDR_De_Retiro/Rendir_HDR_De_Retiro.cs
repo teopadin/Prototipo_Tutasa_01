@@ -86,7 +86,7 @@ namespace Prototipos_TUTASA.Rendiciones_HDR
                 return;
             }
 
-            modelo.SetHdrSeleccionada((HDRRetiro)HDRRendidaLst.SelectedItems[0].Tag);
+            modelo.SetHdrSeleccionada((_Rendir_HDR_De_Retiro.HojaDeRutaRetiro)HDRRendidaLst.SelectedItems[0].Tag);
             var hdr = modelo.GetHdrSeleccionada();
 
             groupBox1.Text = "Estado de la HDR seleccionada (" + hdr.NroHDR + ")";
@@ -163,10 +163,10 @@ namespace Prototipos_TUTASA.Rendiciones_HDR
                 return;
             }
 
-            var lista = new List<HDRRetiro>();
+            var lista = new List<_Rendir_HDR_De_Retiro.HojaDeRutaRetiro>();
             foreach (ListViewItem item in HDRRendidaLst.Items)
             {
-                lista.Add((HDRRetiro)item.Tag);
+                lista.Add((_Rendir_HDR_De_Retiro.HojaDeRutaRetiro)item.Tag);
             }
 
             if (!modelo.RegistrarRendicion(lista))
@@ -187,7 +187,7 @@ namespace Prototipos_TUTASA.Rendiciones_HDR
 
             foreach (ListViewItem item in HDRRendidaLst.Items)
             {
-                var hdr = (HDRRetiro)item.Tag;
+                var hdr = (_Rendir_HDR_De_Retiro.HojaDeRutaRetiro)item.Tag;
                 if (hdr.Estado == EstadoHDR.Cumplida) { rendidas++; cumplidas++; }
                 else if (hdr.Estado == EstadoHDR.NoCumplida) { rendidas++; noCumplidas++; }
             }
