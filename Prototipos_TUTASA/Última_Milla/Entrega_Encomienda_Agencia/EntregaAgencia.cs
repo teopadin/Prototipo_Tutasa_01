@@ -20,37 +20,12 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia
         {
             lvGuia.Items.Clear();
 
-            string nroGuia = txtGuia.Text.Trim();
-            if (string.IsNullOrWhiteSpace(nroGuia))
+            if (!modelo.BuscarGuia(txtGuia.Text, out Guia guia, out string mensaje))
             {
-                MessageBox.Show("Debe ingresar un número de guía para realizar la búsqueda.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(mensaje, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-             Guia guia = modelo.BuscarGuia(nroGuia);
-
-            // Excepción 1: la guía no existe.
-            if (guia == null)
-            {
-                MessageBox.Show("No se encontró una guía con el número ingresado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            // Paso 3 / Excepción 2: la guía debe estar en estado "Pendiente de retiro en Agencia".
-            if (guia.Estado != EstadoGuiaEnum.PendienteDeRetiroEnAgencia)
-            {
-                MessageBox.Show("La guía ingresada no se encuentra en estado \"Pendiente de retiro en Agencia\".", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            // La guía debe pertenecer a la agencia actual.
-            if (guia.AgenciaDestino == null || guia.AgenciaDestino.Nombre != modelo.AgenciaActual.Nombre)
-            {
-                MessageBox.Show("La guía no pertenece a esta agencia.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            // Paso 4: muestra Nombre, Apellido y DNI del destinatario.
             var item = new ListViewItem(guia.Destinatario.Nombre);
             item.SubItems.Add(guia.Destinatario.Apellido);
             item.SubItems.Add(guia.Destinatario.Dni.ToString());
@@ -66,36 +41,19 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia
                 return;
             }
 
-            // El Tag puede ser nulo o de otro tipo; validamos antes de continuar.
-            Guia? guia = lvGuia.Items[0].Tag as Guia;
+            Guia guia = lvGuia.Items[0].Tag as Guia;
             if (guia == null)
             {
                 MessageBox.Show("La guía seleccionada no es válida.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            string nombre = txtNombre.Text.Trim();
-            string apellido = txtApellido.Text.Trim();
-            string dni = txtDNI.Text.Trim();
-
-            // Excepción 3: datos de validación incompletos.
-            if (string.IsNullOrWhiteSpace(nombre) || string.IsNullOrWhiteSpace(apellido) || string.IsNullOrWhiteSpace(dni))
+            if (!modelo.RegistrarEntrega(guia.NroGuia, txtNombre.Text, txtApellido.Text, txtDNI.Text, chkDNI.Checked, out string mensaje))
             {
-                MessageBox.Show("Debe completar todos los datos de validación.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(mensaje, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Excepción 4: no se confirmó la presentación del DNI.
-            if (!chkDNI.Checked)
-            {
-                MessageBox.Show("Debe confirmar que el destinatario presentó DNI.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            // Paso 8: registra la entrega y pasa la guía a "Entregada".
-            modelo.RegistrarEntrega(guia, nombre, apellido, dni);
-
-            // Paso 9: mensaje de éxito referenciando el número de guía.
             MessageBox.Show($"Entrega registrada con éxito para la guía N° {guia.NroGuia}.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             LimpiarFormulario();
         }
