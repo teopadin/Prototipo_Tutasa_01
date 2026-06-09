@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Prototipos_TUTASA.Consultar_Estado_Del_Pedido
 {
-    internal enum EstadoGuia
+    internal enum EstadoGuiaEnum
     {
         Impuesta,
         IncluidaEnHDRRetiro,
