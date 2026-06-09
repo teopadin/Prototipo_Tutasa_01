@@ -35,7 +35,7 @@ namespace Prototipos_TUTASA.Admisión
                 return;
             }
 
-            if (guia.Estado != EstadoGuia.Retirada)
+            if (!modelo.EsAdmisible(guia))
             {
                 MessageBox.Show("La guía N° " + nroGuia + " no está disponible para admitir");
                 LimpiarInformacion();
