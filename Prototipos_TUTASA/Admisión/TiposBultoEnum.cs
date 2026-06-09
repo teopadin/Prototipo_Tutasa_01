@@ -4,10 +4,11 @@ using System.Text;
 
 namespace Prototipos_TUTASA.Admisión
 {
-    internal enum TipoImposicion
+    internal enum TiposBultoEnum
     {
-        CallCenter,
-        Agencia,
-        CD
+        S,
+        M,
+        L,
+        XL
     }
 }
