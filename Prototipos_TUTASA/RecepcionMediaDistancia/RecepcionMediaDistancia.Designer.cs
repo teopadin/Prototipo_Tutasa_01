@@ -184,9 +184,9 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             lblFechaDespacho.AutoSize = true;
             lblFechaDespacho.Location = new Point(605, 161);
             lblFechaDespacho.Name = "lblFechaDespacho";
-            lblFechaDespacho.Size = new Size(141, 25);
+            lblFechaDespacho.Size = new Size(148, 25);
             lblFechaDespacho.TabIndex = 26;
-            lblFechaDespacho.Text = "Fecha Despacho";
+            lblFechaDespacho.Text = "Fecha de Llegada";
             // 
             // RecepcionMediaDistancia
             // 
@@ -209,6 +209,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             Margin = new Padding(4);
             Name = "RecepcionMediaDistancia";
             Text = "Recepción de hoja de ruta de media distancia";
+            Load += RecepcionMediaDistancia_Load;
             ResumeLayout(false);
             PerformLayout();
         }

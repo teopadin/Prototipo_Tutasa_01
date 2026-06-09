@@ -67,12 +67,13 @@ namespace Prototipos_TUTASA.Generación_Hoja_De_Ruta_De_Transporte
 
             foreach (var guia in modelo.Guias)
             {
-                if (guia.Estado != EstadoGuiaEnum.Admitida || guia.CdOrigen.Nombre != modelo.CdEmisor.Nombre || guia.CdDestino.Nombre != cdSeleccionado.Nombre)
+                if (guia.Estado != EstadoGuiaEnum.Admitida || guia.CdActual.Nombre != modelo.CdEmisor.Nombre)
                     continue;
 
                 var item = new ListViewItem(guia.NroGuia);
                 item.SubItems.Add(guia.FechaImposicion.ToShortDateString());
                 item.SubItems.Add(guia.TipoBulto.ToString());
+                item.SubItems.Add(guia.CdDestino.Nombre);
                 item.Tag = guia;
 
                 lvGuiasPendientes.Items.Add(item);

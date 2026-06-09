@@ -6,19 +6,25 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
 {
     internal class ModeloRecibirServicioMediaDistancia
     {
+        public CentroDistribucion CdEmisor { get; set; }
         public List<ServicioMediaDistancia> Servicios { get; set; }
         public ServicioMediaDistancia ServicioActual { get; set; }
         public ModeloRecibirServicioMediaDistancia() 
         {
             // CDs
-            var cdCordoba = new CentroDeDistribucion
+            var cdCordoba = new CentroDistribucion
             {
                 Nombre = "Centro - Córdoba"
             };
 
-            var cdMendoza = new CentroDeDistribucion
+            var cdMendoza = new CentroDistribucion
             {
                 Nombre = "Cuyo - Mendoza"
+            };
+            
+            var cdBuenosAires = new CentroDistribucion
+            {
+                Nombre = "Capital Federal - Buenos Aires"
             };
 
             // Empresa Transporte
@@ -31,14 +37,16 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             {
                 RazonSocial = "Expreso Nacional"
             };
-            
+
             // SERVICIO 1
             var guia1 = new Guia
             {
                 NroGuia = "G0001",
                 TipoBulto = TiposBulto.S,
-                Modalidad = ModalidadEntrega.PuertaAPuerta,
+                ModalidadEntrega = ModalidadEntrega.EntregaDomicilio,
                 CDOrigen = cdCordoba,
+                CDActual = cdCordoba,
+                CDDestino = cdMendoza,
                 Estado = EstadoGuia.EnTransito
             };
 
@@ -46,8 +54,10 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             {
                 NroGuia = "G0002",
                 TipoBulto = TiposBulto.M,
-                Modalidad = ModalidadEntrega.RetiroEnAgencia,
+                ModalidadEntrega = ModalidadEntrega.EntregaAgencia,
                 CDOrigen = cdCordoba,
+                CDActual = cdCordoba,
+                CDDestino = cdMendoza,
                 Estado = EstadoGuia.EnTransito
             };
 
@@ -55,8 +65,10 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             {
                 NroGuia = "G0003",
                 TipoBulto = TiposBulto.XL,
-                Modalidad = ModalidadEntrega.RetiroEnCD,
+                ModalidadEntrega = ModalidadEntrega.EntregaCD,
                 CDOrigen = cdCordoba,
+                CDActual = cdCordoba,
+                CDDestino = cdMendoza,
                 Estado = EstadoGuia.EnTransito
             };
 
@@ -64,7 +76,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             {
                 NroHDR = 1001,
                 Estado = EstadoHojaDeRuta.EnCurso,
-                Guias = new List<Guia>
+                DetalleGuias = new List<Guia>
                 {
                     guia1,
                     guia2
@@ -75,7 +87,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             {
                 NroHDR = 1002,
                 Estado = EstadoHojaDeRuta.EnCurso,
-                Guias = new List<Guia>
+                DetalleGuias = new List<Guia>
                 {
                     guia3
                 }
@@ -85,9 +97,9 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             {
                 IdServicio = 1,
                 EmpresaTransporte = empresa1,
-                FechaDespacho= new DateTime(2026, 6, 2, 8, 30, 0),
+                FechaLlegada= new DateTime(2026, 6, 2, 8, 30, 0),
                 FechaRecepcion= null,
-                HDRs = new List<HojaDeRutaTransporte>
+                DetalleHDRs = new List<HojaDeRutaTransporte>
                 {
                     hdr1,
                     hdr2
@@ -100,8 +112,10 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             {
                 NroGuia = "G0004",
                 TipoBulto = TiposBulto.L,
-                Modalidad = ModalidadEntrega.PuertaAPuerta,
+                ModalidadEntrega = ModalidadEntrega.EntregaDomicilio,
                 CDOrigen = cdMendoza,
+                CDActual = cdMendoza,
+                CDDestino = cdCordoba,
                 Estado = EstadoGuia.EnTransito
             };
 
@@ -109,8 +123,10 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             {
                 NroGuia = "G0005",
                 TipoBulto = TiposBulto.M,
-                Modalidad = ModalidadEntrega.RetiroEnCD,
+                ModalidadEntrega = ModalidadEntrega.EntregaCD,
                 CDOrigen = cdMendoza,
+                CDActual = cdMendoza,
+                CDDestino = cdCordoba,
                 Estado = EstadoGuia.EnTransito
             };
 
@@ -118,7 +134,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             {
                 NroHDR = 2001,
                 Estado = EstadoHojaDeRuta.EnCurso,
-                Guias = new List<Guia>
+                DetalleGuias = new List<Guia>
                 {
                     guia4,
                     guia5
@@ -129,9 +145,9 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             {
                 IdServicio = 2,
                 EmpresaTransporte = empresa2,
-                FechaDespacho = new DateTime(2026, 5, 29, 16, 30, 0),
+                FechaLlegada = new DateTime(2026, 5, 29, 16, 30, 0),
                 FechaRecepcion = null,
-                HDRs = new List<HojaDeRutaTransporte>
+                DetalleHDRs = new List<HojaDeRutaTransporte>
                 {
                     hdr3
                 }
@@ -142,16 +158,18 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             {
                 NroGuia = "G0006",
                 TipoBulto = TiposBulto.S,
-                Modalidad = ModalidadEntrega.PuertaAPuerta,
-                Estado = EstadoGuia.EnTransito,
-                CDOrigen = cdCordoba
+                ModalidadEntrega = ModalidadEntrega.EntregaDomicilio,
+                CDOrigen = cdCordoba,
+                CDActual = cdCordoba,
+                CDDestino = cdBuenosAires,
+                Estado = EstadoGuia.EnTransito
             };
 
             var hdr4 = new HojaDeRutaTransporte
             {
                 NroHDR = 3001,
                 Estado = EstadoHojaDeRuta.EnCurso,
-                Guias = new List<Guia>
+                DetalleGuias = new List<Guia>
                 {
                     guia6
                 }
@@ -161,9 +179,9 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             {
                 IdServicio = 3,
                 EmpresaTransporte = empresa1,
-                FechaDespacho = new DateTime(2026, 5, 25, 11, 30, 0),
+                FechaLlegada = new DateTime(2026, 5, 25, 11, 30, 0),
                 FechaRecepcion = new DateTime(2026, 5, 30, 15, 30, 0),
-                HDRs = new List<HojaDeRutaTransporte>
+                DetalleHDRs = new List<HojaDeRutaTransporte>
                 {
                     hdr4
                 }

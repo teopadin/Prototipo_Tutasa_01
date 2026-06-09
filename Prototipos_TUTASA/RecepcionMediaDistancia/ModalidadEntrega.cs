@@ -6,8 +6,8 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
 {
     public enum ModalidadEntrega
     {
-        PuertaAPuerta,
-        RetiroEnAgencia,
-        RetiroEnCD
+        EntregaDomicilio,
+        EntregaAgencia,
+        EntregaCD
     }
 }

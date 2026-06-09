@@ -13,6 +13,9 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transpor
         public CentroDistribucion CdOrigen { get; set; }
         public CentroDistribucion CdDestino { get; set; }
 
+        public CentroDistribucion CdActual { get; set; }
+
+
         public int EquivalenteS
         {
             get

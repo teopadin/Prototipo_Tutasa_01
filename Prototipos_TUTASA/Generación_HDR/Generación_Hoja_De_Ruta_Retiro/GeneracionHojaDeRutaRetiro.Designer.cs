@@ -57,9 +57,10 @@
             // lblFecha
             // 
             lblFecha.AutoSize = true;
-            lblFecha.Location = new Point(547, 37);
+            lblFecha.Location = new Point(781, 62);
+            lblFecha.Margin = new Padding(4, 0, 4, 0);
             lblFecha.Name = "lblFecha";
-            lblFecha.Size = new Size(38, 15);
+            lblFecha.Size = new Size(57, 25);
             lblFecha.TabIndex = 1;
             lblFecha.Text = "Fecha";
             // 
@@ -67,51 +68,57 @@
             // 
             dtpFecha.Enabled = false;
             dtpFecha.Format = DateTimePickerFormat.Short;
-            dtpFecha.Location = new Point(597, 34);
+            dtpFecha.Location = new Point(853, 57);
+            dtpFecha.Margin = new Padding(4, 5, 4, 5);
             dtpFecha.Name = "dtpFecha";
-            dtpFecha.Size = new Size(120, 23);
+            dtpFecha.Size = new Size(170, 31);
             dtpFecha.TabIndex = 2;
             // 
             // lblEstado
             // 
             lblEstado.AutoSize = true;
-            lblEstado.Location = new Point(30, 30);
+            lblEstado.Location = new Point(43, 50);
+            lblEstado.Margin = new Padding(4, 0, 4, 0);
             lblEstado.Name = "lblEstado";
-            lblEstado.Size = new Size(0, 15);
+            lblEstado.Size = new Size(0, 25);
             lblEstado.TabIndex = 3;
             // 
             // lblCdEmisor
             // 
             lblCdEmisor.AutoSize = true;
-            lblCdEmisor.Location = new Point(21, 32);
+            lblCdEmisor.Location = new Point(30, 53);
+            lblCdEmisor.Margin = new Padding(4, 0, 4, 0);
             lblCdEmisor.Name = "lblCdEmisor";
-            lblCdEmisor.Size = new Size(62, 15);
+            lblCdEmisor.Size = new Size(95, 25);
             lblCdEmisor.TabIndex = 5;
             lblCdEmisor.Text = "CD emisor";
             // 
             // txtCdEmisor
             // 
-            txtCdEmisor.Location = new Point(91, 29);
+            txtCdEmisor.Location = new Point(130, 48);
+            txtCdEmisor.Margin = new Padding(4, 5, 4, 5);
             txtCdEmisor.Name = "txtCdEmisor";
             txtCdEmisor.ReadOnly = true;
-            txtCdEmisor.Size = new Size(120, 23);
+            txtCdEmisor.Size = new Size(170, 31);
             txtCdEmisor.TabIndex = 6;
             // 
             // lblFletero
             // 
             lblFletero.AutoSize = true;
-            lblFletero.Location = new Point(20, 293);
+            lblFletero.Location = new Point(29, 488);
+            lblFletero.Margin = new Padding(4, 0, 4, 0);
             lblFletero.Name = "lblFletero";
-            lblFletero.Size = new Size(441, 15);
+            lblFletero.Size = new Size(758, 25);
             lblFletero.TabIndex = 7;
-            lblFletero.Text = "Fletero asignado(se muestran solos los fleteros que coinciden con el CD de origen)";
+            lblFletero.Text = "Transportista Local asignado(se muestran solos los fleteros que coinciden con el CD de origen)";
             // 
             // lblGuiasPendientes
             // 
             lblGuiasPendientes.AutoSize = true;
-            lblGuiasPendientes.Location = new Point(7, 77);
+            lblGuiasPendientes.Location = new Point(10, 128);
+            lblGuiasPendientes.Margin = new Padding(4, 0, 4, 0);
             lblGuiasPendientes.Name = "lblGuiasPendientes";
-            lblGuiasPendientes.Size = new Size(751, 15);
+            lblGuiasPendientes.Size = new Size(1126, 25);
             lblGuiasPendientes.TabIndex = 9;
             lblGuiasPendientes.Text = "Guías pendientes de retiro (Cuando se seleccione una guía, solo podrá seleccionar las que compartan los campos Calle, Altura, Piso y Ciudad)";
             // 
@@ -120,9 +127,10 @@
             lvGuiasPendientes.CheckBoxes = true;
             lvGuiasPendientes.Columns.AddRange(new ColumnHeader[] { colNumeroGuia, colRemitenteLista, colCalle, columnHeader8, columnHeader7, columnHeader9, colTipoBultoLista, colCiudadLista, colFechaGuia, columnHeader4 });
             lvGuiasPendientes.FullRowSelect = true;
-            lvGuiasPendientes.Location = new Point(20, 100);
+            lvGuiasPendientes.Location = new Point(29, 167);
+            lvGuiasPendientes.Margin = new Padding(4, 5, 4, 5);
             lvGuiasPendientes.Name = "lvGuiasPendientes";
-            lvGuiasPendientes.Size = new Size(966, 162);
+            lvGuiasPendientes.Size = new Size(1378, 267);
             lvGuiasPendientes.TabIndex = 10;
             lvGuiasPendientes.UseCompatibleStateImageBehavior = false;
             lvGuiasPendientes.View = View.Details;
@@ -180,9 +188,10 @@
             // 
             // btnGenerarHdr
             // 
-            btnGenerarHdr.Location = new Point(722, 479);
+            btnGenerarHdr.Location = new Point(1031, 798);
+            btnGenerarHdr.Margin = new Padding(4, 5, 4, 5);
             btnGenerarHdr.Name = "btnGenerarHdr";
-            btnGenerarHdr.Size = new Size(130, 35);
+            btnGenerarHdr.Size = new Size(186, 58);
             btnGenerarHdr.TabIndex = 28;
             btnGenerarHdr.Text = "Generar HDR";
             btnGenerarHdr.UseVisualStyleBackColor = true;
@@ -191,18 +200,20 @@
             // lblGuiaBase
             // 
             lblGuiaBase.Location = new Point(0, 0);
+            lblGuiaBase.Margin = new Padding(4, 0, 4, 0);
             lblGuiaBase.Name = "lblGuiaBase";
-            lblGuiaBase.Size = new Size(100, 23);
+            lblGuiaBase.Size = new Size(143, 38);
             lblGuiaBase.TabIndex = 30;
             // 
             // lvFleteros
             // 
             lvFleteros.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader5 });
             lvFleteros.FullRowSelect = true;
-            lvFleteros.Location = new Point(20, 312);
+            lvFleteros.Location = new Point(29, 520);
+            lvFleteros.Margin = new Padding(4, 5, 4, 5);
             lvFleteros.MultiSelect = false;
             lvFleteros.Name = "lvFleteros";
-            lvFleteros.Size = new Size(966, 161);
+            lvFleteros.Size = new Size(1378, 266);
             lvFleteros.TabIndex = 31;
             lvFleteros.UseCompatibleStateImageBehavior = false;
             lvFleteros.View = View.Details;
@@ -230,16 +241,18 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(278, 35);
+            label2.Location = new Point(397, 58);
+            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(0, 15);
+            label2.Size = new Size(0, 25);
             label2.TabIndex = 32;
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(858, 479);
+            btnCancelar.Location = new Point(1226, 798);
+            btnCancelar.Margin = new Padding(4, 5, 4, 5);
             btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(130, 35);
+            btnCancelar.Size = new Size(186, 58);
             btnCancelar.TabIndex = 33;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
@@ -247,9 +260,9 @@
             // 
             // GeneracionHojaDeRutaRetiro
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1000, 526);
+            ClientSize = new Size(1429, 877);
             Controls.Add(btnCancelar);
             Controls.Add(label2);
             Controls.Add(lvFleteros);
@@ -263,6 +276,7 @@
             Controls.Add(dtpFecha);
             Controls.Add(lblFecha);
             Controls.Add(lblGuiaBase);
+            Margin = new Padding(4, 5, 4, 5);
             Name = "GeneracionHojaDeRutaRetiro";
             Text = "Generacion de HDR de retiro";
             Load += GeneracionHojaDeRutaRetiro_Load;

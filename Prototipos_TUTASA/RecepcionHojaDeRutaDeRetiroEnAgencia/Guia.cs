@@ -7,7 +7,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia
     internal class Guia
     {
         public string NroGuia { get; set; }
-        public TiposBulto TipoBulto { get; set; }
-        public Agencia Agencia { get; set; }
+        public TiposBultoEnum TipoBulto { get; set; }
+        public Agencia AgenciaGuia { get; set; }
     }
 }

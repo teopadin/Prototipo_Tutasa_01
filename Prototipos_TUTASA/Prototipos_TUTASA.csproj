@@ -26,4 +26,28 @@
     </Compile>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DATOS\" />
+    <Folder Include="PRUEBAS\1.Imposicion\1.1PorCallcenter\" />
+    <Folder Include="PRUEBAS\1.Imposicion\1.2.PorAgencia\" />
+    <Folder Include="PRUEBAS\1.Imposicion\1.3.PorCD\" />
+    <Folder Include="PRUEBAS\2.HDRRetiro\2.1.Generacion\" />
+    <Folder Include="PRUEBAS\2.HDRRetiro\2.2.GeneracionResumen\" />
+    <Folder Include="PRUEBAS\2.HDRRetiro\2.3.Recepcion\" />
+    <Folder Include="PRUEBAS\2.HDRRetiro\2.4.Rendicion\" />
+    <Folder Include="PRUEBAS\3.Admision\" />
+    <Folder Include="PRUEBAS\4.HDRTransporte\4.1.Generacion\" />
+    <Folder Include="PRUEBAS\4.HDRTransporte\4.2Despacho\" />
+    <Folder Include="PRUEBAS\4.HDRTransporte\4.3.Recepcion\" />
+    <Folder Include="PRUEBAS\5.HDRDistribucion\5.1Generacion\" />
+    <Folder Include="PRUEBAS\5.HDRDistribucion\5.2.GeneracionResumen\" />
+    <Folder Include="PRUEBAS\5.HDRDistribucion\5.3.Recepcion\" />
+    <Folder Include="PRUEBAS\5.HDRDistribucion\5.4.Rendicion\" />
+    <Folder Include="PRUEBAS\6.Entrega\6.1.EnCD\" />
+    <Folder Include="PRUEBAS\6.Entrega\6.2.EnAgencia\" />
+    <Folder Include="PRUEBAS\7.AdminF\7.1.CuentaCorrienteXCliente\" />
+    <Folder Include="PRUEBAS\7.AdminF\7.2.ResultadoCostoVSVentas\" />
+    <Folder Include="PRUEBAS\8.ConsultarEstado\" />
+  </ItemGroup>
+
 </Project>

@@ -76,9 +76,9 @@
             Fletero.Location = new Point(384, 119);
             Fletero.Margin = new Padding(4, 0, 4, 0);
             Fletero.Name = "Fletero";
-            Fletero.Size = new Size(144, 25);
+            Fletero.Size = new Size(236, 25);
             Fletero.TabIndex = 5;
-            Fletero.Text = "Fletero asignado";
+            Fletero.Text = "Transportista Local asignado";
             // 
             // listView1
             // 
@@ -196,7 +196,7 @@
             comboBox1.FormattingEnabled = true;
             comboBox1.Location = new Point(384, 147);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(182, 33);
+            comboBox1.Size = new Size(236, 33);
             comboBox1.TabIndex = 15;
             comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 

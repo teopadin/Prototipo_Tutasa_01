@@ -50,25 +50,38 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
 
             var hdrSeleccionada = (HDRTransporte)ServicioCmb.SelectedItem;
 
-
-            if (hdrSeleccionada.NroHDR == 3005)
+            // 1. Destino dinámico según el IdCDDestino del diagrama
+            switch (hdrSeleccionada.IdCDDestino)
             {
-                CdDestinoTxtb.Text = "CD Bariloche - Terminal Río Negro";
-                EmpresaTxtb.Text = "Via Bariloche";
-            }
-            else if (hdrSeleccionada.NroHDR == 3001)
-            {
-                CdDestinoTxtb.Text = "CD Córdoba - Terminal Central";
-                EmpresaTxtb.Text = "Nueva Chevallier S.A.";
-            }
-            else
-            {
-                CdDestinoTxtb.Text = "Centro de Distribución Central";
-                EmpresaTxtb.Text = "Transporte TUTASA";
+                case 1: CdDestinoTxtb.Text = "CD Córdoba - Terminal Central"; break;
+                case 2: CdDestinoTxtb.Text = "CD Mendoza - Terminal Del Sol"; break;
+                case 3: CdDestinoTxtb.Text = "CD Rosario - Terminal Mariano Moreno"; break;
+                case 4: CdDestinoTxtb.Text = "CD Mar del Plata - Terminal Ferroautomotora"; break;
+                case 5: CdDestinoTxtb.Text = "CD Bariloche - Terminal Río Negro"; break;
+                default: CdDestinoTxtb.Text = "Centro de Distribución Desconocido"; break;
             }
 
-
+            // 2. Mostramos el ID del Servicio directo en el TextBox
             IdServicioTxtb.Text = hdrSeleccionada.IdServicio.ToString();
+
+            // 3. Buscamos el objeto Servicio real en el modelo mediante la conexión del ID
+            var servicioAsociado = modelo.BuscarServicioPorId(hdrSeleccionada.IdServicio);
+
+            if (servicioAsociado != null)
+            {
+                // ALINEADO: Usamos el ID para buscar a la empresa en su respectivo almacén
+                var empresaAsociada = modelo.BuscarEmpresa(servicioAsociado.IdEmpresa);
+
+                if (empresaAsociada != null)
+                {
+                    EmpresaTxtb.Text = empresaAsociada.RazonSocial;
+                }
+                else
+                {
+                    EmpresaTxtb.Text = "Empresa no encontrada";
+                }
+            }
+
             DespachoLst.Items.Clear();
 
             foreach (var g in hdrSeleccionada.DetalleGuias)

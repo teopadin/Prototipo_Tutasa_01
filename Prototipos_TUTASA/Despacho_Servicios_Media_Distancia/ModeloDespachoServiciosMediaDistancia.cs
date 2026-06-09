@@ -8,204 +8,153 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
 {
     internal class ModeloDespachoServiciosMediaDistancia
     {
-        // Tu lista privada con el nombre de clase corregido (HojaRutaTransporte)
-        private List<HDRTransporte> hdrs = new List<HDRTransporte>
+        private List<HDRTransporte> hdrs;
+        private List<ServicioMediaDistancia> servicios;
+
+        // ALMACENES DE ENTIDADES (Las "tablas" maestras)
+        private List<EmpresaTransporte> almacenEmpresas;
+        private List<Cliente> almacenClientes;
+        private List<CentroDistribucion> almacenCDs;
+
+        public ModeloDespachoServiciosMediaDistancia()
         {
-            // Ejemplo 1: Destino Córdoba
-            new HDRTransporte
+            // 1. Inicializamos los almacenes
+            almacenEmpresas = new List<EmpresaTransporte> {
+                new EmpresaTransporte { IdEmpresa = 10, RazonSocial = "Nueva Chevallier S.A." },
+                new EmpresaTransporte { IdEmpresa = 20, RazonSocial = "Andesmar" },
+                new EmpresaTransporte { IdEmpresa = 30, RazonSocial = "Empresa Argentina" },
+                new EmpresaTransporte { IdEmpresa = 40, RazonSocial = "Plusmar" },
+                new EmpresaTransporte { IdEmpresa = 50, RazonSocial = "Via Bariloche" }
+            };
+
+            almacenClientes = new List<Cliente> {
+                new Cliente { IdCliente = 100, RazonSocial = "Techint Logística" },
+                new Cliente { IdCliente = 200, RazonSocial = "Arcor S.A.I.C." },
+                new Cliente { IdCliente = 300, RazonSocial = "Bodegas López" },
+                new Cliente { IdCliente = 400, RazonSocial = "Unilever S.A." },
+                new Cliente { IdCliente = 500, RazonSocial = "MercadoLibre SRL" }
+            };
+
+            almacenCDs = new List<CentroDistribucion> {
+                new CentroDistribucion { IdCD = 1, Nombre = "CD Buenos Aires" },
+                new CentroDistribucion { IdCD = 2, Nombre = "CD Córdoba" },
+                new CentroDistribucion { IdCD = 3, Nombre = "CD Mendoza" },
+                new CentroDistribucion { IdCD = 4, Nombre = "CD Rosario" },
+                new CentroDistribucion { IdCD = 5, Nombre = "CD Bariloche" }
+            };
+
+            servicios = new List<ServicioMediaDistancia> {
+                new ServicioMediaDistancia { IdServicio = 2200, IdEmpresa = 10 },
+                new ServicioMediaDistancia { IdServicio = 2315, IdEmpresa = 20 },
+                new ServicioMediaDistancia { IdServicio = 2130, IdEmpresa = 30 },
+                new ServicioMediaDistancia { IdServicio = 2345, IdEmpresa = 40 },
+                new ServicioMediaDistancia { IdServicio = 1900, IdEmpresa = 50 }
+            };
+
+            // 2. Inicializamos las HDRs usando SOLAMENTE IDs (la forma correcta de hacerlo)
+            hdrs = new List<HDRTransporte>
             {
-                NroHDR = 3001,
-                IdServicio = 2200, // idServicio (int) según diagrama
-                Estado = EstadoHDR.Generada, // Usamos el EstadoEnum del dibujo en vez de un bool
-                DetalleGuias = new List<Guia>
+
+                new HDRTransporte
                 {
-                    new Guia {
-                        NroGuia = "G-1001",
-                        TipoBulto = TiposBulto.S,
-                        Estado = EstadoGuia.PendienteDeDespacho,
-                        Cliente = new Cliente { RazonSocial = "Techint Logística" },
-                        Destinatario = new DestinatarioGuia { Nombre = "Carlos", Apellido = "Paz" }
-                    },
-                    new Guia {
-                        NroGuia = "G-1002",
-                        TipoBulto = TiposBulto.M,
-                        Estado = EstadoGuia.PendienteDeDespacho,
-                        Cliente = new Cliente { RazonSocial = "Arcor S.A.I.C." },
-                        Destinatario = new DestinatarioGuia { Nombre = "Laura", Apellido = "Martínez" }
-                    },
-                    new Guia {
-                        NroGuia = "G-1003",
-                        TipoBulto = TiposBulto.M,
-                        Estado = EstadoGuia.PendienteDeDespacho,
-                        Cliente = new Cliente { RazonSocial = "Arcor S.A.I.C." },
-                        Destinatario = new DestinatarioGuia { Nombre = "Laura", Apellido = "Martínez" }
+                    NroHDR = 3001,
+                    Estado = EstadoHojaDeRutaEnum.Generada,
+                    IdServicio = 2200,
+                    IdCDDestino = 1,
+                    DetalleGuias = new List<Guia>
+                    {
+                        new Guia { NroGuia = "G-1001", IdCliente = 100, TipoBulto = TiposBultoEnum.S, Destinatario = new DestinatarioGuia { Nombre = "Carlos", Apellido = "Paz" } },
+                        new Guia { NroGuia = "G-1002", IdCliente = 200, TipoBulto = TiposBultoEnum.M, Destinatario = new DestinatarioGuia { Nombre = "Laura", Apellido = "Martínez" } },
+                        new Guia { NroGuia = "G-1003", IdCliente = 200, TipoBulto = TiposBultoEnum.L, Destinatario = new DestinatarioGuia { Nombre = "Laura", Apellido = "Martínez" } }
+                    }
+                },
+                new HDRTransporte
+                {
+                    NroHDR = 3002,
+                    Estado = EstadoHojaDeRutaEnum.Generada,
+                    IdServicio = 2315,
+                    IdCDDestino = 2,
+                    DetalleGuias = new List<Guia>
+                    {
+                        new Guia { NroGuia = "G-2041", IdCliente = 300, TipoBulto = TiposBultoEnum.L, Destinatario = new DestinatarioGuia { Nombre = "Federico", Apellido = "Quintana" } }
+                    }
+                },
+                new HDRTransporte
+                {
+                    NroHDR = 3003,
+                    Estado = EstadoHojaDeRutaEnum.Generada,
+                    IdServicio = 2130,
+                    IdCDDestino = 3,
+                    DetalleGuias = new List<Guia>
+                    {
+                        new Guia { NroGuia = "G-3110", IdCliente = 400, TipoBulto = TiposBultoEnum.XL, Destinatario = new DestinatarioGuia { Nombre = "Alberto", Apellido = "Rossi" } },
+                        new Guia { NroGuia = "G-3111", IdCliente = 500, TipoBulto = TiposBultoEnum.M, Destinatario = new DestinatarioGuia { Nombre = "Marta", Apellido = "Gómez" } }
+                    }
+                },
+                new HDRTransporte
+                {
+                    NroHDR = 3004,
+                    Estado = EstadoHojaDeRutaEnum.Generada,
+                    IdServicio = 2345,
+                    IdCDDestino = 4,
+                    DetalleGuias = new List<Guia>
+                    {
+                        new Guia { NroGuia = "G-4001", IdCliente = 500, TipoBulto = TiposBultoEnum.S, Destinatario = new DestinatarioGuia { Nombre = "Esteban", Apellido = "Quito" } },
+                        new Guia { NroGuia = "G-4002", IdCliente = 500, TipoBulto = TiposBultoEnum.S, Destinatario = new DestinatarioGuia { Nombre = "Ramiro", Apellido = "Díaz" } },
+                        new Guia { NroGuia = "G-4003", IdCliente = 500, TipoBulto = TiposBultoEnum.S, Destinatario = new DestinatarioGuia { Nombre = "Clara", Apellido = "Benítez" } }
+                    }
+                },
+                new HDRTransporte
+                {
+                    NroHDR = 3005,
+                    Estado = EstadoHojaDeRutaEnum.Generada,
+                    IdServicio = 1900,
+                    IdCDDestino = 5,
+                    DetalleGuias = new List<Guia>
+                    {
+                        new Guia { NroGuia = "G-5501", IdCliente = 100, TipoBulto = TiposBultoEnum.L, Destinatario = new DestinatarioGuia { Nombre = "Jorge", Apellido = "Sabat" } },
+                        new Guia { NroGuia = "G-5502", IdCliente = 400, TipoBulto = TiposBultoEnum.XL, Destinatario = new DestinatarioGuia { Nombre = "Enrique", Apellido = "Pinti" } }
                     }
                 }
-            },
-
-            // Ejemplo 2: Destino Mendoza
-            new HDRTransporte
-            {
-                NroHDR = 3002,
-                IdServicio = 2315,
-                Estado = EstadoHDR.Generada,
-                DetalleGuias = new List<Guia>
-                {
-                    new Guia {
-                        NroGuia = "G-2041",
-                        TipoBulto = TiposBulto.L,
-                        Estado = EstadoGuia.PendienteDeDespacho,
-                        Cliente = new Cliente { RazonSocial = "Bodegas López" },
-                        Destinatario = new DestinatarioGuia { Nombre = "Federico", Apellido = "Quintana" }
+            };
                     }
-                }
-            },
 
-            // Ejemplo 3: Destino Rosario
-            new HDRTransporte
-            {
-                NroHDR = 3003,
-                IdServicio = 2130,
-                Estado = EstadoHDR.Generada,
-                DetalleGuias = new List<Guia>
-                {
-                    new Guia {
-                        NroGuia = "G-3110",
-                        TipoBulto = TiposBulto.XL,
-                        Estado = EstadoGuia.PendienteDeDespacho,
-                        Cliente = new Cliente { RazonSocial = "Unilever S.A." },
-                        Destinatario = new DestinatarioGuia { Nombre = "Alberto", Apellido = "Rossi" }
-                    },
-                    new Guia {
-                        NroGuia = "G-3111",
-                        TipoBulto = TiposBulto.M,
-                        Estado = EstadoGuia.PendienteDeDespacho,
-                        Cliente = new Cliente { RazonSocial = "Bazar Avenida" },
-                        Destinatario = new DestinatarioGuia { Nombre = "Marta", Apellido = "Gómez" }
-                    }
-                }
-            },
+        // --- MÉTODOS BUSCADORES (Indispensables para tu lógica) ---
+        public EmpresaTransporte BuscarEmpresa(int id) => almacenEmpresas.Find(e => e.IdEmpresa == id);
+        public Cliente BuscarCliente(int id) => almacenClientes.Find(c => c.IdCliente == id);
+        public CentroDistribucion BuscarCD(int id) => almacenCDs.Find(cd => cd.IdCD == id);
+        public ServicioMediaDistancia BuscarServicioPorId(int id) => servicios.Find(s => s.IdServicio == id);
 
-            // Ejemplo 4: Destino Mar del Plata
-            new HDRTransporte
-            {
-                NroHDR = 3004,
-                IdServicio = 2345,
-                Estado = EstadoHDR.Generada,
-                DetalleGuias = new List<Guia>
-                {
-                    new Guia {
-                        NroGuia = "G-4001",
-                        TipoBulto = TiposBulto.S,
-                        Estado = EstadoGuia.PendienteDeDespacho,
-                        Cliente = new Cliente { RazonSocial = "MercadoLibre SRL" },
-                        Destinatario = new DestinatarioGuia { Nombre = "Esteban", Apellido = "Quito" }
-                    },
-                    new Guia {
-                        NroGuia = "G-4002",
-                        TipoBulto = TiposBulto.S,
-                        Estado = EstadoGuia.PendienteDeDespacho,
-                        Cliente = new Cliente { RazonSocial = "MercadoLibre SRL" },
-                        Destinatario = new DestinatarioGuia { Nombre = "Ramiro", Apellido ="Díaz" }
-                    },
-                    new Guia {
-                        NroGuia = "G-4003",
-                        TipoBulto = TiposBulto.S,
-                        Estado = EstadoGuia.PendienteDeDespacho,
-                        Cliente = new Cliente { RazonSocial = "Frávega S.A." },
-                        Destinatario = new DestinatarioGuia { Nombre = "Clara", Apellido = "Benítez" }
-                    }
-                }
-            },
-
-            // Ejemplo 5: Destino Bariloche
-            new HDRTransporte
-            {
-                NroHDR = 3005,
-                IdServicio = 1900,
-                Estado = EstadoHDR.Generada,
-                DetalleGuias = new List<Guia>
-                {
-                    new Guia {
-                        NroGuia = "G-5501",
-                        TipoBulto = TiposBulto.L,
-                        Estado = EstadoGuia.PendienteDeDespacho,
-                        Cliente = new Cliente { RazonSocial = "INVAP S.E." },
-                        Destinatario = new DestinatarioGuia { Nombre = "Jorge", Apellido = "Sabat" }
-                    },
-                    new Guia {
-                        NroGuia = "G-5502",
-                        TipoBulto = TiposBulto.XL,
-                        Estado = EstadoGuia.PendienteDeDespacho,
-                        Cliente = new Cliente { RazonSocial = "Aluar S.A." },
-                        Destinatario = new DestinatarioGuia { Nombre = "Enrique", Apellido = "Pinti" }
-                    }
-                }
-            }
-        };
-
-        // 2. MÉTODOS ADAPTADOS A LOS NUEVOS ATRIBUTOS
-
-        internal List<HDRTransporte> ObtenerHDRsPendientes()
-        {
-            List<HDRTransporte> temporales = new List<HDRTransporte>();
-            foreach (var h in hdrs)
-            {
-                // En vez de h.Despachada, miramos que el estado NO sea "EnCurso" o "Recibida"
-                if (h.Estado == EstadoHDR.Generada)
-                {
-                    temporales.Add(h);
-                }
-            }
-            return temporales;
-        }
+        // --- MÉTODOS DE LÓGICA (No cambian) ---
+        internal List<HDRTransporte> ObtenerHDRsPendientes() => hdrs.FindAll(h => h.Estado == EstadoHojaDeRutaEnum.Generada);
 
         internal int CalcularBultosEnS(HDRTransporte hdr)
         {
             int total = 0;
-            // Usamos h.DetalleGuias
             foreach (var g in hdr.DetalleGuias)
             {
-                if (g.TipoBulto == TiposBulto.S) total += 1;
-                else if (g.TipoBulto == TiposBulto.M) total += 2;
-                else if (g.TipoBulto == TiposBulto.L) total += 4;
-                else if (g.TipoBulto == TiposBulto.XL) total += 8;
+                if (g.TipoBulto == TiposBultoEnum.S) total += 1;
+                else if (g.TipoBulto == TiposBultoEnum.M) total += 2;
+                else if (g.TipoBulto == TiposBultoEnum.L) total += 4;
+                else if (g.TipoBulto == TiposBultoEnum.XL) total += 8;
             }
             return total;
         }
 
-        internal int CalcularTotalBultos(HDRTransporte hdr)
-        {
-            if (hdr == null) return 0;
-            return hdr.DetalleGuias.Count;
-        }
+        internal int CalcularTotalBultos(HDRTransporte hdr) => hdr?.DetalleGuias.Count ?? 0;
 
         internal int CalcularTotalGeneralPendiente()
         {
             int acumulador = 0;
-            foreach (var h in ObtenerHDRsPendientes())
-            {
-                acumulador += h.DetalleGuias.Count;
-            }
+            foreach (var h in ObtenerHDRsPendientes()) acumulador += h.DetalleGuias.Count;
             return acumulador;
         }
 
         internal bool ConfirmarDespacho(HDRTransporte hdr)
         {
-            if (hdr == null)
-            {
-                MessageBox.Show("Debe seleccionar un Servicio.");
-                return false;
-            }
-
-            foreach (var guia in hdr.DetalleGuias)
-            {
-                guia.Estado = EstadoGuia.EnTransito;
-            }
-
-            // Cambiamos el estado a EnCurso (Despachada) según tu EstadoHojaDeRutaEnum
-            hdr.Estado = EstadoHDR.EnCurso;
-
+            if (hdr == null) return false;
+            foreach (var guia in hdr.DetalleGuias) guia.Estado = EstadoGuiaEnum.EnTransito;
+            hdr.Estado = EstadoHojaDeRutaEnum.EnCurso;
             return true;
         }
     }

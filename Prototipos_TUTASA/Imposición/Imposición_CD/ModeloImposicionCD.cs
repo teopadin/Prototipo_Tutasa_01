@@ -98,7 +98,7 @@ namespace Prototipos_TUTASA.Imposición.Imposición_CD
             return CdOrigen;
         }
 
-        public Guia RegistrarImposicion(TipoBulto tipoBulto, ModalidadEntrega modalidadEntrega, DestinatarioGuia destinatario, CentroDistribucion cdDestino, Agencia agenciaDestino)
+        public Guia RegistrarImposicion(TipoBultoEnum tipoBulto, ModalidadEntregaEnum modalidadEntrega, DestinatarioGuia destinatario, CentroDistribucion cdDestino, Agencia agenciaDestino)
         {
             Guia guia = new Guia
             {

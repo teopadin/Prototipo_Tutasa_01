@@ -1,5 +1,7 @@
 namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia
 {
+    using System;
+
     public class Guia
     {
         public string NroGuia { get; set; }
@@ -7,5 +9,6 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia
         public Agencia AgenciaGuia { get; set; }
         public Agencia AgenciaDestino { get; set; }
         public DestinatarioGuia Destinatario { get; set; }
+        public DateTime FechaEntrega { get; set; }
     }
 }

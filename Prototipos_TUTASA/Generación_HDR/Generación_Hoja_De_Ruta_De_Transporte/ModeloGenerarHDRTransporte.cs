@@ -57,25 +57,105 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transpor
 
             // Guías en estado Admitida, origen Capital
             Guias = new List<Guia>
-            {
-                // Destino Norte
-                new Guia { NroGuia = "CD01-0001", FechaImposicion = new DateTime(2026, 5, 20), TipoBulto = TiposBultoEnum.M, Estado = EstadoGuiaEnum.Admitida, CdOrigen = cdCapital, CdDestino = cdNorte },
-                new Guia { NroGuia = "CD01-0002", FechaImposicion = new DateTime(2026, 5, 21), TipoBulto = TiposBultoEnum.L, Estado = EstadoGuiaEnum.Admitida, CdOrigen = cdCapital, CdDestino = cdNorte },
-                new Guia { NroGuia = "CD01-0003", FechaImposicion = new DateTime(2026, 5, 22), TipoBulto = TiposBultoEnum.XL, Estado = EstadoGuiaEnum.Admitida, CdOrigen = cdCapital, CdDestino = cdNorte },
+{
+    // Destino Norte
+    new Guia {
+        NroGuia = "CD01-0001",
+        FechaImposicion = new DateTime(2026, 5, 20),
+        TipoBulto = TiposBultoEnum.M,
+        Estado = EstadoGuiaEnum.Admitida,
+        CdOrigen = cdCapital,
+        CdDestino = cdNorte,
+        CdActual = cdCapital
+    },
 
-                // Destino Centro
-                new Guia { NroGuia = "CD01-0004", FechaImposicion = new DateTime(2026, 5, 20), TipoBulto = TiposBultoEnum.S, Estado = EstadoGuiaEnum.Admitida, CdOrigen = cdCapital, CdDestino = cdCentro },
-                new Guia { NroGuia = "CD01-0005", FechaImposicion = new DateTime(2026, 5, 21), TipoBulto = TiposBultoEnum.M, Estado = EstadoGuiaEnum.Admitida, CdOrigen = cdCapital, CdDestino = cdCentro },
+    new Guia {
+        NroGuia = "CD01-0002",
+        FechaImposicion = new DateTime(2026, 5, 21),
+        TipoBulto = TiposBultoEnum.L,
+        Estado = EstadoGuiaEnum.Admitida,
+        CdOrigen = cdCapital,
+        CdDestino = cdNorte,
+        CdActual = cdCapital
+    },
 
-                // Destino Este
-                new Guia { NroGuia = "CD01-0006", FechaImposicion = new DateTime(2026, 5, 22), TipoBulto = TiposBultoEnum.S, Estado = EstadoGuiaEnum.Admitida, CdOrigen = cdCapital, CdDestino = cdEste },
+    new Guia {
+        NroGuia = "CD01-0003",
+        FechaImposicion = new DateTime(2026, 5, 22),
+        TipoBulto = TiposBultoEnum.XL,
+        Estado = EstadoGuiaEnum.Admitida,
+        CdOrigen = cdCapital,
+        CdDestino = cdNorte,
+        CdActual = cdCapital
+    },
 
-                // Otro estado - NO debe aparecer
-                new Guia { NroGuia = "CD01-0007", FechaImposicion = new DateTime(2026, 5, 19), TipoBulto = TiposBultoEnum.M, Estado = EstadoGuiaEnum.PendienteDeDespacho, CdOrigen = cdCapital, CdDestino = cdNorte },
+    // Destino Centro
+    new Guia {
+        NroGuia = "CD01-0004",
+        FechaImposicion = new DateTime(2026, 5, 20),
+        TipoBulto = TiposBultoEnum.S,
+        Estado = EstadoGuiaEnum.Admitida,
+        CdOrigen = cdCapital,
+        CdDestino = cdCentro,
+        CdActual = cdCapital
+    },
 
-                // Otro CD origen - NO debe aparecer
-                new Guia { NroGuia = "CD02-0001", FechaImposicion = new DateTime(2026, 5, 20), TipoBulto = TiposBultoEnum.S, Estado = EstadoGuiaEnum.Admitida, CdOrigen = cdCentro, CdDestino = cdNorte },
-            };
+    new Guia {
+        NroGuia = "CD01-0005",
+        FechaImposicion = new DateTime(2026, 5, 21),
+        TipoBulto = TiposBultoEnum.M,
+        Estado = EstadoGuiaEnum.Admitida,
+        CdOrigen = cdCapital,
+        CdDestino = cdCentro,
+        CdActual = cdCapital
+    },
+
+    // Destino Este
+    new Guia {
+        NroGuia = "CD01-0006",
+        FechaImposicion = new DateTime(2026, 5, 22),
+        TipoBulto = TiposBultoEnum.S,
+        Estado = EstadoGuiaEnum.Admitida,
+        CdOrigen = cdCapital,
+        CdDestino = cdEste,
+        CdActual = cdCapital
+    },
+
+    // Pendiente de despacho
+    new Guia {
+        NroGuia = "CD01-0007",
+        FechaImposicion = new DateTime(2026, 5, 19),
+        TipoBulto = TiposBultoEnum.M,
+        Estado = EstadoGuiaEnum.PendienteDeDespacho,
+        CdOrigen = cdCapital,
+        CdDestino = cdNorte,
+        CdActual = cdCapital
+    },
+
+    // Otro CD origen
+    new Guia {
+        NroGuia = "CD02-0001",
+        FechaImposicion = new DateTime(2026, 5, 20),
+        TipoBulto = TiposBultoEnum.S,
+        Estado = EstadoGuiaEnum.Admitida,
+        CdOrigen = cdCentro,
+        CdDestino = cdNorte,
+        CdActual = cdCentro
+    },
+
+    // Ejemplo de redespacho:
+    // origen Capital -> destino final Norte
+    // actualmente está admitida en Centro esperando otro viaje
+    new Guia {
+        NroGuia = "CD01-0008",
+        FechaImposicion = new DateTime(2026, 5, 23),
+        TipoBulto = TiposBultoEnum.M,
+        Estado = EstadoGuiaEnum.Admitida,
+        CdOrigen = cdCapital,
+        CdDestino = cdNorte,
+        CdActual = cdCentro
+    }
+};
 
         }
     }

@@ -6,8 +6,9 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
 {
     public enum EstadoGuia
     {
+        Admitida,
         EnTransito,
         EnCDDestino,
-        PendienteDeRetiroEnCD
+        PendienteDeRetiroEnCD,
     }
 }

@@ -43,28 +43,27 @@
             // 
             lblTitulo.Font = new Font("Segoe UI", 16F);
             lblTitulo.ForeColor = Color.FromArgb(30, 30, 30);
-            lblTitulo.Location = new Point(12, 21);
+            lblTitulo.Location = new Point(8, 13);
+            lblTitulo.Margin = new Padding(2, 0, 2, 0);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(499, 46);
+            lblTitulo.Size = new Size(349, 28);
             lblTitulo.TabIndex = 1;
             lblTitulo.Text = "Consultar Estado del Pedido";
             // 
             // lblNumeroPedido
             // 
             lblNumeroPedido.AutoSize = true;
-            lblNumeroPedido.Location = new Point(23, 84);
-            lblNumeroPedido.Margin = new Padding(4, 0, 4, 0);
+            lblNumeroPedido.Location = new Point(16, 50);
             lblNumeroPedido.Name = "lblNumeroPedido";
-            lblNumeroPedido.Size = new Size(146, 25);
+            lblNumeroPedido.Size = new Size(97, 15);
             lblNumeroPedido.TabIndex = 2;
             lblNumeroPedido.Text = "Número de Guía:";
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new Point(499, 80);
-            btnBuscar.Margin = new Padding(4, 5, 4, 5);
+            btnBuscar.Location = new Point(349, 48);
             btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(107, 38);
+            btnBuscar.Size = new Size(75, 23);
             btnBuscar.TabIndex = 4;
             btnBuscar.Text = "Buscar";
             btnBuscar.UseVisualStyleBackColor = true;
@@ -72,18 +71,18 @@
             // 
             // txtNroGuia
             // 
-            txtNroGuia.Location = new Point(177, 84);
-            txtNroGuia.Margin = new Padding(4, 5, 4, 5);
+            txtNroGuia.Location = new Point(124, 50);
             txtNroGuia.Name = "txtNroGuia";
-            txtNroGuia.Size = new Size(314, 31);
+            txtNroGuia.Size = new Size(221, 23);
             txtNroGuia.TabIndex = 5;
             // 
             // lstHistorial
             // 
             lstHistorial.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4 });
-            lstHistorial.Location = new Point(23, 141);
+            lstHistorial.Location = new Point(16, 85);
+            lstHistorial.Margin = new Padding(2, 2, 2, 2);
             lstHistorial.Name = "lstHistorial";
-            lstHistorial.Size = new Size(871, 336);
+            lstHistorial.Size = new Size(611, 203);
             lstHistorial.TabIndex = 6;
             lstHistorial.UseCompatibleStateImageBehavior = false;
             lstHistorial.View = View.Details;
@@ -111,14 +110,15 @@
             // 
             // ConsultarEstadoDelPedido
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(906, 489);
+            ClientSize = new Size(693, 335);
             Controls.Add(lstHistorial);
             Controls.Add(txtNroGuia);
             Controls.Add(btnBuscar);
             Controls.Add(lblNumeroPedido);
             Controls.Add(lblTitulo);
+            Margin = new Padding(2, 2, 2, 2);
             Name = "ConsultarEstadoDelPedido";
             Text = "Consultar Estado del Pedido";
             ResumeLayout(false);

@@ -8,14 +8,15 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_CD
     {
         private readonly CentroDistribucion cdActual;
         private readonly List<Guia> guias;
-        private readonly List<ReciboEntregaCD> recibos = new List<ReciboEntregaCD>();
         private Guia guiaSeleccionada = new Guia();
+        private int ultimoNroRecibo;
 
         public bool HayGuiaSeleccionada { get; private set; }
         public string NroGuiaSeleccionada => HayGuiaSeleccionada ? guiaSeleccionada.NroGuia : string.Empty;
         public string NombreDestinatarioSeleccionado => HayGuiaSeleccionada ? guiaSeleccionada.Destinatario.Nombre : string.Empty;
         public string ApellidoDestinatarioSeleccionado => HayGuiaSeleccionada ? guiaSeleccionada.Destinatario.Apellido : string.Empty;
         public string DniDestinatarioSeleccionado => HayGuiaSeleccionada ? guiaSeleccionada.Destinatario.Dni.ToString() : string.Empty;
+        public int UltimoNroReciboGenerado => ultimoNroRecibo;
 
         public ModeloEntregaEnCD()
         {
@@ -104,10 +105,9 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_CD
             return true;
         }
 
-        public bool RegistrarEntrega(string nroGuiaTexto, string nombreTexto, string apellidoTexto, string dniTexto, bool dniVerificado, out string mensaje, out int nroRecibo)
+        public bool RegistrarEntrega(string nroGuiaTexto, string nombreTexto, string apellidoTexto, string dniTexto, bool dniVerificado, out string mensaje)
         {
             mensaje = string.Empty;
-            nroRecibo = 0;
 
             if (!HayGuiaSeleccionada)
             {
@@ -149,8 +149,7 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_CD
                 return false;
             }
 
-            ReciboEntregaCD recibo = RegistrarEntregaInterna(nombre, apellido, dni);
-            nroRecibo = recibo.NroRecibo;
+            RegistrarEntregaInterna();
             return true;
         }
 
@@ -182,20 +181,11 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_CD
                 && CoincideTexto(guiaSeleccionada.Destinatario.Apellido, apellido);
         }
 
-        private ReciboEntregaCD RegistrarEntregaInterna(string nombre, string apellido, int dni)
+        private void RegistrarEntregaInterna()
         {
             DateTime fechaEntrega = DateTime.Now;
 
-            var recibo = new ReciboEntregaCD
-            {
-                NroRecibo = recibos.Count + 1,
-                NroGuia = guiaSeleccionada.NroGuia,
-                FechaEntrega = fechaEntrega,
-                NombreRetira = nombre,
-                ApellidoRetira = apellido,
-                DniRetira = dni
-            };
-
+            ultimoNroRecibo++;
             guiaSeleccionada.Estado = EstadoGuiaEnum.Entregada;
             guiaSeleccionada.FechaEntrega = fechaEntrega;
             guiaSeleccionada.Historial.Add(new HistorialEstadoGuia
@@ -203,8 +193,6 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_CD
                 FechaCambio = fechaEntrega,
                 Estado = guiaSeleccionada.Estado
             });
-            recibos.Add(recibo);
-            return recibo;
         }
 
         private static bool CoincideTexto(string textoRegistrado, string textoIngresado)

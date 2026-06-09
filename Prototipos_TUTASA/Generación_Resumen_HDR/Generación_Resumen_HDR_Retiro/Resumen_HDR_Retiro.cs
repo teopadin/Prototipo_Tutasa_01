@@ -46,16 +46,13 @@ namespace Prototipos_TUTASA
                 return;
             }
 
-            if (!modelo.GenerarResumen(out ResumenHDRRetiro resumen, out string mensaje))
+            if (!modelo.GenerarResumen(out string mensaje))
             {
                 MessageBox.Show(mensaje, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            textBox4.Text = resumen.TotalDomicilios.ToString();
-            textBox5.Text = resumen.TotalBultos.ToString();
-
-            MessageBox.Show($"Resumen de HDR de Retiro Nro {resumen.NroResumen} generado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Resumen de HDR de Retiro se ha generado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             CargarFleteros();
             LimpiarResumen();
         }
