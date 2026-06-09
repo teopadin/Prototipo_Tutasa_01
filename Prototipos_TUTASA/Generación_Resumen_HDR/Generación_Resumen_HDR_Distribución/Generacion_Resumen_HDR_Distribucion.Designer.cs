@@ -182,9 +182,9 @@
             Fletero.Location = new Point(383, 102);
             Fletero.Margin = new Padding(4, 0, 4, 0);
             Fletero.Name = "Fletero";
-            Fletero.Size = new Size(144, 25);
+            Fletero.Size = new Size(236, 25);
             Fletero.TabIndex = 19;
-            Fletero.Text = "Fletero asignado";
+            Fletero.Text = "Transportista Local asignado";
             // 
             // label3
             // 

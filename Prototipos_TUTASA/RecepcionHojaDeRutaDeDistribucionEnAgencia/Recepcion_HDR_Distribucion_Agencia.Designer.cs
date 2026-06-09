@@ -110,9 +110,9 @@
             lblFletero.Location = new Point(29, 209);
             lblFletero.Margin = new Padding(4, 0, 4, 0);
             lblFletero.Name = "lblFletero";
-            lblFletero.Size = new Size(70, 25);
+            lblFletero.Size = new Size(162, 25);
             lblFletero.TabIndex = 7;
-            lblFletero.Text = "Fletero:";
+            lblFletero.Text = "Transportista Local:";
             // 
             // txtFletero
             // 

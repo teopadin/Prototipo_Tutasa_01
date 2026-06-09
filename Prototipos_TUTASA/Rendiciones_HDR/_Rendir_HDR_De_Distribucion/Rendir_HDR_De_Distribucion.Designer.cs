@@ -45,8 +45,8 @@
             Destinatario = new ColumnHeader();
             Calle = new ColumnHeader();
             Altura = new ColumnHeader();
-            CP = new ColumnHeader();
             Piso = new ColumnHeader();
+            CP = new ColumnHeader();
             TipoBulto = new ColumnHeader();
             CancelarBtn = new Button();
             RegistrarBtn = new Button();
@@ -214,20 +214,18 @@
             Altura.Text = "Altura";
             Altura.Width = 70;
             // 
-            // CP
-            // 
-            CP.DisplayIndex = 4;
-            CP.Text = "CP";
-            CP.Width = 80;
-            // 
             // Piso
             // 
             Piso.Text = "Piso";
             Piso.Width = 80;
             // 
+            // CP
+            // 
+            CP.Text = "CP";
+            CP.Width = 80;
+            // 
             // TipoBulto
             // 
-            TipoBulto.DisplayIndex = 5;
             TipoBulto.Text = "Estado";
             TipoBulto.Width = 100;
             // 
@@ -259,16 +257,16 @@
             label4.Location = new Point(15, 164);
             label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(306, 25);
+            label4.Size = new Size(398, 25);
             label4.TabIndex = 36;
-            label4.Text = "Hojas de Ruta rendidas por el Fletero";
+            label4.Text = "Hojas de Ruta rendidas por el Transportista Local";
             // 
             // FleteroCMB
             // 
             FleteroCMB.FormattingEnabled = true;
             FleteroCMB.Location = new Point(383, 99);
             FleteroCMB.Name = "FleteroCMB";
-            FleteroCMB.Size = new Size(182, 33);
+            FleteroCMB.Size = new Size(236, 33);
             FleteroCMB.TabIndex = 35;
             FleteroCMB.SelectedIndexChanged += FleteroCMB_SelectedIndexChanged;
             // 
@@ -278,9 +276,9 @@
             Fletero.Location = new Point(383, 69);
             Fletero.Margin = new Padding(4, 0, 4, 0);
             Fletero.Name = "Fletero";
-            Fletero.Size = new Size(144, 25);
+            Fletero.Size = new Size(236, 25);
             Fletero.TabIndex = 34;
-            Fletero.Text = "Fletero asignado";
+            Fletero.Text = "Transportista Local asignado";
             // 
             // FechaDtp
             // 

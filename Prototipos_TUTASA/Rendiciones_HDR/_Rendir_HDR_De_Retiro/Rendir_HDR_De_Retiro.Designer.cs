@@ -93,16 +93,16 @@
             Fletero.Location = new Point(397, 97);
             Fletero.Margin = new Padding(4, 0, 4, 0);
             Fletero.Name = "Fletero";
-            Fletero.Size = new Size(144, 25);
+            Fletero.Size = new Size(236, 25);
             Fletero.TabIndex = 18;
-            Fletero.Text = "Fletero asignado";
+            Fletero.Text = "Transportista Local asignado";
             // 
             // FleteroCmb
             // 
             FleteroCmb.FormattingEnabled = true;
             FleteroCmb.Location = new Point(397, 127);
             FleteroCmb.Name = "FleteroCmb";
-            FleteroCmb.Size = new Size(182, 33);
+            FleteroCmb.Size = new Size(236, 33);
             FleteroCmb.TabIndex = 19;
             FleteroCmb.SelectedIndexChanged += FleteroCmb_SelectedIndexChanged;
             // 
@@ -112,9 +112,9 @@
             label4.Location = new Point(29, 192);
             label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(306, 25);
+            label4.Size = new Size(398, 25);
             label4.TabIndex = 20;
-            label4.Text = "Hojas de Ruta rendidas por el Fletero";
+            label4.Text = "Hojas de Ruta rendidas por el Transportista Local";
             // 
             // RegistratBtn
             // 
