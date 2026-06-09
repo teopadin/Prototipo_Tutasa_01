@@ -4,11 +4,10 @@ using System.Text;
 
 namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
 {
-    internal enum TiposBulto
+    internal enum EstadoHojaDeRutaEnum
     {
-        S,
-        M,
-        L,
-        XL
+        Generada,
+        EnCurso,
+        Recibida
     }
 }

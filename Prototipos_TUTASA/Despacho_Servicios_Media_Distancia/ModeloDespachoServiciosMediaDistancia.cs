@@ -58,62 +58,62 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
                 new HDRTransporte
                 {
                     NroHDR = 3001,
-                    Estado = EstadoHDR.Generada,
+                    Estado = EstadoHojaDeRutaEnum.Generada,
                     IdServicio = 2200,
                     IdCDDestino = 1,
                     DetalleGuias = new List<Guia>
                     {
-                        new Guia { NroGuia = "G-1001", IdCliente = 100, TipoBulto = TiposBulto.S, Destinatario = new DestinatarioGuia { Nombre = "Carlos", Apellido = "Paz" } },
-                        new Guia { NroGuia = "G-1002", IdCliente = 200, TipoBulto = TiposBulto.M, Destinatario = new DestinatarioGuia { Nombre = "Laura", Apellido = "Martínez" } },
-                        new Guia { NroGuia = "G-1003", IdCliente = 200, TipoBulto = TiposBulto.L, Destinatario = new DestinatarioGuia { Nombre = "Laura", Apellido = "Martínez" } }
+                        new Guia { NroGuia = "G-1001", IdCliente = 100, TipoBulto = TiposBultoEnum.S, Destinatario = new DestinatarioGuia { Nombre = "Carlos", Apellido = "Paz" } },
+                        new Guia { NroGuia = "G-1002", IdCliente = 200, TipoBulto = TiposBultoEnum.M, Destinatario = new DestinatarioGuia { Nombre = "Laura", Apellido = "Martínez" } },
+                        new Guia { NroGuia = "G-1003", IdCliente = 200, TipoBulto = TiposBultoEnum.L, Destinatario = new DestinatarioGuia { Nombre = "Laura", Apellido = "Martínez" } }
                     }
                 },
                 new HDRTransporte
                 {
                     NroHDR = 3002,
-                    Estado = EstadoHDR.Generada,
+                    Estado = EstadoHojaDeRutaEnum.Generada,
                     IdServicio = 2315,
                     IdCDDestino = 2,
                     DetalleGuias = new List<Guia>
                     {
-                        new Guia { NroGuia = "G-2041", IdCliente = 300, TipoBulto = TiposBulto.L, Destinatario = new DestinatarioGuia { Nombre = "Federico", Apellido = "Quintana" } }
+                        new Guia { NroGuia = "G-2041", IdCliente = 300, TipoBulto = TiposBultoEnum.L, Destinatario = new DestinatarioGuia { Nombre = "Federico", Apellido = "Quintana" } }
                     }
                 },
                 new HDRTransporte
                 {
                     NroHDR = 3003,
-                    Estado = EstadoHDR.Generada,
+                    Estado = EstadoHojaDeRutaEnum.Generada,
                     IdServicio = 2130,
                     IdCDDestino = 3,
                     DetalleGuias = new List<Guia>
                     {
-                        new Guia { NroGuia = "G-3110", IdCliente = 400, TipoBulto = TiposBulto.XL, Destinatario = new DestinatarioGuia { Nombre = "Alberto", Apellido = "Rossi" } },
-                        new Guia { NroGuia = "G-3111", IdCliente = 500, TipoBulto = TiposBulto.M, Destinatario = new DestinatarioGuia { Nombre = "Marta", Apellido = "Gómez" } }
+                        new Guia { NroGuia = "G-3110", IdCliente = 400, TipoBulto = TiposBultoEnum.XL, Destinatario = new DestinatarioGuia { Nombre = "Alberto", Apellido = "Rossi" } },
+                        new Guia { NroGuia = "G-3111", IdCliente = 500, TipoBulto = TiposBultoEnum.M, Destinatario = new DestinatarioGuia { Nombre = "Marta", Apellido = "Gómez" } }
                     }
                 },
                 new HDRTransporte
                 {
                     NroHDR = 3004,
-                    Estado = EstadoHDR.Generada,
+                    Estado = EstadoHojaDeRutaEnum.Generada,
                     IdServicio = 2345,
                     IdCDDestino = 4,
                     DetalleGuias = new List<Guia>
                     {
-                        new Guia { NroGuia = "G-4001", IdCliente = 500, TipoBulto = TiposBulto.S, Destinatario = new DestinatarioGuia { Nombre = "Esteban", Apellido = "Quito" } },
-                        new Guia { NroGuia = "G-4002", IdCliente = 500, TipoBulto = TiposBulto.S, Destinatario = new DestinatarioGuia { Nombre = "Ramiro", Apellido = "Díaz" } },
-                        new Guia { NroGuia = "G-4003", IdCliente = 500, TipoBulto = TiposBulto.S, Destinatario = new DestinatarioGuia { Nombre = "Clara", Apellido = "Benítez" } }
+                        new Guia { NroGuia = "G-4001", IdCliente = 500, TipoBulto = TiposBultoEnum.S, Destinatario = new DestinatarioGuia { Nombre = "Esteban", Apellido = "Quito" } },
+                        new Guia { NroGuia = "G-4002", IdCliente = 500, TipoBulto = TiposBultoEnum.S, Destinatario = new DestinatarioGuia { Nombre = "Ramiro", Apellido = "Díaz" } },
+                        new Guia { NroGuia = "G-4003", IdCliente = 500, TipoBulto = TiposBultoEnum.S, Destinatario = new DestinatarioGuia { Nombre = "Clara", Apellido = "Benítez" } }
                     }
                 },
                 new HDRTransporte
                 {
                     NroHDR = 3005,
-                    Estado = EstadoHDR.Generada,
+                    Estado = EstadoHojaDeRutaEnum.Generada,
                     IdServicio = 1900,
                     IdCDDestino = 5,
                     DetalleGuias = new List<Guia>
                     {
-                        new Guia { NroGuia = "G-5501", IdCliente = 100, TipoBulto = TiposBulto.L, Destinatario = new DestinatarioGuia { Nombre = "Jorge", Apellido = "Sabat" } },
-                        new Guia { NroGuia = "G-5502", IdCliente = 400, TipoBulto = TiposBulto.XL, Destinatario = new DestinatarioGuia { Nombre = "Enrique", Apellido = "Pinti" } }
+                        new Guia { NroGuia = "G-5501", IdCliente = 100, TipoBulto = TiposBultoEnum.L, Destinatario = new DestinatarioGuia { Nombre = "Jorge", Apellido = "Sabat" } },
+                        new Guia { NroGuia = "G-5502", IdCliente = 400, TipoBulto = TiposBultoEnum.XL, Destinatario = new DestinatarioGuia { Nombre = "Enrique", Apellido = "Pinti" } }
                     }
                 }
             };
@@ -126,17 +126,17 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
         public ServicioMediaDistancia BuscarServicioPorId(int id) => servicios.Find(s => s.IdServicio == id);
 
         // --- MÉTODOS DE LÓGICA (No cambian) ---
-        internal List<HDRTransporte> ObtenerHDRsPendientes() => hdrs.FindAll(h => h.Estado == EstadoHDR.Generada);
+        internal List<HDRTransporte> ObtenerHDRsPendientes() => hdrs.FindAll(h => h.Estado == EstadoHojaDeRutaEnum.Generada);
 
         internal int CalcularBultosEnS(HDRTransporte hdr)
         {
             int total = 0;
             foreach (var g in hdr.DetalleGuias)
             {
-                if (g.TipoBulto == TiposBulto.S) total += 1;
-                else if (g.TipoBulto == TiposBulto.M) total += 2;
-                else if (g.TipoBulto == TiposBulto.L) total += 4;
-                else if (g.TipoBulto == TiposBulto.XL) total += 8;
+                if (g.TipoBulto == TiposBultoEnum.S) total += 1;
+                else if (g.TipoBulto == TiposBultoEnum.M) total += 2;
+                else if (g.TipoBulto == TiposBultoEnum.L) total += 4;
+                else if (g.TipoBulto == TiposBultoEnum.XL) total += 8;
             }
             return total;
         }
@@ -153,8 +153,8 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
         internal bool ConfirmarDespacho(HDRTransporte hdr)
         {
             if (hdr == null) return false;
-            foreach (var guia in hdr.DetalleGuias) guia.Estado = EstadoGuia.EnTransito;
-            hdr.Estado = EstadoHDR.EnCurso;
+            foreach (var guia in hdr.DetalleGuias) guia.Estado = EstadoGuiaEnum.EnTransito;
+            hdr.Estado = EstadoHojaDeRutaEnum.EnCurso;
             return true;
         }
     }
