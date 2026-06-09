@@ -12,6 +12,10 @@ namespace Prototipos_TUTASA.ConsultarEstadoDelPedido_v2
     public partial class ConsultarEstadoDelPedido : Form
     {
         private ModeloConsultarEstadoDelPedido modelo = new ModeloConsultarEstadoDelPedido();
+        public ConsultarEstadoDelPedido()
+        {
+            InitializeComponent();
+        }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
@@ -41,10 +45,6 @@ namespace Prototipos_TUTASA.ConsultarEstadoDelPedido_v2
                 fila.SubItems.Add(item.Donde);
                 lstHistorial.Items.Add(fila);
             }
-        }
-        public ConsultarEstadoDelPedido()
-        {
-            InitializeComponent();
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
