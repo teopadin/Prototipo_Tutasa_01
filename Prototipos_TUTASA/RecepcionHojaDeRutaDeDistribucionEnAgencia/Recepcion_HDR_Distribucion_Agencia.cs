@@ -115,7 +115,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
 
             confirmarRecepcion();
 
-            MessageBox.Show($"Recepción de HDR N° {modelo.HdrActual.NroHDR} confirmada con éxito.","Éxito",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            MessageBox.Show($"Recepción de HDR N° {modelo.HdrActual.NroHDR} confirmada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             this.Close();
         }
@@ -149,12 +149,17 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            DialogResult r = MessageBox.Show("La recepción no será registrada. ¿Desea continuar?","Confirmación",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+            DialogResult r = MessageBox.Show("La recepción no será registrada. ¿Desea continuar?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (r == DialogResult.Yes)
             {
                 this.Close();
             }
+        }
+
+        private void lblFletero_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
