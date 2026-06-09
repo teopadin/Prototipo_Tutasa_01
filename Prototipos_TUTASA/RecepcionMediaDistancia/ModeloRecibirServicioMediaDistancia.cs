@@ -21,6 +21,11 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             {
                 Nombre = "Cuyo - Mendoza"
             };
+            
+            var cdBuenosAires = new CentroDistribucion
+            {
+                Nombre = "Capital Federal - Buenos Aires"
+            };
 
             // Empresa Transporte
             var empresa1 = new EmpresaTransporte
@@ -32,7 +37,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             {
                 RazonSocial = "Expreso Nacional"
             };
-            
+
             // SERVICIO 1
             var guia1 = new Guia
             {
@@ -40,6 +45,8 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
                 TipoBulto = TiposBulto.S,
                 ModalidadEntrega = ModalidadEntrega.EntregaDomicilio,
                 CDOrigen = cdCordoba,
+                CDActual = cdCordoba,
+                CDDestino = cdMendoza,
                 Estado = EstadoGuia.EnTransito
             };
 
@@ -49,6 +56,8 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
                 TipoBulto = TiposBulto.M,
                 ModalidadEntrega = ModalidadEntrega.EntregaAgencia,
                 CDOrigen = cdCordoba,
+                CDActual = cdCordoba,
+                CDDestino = cdMendoza,
                 Estado = EstadoGuia.EnTransito
             };
 
@@ -58,6 +67,8 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
                 TipoBulto = TiposBulto.XL,
                 ModalidadEntrega = ModalidadEntrega.EntregaCD,
                 CDOrigen = cdCordoba,
+                CDActual = cdCordoba,
+                CDDestino = cdMendoza,
                 Estado = EstadoGuia.EnTransito
             };
 
@@ -103,6 +114,8 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
                 TipoBulto = TiposBulto.L,
                 ModalidadEntrega = ModalidadEntrega.EntregaDomicilio,
                 CDOrigen = cdMendoza,
+                CDActual = cdMendoza,
+                CDDestino = cdCordoba,
                 Estado = EstadoGuia.EnTransito
             };
 
@@ -112,6 +125,8 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
                 TipoBulto = TiposBulto.M,
                 ModalidadEntrega = ModalidadEntrega.EntregaCD,
                 CDOrigen = cdMendoza,
+                CDActual = cdMendoza,
+                CDDestino = cdCordoba,
                 Estado = EstadoGuia.EnTransito
             };
 
@@ -144,8 +159,10 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
                 NroGuia = "G0006",
                 TipoBulto = TiposBulto.S,
                 ModalidadEntrega = ModalidadEntrega.EntregaDomicilio,
-                Estado = EstadoGuia.EnTransito,
-                CDOrigen = cdCordoba
+                CDOrigen = cdCordoba,
+                CDActual = cdCordoba,
+                CDDestino = cdBuenosAires,
+                Estado = EstadoGuia.EnTransito
             };
 
             var hdr4 = new HojaDeRutaTransporte

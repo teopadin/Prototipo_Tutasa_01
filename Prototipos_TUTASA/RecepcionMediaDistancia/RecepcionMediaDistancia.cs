@@ -106,13 +106,20 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
 
         private void actualizarEstadoGuia(Guia guia)
         {
-            if (guia.ModalidadEntrega == ModalidadEntrega.EntregaCD)
+            if (guia.CDActual == guia.CDDestino)
             {
-                guia.Estado = EstadoGuia.PendienteDeRetiroEnCD;
+                if (guia.ModalidadEntrega == ModalidadEntrega.EntregaCD)
+                {
+                    guia.Estado = EstadoGuia.PendienteDeRetiroEnCD;
+                }
+                else
+                {
+                    guia.Estado = EstadoGuia.EnCDDestino;
+                }
             }
             else
             {
-                guia.Estado = EstadoGuia.EnCDDestino;
+                guia.Estado = EstadoGuia.Admitida;
             }
         }
 
