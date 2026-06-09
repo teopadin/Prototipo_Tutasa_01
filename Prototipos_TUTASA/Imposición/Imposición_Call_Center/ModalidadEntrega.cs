@@ -6,8 +6,8 @@ namespace Prototipos_TUTASA.Imposición.ImposicionCallCenter_v2
 {
     internal enum ModalidadEntrega
     {
-        PuertaPuerta,
-        RetiroAgencia,
-        RetiroCD
+        EntregaDomicilio,
+        EntregaAgencia,
+        EntregaCD
     }
 }
