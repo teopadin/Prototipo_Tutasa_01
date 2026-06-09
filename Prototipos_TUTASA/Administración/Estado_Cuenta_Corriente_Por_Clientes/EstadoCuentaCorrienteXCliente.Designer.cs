@@ -50,10 +50,9 @@
             // 
             lblTitulo.AutoSize = true;
             lblTitulo.Font = new Font("Segoe UI", 16F);
-            lblTitulo.Location = new Point(25, 19);
-            lblTitulo.Margin = new Padding(4, 0, 4, 0);
+            lblTitulo.Location = new Point(18, 11);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(435, 45);
+            lblTitulo.Size = new Size(295, 30);
             lblTitulo.TabIndex = 0;
             lblTitulo.Text = "Estado de Cuenta por Cliente";
             // 
@@ -70,21 +69,21 @@
             grpCliente.Controls.Add(lblSaldoActual);
             grpCliente.Controls.Add(txtCondicionFacturacion);
             grpCliente.Controls.Add(lblCondicionFacturacion);
-            grpCliente.Location = new Point(25, 88);
-            grpCliente.Margin = new Padding(4, 4, 4, 4);
+            grpCliente.Location = new Point(18, 53);
+            grpCliente.Margin = new Padding(3, 2, 3, 2);
             grpCliente.Name = "grpCliente";
-            grpCliente.Padding = new Padding(4, 4, 4, 4);
-            grpCliente.Size = new Size(1325, 238);
+            grpCliente.Padding = new Padding(3, 2, 3, 2);
+            grpCliente.Size = new Size(928, 143);
             grpCliente.TabIndex = 1;
             grpCliente.TabStop = false;
             grpCliente.Text = "Datos del Cliente";
             // 
             // btnBuscarCliente
             // 
-            btnBuscarCliente.Location = new Point(450, 60);
-            btnBuscarCliente.Margin = new Padding(4, 4, 4, 4);
+            btnBuscarCliente.Location = new Point(315, 36);
+            btnBuscarCliente.Margin = new Padding(3, 2, 3, 2);
             btnBuscarCliente.Name = "btnBuscarCliente";
-            btnBuscarCliente.Size = new Size(150, 50);
+            btnBuscarCliente.Size = new Size(105, 30);
             btnBuscarCliente.TabIndex = 2;
             btnBuscarCliente.Text = "Buscar";
             btnBuscarCliente.UseVisualStyleBackColor = true;
@@ -94,106 +93,100 @@
             // 
             cboRazonSocial.DropDownStyle = ComboBoxStyle.DropDownList;
             cboRazonSocial.FormattingEnabled = true;
-            cboRazonSocial.Location = new Point(25, 68);
-            cboRazonSocial.Margin = new Padding(4, 4, 4, 4);
+            cboRazonSocial.Location = new Point(18, 41);
+            cboRazonSocial.Margin = new Padding(3, 2, 3, 2);
             cboRazonSocial.Name = "cboRazonSocial";
-            cboRazonSocial.Size = new Size(386, 33);
+            cboRazonSocial.Size = new Size(271, 23);
             cboRazonSocial.TabIndex = 1;
             // 
             // lblRazonSocial
             // 
             lblRazonSocial.AutoSize = true;
-            lblRazonSocial.Location = new Point(25, 38);
-            lblRazonSocial.Margin = new Padding(4, 0, 4, 0);
+            lblRazonSocial.Location = new Point(18, 23);
             lblRazonSocial.Name = "lblRazonSocial";
-            lblRazonSocial.Size = new Size(115, 25);
+            lblRazonSocial.Size = new Size(75, 15);
             lblRazonSocial.TabIndex = 0;
             lblRazonSocial.Text = "Razón social ";
             // 
             // txtCuit
             // 
-            txtCuit.Location = new Point(25, 165);
-            txtCuit.Margin = new Padding(4, 4, 4, 4);
+            txtCuit.Location = new Point(18, 99);
+            txtCuit.Margin = new Padding(3, 2, 3, 2);
             txtCuit.Name = "txtCuit";
             txtCuit.ReadOnly = true;
-            txtCuit.Size = new Size(249, 31);
+            txtCuit.Size = new Size(176, 23);
             txtCuit.TabIndex = 4;
             // 
             // lblCuit
             // 
             lblCuit.AutoSize = true;
-            lblCuit.Location = new Point(25, 135);
-            lblCuit.Margin = new Padding(4, 0, 4, 0);
+            lblCuit.Location = new Point(18, 81);
             lblCuit.Name = "lblCuit";
-            lblCuit.Size = new Size(49, 25);
+            lblCuit.Size = new Size(33, 15);
             lblCuit.TabIndex = 3;
             lblCuit.Text = "CUIT";
             // 
             // txtEstadoCuenta
             // 
-            txtEstadoCuenta.Location = new Point(325, 165);
-            txtEstadoCuenta.Margin = new Padding(4, 4, 4, 4);
+            txtEstadoCuenta.Location = new Point(228, 99);
+            txtEstadoCuenta.Margin = new Padding(3, 2, 3, 2);
             txtEstadoCuenta.Name = "txtEstadoCuenta";
             txtEstadoCuenta.ReadOnly = true;
-            txtEstadoCuenta.Size = new Size(274, 31);
+            txtEstadoCuenta.Size = new Size(193, 23);
             txtEstadoCuenta.TabIndex = 6;
             // 
             // lblEstadoCuenta
             // 
             lblEstadoCuenta.AutoSize = true;
-            lblEstadoCuenta.Location = new Point(325, 135);
-            lblEstadoCuenta.Margin = new Padding(4, 0, 4, 0);
+            lblEstadoCuenta.Location = new Point(228, 81);
             lblEstadoCuenta.Name = "lblEstadoCuenta";
-            lblEstadoCuenta.Size = new Size(151, 25);
+            lblEstadoCuenta.Size = new Size(99, 15);
             lblEstadoCuenta.TabIndex = 5;
             lblEstadoCuenta.Text = "Estado de Cuenta";
             lblEstadoCuenta.Click += lblEstadoCuenta_Click;
             // 
             // txtSaldoActual
             // 
-            txtSaldoActual.Location = new Point(650, 165);
-            txtSaldoActual.Margin = new Padding(4, 4, 4, 4);
+            txtSaldoActual.Location = new Point(455, 99);
+            txtSaldoActual.Margin = new Padding(3, 2, 3, 2);
             txtSaldoActual.Name = "txtSaldoActual";
             txtSaldoActual.ReadOnly = true;
-            txtSaldoActual.Size = new Size(249, 31);
+            txtSaldoActual.Size = new Size(176, 23);
             txtSaldoActual.TabIndex = 8;
             // 
             // lblSaldoActual
             // 
             lblSaldoActual.AutoSize = true;
-            lblSaldoActual.Location = new Point(650, 135);
-            lblSaldoActual.Margin = new Padding(4, 0, 4, 0);
+            lblSaldoActual.Location = new Point(455, 81);
             lblSaldoActual.Name = "lblSaldoActual";
-            lblSaldoActual.Size = new Size(111, 25);
+            lblSaldoActual.Size = new Size(73, 15);
             lblSaldoActual.TabIndex = 7;
             lblSaldoActual.Text = "Saldo Actual";
             // 
             // txtCondicionFacturacion
             // 
-            txtCondicionFacturacion.Location = new Point(925, 164);
-            txtCondicionFacturacion.Margin = new Padding(4, 4, 4, 4);
+            txtCondicionFacturacion.Location = new Point(648, 98);
+            txtCondicionFacturacion.Margin = new Padding(3, 2, 3, 2);
             txtCondicionFacturacion.Name = "txtCondicionFacturacion";
             txtCondicionFacturacion.ReadOnly = true;
-            txtCondicionFacturacion.Size = new Size(324, 31);
+            txtCondicionFacturacion.Size = new Size(228, 23);
             txtCondicionFacturacion.TabIndex = 10;
             // 
             // lblCondicionFacturacion
             // 
             lblCondicionFacturacion.AutoSize = true;
-            lblCondicionFacturacion.Location = new Point(918, 135);
-            lblCondicionFacturacion.Margin = new Padding(4, 0, 4, 0);
+            lblCondicionFacturacion.Location = new Point(643, 81);
             lblCondicionFacturacion.Name = "lblCondicionFacturacion";
-            lblCondicionFacturacion.Size = new Size(399, 25);
+            lblCondicionFacturacion.Size = new Size(266, 15);
             lblCondicionFacturacion.TabIndex = 9;
             lblCondicionFacturacion.Text = "Condición para facturar (habilitado o bloqueado)";
             // 
             // lblServicios
             // 
             lblServicios.AutoSize = true;
-            lblServicios.Location = new Point(25, 350);
-            lblServicios.Margin = new Padding(4, 0, 4, 0);
+            lblServicios.Location = new Point(18, 210);
             lblServicios.Name = "lblServicios";
-            lblServicios.Size = new Size(257, 25);
+            lblServicios.Size = new Size(170, 15);
             lblServicios.TabIndex = 2;
             lblServicios.Text = "Servicios pendientes de factura";
             // 
@@ -201,10 +194,10 @@
             // 
             lvServiciosPendientes.Columns.AddRange(new ColumnHeader[] { colFecha, colNumeroServicio, colTipoServicio, colOrigen, colDestino, colImporte, colEstado });
             lvServiciosPendientes.FullRowSelect = true;
-            lvServiciosPendientes.Location = new Point(25, 381);
-            lvServiciosPendientes.Margin = new Padding(4, 4, 4, 4);
+            lvServiciosPendientes.Location = new Point(18, 229);
+            lvServiciosPendientes.Margin = new Padding(3, 2, 3, 2);
             lvServiciosPendientes.Name = "lvServiciosPendientes";
-            lvServiciosPendientes.Size = new Size(1324, 324);
+            lvServiciosPendientes.Size = new Size(928, 196);
             lvServiciosPendientes.TabIndex = 3;
             lvServiciosPendientes.UseCompatibleStateImageBehavior = false;
             lvServiciosPendientes.View = View.Details;
@@ -247,47 +240,45 @@
             // lblCantidadServicios
             // 
             lblCantidadServicios.AutoSize = true;
-            lblCantidadServicios.Location = new Point(25, 738);
-            lblCantidadServicios.Margin = new Padding(4, 0, 4, 0);
+            lblCantidadServicios.Location = new Point(18, 443);
             lblCantidadServicios.Name = "lblCantidadServicios";
-            lblCantidadServicios.Size = new Size(180, 25);
+            lblCantidadServicios.Size = new Size(119, 15);
             lblCantidadServicios.TabIndex = 4;
             lblCantidadServicios.Text = "Cantidad de servicios";
             // 
             // txtCantidadServicios
             // 
-            txtCantidadServicios.Location = new Point(225, 734);
-            txtCantidadServicios.Margin = new Padding(4, 4, 4, 4);
+            txtCantidadServicios.Location = new Point(158, 440);
+            txtCantidadServicios.Margin = new Padding(3, 2, 3, 2);
             txtCantidadServicios.Name = "txtCantidadServicios";
             txtCantidadServicios.ReadOnly = true;
-            txtCantidadServicios.Size = new Size(124, 31);
+            txtCantidadServicios.Size = new Size(88, 23);
             txtCantidadServicios.TabIndex = 5;
             // 
             // lblTotalFacturar
             // 
             lblTotalFacturar.AutoSize = true;
-            lblTotalFacturar.Location = new Point(412, 738);
-            lblTotalFacturar.Margin = new Padding(4, 0, 4, 0);
+            lblTotalFacturar.Location = new Point(288, 443);
             lblTotalFacturar.Name = "lblTotalFacturar";
-            lblTotalFacturar.Size = new Size(128, 25);
+            lblTotalFacturar.Size = new Size(86, 15);
             lblTotalFacturar.TabIndex = 6;
             lblTotalFacturar.Text = "Total a facturar";
             // 
             // txtTotalFacturar
             // 
-            txtTotalFacturar.Location = new Point(569, 734);
-            txtTotalFacturar.Margin = new Padding(4, 4, 4, 4);
+            txtTotalFacturar.Location = new Point(398, 440);
+            txtTotalFacturar.Margin = new Padding(3, 2, 3, 2);
             txtTotalFacturar.Name = "txtTotalFacturar";
             txtTotalFacturar.ReadOnly = true;
-            txtTotalFacturar.Size = new Size(186, 31);
+            txtTotalFacturar.Size = new Size(131, 23);
             txtTotalFacturar.TabIndex = 7;
             // 
             // btnEmitirFactura
             // 
-            btnEmitirFactura.Location = new Point(950, 812);
-            btnEmitirFactura.Margin = new Padding(4, 4, 4, 4);
+            btnEmitirFactura.Location = new Point(665, 487);
+            btnEmitirFactura.Margin = new Padding(3, 2, 3, 2);
             btnEmitirFactura.Name = "btnEmitirFactura";
-            btnEmitirFactura.Size = new Size(188, 56);
+            btnEmitirFactura.Size = new Size(132, 34);
             btnEmitirFactura.TabIndex = 8;
             btnEmitirFactura.Text = "Emitir Factura";
             btnEmitirFactura.UseVisualStyleBackColor = true;
@@ -295,10 +286,10 @@
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(1162, 812);
-            btnCancelar.Margin = new Padding(4, 4, 4, 4);
+            btnCancelar.Location = new Point(813, 487);
+            btnCancelar.Margin = new Padding(3, 2, 3, 2);
             btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(188, 56);
+            btnCancelar.Size = new Size(132, 34);
             btnCancelar.TabIndex = 9;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
@@ -306,9 +297,9 @@
             // 
             // EstadoCuentaCorrienteXCliente
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1381, 900);
+            ClientSize = new Size(959, 574);
             Controls.Add(btnCancelar);
             Controls.Add(btnEmitirFactura);
             Controls.Add(txtTotalFacturar);
@@ -319,7 +310,7 @@
             Controls.Add(lblServicios);
             Controls.Add(grpCliente);
             Controls.Add(lblTitulo);
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "EstadoCuentaCorrienteXCliente";
             Text = "Estado de Cuenta Corriente por Cliente";
             Load += EstadoCuentaCorrienteXCliente_Load;

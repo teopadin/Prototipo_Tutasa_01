@@ -131,6 +131,12 @@ namespace Prototipos_TUTASA.Admisión
             return null;
         }
 
+        // Indica si la guía está en un estado que permite ser admitida
+        public bool EsAdmisible(Guia guia)
+        {
+            return guia.Estado == EstadoGuia.Retirada;
+        }
+
         // Busca la tarifa por cliente que matchea la combinación cliente/CDOrigen/CDDestino/tipoBulto
         public TarifaPorCliente BuscarTarifa(int idCliente, int idCDOrigen, int idCDDestino, TiposBulto tipoBulto)
         {

@@ -40,7 +40,7 @@ namespace Prototipos_TUTASA.HojaDeRutaDeDistribucion
 
                 string razonSocial, dni, calle, altura, piso, cp, ciudad;
 
-                if (guia.ModalidadEntrega == ModalidadEntregaEnum.PuertaAPuerta)
+                if (guia.ModalidadEntrega == ModalidadEntregaEnum.EntregaDomicilio)
                 {
                     razonSocial = $"{guia.Destinatario.Nombre} {guia.Destinatario.Apellido}";
                     dni = guia.Destinatario.Dni.ToString();
@@ -115,7 +115,7 @@ namespace Prototipos_TUTASA.HojaDeRutaDeDistribucion
             Guia guiaReferencia = guiasSeleccionadas[0];
             string calleRef, alturaRef, pisoRef, cpRef, ciudadRef;
 
-            if (guiaReferencia.ModalidadEntrega == ModalidadEntregaEnum.PuertaAPuerta)
+            if (guiaReferencia.ModalidadEntrega == ModalidadEntregaEnum.EntregaDomicilio)
             {
                 calleRef = guiaReferencia.Destinatario.Calle;
                 alturaRef = guiaReferencia.Destinatario.Altura.ToString();
@@ -138,7 +138,7 @@ namespace Prototipos_TUTASA.HojaDeRutaDeDistribucion
                 Guia guia = (Guia)item.Tag;
                 string calle, altura, piso, cp, ciudad;
 
-                if (guia.ModalidadEntrega == ModalidadEntregaEnum.PuertaAPuerta)
+                if (guia.ModalidadEntrega == ModalidadEntregaEnum.EntregaDomicilio)
                 {
                     calle = guia.Destinatario.Calle;
                     altura = guia.Destinatario.Altura.ToString();

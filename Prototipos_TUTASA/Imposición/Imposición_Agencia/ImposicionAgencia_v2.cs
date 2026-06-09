@@ -87,7 +87,7 @@ namespace Prototipos_TUTASA.ImposiciónAgencia_v2
             Agencia agenciaDestino = null;
             CentroDistribucion cdDestino = null;
 
-            if (modalidadEntrega == ModalidadEntrega.PuertaPuerta)
+            if (modalidadEntrega == ModalidadEntrega.EntregaDomicilio)
             {
                 if (!ValidarDomicilioPuertaPuerta())
                     return;
@@ -105,7 +105,7 @@ namespace Prototipos_TUTASA.ImposiciónAgencia_v2
                 destinatario.CodigoPostal = tbCDDest.Text.Trim();
                 destinatario.Ciudad = tbCiudadDest.Text.Trim();
             }
-            else if (modalidadEntrega == ModalidadEntrega.RetiroAgencia)
+            else if (modalidadEntrega == ModalidadEntrega.EntregaAgencia)
             {
                 agenciaDestino = cbSeleccionarAgencia.SelectedItem as Agencia;
                 if (agenciaDestino == null)
@@ -116,7 +116,7 @@ namespace Prototipos_TUTASA.ImposiciónAgencia_v2
 
                 cdDestino = agenciaDestino.CD;
             }
-            else if (modalidadEntrega == ModalidadEntrega.RetiroCD)
+            else if (modalidadEntrega == ModalidadEntrega.EntregaCD)
             {
                 cdDestino = cbCDDestino.SelectedItem as CentroDistribucion;
                 if (cdDestino == null)
@@ -353,23 +353,23 @@ namespace Prototipos_TUTASA.ImposiciónAgencia_v2
         {
             if (rbPuertaPuerta.Checked)
             {
-                modalidadEntrega = ModalidadEntrega.PuertaPuerta;
+                modalidadEntrega = ModalidadEntrega.EntregaDomicilio;
                 return true;
             }
 
             if (rbRetiroAgencia.Checked)
             {
-                modalidadEntrega = ModalidadEntrega.RetiroAgencia;
+                modalidadEntrega = ModalidadEntrega.EntregaAgencia;
                 return true;
             }
 
             if (rbRetiroCD.Checked)
             {
-                modalidadEntrega = ModalidadEntrega.RetiroCD;
+                modalidadEntrega = ModalidadEntrega.EntregaCD;
                 return true;
             }
 
-            modalidadEntrega = ModalidadEntrega.PuertaPuerta;
+            modalidadEntrega = ModalidadEntrega.EntregaDomicilio;
             return false;
         }
 

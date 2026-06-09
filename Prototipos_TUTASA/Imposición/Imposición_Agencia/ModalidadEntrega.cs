@@ -6,8 +6,8 @@ namespace Prototipos_TUTASA.Imposición.Imposición_Agencia
 {
     internal enum ModalidadEntrega
     {
-        PuertaPuerta,
-        RetiroAgencia,
-        RetiroCD
+        EntregaDomicilio,
+        EntregaAgencia,
+        EntregaCD
     }
 }
