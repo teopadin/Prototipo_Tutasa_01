@@ -102,10 +102,9 @@
             lblFletero.AutoSize = true;
             lblFletero.Location = new Point(20, 125);
             lblFletero.Name = "lblFletero";
-            lblFletero.Size = new Size(106, 15);
+            lblFletero.Size = new Size(70, 25);
             lblFletero.TabIndex = 7;
-            lblFletero.Text = "Transportista local:";
-            lblFletero.Click += lblFletero_Click;
+            lblFletero.Text = "Fletero:";
             // 
             // txtFletero
             // 

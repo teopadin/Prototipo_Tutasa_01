@@ -10,7 +10,7 @@ namespace Prototipos_TUTASA.Admisión
         public int IdCliente { get; set; }
         public int IdCDOrigen { get; set; }
         public int IdCDDestino { get; set; }
-        public TiposBulto TipoBulto { get; set; }
+        public TiposBultoEnum TipoBulto { get; set; }
         public decimal PrecioFlete { get; set; }
     }
 }

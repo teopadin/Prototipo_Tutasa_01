@@ -4,11 +4,10 @@ using System.Text;
 
 namespace Prototipos_TUTASA.Admisión
 {
-    internal enum EstadoGuia
+    internal enum ModalidadEntregaEnum
     {
-        Retirada,
-        Admitida,
-        PendienteDeRetiroEnCD,
-        Cancelada
+        EntregaDomicilio,
+        EntregaAgencia,
+        EntregaCD
     }
 }

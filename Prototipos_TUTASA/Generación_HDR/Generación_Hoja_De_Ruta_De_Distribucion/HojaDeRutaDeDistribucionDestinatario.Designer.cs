@@ -62,19 +62,21 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(280, 32);
+            label2.Location = new Point(400, 53);
+            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(0, 15);
+            label2.Size = new Size(0, 25);
             label2.TabIndex = 44;
             // 
             // listViewFleteros
             // 
             listViewFleteros.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader5 });
             listViewFleteros.FullRowSelect = true;
-            listViewFleteros.Location = new Point(28, 362);
+            listViewFleteros.Location = new Point(40, 603);
+            listViewFleteros.Margin = new Padding(4, 5, 4, 5);
             listViewFleteros.MultiSelect = false;
             listViewFleteros.Name = "listViewFleteros";
-            listViewFleteros.Size = new Size(867, 115);
+            listViewFleteros.Size = new Size(1237, 189);
             listViewFleteros.TabIndex = 43;
             listViewFleteros.UseCompatibleStateImageBehavior = false;
             listViewFleteros.View = View.Details;
@@ -101,9 +103,10 @@
             // 
             // btnGenerarHdr
             // 
-            btnGenerarHdr.Location = new Point(655, 483);
+            btnGenerarHdr.Location = new Point(936, 805);
+            btnGenerarHdr.Margin = new Padding(4, 5, 4, 5);
             btnGenerarHdr.Name = "btnGenerarHdr";
-            btnGenerarHdr.Size = new Size(112, 24);
+            btnGenerarHdr.Size = new Size(160, 40);
             btnGenerarHdr.TabIndex = 41;
             btnGenerarHdr.Text = "Generar HDR";
             btnGenerarHdr.UseVisualStyleBackColor = true;
@@ -112,76 +115,85 @@
             // lblGuiasPendientes
             // 
             lblGuiasPendientes.AutoSize = true;
-            lblGuiasPendientes.Location = new Point(23, 77);
+            lblGuiasPendientes.Location = new Point(33, 128);
+            lblGuiasPendientes.Margin = new Padding(4, 0, 4, 0);
             lblGuiasPendientes.Name = "lblGuiasPendientes";
-            lblGuiasPendientes.Size = new Size(757, 15);
+            lblGuiasPendientes.Size = new Size(1131, 25);
             lblGuiasPendientes.TabIndex = 39;
             lblGuiasPendientes.Text = "Guías pendientes de distribución (cuando se seleccione una guía, solo podrá seleccionar otras que compartan: Calle, Altura, Piso, CP y Ciudad)";
             // 
             // lblFletero
             // 
             lblFletero.AutoSize = true;
-            lblFletero.Location = new Point(28, 344);
+            lblFletero.Location = new Point(40, 573);
+            lblFletero.Margin = new Padding(4, 0, 4, 0);
             lblFletero.Name = "lblFletero";
-            lblFletero.Size = new Size(570, 15);
+            lblFletero.Size = new Size(952, 25);
             lblFletero.TabIndex = 38;
-            lblFletero.Text = "Fletero asignado(se muestran solos los fleteros que coinciden con el CD destino de las guias seleccionadas)";
+            lblFletero.Text = "Transportista Local asignado(se muestran solos los fleteros que coinciden con el CD destino de las guias seleccionadas)";
             // 
             // txtCdEmisor
             // 
-            txtCdEmisor.Location = new Point(112, 26);
+            txtCdEmisor.Location = new Point(160, 43);
+            txtCdEmisor.Margin = new Padding(4, 5, 4, 5);
             txtCdEmisor.Name = "txtCdEmisor";
             txtCdEmisor.ReadOnly = true;
-            txtCdEmisor.Size = new Size(102, 23);
+            txtCdEmisor.Size = new Size(144, 31);
             txtCdEmisor.TabIndex = 37;
             // 
             // lblCdEmisor
             // 
             lblCdEmisor.AutoSize = true;
-            lblCdEmisor.Location = new Point(23, 29);
+            lblCdEmisor.Location = new Point(33, 48);
+            lblCdEmisor.Margin = new Padding(4, 0, 4, 0);
             lblCdEmisor.Name = "lblCdEmisor";
-            lblCdEmisor.Size = new Size(62, 15);
+            lblCdEmisor.Size = new Size(95, 25);
             lblCdEmisor.TabIndex = 36;
             lblCdEmisor.Text = "CD emisor";
             // 
             // lblEstado
             // 
             lblEstado.AutoSize = true;
-            lblEstado.Location = new Point(-81, -32);
+            lblEstado.Location = new Point(-116, -53);
+            lblEstado.Margin = new Padding(4, 0, 4, 0);
             lblEstado.Name = "lblEstado";
-            lblEstado.Size = new Size(0, 15);
+            lblEstado.Size = new Size(0, 25);
             lblEstado.TabIndex = 35;
             // 
             // dtpFecha
             // 
             dtpFecha.Enabled = false;
             dtpFecha.Format = DateTimePickerFormat.Short;
-            dtpFecha.Location = new Point(791, 29);
+            dtpFecha.Location = new Point(1130, 48);
+            dtpFecha.Margin = new Padding(4, 5, 4, 5);
             dtpFecha.Name = "dtpFecha";
-            dtpFecha.Size = new Size(102, 23);
+            dtpFecha.Size = new Size(144, 31);
             dtpFecha.TabIndex = 34;
             // 
             // lblFecha
             // 
             lblFecha.AutoSize = true;
-            lblFecha.Location = new Point(723, 32);
+            lblFecha.Location = new Point(1033, 53);
+            lblFecha.Margin = new Padding(4, 0, 4, 0);
             lblFecha.Name = "lblFecha";
-            lblFecha.Size = new Size(38, 15);
+            lblFecha.Size = new Size(57, 25);
             lblFecha.TabIndex = 33;
             lblFecha.Text = "Fecha";
             // 
             // lblGuiaBase
             // 
-            lblGuiaBase.Location = new Point(21, 8);
+            lblGuiaBase.Location = new Point(30, 13);
+            lblGuiaBase.Margin = new Padding(4, 0, 4, 0);
             lblGuiaBase.Name = "lblGuiaBase";
-            lblGuiaBase.Size = new Size(82, 12);
+            lblGuiaBase.Size = new Size(117, 20);
             lblGuiaBase.TabIndex = 42;
             // 
             // button1
             // 
-            button1.Location = new Point(783, 483);
+            button1.Location = new Point(1119, 805);
+            button1.Margin = new Padding(4, 5, 4, 5);
             button1.Name = "button1";
-            button1.Size = new Size(112, 24);
+            button1.Size = new Size(160, 40);
             button1.TabIndex = 45;
             button1.Text = "Cancelar";
             button1.UseVisualStyleBackColor = true;
@@ -190,19 +202,20 @@
             // lblCantGuias
             // 
             lblCantGuias.AutoSize = true;
-            lblCantGuias.Location = new Point(28, 321);
+            lblCantGuias.Location = new Point(40, 535);
             lblCantGuias.Margin = new Padding(1, 0, 1, 0);
             lblCantGuias.Name = "lblCantGuias";
-            lblCantGuias.Size = new Size(181, 15);
+            lblCantGuias.Size = new Size(272, 25);
             lblCantGuias.TabIndex = 46;
             lblCantGuias.Text = "Cantidad de guias seleccionadas:";
             // 
             // txtCantGuias
             // 
-            txtCantGuias.Location = new Point(220, 317);
+            txtCantGuias.Location = new Point(314, 528);
+            txtCantGuias.Margin = new Padding(4, 5, 4, 5);
             txtCantGuias.Name = "txtCantGuias";
             txtCantGuias.ReadOnly = true;
-            txtCantGuias.Size = new Size(102, 23);
+            txtCantGuias.Size = new Size(144, 31);
             txtCantGuias.TabIndex = 47;
             // 
             // listViewGuiasADistribuir
@@ -210,9 +223,10 @@
             listViewGuiasADistribuir.CheckBoxes = true;
             listViewGuiasADistribuir.Columns.AddRange(new ColumnHeader[] { columnHeader4, colRemitenteLista, columnHeader6, columnHeader10, columnHeader11, columnHeader12, columnHeader13, columnHeader14, columnHeader15, columnHeader16 });
             listViewGuiasADistribuir.FullRowSelect = true;
-            listViewGuiasADistribuir.Location = new Point(28, 103);
+            listViewGuiasADistribuir.Location = new Point(40, 172);
+            listViewGuiasADistribuir.Margin = new Padding(4, 5, 4, 5);
             listViewGuiasADistribuir.Name = "listViewGuiasADistribuir";
-            listViewGuiasADistribuir.Size = new Size(867, 208);
+            listViewGuiasADistribuir.Size = new Size(1237, 344);
             listViewGuiasADistribuir.TabIndex = 48;
             listViewGuiasADistribuir.UseCompatibleStateImageBehavior = false;
             listViewGuiasADistribuir.View = View.Details;
@@ -272,9 +286,9 @@
             // 
             // HojaDeRutaDeDistribucionDestinatario
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(901, 514);
+            ClientSize = new Size(1287, 857);
             Controls.Add(listViewGuiasADistribuir);
             Controls.Add(txtCantGuias);
             Controls.Add(lblCantGuias);
@@ -290,7 +304,7 @@
             Controls.Add(dtpFecha);
             Controls.Add(lblFecha);
             Controls.Add(lblGuiaBase);
-            Margin = new Padding(1);
+            Margin = new Padding(1, 2, 1, 2);
             Name = "HojaDeRutaDeDistribucionDestinatario";
             Text = "HojaDeRutaDeDistribucion";
             Load += HojaDeRutaDeDistribucionDestinatario_Load;

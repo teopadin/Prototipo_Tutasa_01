@@ -26,18 +26,18 @@ namespace Prototipos_TUTASA.Admisión
         // Tarifas por cliente: precio del flete según cliente, CDOrigen, CDDestino y tipo de bulto
         private List<TarifaPorCliente> tarifasPorCliente = new List<TarifaPorCliente>
         {
-            new TarifaPorCliente { IdTarifa = 1, IdCliente = 100, IdCDOrigen = 1, IdCDDestino = 2, TipoBulto = TiposBulto.M, PrecioFlete = 1500m },
-            new TarifaPorCliente { IdTarifa = 2, IdCliente = 200, IdCDOrigen = 1, IdCDDestino = 1, TipoBulto = TiposBulto.S, PrecioFlete = 500m },
-            new TarifaPorCliente { IdTarifa = 3, IdCliente = 300, IdCDOrigen = 1, IdCDDestino = 1, TipoBulto = TiposBulto.L, PrecioFlete = 1000m },
-            new TarifaPorCliente { IdTarifa = 4, IdCliente = 100, IdCDOrigen = 1, IdCDDestino = 3, TipoBulto = TiposBulto.XL, PrecioFlete = 3000m }
+            new TarifaPorCliente { IdTarifa = 1, IdCliente = 100, IdCDOrigen = 1, IdCDDestino = 2, TipoBulto = TiposBultoEnum.M, PrecioFlete = 1500m },
+            new TarifaPorCliente { IdTarifa = 2, IdCliente = 200, IdCDOrigen = 1, IdCDDestino = 1, TipoBulto = TiposBultoEnum.S, PrecioFlete = 500m },
+            new TarifaPorCliente { IdTarifa = 3, IdCliente = 300, IdCDOrigen = 1, IdCDDestino = 1, TipoBulto = TiposBultoEnum.L, PrecioFlete = 1000m },
+            new TarifaPorCliente { IdTarifa = 4, IdCliente = 100, IdCDOrigen = 1, IdCDDestino = 3, TipoBulto = TiposBultoEnum.XL, PrecioFlete = 3000m }
         };
 
         // Costos extras fijos del sistema (montos por concepto)
         private List<CostoExtra> costosExtra = new List<CostoExtra>
         {
-            new CostoExtra { IdCostoExtra = 1, Tipo = TipoCostoExtra.RetiroDomicilio, Monto = 500m },
-            new CostoExtra { IdCostoExtra = 2, Tipo = TipoCostoExtra.EntregaDomicilio, Monto = 800m },
-            new CostoExtra { IdCostoExtra = 3, Tipo = TipoCostoExtra.EntregaAgencia, Monto = 400m }
+            new CostoExtra { IdCostoExtra = 1, Tipo = TipoCostoExtraEnum.RetiroDomicilio, Monto = 500m },
+            new CostoExtra { IdCostoExtra = 2, Tipo = TipoCostoExtraEnum.EntregaDomicilio, Monto = 800m },
+            new CostoExtra { IdCostoExtra = 3, Tipo = TipoCostoExtraEnum.EntregaAgencia, Monto = 400m }
         };
 
         private List<Guia> guias = new List<Guia>
@@ -47,48 +47,48 @@ namespace Prototipos_TUTASA.Admisión
             {
                 NroGuia = "CD01-0001",
                 IdCliente = 100,
-                TipoImposicion = TipoImposicion.CallCenter,
+                TipoImposicion = TipoImposicionEnum.CallCenter,
                 IdCDDestino = 2,
                 Destinatario = new DestinatarioGuia { Dni = 30111222, Nombre = "Juan", Apellido = "Pérez" },
-                TipoBulto = TiposBulto.M,
-                ModalidadEntrega = ModalidadEntrega.EntregaDomicilio,
-                Estado = EstadoGuia.Retirada
+                TipoBulto = TiposBultoEnum.M,
+                ModalidadEntrega = ModalidadEntregaEnum.EntregaDomicilio,
+                Estado = EstadoGuiaEnum.Retirada
             },
             // Guía 2: caso especial → quedará "Pendiente de retiro en CD"
             new Guia
             {
                 NroGuia = "CD01-0002",
                 IdCliente = 200,
-                TipoImposicion = TipoImposicion.Agencia,
+                TipoImposicion = TipoImposicionEnum.Agencia,
                 IdCDDestino = 1,
                 Destinatario = new DestinatarioGuia { Dni = 28444555, Nombre = "María", Apellido = "González" },
-                TipoBulto = TiposBulto.S,
-                ModalidadEntrega = ModalidadEntrega.EntregaCD,
-                Estado = EstadoGuia.Retirada
+                TipoBulto = TiposBultoEnum.S,
+                ModalidadEntrega = ModalidadEntregaEnum.EntregaCD,
+                Estado = EstadoGuiaEnum.Retirada
             },
             // Guía 3: caso general (mismo CD pero no es Retiro en CD)
             new Guia
             {
                 NroGuia = "CD01-0003",
                 IdCliente = 300,
-                TipoImposicion = TipoImposicion.Agencia,
+                TipoImposicion = TipoImposicionEnum.Agencia,
                 IdCDDestino = 1,
                 Destinatario = new DestinatarioGuia { Dni = 35777888, Nombre = "Carlos", Apellido = "López" },
-                TipoBulto = TiposBulto.L,
-                ModalidadEntrega = ModalidadEntrega.EntregaDomicilio,
-                Estado = EstadoGuia.Retirada
+                TipoBulto = TiposBultoEnum.L,
+                ModalidadEntrega = ModalidadEntregaEnum.EntregaDomicilio,
+                Estado = EstadoGuiaEnum.Retirada
             },
             // Guía 4: estado distinto a "Retirada" → no se puede admitir
             new Guia
             {
                 NroGuia = "CD01-0004",
                 IdCliente = 100,
-                TipoImposicion = TipoImposicion.CD,
+                TipoImposicion = TipoImposicionEnum.CD,
                 IdCDDestino = 3,
                 Destinatario = new DestinatarioGuia { Dni = 30111222, Nombre = "Juan", Apellido = "Pérez" },
-                TipoBulto = TiposBulto.XL,
-                ModalidadEntrega = ModalidadEntrega.EntregaAgencia,
-                Estado = EstadoGuia.Admitida
+                TipoBulto = TiposBultoEnum.XL,
+                ModalidadEntrega = ModalidadEntregaEnum.EntregaAgencia,
+                Estado = EstadoGuiaEnum.Admitida
             }
         };
 
@@ -134,11 +134,11 @@ namespace Prototipos_TUTASA.Admisión
         // Indica si la guía está en un estado que permite ser admitida
         public bool EsAdmisible(Guia guia)
         {
-            return guia.Estado == EstadoGuia.Retirada;
+            return guia.Estado == EstadoGuiaEnum.Retirada;
         }
 
         // Busca la tarifa por cliente que matchea la combinación cliente/CDOrigen/CDDestino/tipoBulto
-        public TarifaPorCliente BuscarTarifa(int idCliente, int idCDOrigen, int idCDDestino, TiposBulto tipoBulto)
+        public TarifaPorCliente BuscarTarifa(int idCliente, int idCDOrigen, int idCDDestino, TiposBultoEnum tipoBulto)
         {
             foreach (TarifaPorCliente tarifa in tarifasPorCliente)
             {
@@ -154,7 +154,7 @@ namespace Prototipos_TUTASA.Admisión
         }
 
         // Busca el costo extra fijo por tipo
-        public CostoExtra BuscarCostoExtra(TipoCostoExtra tipo)
+        public CostoExtra BuscarCostoExtra(TipoCostoExtraEnum tipo)
         {
             foreach (CostoExtra costo in costosExtra)
             {
@@ -179,9 +179,9 @@ namespace Prototipos_TUTASA.Admisión
             }
 
             // Extra retiro a domicilio (solo si la imposición fue por CallCenter)
-            if (guia.TipoImposicion == TipoImposicion.CallCenter)
+            if (guia.TipoImposicion == TipoImposicionEnum.CallCenter)
             {
-                CostoExtra extraRetiro = BuscarCostoExtra(TipoCostoExtra.RetiroDomicilio);
+                CostoExtra extraRetiro = BuscarCostoExtra(TipoCostoExtraEnum.RetiroDomicilio);
                 if (extraRetiro != null)
                 {
                     tarifaCalc.ExtraRetiroDomicilio = extraRetiro.Monto;
@@ -189,17 +189,17 @@ namespace Prototipos_TUTASA.Admisión
             }
 
             // Extra entrega: solo aplica uno según la modalidad
-            if (guia.ModalidadEntrega == ModalidadEntrega.EntregaDomicilio)
+            if (guia.ModalidadEntrega == ModalidadEntregaEnum.EntregaDomicilio)
             {
-                CostoExtra extraEntrega = BuscarCostoExtra(TipoCostoExtra.EntregaDomicilio);
+                CostoExtra extraEntrega = BuscarCostoExtra(TipoCostoExtraEnum.EntregaDomicilio);
                 if (extraEntrega != null)
                 {
                     tarifaCalc.ExtraEntregaDomicilio = extraEntrega.Monto;
                 }
             }
-            else if (guia.ModalidadEntrega == ModalidadEntrega.EntregaAgencia)
+            else if (guia.ModalidadEntrega == ModalidadEntregaEnum.EntregaAgencia)
             {
-                CostoExtra extraEntrega = BuscarCostoExtra(TipoCostoExtra.EntregaAgencia);
+                CostoExtra extraEntrega = BuscarCostoExtra(TipoCostoExtraEnum.EntregaAgencia);
                 if (extraEntrega != null)
                 {
                     tarifaCalc.ExtraEntregaAgencia = extraEntrega.Monto;
@@ -226,13 +226,13 @@ namespace Prototipos_TUTASA.Admisión
             guia.TarifaCalculada = CalcularTarifa(guia);
 
             // Caso especial: el CD destino es el mismo que el CD de admisión Y modalidad es Retiro en CD
-            if (guia.IdCDDestino == idCDAdmisionActual && guia.ModalidadEntrega == ModalidadEntrega.EntregaCD)
+            if (guia.IdCDDestino == idCDAdmisionActual && guia.ModalidadEntrega == ModalidadEntregaEnum.EntregaCD)
             {
-                guia.Estado = EstadoGuia.PendienteDeRetiroEnCD;
+                guia.Estado = EstadoGuiaEnum.PendienteDeRetiroEnCD;
             }
             else
             {
-                guia.Estado = EstadoGuia.Admitida;
+                guia.Estado = EstadoGuiaEnum.Admitida;
             }
         }
 
@@ -242,24 +242,24 @@ namespace Prototipos_TUTASA.Admisión
             Guia guia = BuscarGuia(nroGuia);
             if (guia == null) return;
 
-            guia.Estado = EstadoGuia.Cancelada;
+            guia.Estado = EstadoGuiaEnum.Cancelada;
         }
 
         // Métodos de formato para mostrar en pantalla
-        public string TextoBulto(TiposBulto bulto)
+        public string TextoBulto(TiposBultoEnum bulto)
         {
-            if (bulto == TiposBulto.S) return "S (hasta 2.5 kg)";
-            if (bulto == TiposBulto.M) return "M (hasta 5 kg)";
-            if (bulto == TiposBulto.L) return "L (hasta 10 kg)";
-            if (bulto == TiposBulto.XL) return "XL (hasta 20 kg)";
+            if (bulto == TiposBultoEnum.S) return "S (hasta 2.5 kg)";
+            if (bulto == TiposBultoEnum.M) return "M (hasta 5 kg)";
+            if (bulto == TiposBultoEnum.L) return "L (hasta 10 kg)";
+            if (bulto == TiposBultoEnum.XL) return "XL (hasta 20 kg)";
             return "";
         }
 
-        public string TextoModalidad(ModalidadEntrega modalidad)
+        public string TextoModalidad(ModalidadEntregaEnum modalidad)
         {
-            if (modalidad == ModalidadEntrega.EntregaDomicilio) return "Entrega a Domicilio";
-            if (modalidad == ModalidadEntrega.EntregaAgencia) return "Entrega en Agencia";
-            if (modalidad == ModalidadEntrega.EntregaCD) return "Entrega en CD";
+            if (modalidad == ModalidadEntregaEnum.EntregaDomicilio) return "Entrega a Domicilio";
+            if (modalidad == ModalidadEntregaEnum.EntregaAgencia) return "Entrega en Agencia";
+            if (modalidad == ModalidadEntregaEnum.EntregaCD) return "Entrega en CD";
             return "";
         }
     }

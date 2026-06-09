@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Prototipos_TUTASA.Admisión
 {
-   internal enum TipoCostoExtra
+   internal enum TipoCostoExtraEnum
     {
         RetiroDomicilio,
         EntregaDomicilio,
