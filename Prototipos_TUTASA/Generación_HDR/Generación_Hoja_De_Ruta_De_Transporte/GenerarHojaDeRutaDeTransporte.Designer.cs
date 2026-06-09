@@ -46,6 +46,7 @@
             gbxGuias = new GroupBox();
             gbxServicios = new GroupBox();
             btnCancelar = new Button();
+            colCDFinal = new ColumnHeader();
             gbxGuias.SuspendLayout();
             gbxServicios.SuspendLayout();
             SuspendLayout();
@@ -73,7 +74,7 @@
             // lvGuiasPendientes
             // 
             lvGuiasPendientes.CheckBoxes = true;
-            lvGuiasPendientes.Columns.AddRange(new ColumnHeader[] { colNumeroGuia, colFechaGuia, colTipoBultoLista });
+            lvGuiasPendientes.Columns.AddRange(new ColumnHeader[] { colNumeroGuia, colFechaGuia, colTipoBultoLista, colCDFinal });
             lvGuiasPendientes.FullRowSelect = true;
             lvGuiasPendientes.Location = new Point(12, 77);
             lvGuiasPendientes.Name = "lvGuiasPendientes";
@@ -200,6 +201,11 @@
             btnCancelar.UseVisualStyleBackColor = true;
             btnCancelar.Click += btnCancelar_Click;
             // 
+            // colCDFinal
+            // 
+            colCDFinal.Text = "CD Destino Final";
+            colCDFinal.Width = 200;
+            // 
             // GenerarHojaDeRutaDeTransporte
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -243,5 +249,6 @@
         private GroupBox gbxGuias;
         private GroupBox gbxServicios;
         private Button btnCancelar;
+        private ColumnHeader colCDFinal;
     }
 }

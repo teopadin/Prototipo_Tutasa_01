@@ -6,17 +6,18 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
 {
     internal class ModeloRecibirServicioMediaDistancia
     {
+        public CentroDistribucion CdEmisor { get; set; }
         public List<ServicioMediaDistancia> Servicios { get; set; }
         public ServicioMediaDistancia ServicioActual { get; set; }
         public ModeloRecibirServicioMediaDistancia() 
         {
             // CDs
-            var cdCordoba = new CentroDeDistribucion
+            var cdCordoba = new CentroDistribucion
             {
                 Nombre = "Centro - Córdoba"
             };
 
-            var cdMendoza = new CentroDeDistribucion
+            var cdMendoza = new CentroDistribucion
             {
                 Nombre = "Cuyo - Mendoza"
             };

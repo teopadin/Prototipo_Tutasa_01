@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Prototipos_TUTASA.RecepcionMediaDistancia
 {
-    internal class CentroDeDistribucion
+    internal class CentroDistribucion
     {
         public string Nombre { get; set; }
     }

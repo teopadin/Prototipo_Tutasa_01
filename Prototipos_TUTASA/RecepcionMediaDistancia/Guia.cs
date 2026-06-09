@@ -10,6 +10,8 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
         public TiposBulto TipoBulto { get; set; }
         public ModalidadEntrega ModalidadEntrega { get; set; }
         public EstadoGuia Estado { get; set; }
-        public CentroDeDistribucion CDOrigen { get; set; }
+        public CentroDistribucion CDOrigen { get; set; }
+
+        public CentroDistribucion CDActual { get; set; }
     }
 }
