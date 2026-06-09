@@ -69,7 +69,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia
             }
 
             // Excepción 4
-            if (hdr.Estado == EstadoHojaDeRuta.Recibida)
+            if (hdr.Estado == EstadoHojaDeRutaEnum.Recibida)
             {
                 MessageBox.Show("La hoja de ruta ingresada ya fue confirmada como recibida.");
                 txtNroHDR.Clear();
@@ -94,7 +94,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia
 
         private void actualizarEstadoHDR(HojaDeRutaRetiro hdr)
         {
-            hdr.Estado = EstadoHojaDeRuta.Recibida;
+            hdr.Estado = EstadoHojaDeRutaEnum.Recibida;
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)

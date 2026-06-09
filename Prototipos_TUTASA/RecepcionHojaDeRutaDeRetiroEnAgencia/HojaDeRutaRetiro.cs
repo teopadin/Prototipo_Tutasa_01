@@ -12,6 +12,6 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia
         public Agencia AgenciaHDR { get; set; }
         public TransportistaLocal Transportista { get; set; }
         public List<Guia> DetalleGuias { get; set; }
-        public EstadoHojaDeRuta Estado { get; set; }
+        public EstadoHojaDeRutaEnum Estado { get; set; }
     }
 }
