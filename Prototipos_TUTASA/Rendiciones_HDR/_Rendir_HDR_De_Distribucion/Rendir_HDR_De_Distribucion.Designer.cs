@@ -266,7 +266,7 @@
             FleteroCMB.FormattingEnabled = true;
             FleteroCMB.Location = new Point(383, 99);
             FleteroCMB.Name = "FleteroCMB";
-            FleteroCMB.Size = new Size(236, 33);
+            FleteroCMB.Size = new Size(306, 33);
             FleteroCMB.TabIndex = 35;
             FleteroCMB.SelectedIndexChanged += FleteroCMB_SelectedIndexChanged;
             // 
