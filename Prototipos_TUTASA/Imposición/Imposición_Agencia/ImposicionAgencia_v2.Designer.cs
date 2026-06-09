@@ -390,10 +390,10 @@
             rbRetiroCD.Location = new Point(1222, 50);
             rbRetiroCD.Margin = new Padding(5, 6, 5, 6);
             rbRetiroCD.Name = "rbRetiroCD";
-            rbRetiroCD.Size = new Size(180, 36);
+            rbRetiroCD.Size = new Size(199, 36);
             rbRetiroCD.TabIndex = 2;
             rbRetiroCD.TabStop = true;
-            rbRetiroCD.Text = "Retiro en CD";
+            rbRetiroCD.Text = "Entrega en CD";
             rbRetiroCD.UseVisualStyleBackColor = true;
             // 
             // rbRetiroAgencia
@@ -402,10 +402,10 @@
             rbRetiroAgencia.Location = new Point(662, 44);
             rbRetiroAgencia.Margin = new Padding(5, 6, 5, 6);
             rbRetiroAgencia.Name = "rbRetiroAgencia";
-            rbRetiroAgencia.Size = new Size(233, 36);
+            rbRetiroAgencia.Size = new Size(252, 36);
             rbRetiroAgencia.TabIndex = 1;
             rbRetiroAgencia.TabStop = true;
-            rbRetiroAgencia.Text = "Retiro en Agencia";
+            rbRetiroAgencia.Text = "Entrega en Agencia";
             rbRetiroAgencia.UseVisualStyleBackColor = true;
             // 
             // rbPuertaPuerta
@@ -414,10 +414,10 @@
             rbPuertaPuerta.Location = new Point(135, 50);
             rbPuertaPuerta.Margin = new Padding(5, 6, 5, 6);
             rbPuertaPuerta.Name = "rbPuertaPuerta";
-            rbPuertaPuerta.Size = new Size(208, 36);
+            rbPuertaPuerta.Size = new Size(253, 36);
             rbPuertaPuerta.TabIndex = 0;
             rbPuertaPuerta.TabStop = true;
-            rbPuertaPuerta.Text = "Puerta a puerta";
+            rbPuertaPuerta.Text = "Entrega a Domicilio";
             rbPuertaPuerta.UseVisualStyleBackColor = true;
             // 
             // gbTamañoBulto
@@ -502,7 +502,7 @@
             groupBox4.Size = new Size(442, 368);
             groupBox4.TabIndex = 28;
             groupBox4.TabStop = false;
-            groupBox4.Text = "Puerta a Puerta";
+            groupBox4.Text = "Entrega a Domicilio";
             // 
             // tbCiudadDest
             // 
@@ -609,7 +609,7 @@
             groupBox5.Size = new Size(351, 368);
             groupBox5.TabIndex = 29;
             groupBox5.TabStop = false;
-            groupBox5.Text = "Retiro en CD";
+            groupBox5.Text = "Entrega en CD";
             // 
             // label7
             // 
@@ -641,7 +641,7 @@
             groupBox7.Size = new Size(403, 368);
             groupBox7.TabIndex = 31;
             groupBox7.TabStop = false;
-            groupBox7.Text = "Retiro en Agencia";
+            groupBox7.Text = "Entrega en Agencia";
             // 
             // label8
             // 
