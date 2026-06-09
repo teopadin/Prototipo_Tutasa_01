@@ -45,20 +45,18 @@
             // 
             lblTitulo.Font = new Font("Segoe UI", 16F);
             lblTitulo.ForeColor = Color.FromArgb(30, 30, 30);
-            lblTitulo.Location = new Point(17, 11);
-            lblTitulo.Margin = new Padding(2, 0, 2, 0);
+            lblTitulo.Location = new Point(24, 18);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(300, 25);
+            lblTitulo.Size = new Size(428, 41);
             lblTitulo.TabIndex = 41;
             lblTitulo.Text = "Resultado Costos VS Ventas";
             // 
             // lblEmpresaTransporte
             // 
             lblEmpresaTransporte.AutoSize = true;
-            lblEmpresaTransporte.Location = new Point(17, 46);
-            lblEmpresaTransporte.Margin = new Padding(2, 0, 2, 0);
+            lblEmpresaTransporte.Location = new Point(24, 76);
             lblEmpresaTransporte.Name = "lblEmpresaTransporte";
-            lblEmpresaTransporte.Size = new Size(127, 15);
+            lblEmpresaTransporte.Size = new Size(193, 25);
             lblEmpresaTransporte.TabIndex = 42;
             lblEmpresaTransporte.Text = "Empresa de Transporte";
             // 
@@ -66,19 +64,17 @@
             // 
             cmbEmpresaTransporte.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbEmpresaTransporte.FormattingEnabled = true;
-            cmbEmpresaTransporte.Location = new Point(17, 69);
-            cmbEmpresaTransporte.Margin = new Padding(2, 2, 2, 2);
+            cmbEmpresaTransporte.Location = new Point(24, 115);
             cmbEmpresaTransporte.Name = "cmbEmpresaTransporte";
-            cmbEmpresaTransporte.Size = new Size(188, 23);
+            cmbEmpresaTransporte.Size = new Size(267, 33);
             cmbEmpresaTransporte.TabIndex = 43;
             // 
             // lblPeriodo
             // 
             lblPeriodo.AutoSize = true;
-            lblPeriodo.Location = new Point(225, 46);
-            lblPeriodo.Margin = new Padding(2, 0, 2, 0);
+            lblPeriodo.Location = new Point(321, 76);
             lblPeriodo.Name = "lblPeriodo";
-            lblPeriodo.Size = new Size(48, 15);
+            lblPeriodo.Size = new Size(70, 25);
             lblPeriodo.TabIndex = 44;
             lblPeriodo.Text = "Periodo";
             // 
@@ -86,19 +82,17 @@
             // 
             dtpPeriodo.CustomFormat = "MM/yyyy";
             dtpPeriodo.Format = DateTimePickerFormat.Custom;
-            dtpPeriodo.Location = new Point(225, 69);
-            dtpPeriodo.Margin = new Padding(2, 2, 2, 2);
+            dtpPeriodo.Location = new Point(321, 115);
             dtpPeriodo.Name = "dtpPeriodo";
             dtpPeriodo.ShowUpDown = true;
-            dtpPeriodo.Size = new Size(87, 23);
+            dtpPeriodo.Size = new Size(123, 31);
             dtpPeriodo.TabIndex = 45;
             // 
             // btnMostrar
             // 
-            btnMostrar.Location = new Point(329, 69);
-            btnMostrar.Margin = new Padding(2, 2, 2, 2);
+            btnMostrar.Location = new Point(470, 115);
             btnMostrar.Name = "btnMostrar";
-            btnMostrar.Size = new Size(78, 20);
+            btnMostrar.Size = new Size(112, 34);
             btnMostrar.TabIndex = 46;
             btnMostrar.Text = "Mostrar";
             btnMostrar.UseVisualStyleBackColor = true;
@@ -107,10 +101,9 @@
             // lvResultados
             // 
             lvResultados.Columns.AddRange(new ColumnHeader[] { colPeriodo, colVentas, colCostos, colResultado });
-            lvResultados.Location = new Point(17, 111);
-            lvResultados.Margin = new Padding(2, 2, 2, 2);
+            lvResultados.Location = new Point(24, 185);
             lvResultados.Name = "lvResultados";
-            lvResultados.Size = new Size(392, 184);
+            lvResultados.Size = new Size(558, 304);
             lvResultados.TabIndex = 47;
             lvResultados.UseCompatibleStateImageBehavior = false;
             lvResultados.View = View.Details;
@@ -137,9 +130,9 @@
             // 
             // resultadocostosvsventas
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(432, 310);
+            ClientSize = new Size(617, 517);
             Controls.Add(lvResultados);
             Controls.Add(btnMostrar);
             Controls.Add(dtpPeriodo);
@@ -147,7 +140,6 @@
             Controls.Add(cmbEmpresaTransporte);
             Controls.Add(lblEmpresaTransporte);
             Controls.Add(lblTitulo);
-            Margin = new Padding(2, 2, 2, 2);
             Name = "resultadocostosvsventas";
             Text = "Resultados Costos VS Ventas";
             Load += resultadocostosvsventas_Load;

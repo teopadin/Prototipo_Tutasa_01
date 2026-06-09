@@ -7,24 +7,8 @@ namespace Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrient
     internal class CuentaCorrienteCliente
     {
         public int IdCuentaCorriente { get; set; }
-        public Cliente Cliente { get; set; }
+        public int IdCliente { get; set; }
         public decimal SaldoActual { get; set; }
-        public EstadoCuentaCorriente EstadoCuenta { get; set; }
-
-        public bool HabilitadoParaFacturar
-        {
-            get { return EstadoCuenta == EstadoCuentaCorriente.Activa; }
-        }
-
-        public string CondicionFacturacion
-        {
-            get
-            {
-                if (HabilitadoParaFacturar)
-                    return "Habilitado";
-
-                return "Bloqueado";
-            }
-        }
+        public EstadoCuentaCorrienteEnum EstadoCuenta { get; set; }
     }
 }

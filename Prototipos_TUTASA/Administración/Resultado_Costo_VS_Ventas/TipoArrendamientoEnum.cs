@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Prototipos_TUTASA.ResultadoCostoVSVentas_v2
 {
-    internal enum TipoArrendamiento
+    internal enum TipoArrendamientoEnum
     {
         A,
         B,

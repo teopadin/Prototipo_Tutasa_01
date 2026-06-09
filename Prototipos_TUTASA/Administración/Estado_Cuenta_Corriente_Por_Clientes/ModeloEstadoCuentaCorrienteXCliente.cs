@@ -9,37 +9,35 @@ namespace Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrient
     {
         public List<Cliente> Clientes { get; set; }
         public List<CuentaCorrienteCliente> CuentasCorrientes { get; set; }
-        public List<ServicioPendienteFacturaEntidad> ServiciosPendientesFactura { get; set; }
         public List<Factura> Facturas { get; set; }
+        public List<DetalleFactura> DetallesFactura { get; set; }
         public Cliente ClienteSeleccionado { get; private set; }
 
         public ModeloEstadoCuentaCorrienteXCliente()
         {
-            Cliente cliente1 = new Cliente { IdCliente = 1, RazonSocial = "Electro Centro SA", Cuit = "30-71112223-4" };
-            Cliente cliente2 = new Cliente { IdCliente = 2, RazonSocial = "Textiles Norte SRL", Cuit = "30-70001112-8" };
-            Cliente cliente3 = new Cliente { IdCliente = 3, RazonSocial = "Mercado Sur", Cuit = "27-18889999-1" };
-            Cliente cliente4 = new Cliente { IdCliente = 4, RazonSocial = "Cliente Sin Pendientes SA", Cuit = "30-69998887-0" };
-
             Clientes = new List<Cliente>
             {
-                cliente1, cliente2, cliente3, cliente4
+                new Cliente { IdCliente = 1, RazonSocial = "Electro Centro SA", Cuit = 30711122234, Telefono = "3514567890", Calle = "Av. Colón", Altura = 1250, Piso = "3", CodigoPostal = "5000", Ciudad = "Córdoba" },
+                new Cliente { IdCliente = 2, RazonSocial = "Textiles Norte SRL", Cuit = 30700011128, Telefono = "3814556677", Calle = "San Martín", Altura = 870, Piso = "", CodigoPostal = "4000", Ciudad = "San Miguel de Tucumán" },
+                new Cliente { IdCliente = 3, RazonSocial = "Mercado Sur", Cuit = 27188899991, Telefono = "2920445566", Calle = "Roca", Altura = 230, Piso = "1", CodigoPostal = "8500", Ciudad = "Viedma" },
+                new Cliente { IdCliente = 4, RazonSocial = "Cliente Sin Pendientes SA", Cuit = 30699988870, Telefono = "3514223344", Calle = "Belgrano", Altura = 550, Piso = "", CodigoPostal = "5000", Ciudad = "Córdoba" }
             };
 
             CuentasCorrientes = new List<CuentaCorrienteCliente>
             {
-                new CuentaCorrienteCliente { IdCuentaCorriente = 1, Cliente = cliente1, EstadoCuenta = EstadoCuentaCorriente.Activa, SaldoActual = 125000 },
-                new CuentaCorrienteCliente { IdCuentaCorriente = 2, Cliente = cliente2, EstadoCuenta = EstadoCuentaCorriente.Activa, SaldoActual = 43000 },
-                new CuentaCorrienteCliente { IdCuentaCorriente = 3, Cliente = cliente3, EstadoCuenta = EstadoCuentaCorriente.Bloqueada, SaldoActual = 240000 },
-                new CuentaCorrienteCliente { IdCuentaCorriente = 4, Cliente = cliente4, EstadoCuenta = EstadoCuentaCorriente.Activa, SaldoActual = 0 }
+                new CuentaCorrienteCliente { IdCuentaCorriente = 1, IdCliente = 1, EstadoCuenta = EstadoCuentaCorrienteEnum.Activa, SaldoActual = 125000 },
+                new CuentaCorrienteCliente { IdCuentaCorriente = 2, IdCliente = 2, EstadoCuenta = EstadoCuentaCorrienteEnum.Activa, SaldoActual = 43000 },
+                new CuentaCorrienteCliente { IdCuentaCorriente = 3, IdCliente = 3, EstadoCuenta = EstadoCuentaCorrienteEnum.Bloqueada, SaldoActual = 240000 },
+                new CuentaCorrienteCliente { IdCuentaCorriente = 4, IdCliente = 4, EstadoCuenta = EstadoCuentaCorrienteEnum.Activa, SaldoActual = 0 }
             };
 
-            ServiciosPendientesFactura = new List<ServicioPendienteFacturaEntidad>
+            DetallesFactura = new List<DetalleFactura>
             {
-                CrearServicio(1, cliente1, new DateTime(2026, 5, 2), "CD01-0001", "Transporte media distancia", "Capital y GBA", "Centro - Córdoba", 15000),
-                CrearServicio(2, cliente1, new DateTime(2026, 5, 3), "CD01-0002", "Entrega domicilio", "Centro - Córdoba", "Córdoba", 4200),
-                CrearServicio(3, cliente1, new DateTime(2026, 5, 5), "CD02-0001", "Retiro en agencia", "Agencia Nueva Córdoba", "Centro - Córdoba", 3100),
-                CrearServicio(4, cliente2, new DateTime(2026, 5, 8), "CD03-0004", "Transporte media distancia", "Centro - Córdoba", "Norte - Tucumán", 18500),
-                CrearServicio(5, cliente3, new DateTime(2026, 5, 11), "CD04-0007", "Entrega domicilio", "Sur - Viedma", "Viedma", 3900)
+                CrearDetallePendiente(1, "CD01-0001", 15000),
+                CrearDetallePendiente(2, "CD01-0002", 4200),
+                CrearDetallePendiente(3, "CD02-0001", 3100),
+                CrearDetallePendiente(4, "CD03-0004", 18500),
+                CrearDetallePendiente(5, "CD04-0007", 3900)
             };
 
             Facturas = new List<Factura>();
@@ -48,9 +46,7 @@ namespace Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrient
 
         public List<Cliente> ObtenerClientes()
         {
-            return Clientes
-                .OrderBy(c => c.RazonSocial)
-                .ToList();
+            return Clientes.OrderBy(c => c.RazonSocial).ToList();
         }
 
         public void SeleccionarCliente(Cliente cliente)
@@ -65,58 +61,62 @@ namespace Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrient
 
         public CuentaCorrienteCliente ObtenerCuentaCorriente(Cliente cliente)
         {
-            return CuentasCorrientes
-                .FirstOrDefault(c => c.Cliente.IdCliente == cliente.IdCliente);
+            return CuentasCorrientes.FirstOrDefault(c => c.IdCliente == cliente.IdCliente);
         }
 
-        public List<ServicioPendienteFacturaEntidad> ObtenerServiciosPendientes(Cliente cliente)
+        public List<DetalleFactura> ObtenerDetallesPendientes(Cliente cliente)
         {
-            return ServiciosPendientesFactura
-                .Where(s => s.Cliente.IdCliente == cliente.IdCliente)
-                .Where(s => !s.Facturado)
-                .OrderBy(s => s.Fecha)
+            return DetallesFactura
+                .Where(d => d.NroFactura == 0)
+                .Where(d => ObtenerIdClientePorGuia(d.NroGuia) == cliente.IdCliente)
+                .OrderBy(d => d.NroGuia)
                 .ToList();
         }
 
-        public int CalcularCantidadServicios(Cliente cliente)
+        public int CalcularCantidadDetallesPendientes(Cliente cliente)
         {
-            return ObtenerServiciosPendientes(cliente).Count;
+            return ObtenerDetallesPendientes(cliente).Count;
         }
 
         public decimal CalcularTotalAFacturar(Cliente cliente)
         {
             decimal total = 0;
 
-            foreach (ServicioPendienteFacturaEntidad servicio in ObtenerServiciosPendientes(cliente))
+            foreach (DetalleFactura detalle in ObtenerDetallesPendientes(cliente))
             {
-                total += servicio.Importe;
+                total += detalle.Importe;
             }
 
             return total;
         }
 
+        public bool ClienteHabilitadoParaFacturar(Cliente cliente)
+        {
+            CuentaCorrienteCliente cuenta = ObtenerCuentaCorriente(cliente);
+            return cuenta != null && cuenta.EstadoCuenta == EstadoCuentaCorrienteEnum.Activa;
+        }
+
+        public string ObtenerCondicionFacturacion(Cliente cliente)
+        {
+            if (ClienteHabilitadoParaFacturar(cliente))
+                return "Habilitado";
+
+            return "Bloqueado";
+        }
+
         public Factura EmitirFactura(Cliente cliente)
         {
-            List<ServicioPendienteFacturaEntidad> servicios = ObtenerServiciosPendientes(cliente);
+            List<DetalleFactura> detallesPendientes = ObtenerDetallesPendientes(cliente);
 
             Factura factura = new Factura();
             factura.NroFactura = Facturas.Count + 1;
             factura.FechaEmision = DateTime.Today;
-            factura.Cliente = cliente;
+            factura.IdCliente = cliente.IdCliente;
 
-            int idDetalle = 1;
-            foreach (ServicioPendienteFacturaEntidad servicio in servicios)
+            foreach (DetalleFactura detalle in detallesPendientes)
             {
-                factura.Detalles.Add(new DetalleFactura
-                {
-                    IdDetalleFactura = idDetalle,
-                    NroFactura = factura.NroFactura,
-                    NroGuia = servicio.NroServicioGuia,
-                    Importe = servicio.Importe
-                });
-
-                servicio.Facturado = true;
-                idDetalle++;
+                detalle.NroFactura = factura.NroFactura;
+                factura.Detalles.Add(detalle);
             }
 
             CuentaCorrienteCliente cuenta = ObtenerCuentaCorriente(cliente);
@@ -126,19 +126,59 @@ namespace Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrient
             return factura;
         }
 
-        private ServicioPendienteFacturaEntidad CrearServicio(int idServicio, Cliente cliente, DateTime fecha, string nroGuia, string tipoServicio, string origen, string destino, decimal importe)
+        public DateTime ObtenerFechaGuia(string nroGuia)
         {
-            return new ServicioPendienteFacturaEntidad
+            if (nroGuia.StartsWith("CD01")) return new DateTime(2026, 5, 2);
+            if (nroGuia.StartsWith("CD02")) return new DateTime(2026, 5, 5);
+            if (nroGuia.StartsWith("CD03")) return new DateTime(2026, 5, 8);
+            if (nroGuia.StartsWith("CD04")) return new DateTime(2026, 5, 11);
+
+            return DateTime.Today;
+        }
+
+        public string ObtenerTipoServicio(string nroGuia)
+        {
+            if (nroGuia.StartsWith("CD01")) return "Transporte media distancia";
+            if (nroGuia.StartsWith("CD02")) return "Retiro en agencia";
+            if (nroGuia.StartsWith("CD03")) return "Transporte media distancia";
+            if (nroGuia.StartsWith("CD04")) return "Entrega domicilio";
+
+            return "Guía";
+        }
+
+        public string ObtenerOrigen(string nroGuia)
+        {
+            if (nroGuia.StartsWith("CD03")) return "Centro - Córdoba";
+            if (nroGuia.StartsWith("CD04")) return "Sur - Viedma";
+
+            return "Capital y GBA";
+        }
+
+        public string ObtenerDestino(string nroGuia)
+        {
+            if (nroGuia.StartsWith("CD03")) return "Norte - Tucumán";
+            if (nroGuia.StartsWith("CD04")) return "Viedma";
+
+            return "Centro - Córdoba";
+        }
+
+        private int ObtenerIdClientePorGuia(string nroGuia)
+        {
+            if (nroGuia.StartsWith("CD01") || nroGuia.StartsWith("CD02")) return 1;
+            if (nroGuia.StartsWith("CD03")) return 2;
+            if (nroGuia.StartsWith("CD04")) return 3;
+
+            return 0;
+        }
+
+        private DetalleFactura CrearDetallePendiente(int idDetalle, string nroGuia, decimal importe)
+        {
+            return new DetalleFactura
             {
-                IdServicio = idServicio,
-                Cliente = cliente,
-                Fecha = fecha,
-                NroServicioGuia = nroGuia,
-                TipoServicio = tipoServicio,
-                Origen = origen,
-                Destino = destino,
-                Importe = importe,
-                Facturado = false
+                IdDetalleFactura = idDetalle,
+                NroFactura = 0,
+                NroGuia = nroGuia,
+                Importe = importe
             };
         }
     }
