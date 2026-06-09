@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Prototipos_TUTASA.Imposición.Imposición_CD
 {
-    internal enum TipoBulto
+    internal enum TipoBultoEnum
     {
        S,
        M,

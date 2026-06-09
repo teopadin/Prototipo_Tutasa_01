@@ -4,10 +4,11 @@ using System.Text;
 
 namespace Prototipos_TUTASA.Imposición.ImposicionCallCenter_v2
 {
-    internal enum ModalidadEntrega
+    internal enum TipoBultoEnum
     {
-        EntregaDomicilio,
-        EntregaAgencia,
-        EntregaCD
+       S,
+       M,
+       L,
+       XL
     }
 }

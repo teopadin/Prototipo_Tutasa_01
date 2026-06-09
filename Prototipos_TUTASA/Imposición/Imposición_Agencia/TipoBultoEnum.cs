@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Prototipos_TUTASA.Imposición.Imposición_Agencia
 {
-    internal enum TipoBulto
+    internal enum TipoBultoEnum
     {
         S,
         M,

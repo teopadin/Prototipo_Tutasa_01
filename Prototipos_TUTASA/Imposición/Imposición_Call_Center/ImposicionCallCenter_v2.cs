@@ -74,13 +74,13 @@ namespace Prototipos_TUTASA.ImposiciónCallCenter_v2
                 return;
             }
 
-            if (!TryObtenerTipoBulto(out TipoBulto tipoBulto))
+            if (!TryObtenerTipoBulto(out TipoBultoEnum tipoBulto))
             {
                 MostrarAviso("Debe completar todos los campos obligatorios.");
                 return;
             }
 
-            if (!TryObtenerModalidadEntrega(out ModalidadEntrega modalidadEntrega))
+            if (!TryObtenerModalidadEntrega(out ModalidadEntregaEnum modalidadEntrega))
             {
                 MostrarAviso("Debe completar todos los campos obligatorios.");
                 return;
@@ -104,7 +104,7 @@ namespace Prototipos_TUTASA.ImposiciónCallCenter_v2
             Agencia agenciaDestino = null;
             CentroDistribucion cdDestino = null;
 
-            if (modalidadEntrega == ModalidadEntrega.EntregaDomicilio)
+            if (modalidadEntrega == ModalidadEntregaEnum.EntregaDomicilio)
             {
                 if (!ValidarDomicilioPuertaPuerta())
                     return;
@@ -116,7 +116,7 @@ namespace Prototipos_TUTASA.ImposiciónCallCenter_v2
                 destinatario.Ciudad = textBox5.Text.Trim();
             }
 
-            else if (modalidadEntrega == ModalidadEntrega.EntregaAgencia)
+            else if (modalidadEntrega == ModalidadEntregaEnum.EntregaAgencia)
             {
                 agenciaDestino = comboBox3.SelectedItem as Agencia;
                 if (agenciaDestino == null)
@@ -127,7 +127,7 @@ namespace Prototipos_TUTASA.ImposiciónCallCenter_v2
 
                 cdDestino = agenciaDestino.CD;
             }
-            else if (modalidadEntrega == ModalidadEntrega.EntregaCD)
+            else if (modalidadEntrega == ModalidadEntregaEnum.EntregaCD)
             {
                 cdDestino = comboBox2.SelectedItem as CentroDistribucion;
                 if (cdDestino == null)
@@ -330,57 +330,57 @@ namespace Prototipos_TUTASA.ImposiciónCallCenter_v2
             return true;
         }
 
-        private bool TryObtenerTipoBulto(out TipoBulto tipoBulto)
+        private bool TryObtenerTipoBulto(out TipoBultoEnum tipoBulto)
         {
             if (radioButton1.Checked)
             {
-                tipoBulto = TipoBulto.S;
+                tipoBulto = TipoBultoEnum.S;
                 return true;
             }
 
             if (radioButton2.Checked)
             {
-                tipoBulto = TipoBulto.M;
+                tipoBulto = TipoBultoEnum.M;
                 return true;
             }
 
             if (radioButton3.Checked)
             {
-                tipoBulto = TipoBulto.L;
+                tipoBulto = TipoBultoEnum.L;
                 return true;
             }
 
             if (radioButton4.Checked)
             {
-                tipoBulto = TipoBulto.XL;
+                tipoBulto = TipoBultoEnum.XL;
                 return true;
             }
 
-            tipoBulto = TipoBulto.S;
+            tipoBulto = TipoBultoEnum.S;
             return false;
         }
 
-        private bool TryObtenerModalidadEntrega(out ModalidadEntrega modalidadEntrega)
+        private bool TryObtenerModalidadEntrega(out ModalidadEntregaEnum modalidadEntrega)
         {
             if (radioButton5.Checked)
             {
-                modalidadEntrega = ModalidadEntrega.EntregaDomicilio;
+                modalidadEntrega = ModalidadEntregaEnum.EntregaDomicilio;
                 return true;
             }
 
             if (radioButton6.Checked)
             {
-                modalidadEntrega = ModalidadEntrega.EntregaAgencia;
+                modalidadEntrega = ModalidadEntregaEnum.EntregaAgencia;
                 return true;
             }
 
             if (radioButton7.Checked)
             {
-                modalidadEntrega = ModalidadEntrega.EntregaCD;
+                modalidadEntrega = ModalidadEntregaEnum.EntregaCD;
                 return true;
             }
 
-            modalidadEntrega = ModalidadEntrega.EntregaDomicilio;
+            modalidadEntrega = ModalidadEntregaEnum.EntregaDomicilio;
             return false;
         }
 

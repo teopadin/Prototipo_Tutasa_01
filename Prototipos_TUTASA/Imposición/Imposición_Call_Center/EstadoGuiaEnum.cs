@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Prototipos_TUTASA.Imposición.ImposicionCallCenter_v2
 {
-    internal enum EstadoGuia
+    internal enum EstadoGuiaEnum
     {
        Impuesta
 

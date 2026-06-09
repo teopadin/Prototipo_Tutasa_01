@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Prototipos_TUTASA.Imposición.Imposición_Agencia
+namespace Prototipos_TUTASA.Imposición.ImposicionCallCenter_v2
 {
-    internal enum ModalidadEntrega
+    internal enum ModalidadEntregaEnum
     {
         EntregaDomicilio,
         EntregaAgencia,
