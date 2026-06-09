@@ -111,5 +111,9 @@ namespace Prototipos_TUTASA.Admisión
             LimpiarInformacion();
         }
 
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
