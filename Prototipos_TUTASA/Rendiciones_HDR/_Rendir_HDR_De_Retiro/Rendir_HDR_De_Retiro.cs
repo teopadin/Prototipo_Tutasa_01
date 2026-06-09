@@ -95,8 +95,8 @@ namespace Prototipos_TUTASA.Rendiciones_HDR
             NoCumplidaRdb.Enabled = true;
             AplicarBtn.Enabled = true;
 
-            CumplidaRdb.Checked = hdr.Estado == EstadoHDR.Cumplida;
-            NoCumplidaRdb.Checked = hdr.Estado == EstadoHDR.NoCumplida;
+            CumplidaRdb.Checked = hdr.Estado == EstadoHojaDeRutaEnum.Cumplida;
+            NoCumplidaRdb.Checked = hdr.Estado == EstadoHojaDeRutaEnum.NoCumplida;
 
             if (hdr.MotivoNoCumplida != null)
                 MotivoCmb.SelectedItem = hdr.MotivoNoCumplida;
@@ -135,7 +135,7 @@ namespace Prototipos_TUTASA.Rendiciones_HDR
                 return;
             }
 
-            MotivoNoCumplidaRetiro? motivo = null;
+            MotivoNoCumplidaRetiroEnum? motivo = null;
             if (NoCumplidaRdb.Checked)
             {
                 if (MotivoCmb.SelectedItem == null)
@@ -143,7 +143,7 @@ namespace Prototipos_TUTASA.Rendiciones_HDR
                     MessageBox.Show("Debe seleccionar un motivo cuando la HDR es No Cumplida.");
                     return;
                 }
-                motivo = (MotivoNoCumplidaRetiro)MotivoCmb.SelectedItem;
+                motivo = (MotivoNoCumplidaRetiroEnum)MotivoCmb.SelectedItem;
             }
 
             if (!modelo.AplicarEstado(CumplidaRdb.Checked, motivo))
@@ -188,8 +188,8 @@ namespace Prototipos_TUTASA.Rendiciones_HDR
             foreach (ListViewItem item in HDRRendidaLst.Items)
             {
                 var hdr = (_Rendir_HDR_De_Retiro.HojaDeRutaRetiro)item.Tag;
-                if (hdr.Estado == EstadoHDR.Cumplida) { rendidas++; cumplidas++; }
-                else if (hdr.Estado == EstadoHDR.NoCumplida) { rendidas++; noCumplidas++; }
+                if (hdr.Estado == EstadoHojaDeRutaEnum.Cumplida) { rendidas++; cumplidas++; }
+                else if (hdr.Estado == EstadoHojaDeRutaEnum.NoCumplida) { rendidas++; noCumplidas++; }
             }
 
             TotalRendidasTxtb.Text = rendidas.ToString();

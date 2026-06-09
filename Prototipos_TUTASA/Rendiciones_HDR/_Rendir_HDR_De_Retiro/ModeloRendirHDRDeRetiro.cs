@@ -21,16 +21,16 @@ namespace Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Retiro
 
         private List<HojaDeRutaRetiro> hdrs = new List<HojaDeRutaRetiro>
         {
-            new HojaDeRutaRetiro { NroHDR = 2001, DniTransportistaAsignado = 11111111, Remitente = "Empresa ABC S.A.",   Calle = "Av. Corrientes", Altura = 1234, Piso = "1",  CP = "1043", Estado = EstadoHDR.EnCurso  },
-            new HojaDeRutaRetiro { NroHDR = 2002, DniTransportistaAsignado = 11111111, Remitente = "Distribuidora XYZ",  Calle = "Lavalle",        Altura = 567,  Piso = "3",  CP = "1047", Estado = EstadoHDR.EnCurso  },
-            new HojaDeRutaRetiro { NroHDR = 2003, DniTransportistaAsignado = 11111111, Remitente = "Importadora Sur",    Calle = "Florida",        Altura = 890,  Piso = "PB", CP = "1005", Estado = EstadoHDR.Recibida },
-            new HojaDeRutaRetiro { NroHDR = 2004, DniTransportistaAsignado = 22222222, Remitente = "Logistica Norte",    Calle = "Santa Fe",       Altura = 2345, Piso = "2",  CP = "1123", Estado = EstadoHDR.EnCurso  },
-            new HojaDeRutaRetiro { NroHDR = 2005, DniTransportistaAsignado = 22222222, Remitente = "Comercial Este",     Calle = "Cordoba",        Altura = 678,  Piso = "4",  CP = "1054", Estado = EstadoHDR.Recibida },
-            new HojaDeRutaRetiro { NroHDR = 2006, DniTransportistaAsignado = 33333333, Remitente = "Empresa DEF S.R.L.", Calle = "Rivadavia",      Altura = 4567, Piso = "5",  CP = "1407", Estado = EstadoHDR.EnCurso  },
-            new HojaDeRutaRetiro { NroHDR = 2007, DniTransportistaAsignado = 33333333, Remitente = "Distribuidora ABC",  Calle = "Belgrano",       Altura = 1100, Piso = "PB", CP = "1092", Estado = EstadoHDR.EnCurso  },
-            new HojaDeRutaRetiro { NroHDR = 2008, DniTransportistaAsignado = 33333333, Remitente = "Importadora Norte",  Calle = "Callao",         Altura = 230,  Piso = "1",  CP = "1022", Estado = EstadoHDR.Recibida },
-            new HojaDeRutaRetiro { NroHDR = 2009, DniTransportistaAsignado = 44444444, Remitente = "Empresa GHI S.A.",   Calle = "Pueyrredon",     Altura = 1500, Piso = "3",  CP = "1118", Estado = EstadoHDR.EnCurso  },
-            new HojaDeRutaRetiro { NroHDR = 2010, DniTransportistaAsignado = 44444444, Remitente = "Logistica Central",  Calle = "Scalabrini",     Altura = 980,  Piso = "PB", CP = "1414", Estado = EstadoHDR.Recibida },
+            new HojaDeRutaRetiro { NroHDR = 2001, DniTransportistaAsignado = 11111111, Remitente = "Empresa ABC S.A.",   Calle = "Av. Corrientes", Altura = 1234, Piso = "1",  CP = "1043", Estado = EstadoHojaDeRutaEnum.EnCurso  },
+            new HojaDeRutaRetiro { NroHDR = 2002, DniTransportistaAsignado = 11111111, Remitente = "Distribuidora XYZ",  Calle = "Lavalle",        Altura = 567,  Piso = "3",  CP = "1047", Estado = EstadoHojaDeRutaEnum.EnCurso  },
+            new HojaDeRutaRetiro { NroHDR = 2003, DniTransportistaAsignado = 11111111, Remitente = "Importadora Sur",    Calle = "Florida",        Altura = 890,  Piso = "PB", CP = "1005", Estado = EstadoHojaDeRutaEnum.Recibida },
+            new HojaDeRutaRetiro { NroHDR = 2004, DniTransportistaAsignado = 22222222, Remitente = "Logistica Norte",    Calle = "Santa Fe",       Altura = 2345, Piso = "2",  CP = "1123", Estado = EstadoHojaDeRutaEnum.EnCurso  },
+            new HojaDeRutaRetiro { NroHDR = 2005, DniTransportistaAsignado = 22222222, Remitente = "Comercial Este",     Calle = "Cordoba",        Altura = 678,  Piso = "4",  CP = "1054", Estado = EstadoHojaDeRutaEnum.Recibida },
+            new HojaDeRutaRetiro { NroHDR = 2006, DniTransportistaAsignado = 33333333, Remitente = "Empresa DEF S.R.L.", Calle = "Rivadavia",      Altura = 4567, Piso = "5",  CP = "1407", Estado = EstadoHojaDeRutaEnum.EnCurso  },
+            new HojaDeRutaRetiro { NroHDR = 2007, DniTransportistaAsignado = 33333333, Remitente = "Distribuidora ABC",  Calle = "Belgrano",       Altura = 1100, Piso = "PB", CP = "1092", Estado = EstadoHojaDeRutaEnum.EnCurso  },
+            new HojaDeRutaRetiro { NroHDR = 2008, DniTransportistaAsignado = 33333333, Remitente = "Importadora Norte",  Calle = "Callao",         Altura = 230,  Piso = "1",  CP = "1022", Estado = EstadoHojaDeRutaEnum.Recibida },
+            new HojaDeRutaRetiro { NroHDR = 2009, DniTransportistaAsignado = 44444444, Remitente = "Empresa GHI S.A.",   Calle = "Pueyrredon",     Altura = 1500, Piso = "3",  CP = "1118", Estado = EstadoHojaDeRutaEnum.EnCurso  },
+            new HojaDeRutaRetiro { NroHDR = 2010, DniTransportistaAsignado = 44444444, Remitente = "Logistica Central",  Calle = "Scalabrini",     Altura = 980,  Piso = "PB", CP = "1414", Estado = EstadoHojaDeRutaEnum.Recibida },
             // Roberto Lopez (55555555) sin HDR para probar el mensaje
         };
 
@@ -55,7 +55,7 @@ namespace Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Retiro
             foreach (var hdr in hdrs)
             {
                 if (hdr.DniTransportistaAsignado == dniTransportista &&
-                    (hdr.Estado == EstadoHDR.EnCurso || hdr.Estado == EstadoHDR.Recibida))
+                    (hdr.Estado == EstadoHojaDeRutaEnum.EnCurso || hdr.Estado == EstadoHojaDeRutaEnum.Recibida))
                 {
                     resultado.Add(hdr);
                 }
@@ -63,18 +63,18 @@ namespace Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Retiro
             return resultado;
         }
 
-        internal List<MotivoNoCumplidaRetiro> ObtenerMotivos()
+        internal List<MotivoNoCumplidaRetiroEnum> ObtenerMotivos()
         {
-            return new List<MotivoNoCumplidaRetiro>
+            return new List<MotivoNoCumplidaRetiroEnum>
             {
-                MotivoNoCumplidaRetiro.ClienteAusente,
-                MotivoNoCumplidaRetiro.EncomiendaNoPreparada,
-                MotivoNoCumplidaRetiro.DiscrepanciaConGuia,
-                MotivoNoCumplidaRetiro.Otro
+                MotivoNoCumplidaRetiroEnum.ClienteAusente,
+                MotivoNoCumplidaRetiroEnum.EncomiendaNoPreparada,
+                MotivoNoCumplidaRetiroEnum.DiscrepanciaConGuia,
+                MotivoNoCumplidaRetiroEnum.Otro
             };
         }
 
-        internal bool AplicarEstado(bool cumplida, MotivoNoCumplidaRetiro? motivo)
+        internal bool AplicarEstado(bool cumplida, MotivoNoCumplidaRetiroEnum? motivo)
         {
             if (!cumplida && motivo == null)
             {
@@ -84,12 +84,12 @@ namespace Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Retiro
 
             if (cumplida)
             {
-                hdrSeleccionada.Estado = EstadoHDR.Cumplida;
+                hdrSeleccionada.Estado = EstadoHojaDeRutaEnum.Cumplida;
                 hdrSeleccionada.MotivoNoCumplida = null;
             }
             else
             {
-                hdrSeleccionada.Estado = EstadoHDR.NoCumplida;
+                hdrSeleccionada.Estado = EstadoHojaDeRutaEnum.NoCumplida;
                 hdrSeleccionada.MotivoNoCumplida = motivo;
             }
             return true;
@@ -99,7 +99,7 @@ namespace Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Retiro
         {
             foreach (var hdr in lista)
             {
-                if (hdr.Estado != EstadoHDR.Cumplida && hdr.Estado != EstadoHDR.NoCumplida)
+                if (hdr.Estado != EstadoHojaDeRutaEnum.Cumplida && hdr.Estado != EstadoHojaDeRutaEnum.NoCumplida)
                 {
                     MessageBox.Show("Debe aplicar un estado a todas las HDR antes de registrar la rendicion.");
                     return false;

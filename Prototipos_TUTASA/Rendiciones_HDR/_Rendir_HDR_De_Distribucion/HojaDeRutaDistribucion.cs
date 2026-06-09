@@ -14,7 +14,7 @@ namespace Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Distribucion
 
         public string Piso { get; set; }
         public string CP { get; set; }
-        public EstadoHDR Estado { get; set; }
-        public MotivoNoCumplidaDistribucion? MotivoNoCumplida { get; set; }
+        public EstadoHojaDeRutaEnum Estado { get; set; }
+        public MotivoNoCumplidaDistribucionEnum? MotivoNoCumplida { get; set; }
     }
 }

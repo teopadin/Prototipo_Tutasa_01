@@ -14,8 +14,8 @@ namespace Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Retiro
         public int Altura { get; set; }
         public string Piso { get; set; }
         public string CP { get; set; }
-        public EstadoHDR Estado { get; set; }
-        public MotivoNoCumplidaRetiro? MotivoNoCumplida { get; set; }
+        public EstadoHojaDeRutaEnum Estado { get; set; }
+        public MotivoNoCumplidaRetiroEnum? MotivoNoCumplida { get; set; }
     }
 }
  
