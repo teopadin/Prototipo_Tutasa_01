@@ -63,7 +63,7 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_Retiro
                 new Guia { NroGuia = "CD02-0001", FechaImposicion = new DateTime(2026, 5, 22), TipoImposicion = TipoImposicion.CallCenter, TipoBulto = TipoBulto.S, Estado = EstadoGuia.Impuesta, CdOrigen = cdCentro, CdDestino = cdNorte, ClienteGuia = cliente3, Agencia = null },
 
                 // En otro estado - NO debe aparecer
-                new Guia { NroGuia = "CD01-0003", FechaImposicion = new DateTime(2026, 5, 19), TipoImposicion = TipoImposicion.CallCenter, TipoBulto = TipoBulto.L, Estado = EstadoGuia.PendienteDeRetiroPorTransportista, CdOrigen = cdCapital, CdDestino = cdNorte, ClienteGuia = cliente1, Agencia = null },
+                new Guia { NroGuia = "CD01-0003", FechaImposicion = new DateTime(2026, 5, 19), TipoImposicion = TipoImposicion.CallCenter, TipoBulto = TipoBulto.L, Estado = EstadoGuia.IncluidaEnHDRRetiro, CdOrigen = cdCapital, CdDestino = cdNorte, ClienteGuia = cliente1, Agencia = null },
             };
 
         }

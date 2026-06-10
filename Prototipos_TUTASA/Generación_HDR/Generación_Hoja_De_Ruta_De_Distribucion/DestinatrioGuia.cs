@@ -3,12 +3,12 @@
     internal class DestinatarioGuia
     {
         public int Dni { get; set; }
-        public string Nombre { get; set; }
-        public string Apellido { get; set; }
-        public string Calle { get; set; }
-        public int Altura { get; set; }
-        public string Piso { get; set; }
-        public string CodigoPostal { get; set; }
-        public string Ciudad { get; set; }
+        public string nombre { get; set; }
+        public string apellido { get; set; }
+        public string calle { get; set; }
+        public int altura { get; set; }
+        public string piso { get; set; }
+        public string codigoPostal { get; set; }
+        public string ciudad { get; set; }
     }
 }
