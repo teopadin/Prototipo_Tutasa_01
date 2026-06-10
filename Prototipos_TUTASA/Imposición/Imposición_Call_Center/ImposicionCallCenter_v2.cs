@@ -140,7 +140,7 @@ namespace Prototipos_TUTASA.ImposiciónCallCenter_v2
                 destinatario.Altura = 0;
                 destinatario.Piso = string.Empty;
                 destinatario.CodigoPostal = string.Empty;
-                destinatario.Ciudad = cdDestino.Nombre;
+                destinatario.Ciudad = cdDestino.nombre;
             }
 
             Guia guia = modelo.RegistrarImposicion(tipoBulto, modalidadEntrega, destinatario, cdOrigen, cdDestino, agenciaDestino);
@@ -157,13 +157,13 @@ namespace Prototipos_TUTASA.ImposiciónCallCenter_v2
                 return;
             }
 
-            txtCUIT.Text = cliente.CUIT.ToString();
-            txtTelRem.Text = cliente.Telefono;
-            txtCalleRemitente.Text = cliente.Calle;
-            txtAlturaRemitente.Text = cliente.Altura.ToString();
-            txtPisoRemitente.Text = cliente.Piso;
-            txtCodigoPostalRemitente.Text = cliente.CodigoPostal;
-            txtCiudadRemitente.Text = cliente.Ciudad;
+            txtCUIT.Text = cliente.cuit.ToString();
+            txtTelRem.Text = cliente.telefono;
+            txtCalleRemitente.Text = cliente.calle;
+            txtAlturaRemitente.Text = cliente.altura.ToString();
+            txtPisoRemitente.Text = cliente.Pipisoo;
+            txtCodigoPostalRemitente.Text = cliente.codigoPostal;
+            txtCiudadRemitente.Text = cliente.ciudad;
         }
 
         private void Modalidad_CheckedChanged(object sender, EventArgs e)

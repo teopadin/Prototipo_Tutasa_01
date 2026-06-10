@@ -6,13 +6,13 @@ namespace Prototipos_TUTASA.Imposición.Imposición_Agencia
 {
     internal class Cliente
     {
-        public string RazonSocial { get; set; }
-        public long CUIT { get; set; }
-        public string Telefono { get; set; }
-        public string Calle { get; set; }
-        public int Altura { get; set; }
-        public string Piso { get; set; }
-        public string CodigoPostal { get; set; }
-        public string Ciudad { get; set; }
+        public string razonSocial { get; set; }
+        public long cuit { get; set; }
+        public string telefono { get; set; }
+        public string calle { get; set; }
+        public int altura { get; set; }
+        public string piso { get; set; }
+        public string codigoPostal { get; set; }
+        public string ciudad { get; set; }
     }
 }

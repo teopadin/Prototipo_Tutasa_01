@@ -78,10 +78,10 @@ namespace Prototipos_TUTASA.ImposiciónAgencia_v2
 
             DestinatarioGuia destinatario = new DestinatarioGuia
             {
-                Dni = dniDestinatario,
-                Nombre = txtNombreDest.Text.Trim(),
-                Apellido = txtApellidoDest.Text.Trim(),
-                Telefono = txtTelDest.Text.Trim()
+                dni = dniDestinatario,
+                nombre = txtNombreDest.Text.Trim(),
+                apellido = txtApellidoDest.Text.Trim(),
+                telefono = txtTelDest.Text.Trim()
             };
 
             Agencia agenciaDestino = null;
@@ -99,11 +99,11 @@ namespace Prototipos_TUTASA.ImposiciónAgencia_v2
                     return;
                 }
 
-                destinatario.Calle = tbCalleDest.Text.Trim();
-                destinatario.Altura = int.Parse(tbAlturaDest.Text.Trim());
-                destinatario.Piso = tbPisoDest.Text.Trim();
-                destinatario.CodigoPostal = tbCDDest.Text.Trim();
-                destinatario.Ciudad = tbCiudadDest.Text.Trim();
+                destinatario.calle = tbCalleDest.Text.Trim();
+                destinatario.altura = int.Parse(tbAlturaDest.Text.Trim());
+                destinatario.piso = tbPisoDest.Text.Trim();
+                destinatario.codigoPostal = tbCDDest.Text.Trim();
+                destinatario.ciudad = tbCiudadDest.Text.Trim();
             }
             else if (modalidadEntrega == ModalidadEntregaEnum.EntregaAgencia)
             {
@@ -125,17 +125,17 @@ namespace Prototipos_TUTASA.ImposiciónAgencia_v2
                     return;
                 }
 
-                destinatario.Calle = string.Empty;
-                destinatario.Altura = 0;
-                destinatario.Piso = string.Empty;
-                destinatario.CodigoPostal = string.Empty;
-                destinatario.Ciudad = cdDestino.Nombre;
+                destinatario.calle = string.Empty;
+                destinatario.altura = 0;
+                destinatario.piso = string.Empty;
+                destinatario.codigoPostal = string.Empty;
+                destinatario.ciudad = cdDestino.nombre;
             }
 
             Guia guia = modelo.RegistrarImposicion();
 
             MessageBox.Show(
-                "Guía N° " + guia.NroGuia + " generada con éxito.",
+                "Guía N° " + guia.nroGuia + " generada con éxito.",
                 "Éxito",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information
@@ -153,13 +153,13 @@ namespace Prototipos_TUTASA.ImposiciónAgencia_v2
                 return;
             }
 
-            txtCUIT.Text = cliente.CUIT.ToString();
-            txtTelRem.Text = cliente.Telefono;
-            txtCalleRemitente.Text = cliente.Calle;
-            txtAlturaRemitente.Text = cliente.Altura.ToString();
-            txtPisoRemitente.Text = cliente.Piso;
-            txtCodigoPostalRemitente.Text = cliente.CodigoPostal;
-            txtCiudadRemitente.Text = cliente.Ciudad;
+            txtCUIT.Text = cliente.cuit.ToString();
+            txtTelRem.Text = cliente.telefono;
+            txtCalleRemitente.Text = cliente.calle;
+            txtAlturaRemitente.Text = cliente.altura.ToString();
+            txtPisoRemitente.Text = cliente.piso;
+            txtCodigoPostalRemitente.Text = cliente.codigoPostal;
+            txtCiudadRemitente.Text = cliente.ciudad;
         }
 
         private void Modalidad_CheckedChanged(object sender, EventArgs e)
@@ -390,6 +390,11 @@ namespace Prototipos_TUTASA.ImposiciónAgencia_v2
         private void MostrarAviso(string mensaje)
         {
             MessageBox.Show(mensaje, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        private void lblTelDest_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

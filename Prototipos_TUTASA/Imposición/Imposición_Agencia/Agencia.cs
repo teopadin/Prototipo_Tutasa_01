@@ -6,8 +6,8 @@ namespace Prototipos_TUTASA.Imposición.Imposición_Agencia
 {
     internal class Agencia
     {
-        public int IdAgencia { get; set; }
-        public string RazonSocial { get; set; }
+        public int idAgencia { get; set; }
+        public string razonSocial { get; set; }
         public CentroDistribucion CD { get; set; }
     }
 }

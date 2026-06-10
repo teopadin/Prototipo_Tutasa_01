@@ -15,12 +15,12 @@ namespace Prototipos_TUTASA.Imposición.ImposicionCallCenter_v2
         public ModeloImposicionCallCenter()
         {
             // CDs
-            var cdCapital = new CentroDistribucion { IdCD = 1, Nombre = "Capital y GBA" };
-            var cdCentro = new CentroDistribucion { IdCD = 2, Nombre = "Centro - Córdoba" };
-            var cdNorte = new CentroDistribucion { IdCD = 3, Nombre = "Norte - Tucumán" };
-            var cdEste = new CentroDistribucion { IdCD = 4, Nombre = "Este - Corrientes" };
-            var cdCordillera = new CentroDistribucion { IdCD = 5, Nombre = "Cordillera - Neuquén" };
-            var cdSur = new CentroDistribucion { IdCD = 6, Nombre = "Sur - Viedma" };
+            var cdCapital = new CentroDistribucion { idCD = 1, nombre = "Capital y GBA" };
+            var cdCentro = new CentroDistribucion { idCD = 2, nombre = "Centro - Córdoba" };
+            var cdNorte = new CentroDistribucion { idCD = 3, nombre = "Norte - Tucumán" };
+            var cdEste = new CentroDistribucion { idCD = 4, nombre = "Este - Corrientes" };
+            var cdCordillera = new CentroDistribucion { idCD = 5, nombre = "Cordillera - Neuquén" };
+            var cdSur = new CentroDistribucion { idCD = 6, nombre = "Sur - Viedma" };
 
             CentrosDeDistribucion = new List<CentroDistribucion>
             {
@@ -30,25 +30,25 @@ namespace Prototipos_TUTASA.Imposición.ImposicionCallCenter_v2
             // Clientes (remitentes)
             var cliente1 = new Cliente
             {
-                RazonSocial = "Distribuidora El Sol SRL",
-                CUIT = 30712345678,
-                Telefono = "1145678901",
-                Calle = "Av. Corrientes",
-                Altura = 1500,
-                Piso = "PB",
-                CodigoPostal = "1043",
-                Ciudad = "Buenos Aires"
+                razonSocial = "Distribuidora El Sol SRL",
+                cuit = 30712345678,
+                telefono = "1145678901",
+                calle = "Av. Corrientes",
+                altura = 1500,
+                Pipisoo = "PB",
+                codigoPostal = "1043",
+                ciudad = "Buenos Aires"
             };
             var cliente2 = new Cliente
             {
-                RazonSocial = "Importadora del Norte SA",
-                CUIT = 30798765432,
-                Telefono = "1167890123",
-                Calle = "San Martín",
-                Altura = 320,
-                Piso = "2",
-                CodigoPostal = "1004",
-                Ciudad = "Buenos Aires"
+                razonSocial = "Importadora del Norte SA",
+                cuit = 30798765432,
+                telefono = "1167890123",
+                calle = "San Martín",
+                altura = 320,
+                Pipisoo = "2",
+                codigoPostal = "1004",
+                ciudad = "Buenos Aires"
             };
 
             Clientes = new List<Cliente> { cliente1, cliente2 };
@@ -56,14 +56,14 @@ namespace Prototipos_TUTASA.Imposición.ImposicionCallCenter_v2
             // Agencias (para modalidad Retiro en Agencia)
             var agencia1 = new Agencia
             {
-                IdAgencia = 1,
-                RazonSocial = "Agencia Norte SA",
+                idAgencia = 1,
+                razonSocial = "Agencia Norte SA",
                 CD = cdCapital
             };
             var agencia2 = new Agencia
             {
-                IdAgencia = 2,
-                RazonSocial = "Agencia Sur SRL",
+                idAgencia = 2,
+                razonSocial = "Agencia Sur SRL",
 
                 CD = cdCapital
             };
@@ -89,7 +89,7 @@ namespace Prototipos_TUTASA.Imposición.ImposicionCallCenter_v2
 
         private string GenerarNumeroGuia(CentroDistribucion cdOrigen)
         {
-            return "CD" + cdOrigen.IdCD.ToString("00") + "-" + (Guias.Count + 1).ToString("0000");
+            return "CD" + cdOrigen.idCD.ToString("00") + "-" + (Guias.Count + 1).ToString("0000");
         }
     }
 }

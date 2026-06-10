@@ -25,10 +25,10 @@ namespace Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrient
 
             CuentasCorrientes = new List<CuentaCorrienteCliente>
             {
-                new CuentaCorrienteCliente { idCuentaCorriente = 1, idCliente = 1, saldoActual = 125000 },
-                new CuentaCorrienteCliente { idCuentaCorriente = 2, idCliente = 2, saldoActual = 43000 },
-                new CuentaCorrienteCliente { idCuentaCorriente = 3, idCliente = 3, saldoActual = 240000 },
-                new CuentaCorrienteCliente { idCuentaCorriente = 4, idCliente = 4, saldoActual = -67500 }
+                new CuentaCorrienteCliente { idCliente = 1, saldoActual = 125000 },
+                new CuentaCorrienteCliente { idCliente = 2, saldoActual = 43000 },
+                new CuentaCorrienteCliente { idCliente = 3, saldoActual = 240000 },
+                new CuentaCorrienteCliente { idCliente = 4, saldoActual = -67500 }
             };
 
             foreach (CuentaCorrienteCliente cuenta in CuentasCorrientes)

@@ -7,9 +7,9 @@ namespace Prototipos_TUTASA.ResultadoCostoVSVentas_v2
     internal class ArrendamientoBodega
     {
         public int idArrendamiento { get; set; }
-        public string idServicio { get; set; }
+
+        public int idEmpresa { get; set; }
         public DateTime periodo { get; set; }
-        public TipoArrendamientoEnum tipoArrendamiento { get; set; }
         public decimal importeMensual { get; set; }
     }
 }
