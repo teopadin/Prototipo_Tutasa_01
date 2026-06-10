@@ -10,6 +10,6 @@ namespace Prototipos_TUTASA.Admisión
         public decimal ExtraRetiroDomicilio { get; set; }
         public decimal ExtraEntregaDomicilio { get; set; }
         public decimal ExtraEntregaAgencia { get; set; }
-        public decimal TarifaTotal => PrecioFlete + ExtraRetiroDomicilio + ExtraEntregaDomicilio + ExtraEntregaAgencia;
+        public decimal TarifaTotal { get; set; }
     }
 }

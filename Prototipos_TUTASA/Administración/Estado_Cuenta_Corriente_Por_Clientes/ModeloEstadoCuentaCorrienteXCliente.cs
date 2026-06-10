@@ -17,19 +17,24 @@ namespace Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrient
         {
             Clientes = new List<Cliente>
             {
-                new Cliente { IdCliente = 1, RazonSocial = "Electro Centro SA", Cuit = 30711122234, Telefono = "3514567890", Calle = "Av. Colón", Altura = 1250, Piso = "3", CodigoPostal = "5000", Ciudad = "Córdoba" },
-                new Cliente { IdCliente = 2, RazonSocial = "Textiles Norte SRL", Cuit = 30700011128, Telefono = "3814556677", Calle = "San Martín", Altura = 870, Piso = "", CodigoPostal = "4000", Ciudad = "San Miguel de Tucumán" },
-                new Cliente { IdCliente = 3, RazonSocial = "Mercado Sur", Cuit = 27188899991, Telefono = "2920445566", Calle = "Roca", Altura = 230, Piso = "1", CodigoPostal = "8500", Ciudad = "Viedma" },
-                new Cliente { IdCliente = 4, RazonSocial = "Cliente Sin Pendientes SA", Cuit = 30699988870, Telefono = "3514223344", Calle = "Belgrano", Altura = 550, Piso = "", CodigoPostal = "5000", Ciudad = "Córdoba" }
+                new Cliente { idCliente = 1, razonSocial = "Electro Centro SA", cuit = 30711122234 },
+                new Cliente { idCliente = 2, razonSocial = "Textiles Norte SRL", cuit = 30700011128 },
+                new Cliente { idCliente = 3, razonSocial = "Mercado Sur", cuit = 27188899991 },
+                new Cliente { idCliente = 4, razonSocial = "Cliente Con Saldo a Favor SA", cuit = 30699988870 }
             };
 
             CuentasCorrientes = new List<CuentaCorrienteCliente>
             {
-                new CuentaCorrienteCliente { IdCuentaCorriente = 1, IdCliente = 1, EstadoCuenta = EstadoCuentaCorrienteEnum.Activa, SaldoActual = 125000 },
-                new CuentaCorrienteCliente { IdCuentaCorriente = 2, IdCliente = 2, EstadoCuenta = EstadoCuentaCorrienteEnum.Activa, SaldoActual = 43000 },
-                new CuentaCorrienteCliente { IdCuentaCorriente = 3, IdCliente = 3, EstadoCuenta = EstadoCuentaCorrienteEnum.Bloqueada, SaldoActual = 240000 },
-                new CuentaCorrienteCliente { IdCuentaCorriente = 4, IdCliente = 4, EstadoCuenta = EstadoCuentaCorrienteEnum.Activa, SaldoActual = 0 }
+                new CuentaCorrienteCliente { idCuentaCorriente = 1, idCliente = 1, saldoActual = 125000 },
+                new CuentaCorrienteCliente { idCuentaCorriente = 2, idCliente = 2, saldoActual = 43000 },
+                new CuentaCorrienteCliente { idCuentaCorriente = 3, idCliente = 3, saldoActual = 240000 },
+                new CuentaCorrienteCliente { idCuentaCorriente = 4, idCliente = 4, saldoActual = -67500 }
             };
+
+            foreach (CuentaCorrienteCliente cuenta in CuentasCorrientes)
+            {
+                ActualizarEstadoCuenta(cuenta);
+            }
 
             DetallesFactura = new List<DetalleFactura>
             {
@@ -46,7 +51,7 @@ namespace Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrient
 
         public List<Cliente> ObtenerClientes()
         {
-            return Clientes.OrderBy(c => c.RazonSocial).ToList();
+            return Clientes.OrderBy(c => c.razonSocial).ToList();
         }
 
         public void SeleccionarCliente(Cliente cliente)
@@ -61,15 +66,47 @@ namespace Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrient
 
         public CuentaCorrienteCliente ObtenerCuentaCorriente(Cliente cliente)
         {
-            return CuentasCorrientes.FirstOrDefault(c => c.IdCliente == cliente.IdCliente);
+            return CuentasCorrientes.FirstOrDefault(c => c.idCliente == cliente.idCliente);
+        }
+
+        public string ObtenerEstadoCuentaTexto(CuentaCorrienteCliente cuenta)
+        {
+            if (cuenta == null || cuenta.saldoActual == 0)
+                return "Sin saldo";
+
+            if (cuenta.saldoActual > 0)
+                return "Saldo pendiente";
+
+            return "Saldo a favor";
+        }
+
+        public string ObtenerSaldoActualTexto(CuentaCorrienteCliente cuenta)
+        {
+            if (cuenta == null || cuenta.saldoActual == 0)
+                return "$0,00";
+
+            if (cuenta.saldoActual > 0)
+                return "Debe " + cuenta.saldoActual.ToString("C");
+
+            return "A favor " + Math.Abs(cuenta.saldoActual).ToString("C");
+        }
+
+        private void ActualizarEstadoCuenta(CuentaCorrienteCliente cuenta)
+        {
+            if (cuenta.saldoActual > 0)
+                cuenta.estadoCuenta = EstadoCuentaCorrienteEnum.SaldoPendiente;
+            else if (cuenta.saldoActual < 0)
+                cuenta.estadoCuenta = EstadoCuentaCorrienteEnum.SaldoAFavor;
+            else
+                cuenta.estadoCuenta = EstadoCuentaCorrienteEnum.SinSaldo;
         }
 
         public List<DetalleFactura> ObtenerDetallesPendientes(Cliente cliente)
         {
             return DetallesFactura
-                .Where(d => d.NroFactura == 0)
-                .Where(d => ObtenerIdClientePorGuia(d.NroGuia) == cliente.IdCliente)
-                .OrderBy(d => d.NroGuia)
+                .Where(d => d.nroFactura == 0)
+                .Where(d => ObtenerIdClientePorGuia(d.nroGuia) == cliente.idCliente)
+                .OrderBy(d => d.nroGuia)
                 .ToList();
         }
 
@@ -84,24 +121,10 @@ namespace Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrient
 
             foreach (DetalleFactura detalle in ObtenerDetallesPendientes(cliente))
             {
-                total += detalle.Importe;
+                total += detalle.tarifaCalculada;
             }
 
             return total;
-        }
-
-        public bool ClienteHabilitadoParaFacturar(Cliente cliente)
-        {
-            CuentaCorrienteCliente cuenta = ObtenerCuentaCorriente(cliente);
-            return cuenta != null && cuenta.EstadoCuenta == EstadoCuentaCorrienteEnum.Activa;
-        }
-
-        public string ObtenerCondicionFacturacion(Cliente cliente)
-        {
-            if (ClienteHabilitadoParaFacturar(cliente))
-                return "Habilitado";
-
-            return "Bloqueado";
         }
 
         public Factura EmitirFactura(Cliente cliente)
@@ -109,18 +132,20 @@ namespace Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrient
             List<DetalleFactura> detallesPendientes = ObtenerDetallesPendientes(cliente);
 
             Factura factura = new Factura();
-            factura.NroFactura = Facturas.Count + 1;
-            factura.FechaEmision = DateTime.Today;
-            factura.IdCliente = cliente.IdCliente;
+            factura.nroFactura = Facturas.Count + 1;
+            factura.fechaEmision = DateTime.Today;
+            factura.idCliente = cliente.idCliente;
 
             foreach (DetalleFactura detalle in detallesPendientes)
             {
-                detalle.NroFactura = factura.NroFactura;
-                factura.Detalles.Add(detalle);
+                detalle.nroFactura = factura.nroFactura;
+                factura.detalles.Add(detalle);
             }
 
             CuentaCorrienteCliente cuenta = ObtenerCuentaCorriente(cliente);
-            cuenta.SaldoActual += factura.ImporteTotal;
+            cuenta.saldoActual += factura.ImporteTotal;
+            ActualizarEstadoCuenta(cuenta);
+
             Facturas.Add(factura);
 
             return factura;
@@ -175,10 +200,10 @@ namespace Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrient
         {
             return new DetalleFactura
             {
-                IdDetalleFactura = idDetalle,
-                NroFactura = 0,
-                NroGuia = nroGuia,
-                Importe = importe
+                idDetalleFactura = idDetalle,
+                nroFactura = 0,
+                nroGuia = nroGuia,
+                tarifaCalculada = importe
             };
         }
     }

@@ -7,19 +7,19 @@ namespace Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrient
 {
     internal class Factura
     {
-        public int NroFactura { get; set; }
-        public DateTime FechaEmision { get; set; }
-        public int IdCliente { get; set; }
-        public List<DetalleFactura> Detalles { get; set; }
+        public int nroFactura { get; set; }
+        public DateTime fechaEmision { get; set; }
+        public int idCliente { get; set; }
+        public List<DetalleFactura> detalles { get; set; }
 
         public decimal ImporteTotal
         {
-            get { return Detalles.Sum(d => d.Importe); }
+            get { return detalles.Sum(d => d.tarifaCalculada); }
         }
 
         public Factura()
         {
-            Detalles = new List<DetalleFactura>();
+            detalles = new List<DetalleFactura>();
         }
     }
 }
