@@ -27,6 +27,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="DATOS/*.json" />
+    <Content Include="DATOS/*.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <TargetPath>DATOS/%(Filename)%(Extension)</TargetPath>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="DATOS\" />
     <Folder Include="PRUEBAS\1.Imposicion\1.1PorCallcenter\" />
     <Folder Include="PRUEBAS\1.Imposicion\1.2.PorAgencia\" />
