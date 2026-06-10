@@ -18,9 +18,9 @@ namespace Prototipos_TUTASA.ResultadoCostoVSVentas_v2
         {
             EmpresasTransporte = new List<EmpresaTransporte>
             {
-                new EmpresaTransporte { IdEmpresa = 1, RazonSocial = "Transportes del Sur SA", ConvenioVigente = true },
-                new EmpresaTransporte { IdEmpresa = 2, RazonSocial = "Logística Norte SRL", ConvenioVigente = true },
-                new EmpresaTransporte { IdEmpresa = 3, RazonSocial = "Rápido del Este", ConvenioVigente = true }
+                new EmpresaTransporte { idEmpresa = 1, razonSocial = "Transportes del Sur SA", convenioVigente = true },
+                new EmpresaTransporte { idEmpresa = 2, razonSocial = "Logística Norte SRL", convenioVigente = true },
+                new EmpresaTransporte { idEmpresa = 3, razonSocial = "Rápido del Este", convenioVigente = true }
             };
 
             Servicios = new List<ServicioMediaDistancia>
@@ -78,8 +78,8 @@ namespace Prototipos_TUTASA.ResultadoCostoVSVentas_v2
         public List<EmpresaTransporte> ObtenerEmpresasTransporte()
         {
             return EmpresasTransporte
-                .Where(e => e.ConvenioVigente)
-                .OrderBy(e => e.RazonSocial)
+                .Where(e => e.convenioVigente)
+                .OrderBy(e => e.razonSocial)
                 .ToList();
         }
 
@@ -96,15 +96,15 @@ namespace Prototipos_TUTASA.ResultadoCostoVSVentas_v2
             if (empresa == null || PeriodoEsFuturo(periodo))
                 return null;
 
-            decimal ventas = ObtenerVentas(empresa.IdEmpresa, periodo);
-            decimal costos = ObtenerCostos(empresa.IdEmpresa, periodo);
+            decimal ventas = ObtenerVentas(empresa.idEmpresa, periodo);
+            decimal costos = ObtenerCostos(empresa.idEmpresa, periodo);
 
             if (ventas == 0 && costos == 0)
                 return null;
 
             return new ResultadoCostoVenta
             {
-                IdEmpresa = empresa.IdEmpresa,
+                IdEmpresa = empresa.idEmpresa,
                 Periodo = new DateTime(periodo.Year, periodo.Month, 1),
                 Ventas = ventas,
                 Costos = costos
@@ -156,13 +156,13 @@ namespace Prototipos_TUTASA.ResultadoCostoVSVentas_v2
 
             foreach (ArrendamientoBodega arrendamiento in ArrendamientosBodega)
             {
-                if (!idsServicioEmpresa.Contains(arrendamiento.IdServicio))
+                if (!idsServicioEmpresa.Contains(arrendamiento.idServicio))
                     continue;
 
-                if (arrendamiento.Periodo.Year != periodo.Year || arrendamiento.Periodo.Month != periodo.Month)
+                if (arrendamiento.periodo.Year != periodo.Year || arrendamiento.periodo.Month != periodo.Month)
                     continue;
 
-                totalCostos += arrendamiento.ImporteMensual;
+                totalCostos += arrendamiento.importeMensual;
             }
 
             return totalCostos;
@@ -209,11 +209,11 @@ namespace Prototipos_TUTASA.ResultadoCostoVSVentas_v2
         {
             return new ArrendamientoBodega
             {
-                IdArrendamiento = id,
-                IdServicio = idServicio,
-                Periodo = periodo,
-                TipoArrendamiento = tipo,
-                ImporteMensual = importeMensual
+                idArrendamiento = id,
+                idServicio = idServicio,
+                periodo = periodo,
+                tipoArrendamiento = tipo,
+                importeMensual = importeMensual
             };
         }
     }

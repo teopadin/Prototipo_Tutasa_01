@@ -6,13 +6,13 @@ namespace Prototipos_TUTASA.ResultadoCostoVSVentas_v2
 {
     internal class EmpresaTransporte
     {
-        public int IdEmpresa { get; set; }
-        public string RazonSocial { get; set; }
-        public bool ConvenioVigente { get; set; }
+        public int idEmpresa { get; set; }
+        public string razonSocial { get; set; }
+        public bool convenioVigente { get; set; }
 
         public override string ToString()
         {
-            return RazonSocial;
+            return razonSocial;
         }
     }
 }
