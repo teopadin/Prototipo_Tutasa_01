@@ -12,7 +12,7 @@ namespace Prototipos_TUTASA.Rendiciones_HDR
 {
     public partial class Rendir_HDR_De_Retiro : Form
 {
-        private readonly ModeloRendirHDRDeRetiro modelo = new ModeloRendirHDRDeRetiro();
+        private readonly ModeloRendirHojaDeRutaDeRetiro modelo = new ModeloRendirHojaDeRutaDeRetiro();
 
         public Rendir_HDR_De_Retiro()
         {
