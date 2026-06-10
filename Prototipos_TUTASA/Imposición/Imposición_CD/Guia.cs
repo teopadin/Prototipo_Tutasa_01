@@ -6,7 +6,7 @@ namespace Prototipos_TUTASA.Imposición.Imposición_CD
 {
     internal class Guia
     {
-        public string NroGuia { get; set; }
+        public string nroGuia { get; set; }
 
     }
 }

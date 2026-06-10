@@ -93,10 +93,10 @@ namespace Prototipos_TUTASA.ImposiciónCD_V2
 
             DestinatarioGuia destinatario = new DestinatarioGuia
             {
-                Dni = dniDestinatario,
-                Nombre = txtNombreDestinatario.Text.Trim(),
-                Apellido = txtApellidoDestinatario.Text.Trim(),
-                Telefono = txtTelefonoDestinatario.Text.Trim()
+                dni = dniDestinatario,
+                nombre = txtNombreDestinatario.Text.Trim(),
+                apellido = txtApellidoDestinatario.Text.Trim(),
+                telefono = txtTelefonoDestinatario.Text.Trim()
             };
 
             Agencia agenciaDestino = null;
@@ -107,12 +107,12 @@ namespace Prototipos_TUTASA.ImposiciónCD_V2
                 if (!ValidarDomicilioPuertaPuerta())
                     return;
 
-                destinatario.Calle = textBox1.Text.Trim();
-                destinatario.Altura = int.Parse(textBox2.Text.Trim());
-                destinatario.Piso = textBox3.Text.Trim();
-                destinatario.CodigoPostal = textBox4.Text.Trim();
-                destinatario.Ciudad = textBox5.Text.Trim();
-                cdDestino = modelo.ObtenerCentroDistribucionPorCiudad(destinatario.Ciudad);
+                destinatario.calle = textBox1.Text.Trim();
+                destinatario.altura = int.Parse(textBox2.Text.Trim());
+                destinatario.piso = textBox3.Text.Trim();
+                destinatario.codigoPostal = textBox4.Text.Trim();
+                destinatario.ciudad = textBox5.Text.Trim();
+                cdDestino = modelo.ObtenerCentroDistribucionPorCiudad(destinatario.ciudad);
             }
             else if (modalidadEntrega == ModalidadEntregaEnum.EntregaAgencia)
             {
@@ -134,15 +134,15 @@ namespace Prototipos_TUTASA.ImposiciónCD_V2
                     return;
                 }
 
-                destinatario.Calle = string.Empty;
-                destinatario.Altura = 0;
-                destinatario.Piso = string.Empty;
-                destinatario.CodigoPostal = string.Empty;
-                destinatario.Ciudad = cdDestino.Nombre;
+                destinatario.calle = string.Empty;
+                destinatario.altura = 0;
+                destinatario.piso = string.Empty;
+                destinatario.codigoPostal = string.Empty;
+                destinatario.ciudad = cdDestino.nombre;
             }
 
             Guia guia = modelo.RegistrarImposicion(tipoBulto, modalidadEntrega, destinatario, cdDestino, agenciaDestino);
-            MessageBox.Show("Guía N° " + guia.NroGuia + " generada y admitida con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Guía N° " + guia.nroGuia + " generada y admitida con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Close();
         }
 
@@ -155,13 +155,13 @@ namespace Prototipos_TUTASA.ImposiciónCD_V2
                 return;
             }
 
-            txtCUIT.Text = cliente.CUIT.ToString();
-            txtTelRem.Text = cliente.Telefono;
-            txtCalleRemitente.Text = cliente.Calle;
-            txtAlturaRemitente.Text = cliente.Altura.ToString();
-            txtPisoRemitente.Text = cliente.Piso;
-            txtCodigoPostalRemitente.Text = cliente.CodigoPostal;
-            txtCiudadRemitente.Text = cliente.Ciudad;
+            txtCUIT.Text = cliente.cuit.ToString();
+            txtTelRem.Text = cliente.telefono;
+            txtCalleRemitente.Text = cliente.calle;
+            txtAlturaRemitente.Text = cliente.altura.ToString();
+            txtPisoRemitente.Text = cliente.piso;
+            txtCodigoPostalRemitente.Text = cliente.codigoPostal;
+            txtCiudadRemitente.Text = cliente.ciudad;
         }
 
         private void Modalidad_CheckedChanged(object sender, EventArgs e)
