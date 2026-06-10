@@ -206,6 +206,11 @@ namespace Prototipos_TUTASA.Admisión
                 }
             }
 
+            tarifaCalc.TarifaTotal = tarifaCalc.PrecioFlete
+                                   + tarifaCalc.ExtraRetiroDomicilio
+                                   + tarifaCalc.ExtraEntregaDomicilio
+                                   + tarifaCalc.ExtraEntregaAgencia;
+
             return tarifaCalc;
         }
         // Confirma la admisión de una guía
