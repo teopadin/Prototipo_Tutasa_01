@@ -152,7 +152,6 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia
             };
 
             guia.Estado = EstadoGuiaEnum.Entregada;
-            guia.FechaEntrega = DateTime.Now;
             recibos.Add(recibo);
         }
 

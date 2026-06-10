@@ -227,7 +227,7 @@ namespace Prototipos_TUTASA.HojaDeRutaRetiro
 
             // Cambiar el estado de las guías a PendienteDeRetiroPorTransportista
             foreach (var guia in guiasSeleccionadas)
-                guia.Estado = EstadoGuia.PendienteDeRetiroPorTransportista;
+                guia.Estado = EstadoGuia.IncluidaEnHDRRetiro;
 
             // Incrementar las HDR asignadas al transportista
             transportistaSeleccionado.HdrAsignadas++;
