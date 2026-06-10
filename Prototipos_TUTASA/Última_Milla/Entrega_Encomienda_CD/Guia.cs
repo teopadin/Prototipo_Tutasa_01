@@ -5,11 +5,9 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_CD
 {
     internal class Guia
     {
-        public string NroGuia { get; set; } = string.Empty;
+        public string NroGuia { get; set; }
         public EstadoGuiaEnum Estado { get; set; }
-        public int IdCDDestino { get; set; }
-        public DestinatarioGuia Destinatario { get; set; } = null!;
-        public DateTime FechaEntrega { get; set; }
-        public List<HistorialEstadoGuia> Historial { get; set; } = new List<HistorialEstadoGuia>();
+        public int idCDDestino { get; set; }
+        public DestinatarioGuia Destinatario { get; set; }
     }
 }
