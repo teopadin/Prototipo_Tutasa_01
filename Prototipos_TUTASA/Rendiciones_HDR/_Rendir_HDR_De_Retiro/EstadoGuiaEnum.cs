@@ -8,5 +8,6 @@ namespace Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Retiro
     {
         IncluidaEnHDRRetiro,
         Retirada,
+        Impuesta
     }
 }
