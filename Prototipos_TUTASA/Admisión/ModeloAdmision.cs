@@ -24,20 +24,20 @@ namespace Prototipos_TUTASA.Admisión
         };
 
         // Tarifas por cliente: precio del flete según cliente, CDOrigen, CDDestino y tipo de bulto
-        private List<TarifaPorCliente> tarifasPorCliente = new List<TarifaPorCliente>
+        private List<CuadroTarifario> cuadroTarifario = new List<CuadroTarifario>
         {
-            new TarifaPorCliente { IdTarifa = 1, IdCliente = 100, IdCDOrigen = 1, IdCDDestino = 2, TipoBulto = TiposBultoEnum.M, PrecioFlete = 1500m },
-            new TarifaPorCliente { IdTarifa = 2, IdCliente = 200, IdCDOrigen = 1, IdCDDestino = 1, TipoBulto = TiposBultoEnum.S, PrecioFlete = 500m },
-            new TarifaPorCliente { IdTarifa = 3, IdCliente = 300, IdCDOrigen = 1, IdCDDestino = 1, TipoBulto = TiposBultoEnum.L, PrecioFlete = 1000m },
-            new TarifaPorCliente { IdTarifa = 4, IdCliente = 100, IdCDOrigen = 1, IdCDDestino = 3, TipoBulto = TiposBultoEnum.XL, PrecioFlete = 3000m }
+            new CuadroTarifario { IdTarifa = 1, IdCDOrigen = 1, IdCDDestino = 2, TipoBulto = TiposBultoEnum.M, PrecioFlete = 1500m },
+            new CuadroTarifario { IdTarifa = 2, IdCDOrigen = 1, IdCDDestino = 1, TipoBulto = TiposBultoEnum.S, PrecioFlete = 500m },
+            new CuadroTarifario { IdTarifa = 3, IdCDOrigen = 1, IdCDDestino = 1, TipoBulto = TiposBultoEnum.L, PrecioFlete = 1000m },
+            new CuadroTarifario { IdTarifa = 4, IdCDOrigen = 1, IdCDDestino = 3, TipoBulto = TiposBultoEnum.XL, PrecioFlete = 3000m }
         };
 
         // Costos extras fijos del sistema (montos por concepto)
         private List<CostoExtra> costosExtra = new List<CostoExtra>
         {
-            new CostoExtra { IdCostoExtra = 1, Tipo = TipoCostoExtraEnum.RetiroDomicilio, Monto = 500m },
-            new CostoExtra { IdCostoExtra = 2, Tipo = TipoCostoExtraEnum.EntregaDomicilio, Monto = 800m },
-            new CostoExtra { IdCostoExtra = 3, Tipo = TipoCostoExtraEnum.EntregaAgencia, Monto = 400m }
+            new CostoExtra { IdCostoExtra = 1, TipoCostoExtra = "Retiro a domicilio", Monto = 500m },
+            new CostoExtra { IdCostoExtra = 2, TipoCostoExtra = "Entrega a domicilio", Monto = 800m },
+            new CostoExtra { IdCostoExtra = 3, TipoCostoExtra = "Entrega en agencia", Monto = 400m }
         };
 
         private List<Guia> guias = new List<Guia>
@@ -138,12 +138,12 @@ namespace Prototipos_TUTASA.Admisión
         }
 
         // Busca la tarifa por cliente que matchea la combinación cliente/CDOrigen/CDDestino/tipoBulto
-        public TarifaPorCliente BuscarTarifa(int idCliente, int idCDOrigen, int idCDDestino, TiposBultoEnum tipoBulto)
+        public CuadroTarifario BuscarTarifa(int idCDOrigen, int idCDDestino, TiposBultoEnum tipoBulto)
         {
-            foreach (TarifaPorCliente tarifa in tarifasPorCliente)
+            foreach (CuadroTarifario tarifa in cuadroTarifario)
             {
-                if (tarifa.IdCliente == idCliente
-                    && tarifa.IdCDOrigen == idCDOrigen
+                if (
+                       tarifa.IdCDOrigen == idCDOrigen
                     && tarifa.IdCDDestino == idCDDestino
                     && tarifa.TipoBulto == tipoBulto)
                 {
@@ -154,11 +154,11 @@ namespace Prototipos_TUTASA.Admisión
         }
 
         // Busca el costo extra fijo por tipo
-        public CostoExtra BuscarCostoExtra(TipoCostoExtraEnum tipo)
+        public CostoExtra BuscarCostoExtra(string tipo)
         {
             foreach (CostoExtra costo in costosExtra)
             {
-                if (costo.Tipo == tipo)
+                if (costo.TipoCostoExtra == tipo)
                 {
                     return costo;
                 }
@@ -172,7 +172,7 @@ namespace Prototipos_TUTASA.Admisión
             TarifaCalculadaGuia tarifaCalc = new TarifaCalculadaGuia();
 
             // Flete según combinación cliente/origen/destino/bulto
-            TarifaPorCliente tarifa = BuscarTarifa(guia.IdCliente, idCDAdmisionActual, guia.IdCDDestino, guia.TipoBulto);
+            CuadroTarifario tarifa = BuscarTarifa(idCDAdmisionActual, guia.IdCDDestino, guia.TipoBulto);
             if (tarifa != null)
             {
                 tarifaCalc.PrecioFlete = tarifa.PrecioFlete;
@@ -181,7 +181,7 @@ namespace Prototipos_TUTASA.Admisión
             // Extra retiro a domicilio (solo si la imposición fue por CallCenter)
             if (guia.TipoImposicion == TipoImposicionEnum.CallCenter)
             {
-                CostoExtra extraRetiro = BuscarCostoExtra(TipoCostoExtraEnum.RetiroDomicilio);
+                CostoExtra extraRetiro = BuscarCostoExtra("Retiro a domicilio");
                 if (extraRetiro != null)
                 {
                     tarifaCalc.ExtraRetiroDomicilio = extraRetiro.Monto;
@@ -191,7 +191,7 @@ namespace Prototipos_TUTASA.Admisión
             // Extra entrega: solo aplica uno según la modalidad
             if (guia.ModalidadEntrega == ModalidadEntregaEnum.EntregaDomicilio)
             {
-                CostoExtra extraEntrega = BuscarCostoExtra(TipoCostoExtraEnum.EntregaDomicilio);
+                CostoExtra extraEntrega = BuscarCostoExtra("Entrega a domicilio");
                 if (extraEntrega != null)
                 {
                     tarifaCalc.ExtraEntregaDomicilio = extraEntrega.Monto;
@@ -199,23 +199,15 @@ namespace Prototipos_TUTASA.Admisión
             }
             else if (guia.ModalidadEntrega == ModalidadEntregaEnum.EntregaAgencia)
             {
-                CostoExtra extraEntrega = BuscarCostoExtra(TipoCostoExtraEnum.EntregaAgencia);
+                CostoExtra extraEntrega = BuscarCostoExtra("Entrega en agencia");
                 if (extraEntrega != null)
                 {
                     tarifaCalc.ExtraEntregaAgencia = extraEntrega.Monto;
                 }
             }
-            // Si es EntregaCD no aplica ningún extra de entrega
-
-            // Total
-            tarifaCalc.TarifaTotal = tarifaCalc.PrecioFlete
-                                   + tarifaCalc.ExtraRetiroDomicilio
-                                   + tarifaCalc.ExtraEntregaDomicilio
-                                   + tarifaCalc.ExtraEntregaAgencia;
 
             return tarifaCalc;
         }
-
         // Confirma la admisión de una guía
         public void ConfirmarAdmision(string nroGuia, DateTime fechaAdmision)
         {
