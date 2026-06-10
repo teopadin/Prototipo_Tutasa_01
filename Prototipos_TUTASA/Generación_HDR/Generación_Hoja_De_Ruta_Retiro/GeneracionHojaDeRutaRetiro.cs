@@ -64,7 +64,6 @@ namespace Prototipos_TUTASA.HojaDeRutaRetiro
                 item.SubItems.Add(cp);
                 item.SubItems.Add(ciudad);
                 item.SubItems.Add(guia.TipoBulto.ToString());
-                item.SubItems.Add(guia.FechaImposicion.ToShortDateString());
                 item.Tag = guia;
 
                 lvGuiasPendientes.Items.Add(item);

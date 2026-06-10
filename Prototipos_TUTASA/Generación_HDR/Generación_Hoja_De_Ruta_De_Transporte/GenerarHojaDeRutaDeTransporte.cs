@@ -137,7 +137,7 @@ namespace Prototipos_TUTASA.Generación_Hoja_De_Ruta_De_Transporte
                 item.SubItems.Add(servicio.idEmpresa.razonSocial);
                 item.SubItems.Add(servicio.tipoArrendamiento.ToString());
                 item.SubItems.Add(servicio.CapacidadDisponible.ToString());
-                item.SubItems.Add(servicio.FechaSalida.ToString("dd/MM/yyyy HH:mm"));
+                item.SubItems.Add(servicio.fechaSalida.ToString("dd/MM/yyyy HH:mm"));
                 item.Tag = servicio;
                 lvServicios.Items.Add(item);
             }
