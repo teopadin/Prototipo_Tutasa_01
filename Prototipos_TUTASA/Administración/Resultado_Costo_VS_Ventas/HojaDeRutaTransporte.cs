@@ -6,17 +6,17 @@ namespace Prototipos_TUTASA.ResultadoCostoVSVentas_v2
 {
     internal class HojaDeRutaTransporte
     {
-        public int NroHDR { get; set; }
-        public DateTime FechaGeneracion { get; set; }
-        public int IdCDOrigen { get; set; }
-        public int IdCDDestino { get; set; }
+        public int nroHDR { get; set; }
+        public DateTime fechaGeneracion { get; set; }
+        public int idCDOrigen { get; set; }
+        public int idCDDestino { get; set; }
         public EstadoHojaDeRutaEnum Estado { get; set; }
-        public string IdServicio { get; set; }
-        public List<string> DetalleGuias { get; set; }
+        public string idServicio { get; set; }
+        public List<string> detalleGuias { get; set; }
 
         public HojaDeRutaTransporte()
         {
-            DetalleGuias = new List<string>();
+            detalleGuias = new List<string>();
         }
     }
 }

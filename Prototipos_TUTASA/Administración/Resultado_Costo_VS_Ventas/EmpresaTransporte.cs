@@ -9,10 +9,5 @@ namespace Prototipos_TUTASA.ResultadoCostoVSVentas_v2
         public int idEmpresa { get; set; }
         public string razonSocial { get; set; }
         public bool convenioVigente { get; set; }
-
-        public override string ToString()
-        {
-            return razonSocial;
-        }
     }
 }

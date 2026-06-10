@@ -121,13 +121,13 @@ namespace Prototipos_TUTASA.ResultadoCostoVSVentas_v2
 
             foreach (HojaDeRutaTransporte hdr in HojasDeRutaTransporte)
             {
-                if (!idsServicioEmpresa.Contains(hdr.IdServicio))
+                if (!idsServicioEmpresa.Contains(hdr.idServicio))
                     continue;
 
                 if (hdr.Estado != EstadoHojaDeRutaEnum.Cumplida)
                     continue;
 
-                foreach (string nroGuia in hdr.DetalleGuias)
+                foreach (string nroGuia in hdr.detalleGuias)
                 {
                     if (!fechasEntregaPorGuia.ContainsKey(nroGuia))
                         continue;
@@ -187,13 +187,13 @@ namespace Prototipos_TUTASA.ResultadoCostoVSVentas_v2
         {
             HojaDeRutaTransporte hdr = new HojaDeRutaTransporte
             {
-                NroHDR = nroHDR,
-                FechaGeneracion = fechaGeneracion,
-                IdCDOrigen = idCDOrigen,
-                IdCDDestino = idCDDestino,
+                nroHDR = nroHDR,
+                fechaGeneracion = fechaGeneracion,
+                idCDOrigen = idCDOrigen,
+                idCDDestino = idCDDestino,
                 Estado = EstadoHojaDeRutaEnum.Cumplida,
-                IdServicio = idServicio,
-                DetalleGuias = guias.ToList()
+                idServicio = idServicio,
+                detalleGuias = guias.ToList()
             };
 
             ServicioMediaDistancia servicio = Servicios.FirstOrDefault(s => s.IdServicio == idServicio);
