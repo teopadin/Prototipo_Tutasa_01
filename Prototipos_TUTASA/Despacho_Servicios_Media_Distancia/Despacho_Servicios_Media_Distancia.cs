@@ -48,7 +48,7 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
                 return;
             }
 
-            var hdrSeleccionada = (HDRTransporte)ServicioCmb.SelectedItem;
+            var hdrSeleccionada = (HojaDeRutaTransporte)ServicioCmb.SelectedItem;
 
             // 1. Destino dinámico según el IdCDDestino del diagrama
             switch (hdrSeleccionada.IdCDDestino)
@@ -100,7 +100,7 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
         private void ConfirmarBtn_Click(object sender, EventArgs e)
         {
             // Instanciamos la selección localmente para verificar
-            var hdrSeleccionada = ServicioCmb.SelectedItem as HDRTransporte;
+            var hdrSeleccionada = ServicioCmb.SelectedItem as HojaDeRutaTransporte;
 
             if (hdrSeleccionada == null)
             {

@@ -5,7 +5,7 @@ using System.Text;
 namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
 {
     // Entidad de soporte para la pantalla (Hoja de Ruta de Transporte)
-    internal class HDRTransporte
+    internal class HojaDeRutaTransporte
     {
         public int NroHDR { get; set; }
         public EstadoHojaDeRutaEnum Estado { get; set; }

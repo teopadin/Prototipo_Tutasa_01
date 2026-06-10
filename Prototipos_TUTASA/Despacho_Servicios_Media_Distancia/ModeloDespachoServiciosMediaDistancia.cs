@@ -8,7 +8,7 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
 {
     internal class ModeloDespachoServiciosMediaDistancia
     {
-        private List<HDRTransporte> hdrs;
+        private List<HojaDeRutaTransporte> hdrs;
         private List<ServicioMediaDistancia> servicios;
 
         // ALMACENES DE ENTIDADES (Las "tablas" maestras)
@@ -52,10 +52,10 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
             };
 
             // 2. Inicializamos las HDRs usando SOLAMENTE IDs (la forma correcta de hacerlo)
-            hdrs = new List<HDRTransporte>
+            hdrs = new List<HojaDeRutaTransporte>
             {
 
-                new HDRTransporte
+                new HojaDeRutaTransporte
                 {
                     NroHDR = 3001,
                     Estado = EstadoHojaDeRutaEnum.Generada,
@@ -68,7 +68,7 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
                         new Guia { NroGuia = "G-1003", IdCliente = 200, TipoBulto = TiposBultoEnum.L, Destinatario = new DestinatarioGuia { Nombre = "Laura", Apellido = "Martínez" } }
                     }
                 },
-                new HDRTransporte
+                new HojaDeRutaTransporte
                 {
                     NroHDR = 3002,
                     Estado = EstadoHojaDeRutaEnum.Generada,
@@ -79,7 +79,7 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
                         new Guia { NroGuia = "G-2041", IdCliente = 300, TipoBulto = TiposBultoEnum.L, Destinatario = new DestinatarioGuia { Nombre = "Federico", Apellido = "Quintana" } }
                     }
                 },
-                new HDRTransporte
+                new HojaDeRutaTransporte
                 {
                     NroHDR = 3003,
                     Estado = EstadoHojaDeRutaEnum.Generada,
@@ -91,7 +91,7 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
                         new Guia { NroGuia = "G-3111", IdCliente = 500, TipoBulto = TiposBultoEnum.M, Destinatario = new DestinatarioGuia { Nombre = "Marta", Apellido = "Gómez" } }
                     }
                 },
-                new HDRTransporte
+                new HojaDeRutaTransporte
                 {
                     NroHDR = 3004,
                     Estado = EstadoHojaDeRutaEnum.Generada,
@@ -104,7 +104,7 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
                         new Guia { NroGuia = "G-4003", IdCliente = 500, TipoBulto = TiposBultoEnum.S, Destinatario = new DestinatarioGuia { Nombre = "Clara", Apellido = "Benítez" } }
                     }
                 },
-                new HDRTransporte
+                new HojaDeRutaTransporte
                 {
                     NroHDR = 3005,
                     Estado = EstadoHojaDeRutaEnum.Generada,
@@ -126,9 +126,9 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
         public ServicioMediaDistancia BuscarServicioPorId(int id) => servicios.Find(s => s.IdServicio == id);
 
         // --- MÉTODOS DE LÓGICA (No cambian) ---
-        internal List<HDRTransporte> ObtenerHDRsPendientes() => hdrs.FindAll(h => h.Estado == EstadoHojaDeRutaEnum.Generada);
+        internal List<HojaDeRutaTransporte> ObtenerHDRsPendientes() => hdrs.FindAll(h => h.Estado == EstadoHojaDeRutaEnum.Generada);
 
-        internal int CalcularBultosEnS(HDRTransporte hdr)
+        internal int CalcularBultosEnS(HojaDeRutaTransporte hdr)
         {
             int total = 0;
             foreach (var g in hdr.DetalleGuias)
@@ -141,7 +141,7 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
             return total;
         }
 
-        internal int CalcularTotalBultos(HDRTransporte hdr) => hdr?.DetalleGuias.Count ?? 0;
+        internal int CalcularTotalBultos(HojaDeRutaTransporte hdr) => hdr?.DetalleGuias.Count ?? 0;
 
         internal int CalcularTotalGeneralPendiente()
         {
@@ -150,7 +150,7 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
             return acumulador;
         }
 
-        internal bool ConfirmarDespacho(HDRTransporte hdr)
+        internal bool ConfirmarDespacho(HojaDeRutaTransporte hdr)
         {
             if (hdr == null) return false;
             foreach (var guia in hdr.DetalleGuias) guia.Estado = EstadoGuiaEnum.EnTransito;
