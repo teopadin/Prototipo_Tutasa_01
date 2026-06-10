@@ -20,28 +20,28 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia
             {
                 new Guia
                 {
-                    NroGuia = "CD02-0002",
+                    NroGuia = "AG01-0001",
                     Estado = EstadoGuiaEnum.PendienteDeRetiroEnAgencia,
                     idAgenciaDestino = agenciaCapital,
                     Destinatario = new DestinatarioGuia { nombre = "Ana", apellido = "Pérez", Dni = 40123456 }
                 },
                 new Guia
                 {
-                    NroGuia = "CD01-0007",
+                    NroGuia = "AG01-0002",
                     Estado = EstadoGuiaEnum.PendienteDeRetiroEnAgencia,
                     idAgenciaDestino = agenciaCapital,
                     Destinatario = new DestinatarioGuia { nombre = "Juan", apellido = "Rodríguez", Dni = 41234567 }
                 },
                 new Guia
                 {
-                    NroGuia = "CD03-0001",
+                    NroGuia = "AG01-0003",
                     Estado = EstadoGuiaEnum.Entregada,
                     idAgenciaDestino = agenciaCapital,
                     Destinatario = new DestinatarioGuia { nombre = "María", apellido = "González", Dni = 42345678 }
                 },
                 new Guia
                 {
-                    NroGuia = "CD02-0009",
+                    NroGuia = "AG02-0001",
                     Estado = EstadoGuiaEnum.PendienteDeRetiroEnAgencia,
                     idAgenciaDestino = agenciaCentro,
                     Destinatario = new DestinatarioGuia { nombre = "Carlos", apellido = "López", Dni = 43567890 }

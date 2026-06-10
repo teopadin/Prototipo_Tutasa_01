@@ -1,0 +1,12 @@
+[
+  {
+    "IdAgencia": 1,
+    "Nombre": "Capital y GBA",
+    "RazonSocial": "Agencia Capital y GBA"
+  },
+  {
+    "IdAgencia": 2,
+    "Nombre": "Centro - Córdoba",
+    "RazonSocial": "Agencia Centro - Córdoba"
+  }
+]

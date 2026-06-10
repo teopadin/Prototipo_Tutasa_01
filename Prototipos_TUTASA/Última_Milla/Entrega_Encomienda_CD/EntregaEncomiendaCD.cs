@@ -45,6 +45,10 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_CD
             Close();
         }
 
+        private void lblValidacion_Click(object sender, EventArgs e)
+        {
+
+        }
 
         private void LimpiarFormulario()
         {
