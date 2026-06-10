@@ -7,5 +7,6 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Distribu
     internal class HojaDeRutaDistribucion
     {
         public int NroHDR { get; set; }
+        public DateTime Fecha { get; set; }
     }
 }

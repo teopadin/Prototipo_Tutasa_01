@@ -27,7 +27,7 @@ namespace Prototipos_TUTASA
         {
             hojas = hojasDeRuta
                 .Where(h => h.DniTransportistaAsignado == transportista.DniTransportista
-                    && h.FechaEmision.Date == fecha.Date
+                    && h.Fecha.Date == fecha.Date
                     && h.Estado == EstadoHojaDeRutaEnum.Generada)
                 .OrderBy(h => h.NroHDR)
                 .ToList();
@@ -143,19 +143,19 @@ namespace Prototipos_TUTASA
 
             AgregarHojaDeRuta(1, DateTime.Today, carlos, new List<Cliente>
             {
-                new Cliente { Remitente = "Empresa ABC SA", Calle = "Av. Rivadavia", Altura = 3200, CodigoPostal = "1406" },
-                new Cliente { Remitente = "Empresa ABC SA", Calle = "Av. Rivadavia", Altura = 3200, CodigoPostal = "1406" }
+                new Cliente { IdCliente = 1, Cuit = 30111111112, RazonSocial = "Empresa ABC SA", Telefono = "1122334455", Calle = "Av. Rivadavia", Altura = 3200, Piso = "3B", Ciudad = "Buenos Aires", CodigoPostal = "1406" },
+                new Cliente { IdCliente = 1, Cuit = 30111111112, RazonSocial = "Empresa ABC SA", Telefono = "1122334455", Calle = "Av. Rivadavia", Altura = 3200, Piso = "3B", Ciudad = "Buenos Aires", CodigoPostal = "1406" }
             });
 
             AgregarHojaDeRuta(2, DateTime.Today, carlos, new List<Cliente>
             {
-                new Cliente { Remitente = "Agencia Norte SA", Calle = "Av. Corrientes", Altura = 1234, CodigoPostal = "1043" },
-                new Cliente { Remitente = "Agencia Norte SA", Calle = "Av. Corrientes", Altura = 1234, CodigoPostal = "1043" }
+                new Cliente { IdCliente = 2, Cuit = 30222222223, RazonSocial = "Agencia Norte SA", Telefono = "1144556677", Calle = "Av. Corrientes", Altura = 1234, Piso = "PB", Ciudad = "Buenos Aires", CodigoPostal = "1043" },
+                new Cliente { IdCliente = 2, Cuit = 30222222223, RazonSocial = "Agencia Norte SA", Telefono = "1144556677", Calle = "Av. Corrientes", Altura = 1234, Piso = "PB", Ciudad = "Buenos Aires", CodigoPostal = "1043" }
             });
 
             AgregarHojaDeRuta(3, DateTime.Today, laura, new List<Cliente>
             {
-                new Cliente { Remitente = "Agencia Sur SRL", Calle = "San Martin", Altura = 500, CodigoPostal = "1043" }
+                new Cliente { IdCliente = 3, Cuit = 30333333334, RazonSocial = "Agencia Sur SRL", Telefono = "1166778899", Calle = "San Martin", Altura = 500, Piso = "1", Ciudad = "Buenos Aires", CodigoPostal = "1043" }
             });
         }
 
@@ -164,7 +164,7 @@ namespace Prototipos_TUTASA
             hojasDeRuta.Add(new HojaRetiroResumen
             {
                 NroHDR = nroHDR,
-                FechaEmision = fecha,
+                Fecha = fecha,
                 DniTransportistaAsignado = transportista.DniTransportista,
                 DetalleGuias = detalleGuias,
                 Estado = EstadoHojaDeRutaEnum.Generada

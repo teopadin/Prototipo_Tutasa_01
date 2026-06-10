@@ -98,7 +98,7 @@ namespace Prototipos_TUTASA
 
                 DestinatarioGuia guia = hoja.DetalleGuias[0];
                 var item = new ListViewItem(hoja.NroHDR.ToString());
-                item.SubItems.Add(guia.Destinatario);
+                item.SubItems.Add(ObtenerDestinatario(guia));
                 item.SubItems.Add(guia.Calle);
                 item.SubItems.Add(guia.Altura.ToString());
                 item.SubItems.Add(guia.CodigoPostal);
@@ -116,6 +116,11 @@ namespace Prototipos_TUTASA
             listView1.Items.Clear();
             textBox4.Text = "0";
             textBox5.Text = "0";
+        }
+
+        private static string ObtenerDestinatario(DestinatarioGuia guia)
+        {
+            return $"{guia.Nombre} {guia.Apellido}".Trim();
         }
     }
 }

@@ -239,6 +239,7 @@ namespace Prototipos_TUTASA.HojaDeRutaDeDistribucion
 
             HojaDeRutaDistribucion nuevaHDR = new HojaDeRutaDistribucion();
             nuevaHDR.NroHDR = modelo.HojasDeRuta.Count + 1;
+            nuevaHDR.Fecha = dtpFecha.Value.Date;
 
             // Cambiar el estado de las guías a EnDistribucion
             foreach (var guia in guiasSeleccionadas)

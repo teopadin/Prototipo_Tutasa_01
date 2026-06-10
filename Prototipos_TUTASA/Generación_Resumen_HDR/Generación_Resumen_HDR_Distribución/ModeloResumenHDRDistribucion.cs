@@ -26,7 +26,7 @@ namespace Prototipos_TUTASA
         {
             hojas = hojasDeRuta
                 .Where(h => h.DniTransportistaAsignado == transportista.DniTransportista
-                    && h.FechaEmision.Date == fecha.Date
+                    && h.Fecha.Date == fecha.Date
                     && h.Estado == EstadoHojaDeRutaEnum.Generada)
                 .OrderBy(h => h.NroHDR)
                 .ToList();
@@ -142,24 +142,24 @@ namespace Prototipos_TUTASA
 
             AgregarHojaDeRuta(1, DateTime.Today, carlos, new List<DestinatarioGuia>
             {
-                new DestinatarioGuia { Destinatario = "Ana Perez", Calle = "Av. Rivadavia", Altura = 3200, CodigoPostal = "1406" },
-                new DestinatarioGuia { Destinatario = "Ana Perez", Calle = "Av. Rivadavia", Altura = 3200, CodigoPostal = "1406" }
+                new DestinatarioGuia { Dni = 40123456, Nombre = "Ana", Apellido = "Perez", Calle = "Av. Rivadavia", Altura = 3200, Piso = "3B", CodigoPostal = "1406", Ciudad = "Buenos Aires" },
+                new DestinatarioGuia { Dni = 40123456, Nombre = "Ana", Apellido = "Perez", Calle = "Av. Rivadavia", Altura = 3200, Piso = "3B", CodigoPostal = "1406", Ciudad = "Buenos Aires" }
             });
 
             AgregarHojaDeRuta(2, DateTime.Today, carlos, new List<DestinatarioGuia>
             {
-                new DestinatarioGuia { Destinatario = "Agencia Norte SA", Calle = "Av. Corrientes", Altura = 1234, CodigoPostal = "1043" },
-                new DestinatarioGuia { Destinatario = "Agencia Norte SA", Calle = "Av. Corrientes", Altura = 1234, CodigoPostal = "1043" }
+                new DestinatarioGuia { Dni = 0, Nombre = "Agencia Norte SA", Apellido = string.Empty, Calle = "Av. Corrientes", Altura = 1234, Piso = "PB", CodigoPostal = "1043", Ciudad = "Buenos Aires" },
+                new DestinatarioGuia { Dni = 0, Nombre = "Agencia Norte SA", Apellido = string.Empty, Calle = "Av. Corrientes", Altura = 1234, Piso = "PB", CodigoPostal = "1043", Ciudad = "Buenos Aires" }
             });
 
             AgregarHojaDeRuta(3, DateTime.Today, laura, new List<DestinatarioGuia>
             {
-                new DestinatarioGuia { Destinatario = "Luis Gomez", Calle = "Belgrano", Altura = 750, CodigoPostal = "5000" }
+                new DestinatarioGuia { Dni = 42345678, Nombre = "Luis", Apellido = "Gomez", Calle = "Belgrano", Altura = 750, Piso = "PB", CodigoPostal = "5000", Ciudad = "Córdoba" }
             });
 
             AgregarHojaDeRuta(4, DateTime.Today.AddDays(1), carlos, new List<DestinatarioGuia>
             {
-                new DestinatarioGuia { Destinatario = "Agencia Sur SRL", Calle = "San Martin", Altura = 500, CodigoPostal = "1043" }
+                new DestinatarioGuia { Dni = 0, Nombre = "Agencia Sur SRL", Apellido = string.Empty, Calle = "San Martin", Altura = 500, Piso = "1", CodigoPostal = "1043", Ciudad = "Buenos Aires" }
             });
         }
 
@@ -168,7 +168,7 @@ namespace Prototipos_TUTASA
             hojasDeRuta.Add(new HojaDeRutaDistribucion
             {
                 NroHDR = nroHDR,
-                FechaEmision = fecha,
+                Fecha = fecha,
                 DniTransportistaAsignado = transportista.DniTransportista,
                 DetalleGuias = detalleGuias,
                 Estado = EstadoHojaDeRutaEnum.Generada
