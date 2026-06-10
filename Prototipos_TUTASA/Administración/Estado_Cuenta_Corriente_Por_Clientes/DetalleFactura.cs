@@ -9,6 +9,6 @@ namespace Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrient
         public int idDetalleFactura { get; set; }
         public int nroFactura { get; set; }
         public string nroGuia { get; set; }
-        public decimal importe { get; set; }
+        public decimal tarifaCalculada { get; set; }
     }
 }

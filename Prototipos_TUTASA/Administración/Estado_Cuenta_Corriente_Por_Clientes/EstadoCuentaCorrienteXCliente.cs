@@ -71,7 +71,7 @@ namespace Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrient
                 item.SubItems.Add(modelo.ObtenerTipoServicio(detalle.nroGuia));
                 item.SubItems.Add(modelo.ObtenerOrigen(detalle.nroGuia));
                 item.SubItems.Add(modelo.ObtenerDestino(detalle.nroGuia));
-                item.SubItems.Add(detalle.importe.ToString("C"));
+                item.SubItems.Add(detalle.tarifaCalculada.ToString("C"));
                 item.SubItems.Add("Pendiente de facturación");
                 item.Tag = detalle;
 

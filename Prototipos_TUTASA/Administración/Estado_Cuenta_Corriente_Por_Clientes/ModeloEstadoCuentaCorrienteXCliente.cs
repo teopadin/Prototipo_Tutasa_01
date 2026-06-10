@@ -121,7 +121,7 @@ namespace Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrient
 
             foreach (DetalleFactura detalle in ObtenerDetallesPendientes(cliente))
             {
-                total += detalle.importe;
+                total += detalle.tarifaCalculada;
             }
 
             return total;
@@ -203,7 +203,7 @@ namespace Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrient
                 idDetalleFactura = idDetalle,
                 nroFactura = 0,
                 nroGuia = nroGuia,
-                importe = importe
+                tarifaCalculada = importe
             };
         }
     }

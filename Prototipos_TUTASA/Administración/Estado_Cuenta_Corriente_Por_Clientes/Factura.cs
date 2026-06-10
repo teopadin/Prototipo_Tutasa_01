@@ -14,7 +14,7 @@ namespace Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrient
 
         public decimal ImporteTotal
         {
-            get { return detalles.Sum(d => d.importe); }
+            get { return detalles.Sum(d => d.tarifaCalculada); }
         }
 
         public Factura()
