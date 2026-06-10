@@ -34,6 +34,7 @@
             colNumeroGuia = new ColumnHeader();
             colFechaGuia = new ColumnHeader();
             colTipoBultoLista = new ColumnHeader();
+            colCDFinal = new ColumnHeader();
             lvServicios = new ListView();
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
@@ -46,7 +47,6 @@
             gbxGuias = new GroupBox();
             gbxServicios = new GroupBox();
             btnCancelar = new Button();
-            colCDFinal = new ColumnHeader();
             gbxGuias.SuspendLayout();
             gbxServicios.SuspendLayout();
             SuspendLayout();
@@ -99,6 +99,11 @@
             colTipoBultoLista.Text = "Tipo de Bulto";
             colTipoBultoLista.Width = 200;
             // 
+            // colCDFinal
+            // 
+            colCDFinal.Text = "CD Destino Final";
+            colCDFinal.Width = 200;
+            // 
             // lvServicios
             // 
             lvServicios.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader5, columnHeader3, columnHeader4 });
@@ -133,8 +138,8 @@
             // 
             // columnHeader4
             // 
-            columnHeader4.Text = "Horario salida";
-            columnHeader4.Width = 100;
+            columnHeader4.Text = "Fecha y hora de salida";
+            columnHeader4.Width = 150;
             // 
             // lblBultos
             // 
@@ -200,11 +205,6 @@
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
             btnCancelar.Click += btnCancelar_Click;
-            // 
-            // colCDFinal
-            // 
-            colCDFinal.Text = "CD Destino Final";
-            colCDFinal.Width = 200;
             // 
             // GenerarHojaDeRutaDeTransporte
             // 

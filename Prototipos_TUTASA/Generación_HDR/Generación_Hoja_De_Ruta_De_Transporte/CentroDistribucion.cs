@@ -6,6 +6,6 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transpor
 {
     internal class CentroDistribucion
     {
-        public string Nombre { get; set; }
+        public string nombre { get; set; }
     }
 }

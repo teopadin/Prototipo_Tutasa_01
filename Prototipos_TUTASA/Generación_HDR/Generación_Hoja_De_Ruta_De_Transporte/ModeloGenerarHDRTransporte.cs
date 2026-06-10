@@ -18,12 +18,12 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transpor
         public ModeloGenerarHDRTransporte()
         {
             // CDs
-            var cdCapital = new CentroDistribucion { Nombre = "Capital y GBA" };
-            var cdCentro = new CentroDistribucion { Nombre = "Centro - Córdoba" };
-            var cdNorte = new CentroDistribucion { Nombre = "Norte - Tucumán" };
-            var cdEste = new CentroDistribucion { Nombre = "Este - Corrientes" };
-            var cdCordillera = new CentroDistribucion { Nombre = "Cordillera - Neuquén" };
-            var cdSur = new CentroDistribucion { Nombre = "Sur - Viedma" };
+            var cdCapital = new CentroDistribucion { nombre = "Capital y GBA" };
+            var cdCentro = new CentroDistribucion { nombre = "Centro - Córdoba" };
+            var cdNorte = new CentroDistribucion { nombre = "Norte - Tucumán" };
+            var cdEste = new CentroDistribucion { nombre = "Este - Corrientes" };
+            var cdCordillera = new CentroDistribucion { nombre = "Cordillera - Neuquén" };
+            var cdSur = new CentroDistribucion { nombre = "Sur - Viedma" };
 
             CentrosDeDistribucion = new List<CentroDistribucion>
             {
@@ -33,26 +33,25 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transpor
             CdEmisor = cdCapital;
 
             // Empresas de transporte
-            var empresa1 = new EmpresaTransporte { RazonSocial = "Transportes del Sur SA" };
-            var empresa2 = new EmpresaTransporte { RazonSocial = "Logística Norte SRL" };
+            var empresa1 = new EmpresaTransporte { razonSocial = "Transportes del Sur SA" };
+            var empresa2 = new EmpresaTransporte { razonSocial = "Logística Norte SRL" };
 
             // Servicios
             Servicios = new List<ServicioMediaDistancia>
             {
                 // Servicio A: Capital -> Norte, capacidad max 160S, ya usó 40S
-                new ServicioMediaDistancia { IdServicio = 1, Empresa = empresa1, TipoArrendamiento = TipoArrendamientoEnum.A, CapacidadUsada = 40, CdOrigen = cdCapital, CdDestino = cdNorte, HorarioSalida = new TimeSpan(8, 0, 0) },
+                new ServicioMediaDistancia { idServicio = 1, idEmpresa = empresa1, tipoArrendamiento = TipoArrendamientoEnum.A, capacidadUsada = 40, idCDOrigen = cdCapital, idCDDestino = cdNorte, fechaSalida = new DateTime(2026, 5, 26, 8, 0, 0) },
 
                 // Servicio B: Capital -> Centro, capacidad max 80S, ya usó 0S
-                new ServicioMediaDistancia { IdServicio = 2, Empresa = empresa2, TipoArrendamiento = TipoArrendamientoEnum.B, CapacidadUsada = 0, CdOrigen = cdCapital, CdDestino = cdCentro, HorarioSalida = new TimeSpan(10, 30, 0) },
-
+                new ServicioMediaDistancia { idServicio = 2, idEmpresa = empresa2, tipoArrendamiento = TipoArrendamientoEnum.B, capacidadUsada = 0, idCDOrigen = cdCapital, idCDDestino = cdCentro, fechaSalida = new DateTime(2026, 5, 26, 10, 30, 0) },
                 // Servicio C: Capital -> Norte, capacidad max 56S, ya usó 50S (casi lleno)
-                new ServicioMediaDistancia { IdServicio = 3, Empresa = empresa1, TipoArrendamiento = TipoArrendamientoEnum.C, CapacidadUsada = 50, CdOrigen = cdCapital, CdDestino = cdNorte, HorarioSalida = new TimeSpan(14, 0, 0) },
+                new ServicioMediaDistancia { idServicio = 3, idEmpresa = empresa1, tipoArrendamiento = TipoArrendamientoEnum.C, capacidadUsada = 50, idCDOrigen = cdCapital, idCDDestino = cdNorte, fechaSalida = new DateTime(2026, 5, 26, 14, 0, 0) },
 
                 // Servicio D: Capital -> Este, capacidad max 24S, ya usó 0S
-                new ServicioMediaDistancia { IdServicio = 4, Empresa = empresa2, TipoArrendamiento = TipoArrendamientoEnum.D, CapacidadUsada = 0, CdOrigen = cdCapital, CdDestino = cdEste, HorarioSalida = new TimeSpan(16, 0, 0) },
+                new ServicioMediaDistancia { idServicio = 4, idEmpresa = empresa2, tipoArrendamiento = TipoArrendamientoEnum.D, capacidadUsada = 0, idCDOrigen = cdCapital, idCDDestino = cdEste, fechaSalida = new DateTime(2026, 5, 26, 16, 0, 0) },
 
                 // Servicio de otro CD - NO debe aparecer
-                new ServicioMediaDistancia { IdServicio = 5, Empresa = empresa1, TipoArrendamiento = TipoArrendamientoEnum.A, CapacidadUsada = 0, CdOrigen = cdCentro, CdDestino = cdNorte, HorarioSalida = new TimeSpan(9, 0, 0) },
+                new ServicioMediaDistancia { idServicio = 5, idEmpresa = empresa1, tipoArrendamiento = TipoArrendamientoEnum.A, capacidadUsada = 0, idCDOrigen = cdCentro, idCDDestino = cdNorte, fechaSalida = new DateTime(2026, 5, 26, 9, 0, 0) },
             };
 
             // Guías en estado Admitida, origen Capital
@@ -61,7 +60,6 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transpor
     // Destino Norte
     new Guia {
         NroGuia = "CD01-0001",
-        FechaImposicion = new DateTime(2026, 5, 20),
         TipoBulto = TiposBultoEnum.M,
         Estado = EstadoGuiaEnum.Admitida,
         CdOrigen = cdCapital,
@@ -71,7 +69,6 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transpor
 
     new Guia {
         NroGuia = "CD01-0002",
-        FechaImposicion = new DateTime(2026, 5, 21),
         TipoBulto = TiposBultoEnum.L,
         Estado = EstadoGuiaEnum.Admitida,
         CdOrigen = cdCapital,
@@ -81,7 +78,6 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transpor
 
     new Guia {
         NroGuia = "CD01-0003",
-        FechaImposicion = new DateTime(2026, 5, 22),
         TipoBulto = TiposBultoEnum.XL,
         Estado = EstadoGuiaEnum.Admitida,
         CdOrigen = cdCapital,
@@ -92,7 +88,6 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transpor
     // Destino Centro
     new Guia {
         NroGuia = "CD01-0004",
-        FechaImposicion = new DateTime(2026, 5, 20),
         TipoBulto = TiposBultoEnum.S,
         Estado = EstadoGuiaEnum.Admitida,
         CdOrigen = cdCapital,
@@ -102,7 +97,6 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transpor
 
     new Guia {
         NroGuia = "CD01-0005",
-        FechaImposicion = new DateTime(2026, 5, 21),
         TipoBulto = TiposBultoEnum.M,
         Estado = EstadoGuiaEnum.Admitida,
         CdOrigen = cdCapital,
@@ -113,7 +107,6 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transpor
     // Destino Este
     new Guia {
         NroGuia = "CD01-0006",
-        FechaImposicion = new DateTime(2026, 5, 22),
         TipoBulto = TiposBultoEnum.S,
         Estado = EstadoGuiaEnum.Admitida,
         CdOrigen = cdCapital,
@@ -124,7 +117,6 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transpor
     // Pendiente de despacho
     new Guia {
         NroGuia = "CD01-0007",
-        FechaImposicion = new DateTime(2026, 5, 19),
         TipoBulto = TiposBultoEnum.M,
         Estado = EstadoGuiaEnum.PendienteDeDespacho,
         CdOrigen = cdCapital,
@@ -135,7 +127,6 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transpor
     // Otro CD origen
     new Guia {
         NroGuia = "CD02-0001",
-        FechaImposicion = new DateTime(2026, 5, 20),
         TipoBulto = TiposBultoEnum.S,
         Estado = EstadoGuiaEnum.Admitida,
         CdOrigen = cdCentro,
@@ -148,7 +139,6 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transpor
     // actualmente está admitida en Centro esperando otro viaje
     new Guia {
         NroGuia = "CD01-0008",
-        FechaImposicion = new DateTime(2026, 5, 23),
         TipoBulto = TiposBultoEnum.M,
         Estado = EstadoGuiaEnum.Admitida,
         CdOrigen = cdCapital,

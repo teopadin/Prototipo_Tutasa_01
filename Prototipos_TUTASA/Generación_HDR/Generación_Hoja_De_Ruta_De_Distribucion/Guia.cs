@@ -12,6 +12,6 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Distribu
         public CentroDistribucion idCDOrigen { get; set; }
         public CentroDistribucion idCDDestino { get; set; }
         public DestinatarioGuia Destinatario { get; set; }  // null si es Retiro en Agencia
-        public Agencia AgenciaGuia { get; set; }            // null si es Puerta a Puerta
+        public Agencia idAgenciaDestino { get; set; }            // null si es Puerta a Puerta
     }
 }

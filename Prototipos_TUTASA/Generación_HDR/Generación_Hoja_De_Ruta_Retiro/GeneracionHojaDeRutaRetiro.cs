@@ -19,7 +19,7 @@ namespace Prototipos_TUTASA.HojaDeRutaRetiro
 
         private void GeneracionHojaDeRutaRetiro_Load(object sender, EventArgs e)
         {
-            txtCdEmisor.Text = modelo.CdEmisor.Nombre;
+            txtCdEmisor.Text = modelo.CdEmisor.nombre;
             dtpFecha.Value = DateTime.Today;
             CargarGuiasImpuestas();
         }
@@ -31,28 +31,28 @@ namespace Prototipos_TUTASA.HojaDeRutaRetiro
 
             foreach (var guia in modelo.Guias)
             {
-                if (guia.Estado != EstadoGuia.Impuesta || guia.CdOrigen.Nombre != modelo.CdEmisor.Nombre)
+                if (guia.Estado != EstadoGuiaEnum.Impuesta || guia.idCDOrigen.nombre != modelo.CdEmisor.nombre)
                     continue;
 
                 string razonSocial, calle, altura, piso, cp, ciudad;
 
-                if (guia.TipoImposicion == TipoImposicion.CallCenter)
+                if (guia.TipoImposicion == TipoImposicionEnum.CallCenter)
                 {
-                    razonSocial = guia.ClienteGuia.RazonSocial;
-                    calle = guia.ClienteGuia.Calle;
-                    altura = guia.ClienteGuia.Altura.ToString();
-                    piso = guia.ClienteGuia.Piso;
-                    cp = guia.ClienteGuia.CodigoPostal;
-                    ciudad = guia.ClienteGuia.Ciudad;
+                    razonSocial = guia.IdCliente.razonSocial;
+                    calle = guia.IdCliente.calle;
+                    altura = guia.IdCliente.altura.ToString();
+                    piso = guia.IdCliente.piso;
+                    cp = guia.IdCliente.codigoPostal;
+                    ciudad = guia.IdCliente.ciudad;
                 }
                 else
                 {
-                    razonSocial = guia.Agencia.RazonSocial;
-                    calle = guia.Agencia.Calle;
-                    altura = guia.Agencia.Altura.ToString();
-                    piso = guia.Agencia.Piso;
-                    cp = guia.Agencia.CodigoPostal;
-                    ciudad = guia.Agencia.Ciudad;
+                    razonSocial = guia.idAgenciaOrigen.razonSocial;
+                    calle = guia.idAgenciaOrigen.calle;
+                    altura = guia.idAgenciaOrigen.altura.ToString();
+                    piso = guia.idAgenciaOrigen.piso;
+                    cp = guia.idAgenciaOrigen.codigoPostal;
+                    ciudad = guia.idAgenciaOrigen.ciudad;
                 }
 
                 var item = new ListViewItem(guia.NroGuia);
@@ -109,21 +109,21 @@ namespace Prototipos_TUTASA.HojaDeRutaRetiro
             Guia guiaReferencia = guiasSeleccionadas[0];
             string calleRef, alturaRef, pisoRef, cpRef, ciudadRef;
 
-            if (guiaReferencia.TipoImposicion == TipoImposicion.CallCenter)
+            if (guiaReferencia.TipoImposicion == TipoImposicionEnum.CallCenter)
             {
-                calleRef = guiaReferencia.ClienteGuia.Calle;
-                alturaRef = guiaReferencia.ClienteGuia.Altura.ToString();
-                pisoRef = guiaReferencia.ClienteGuia.Piso;
-                cpRef = guiaReferencia.ClienteGuia.CodigoPostal;
-                ciudadRef = guiaReferencia.ClienteGuia.Ciudad;
+                calleRef = guiaReferencia.IdCliente.calle;
+                alturaRef = guiaReferencia.IdCliente.altura.ToString();
+                pisoRef = guiaReferencia.IdCliente.piso;
+                cpRef = guiaReferencia.IdCliente.codigoPostal;
+                ciudadRef = guiaReferencia.IdCliente.ciudad;
             }
             else
             {
-                calleRef = guiaReferencia.Agencia.Calle;
-                alturaRef = guiaReferencia.Agencia.Altura.ToString();
-                pisoRef = guiaReferencia.Agencia.Piso;
-                cpRef = guiaReferencia.Agencia.CodigoPostal;
-                ciudadRef = guiaReferencia.Agencia.Ciudad;
+                calleRef = guiaReferencia.idAgenciaOrigen.calle;
+                alturaRef = guiaReferencia.idAgenciaOrigen.altura.ToString();
+                pisoRef = guiaReferencia.idAgenciaOrigen.piso;
+                cpRef = guiaReferencia.idAgenciaOrigen.codigoPostal;
+                ciudadRef = guiaReferencia.idAgenciaOrigen.ciudad;
             }
 
             modelo.Actualizando = true;
@@ -132,21 +132,21 @@ namespace Prototipos_TUTASA.HojaDeRutaRetiro
                 Guia guia = (Guia)item.Tag;
                 string calle, altura, piso, cp, ciudad;
 
-                if (guia.TipoImposicion == TipoImposicion.CallCenter)
+                if (guia.TipoImposicion == TipoImposicionEnum.CallCenter)
                 {
-                    calle = guia.ClienteGuia.Calle;
-                    altura = guia.ClienteGuia.Altura.ToString();
-                    piso = guia.ClienteGuia.Piso;
-                    cp = guia.ClienteGuia.CodigoPostal;
-                    ciudad = guia.ClienteGuia.Ciudad;
+                    calle = guia.IdCliente.calle;
+                    altura = guia.IdCliente.altura.ToString();
+                    piso = guia.IdCliente.piso;
+                    cp = guia.IdCliente.codigoPostal;
+                    ciudad = guia.IdCliente.ciudad;
                 }
                 else
                 {
-                    calle = guia.Agencia.Calle;
-                    altura = guia.Agencia.Altura.ToString();
-                    piso = guia.Agencia.Piso;
-                    cp = guia.Agencia.CodigoPostal;
-                    ciudad = guia.Agencia.Ciudad;
+                    calle = guia.idAgenciaOrigen.calle;
+                    altura = guia.idAgenciaOrigen.altura.ToString();
+                    piso = guia.idAgenciaOrigen.piso;
+                    cp = guia.idAgenciaOrigen.codigoPostal;
+                    ciudad = guia.idAgenciaOrigen.ciudad;
                 }
 
                 if (calle != calleRef || altura != alturaRef || piso != pisoRef || cp != cpRef || ciudad != ciudadRef)
@@ -178,7 +178,7 @@ namespace Prototipos_TUTASA.HojaDeRutaRetiro
             List<TransportistaLocal> transportistasFiltrados = new List<TransportistaLocal>();
             foreach (var transportista in modelo.Transportistas)
             {
-                if (transportista.CD.Nombre == modelo.CdEmisor.Nombre)
+                if (transportista.idCD.nombre == modelo.CdEmisor.nombre)
                     transportistasFiltrados.Add(transportista);
             }
 
@@ -186,9 +186,9 @@ namespace Prototipos_TUTASA.HojaDeRutaRetiro
 
             foreach (var transportista in transportistasFiltrados)
             {
-                var item = new ListViewItem(transportista.DniTransportista.ToString());
-                item.SubItems.Add(transportista.Nombre);
-                item.SubItems.Add(transportista.Apellido);
+                var item = new ListViewItem(transportista.dniTransportista.ToString());
+                item.SubItems.Add(transportista.nombre);
+                item.SubItems.Add(transportista.apellido);
                 item.SubItems.Add(transportista.HdrAsignadas.ToString());
                 item.Tag = transportista;
                 lvFleteros.Items.Add(item);
@@ -227,7 +227,7 @@ namespace Prototipos_TUTASA.HojaDeRutaRetiro
 
             // Cambiar el estado de las guías a PendienteDeRetiroPorTransportista
             foreach (var guia in guiasSeleccionadas)
-                guia.Estado = EstadoGuia.IncluidaEnHDRRetiro;
+                guia.Estado = EstadoGuiaEnum.IncluidaEnHDRRetiro;
 
             // Incrementar las HDR asignadas al transportista
             transportistaSeleccionado.HdrAsignadas++;

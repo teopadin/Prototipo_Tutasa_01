@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_Retiro
 {
-    internal enum EstadoGuia
+    internal enum EstadoGuiaEnum
     {
         Impuesta,
         IncluidaEnHDRRetiro

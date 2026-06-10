@@ -29,7 +29,7 @@ namespace Prototipos_TUTASA.Generación_Hoja_De_Ruta_De_Transporte
 
             foreach (var cd in modelo.CentrosDeDistribucion)
             {
-                if (cd.Nombre != modelo.CdEmisor.Nombre)
+                if (cd.nombre != modelo.CdEmisor.nombre)
                     cmbCDDestino.Items.Add(cd);
             }
 
@@ -67,13 +67,12 @@ namespace Prototipos_TUTASA.Generación_Hoja_De_Ruta_De_Transporte
 
             foreach (var guia in modelo.Guias)
             {
-                if (guia.Estado != EstadoGuiaEnum.Admitida || guia.CdActual.Nombre != modelo.CdEmisor.Nombre)
+                if (guia.Estado != EstadoGuiaEnum.Admitida || guia.CdActual.nombre != modelo.CdEmisor.nombre)
                     continue;
 
                 var item = new ListViewItem(guia.NroGuia);
-                item.SubItems.Add(guia.FechaImposicion.ToShortDateString());
                 item.SubItems.Add(guia.TipoBulto.ToString());
-                item.SubItems.Add(guia.CdDestino.Nombre);
+                item.SubItems.Add(guia.CdDestino.nombre);
                 item.Tag = guia;
 
                 lvGuiasPendientes.Items.Add(item);
@@ -128,17 +127,17 @@ namespace Prototipos_TUTASA.Generación_Hoja_De_Ruta_De_Transporte
 
             foreach (var servicio in modelo.Servicios)
             {
-                if (servicio.CdOrigen.Nombre != modelo.CdEmisor.Nombre || servicio.CdDestino.Nombre != cdSeleccionado.Nombre)
+                if (servicio.idCDOrigen.nombre != modelo.CdEmisor.nombre || servicio.idCDDestino.nombre != cdSeleccionado.nombre)
                     continue;
 
                 if (!modelo.TieneCapacidadSuficiente(servicio, totalBultos))
                     continue;
 
-                var item = new ListViewItem(servicio.IdServicio.ToString());
-                item.SubItems.Add(servicio.Empresa.RazonSocial);
-                item.SubItems.Add(servicio.TipoArrendamiento.ToString());
+                var item = new ListViewItem(servicio.idServicio.ToString());
+                item.SubItems.Add(servicio.idEmpresa.razonSocial);
+                item.SubItems.Add(servicio.tipoArrendamiento.ToString());
                 item.SubItems.Add(servicio.CapacidadDisponible.ToString());
-                item.SubItems.Add(servicio.HorarioSalida.ToString(@"hh\:mm"));
+                item.SubItems.Add(servicio.FechaSalida.ToString("dd/MM/yyyy HH:mm"));
                 item.Tag = servicio;
                 lvServicios.Items.Add(item);
             }
@@ -184,7 +183,7 @@ namespace Prototipos_TUTASA.Generación_Hoja_De_Ruta_De_Transporte
                 totalBultos += guia.EquivalenteS;
                 guia.Estado = EstadoGuiaEnum.PendienteDeDespacho;
             }
-            servicioSeleccionado.CapacidadUsada += totalBultos;
+            servicioSeleccionado.capacidadUsada += totalBultos;
 
             modelo.HojasDeRuta.Add(nuevaHDR);
 

@@ -7,13 +7,12 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_Retiro
     internal class Guia
     {
         public string NroGuia { get; set; }
-        public TipoImposicion TipoImposicion { get; set; }
-        public TipoBulto TipoBulto { get; set; }
-        public DateTime FechaImposicion { get; set; }
-        public EstadoGuia Estado { get; set; }
-        public CentroDistribucion CdOrigen { get; set; }
-        public CentroDistribucion CdDestino { get; set; }
-        public Cliente ClienteGuia { get; set; }   // null si es Retiro en Agencia
-        public Agencia Agencia { get; set; }   // null si es domicilio del cliente
+        public TipoImposicionEnum TipoImposicion { get; set; }
+        public TipoBultoEnum TipoBulto { get; set; }
+        public EstadoGuiaEnum Estado { get; set; }
+        public CentroDistribucion idCDOrigen { get; set; }
+        public CentroDistribucion idCDDestino { get; set; }
+        public Cliente IdCliente { get; set; }   // null si es Retiro en Agencia
+        public Agencia idAgenciaOrigen { get; set; }   // null si es domicilio del cliente
     }
 }

@@ -7,20 +7,20 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transpor
 {
     internal class ServicioMediaDistancia
     {
-        public int IdServicio { get; set; }
-        public EmpresaTransporte Empresa { get; set; }
-        public TipoArrendamientoEnum TipoArrendamiento { get; set; }
-        public int CapacidadUsada { get; set; }
-        public CentroDistribucion CdOrigen { get; set; }
-        public CentroDistribucion CdDestino { get; set; }
-        public TimeSpan HorarioSalida { get; set; }
+        public int idServicio { get; set; }
+        public EmpresaTransporte idEmpresa { get; set; }
+        public TipoArrendamientoEnum tipoArrendamiento { get; set; }
+        public int capacidadUsada { get; set; }
+        public CentroDistribucion idCDOrigen { get; set; }
+        public CentroDistribucion idCDDestino { get; set; }
+        public DateTime fechaSalida { get; set; }
 
 
         public int CapacidadMaxima
         {
             get
             {
-                switch (TipoArrendamiento)
+                switch (tipoArrendamiento)
                 {
                     case TipoArrendamientoEnum.A: return 160;
                     case TipoArrendamientoEnum.B: return 80;
@@ -33,7 +33,7 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transpor
 
         public int CapacidadDisponible
         {
-            get { return CapacidadMaxima - CapacidadUsada; }
+            get { return CapacidadMaxima - capacidadUsada; }
         }
     }
 }

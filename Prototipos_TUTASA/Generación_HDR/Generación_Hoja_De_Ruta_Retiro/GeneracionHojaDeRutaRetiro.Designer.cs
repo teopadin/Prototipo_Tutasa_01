@@ -33,7 +33,6 @@
             colTipoBultoLista = new ColumnHeader();
             colCiudadLista = new ColumnHeader();
             colFechaGuia = new ColumnHeader();
-            columnHeader4 = new ColumnHeader();
             btnGenerarHdr = new Button();
             lblGuiaBase = new Label();
             lvFleteros = new ListView();
@@ -118,7 +117,7 @@
             // lvGuiasPendientes
             // 
             lvGuiasPendientes.CheckBoxes = true;
-            lvGuiasPendientes.Columns.AddRange(new ColumnHeader[] { colNumeroGuia, colRemitenteLista, colCalle, columnHeader8, columnHeader7, columnHeader9, colTipoBultoLista, colCiudadLista, colFechaGuia, columnHeader4 });
+            lvGuiasPendientes.Columns.AddRange(new ColumnHeader[] { colNumeroGuia, colRemitenteLista, colCalle, columnHeader8, columnHeader7, columnHeader9, colTipoBultoLista, colCiudadLista, colFechaGuia });
             lvGuiasPendientes.FullRowSelect = true;
             lvGuiasPendientes.Location = new Point(20, 100);
             lvGuiasPendientes.Name = "lvGuiasPendientes";
@@ -172,11 +171,6 @@
             // 
             colFechaGuia.Text = "Tipo de bulto";
             colFechaGuia.Width = 100;
-            // 
-            // columnHeader4
-            // 
-            columnHeader4.Text = "Fecha Imposición";
-            columnHeader4.Width = 150;
             // 
             // btnGenerarHdr
             // 
@@ -296,7 +290,6 @@
         private ColumnHeader columnHeader8;
         private Label label2;
         private ColumnHeader columnHeader9;
-        private ColumnHeader columnHeader4;
         private Button btnCancelar;
     }
 }

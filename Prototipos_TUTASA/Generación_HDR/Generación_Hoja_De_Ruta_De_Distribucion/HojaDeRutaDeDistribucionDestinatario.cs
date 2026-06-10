@@ -52,13 +52,13 @@ namespace Prototipos_TUTASA.HojaDeRutaDeDistribucion
                 }
                 else
                 {
-                    razonSocial = guia.AgenciaGuia.razonSocial;
+                    razonSocial = guia.idAgenciaDestino.razonSocial;
                     dni = "-";
-                    calle = guia.AgenciaGuia.calle;
-                    altura = guia.AgenciaGuia.altura.ToString();
-                    piso = guia.AgenciaGuia.piso;
-                    cp = guia.AgenciaGuia.codigoPostal;
-                    ciudad = guia.AgenciaGuia.ciudad;
+                    calle = guia.idAgenciaDestino.calle;
+                    altura = guia.idAgenciaDestino.altura.ToString();
+                    piso = guia.idAgenciaDestino.piso;
+                    cp = guia.idAgenciaDestino.codigoPostal;
+                    ciudad = guia.idAgenciaDestino.ciudad;
                 }
 
                 var item = new ListViewItem(guia.NroGuia);
@@ -124,11 +124,11 @@ namespace Prototipos_TUTASA.HojaDeRutaDeDistribucion
             }
             else
             {
-                calleRef = guiaReferencia.AgenciaGuia.calle;
-                alturaRef = guiaReferencia.AgenciaGuia.altura.ToString();
-                pisoRef = guiaReferencia.AgenciaGuia.piso;
-                cpRef = guiaReferencia.AgenciaGuia.codigoPostal;
-                ciudadRef = guiaReferencia.AgenciaGuia.ciudad;
+                calleRef = guiaReferencia.idAgenciaDestino.calle;
+                alturaRef = guiaReferencia.idAgenciaDestino.altura.ToString();
+                pisoRef = guiaReferencia.idAgenciaDestino.piso;
+                cpRef = guiaReferencia.idAgenciaDestino.codigoPostal;
+                ciudadRef = guiaReferencia.idAgenciaDestino.ciudad;
             }
 
             modelo.Actualizando = true;
@@ -147,11 +147,11 @@ namespace Prototipos_TUTASA.HojaDeRutaDeDistribucion
                 }
                 else
                 {
-                    calle = guia.AgenciaGuia.calle;
-                    altura = guia.AgenciaGuia.altura.ToString();
-                    piso = guia.AgenciaGuia.piso;
-                    cp = guia.AgenciaGuia.codigoPostal;
-                    ciudad = guia.AgenciaGuia.ciudad;
+                    calle = guia.idAgenciaDestino.calle;
+                    altura = guia.idAgenciaDestino.altura.ToString();
+                    piso = guia.idAgenciaDestino.piso;
+                    cp = guia.idAgenciaDestino.codigoPostal;
+                    ciudad = guia.idAgenciaDestino.ciudad;
                 }
 
                 if (calle != calleRef || altura != alturaRef || piso != pisoRef || cp != cpRef || ciudad != ciudadRef)
@@ -193,7 +193,7 @@ namespace Prototipos_TUTASA.HojaDeRutaDeDistribucion
             List<TransportistaLocal> transportistasFiltrados = new List<TransportistaLocal>();
             foreach (var transportista in modelo.Transportistas)
             {
-                if (transportista.CD.nombre == modelo.CdEmisor.nombre)
+                if (transportista.idCD.nombre == modelo.CdEmisor.nombre)
                     transportistasFiltrados.Add(transportista);
             }
 
@@ -201,9 +201,9 @@ namespace Prototipos_TUTASA.HojaDeRutaDeDistribucion
 
             foreach (var transportista in transportistasFiltrados)
             {
-                var item = new ListViewItem(transportista.DniTransportista.ToString());
-                item.SubItems.Add(transportista.Nombre);
-                item.SubItems.Add(transportista.Apellido);
+                var item = new ListViewItem(transportista.dniTransportista.ToString());
+                item.SubItems.Add(transportista.nombre);
+                item.SubItems.Add(transportista.apellido);
                 item.SubItems.Add(transportista.HdrAsignadas.ToString());
                 item.Tag = transportista;
                 listViewFleteros.Items.Add(item);
