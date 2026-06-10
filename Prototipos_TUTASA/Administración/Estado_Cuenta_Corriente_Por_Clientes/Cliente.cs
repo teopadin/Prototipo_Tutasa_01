@@ -6,19 +6,14 @@ namespace Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrient
 {
     internal class Cliente
     {
-        public int IdCliente { get; set; }
-        public long Cuit { get; set; }
-        public string RazonSocial { get; set; }
-        public string Telefono { get; set; }
-        public string Calle { get; set; }
-        public int Altura { get; set; }
-        public string Piso { get; set; }
-        public string CodigoPostal { get; set; }
-        public string Ciudad { get; set; }
-
-        public override string ToString()
-        {
-            return RazonSocial;
-        }
+        public int idCliente { get; set; }
+        public long cuit { get; set; }
+        public string razonSocial { get; set; }
+        public string telefono { get; set; }
+        public string calle { get; set; }
+        public int altura { get; set; }
+        public string piso { get; set; }
+        public string codigoPostal { get; set; }
+        public string ciudad { get; set; }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
@@ -52,10 +53,9 @@ namespace Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrient
         {
             CuentaCorrienteCliente cuenta = modelo.ObtenerCuentaCorriente(cliente);
 
-            txtCuit.Text = cliente.Cuit.ToString();
-            txtEstadoCuenta.Text = cuenta.EstadoCuenta.ToString();
-            txtSaldoActual.Text = cuenta.SaldoActual.ToString("C");
-            txtCondicionFacturacion.Text = modelo.ObtenerCondicionFacturacion(cliente);
+            txtCuit.Text = cliente.cuit.ToString();
+            txtEstadoCuenta.Text = modelo.ObtenerEstadoCuentaTexto(cuenta);
+            txtSaldoActual.Text = modelo.ObtenerSaldoActualTexto(cuenta);
         }
 
         private void CargarDetallesPendientes(Cliente cliente)
@@ -66,12 +66,12 @@ namespace Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrient
 
             foreach (DetalleFactura detalle in detalles)
             {
-                ListViewItem item = new ListViewItem(modelo.ObtenerFechaGuia(detalle.NroGuia).ToShortDateString());
-                item.SubItems.Add(detalle.NroGuia);
-                item.SubItems.Add(modelo.ObtenerTipoServicio(detalle.NroGuia));
-                item.SubItems.Add(modelo.ObtenerOrigen(detalle.NroGuia));
-                item.SubItems.Add(modelo.ObtenerDestino(detalle.NroGuia));
-                item.SubItems.Add(detalle.Importe.ToString("C"));
+                ListViewItem item = new ListViewItem(modelo.ObtenerFechaGuia(detalle.nroGuia).ToShortDateString());
+                item.SubItems.Add(detalle.nroGuia);
+                item.SubItems.Add(modelo.ObtenerTipoServicio(detalle.nroGuia));
+                item.SubItems.Add(modelo.ObtenerOrigen(detalle.nroGuia));
+                item.SubItems.Add(modelo.ObtenerDestino(detalle.nroGuia));
+                item.SubItems.Add(detalle.importe.ToString("C"));
                 item.SubItems.Add("Pendiente de facturación");
                 item.Tag = detalle;
 
@@ -96,15 +96,16 @@ namespace Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrient
                 return;
             }
 
-            if (!modelo.ClienteHabilitadoParaFacturar(modelo.ClienteSeleccionado))
-            {
-                MessageBox.Show("El cliente seleccionado no se encuentra habilitado para facturación. No es posible emitir la factura correspondiente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
             Factura factura = modelo.EmitirFactura(modelo.ClienteSeleccionado);
 
-            MessageBox.Show("Factura emitida con éxito", "Factura", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            string nrosGuia = string.Join(", ", factura.detalles.Select(d => d.nroGuia));
+
+            MessageBox.Show(
+                $"Factura {factura.nroFactura} emitida con éxito.\nGuías facturadas: {nrosGuia}",
+                "Factura",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+            );
 
             MostrarDatosCliente(modelo.ClienteSeleccionado);
             CargarDetallesPendientes(modelo.ClienteSeleccionado);
@@ -121,7 +122,6 @@ namespace Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrient
             txtCuit.Text = "";
             txtEstadoCuenta.Text = "";
             txtSaldoActual.Text = "";
-            txtCondicionFacturacion.Text = "";
             txtCantidadServicios.Text = "0";
             txtTotalFacturar.Text = "0";
             lvServiciosPendientes.Items.Clear();
@@ -133,6 +133,11 @@ namespace Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrient
         }
 
         private void lblEstadoCuenta_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblSaldoActual_Click(object sender, EventArgs e)
         {
 
         }

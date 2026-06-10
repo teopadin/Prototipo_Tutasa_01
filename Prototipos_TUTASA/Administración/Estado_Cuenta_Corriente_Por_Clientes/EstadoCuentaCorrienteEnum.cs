@@ -6,7 +6,8 @@ namespace Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrient
 {
     internal enum EstadoCuentaCorrienteEnum
     {
-        Activa,
-        Bloqueada
+        SinSaldo,
+        SaldoPendiente,
+        SaldoAFavor
     }
 }
