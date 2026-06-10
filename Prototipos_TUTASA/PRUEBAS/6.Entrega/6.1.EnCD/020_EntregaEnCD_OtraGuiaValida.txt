@@ -1,10 +1,5 @@
 Plan de Prueba: Entrega en CD - Otra guía válida
 
-Preparación
-1- Ejecutar la pantalla con F5 desde cero.
-2- Verificar que los archivos de DATOS estén configurados con Copy Always.
-3- Verificar que DATOS/Guias.json contenga la guía CD01-0007 en estado PendienteDeRetiroEnCD.
-
 Datos
 Guía: CD01-0007
 Nombre: Juan

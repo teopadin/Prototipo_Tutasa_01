@@ -1,10 +1,5 @@
 Plan de Prueba: Entrega en Agencia - Validaciones
 
-Preparación general
-1- Cada caso se ejecuta con F5 desde cero.
-2- Verificar que los archivos de DATOS estén configurados con Copy Always.
-3- Usar la pantalla Entrega en Agencia.
-
 Caso 1 - Guía vacía
 1- Dejar vacío el campo de guía.
 2- Presionar Buscar.

@@ -1,10 +1,5 @@
 Plan de Prueba: Entrega en Agencia - Caso éxitoso
 
-Preparación
-1- Ejecutar la pantalla con F5 desde cero.
-2- Verificar que los archivos de DATOS estén configurados con Copy Always.
-3- Verificar que DATOS/Guias.json contenga la guía AG01-0001 en estado PendienteDeRetiroEnAgencia.
-
 Datos
 Guía: AG01-0001
 Nombre: Ana

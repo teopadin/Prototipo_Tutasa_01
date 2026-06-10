@@ -1,10 +1,5 @@
 Plan de Prueba: Entrega en CD - Caso éxitoso
 
-Preparación
-1- Ejecutar la pantalla con F5 desde cero.
-2- Verificar que los archivos de DATOS estén configurados con Copy Always.
-3- Verificar que DATOS/Guias.json contenga la guía CD02-0002 en estado PendienteDeRetiroEnCD.
-
 Datos
 Guía: CD02-0002
 Nombre: Ana
