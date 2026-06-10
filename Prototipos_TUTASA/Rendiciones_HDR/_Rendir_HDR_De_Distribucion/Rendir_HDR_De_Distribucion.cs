@@ -68,7 +68,7 @@ namespace Prototipos_TUTASA.Rendiciones_HDR
                 item.SubItems.Add(hdr.Calle);
                 item.SubItems.Add(hdr.Altura.ToString());
                 item.SubItems.Add(hdr.Piso);
-                item.SubItems.Add(hdr.CP);
+                item.SubItems.Add(hdr.CodigoPostal);
                 item.SubItems.Add(hdr.Estado.ToString());
                 item.Tag = hdr;
                 HdrRendidasLst.Items.Add(item);

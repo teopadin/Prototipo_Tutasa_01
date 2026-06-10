@@ -13,7 +13,7 @@ namespace Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Distribucion
         public int Altura { get; set; }
 
         public string Piso { get; set; }
-        public string CP { get; set; }
+        public string CodigoPostal { get; set; }
         public EstadoHojaDeRutaEnum Estado { get; set; }
         public MotivoNoCumplidaDistribucionEnum? MotivoNoCumplida { get; set; }
 
