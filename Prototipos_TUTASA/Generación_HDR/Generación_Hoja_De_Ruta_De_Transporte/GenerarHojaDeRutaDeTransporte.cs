@@ -131,7 +131,7 @@ namespace Prototipos_TUTASA.Generación_Hoja_De_Ruta_De_Transporte
                 if (servicio.CdOrigen.Nombre != modelo.CdEmisor.Nombre || servicio.CdDestino.Nombre != cdSeleccionado.Nombre)
                     continue;
 
-                if (servicio.CapacidadDisponible < totalBultos)
+                if (!modelo.TieneCapacidadSuficiente(servicio, totalBultos))
                     continue;
 
                 var item = new ListViewItem(servicio.IdServicio.ToString());

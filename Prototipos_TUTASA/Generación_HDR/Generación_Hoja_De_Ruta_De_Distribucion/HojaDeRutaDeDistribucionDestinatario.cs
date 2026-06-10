@@ -61,8 +61,7 @@ namespace Prototipos_TUTASA.HojaDeRutaDeDistribucion
                     ciudad = guia.AgenciaGuia.ciudad;
                 }
 
-                var item = new ListViewItem(guia.nroGuia);
-                item.SubItems.Add(guia.fechaImposicion.ToShortDateString());
+                var item = new ListViewItem(guia.NroGuia);
                 item.SubItems.Add(guia.ModalidadEntrega.ToString());
                 item.SubItems.Add(razonSocial);
                 item.SubItems.Add(dni);

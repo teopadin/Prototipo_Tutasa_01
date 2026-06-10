@@ -158,5 +158,12 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transpor
 };
 
         }
+
+        // Indica si el servicio tiene capacidad suficiente para la cantidad de bultos
+        public bool TieneCapacidadSuficiente(ServicioMediaDistancia servicio, int totalBultos)
+        {
+            return servicio.CapacidadDisponible >= totalBultos;
+        }
     }
+
 }

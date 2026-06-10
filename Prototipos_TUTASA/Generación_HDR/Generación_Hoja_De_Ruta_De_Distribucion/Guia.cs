@@ -6,8 +6,7 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Distribu
 {
     internal class Guia
     {
-        public string nroGuia { get; set; }
-        public DateTime fechaImposicion { get; set; }
+        public string NroGuia { get; set; }
         public ModalidadEntregaEnum ModalidadEntrega { get; set; }
         public EstadoGuiaEnum Estado { get; set; }
         public CentroDistribucion idCDOrigen { get; set; }

@@ -14,7 +14,7 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Distribu
     {
         public CentroDistribucion CdEmisor { get; set; }
         public List<CentroDistribucion> CentrosDeDistribucion { get; set; }
-        public List<Guia> Guias { get; set; }
+        public Queue<Guia> Guias { get; set; }
         public List<TransportistaLocal> Transportistas { get; set; }
         public bool Actualizando { get; set; } = false;
         public List<HojaDeRutaDistribucion> HojasDeRuta { get; set; } = new List<HojaDeRutaDistribucion>();
@@ -53,31 +53,32 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Distribu
             var dest3 = new DestinatarioGuia { Dni = 42345678, nombre = "María", apellido = "González", calle = "Belgrano", altura = 750, piso = "PB", codigoPostal = "5000", ciudad = "Córdoba" };
 
             // Guías
-            Guias = new List<Guia>
+            var guiasEnOrdenDeLlegada = new List<Guia>
             {
                 // Puerta a puerta, origen CD Norte, destino Capital
-                new Guia { nroGuia = "CD03-0001", fechaImposicion = new DateTime(2026, 5, 20), ModalidadEntrega = ModalidadEntregaEnum.EntregaDomicilio, Estado = EstadoGuiaEnum.EnCDDestino, idCDOrigen = cdNorte, idCDDestino = cdCapital, Destinatario = dest1, AgenciaGuia = null },
+                new Guia { NroGuia = "CD03-0001", fechaImposicion = new DateTime(2026, 5, 20), ModalidadEntrega = ModalidadEntregaEnum.EntregaDomicilio, Estado = EstadoGuiaEnum.EnCDDestino, idCDOrigen = cdNorte, idCDDestino = cdCapital, Destinatario = dest1, AgenciaGuia = null },
 
                 // Puerta a puerta, origen CD Centro, destino Capital - misma dirección que CD03-0001 para probar filtro
-                new Guia { nroGuia = "CD02-0001", fechaImposicion = new DateTime(2026, 5, 21), ModalidadEntrega = ModalidadEntregaEnum.EntregaDomicilio, Estado = EstadoGuiaEnum.EnCDDestino, idCDOrigen = cdCentro, idCDDestino = cdCapital, Destinatario = dest2, AgenciaGuia = null },
+                new Guia { NroGuia = "CD02-0001", fechaImposicion = new DateTime(2026, 5, 21), ModalidadEntrega = ModalidadEntregaEnum.EntregaDomicilio, Estado = EstadoGuiaEnum.EnCDDestino, idCDOrigen = cdCentro, idCDDestino = cdCapital, Destinatario = dest2, AgenciaGuia = null },
 
                 // Retiro en agencia, origen Agencia 1, destino Capital
-                new Guia { nroGuia = "A001-0001", fechaImposicion = new DateTime(2026, 5, 22), ModalidadEntrega = ModalidadEntregaEnum.EntregaAgencia, Estado = EstadoGuiaEnum.EnCDDestino, idCDOrigen = cdNorte, idCDDestino = cdCapital, Destinatario = null, AgenciaGuia = agencia1 },
+                new Guia { NroGuia = "A001-0001", fechaImposicion = new DateTime(2026, 5, 22), ModalidadEntrega = ModalidadEntregaEnum.EntregaAgencia, Estado = EstadoGuiaEnum.EnCDDestino, idCDOrigen = cdNorte, idCDDestino = cdCapital, Destinatario = null, AgenciaGuia = agencia1 },
 
                 // Retiro en agencia, origen Agencia 2, destino Capital
-                new Guia { nroGuia = "A002-0001", fechaImposicion = new DateTime(2026, 5, 23), ModalidadEntrega = ModalidadEntregaEnum.EntregaAgencia, Estado = EstadoGuiaEnum.EnCDDestino, idCDOrigen = cdNorte, idCDDestino = cdCapital, Destinatario = null, AgenciaGuia = agencia2 },
+                new Guia { NroGuia = "A002-0001", fechaImposicion = new DateTime(2026, 5, 23), ModalidadEntrega = ModalidadEntregaEnum.EntregaAgencia, Estado = EstadoGuiaEnum.EnCDDestino, idCDOrigen = cdNorte, idCDDestino = cdCapital, Destinatario = null, AgenciaGuia = agencia2 },
 
                 // Retiro en agencia, origen Agencia 1, destino Capital
-                new Guia { nroGuia = "A001-0002", fechaImposicion = new DateTime(2026, 5, 24), ModalidadEntrega = ModalidadEntregaEnum.EntregaAgencia, Estado = EstadoGuiaEnum.EnCDDestino, idCDOrigen = cdNorte, idCDDestino = cdCapital, Destinatario = null, AgenciaGuia = agencia1 },
+                new Guia { NroGuia = "A001-0002", fechaImposicion = new DateTime(2026, 5, 24), ModalidadEntrega = ModalidadEntregaEnum.EntregaAgencia, Estado = EstadoGuiaEnum.EnCDDestino, idCDOrigen = cdNorte, idCDDestino = cdCapital, Destinatario = null, AgenciaGuia = agencia1 },
 
                 // Puerta a puerta, destino Córdoba - NO debe aparecer (CD destino != CD emisor)
-                new Guia { nroGuia = "CD01-0001", fechaImposicion = new DateTime(2026, 5, 22), ModalidadEntrega = ModalidadEntregaEnum.EntregaDomicilio, Estado = EstadoGuiaEnum.EnCDDestino, idCDOrigen = cdCapital, idCDDestino = cdCentro, Destinatario = dest3, AgenciaGuia = null },
+                new Guia { NroGuia = "CD01-0001", fechaImposicion = new DateTime(2026, 5, 22), ModalidadEntrega = ModalidadEntregaEnum.EntregaDomicilio, Estado = EstadoGuiaEnum.EnCDDestino, idCDOrigen = cdCapital, idCDDestino = cdCentro, Destinatario = dest3, AgenciaGuia = null },
 
                 // En distribución - NO debe aparecer (estado incorrecto)
-                new Guia { nroGuia = "CD03-0002", fechaImposicion = new DateTime(2026, 5, 19), ModalidadEntrega = ModalidadEntregaEnum.EntregaDomicilio, Estado = EstadoGuiaEnum.EnDistribucion, idCDOrigen = cdNorte, idCDDestino = cdCapital, Destinatario = dest1, AgenciaGuia = null },
+                new Guia { NroGuia = "CD03-0002", fechaImposicion = new DateTime(2026, 5, 19), ModalidadEntrega = ModalidadEntregaEnum.EntregaDomicilio, Estado = EstadoGuiaEnum.EnDistribucion, idCDOrigen = cdNorte, idCDDestino = cdCapital, Destinatario = dest1, AgenciaGuia = null },
 
-                new Guia { nroGuia = "CD01-0002", fechaImposicion = new DateTime(2026, 5, 25), ModalidadEntrega = ModalidadEntregaEnum.EntregaDomicilio, Estado = EstadoGuiaEnum.Admitida, idCDOrigen = cdCapital, idCDDestino = cdCapital, Destinatario = dest1, AgenciaGuia = null },
+                new Guia { NroGuia = "CD01-0002", fechaImposicion = new DateTime(2026, 5, 25), ModalidadEntrega = ModalidadEntregaEnum.EntregaDomicilio, Estado = EstadoGuiaEnum.Admitida, idCDOrigen = cdCapital, idCDDestino = cdCapital, Destinatario = dest1, AgenciaGuia = null },
             };
+            Guias = new Queue<Guia>(guiasEnOrdenDeLlegada);
 
         }
     }
