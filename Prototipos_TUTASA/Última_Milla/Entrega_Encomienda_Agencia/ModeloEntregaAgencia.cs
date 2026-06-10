@@ -8,7 +8,6 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia
     {
         public Agencia AgenciaActual { get; }
         private readonly List<Guia> guias;
-        private readonly List<ReciboEntrega> recibos = new List<ReciboEntrega>();
 
         public ModeloEntregaAgencia()
         {
@@ -135,24 +134,13 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia
                 return false;
             }
 
-            RegistrarEntregaInterna(guia, nombre, apellido, dniIngresado);
+            RegistrarEntregaInterna(guia);
             return true;
         }
 
-        private void RegistrarEntregaInterna(Guia guia, string nombre, string apellido, string dni)
+        private void RegistrarEntregaInterna(Guia guia)
         {
-            var recibo = new ReciboEntrega
-            {
-                NroGuia = guia.NroGuia,
-                FechaEntrega = DateTime.Now,
-                NombreRetira = nombre,
-                ApellidoRetira = apellido,
-                DniRetira = dni,
-                Agencia = AgenciaActual.Nombre
-            };
-
             guia.Estado = EstadoGuiaEnum.Entregada;
-            recibos.Add(recibo);
         }
 
         private static bool CoincideDestinatario(Guia guia, string nombre, string apellido, int dni)
@@ -234,10 +222,5 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia
         }
     }
 
-    internal class ClaseDestinatario
-    {
-        public string Nombre { get; set; }
-        public string Apellido { get; set; }
-        public int Dni { get; set; }
-    }
+
 }
