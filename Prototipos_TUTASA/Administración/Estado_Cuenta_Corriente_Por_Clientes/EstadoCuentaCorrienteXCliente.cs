@@ -127,14 +127,6 @@ namespace Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrient
             lvServiciosPendientes.Items.Clear();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblEstadoCuenta_Click(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

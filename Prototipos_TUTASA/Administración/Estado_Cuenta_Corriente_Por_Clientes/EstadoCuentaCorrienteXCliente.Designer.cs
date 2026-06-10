@@ -137,7 +137,7 @@
             lblEstadoCuenta.Size = new Size(151, 25);
             lblEstadoCuenta.TabIndex = 5;
             lblEstadoCuenta.Text = "Estado de Cuenta";
-            lblEstadoCuenta.Click += lblEstadoCuenta_Click;
+           
             // 
             // txtSaldoActual
             // 
