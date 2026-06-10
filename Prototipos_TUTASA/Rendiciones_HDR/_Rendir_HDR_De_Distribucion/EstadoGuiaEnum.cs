@@ -4,7 +4,12 @@ using System.Text;
 
 namespace Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Distribucion
 {
-    internal class EstadoGuiaEnum
+    internal enum EstadoGuiaEnum
     {
+        EnCDDestino,
+        EnDistribucion,
+        PendienteDeRetiroEnAgencia,
+        PendienteDeRetiroEnCD,
+        Entregada
     }
 }

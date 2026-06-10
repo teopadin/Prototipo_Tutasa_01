@@ -13,8 +13,8 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_CD
 
         public bool HayGuiaSeleccionada { get; private set; }
         public string NroGuiaSeleccionada => HayGuiaSeleccionada ? guiaSeleccionada.NroGuia : string.Empty;
-        public string NombreDestinatarioSeleccionado => HayGuiaSeleccionada ? guiaSeleccionada.Destinatario.Nombre : string.Empty;
-        public string ApellidoDestinatarioSeleccionado => HayGuiaSeleccionada ? guiaSeleccionada.Destinatario.Apellido : string.Empty;
+        public string NombreDestinatarioSeleccionado => HayGuiaSeleccionada ? guiaSeleccionada.Destinatario.nombre : string.Empty;
+        public string ApellidoDestinatarioSeleccionado => HayGuiaSeleccionada ? guiaSeleccionada.Destinatario.apellido : string.Empty;
         public string DniDestinatarioSeleccionado => HayGuiaSeleccionada ? guiaSeleccionada.Destinatario.Dni.ToString() : string.Empty;
         public int UltimoNroReciboGenerado => ultimoNroRecibo;
 
@@ -31,29 +31,29 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_CD
                 {
                     NroGuia = "CD02-0002",
                     Estado = EstadoGuiaEnum.PendienteDeRetiroEnCD,
-                    IdCDDestino = cdCapital.IdCD,
-                    Destinatario = new DestinatarioGuia { Nombre = "Ana", Apellido = "Pérez", Dni = 40123456 }
+                    idCDDestino = cdCapital.IdCD,
+                    Destinatario = new DestinatarioGuia { nombre = "Ana", apellido = "Pérez", Dni = 40123456 }
                 },
                 new Guia
                 {
                     NroGuia = "CD01-0007",
                     Estado = EstadoGuiaEnum.PendienteDeRetiroEnCD,
-                    IdCDDestino = cdCapital.IdCD,
-                    Destinatario = new DestinatarioGuia { Nombre = "Juan", Apellido = "Rodríguez", Dni = 41234567 }
+                    idCDDestino = cdCapital.IdCD,
+                    Destinatario = new DestinatarioGuia { nombre = "Juan", apellido = "Rodríguez", Dni = 41234567 }
                 },
                 new Guia
                 {
                     NroGuia = "CD03-0001",
                     Estado = EstadoGuiaEnum.EnDistribucion,
-                    IdCDDestino = cdCapital.IdCD,
-                    Destinatario = new DestinatarioGuia { Nombre = "María", Apellido = "González", Dni = 42345678 }
+                    idCDDestino = cdCapital.IdCD,
+                    Destinatario = new DestinatarioGuia { nombre = "María", apellido = "González", Dni = 42345678 }
                 },
                 new Guia
                 {
                     NroGuia = "CD02-0009",
                     Estado = EstadoGuiaEnum.PendienteDeRetiroEnCD,
-                    IdCDDestino = cdCentro.IdCD,
-                    Destinatario = new DestinatarioGuia { Nombre = "Carlos", Apellido = "López", Dni = 43567890 }
+                    idCDDestino = cdCentro.IdCD,
+                    Destinatario = new DestinatarioGuia { nombre = "Carlos", apellido = "López", Dni = 43567890 }
                 }
             };
         }
@@ -81,13 +81,13 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_CD
                 return false;
             }
 
-            if (guia.IdCDDestino <= 0 || guia.Destinatario == null)
+            if (guia.idCDDestino <= 0 || guia.Destinatario == null)
             {
                 mensaje = "La guía no tiene datos completos para registrar la entrega.";
                 return false;
             }
 
-            if (guia.IdCDDestino != cdActual.IdCD)
+            if (guia.idCDDestino != cdActual.IdCD)
             {
                 mensaje = "La guía ingresada no corresponde al Centro de Distribución actual.";
                 return false;
@@ -177,8 +177,8 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_CD
         private bool CoincideDestinatario(string nombre, string apellido, int dni)
         {
             return guiaSeleccionada.Destinatario.Dni == dni
-                && CoincideTexto(guiaSeleccionada.Destinatario.Nombre, nombre)
-                && CoincideTexto(guiaSeleccionada.Destinatario.Apellido, apellido);
+                && CoincideTexto(guiaSeleccionada.Destinatario.nombre, nombre)
+                && CoincideTexto(guiaSeleccionada.Destinatario.apellido, apellido);
         }
 
         private void RegistrarEntregaInterna()
@@ -187,12 +187,6 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_CD
 
             ultimoNroRecibo++;
             guiaSeleccionada.Estado = EstadoGuiaEnum.Entregada;
-            guiaSeleccionada.FechaEntrega = fechaEntrega;
-            guiaSeleccionada.Historial.Add(new HistorialEstadoGuia
-            {
-                FechaCambio = fechaEntrega,
-                Estado = guiaSeleccionada.Estado
-            });
         }
 
         private static bool CoincideTexto(string textoRegistrado, string textoIngresado)

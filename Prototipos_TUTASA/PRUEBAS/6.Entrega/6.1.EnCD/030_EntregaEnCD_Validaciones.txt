@@ -1,0 +1,90 @@
+Plan de Prueba: Entrega en CD - Validaciones
+
+Preparación general
+1- Cada caso se ejecuta con F5 desde cero.
+2- Verificar que los archivos de DATOS estén configurados con Copy Always.
+3- Usar la pantalla Entrega en CD.
+
+Caso 1 - Guía vacía
+1- Dejar vacío el campo de guía.
+2- Presionar Buscar.
+Resultado esperado: "Debe ingresar un número de guía."
+
+Caso 2 - Guía inexistente
+1- Ingresar NO-EXISTE.
+2- Presionar Buscar.
+Resultado esperado: "El número de guía debe tener un formato válido, por ejemplo CD02-0002, AG01-0001 o A001-0001."
+
+Caso 3 - Guía con formato válido pero inexistente
+1- Ingresar CD99-9999.
+2- Presionar Buscar.
+Resultado esperado: "No se encontró una guía con el número ingresado."
+
+Caso 4 - Guía de otro Centro de Distribución
+1- Ingresar CD02-0009.
+2- Presionar Buscar.
+Resultado esperado: "La guía ingresada no corresponde al Centro de Distribución actual."
+
+Caso 5 - Guía con estado inválido
+1- Ingresar CD03-0001.
+2- Presionar Buscar.
+Resultado esperado: "La guía no se encuentra pendiente de retiro en CD."
+
+Caso 6 - Registrar sin buscar
+1- Abrir la pantalla.
+2- Presionar Registrar Entrega.
+Resultado esperado: "Debe buscar una guía válida antes de registrar la entrega."
+
+Caso 7 - Campos de quien retira vacíos
+1- Buscar CD02-0002.
+2- Dejar vacíos nombre, apellido y DNI.
+3- Presionar Registrar Entrega.
+Resultado esperado: "Debe completar nombre, apellido y DNI de quien retira."
+
+Caso 8 - DNI no numérico
+1- Buscar CD02-0002.
+2- Ingresar Nombre Ana.
+3- Ingresar Apellido Perez.
+4- Ingresar DNI abc.
+5- Marcar checkbox DNI.
+6- Presionar Registrar Entrega.
+Resultado esperado: "El DNI ingresado no tiene un formato válido."
+
+Caso 9 - Checkbox DNI sin marcar
+1- Buscar CD02-0002.
+2- Ingresar Nombre Ana.
+3- Ingresar Apellido Perez.
+4- Ingresar DNI 40123456.
+5- Dejar checkbox DNI sin marcar.
+6- Presionar Registrar Entrega.
+Resultado esperado: "Debe confirmar que el documento de identidad fue presentado y verificado."
+
+Caso 10 - Datos no coinciden
+1- Buscar CD02-0002.
+2- Ingresar Nombre Ana.
+3- Ingresar Apellido Perez.
+4- Ingresar DNI 11111111.
+5- Marcar checkbox DNI.
+6- Presionar Registrar Entrega.
+Resultado esperado: "Los datos de quien retira no coinciden con el destinatario de la guía."
+
+Caso 11 - Nombre incorrecto
+1- Buscar CD02-0002.
+2- Ingresar Nombre Laura.
+3- Ingresar Apellido Perez.
+4- Ingresar DNI 40123456.
+5- Marcar checkbox DNI.
+6- Presionar Registrar Entrega.
+Resultado esperado: "Los datos de quien retira no coinciden con el destinatario de la guía."
+
+Caso 12 - Tildes y mayúsculas
+1- Buscar CD02-0002.
+2- Ingresar Nombre ana.
+3- Ingresar Apellido perez.
+4- Ingresar DNI 40123456.
+5- Marcar checkbox DNI.
+6- Presionar Registrar Entrega.
+Resultado esperado: "Entrega en CD se ha generado con éxito."
+
+Aclaración
+En esta versión el modelo todavía usa datos hardcodeados. Los datos base de estas pruebas ya están replicados en DATOS para migrar luego la fuente.

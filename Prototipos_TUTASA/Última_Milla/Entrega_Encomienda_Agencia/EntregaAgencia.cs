@@ -13,7 +13,7 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia
 
             // Paso 1: el nombre de la agencia actual se muestra fijo en pantalla.
             // Protegemos contra valores nulos que podrían venir desde el modelo.
-            lblAgencia.Text = modelo.AgenciaActual?.Nombre ?? string.Empty;
+            lblAgencia.Text = modelo.AgenciaActual?.razonSocial ?? string.Empty;
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -26,8 +26,8 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia
                 return;
             }
 
-            var item = new ListViewItem(guia.Destinatario.Nombre);
-            item.SubItems.Add(guia.Destinatario.Apellido);
+            var item = new ListViewItem(guia.Destinatario.nombre);
+            item.SubItems.Add(guia.Destinatario.apellido);
             item.SubItems.Add(guia.Destinatario.Dni.ToString());
             item.Tag = guia;
             lvGuia.Items.Add(item);

@@ -1,0 +1,172 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Linq;
+using System.Windows.Forms;
+
+namespace Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Retiro
+{
+    internal class ModeloRendirHojaDeRutaDeRetiro
+    {
+        private HojaDeRutaRetiro hdrSeleccionada = null;
+
+        private List<TransportistaLocal> transportistas = new List<TransportistaLocal>
+    {
+        new TransportistaLocal { DniTransportista = 11111111, Nombre = "Juan",    Apellido = "Perez"     },
+        new TransportistaLocal { DniTransportista = 22222222, Nombre = "Maria",   Apellido = "Gomez"     },
+        new TransportistaLocal { DniTransportista = 33333333, Nombre = "Carlos",  Apellido = "Rodriguez" },
+        new TransportistaLocal { DniTransportista = 44444444, Nombre = "Lucia",   Apellido = "Fernandez" },
+        new TransportistaLocal { DniTransportista = 55555555, Nombre = "Roberto", Apellido = "Lopez"     }
+    };
+
+        // Almacén de guías — todas con estado IncluidaEnHDRRetiro porque ya están asignadas a una HDR de retiro
+        private List<Guia> guias = new List<Guia>
+    {
+        new Guia { NroGuia = "G-R-001", Estado = EstadoGuiaEnum.IncluidaEnHDRRetiro },
+        new Guia { NroGuia = "G-R-002", Estado = EstadoGuiaEnum.IncluidaEnHDRRetiro },
+        new Guia { NroGuia = "G-R-003", Estado = EstadoGuiaEnum.IncluidaEnHDRRetiro },
+        new Guia { NroGuia = "G-R-004", Estado = EstadoGuiaEnum.IncluidaEnHDRRetiro },
+        new Guia { NroGuia = "G-R-005", Estado = EstadoGuiaEnum.IncluidaEnHDRRetiro },
+        new Guia { NroGuia = "G-R-006", Estado = EstadoGuiaEnum.IncluidaEnHDRRetiro },
+        new Guia { NroGuia = "G-R-007", Estado = EstadoGuiaEnum.IncluidaEnHDRRetiro },
+        new Guia { NroGuia = "G-R-008", Estado = EstadoGuiaEnum.IncluidaEnHDRRetiro },
+        new Guia { NroGuia = "G-R-009", Estado = EstadoGuiaEnum.IncluidaEnHDRRetiro },
+        new Guia { NroGuia = "G-R-010", Estado = EstadoGuiaEnum.IncluidaEnHDRRetiro }
+    };
+
+        private List<HojaDeRutaRetiro> hdrs = new List<HojaDeRutaRetiro>
+    {
+        new HojaDeRutaRetiro { NroHDR = 2001, DniTransportistaAsignado = 11111111, Remitente = "Empresa ABC S.A.",   Calle = "Av. Corrientes", Altura = 1234, Piso = "1",  CP = "1043", Estado = EstadoHojaDeRutaEnum.Recibida,  DetalleGuias = new List<string> { "G-R-001" } },
+        new HojaDeRutaRetiro { NroHDR = 2002, DniTransportistaAsignado = 11111111, Remitente = "Distribuidora XYZ",  Calle = "Lavalle",        Altura = 567,  Piso = "3",  CP = "1047", Estado = EstadoHojaDeRutaEnum.Recibida,  DetalleGuias = new List<string> { "G-R-002" } },
+        new HojaDeRutaRetiro { NroHDR = 2003, DniTransportistaAsignado = 11111111, Remitente = "Importadora Sur",    Calle = "Florida",        Altura = 890,  Piso = "PB", CP = "1005", Estado = EstadoHojaDeRutaEnum.Recibida, DetalleGuias = new List<string> { "G-R-003" } },
+        new HojaDeRutaRetiro { NroHDR = 2004, DniTransportistaAsignado = 22222222, Remitente = "Logistica Norte",    Calle = "Santa Fe",       Altura = 2345, Piso = "2",  CP = "1123", Estado = EstadoHojaDeRutaEnum.Recibida,  DetalleGuias = new List<string> { "G-R-004" } },
+        new HojaDeRutaRetiro { NroHDR = 2005, DniTransportistaAsignado = 22222222, Remitente = "Comercial Este",     Calle = "Cordoba",        Altura = 678,  Piso = "4",  CP = "1054", Estado = EstadoHojaDeRutaEnum.Recibida, DetalleGuias = new List<string> { "G-R-005" } },
+        new HojaDeRutaRetiro { NroHDR = 2006, DniTransportistaAsignado = 33333333, Remitente = "Empresa DEF S.R.L.", Calle = "Rivadavia",      Altura = 4567, Piso = "5",  CP = "1407", Estado = EstadoHojaDeRutaEnum.Recibida,  DetalleGuias = new List<string> { "G-R-006" } },
+        new HojaDeRutaRetiro { NroHDR = 2007, DniTransportistaAsignado = 33333333, Remitente = "Distribuidora ABC",  Calle = "Belgrano",       Altura = 1100, Piso = "PB", CP = "1092", Estado = EstadoHojaDeRutaEnum.Recibida,  DetalleGuias = new List<string> { "G-R-007" } },
+        new HojaDeRutaRetiro { NroHDR = 2008, DniTransportistaAsignado = 33333333, Remitente = "Importadora Norte",  Calle = "Callao",         Altura = 230,  Piso = "1",  CP = "1022", Estado = EstadoHojaDeRutaEnum.Recibida, DetalleGuias = new List<string> { "G-R-008" } },
+        new HojaDeRutaRetiro { NroHDR = 2009, DniTransportistaAsignado = 44444444, Remitente = "Empresa GHI S.A.",   Calle = "Pueyrredon",     Altura = 1500, Piso = "3",  CP = "1118", Estado = EstadoHojaDeRutaEnum.Recibida,  DetalleGuias = new List<string> { "G-R-009" } },
+        new HojaDeRutaRetiro { NroHDR = 2010, DniTransportistaAsignado = 44444444, Remitente = "Logistica Central",  Calle = "Scalabrini",     Altura = 980,  Piso = "PB", CP = "1414", Estado = EstadoHojaDeRutaEnum.Recibida, DetalleGuias = new List<string> { "G-R-010" } }
+    };
+
+        internal void SetHdrSeleccionada(HojaDeRutaRetiro hdr)
+        {
+            hdrSeleccionada = hdr;
+        }
+
+        internal HojaDeRutaRetiro GetHdrSeleccionada()
+        {
+            return hdrSeleccionada;
+        }
+
+        internal List<TransportistaLocal> ObtenerTransportistas()
+        {
+            return transportistas;
+        }
+
+        internal TransportistaLocal BuscarTransportista(int dni)
+        {
+            foreach (TransportistaLocal t in transportistas)
+            {
+                if (t.DniTransportista == dni) return t;
+            }
+            return null;
+        }
+
+        internal HojaDeRutaRetiro BuscarHDR(int nroHDR)
+        {
+            foreach (HojaDeRutaRetiro hdr in hdrs)
+            {
+                if (hdr.NroHDR == nroHDR) return hdr;
+            }
+            return null;
+        }
+
+        internal Guia BuscarGuia(string nroGuia)
+        {
+            foreach (Guia g in guias)
+            {
+                if (g.NroGuia == nroGuia) return g;
+            }
+            return null;
+        }
+
+        internal List<HojaDeRutaRetiro> ObtenerHDRsPorTransportista(int dniTransportista)
+        {
+            var resultado = new List<HojaDeRutaRetiro>();
+            foreach (var hdr in hdrs)
+            {
+                if (hdr.DniTransportistaAsignado == dniTransportista &&
+                    (hdr.Estado == EstadoHojaDeRutaEnum.Recibida || hdr.Estado == EstadoHojaDeRutaEnum.Recibida))
+                {
+                    resultado.Add(hdr);
+                }
+            }
+            return resultado;
+        }
+
+        internal List<MotivoNoCumplidaRetiroEnum> ObtenerMotivos()
+        {
+            return new List<MotivoNoCumplidaRetiroEnum>
+        {
+            MotivoNoCumplidaRetiroEnum.ClienteAusente,
+            MotivoNoCumplidaRetiroEnum.EncomiendaNoPreparada,
+            MotivoNoCumplidaRetiroEnum.DiscrepanciaConGuia,
+            MotivoNoCumplidaRetiroEnum.Otro
+        };
+        }
+
+        internal bool AplicarEstado(bool cumplida, MotivoNoCumplidaRetiroEnum? motivo)
+        {
+            if (!cumplida && motivo == null)
+            {
+                MessageBox.Show("Debe seleccionar un motivo para marcar la HDR como No Cumplida.");
+                return false;
+            }
+
+            if (cumplida)
+            {
+                hdrSeleccionada.Estado = EstadoHojaDeRutaEnum.Cumplida;
+                hdrSeleccionada.MotivoNoCumplida = null;
+            }
+            else
+            {
+                hdrSeleccionada.Estado = EstadoHojaDeRutaEnum.NoCumplida;
+                hdrSeleccionada.MotivoNoCumplida = motivo;
+            }
+            return true;
+        }
+
+        internal bool RegistrarRendicion(List<HojaDeRutaRetiro> lista)
+        {
+            foreach (var hdr in lista)
+            {
+                if (hdr.Estado != EstadoHojaDeRutaEnum.Cumplida && hdr.Estado != EstadoHojaDeRutaEnum.NoCumplida)
+                {
+                    MessageBox.Show("Debe aplicar un estado a todas las HDR antes de registrar la rendicion.");
+                    return false;
+                }
+            }
+
+            // Cambiar el estado de las guías según el estado final de cada HDR
+            foreach (var hdr in lista)
+            {
+                foreach (string nroGuia in hdr.DetalleGuias)
+                {
+                    Guia g = BuscarGuia(nroGuia);
+                    if (g == null) continue;
+
+                    if (hdr.Estado == EstadoHojaDeRutaEnum.Cumplida)
+                    {
+                        g.Estado = EstadoGuiaEnum.Retirada;
+                    }
+                    else if (hdr.Estado == EstadoHojaDeRutaEnum.NoCumplida)
+                    {
+                        g.Estado = EstadoGuiaEnum.Impuesta;
+                    }
+                }
+            }
+
+            return true;
+        }
+    }
+}

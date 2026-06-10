@@ -1,0 +1,66 @@
+[
+  {
+    "NroGuia": "CD02-0002",
+    "Estado": "PendienteDeRetiroEnCD",
+    "IdCDDestino": 1,
+    "IdAgenciaDestino": null,
+    "DniDestinatario": 40123456,
+    "FechaEntrega": null
+  },
+  {
+    "NroGuia": "CD01-0007",
+    "Estado": "PendienteDeRetiroEnCD",
+    "IdCDDestino": 1,
+    "IdAgenciaDestino": null,
+    "DniDestinatario": 41234567,
+    "FechaEntrega": null
+  },
+  {
+    "NroGuia": "CD03-0001",
+    "Estado": "EnDistribucion",
+    "IdCDDestino": 1,
+    "IdAgenciaDestino": null,
+    "DniDestinatario": 42345678,
+    "FechaEntrega": null
+  },
+  {
+    "NroGuia": "CD02-0009",
+    "Estado": "PendienteDeRetiroEnCD",
+    "IdCDDestino": 2,
+    "IdAgenciaDestino": null,
+    "DniDestinatario": 43567890,
+    "FechaEntrega": null
+  },
+  {
+    "NroGuia": "AG01-0001",
+    "Estado": "PendienteDeRetiroEnAgencia",
+    "IdCDDestino": null,
+    "IdAgenciaDestino": 1,
+    "DniDestinatario": 40123456,
+    "FechaEntrega": null
+  },
+  {
+    "NroGuia": "AG01-0002",
+    "Estado": "PendienteDeRetiroEnAgencia",
+    "IdCDDestino": null,
+    "IdAgenciaDestino": 1,
+    "DniDestinatario": 41234567,
+    "FechaEntrega": null
+  },
+  {
+    "NroGuia": "AG01-0003",
+    "Estado": "Entregada",
+    "IdCDDestino": null,
+    "IdAgenciaDestino": 1,
+    "DniDestinatario": 42345678,
+    "FechaEntrega": "2026-06-10T00:00:00"
+  },
+  {
+    "NroGuia": "AG02-0001",
+    "Estado": "PendienteDeRetiroEnAgencia",
+    "IdCDDestino": null,
+    "IdAgenciaDestino": 2,
+    "DniDestinatario": 43567890,
+    "FechaEntrega": null
+  }
+]
