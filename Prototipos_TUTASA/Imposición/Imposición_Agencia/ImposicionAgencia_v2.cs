@@ -40,8 +40,6 @@ namespace Prototipos_TUTASA.ImposiciónAgencia_v2
                 return;
             }
 
-            if (!ValidarDatosRemitente())
-                return;
 
             if (string.IsNullOrWhiteSpace(txtNombreDest.Text) ||
                 string.IsNullOrWhiteSpace(txtApellidoDest.Text) ||
@@ -265,45 +263,7 @@ namespace Prototipos_TUTASA.ImposiciónAgencia_v2
             tbCiudadDest.Clear();
         }
 
-        private bool ValidarDatosRemitente()
-        {
-            if (string.IsNullOrWhiteSpace(txtCUIT.Text) ||
-                string.IsNullOrWhiteSpace(txtTelRem.Text) ||
-                string.IsNullOrWhiteSpace(txtCalleRemitente.Text) ||
-                string.IsNullOrWhiteSpace(txtAlturaRemitente.Text) ||
-                string.IsNullOrWhiteSpace(txtCodigoPostalRemitente.Text) ||
-                string.IsNullOrWhiteSpace(txtCiudadRemitente.Text))
-            {
-                MostrarAviso("Debe completar todos los campos obligatorios.");
-                return false;
-            }
-
-            if (!long.TryParse(txtCUIT.Text.Trim(), out long cuit) || cuit <= 0)
-            {
-                MostrarAviso("El campo CUIT ingresado no es válido.");
-                return false;
-            }
-
-            if (!EsSoloNumerico(txtTelRem.Text))
-            {
-                MostrarAviso("El campo Teléfono ingresado no es válido.");
-                return false;
-            }
-
-            if (!int.TryParse(txtAlturaRemitente.Text.Trim(), out int alturaRemitente) || alturaRemitente <= 0)
-            {
-                MostrarAviso("El campo Altura ingresado no es válido.");
-                return false;
-            }
-
-            if (!EsSoloNumerico(txtCodigoPostalRemitente.Text))
-            {
-                MostrarAviso("El campo Codigo postal ingresado no es válido.");
-                return false;
-            }
-
-            return true;
-        }
+        
 
         private bool ValidarDomicilioPuertaPuerta()
         {

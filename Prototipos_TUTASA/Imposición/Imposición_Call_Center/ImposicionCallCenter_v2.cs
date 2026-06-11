@@ -50,8 +50,7 @@ namespace Prototipos_TUTASA.ImposiciónCallCenter_v2
                 return;
             }
 
-            if (!ValidarDatosRemitente())
-                return;
+            
 
             if (string.IsNullOrWhiteSpace(txtNombreDest.Text) ||
                 string.IsNullOrWhiteSpace(txtApellidoDest.Text) ||
@@ -59,6 +58,18 @@ namespace Prototipos_TUTASA.ImposiciónCallCenter_v2
                 string.IsNullOrWhiteSpace(txtTelDest.Text))
             {
                 MostrarAviso("Debe completar todos los campos obligatorios.");
+                return;
+            }
+
+            if (!EsSoloTexto(txtNombreDest.Text))
+            {
+                MostrarAviso("El campo Nombre ingresado no es válido.");
+                return;
+            }
+
+            if (!EsSoloTexto(txtApellidoDest.Text))
+            {
+                MostrarAviso("El campo Apellido ingresado no es válido.");
                 return;
             }
 
@@ -264,45 +275,6 @@ namespace Prototipos_TUTASA.ImposiciónCallCenter_v2
             textBox5.Clear();
         }
 
-        private bool ValidarDatosRemitente()
-        {
-            if (string.IsNullOrWhiteSpace(txtCUIT.Text) ||
-                string.IsNullOrWhiteSpace(txtTelRem.Text) ||
-                string.IsNullOrWhiteSpace(txtCalleRemitente.Text) ||
-                string.IsNullOrWhiteSpace(txtAlturaRemitente.Text) ||
-                string.IsNullOrWhiteSpace(txtCodigoPostalRemitente.Text) ||
-                string.IsNullOrWhiteSpace(txtCiudadRemitente.Text))
-            {
-                MostrarAviso("Debe completar todos los campos obligatorios.");
-                return false;
-            }
-
-            if (!long.TryParse(txtCUIT.Text.Trim(), out long cuit) || cuit <= 0)
-            {
-                MostrarAviso("El campo CUIT ingresado no es válido.");
-                return false;
-            }
-
-            if (!EsSoloNumerico(txtTelRem.Text))
-            {
-                MostrarAviso("El campo Teléfono ingresado no es válido.");
-                return false;
-            }
-
-            if (!int.TryParse(txtAlturaRemitente.Text.Trim(), out int alturaRemitente) || alturaRemitente <= 0)
-            {
-                MostrarAviso("El campo Altura ingresado no es válido.");
-                return false;
-            }
-
-            if (!EsSoloNumerico(txtCodigoPostalRemitente.Text))
-            {
-                MostrarAviso("El campo Codigo postal ingresado no es válido.");
-                return false;
-            }
-
-            return true;
-        }
 
         private bool ValidarDomicilioPuertaPuerta()
         {
@@ -392,6 +364,20 @@ namespace Prototipos_TUTASA.ImposiciónCallCenter_v2
             foreach (char caracter in valor.Trim())
             {
                 if (!char.IsDigit(caracter))
+                    return false;
+            }
+
+            return true;
+        }
+
+        private bool EsSoloTexto(string valor)
+        {
+            if (string.IsNullOrWhiteSpace(valor))
+                return false;
+
+            foreach (char caracter in valor.Trim())
+            {
+                if (!char.IsLetter(caracter) && caracter != ' ')
                     return false;
             }
 
