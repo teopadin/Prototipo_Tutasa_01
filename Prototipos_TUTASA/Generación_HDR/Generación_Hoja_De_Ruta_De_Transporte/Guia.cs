@@ -26,6 +26,7 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transpor
                     default: return 0;
                 }
             }
+            set;
         }
     }
 }

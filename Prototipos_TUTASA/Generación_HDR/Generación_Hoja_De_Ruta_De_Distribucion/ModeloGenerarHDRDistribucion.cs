@@ -67,11 +67,11 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Distribu
                 Guias.Add(new Guia
                 {
                     NroGuia = g.NroGuia,
-                    modalidadEntrega = (ModalidadEntregaEnum)g.modalidadEntrega,   // casteo enum
-                    estado = (EstadoGuiaEnum)g.estado,                             // casteo enum
+                    modalidadEntrega = (ModalidadEntregaEnum)g.modalidadEntrega,   
+                    estado = (EstadoGuiaEnum)g.estado,                             
                     idCDOrigen = g.idCDOrigen,
                     idCDDestino = g.idCDDestino,
-                    Destinatario = new DestinatarioGuia                            // reconstruido campo a campo
+                    Destinatario = new DestinatarioGuia                            
                     {
                         Dni = g.Destinatario.Dni,
                         nombre = g.Destinatario.nombre,
@@ -131,7 +131,7 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Distribu
             nuevaHDR.estado = Prototipos_TUTASA.Auxiliares.EstadoHojaDeRutaEnum.Generada;
             nuevaHDR.dniTransportistaAsignado = transportista.dniTransportista;
 
-            // Todas comparten direccion (lo garantiza el filtro de la pantalla)
+
             Guia guiaRef = guias[0];
             if (guiaRef.modalidadEntrega == ModalidadEntregaEnum.EntregaDomicilio)
             {
@@ -151,7 +151,7 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Distribu
                 nuevaHDR.Destinatario = agencia.razonSocial;
             }
 
-            // Detalle + cambio de estado de cada guia EN EL ALMACEN (esto persiste)
+
             foreach (var guia in guias)
             {
                 nuevaHDR.DetalleGuias.Add(guia.NroGuia);

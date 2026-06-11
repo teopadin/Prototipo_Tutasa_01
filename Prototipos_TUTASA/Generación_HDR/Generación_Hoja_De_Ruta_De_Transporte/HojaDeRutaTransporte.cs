@@ -6,6 +6,6 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transpor
 {
     internal class HojaDeRutaTransporte
     {
-        public int NroHDR { get; set; }
+        public int nroHDR { get; set; }
     }
 }
