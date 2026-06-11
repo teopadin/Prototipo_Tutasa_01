@@ -4,24 +4,20 @@ namespace Prototipos_TUTASA.Almacenes;
 
 internal static class CuadroTarifarioAlmacen
 {
-    private const string Archivo = "DATOS/CuadrosTarifarios.json";
     private static List<CuadroTarifarioEntidad> cuadrosTarifarios = new();
 
     static CuadroTarifarioAlmacen()
     {
-        if (File.Exists(Archivo))
+        if (File.Exists("DATOS/CuadrosTarifarios.json"))
         {
-            string json = File.ReadAllText(Archivo);
-            cuadrosTarifarios = JsonSerializer.Deserialize<List<CuadroTarifarioEntidad>>(json) ?? new();
+            string json = File.ReadAllText("DATOS/CuadrosTarifarios.json");
+            cuadrosTarifarios = JsonSerializer.Deserialize<List<CuadroTarifarioEntidad>>(json);
         }
     }
 
-    public static List<CuadroTarifarioEntidad> ObtenerTodos() { return cuadrosTarifarios; }
-
     public static void Guardar()
     {
-        Directory.CreateDirectory("DATOS");
         string json = JsonSerializer.Serialize(cuadrosTarifarios);
-        File.WriteAllText(Archivo, json);
+        File.WriteAllText("DATOS/CuadrosTarifarios.json", json);
     }
 }

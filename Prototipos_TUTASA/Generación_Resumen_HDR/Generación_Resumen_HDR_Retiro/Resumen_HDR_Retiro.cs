@@ -99,10 +99,10 @@ namespace Prototipos_TUTASA
 
                 Cliente guia = hoja.DetalleGuias[0];
                 var item = new ListViewItem(hoja.NroHDR.ToString());
-                item.SubItems.Add(guia.IdCliente.ToString());
-                item.SubItems.Add(guia.Calle);
-                item.SubItems.Add(guia.Altura.ToString());
-                item.SubItems.Add(guia.CodigoPostal);
+                item.SubItems.Add(guia.idCliente.ToString());
+                item.SubItems.Add(guia.calle);
+                item.SubItems.Add(guia.altura.ToString());
+                item.SubItems.Add(guia.codigoPostal);
                 item.SubItems.Add(modelo.ObtenerCantidadBultos(hoja).ToString());
                 listView1.Items.Add(item);
             }

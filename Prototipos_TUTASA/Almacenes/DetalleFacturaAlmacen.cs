@@ -4,24 +4,20 @@ namespace Prototipos_TUTASA.Almacenes;
 
 internal static class DetalleFacturaAlmacen
 {
-    private const string Archivo = "DATOS/DetallesFactura.json";
     private static List<DetalleFacturaEntidad> detallesFactura = new();
 
     static DetalleFacturaAlmacen()
     {
-        if (File.Exists(Archivo))
+        if (File.Exists("DATOS/DetallesFactura.json"))
         {
-            string json = File.ReadAllText(Archivo);
-            detallesFactura = JsonSerializer.Deserialize<List<DetalleFacturaEntidad>>(json) ?? new();
+            string json = File.ReadAllText("DATOS/DetallesFactura.json");
+            detallesFactura = JsonSerializer.Deserialize<List<DetalleFacturaEntidad>>(json);
         }
     }
 
-    public static List<DetalleFacturaEntidad> ObtenerTodos() { return detallesFactura; }
-
     public static void Guardar()
     {
-        Directory.CreateDirectory("DATOS");
         string json = JsonSerializer.Serialize(detallesFactura);
-        File.WriteAllText(Archivo, json);
+        File.WriteAllText("DATOS/DetallesFactura.json", json);
     }
 }

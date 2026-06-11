@@ -26,9 +26,9 @@ namespace Prototipos_TUTASA
         private bool BuscarHojasAsignadas(TransportistaLocal transportista, DateTime fecha, out List<HojaRetiroResumen> hojas)
         {
             hojas = hojasDeRuta
-                .Where(h => h.DniTransportistaAsignado == transportista.DniTransportista
+                .Where(h => h.dniTransportistaAsignado == transportista.dniTransportista
                     && h.Fecha.Date == fecha.Date
-                    && h.Estado == EstadoHojaDeRutaEnum.Generada)
+                    && h.estado == EstadoHojaDeRutaEnum.Generada)
                 .OrderBy(h => h.NroHDR)
                 .ToList();
 
@@ -82,7 +82,7 @@ namespace Prototipos_TUTASA
 
             foreach (HojaRetiroResumen hoja in hojasSeleccionadas)
             {
-                hoja.Estado = EstadoHojaDeRutaEnum.EnCurso;
+                hoja.estado = EstadoHojaDeRutaEnum.EnCurso;
             }
 
             LimpiarSeleccion();
@@ -130,32 +130,32 @@ namespace Prototipos_TUTASA
 
         private string ObtenerClaveDomicilio(Cliente guia)
         {
-            return $"{guia.Calle}|{guia.Altura}|{guia.CodigoPostal}".ToUpperInvariant();
+            return $"{guia.calle}|{guia.altura}|{guia.codigoPostal}".ToUpperInvariant();
         }
 
         private void CargarDatosDePrueba()
         {
-            var carlos = new TransportistaLocal { DniTransportista = 12345678, Nombre = "Carlos", Apellido = "Gomez" };
-            var laura = new TransportistaLocal { DniTransportista = 23456789, Nombre = "Laura", Apellido = "Martinez" };
+            var carlos = new TransportistaLocal { dniTransportista = 12345678, nombre = "Carlos", apellido = "Gomez" };
+            var laura = new TransportistaLocal { dniTransportista = 23456789, nombre = "Laura", apellido = "Martinez" };
 
             transportistas.Add(carlos);
             transportistas.Add(laura);
 
             AgregarHojaDeRuta(1, DateTime.Today, carlos, new List<Cliente>
             {
-                new Cliente { IdCliente = 1, Calle = "Av. Rivadavia", Altura = 3200, CodigoPostal = "1406" },
-                new Cliente { IdCliente = 1, Calle = "Av. Rivadavia", Altura = 3200, CodigoPostal = "1406" }
+                new Cliente { idCliente = 1, calle = "Av. Rivadavia", altura = 3200, codigoPostal = "1406" },
+                new Cliente { idCliente = 1, calle = "Av. Rivadavia", altura = 3200, codigoPostal = "1406" }
             });
 
             AgregarHojaDeRuta(2, DateTime.Today, carlos, new List<Cliente>
             {
-                new Cliente { IdCliente = 2, Calle = "Av. Corrientes", Altura = 1234, CodigoPostal = "1043" },
-                new Cliente { IdCliente = 2, Calle = "Av. Corrientes", Altura = 1234, CodigoPostal = "1043" }
+                new Cliente { idCliente = 2, calle = "Av. Corrientes", altura = 1234, codigoPostal = "1043" },
+                new Cliente { idCliente = 2, calle = "Av. Corrientes", altura = 1234, codigoPostal = "1043" }
             });
 
             AgregarHojaDeRuta(3, DateTime.Today, laura, new List<Cliente>
             {
-                new Cliente { IdCliente = 3, Calle = "San Martin", Altura = 500, CodigoPostal = "1043" }
+                new Cliente { idCliente = 3, calle = "San Martin", altura = 500, codigoPostal = "1043" }
             });
         }
 
@@ -165,9 +165,9 @@ namespace Prototipos_TUTASA
             {
                 NroHDR = nroHDR,
                 Fecha = fecha,
-                DniTransportistaAsignado = transportista.DniTransportista,
+                dniTransportistaAsignado = transportista.dniTransportista,
                 DetalleGuias = detalleGuias,
-                Estado = EstadoHojaDeRutaEnum.Generada
+                estado = EstadoHojaDeRutaEnum.Generada
             });
         }
     }

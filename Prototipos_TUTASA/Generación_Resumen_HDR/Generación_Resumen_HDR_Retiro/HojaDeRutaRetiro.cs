@@ -7,9 +7,9 @@ namespace Prototipos_TUTASA.ClasesResumenHDRRetiro
     {
         public int NroHDR { get; set; }
         public DateTime Fecha { get; set; }
-        public int DniTransportistaAsignado { get; set; }
+        public int dniTransportistaAsignado { get; set; }
         public List<Cliente> DetalleGuias { get; set; }
-        public EstadoHojaDeRutaEnum Estado { get; set; }
+        public EstadoHojaDeRutaEnum estado { get; set; }
 
         public HojaDeRutaRetiro()
         {

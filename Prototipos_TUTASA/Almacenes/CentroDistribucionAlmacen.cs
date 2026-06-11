@@ -4,24 +4,20 @@ namespace Prototipos_TUTASA.Almacenes;
 
 internal static class CentroDistribucionAlmacen
 {
-    private const string Archivo = "DATOS/CentrosDeDistribucion.json";
     private static List<CentroDistribucionEntidad> centrosDistribucion = new();
 
     static CentroDistribucionAlmacen()
     {
-        if (File.Exists(Archivo))
+        if (File.Exists("DATOS/CentrosDeDistribucion.json"))
         {
-            string json = File.ReadAllText(Archivo);
-            centrosDistribucion = JsonSerializer.Deserialize<List<CentroDistribucionEntidad>>(json) ?? new();
+            string json = File.ReadAllText("DATOS/CentrosDeDistribucion.json");
+            centrosDistribucion = JsonSerializer.Deserialize<List<CentroDistribucionEntidad>>(json);
         }
     }
 
-    public static List<CentroDistribucionEntidad> ObtenerTodos() { return centrosDistribucion; }
-
     public static void Guardar()
     {
-        Directory.CreateDirectory("DATOS");
         string json = JsonSerializer.Serialize(centrosDistribucion);
-        File.WriteAllText(Archivo, json);
+        File.WriteAllText("DATOS/CentrosDeDistribucion.json", json);
     }
 }

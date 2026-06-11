@@ -3,14 +3,14 @@ namespace Prototipos_TUTASA.ClasesResumenHDRDistribucion
     internal class DestinatarioGuia
     {
         public int Dni { get; set; }
-        public string Calle { get; set; }
-        public int Altura { get; set; }
-        public string CodigoPostal { get; set; }
+        public string calle { get; set; }
+        public int altura { get; set; }
+        public string codigoPostal { get; set; }
 
         public DestinatarioGuia()
         {
-            Calle = string.Empty;
-            CodigoPostal = string.Empty;
+            calle = string.Empty;
+            codigoPostal = string.Empty;
         }
     }
 }
