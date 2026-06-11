@@ -2,15 +2,15 @@ namespace Prototipos_TUTASA.ClasesResumenHDRRetiro
 {
     internal class Cliente
     {
-        public int IdCliente { get; set; }
-        public string Calle { get; set; }
-        public int Altura { get; set; }
-        public string CodigoPostal { get; set; }
+        public int idCliente { get; set; }
+        public string calle { get; set; }
+        public int altura { get; set; }
+        public string codigoPostal { get; set; }
 
         public Cliente()
         {
-            Calle = string.Empty;
-            CodigoPostal = string.Empty;
+            calle = string.Empty;
+            codigoPostal = string.Empty;
         }
     }
 }
