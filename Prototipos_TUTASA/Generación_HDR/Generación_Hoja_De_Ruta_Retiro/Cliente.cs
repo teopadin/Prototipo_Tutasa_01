@@ -6,7 +6,7 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_Retiro
 {
     internal class Cliente
     {
-
+            public int idCliente { get; set; }
             public string razonSocial { get; set; }
             public string calle { get; set; }
             public int altura { get; set; }

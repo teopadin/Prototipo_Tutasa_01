@@ -1,5 +1,4 @@
-﻿using Prototipos_TUTASA.ResultadoCostoVSVentas_v2;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -9,6 +8,7 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transpor
     {
         public CentroDistribucion CdEmisor { get; set; }
         public List<CentroDistribucion> CentrosDeDistribucion { get; set; }
+        public List<EmpresaTransporte> Empresas { get; set; }
         public List<Guia> Guias { get; set; }
         public List<ServicioMediaDistancia> Servicios { get; set; }
 
@@ -17,13 +17,13 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transpor
 
         public ModeloGenerarHDRTransporte()
         {
-            // CDs
-            var cdCapital = new CentroDistribucion { nombre = "Capital y GBA" };
-            var cdCentro = new CentroDistribucion { nombre = "Centro - Córdoba" };
-            var cdNorte = new CentroDistribucion { nombre = "Norte - Tucumán" };
-            var cdEste = new CentroDistribucion { nombre = "Este - Corrientes" };
-            var cdCordillera = new CentroDistribucion { nombre = "Cordillera - Neuquén" };
-            var cdSur = new CentroDistribucion { nombre = "Sur - Viedma" };
+            // CDs (ahora con idCD)
+            var cdCapital = new CentroDistribucion { idCD = 1, nombre = "Capital y GBA" };
+            var cdCentro = new CentroDistribucion { idCD = 2, nombre = "Centro - Córdoba" };
+            var cdNorte = new CentroDistribucion { idCD = 3, nombre = "Norte - Tucumán" };
+            var cdEste = new CentroDistribucion { idCD = 4, nombre = "Este - Corrientes" };
+            var cdCordillera = new CentroDistribucion { idCD = 5, nombre = "Cordillera - Neuquén" };
+            var cdSur = new CentroDistribucion { idCD = 6, nombre = "Sur - Viedma" };
 
             CentrosDeDistribucion = new List<CentroDistribucion>
             {
@@ -32,121 +32,45 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transpor
 
             CdEmisor = cdCapital;
 
-            // Empresas de transporte
-            var empresa1 = new EmpresaTransporte { razonSocial = "Transportes del Sur SA" };
-            var empresa2 = new EmpresaTransporte { razonSocial = "Logística Norte SRL" };
+            // Empresas de transporte (con idEmpresa)
+            var empresa1 = new EmpresaTransporte { idEmpresa = 1, razonSocial = "Transportes del Sur SA" };
+            var empresa2 = new EmpresaTransporte { idEmpresa = 2, razonSocial = "Logística Norte SRL" };
 
-            // Servicios
+            Empresas = new List<EmpresaTransporte> { empresa1, empresa2 };
+
+            // Servicios (idEmpresa, idCDOrigen, idCDDestino ahora por id)
             Servicios = new List<ServicioMediaDistancia>
             {
-                // Servicio A: Capital -> Norte, capacidad max 160S, ya usó 40S
-                new ServicioMediaDistancia { idServicio = 1, idEmpresa = empresa1, tipoArrendamiento = TipoArrendamientoEnum.A, capacidadUsada = 40, idCDOrigen = cdCapital, idCDDestino = cdNorte, fechaSalida = new DateTime(2026, 5, 26, 8, 0, 0) },
-
-                // Servicio B: Capital -> Centro, capacidad max 80S, ya usó 0S
-                new ServicioMediaDistancia { idServicio = 2, idEmpresa = empresa2, tipoArrendamiento = TipoArrendamientoEnum.B, capacidadUsada = 0, idCDOrigen = cdCapital, idCDDestino = cdCentro, fechaSalida = new DateTime(2026, 5, 26, 10, 30, 0) },
-                // Servicio C: Capital -> Norte, capacidad max 56S, ya usó 50S (casi lleno)
-                new ServicioMediaDistancia { idServicio = 3, idEmpresa = empresa1, tipoArrendamiento = TipoArrendamientoEnum.C, capacidadUsada = 50, idCDOrigen = cdCapital, idCDDestino = cdNorte, fechaSalida = new DateTime(2026, 5, 26, 14, 0, 0) },
-
-                // Servicio D: Capital -> Este, capacidad max 24S, ya usó 0S
-                new ServicioMediaDistancia { idServicio = 4, idEmpresa = empresa2, tipoArrendamiento = TipoArrendamientoEnum.D, capacidadUsada = 0, idCDOrigen = cdCapital, idCDDestino = cdEste, fechaSalida = new DateTime(2026, 5, 26, 16, 0, 0) },
+                new ServicioMediaDistancia { idServicio = 1, idEmpresa = empresa1.idEmpresa, tipoArrendamiento = TipoArrendamientoEnum.A, capacidadUsada = 40, idCDOrigen = cdCapital.idCD, idCDDestino = cdNorte.idCD, fechaSalida = new DateTime(2026, 5, 26, 8, 0, 0) },
+                new ServicioMediaDistancia { idServicio = 2, idEmpresa = empresa2.idEmpresa, tipoArrendamiento = TipoArrendamientoEnum.B, capacidadUsada = 0, idCDOrigen = cdCapital.idCD, idCDDestino = cdCentro.idCD, fechaSalida = new DateTime(2026, 5, 26, 10, 30, 0) },
+                new ServicioMediaDistancia { idServicio = 3, idEmpresa = empresa1.idEmpresa, tipoArrendamiento = TipoArrendamientoEnum.C, capacidadUsada = 50, idCDOrigen = cdCapital.idCD, idCDDestino = cdNorte.idCD, fechaSalida = new DateTime(2026, 5, 26, 14, 0, 0) },
+                new ServicioMediaDistancia { idServicio = 4, idEmpresa = empresa2.idEmpresa, tipoArrendamiento = TipoArrendamientoEnum.D, capacidadUsada = 0, idCDOrigen = cdCapital.idCD, idCDDestino = cdEste.idCD, fechaSalida = new DateTime(2026, 5, 26, 16, 0, 0) },
 
                 // Servicio de otro CD - NO debe aparecer
-                new ServicioMediaDistancia { idServicio = 5, idEmpresa = empresa1, tipoArrendamiento = TipoArrendamientoEnum.A, capacidadUsada = 0, idCDOrigen = cdCentro, idCDDestino = cdNorte, fechaSalida = new DateTime(2026, 5, 26, 9, 0, 0) },
+                new ServicioMediaDistancia { idServicio = 5, idEmpresa = empresa1.idEmpresa, tipoArrendamiento = TipoArrendamientoEnum.A, capacidadUsada = 0, idCDOrigen = cdCentro.idCD, idCDDestino = cdNorte.idCD, fechaSalida = new DateTime(2026, 5, 26, 9, 0, 0) },
             };
 
-            // Guías en estado Admitida, origen Capital
+            // Guías (idCDOrigen, idCDDestino, idCDActual ahora por id)
             Guias = new List<Guia>
-{
-    // Destino Norte
-    new Guia {
-        NroGuia = "CD01-0001",
-        TipoBulto = TiposBultoEnum.M,
-        Estado = EstadoGuiaEnum.Admitida,
-        CdOrigen = cdCapital,
-        CdDestino = cdNorte,
-        CdActual = cdCapital
-    },
+            {
+                new Guia { NroGuia = "CD01-0001", TipoBulto = TiposBultoEnum.M,  Estado = EstadoGuiaEnum.Admitida,            idCDOrigen = cdCapital.idCD, idCDDestino = cdNorte.idCD,  idCDActual = cdCapital.idCD },
+                new Guia { NroGuia = "CD01-0002", TipoBulto = TiposBultoEnum.L,  Estado = EstadoGuiaEnum.Admitida,            idCDOrigen = cdCapital.idCD, idCDDestino = cdNorte.idCD,  idCDActual = cdCapital.idCD },
+                new Guia { NroGuia = "CD01-0003", TipoBulto = TiposBultoEnum.XL, Estado = EstadoGuiaEnum.Admitida,            idCDOrigen = cdCapital.idCD, idCDDestino = cdNorte.idCD,  idCDActual = cdCapital.idCD },
 
-    new Guia {
-        NroGuia = "CD01-0002",
-        TipoBulto = TiposBultoEnum.L,
-        Estado = EstadoGuiaEnum.Admitida,
-        CdOrigen = cdCapital,
-        CdDestino = cdNorte,
-        CdActual = cdCapital
-    },
+                new Guia { NroGuia = "CD01-0004", TipoBulto = TiposBultoEnum.S,  Estado = EstadoGuiaEnum.Admitida,            idCDOrigen = cdCapital.idCD, idCDDestino = cdCentro.idCD, idCDActual = cdCapital.idCD },
+                new Guia { NroGuia = "CD01-0005", TipoBulto = TiposBultoEnum.M,  Estado = EstadoGuiaEnum.Admitida,            idCDOrigen = cdCapital.idCD, idCDDestino = cdCentro.idCD, idCDActual = cdCapital.idCD },
 
-    new Guia {
-        NroGuia = "CD01-0003",
-        TipoBulto = TiposBultoEnum.XL,
-        Estado = EstadoGuiaEnum.Admitida,
-        CdOrigen = cdCapital,
-        CdDestino = cdNorte,
-        CdActual = cdCapital
-    },
+                new Guia { NroGuia = "CD01-0006", TipoBulto = TiposBultoEnum.S,  Estado = EstadoGuiaEnum.Admitida,            idCDOrigen = cdCapital.idCD, idCDDestino = cdEste.idCD,   idCDActual = cdCapital.idCD },
 
-    // Destino Centro
-    new Guia {
-        NroGuia = "CD01-0004",
-        TipoBulto = TiposBultoEnum.S,
-        Estado = EstadoGuiaEnum.Admitida,
-        CdOrigen = cdCapital,
-        CdDestino = cdCentro,
-        CdActual = cdCapital
-    },
+                // Pendiente de despacho - NO debe aparecer
+                new Guia { NroGuia = "CD01-0007", TipoBulto = TiposBultoEnum.M,  Estado = EstadoGuiaEnum.PendienteDeDespacho, idCDOrigen = cdCapital.idCD, idCDDestino = cdNorte.idCD,  idCDActual = cdCapital.idCD },
 
-    new Guia {
-        NroGuia = "CD01-0005",
-        TipoBulto = TiposBultoEnum.M,
-        Estado = EstadoGuiaEnum.Admitida,
-        CdOrigen = cdCapital,
-        CdDestino = cdCentro,
-        CdActual = cdCapital
-    },
+                // Otro CD actual - NO debe aparecer
+                new Guia { NroGuia = "CD02-0001", TipoBulto = TiposBultoEnum.S,  Estado = EstadoGuiaEnum.Admitida,            idCDOrigen = cdCentro.idCD,  idCDDestino = cdNorte.idCD,  idCDActual = cdCentro.idCD },
 
-    // Destino Este
-    new Guia {
-        NroGuia = "CD01-0006",
-        TipoBulto = TiposBultoEnum.S,
-        Estado = EstadoGuiaEnum.Admitida,
-        CdOrigen = cdCapital,
-        CdDestino = cdEste,
-        CdActual = cdCapital
-    },
-
-    // Pendiente de despacho
-    new Guia {
-        NroGuia = "CD01-0007",
-        TipoBulto = TiposBultoEnum.M,
-        Estado = EstadoGuiaEnum.PendienteDeDespacho,
-        CdOrigen = cdCapital,
-        CdDestino = cdNorte,
-        CdActual = cdCapital
-    },
-
-    // Otro CD origen
-    new Guia {
-        NroGuia = "CD02-0001",
-        TipoBulto = TiposBultoEnum.S,
-        Estado = EstadoGuiaEnum.Admitida,
-        CdOrigen = cdCentro,
-        CdDestino = cdNorte,
-        CdActual = cdCentro
-    },
-
-    // Ejemplo de redespacho:
-    // origen Capital -> destino final Norte
-    // actualmente está admitida en Centro esperando otro viaje
-    new Guia {
-        NroGuia = "CD01-0008",
-        TipoBulto = TiposBultoEnum.M,
-        Estado = EstadoGuiaEnum.Admitida,
-        CdOrigen = cdCapital,
-        CdDestino = cdNorte,
-        CdActual = cdCentro
-    }
-};
-
+                // Redespacho: destino final Norte, ahora en Centro - NO debe aparecer (idCDActual != emisor)
+                new Guia { NroGuia = "CD01-0008", TipoBulto = TiposBultoEnum.M,  Estado = EstadoGuiaEnum.Admitida,            idCDOrigen = cdCapital.idCD, idCDDestino = cdNorte.idCD,  idCDActual = cdCentro.idCD },
+            };
         }
 
         // Indica si el servicio tiene capacidad suficiente para la cantidad de bultos
@@ -154,6 +78,27 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transpor
         {
             return servicio.CapacidadDisponible >= totalBultos;
         }
-    }
 
+        // Busca un CD por su id. Devuelve null si no existe.
+        public CentroDistribucion BuscarCD(int idCD)
+        {
+            foreach (CentroDistribucion cd in CentrosDeDistribucion)
+            {
+                if (cd.idCD == idCD)
+                    return cd;
+            }
+            return null;
+        }
+
+        // Busca una empresa de transporte por su id. Devuelve null si no existe.
+        public EmpresaTransporte BuscarEmpresa(int idEmpresa)
+        {
+            foreach (EmpresaTransporte empresa in Empresas)
+            {
+                if (empresa.idEmpresa == idEmpresa)
+                    return empresa;
+            }
+            return null;
+        }
+    }
 }

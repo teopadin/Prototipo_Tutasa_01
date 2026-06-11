@@ -29,7 +29,7 @@ namespace Prototipos_TUTASA.Generación_Hoja_De_Ruta_De_Transporte
 
             foreach (var cd in modelo.CentrosDeDistribucion)
             {
-                if (cd.nombre != modelo.CdEmisor.nombre)
+                if (cd.idCD != modelo.CdEmisor.idCD)
                     cmbCDDestino.Items.Add(cd);
             }
 
@@ -67,12 +67,12 @@ namespace Prototipos_TUTASA.Generación_Hoja_De_Ruta_De_Transporte
 
             foreach (var guia in modelo.Guias)
             {
-                if (guia.Estado != EstadoGuiaEnum.Admitida || guia.CdActual.nombre != modelo.CdEmisor.nombre)
+                if (guia.Estado != EstadoGuiaEnum.Admitida || guia.idCDActual != modelo.CdEmisor.idCD)
                     continue;
 
                 var item = new ListViewItem(guia.NroGuia);
                 item.SubItems.Add(guia.TipoBulto.ToString());
-                item.SubItems.Add(guia.CdDestino.nombre);
+                item.SubItems.Add(modelo.BuscarCD(guia.idCDDestino).nombre);
                 item.Tag = guia;
 
                 lvGuiasPendientes.Items.Add(item);
@@ -127,14 +127,14 @@ namespace Prototipos_TUTASA.Generación_Hoja_De_Ruta_De_Transporte
 
             foreach (var servicio in modelo.Servicios)
             {
-                if (servicio.idCDOrigen.nombre != modelo.CdEmisor.nombre || servicio.idCDDestino.nombre != cdSeleccionado.nombre)
+                if (servicio.idCDOrigen != modelo.CdEmisor.idCD || servicio.idCDDestino != cdSeleccionado.idCD)
                     continue;
 
                 if (!modelo.TieneCapacidadSuficiente(servicio, totalBultos))
                     continue;
 
                 var item = new ListViewItem(servicio.idServicio.ToString());
-                item.SubItems.Add(servicio.idEmpresa.razonSocial);
+                item.SubItems.Add(modelo.BuscarEmpresa(servicio.idEmpresa).razonSocial);
                 item.SubItems.Add(servicio.tipoArrendamiento.ToString());
                 item.SubItems.Add(servicio.CapacidadDisponible.ToString());
                 item.SubItems.Add(servicio.fechaSalida.ToString("dd/MM/yyyy HH:mm"));

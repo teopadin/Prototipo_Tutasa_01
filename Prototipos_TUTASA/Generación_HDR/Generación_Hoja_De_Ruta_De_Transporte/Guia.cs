@@ -9,11 +9,9 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transpor
         public string NroGuia { get; set; }
         public TiposBultoEnum TipoBulto { get; set; }
         public EstadoGuiaEnum Estado { get; set; }
-        public CentroDistribucion CdOrigen { get; set; }
-        public CentroDistribucion CdDestino { get; set; }
-
-        public CentroDistribucion CdActual { get; set; }
-
+        public int idCDOrigen { get; set; }
+        public int idCDDestino { get; set; }
+        public int idCDActual { get; set; }
 
         public int EquivalenteS
         {
