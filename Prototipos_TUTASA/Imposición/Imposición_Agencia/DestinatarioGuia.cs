@@ -6,7 +6,7 @@ namespace Prototipos_TUTASA.Imposición.Imposición_Agencia
 {
     internal class DestinatarioGuia
     {
-        public int dni { get; set; }
+        public int Dni { get; set; }
         public string nombre { get; set; }
         public string apellido { get; set; }
         public string calle { get; set; }

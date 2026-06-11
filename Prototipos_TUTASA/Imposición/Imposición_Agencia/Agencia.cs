@@ -8,7 +8,7 @@ namespace Prototipos_TUTASA.Imposición.Imposición_Agencia
     {
         public int idAgencia { get; set; }
         public string razonSocial { get; set; }
-        public CentroDistribucion CD { get; set; }
+        public int idCD { get; set; }
     }
 }
 

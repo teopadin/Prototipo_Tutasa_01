@@ -60,19 +60,19 @@ namespace Prototipos_TUTASA.Imposición.Imposición_Agencia
             {
                 idAgencia = 1,
                 razonSocial = "Agencia Norte SA",
-                CD = cdCapital
+                idCD = cdCapital.idCD
             };
 
             var agencia2 = new Agencia
             {
                 idAgencia = 2,
                 razonSocial = "Agencia Sur SRL",
-                CD = cdCapital
+                idCD = cdCapital.idCD
             };
 
             Agencias = new List<Agencia> { agencia1, agencia2 };
             AgenciaOperadora = agencia1;
-            CdOrigen = AgenciaOperadora.CD;
+            CdOrigen = BuscarCD(AgenciaOperadora.idCD);
             Guias = new List<Guia>();
         }
 
@@ -80,7 +80,7 @@ namespace Prototipos_TUTASA.Imposición.Imposición_Agencia
         {
             Guia guia = new Guia
             {
-                nroGuia = GenerarNumeroGuia()
+                NroGuia = GenerarNumeroGuia()
             };
 
             Guias.Add(guia);
@@ -93,6 +93,16 @@ namespace Prototipos_TUTASA.Imposición.Imposición_Agencia
             int proximoNumero = Guias.Count + 1;
 
             return "AG" + AgenciaOperadora.idAgencia.ToString("000") + "-" + proximoNumero.ToString("0000");
+        }
+
+        public CentroDistribucion BuscarCD(int idCD)
+        {
+            foreach (CentroDistribucion cd in CentrosDeDistribucion)
+            {
+                if (cd.idCD == idCD)
+                    return cd;
+            }
+            return null;
         }
     }
 }

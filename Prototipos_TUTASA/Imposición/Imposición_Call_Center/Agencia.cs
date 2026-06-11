@@ -8,6 +8,6 @@ namespace Prototipos_TUTASA.Imposición.ImposicionCallCenter_v2
     {
         public int idAgencia { get; set; }
         public string razonSocial { get; set; }
-        public CentroDistribucion CD { get; set; }
+        public int idCD { get; set; }
     }
 }

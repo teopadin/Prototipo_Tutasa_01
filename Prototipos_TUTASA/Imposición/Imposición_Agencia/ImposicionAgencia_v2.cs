@@ -78,7 +78,7 @@ namespace Prototipos_TUTASA.ImposiciónAgencia_v2
 
             DestinatarioGuia destinatario = new DestinatarioGuia
             {
-                dni = dniDestinatario,
+                Dni = dniDestinatario,
                 nombre = txtNombreDest.Text.Trim(),
                 apellido = txtApellidoDest.Text.Trim(),
                 telefono = txtTelDest.Text.Trim()
@@ -114,7 +114,7 @@ namespace Prototipos_TUTASA.ImposiciónAgencia_v2
                     return;
                 }
 
-                cdDestino = agenciaDestino.CD;
+                cdDestino = modelo.BuscarCD(agenciaDestino.idCD);
             }
             else if (modalidadEntrega == ModalidadEntregaEnum.EntregaCD)
             {
@@ -135,7 +135,7 @@ namespace Prototipos_TUTASA.ImposiciónAgencia_v2
             Guia guia = modelo.RegistrarImposicion();
 
             MessageBox.Show(
-                "Guía N° " + guia.nroGuia + " generada con éxito.",
+                "Guía N° " + guia.NroGuia + " generada con éxito.",
                 "Éxito",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information

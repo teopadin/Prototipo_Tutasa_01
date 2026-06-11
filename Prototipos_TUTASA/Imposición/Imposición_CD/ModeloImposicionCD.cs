@@ -61,13 +61,13 @@ namespace Prototipos_TUTASA.Imposición.Imposición_CD
             {
                 idAgencia = 1,
                 razonSocial = "Agencia Norte SA",
-                CD = cdCapital
+                idCD = cdCapital.idCD
             };
             var agencia2 = new Agencia
             {
                 idAgencia = 2,
                 razonSocial = "Agencia Sur SRL",
-                CD = cdCapital
+                idCD = cdCapital.idCD
             };
 
             Agencias = new List<Agencia> { agencia1, agencia2 };
@@ -76,6 +76,15 @@ namespace Prototipos_TUTASA.Imposición.Imposición_CD
             Guias = new List<Guia>();
         }
 
+        public CentroDistribucion BuscarCD(int idCD)
+        {
+            foreach (CentroDistribucion cd in CentrosDeDistribucion)
+            {
+                if (cd.idCD == idCD)
+                    return cd;
+            }
+            return null;
+        }
         public CentroDistribucion ObtenerCentroDistribucionPorCiudad(string ciudad)
         {
             string ciudadNormalizada = (ciudad ?? string.Empty).ToLower();

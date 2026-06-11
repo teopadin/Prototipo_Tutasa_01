@@ -123,7 +123,7 @@ namespace Prototipos_TUTASA.ImposiciónCD_V2
                     return;
                 }
 
-                cdDestino = agenciaDestino.CD;
+                cdDestino = modelo.BuscarCD(agenciaDestino.idCD);
             }
             else if (modalidadEntrega == ModalidadEntregaEnum.EntregaCD)
             {
