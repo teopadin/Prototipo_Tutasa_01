@@ -42,7 +42,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             var guia1 = new Guia
             {
                 NroGuia = "G0001",
-                TipoBulto = TiposBulto.S,
+                TipoBulto = TiposBultoEnum.S,
                 ModalidadEntrega = ModalidadEntrega.EntregaDomicilio,
                 CDOrigen = cdCordoba,
                 CDActual = cdCordoba,
@@ -53,7 +53,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             var guia2 = new Guia
             {
                 NroGuia = "G0002",
-                TipoBulto = TiposBulto.M,
+                TipoBulto = TiposBultoEnum.M,
                 ModalidadEntrega = ModalidadEntrega.EntregaAgencia,
                 CDOrigen = cdCordoba,
                 CDActual = cdCordoba,
@@ -64,7 +64,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             var guia3 = new Guia
             {
                 NroGuia = "G0003",
-                TipoBulto = TiposBulto.XL,
+                TipoBulto = TiposBultoEnum.XL,
                 ModalidadEntrega = ModalidadEntrega.EntregaCD,
                 CDOrigen = cdCordoba,
                 CDActual = cdCordoba,
@@ -111,7 +111,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             var guia4 = new Guia
             {
                 NroGuia = "G0004",
-                TipoBulto = TiposBulto.L,
+                TipoBulto = TiposBultoEnum.L,
                 ModalidadEntrega = ModalidadEntrega.EntregaDomicilio,
                 CDOrigen = cdMendoza,
                 CDActual = cdMendoza,
@@ -122,7 +122,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             var guia5 = new Guia
             {
                 NroGuia = "G0005",
-                TipoBulto = TiposBulto.M,
+                TipoBulto = TiposBultoEnum.M,
                 ModalidadEntrega = ModalidadEntrega.EntregaCD,
                 CDOrigen = cdMendoza,
                 CDActual = cdMendoza,
@@ -157,7 +157,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             var guia6 = new Guia
             {
                 NroGuia = "G0006",
-                TipoBulto = TiposBulto.S,
+                TipoBulto = TiposBultoEnum.S,
                 ModalidadEntrega = ModalidadEntrega.EntregaDomicilio,
                 CDOrigen = cdCordoba,
                 CDActual = cdCordoba,

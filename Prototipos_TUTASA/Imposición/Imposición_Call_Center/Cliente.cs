@@ -11,7 +11,7 @@ namespace Prototipos_TUTASA.Imposición.ImposicionCallCenter_v2
         public string telefono { get; set; }
         public string calle { get; set; }
         public int altura { get; set; }
-        public string Pipisoo { get; set; }
+        public string Piso { get; set; }
         public string codigoPostal { get; set; }
         public string ciudad { get; set; }
     }

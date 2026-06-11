@@ -49,7 +49,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
             var g1 = new Guia
             {
                 NroGuia = "GD-0001",
-                TipoBulto = TiposBulto.S,
+                TipoBulto = TiposBultoEnum.S,
                 AgenciaGuia = agencia1,
                 Estado = EstadoGuia.EnDistribucion
             };
@@ -57,7 +57,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
             var g2 = new Guia
             {
                 NroGuia = "GD-0002",
-                TipoBulto = TiposBulto.M,
+                TipoBulto = TiposBultoEnum.M,
                 AgenciaGuia = agencia1,
                 Estado = EstadoGuia.EnDistribucion
             };
@@ -65,7 +65,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
             var g3 = new Guia
             {
                 NroGuia = "GD-0003",
-                TipoBulto = TiposBulto.L,
+                TipoBulto = TiposBultoEnum.L,
                 AgenciaGuia = agencia1,
                 Estado = EstadoGuia.EnDistribucion
             };
@@ -73,7 +73,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
             var g4 = new Guia
             {
                 NroGuia = "GD-0004",
-                TipoBulto = TiposBulto.XL,
+                TipoBulto = TiposBultoEnum.XL,
                 AgenciaGuia = agencia2,
                 Estado = EstadoGuia.EnDistribucion
             };
@@ -129,7 +129,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
                     g1
                 },
                 Estado = EstadoHojaDeRuta.Recibida,
-                FechaRecepcion = new DateTime(2026, 5, 25)
+                Fecha = new DateTime(2026, 5, 25)
             };
 
             HojasDeRutaDistribucion = new List<HojaDeRutaDistribucion>

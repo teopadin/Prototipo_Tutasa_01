@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
+namespace Prototipos_TUTASA.RecepcionMediaDistancia
 {
-    public enum TiposBulto
+    public enum TiposBultoEnum
     {
         S,
         M,

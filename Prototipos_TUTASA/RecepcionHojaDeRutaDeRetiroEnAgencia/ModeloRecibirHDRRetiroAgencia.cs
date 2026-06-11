@@ -97,7 +97,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia
             var hdr3 = new HojaDeRutaRetiro
             {
                 NroHDR = 1003,
-                FechaRecepcion = new DateTime(2026, 5, 25),
+                Fecha = new DateTime(2026, 5, 25),
                 AgenciaHDR = agencia1,
                 Transportista = t1,
                 Estado = EstadoHojaDeRutaEnum.Recibida,

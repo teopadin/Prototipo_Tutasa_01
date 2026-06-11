@@ -35,7 +35,7 @@ namespace Prototipos_TUTASA.Imposición.ImposicionCallCenter_v2
                 telefono = "1145678901",
                 calle = "Av. Corrientes",
                 altura = 1500,
-                Pipisoo = "PB",
+                Piso = "PB",
                 codigoPostal = "1043",
                 ciudad = "Buenos Aires"
             };
@@ -46,7 +46,7 @@ namespace Prototipos_TUTASA.Imposición.ImposicionCallCenter_v2
                 telefono = "1167890123",
                 calle = "San Martín",
                 altura = 320,
-                Pipisoo = "2",
+                Piso = "2",
                 codigoPostal = "1004",
                 ciudad = "Buenos Aires"
             };

@@ -131,7 +131,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
 
         private void registrarRecepcion()
         {
-            modelo.HdrActual.FechaRecepcion = DateTime.Now;
+            modelo.HdrActual.Fecha = DateTime.Now;
         }
 
         private void actualizarEstadoHDR(HojaDeRutaDistribucion hdr)

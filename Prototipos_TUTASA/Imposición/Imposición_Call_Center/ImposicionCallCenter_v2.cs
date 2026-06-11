@@ -161,7 +161,7 @@ namespace Prototipos_TUTASA.ImposiciónCallCenter_v2
             txtTelRem.Text = cliente.telefono;
             txtCalleRemitente.Text = cliente.calle;
             txtAlturaRemitente.Text = cliente.altura.ToString();
-            txtPisoRemitente.Text = cliente.Pipisoo;
+            txtPisoRemitente.Text = cliente.Piso;
             txtCodigoPostalRemitente.Text = cliente.codigoPostal;
             txtCiudadRemitente.Text = cliente.ciudad;
         }
