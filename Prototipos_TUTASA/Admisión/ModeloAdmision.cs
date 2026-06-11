@@ -35,9 +35,9 @@ namespace Prototipos_TUTASA.Admisión
         // Costos extras fijos del sistema (montos por concepto)
         private List<CostoExtra> costosExtra = new List<CostoExtra>
         {
-            new CostoExtra { IdCostoExtra = 1, TipoCostoExtra = "Retiro a domicilio", Monto = 500m },
-            new CostoExtra { IdCostoExtra = 2, TipoCostoExtra = "Entrega a domicilio", Monto = 800m },
-            new CostoExtra { IdCostoExtra = 3, TipoCostoExtra = "Entrega en agencia", Monto = 400m }
+            new CostoExtra { TipoCostoExtra = TipoCostoExtraEnum.RetiroDomicilio, Monto = 500m },
+            new CostoExtra { TipoCostoExtra = TipoCostoExtraEnum.EntregaDomicilio, Monto = 800m },
+            new CostoExtra { TipoCostoExtra = TipoCostoExtraEnum.EntregaAgencia, Monto = 400m }
         };
 
         private List<Guia> guias = new List<Guia>
@@ -154,7 +154,7 @@ namespace Prototipos_TUTASA.Admisión
         }
 
         // Busca el costo extra fijo por tipo
-        public CostoExtra BuscarCostoExtra(string tipo)
+        public CostoExtra BuscarCostoExtra(TipoCostoExtraEnum tipo)
         {
             foreach (CostoExtra costo in costosExtra)
             {
@@ -181,7 +181,7 @@ namespace Prototipos_TUTASA.Admisión
             // Extra retiro a domicilio (solo si la imposición fue por CallCenter)
             if (guia.TipoImposicion == TipoImposicionEnum.CallCenter)
             {
-                CostoExtra extraRetiro = BuscarCostoExtra("Retiro a domicilio");
+                CostoExtra extraRetiro = BuscarCostoExtra(TipoCostoExtraEnum.RetiroDomicilio);
                 if (extraRetiro != null)
                 {
                     tarifaCalc.ExtraRetiroDomicilio = extraRetiro.Monto;
@@ -191,7 +191,7 @@ namespace Prototipos_TUTASA.Admisión
             // Extra entrega: solo aplica uno según la modalidad
             if (guia.ModalidadEntrega == ModalidadEntregaEnum.EntregaDomicilio)
             {
-                CostoExtra extraEntrega = BuscarCostoExtra("Entrega a domicilio");
+                CostoExtra extraEntrega = BuscarCostoExtra(TipoCostoExtraEnum.EntregaDomicilio);
                 if (extraEntrega != null)
                 {
                     tarifaCalc.ExtraEntregaDomicilio = extraEntrega.Monto;
@@ -199,7 +199,7 @@ namespace Prototipos_TUTASA.Admisión
             }
             else if (guia.ModalidadEntrega == ModalidadEntregaEnum.EntregaAgencia)
             {
-                CostoExtra extraEntrega = BuscarCostoExtra("Entrega en agencia");
+                CostoExtra extraEntrega = BuscarCostoExtra(TipoCostoExtraEnum.EntregaAgencia);
                 if (extraEntrega != null)
                 {
                     tarifaCalc.ExtraEntregaAgencia = extraEntrega.Monto;

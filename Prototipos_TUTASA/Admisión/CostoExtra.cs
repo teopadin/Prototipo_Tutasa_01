@@ -6,8 +6,7 @@ namespace Prototipos_TUTASA.Admisión
 {
     internal class CostoExtra
     {
-        public int IdCostoExtra { get; set; }
-        public string TipoCostoExtra { get; set; }
+        public TipoCostoExtraEnum TipoCostoExtra { get; set; }
         public decimal Monto { get; set; }
     }
 }
