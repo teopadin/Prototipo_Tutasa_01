@@ -5,6 +5,6 @@ namespace Prototipos_TUTASA.Almacenes;
 internal class EmpresaTransporteEntidad
 {
     public int idEmpresa { get; set; }
-    public string razonSocial { get; set; } = string.Empty;
+    public string razonSocial { get; set; }
     public bool convenioVigente { get; set; }
 }

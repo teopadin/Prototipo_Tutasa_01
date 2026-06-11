@@ -9,11 +9,11 @@ internal class HojaDeRutaRetiroEntidad
     public EstadoHojaDeRutaEnum estado { get; set; }
     public int dniTransportistaAsignado { get; set; }
     public int? idAgenciaOrigen { get; set; }
-    public string Calle { get; set; } = string.Empty;
+    public string Calle { get; set; }
     public int Altura { get; set; }
-    public string Piso { get; set; } = string.Empty;
-    public string CodigoPostal { get; set; } = string.Empty;
-    public string Remitente { get; set; } = string.Empty;
+    public string Piso { get; set; }
+    public string CodigoPostal { get; set; }
+    public string Remitente { get; set; }
     public List<string> DetalleGuias { get; set; } = new();
     public MotivoNoCumplidaRetiroEnum motivoNoCumplida { get; set; }
 }

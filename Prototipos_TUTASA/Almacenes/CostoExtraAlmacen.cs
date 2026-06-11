@@ -1,5 +1,3 @@
-using Prototipos_TUTASA.Auxiliares;
-
 namespace Prototipos_TUTASA.Almacenes;
 
 internal static class CostoExtraAlmacen
