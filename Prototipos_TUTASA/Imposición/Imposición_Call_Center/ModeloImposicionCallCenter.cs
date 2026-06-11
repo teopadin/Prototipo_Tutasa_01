@@ -86,7 +86,7 @@ namespace Prototipos_TUTASA.Imposición.ImposicionCallCenter_v2
         {
             Guia guia = new Guia
             {
-                nroGuia = GenerarNumeroGuia(cdOrigen),
+                NroGuia = GenerarNumeroGuia(cdOrigen),
             };
 
             Guias.Add(guia);

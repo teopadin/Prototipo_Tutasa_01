@@ -142,7 +142,7 @@ namespace Prototipos_TUTASA.ImposiciónCD_V2
             }
 
             Guia guia = modelo.RegistrarImposicion(tipoBulto, modalidadEntrega, destinatario, cdDestino, agenciaDestino);
-            MessageBox.Show("Guía N° " + guia.nroGuia + " generada y admitida con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Guía N° " + guia.NroGuia + " generada y admitida con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Close();
         }
 

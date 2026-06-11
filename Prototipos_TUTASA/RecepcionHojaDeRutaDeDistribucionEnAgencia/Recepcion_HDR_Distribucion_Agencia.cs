@@ -32,10 +32,10 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
         }
         private void CargarHDR(HojaDeRutaDistribucion hdr)
         {
-            txtAgencia.Text = hdr.AgenciaHDR.RazonSocial;
+            txtAgencia.Text = hdr.AgenciaHDR.razonSocial;
 
             txtFletero.Text =
-                $"{hdr.Transportista.Nombre} {hdr.Transportista.Apellido}";
+                $"{hdr.Transportista.nombre} {hdr.Transportista.apellido}";
 
             listView1.Items.Clear();
 
@@ -82,7 +82,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
             }
 
             // Excepción 3
-            if (hdr.AgenciaHDR.IdAgencia != modelo.AgenciaLogueada.IdAgencia)
+            if (hdr.AgenciaHDR.idAgencia != modelo.AgenciaLogueada.idAgencia)
             {
                 MessageBox.Show("La hoja de ruta ingresada no corresponde a su agencia.");
 
@@ -91,7 +91,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
             }
 
             // Excepción 4
-            if (hdr.Estado == EstadoHojaDeRuta.Recibida)
+            if (hdr.estado == EstadoHojaDeRuta.Recibida)
             {
                 MessageBox.Show("La hoja de ruta ingresada ya fue confirmada como recibida.");
 
@@ -136,14 +136,14 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
 
         private void actualizarEstadoHDR(HojaDeRutaDistribucion hdr)
         {
-            hdr.Estado = EstadoHojaDeRuta.Recibida;
+            hdr.estado = EstadoHojaDeRuta.Recibida;
         }
 
         private void actualizarEstadoGuia(HojaDeRutaDistribucion hdr)
         {
             foreach (var guia in hdr.DetalleGuias)
             {
-                guia.Estado = EstadoGuia.PendienteDeRetiroEnAgencia;
+                guia.estado = EstadoGuia.PendienteDeRetiroEnAgencia;
             }
         }
 

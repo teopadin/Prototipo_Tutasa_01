@@ -6,7 +6,7 @@ namespace Prototipos_TUTASA.Imposición.ImposicionCallCenter_v2
 {
     internal class Guia
     {
-        public string nroGuia { get; set; }
+        public string NroGuia { get; set; }
 
     }
 }

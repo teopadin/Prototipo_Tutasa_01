@@ -6,7 +6,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia
 {
     internal class Agencia
     {
-        public int IdAgencia { get; set; }
-        public string RazonSocial { get; set; }
+        public int idAgencia { get; set; }
+        public string razonSocial { get; set; }
     }
 }

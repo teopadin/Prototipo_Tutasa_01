@@ -20,7 +20,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
         {
             cmboIDServicio.DisplayMember = "IdServicio";
             cmboIDServicio.ValueMember = "IdServicio";
-            cmboIDServicio.DataSource = modelo.Servicios.FindAll(s => s.FechaLlegada != null && s.FechaRecepcion == null);
+            cmboIDServicio.DataSource = modelo.Servicios.FindAll(s => s.fechaLlegada != null && s.fechaRecepcion == null);
             txtEmpresaTransporte.Clear();
             txtCantidadGuias.Clear();
             dateTimeFechaDespacho.Value = DateTime.Today;
@@ -42,8 +42,8 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
                 return;
             ServicioMediaDistancia servicio = (ServicioMediaDistancia)cmboIDServicio.SelectedItem;
             modelo.ServicioActual = servicio;
-            txtEmpresaTransporte.Text = servicio.EmpresaTransporte.RazonSocial;
-            dateTimeFechaDespacho.Value = servicio.FechaLlegada.Value;
+            txtEmpresaTransporte.Text = servicio.EmpresaTransporte.razonSocial;
+            dateTimeFechaDespacho.Value = servicio.fechaLlegada.Value;
             lvGuias.Items.Clear();
             int cantidadGuias = 0;
 
@@ -54,7 +54,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
                     ListViewItem item = new ListViewItem(guia.NroGuia);
                     item.SubItems.Add(guia.TipoBulto.ToString());
                     item.SubItems.Add(hdr.NroHDR.ToString());
-                    item.SubItems.Add(guia.CDOrigen.Nombre);
+                    item.SubItems.Add(guia.CDOrigen.nombre);
                     lvGuias.Items.Add(item);
                     cantidadGuias++;
                 }
@@ -75,7 +75,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
 
             confirmarRecepcion();
 
-            MessageBox.Show($"Servicio Nº {modelo.ServicioActual.IdServicio} recibido con éxito.","Éxito",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            MessageBox.Show($"Servicio Nº {modelo.ServicioActual.idServicio} recibido con éxito.","Éxito",MessageBoxButtons.OK,MessageBoxIcon.Information);
             this.Close();
         }
 
@@ -96,30 +96,30 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
 
         private void registrarRecepcion()
         {
-            modelo.ServicioActual.FechaRecepcion = DateTime.Now;
+            modelo.ServicioActual.fechaRecepcion = DateTime.Now;
         }
 
         private void actualizarEstadoHDR(HojaDeRutaTransporte hdr)
         {
-            hdr.Estado = EstadoHojaDeRuta.Recibida;
+            hdr.estado = EstadoHojaDeRuta.Recibida;
         }
 
         private void actualizarEstadoGuia(Guia guia)
         {
             if (guia.CDActual == guia.CDDestino)
             {
-                if (guia.ModalidadEntrega == ModalidadEntrega.EntregaCD)
+                if (guia.modalidadEntrega == ModalidadEntrega.EntregaCD)
                 {
-                    guia.Estado = EstadoGuia.PendienteDeRetiroEnCD;
+                    guia.estado = EstadoGuia.PendienteDeRetiroEnCD;
                 }
                 else
                 {
-                    guia.Estado = EstadoGuia.EnCDDestino;
+                    guia.estado = EstadoGuia.EnCDDestino;
                 }
             }
             else
             {
-                guia.Estado = EstadoGuia.Admitida;
+                guia.estado = EstadoGuia.Admitida;
             }
         }
 

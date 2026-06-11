@@ -53,7 +53,7 @@ namespace Prototipos_TUTASA.Rendiciones_HDR
             if (FleteroCMB.SelectedItem == null) return;
 
             var transportista = (TransportistaLocal)FleteroCMB.SelectedItem;
-            var hdrs = modelo.ObtenerHDRsPorTransportista(transportista.DniTransportista);
+            var hdrs = modelo.ObtenerHDRsPorTransportista(transportista.dniTransportista);
 
             if (hdrs.Count == 0)
             {
@@ -69,7 +69,7 @@ namespace Prototipos_TUTASA.Rendiciones_HDR
                 item.SubItems.Add(hdr.Altura.ToString());
                 item.SubItems.Add(hdr.Piso);
                 item.SubItems.Add(hdr.CodigoPostal);
-                item.SubItems.Add(hdr.Estado.ToString());
+                item.SubItems.Add(hdr.estado.ToString());
                 item.Tag = hdr;
                 HdrRendidasLst.Items.Add(item);
             }
@@ -95,11 +95,11 @@ namespace Prototipos_TUTASA.Rendiciones_HDR
             NoCumplidaRdb.Enabled = true;
             AplicarBtn.Enabled = true;
 
-            CumplidaRdb.Checked = hdr.Estado == EstadoHojaDeRutaEnum.Cumplida;
-            NoCumplidaRdb.Checked = hdr.Estado == EstadoHojaDeRutaEnum.NoCumplida;
+            CumplidaRdb.Checked = hdr.estado == EstadoHojaDeRutaEnum.Cumplida;
+            NoCumplidaRdb.Checked = hdr.estado == EstadoHojaDeRutaEnum.NoCumplida;
 
-            if (hdr.MotivoNoCumplida != null)
-                MotivoCmb.SelectedItem = hdr.MotivoNoCumplida;
+            if (hdr.motivoNoCumplida != null)
+                MotivoCmb.SelectedItem = hdr.motivoNoCumplida;
             else
                 MotivoCmb.SelectedIndex = -1;
 
@@ -150,7 +150,7 @@ namespace Prototipos_TUTASA.Rendiciones_HDR
                 return;
 
             var item = HdrRendidasLst.SelectedItems[0];
-            item.SubItems[6].Text = modelo.GetHdrSeleccionada().Estado.ToString();
+            item.SubItems[6].Text = modelo.GetHdrSeleccionada().estado.ToString();
 
             ActualizarTotales();
         }
@@ -188,8 +188,8 @@ namespace Prototipos_TUTASA.Rendiciones_HDR
             foreach (ListViewItem item in HdrRendidasLst.Items)
             {
                 var hdr = (HojaDeRutaDistribucion)item.Tag;
-                if (hdr.Estado == EstadoHojaDeRutaEnum.Cumplida) { rendidas++; cumplidas++; }
-                else if (hdr.Estado == EstadoHojaDeRutaEnum.NoCumplida) { rendidas++; noCumplidas++; }
+                if (hdr.estado == EstadoHojaDeRutaEnum.Cumplida) { rendidas++; cumplidas++; }
+                else if (hdr.estado == EstadoHojaDeRutaEnum.NoCumplida) { rendidas++; noCumplidas++; }
             }
 
             TotalRendidasTxtb.Text = rendidas.ToString();

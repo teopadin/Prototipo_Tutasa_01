@@ -6,6 +6,6 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
 {
     internal class EmpresaTransporte
     {
-        public string RazonSocial { get; set; }
+        public string razonSocial { get; set; }
     }
 }

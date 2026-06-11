@@ -111,7 +111,7 @@ namespace Prototipos_TUTASA.Imposición.Imposición_CD
         {
             Guia guia = new Guia
             {
-                nroGuia = GenerarNumeroGuia(),
+                NroGuia = GenerarNumeroGuia(),
             };
 
             Guias.Add(guia);

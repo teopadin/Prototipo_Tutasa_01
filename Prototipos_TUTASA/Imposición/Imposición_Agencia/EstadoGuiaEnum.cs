@@ -7,6 +7,5 @@ namespace Prototipos_TUTASA.Imposición.Imposición_Agencia
     internal enum EstadoGuiaEnum
     {
         Impuesta
-
     }
 }

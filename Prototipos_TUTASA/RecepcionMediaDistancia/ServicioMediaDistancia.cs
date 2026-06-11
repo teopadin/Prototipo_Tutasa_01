@@ -6,10 +6,10 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
 {
     internal class ServicioMediaDistancia
     {
-        public int IdServicio { get; set; }
+        public int idServicio { get; set; }
         public EmpresaTransporte EmpresaTransporte { get; set; }
-        public DateTime? FechaLlegada { get; set; }
-        public DateTime? FechaRecepcion { get; set; }
+        public DateTime? fechaLlegada { get; set; }
+        public DateTime? fechaRecepcion { get; set; }
         public List<HojaDeRutaTransporte> DetalleHDRs { get; set; }
     }
 }

@@ -18,14 +18,14 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
             // Agencias
             var agencia1 = new Agencia
             {
-                IdAgencia = 1,
-                RazonSocial = "Agencia Norte SA",
+                idAgencia = 1,
+                razonSocial = "Agencia Norte SA",
             };
 
             var agencia2 = new Agencia
             {
-                IdAgencia = 2,
-                RazonSocial = "Agencia Sur SRL",
+                idAgencia = 2,
+                razonSocial = "Agencia Sur SRL",
 
             };
 
@@ -35,14 +35,14 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
             // Transportistas
             var t1 = new TransportistaLocal
             {
-                Nombre = "Carlos",
-                Apellido = "Gomez",
+                nombre = "Carlos",
+                apellido = "Gomez",
             };
 
             var t2 = new TransportistaLocal
             {
-                Nombre = "Laura",
-                Apellido = "Martinez",
+                nombre = "Laura",
+                apellido = "Martinez",
             };
 
             // Guías
@@ -51,7 +51,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
                 NroGuia = "GD-0001",
                 TipoBulto = TiposBultoEnum.S,
                 AgenciaGuia = agencia1,
-                Estado = EstadoGuia.EnDistribucion
+                estado = EstadoGuia.EnDistribucion
             };
 
             var g2 = new Guia
@@ -59,7 +59,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
                 NroGuia = "GD-0002",
                 TipoBulto = TiposBultoEnum.M,
                 AgenciaGuia = agencia1,
-                Estado = EstadoGuia.EnDistribucion
+                estado = EstadoGuia.EnDistribucion
             };
 
             var g3 = new Guia
@@ -67,7 +67,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
                 NroGuia = "GD-0003",
                 TipoBulto = TiposBultoEnum.L,
                 AgenciaGuia = agencia1,
-                Estado = EstadoGuia.EnDistribucion
+                estado = EstadoGuia.EnDistribucion
             };
 
             var g4 = new Guia
@@ -75,7 +75,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
                 NroGuia = "GD-0004",
                 TipoBulto = TiposBultoEnum.XL,
                 AgenciaGuia = agencia2,
-                Estado = EstadoGuia.EnDistribucion
+                estado = EstadoGuia.EnDistribucion
             };
 
             // HDR válida
@@ -89,7 +89,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
                     g1,
                     g2
                 },
-                Estado = EstadoHojaDeRuta.EnCurso
+                estado = EstadoHojaDeRuta.EnCurso
             };
 
             // HDR válida adicional
@@ -102,7 +102,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
                 {
                     g3
                 },
-                Estado = EstadoHojaDeRuta.EnCurso
+                estado = EstadoHojaDeRuta.EnCurso
             };
 
             // HDR de otra agencia (Excepción 3)
@@ -115,7 +115,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
                 {
                     g4
                 },
-                Estado = EstadoHojaDeRuta.EnCurso
+                estado = EstadoHojaDeRuta.EnCurso
             };
 
             // HDR ya recibida (Excepción 4)
@@ -128,7 +128,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
                 {
                     g1
                 },
-                Estado = EstadoHojaDeRuta.Recibida,
+                estado = EstadoHojaDeRuta.Recibida,
                 Fecha = new DateTime(2026, 5, 25)
             };
 

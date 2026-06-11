@@ -19,27 +19,27 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia
             // Transportistas
             var t1 = new TransportistaLocal
             {
-                Nombre = "Carlos",
-                Apellido = "Gomez"
+                nombre = "Carlos",
+                apellido = "Gomez"
             };
 
             var t2 = new TransportistaLocal
             {
-                Nombre = "Laura",
-                Apellido = "Martinez"
+                nombre = "Laura",
+                apellido = "Martinez"
             };
 
             // Agencias
             var agencia1 = new Agencia
             {
-                IdAgencia = 1,
-                RazonSocial = "Agencia Norte SA"
+                idAgencia = 1,
+                razonSocial = "Agencia Norte SA"
             };
 
             var agencia2 = new Agencia
             {
-                IdAgencia = 2,
-                RazonSocial = "Agencia Sur SRL"
+                idAgencia = 2,
+                razonSocial = "Agencia Sur SRL"
             };
 
             AgenciaLogueada = agencia1;
@@ -72,7 +72,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia
                 NroHDR = 1001,
                 AgenciaHDR = agencia1,
                 Transportista = t1,
-                Estado = EstadoHojaDeRutaEnum.EnCurso,
+                estado = EstadoHojaDeRutaEnum.EnCurso,
                 DetalleGuias = new List<Guia>
                 {
                     guia1,
@@ -86,7 +86,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia
                 NroHDR = 1002,
                 AgenciaHDR = agencia2,
                 Transportista = t2,
-                Estado = EstadoHojaDeRutaEnum.EnCurso,
+                estado = EstadoHojaDeRutaEnum.EnCurso,
                 DetalleGuias = new List<Guia>
                 {
                     guia3
@@ -100,7 +100,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia
                 Fecha = new DateTime(2026, 5, 25),
                 AgenciaHDR = agencia1,
                 Transportista = t1,
-                Estado = EstadoHojaDeRutaEnum.Recibida,
+                estado = EstadoHojaDeRutaEnum.Recibida,
                 DetalleGuias = new List<Guia>
                 {
                     guia1

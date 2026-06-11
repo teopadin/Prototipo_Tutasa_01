@@ -10,6 +10,6 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
         public TiposBultoEnum TipoBulto { get; set; }
         public Agencia AgenciaGuia { get; set; }
 
-        public EstadoGuia Estado { get; set; }
+        public EstadoGuia estado { get; set; }
     }
 }

@@ -12,40 +12,40 @@ namespace Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Retiro
 
         private List<TransportistaLocal> transportistas = new List<TransportistaLocal>
     {
-        new TransportistaLocal { DniTransportista = 11111111, Nombre = "Juan",    Apellido = "Perez"     },
-        new TransportistaLocal { DniTransportista = 22222222, Nombre = "Maria",   Apellido = "Gomez"     },
-        new TransportistaLocal { DniTransportista = 33333333, Nombre = "Carlos",  Apellido = "Rodriguez" },
-        new TransportistaLocal { DniTransportista = 44444444, Nombre = "Lucia",   Apellido = "Fernandez" },
-        new TransportistaLocal { DniTransportista = 55555555, Nombre = "Roberto", Apellido = "Lopez"     }
+        new TransportistaLocal { dniTransportista = 11111111, nombre = "Juan",    apellido = "Perez"     },
+        new TransportistaLocal { dniTransportista = 22222222, nombre = "Maria",   apellido = "Gomez"     },
+        new TransportistaLocal { dniTransportista = 33333333, nombre = "Carlos",  apellido = "Rodriguez" },
+        new TransportistaLocal { dniTransportista = 44444444, nombre = "Lucia",   apellido = "Fernandez" },
+        new TransportistaLocal { dniTransportista = 55555555, nombre = "Roberto", apellido = "Lopez"     }
     };
 
         // Almacén de guías — todas con estado IncluidaEnHDRRetiro porque ya están asignadas a una HDR de retiro
         private List<Guia> guias = new List<Guia>
     {
-        new Guia { NroGuia = "G-R-001", Estado = EstadoGuiaEnum.IncluidaEnHDRRetiro },
-        new Guia { NroGuia = "G-R-002", Estado = EstadoGuiaEnum.IncluidaEnHDRRetiro },
-        new Guia { NroGuia = "G-R-003", Estado = EstadoGuiaEnum.IncluidaEnHDRRetiro },
-        new Guia { NroGuia = "G-R-004", Estado = EstadoGuiaEnum.IncluidaEnHDRRetiro },
-        new Guia { NroGuia = "G-R-005", Estado = EstadoGuiaEnum.IncluidaEnHDRRetiro },
-        new Guia { NroGuia = "G-R-006", Estado = EstadoGuiaEnum.IncluidaEnHDRRetiro },
-        new Guia { NroGuia = "G-R-007", Estado = EstadoGuiaEnum.IncluidaEnHDRRetiro },
-        new Guia { NroGuia = "G-R-008", Estado = EstadoGuiaEnum.IncluidaEnHDRRetiro },
-        new Guia { NroGuia = "G-R-009", Estado = EstadoGuiaEnum.IncluidaEnHDRRetiro },
-        new Guia { NroGuia = "G-R-010", Estado = EstadoGuiaEnum.IncluidaEnHDRRetiro }
+        new Guia { NroGuia = "G-R-001", estado = EstadoGuiaEnum.IncluidaEnHDRRetiro },
+        new Guia { NroGuia = "G-R-002", estado = EstadoGuiaEnum.IncluidaEnHDRRetiro },
+        new Guia { NroGuia = "G-R-003", estado = EstadoGuiaEnum.IncluidaEnHDRRetiro },
+        new Guia { NroGuia = "G-R-004", estado = EstadoGuiaEnum.IncluidaEnHDRRetiro },
+        new Guia { NroGuia = "G-R-005", estado = EstadoGuiaEnum.IncluidaEnHDRRetiro },
+        new Guia { NroGuia = "G-R-006", estado = EstadoGuiaEnum.IncluidaEnHDRRetiro },
+        new Guia { NroGuia = "G-R-007", estado = EstadoGuiaEnum.IncluidaEnHDRRetiro },
+        new Guia { NroGuia = "G-R-008", estado = EstadoGuiaEnum.IncluidaEnHDRRetiro },
+        new Guia { NroGuia = "G-R-009", estado = EstadoGuiaEnum.IncluidaEnHDRRetiro },
+        new Guia { NroGuia = "G-R-010", estado = EstadoGuiaEnum.IncluidaEnHDRRetiro }
     };
 
         private List<HojaDeRutaRetiro> hdrs = new List<HojaDeRutaRetiro>
     {
-        new HojaDeRutaRetiro { NroHDR = 2001, DniTransportistaAsignado = 11111111, Remitente = "Empresa ABC S.A.",   Calle = "Av. Corrientes", Altura = 1234, Piso = "1",  CodigoPostal = "1043", Estado = EstadoHojaDeRutaEnum.Recibida,  DetalleGuias = new List<string> { "G-R-001" } },
-        new HojaDeRutaRetiro { NroHDR = 2002, DniTransportistaAsignado = 11111111, Remitente = "Distribuidora XYZ",  Calle = "Lavalle",        Altura = 567,  Piso = "3",  CodigoPostal = "1047", Estado = EstadoHojaDeRutaEnum.Recibida,  DetalleGuias = new List<string> { "G-R-002" } },
-        new HojaDeRutaRetiro { NroHDR = 2003, DniTransportistaAsignado = 11111111, Remitente = "Importadora Sur",    Calle = "Florida",        Altura = 890,  Piso = "PB", CodigoPostal = "1005", Estado = EstadoHojaDeRutaEnum.Recibida, DetalleGuias = new List<string> { "G-R-003" } },
-        new HojaDeRutaRetiro { NroHDR = 2004, DniTransportistaAsignado = 22222222, Remitente = "Logistica Norte",    Calle = "Santa Fe",       Altura = 2345, Piso = "2",  CodigoPostal = "1123", Estado = EstadoHojaDeRutaEnum.Recibida,  DetalleGuias = new List<string> { "G-R-004" } },
-        new HojaDeRutaRetiro { NroHDR = 2005, DniTransportistaAsignado = 22222222, Remitente = "Comercial Este",     Calle = "Cordoba",        Altura = 678,  Piso = "4",  CodigoPostal = "1054", Estado = EstadoHojaDeRutaEnum.Recibida, DetalleGuias = new List<string> { "G-R-005" } },
-        new HojaDeRutaRetiro { NroHDR = 2006, DniTransportistaAsignado = 33333333, Remitente = "Empresa DEF S.R.L.", Calle = "Rivadavia",      Altura = 4567, Piso = "5",  CodigoPostal = "1407", Estado = EstadoHojaDeRutaEnum.Recibida,  DetalleGuias = new List<string> { "G-R-006" } },
-        new HojaDeRutaRetiro { NroHDR = 2007, DniTransportistaAsignado = 33333333, Remitente = "Distribuidora ABC",  Calle = "Belgrano",       Altura = 1100, Piso = "PB", CodigoPostal = "1092", Estado = EstadoHojaDeRutaEnum.Recibida,  DetalleGuias = new List<string> { "G-R-007" } },
-        new HojaDeRutaRetiro { NroHDR = 2008, DniTransportistaAsignado = 33333333, Remitente = "Importadora Norte",  Calle = "Callao",         Altura = 230,  Piso = "1",  CodigoPostal = "1022", Estado = EstadoHojaDeRutaEnum.Recibida, DetalleGuias = new List<string> { "G-R-008" } },
-        new HojaDeRutaRetiro { NroHDR = 2009, DniTransportistaAsignado = 44444444, Remitente = "Empresa GHI S.A.",   Calle = "Pueyrredon",     Altura = 1500, Piso = "3",  CodigoPostal = "1118", Estado = EstadoHojaDeRutaEnum.Recibida,  DetalleGuias = new List<string> { "G-R-009" } },
-        new HojaDeRutaRetiro { NroHDR = 2010, DniTransportistaAsignado = 44444444, Remitente = "Logistica Central",  Calle = "Scalabrini",     Altura = 980,  Piso = "PB", CodigoPostal = "1414", Estado = EstadoHojaDeRutaEnum.Recibida, DetalleGuias = new List<string> { "G-R-010" } }
+        new HojaDeRutaRetiro { NroHDR = 2001, dniTransportistaAsignado = 11111111, Remitente = "Empresa ABC S.A.",   Calle = "Av. Corrientes", Altura = 1234, Piso = "1",  CodigoPostal = "1043", estado = EstadoHojaDeRutaEnum.Recibida,  DetalleGuias = new List<string> { "G-R-001" } },
+        new HojaDeRutaRetiro { NroHDR = 2002, dniTransportistaAsignado = 11111111, Remitente = "Distribuidora XYZ",  Calle = "Lavalle",        Altura = 567,  Piso = "3",  CodigoPostal = "1047", estado = EstadoHojaDeRutaEnum.Recibida,  DetalleGuias = new List<string> { "G-R-002" } },
+        new HojaDeRutaRetiro { NroHDR = 2003, dniTransportistaAsignado = 11111111, Remitente = "Importadora Sur",    Calle = "Florida",        Altura = 890,  Piso = "PB", CodigoPostal = "1005", estado = EstadoHojaDeRutaEnum.Recibida, DetalleGuias = new List<string> { "G-R-003" } },
+        new HojaDeRutaRetiro { NroHDR = 2004, dniTransportistaAsignado = 22222222, Remitente = "Logistica Norte",    Calle = "Santa Fe",       Altura = 2345, Piso = "2",  CodigoPostal = "1123", estado = EstadoHojaDeRutaEnum.Recibida,  DetalleGuias = new List<string> { "G-R-004" } },
+        new HojaDeRutaRetiro { NroHDR = 2005, dniTransportistaAsignado = 22222222, Remitente = "Comercial Este",     Calle = "Cordoba",        Altura = 678,  Piso = "4",  CodigoPostal = "1054", estado = EstadoHojaDeRutaEnum.Recibida, DetalleGuias = new List<string> { "G-R-005" } },
+        new HojaDeRutaRetiro { NroHDR = 2006, dniTransportistaAsignado = 33333333, Remitente = "Empresa DEF S.R.L.", Calle = "Rivadavia",      Altura = 4567, Piso = "5",  CodigoPostal = "1407", estado = EstadoHojaDeRutaEnum.Recibida,  DetalleGuias = new List<string> { "G-R-006" } },
+        new HojaDeRutaRetiro { NroHDR = 2007, dniTransportistaAsignado = 33333333, Remitente = "Distribuidora ABC",  Calle = "Belgrano",       Altura = 1100, Piso = "PB", CodigoPostal = "1092", estado = EstadoHojaDeRutaEnum.Recibida,  DetalleGuias = new List<string> { "G-R-007" } },
+        new HojaDeRutaRetiro { NroHDR = 2008, dniTransportistaAsignado = 33333333, Remitente = "Importadora Norte",  Calle = "Callao",         Altura = 230,  Piso = "1",  CodigoPostal = "1022", estado = EstadoHojaDeRutaEnum.Recibida, DetalleGuias = new List<string> { "G-R-008" } },
+        new HojaDeRutaRetiro { NroHDR = 2009, dniTransportistaAsignado = 44444444, Remitente = "Empresa GHI S.A.",   Calle = "Pueyrredon",     Altura = 1500, Piso = "3",  CodigoPostal = "1118", estado = EstadoHojaDeRutaEnum.Recibida,  DetalleGuias = new List<string> { "G-R-009" } },
+        new HojaDeRutaRetiro { NroHDR = 2010, dniTransportistaAsignado = 44444444, Remitente = "Logistica Central",  Calle = "Scalabrini",     Altura = 980,  Piso = "PB", CodigoPostal = "1414", estado = EstadoHojaDeRutaEnum.Recibida, DetalleGuias = new List<string> { "G-R-010" } }
     };
 
         internal void SetHdrSeleccionada(HojaDeRutaRetiro hdr)
@@ -67,7 +67,7 @@ namespace Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Retiro
         {
             foreach (TransportistaLocal t in transportistas)
             {
-                if (t.DniTransportista == dni) return t;
+                if (t.dniTransportista == dni) return t;
             }
             return null;
         }
@@ -95,8 +95,8 @@ namespace Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Retiro
             var resultado = new List<HojaDeRutaRetiro>();
             foreach (var hdr in hdrs)
             {
-                if (hdr.DniTransportistaAsignado == dniTransportista &&
-                    (hdr.Estado == EstadoHojaDeRutaEnum.Recibida || hdr.Estado == EstadoHojaDeRutaEnum.Recibida))
+                if (hdr.dniTransportistaAsignado == dniTransportista &&
+                    (hdr.estado == EstadoHojaDeRutaEnum.Recibida || hdr.estado == EstadoHojaDeRutaEnum.Recibida))
                 {
                     resultado.Add(hdr);
                 }
@@ -125,13 +125,13 @@ namespace Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Retiro
 
             if (cumplida)
             {
-                hdrSeleccionada.Estado = EstadoHojaDeRutaEnum.Cumplida;
-                hdrSeleccionada.MotivoNoCumplida = null;
+                hdrSeleccionada.estado = EstadoHojaDeRutaEnum.Cumplida;
+                hdrSeleccionada.motivoNoCumplida = null;
             }
             else
             {
-                hdrSeleccionada.Estado = EstadoHojaDeRutaEnum.NoCumplida;
-                hdrSeleccionada.MotivoNoCumplida = motivo;
+                hdrSeleccionada.estado = EstadoHojaDeRutaEnum.NoCumplida;
+                hdrSeleccionada.motivoNoCumplida = motivo;
             }
             return true;
         }
@@ -140,7 +140,7 @@ namespace Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Retiro
         {
             foreach (var hdr in lista)
             {
-                if (hdr.Estado != EstadoHojaDeRutaEnum.Cumplida && hdr.Estado != EstadoHojaDeRutaEnum.NoCumplida)
+                if (hdr.estado != EstadoHojaDeRutaEnum.Cumplida && hdr.estado != EstadoHojaDeRutaEnum.NoCumplida)
                 {
                     MessageBox.Show("Debe aplicar un estado a todas las HDR antes de registrar la rendicion.");
                     return false;
@@ -155,13 +155,13 @@ namespace Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Retiro
                     Guia g = BuscarGuia(nroGuia);
                     if (g == null) continue;
 
-                    if (hdr.Estado == EstadoHojaDeRutaEnum.Cumplida)
+                    if (hdr.estado == EstadoHojaDeRutaEnum.Cumplida)
                     {
-                        g.Estado = EstadoGuiaEnum.Retirada;
+                        g.estado = EstadoGuiaEnum.Retirada;
                     }
-                    else if (hdr.Estado == EstadoHojaDeRutaEnum.NoCumplida)
+                    else if (hdr.estado == EstadoHojaDeRutaEnum.NoCumplida)
                     {
-                        g.Estado = EstadoGuiaEnum.Impuesta;
+                        g.estado = EstadoGuiaEnum.Impuesta;
                     }
                 }
             }
