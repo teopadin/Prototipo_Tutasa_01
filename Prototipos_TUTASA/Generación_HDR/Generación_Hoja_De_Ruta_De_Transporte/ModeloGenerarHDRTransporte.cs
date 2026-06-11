@@ -45,15 +45,14 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transpor
             {
                 var servicioDominio = new ServicioMediaDistancia
                 {
-                    idServicio = int.Parse(s.idServicio),                      // entidad string -> dominio int
+                    idServicio = s.idServicio,                      
                     idEmpresa = s.idEmpresa,
                     tipoArrendamiento = (TipoArrendamientoEnum)s.tipoArrendamiento, // casteo
                     idCDOrigen = s.idCDOrigen,
                     idCDDestino = s.idCDDestino,
                     fechaSalida = s.fechaSalida
                 };
-                // La entidad guarda capacidadDisponible; el dominio guarda capacidadUsada.
-                // Lo derivo para que CapacidadDisponible del dominio coincida con lo guardado.
+               
                 servicioDominio.capacidadUsada = servicioDominio.CapacidadMaxima - s.capacidadDisponible;
                 Servicios.Add(servicioDominio);
             }
