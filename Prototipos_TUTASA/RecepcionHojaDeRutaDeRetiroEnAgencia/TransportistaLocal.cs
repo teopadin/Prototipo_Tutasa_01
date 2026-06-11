@@ -6,6 +6,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia
 {
     internal class TransportistaLocal
     {
+        public int dniTransportistaAsignado { get; set; }
         public string nombre { get; set; }
         public string apellido { get; set; }
     }
