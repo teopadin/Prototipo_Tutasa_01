@@ -6,6 +6,6 @@ internal class DetalleFacturaEntidad
 {
     public int idDetalleFactura { get; set; }
     public int nroFactura { get; set; }
-    public string nroGuia { get; set; } = string.Empty;
+    public string nroGuia { get; set; }
     public decimal tarifaCalculada { get; set; }
 }

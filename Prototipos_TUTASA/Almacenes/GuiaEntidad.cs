@@ -4,7 +4,7 @@ namespace Prototipos_TUTASA.Almacenes;
 
 internal class GuiaEntidad
 {
-    public string NroGuia { get; set; } = string.Empty;
+    public string NroGuia { get; set; }
     public int IdCliente { get; set; }
     public TipoImposicionEnum TipoImposicion { get; set; }
     public int idCDOrigen { get; set; }

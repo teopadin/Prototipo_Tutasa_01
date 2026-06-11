@@ -3,12 +3,12 @@ namespace Prototipos_TUTASA.Almacenes;
 internal class DestinatarioGuia
 {
     public int Dni { get; set; }
-    public string nombre { get; set; } = string.Empty;
-    public string apellido { get; set; } = string.Empty;
-    public string calle { get; set; } = string.Empty;
+    public string nombre { get; set; }
+    public string apellido { get; set; }
+    public string calle { get; set; }
     public int altura { get; set; }
-    public string piso { get; set; } = string.Empty;
-    public string codigoPostal { get; set; } = string.Empty;
-    public string ciudad { get; set; } = string.Empty;
-    public string telefono { get; set; } = string.Empty;
+    public string piso { get; set; }
+    public string codigoPostal { get; set; }
+    public string ciudad { get; set; }
+    public string telefono { get; set; }
 }

@@ -5,11 +5,11 @@ namespace Prototipos_TUTASA.Almacenes;
 internal class CentroDistribucionEntidad
 {
     public int idCD { get; set; }
-    public string nombre { get; set; } = string.Empty;
+    public string nombre { get; set; }
     public int altura { get; set; }
-    public string piso { get; set; } = string.Empty;
-    public string codigoPostal { get; set; } = string.Empty;
-    public string calle { get; set; } = string.Empty;
-    public string ciudad { get; set; } = string.Empty;
+    public string piso { get; set; }
+    public string codigoPostal { get; set; }
+    public string calle { get; set; }
+    public string ciudad { get; set; }
     public int telefono { get; set; }
 }

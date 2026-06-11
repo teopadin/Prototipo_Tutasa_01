@@ -9,6 +9,6 @@ internal class HojaDeRutaTransporteEntidad
     public int idCDOrigen { get; set; }
     public int idCDDestino { get; set; }
     public EstadoHojaDeRutaEnum estado { get; set; }
-    public string idServicio { get; set; } = string.Empty;
+    public string idServicio { get; set; }
     public List<string> DetalleGuias { get; set; } = new();
 }
