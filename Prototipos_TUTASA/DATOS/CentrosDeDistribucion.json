@@ -7,7 +7,7 @@
     "codigoPostal": "1406",
     "calle": "Av. Rivadavia",
     "ciudad": "CABA",
-    "telefono": 1145601000
+    "telefono": "1145601000"
   },
   {
     "idCD": 2,
@@ -17,6 +17,6 @@
     "codigoPostal": "5000",
     "calle": "Av. Colon",
     "ciudad": "Cordoba",
-    "telefono": 3514602000
+    "telefono": "3514602000"
   }
 ]

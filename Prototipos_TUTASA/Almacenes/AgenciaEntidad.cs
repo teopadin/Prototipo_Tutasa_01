@@ -11,7 +11,7 @@ internal class AgenciaEntidad
     public int altura { get; set; }
     public string codigoPostal { get; set; }
     public string piso { get; set; }
-    public int telefono { get; set; }
+    public string telefono { get; set; }
     public string ciudad { get; set; }
     public bool convenioVigente { get; set; }
 }

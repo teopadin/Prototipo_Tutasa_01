@@ -7,7 +7,7 @@
     "altura": 1500,
     "codigoPostal": "1042",
     "piso": "",
-    "telefono": 1143210001,
+    "telefono": "1143210001",
     "ciudad": "CABA",
     "convenioVigente": true
   },
@@ -19,7 +19,7 @@
     "altura": 780,
     "codigoPostal": "5000",
     "piso": "",
-    "telefono": 3514320002,
+    "telefono": "3514320002",
     "ciudad": "Cordoba",
     "convenioVigente": true
   }

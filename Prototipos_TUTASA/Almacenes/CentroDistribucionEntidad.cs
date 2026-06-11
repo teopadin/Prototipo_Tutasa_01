@@ -11,5 +11,5 @@ internal class CentroDistribucionEntidad
     public string codigoPostal { get; set; }
     public string calle { get; set; }
     public string ciudad { get; set; }
-    public int telefono { get; set; }
+    public string telefono { get; set; }
 }
