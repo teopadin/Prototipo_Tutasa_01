@@ -9,6 +9,7 @@ namespace Prototipos_TUTASA
     {
         private readonly List<TransportistaLocal> transportistas = new List<TransportistaLocal>();
         private readonly List<HojaDeRutaDistribucion> hojasDeRuta = new List<HojaDeRutaDistribucion>();
+        private readonly Dictionary<string, DestinatarioGuia> destinatariosPorGuia = new Dictionary<string, DestinatarioGuia>(StringComparer.OrdinalIgnoreCase);
         private List<HojaDeRutaDistribucion> hojasSeleccionadas = new List<HojaDeRutaDistribucion>();
         private int ultimoNroResumen;
 
@@ -98,6 +99,16 @@ namespace Prototipos_TUTASA
             return hoja.DetalleGuias.Count;
         }
 
+        public DestinatarioGuia ObtenerDestinatarioPrincipal(HojaDeRutaDistribucion hoja)
+        {
+            if (hoja.DetalleGuias.Count == 0)
+            {
+                return new DestinatarioGuia();
+            }
+
+            return ObtenerDestinatario(hoja.DetalleGuias[0]);
+        }
+
         private int CalcularTotalBultos(List<HojaDeRutaDistribucion> hojas)
         {
             int total = 0;
@@ -127,9 +138,26 @@ namespace Prototipos_TUTASA
             return domicilios.Count;
         }
 
-        private string ObtenerClaveDomicilio(DestinatarioGuia guia)
+        private string ObtenerClaveDomicilio(string nroGuia)
         {
+            DestinatarioGuia guia = ObtenerDestinatario(nroGuia);
             return $"{guia.calle}|{guia.altura}|{guia.codigoPostal}".ToUpperInvariant();
+        }
+
+        private DestinatarioGuia ObtenerDestinatario(string nroGuia)
+        {
+            if (destinatariosPorGuia.TryGetValue(nroGuia, out DestinatarioGuia destinatario))
+            {
+                return destinatario;
+            }
+
+            return new DestinatarioGuia();
+        }
+
+        private string RegistrarGuia(string nroGuia, DestinatarioGuia destinatario)
+        {
+            destinatariosPorGuia[nroGuia] = destinatario;
+            return nroGuia;
         }
 
         private void CargarDatosDePrueba()
@@ -140,30 +168,30 @@ namespace Prototipos_TUTASA
             transportistas.Add(carlos);
             transportistas.Add(laura);
 
-            AgregarHojaDeRuta(1, DateTime.Today, carlos, new List<DestinatarioGuia>
+            AgregarHojaDeRuta(1, DateTime.Today, carlos, new List<string>
             {
-                new DestinatarioGuia { Dni = 40123456, calle = "Av. Rivadavia", altura = 3200, codigoPostal = "1406" },
-                new DestinatarioGuia { Dni = 40123456, calle = "Av. Rivadavia", altura = 3200, codigoPostal = "1406" }
+                RegistrarGuia("CD02-0002", new DestinatarioGuia { Dni = 40123456, calle = "Av. Rivadavia", altura = 3200, codigoPostal = "1406" }),
+                RegistrarGuia("CD02-0003", new DestinatarioGuia { Dni = 40123456, calle = "Av. Rivadavia", altura = 3200, codigoPostal = "1406" })
             });
 
-            AgregarHojaDeRuta(2, DateTime.Today, carlos, new List<DestinatarioGuia>
+            AgregarHojaDeRuta(2, DateTime.Today, carlos, new List<string>
             {
-                new DestinatarioGuia { Dni = 0, calle = "Av. Corrientes", altura = 1234, codigoPostal = "1043" },
-                new DestinatarioGuia { Dni = 0, calle = "Av. Corrientes", altura = 1234, codigoPostal = "1043" }
+                RegistrarGuia("CD01-0007", new DestinatarioGuia { Dni = 0, calle = "Av. Corrientes", altura = 1234, codigoPostal = "1043" }),
+                RegistrarGuia("CD01-0008", new DestinatarioGuia { Dni = 0, calle = "Av. Corrientes", altura = 1234, codigoPostal = "1043" })
             });
 
-            AgregarHojaDeRuta(3, DateTime.Today, laura, new List<DestinatarioGuia>
+            AgregarHojaDeRuta(3, DateTime.Today, laura, new List<string>
             {
-                new DestinatarioGuia { Dni = 42345678, calle = "Belgrano", altura = 750, codigoPostal = "5000" }
+                RegistrarGuia("CD03-0001", new DestinatarioGuia { Dni = 42345678, calle = "Belgrano", altura = 750, codigoPostal = "5000" })
             });
 
-            AgregarHojaDeRuta(4, DateTime.Today.AddDays(1), carlos, new List<DestinatarioGuia>
+            AgregarHojaDeRuta(4, DateTime.Today.AddDays(1), carlos, new List<string>
             {
-                new DestinatarioGuia { Dni = 0, calle = "San Martin", altura = 500, codigoPostal = "1043" }
+                RegistrarGuia("CD04-0001", new DestinatarioGuia { Dni = 0, calle = "San Martin", altura = 500, codigoPostal = "1043" })
             });
         }
 
-        private void AgregarHojaDeRuta(int nroHDR, DateTime fecha, TransportistaLocal transportista, List<DestinatarioGuia> detalleGuias)
+        private void AgregarHojaDeRuta(int nroHDR, DateTime fecha, TransportistaLocal transportista, List<string> detalleGuias)
         {
             hojasDeRuta.Add(new HojaDeRutaDistribucion
             {

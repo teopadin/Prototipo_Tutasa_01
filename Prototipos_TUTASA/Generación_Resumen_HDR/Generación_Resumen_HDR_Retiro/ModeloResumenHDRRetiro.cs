@@ -10,6 +10,7 @@ namespace Prototipos_TUTASA
     {
         private readonly List<TransportistaLocal> transportistas = new List<TransportistaLocal>();
         private readonly List<HojaRetiroResumen> hojasDeRuta = new List<HojaRetiroResumen>();
+        private readonly Dictionary<string, Cliente> clientesPorGuia = new Dictionary<string, Cliente>(StringComparer.OrdinalIgnoreCase);
         private List<HojaRetiroResumen> hojasSeleccionadas = new List<HojaRetiroResumen>();
         private int ultimoNroResumen;
 
@@ -99,6 +100,16 @@ namespace Prototipos_TUTASA
             return hoja.DetalleGuias.Count;
         }
 
+        public Cliente ObtenerClientePrincipal(HojaRetiroResumen hoja)
+        {
+            if (hoja.DetalleGuias.Count == 0)
+            {
+                return new Cliente();
+            }
+
+            return ObtenerCliente(hoja.DetalleGuias[0]);
+        }
+
         private int CalcularTotalBultos(List<HojaRetiroResumen> hojas)
         {
             int total = 0;
@@ -128,9 +139,26 @@ namespace Prototipos_TUTASA
             return domicilios.Count;
         }
 
-        private string ObtenerClaveDomicilio(Cliente guia)
+        private string ObtenerClaveDomicilio(string nroGuia)
         {
+            Cliente guia = ObtenerCliente(nroGuia);
             return $"{guia.calle}|{guia.altura}|{guia.codigoPostal}".ToUpperInvariant();
+        }
+
+        private Cliente ObtenerCliente(string nroGuia)
+        {
+            if (clientesPorGuia.TryGetValue(nroGuia, out Cliente cliente))
+            {
+                return cliente;
+            }
+
+            return new Cliente();
+        }
+
+        private string RegistrarGuia(string nroGuia, Cliente cliente)
+        {
+            clientesPorGuia[nroGuia] = cliente;
+            return nroGuia;
         }
 
         private void CargarDatosDePrueba()
@@ -141,25 +169,25 @@ namespace Prototipos_TUTASA
             transportistas.Add(carlos);
             transportistas.Add(laura);
 
-            AgregarHojaDeRuta(1, DateTime.Today, carlos, new List<Cliente>
+            AgregarHojaDeRuta(1, DateTime.Today, carlos, new List<string>
             {
-                new Cliente { idCliente = 1, calle = "Av. Rivadavia", altura = 3200, codigoPostal = "1406" },
-                new Cliente { idCliente = 1, calle = "Av. Rivadavia", altura = 3200, codigoPostal = "1406" }
+                RegistrarGuia("RET-0001", new Cliente { idCliente = 1, calle = "Av. Rivadavia", altura = 3200, codigoPostal = "1406" }),
+                RegistrarGuia("RET-0002", new Cliente { idCliente = 1, calle = "Av. Rivadavia", altura = 3200, codigoPostal = "1406" })
             });
 
-            AgregarHojaDeRuta(2, DateTime.Today, carlos, new List<Cliente>
+            AgregarHojaDeRuta(2, DateTime.Today, carlos, new List<string>
             {
-                new Cliente { idCliente = 2, calle = "Av. Corrientes", altura = 1234, codigoPostal = "1043" },
-                new Cliente { idCliente = 2, calle = "Av. Corrientes", altura = 1234, codigoPostal = "1043" }
+                RegistrarGuia("RET-0003", new Cliente { idCliente = 2, calle = "Av. Corrientes", altura = 1234, codigoPostal = "1043" }),
+                RegistrarGuia("RET-0004", new Cliente { idCliente = 2, calle = "Av. Corrientes", altura = 1234, codigoPostal = "1043" })
             });
 
-            AgregarHojaDeRuta(3, DateTime.Today, laura, new List<Cliente>
+            AgregarHojaDeRuta(3, DateTime.Today, laura, new List<string>
             {
-                new Cliente { idCliente = 3, calle = "San Martin", altura = 500, codigoPostal = "1043" }
+                RegistrarGuia("RET-0005", new Cliente { idCliente = 3, calle = "San Martin", altura = 500, codigoPostal = "1043" })
             });
         }
 
-        private void AgregarHojaDeRuta(int nroHDR, DateTime fecha, TransportistaLocal transportista, List<Cliente> detalleGuias)
+        private void AgregarHojaDeRuta(int nroHDR, DateTime fecha, TransportistaLocal transportista, List<string> detalleGuias)
         {
             hojasDeRuta.Add(new HojaRetiroResumen
             {
