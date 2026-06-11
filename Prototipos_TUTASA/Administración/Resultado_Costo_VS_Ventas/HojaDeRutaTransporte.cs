@@ -8,11 +8,11 @@ namespace Prototipos_TUTASA.ResultadoCostoVSVentas_v2
     {
         public int nroHDR { get; set; }
         public string idServicio { get; set; }
-        public List<string> detalleGuias { get; set; }
+        public List<string> DetalleGuias { get; set; }
 
         public HojaDeRutaTransporte()
         {
-            detalleGuias = new List<string>();
+            DetalleGuias = new List<string>();
         }
     }
 }

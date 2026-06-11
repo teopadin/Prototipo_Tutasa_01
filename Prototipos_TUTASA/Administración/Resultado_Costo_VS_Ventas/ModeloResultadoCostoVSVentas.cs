@@ -170,7 +170,7 @@ namespace Prototipos_TUTASA.ResultadoCostoVSVentas_v2
                     continue;
 
 
-                foreach (string nroGuia in hdr.detalleGuias)
+                foreach (string nroGuia in hdr.DetalleGuias)
                 {
                     if (!fechasEntregaPorGuia.ContainsKey(nroGuia))
                         continue;
@@ -227,14 +227,14 @@ namespace Prototipos_TUTASA.ResultadoCostoVSVentas_v2
             {
                 nroHDR = nroHDR,
                 idServicio = idServicio,
-                detalleGuias = guias.ToList()
+                DetalleGuias = guias.ToList()
             };
 
             ServicioMediaDistancia servicio = Servicios.FirstOrDefault(s => s.idServicio == idServicio);
 
             if (servicio != null)
             {
-                servicio.detalleHDRs.Add(nroHDR);
+                servicio.DetalleHDRs.Add(nroHDR);
             }
 
             return hdr;
