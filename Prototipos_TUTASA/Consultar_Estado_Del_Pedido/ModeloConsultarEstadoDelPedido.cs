@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Prototipos_TUTASA.Almacenes;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,58 +7,37 @@ namespace Prototipos_TUTASA.Consultar_Estado_Del_Pedido
 {
     internal class ModeloConsultarEstadoDelPedido
     {
-        private List<Guia> guias = new List<Guia>
+        public List<Guia> Guias { get; set; }
+
+        public ModeloConsultarEstadoDelPedido()
         {
-            // Guía AG01-0001 - Recorrido completo entregada en agencia
-                new Guia
+            Guias = new List<Guia>();
+            foreach (var guiaEntidad in GuiaAlmacen.Guias)
+            {
+                var guia = new Guia
                 {
-                    NroGuia = "AG01-0001",
-                    Historial = new List<HistorialEstadoGuia>
+                    NroGuia = guiaEntidad.NroGuia,
+                    Historial = new List<HistorialEstadoGuia>()
+                };
+
+                foreach (var histEntidad in guiaEntidad.Historial)
                 {
-                    new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 5, 10), Estado = EstadoGuiaEnum.Impuesta, Donde = "En Agencia Caballito" },
-                    new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 5, 11), Estado = EstadoGuiaEnum.IncluidaEnHDRRetiro, Donde = "En Agencia Caballito" },
-                    new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 5, 12), Estado = EstadoGuiaEnum.Retirada, Donde = "Con transportista Juan Pérez" },
-                    new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 5, 13), Estado = EstadoGuiaEnum.Admitida, Donde = "En CD Buenos Aires" },
-                    new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 5, 14), Estado = EstadoGuiaEnum.PendienteDeDespacho, Donde = "En CD Buenos Aires" },
-                    new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 5, 15), Estado = EstadoGuiaEnum.EnTransito, Donde = "En servicio Buenos Aires - Córdoba" },
-                    new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 5, 17), Estado = EstadoGuiaEnum.EnCDDestino, Donde = "En CD Córdoba" },
-                    new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 5, 18), Estado = EstadoGuiaEnum.EnDistribucion, Donde = "Con transportista María González" },
-                    new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 5, 19), Estado = EstadoGuiaEnum.PendienteDeRetiroEnAgencia, Donde = "En Agencia Nueva Córdoba" },
-                    new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 5, 21), Estado = EstadoGuiaEnum.Entregada, Donde = "En Agencia Nueva Córdoba" }
-                }
-                },
-                // Guía CD02-0002 - Retiro en CD destino
-                new Guia
-                {
-                    NroGuia = "CD02-0002",
-                    Historial = new List<HistorialEstadoGuia>
+                    guia.Historial.Add(new HistorialEstadoGuia
                     {
-                        new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 4, 5), Estado = EstadoGuiaEnum.Impuesta, Donde = "En CD Córdoba" },
-                        new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 4, 6), Estado = EstadoGuiaEnum.Admitida, Donde = "En CD Córdoba" },
-                        new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 4, 7), Estado = EstadoGuiaEnum.PendienteDeDespacho, Donde = "En CD Córdoba" },
-                        new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 4, 8), Estado = EstadoGuiaEnum.EnTransito, Donde = "En servicio Córdoba - Buenos Aires" },
-                        new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 4, 10), Estado = EstadoGuiaEnum.EnCDDestino, Donde = "En CD Buenos Aires" },
-                        new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 4, 11), Estado = EstadoGuiaEnum.PendienteDeRetiroEnCD, Donde = "En CD Buenos Aires" },
-                        new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 4, 13), Estado = EstadoGuiaEnum.Entregada, Donde = "En CD Buenos Aires" }
-                    }
-                },
-                // Guía CD03-0003 - Cancelada
-                new Guia
-                {
-                    NroGuia = "CD03-0003",
-                    Historial = new List<HistorialEstadoGuia>
-                    {
-                        new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 5, 1), Estado = EstadoGuiaEnum.Impuesta, Donde = "En domicilio del cliente Av. San Martín 1234, Mendoza" },
-                        new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 5, 2), Estado = EstadoGuiaEnum.IncluidaEnHDRRetiro, Donde = "En domicilio del cliente Av. San Martín 1234, Mendoza" },
-                        new HistorialEstadoGuia { FechaCambio = new DateTime(2026, 5, 3), Estado = EstadoGuiaEnum.Cancelada, Donde = "Con transportista Pedro López" }
-                    }
+                        FechaCambio = histEntidad.FechaCambio,
+                        Estado = (EstadoGuiaEnum)histEntidad.Estado,
+                        Donde = histEntidad.Donde
+                    });
                 }
-        };
+
+                Guias.Add(guia);
+            }
+        }
 
         // Busca la guía por número y devuelve su historial. Si no la encuentra, devuelve null.
         public List<HistorialEstadoGuia> ConsultarEstado(string nroGuia)
         {
-            foreach (Guia guia in guias)
+            foreach (Guia guia in Guias)
             {
                 if (guia.NroGuia == nroGuia)
                 {
