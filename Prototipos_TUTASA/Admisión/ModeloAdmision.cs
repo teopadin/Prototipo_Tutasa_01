@@ -11,16 +11,16 @@ namespace Prototipos_TUTASA.Admisión
 
         private List<Cliente> clientes = new List<Cliente>
         {
-            new Cliente { IdCliente = 100, RazonSocial = "Tecno Distribuciones S.A." },
-            new Cliente { IdCliente = 200, RazonSocial = "Importadora del Sur SRL" },
-            new Cliente { IdCliente = 300, RazonSocial = "Comercial Norte" }
+            new Cliente { idCliente = 100, razonSocial = "Tecno Distribuciones S.A." },
+            new Cliente { idCliente = 200, razonSocial = "Importadora del Sur SRL" },
+            new Cliente { idCliente = 300, razonSocial = "Comercial Norte" }
         };
 
         private List<CentroDistribucion> cds = new List<CentroDistribucion>
         {
-            new CentroDistribucion { IdCD = 1, Nombre = "CD Buenos Aires" },
-            new CentroDistribucion { IdCD = 2, Nombre = "CD Córdoba" },
-            new CentroDistribucion { IdCD = 3, Nombre = "CD Mendoza" }
+            new CentroDistribucion { idCD = 1, nombre = "CD Buenos Aires" },
+            new CentroDistribucion { idCD = 2, nombre = "CD Córdoba" },
+            new CentroDistribucion { idCD = 3, nombre = "CD Mendoza" }
         };
 
         // Tarifas por cliente: precio del flete según cliente, CDOrigen, CDDestino y tipo de bulto
@@ -49,10 +49,10 @@ namespace Prototipos_TUTASA.Admisión
                 IdCliente = 100,
                 TipoImposicion = TipoImposicionEnum.CallCenter,
                 IdCDDestino = 2,
-                Destinatario = new DestinatarioGuia { Dni = 30111222, Nombre = "Juan", Apellido = "Pérez" },
+                Destinatario = new DestinatarioGuia { Dni = 30111222, nombre = "Juan", apellido = "Pérez" },
                 TipoBulto = TiposBultoEnum.M,
                 ModalidadEntrega = ModalidadEntregaEnum.EntregaDomicilio,
-                Estado = EstadoGuiaEnum.Retirada
+                estado = EstadoGuiaEnum.Retirada
             },
             // Guía 2: caso especial → quedará "Pendiente de retiro en CD"
             new Guia
@@ -61,10 +61,10 @@ namespace Prototipos_TUTASA.Admisión
                 IdCliente = 200,
                 TipoImposicion = TipoImposicionEnum.Agencia,
                 IdCDDestino = 1,
-                Destinatario = new DestinatarioGuia { Dni = 28444555, Nombre = "María", Apellido = "González" },
+                Destinatario = new DestinatarioGuia { Dni = 28444555, nombre = "María", apellido = "González" },
                 TipoBulto = TiposBultoEnum.S,
                 ModalidadEntrega = ModalidadEntregaEnum.EntregaCD,
-                Estado = EstadoGuiaEnum.Retirada
+                estado = EstadoGuiaEnum.Retirada
             },
             // Guía 3: caso general (mismo CD pero no es Retiro en CD)
             new Guia
@@ -73,10 +73,10 @@ namespace Prototipos_TUTASA.Admisión
                 IdCliente = 300,
                 TipoImposicion = TipoImposicionEnum.Agencia,
                 IdCDDestino = 1,
-                Destinatario = new DestinatarioGuia { Dni = 35777888, Nombre = "Carlos", Apellido = "López" },
+                Destinatario = new DestinatarioGuia { Dni = 35777888, nombre = "Carlos", apellido = "López" },
                 TipoBulto = TiposBultoEnum.L,
                 ModalidadEntrega = ModalidadEntregaEnum.EntregaDomicilio,
-                Estado = EstadoGuiaEnum.Retirada
+                estado = EstadoGuiaEnum.Retirada
             },
             // Guía 4: estado distinto a "Retirada" → no se puede admitir
             new Guia
@@ -85,10 +85,10 @@ namespace Prototipos_TUTASA.Admisión
                 IdCliente = 100,
                 TipoImposicion = TipoImposicionEnum.CD,
                 IdCDDestino = 3,
-                Destinatario = new DestinatarioGuia { Dni = 30111222, Nombre = "Juan", Apellido = "Pérez" },
+                Destinatario = new DestinatarioGuia { Dni = 30111222, nombre = "Juan", apellido = "Pérez" },
                 TipoBulto = TiposBultoEnum.XL,
                 ModalidadEntrega = ModalidadEntregaEnum.EntregaAgencia,
-                Estado = EstadoGuiaEnum.Admitida
+                estado = EstadoGuiaEnum.Admitida
             }
         };
 
@@ -110,7 +110,7 @@ namespace Prototipos_TUTASA.Admisión
         {
             foreach (Cliente cliente in clientes)
             {
-                if (cliente.IdCliente == idCliente)
+                if (cliente.idCliente == idCliente)
                 {
                     return cliente;
                 }
@@ -123,7 +123,7 @@ namespace Prototipos_TUTASA.Admisión
         {
             foreach (CentroDistribucion cd in cds)
             {
-                if (cd.IdCD == idCD)
+                if (cd.idCD == idCD)
                 {
                     return cd;
                 }
@@ -134,7 +134,7 @@ namespace Prototipos_TUTASA.Admisión
         // Indica si la guía está en un estado que permite ser admitida
         public bool EsAdmisible(Guia guia)
         {
-            return guia.Estado == EstadoGuiaEnum.Retirada;
+            return guia.estado == EstadoGuiaEnum.Retirada;
         }
 
         // Busca la tarifa por cliente que matchea la combinación cliente/CDOrigen/CDDestino/tipoBulto
@@ -225,11 +225,11 @@ namespace Prototipos_TUTASA.Admisión
             // Caso especial: el CD destino es el mismo que el CD de admisión Y modalidad es Retiro en CD
             if (guia.IdCDDestino == idCDAdmisionActual && guia.ModalidadEntrega == ModalidadEntregaEnum.EntregaCD)
             {
-                guia.Estado = EstadoGuiaEnum.PendienteDeRetiroEnCD;
+                guia.estado = EstadoGuiaEnum.PendienteDeRetiroEnCD;
             }
             else
             {
-                guia.Estado = EstadoGuiaEnum.Admitida;
+                guia.estado = EstadoGuiaEnum.Admitida;
             }
         }
 
@@ -239,7 +239,7 @@ namespace Prototipos_TUTASA.Admisión
             Guia guia = BuscarGuia(nroGuia);
             if (guia == null) return;
 
-            guia.Estado = EstadoGuiaEnum.Cancelada;
+            guia.estado = EstadoGuiaEnum.Cancelada;
         }
 
         // Métodos de formato para mostrar en pantalla

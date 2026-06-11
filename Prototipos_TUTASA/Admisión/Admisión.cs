@@ -48,9 +48,9 @@ namespace Prototipos_TUTASA.Admisión
             DestinatarioGuia dest = guia.Destinatario;
 
             // Mostrar info en pantalla
-            txtCliente.Text = cliente.RazonSocial;
-            txtCDDestino.Text = cd.Nombre;
-            txtDestinatario.Text = dest.Apellido + ", " + dest.Nombre + " (DNI: " + dest.Dni + ")";
+            txtCliente.Text = cliente.razonSocial;
+            txtCDDestino.Text = cd.nombre;
+            txtDestinatario.Text = dest.apellido + ", " + dest.nombre + " (DNI: " + dest.Dni + ")";
             txtTipoBulto.Text = modelo.TextoBulto(guia.TipoBulto);
             txtTipoEntrega.Text = modelo.TextoModalidad(guia.ModalidadEntrega);
         }
