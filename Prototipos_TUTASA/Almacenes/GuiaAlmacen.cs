@@ -4,20 +4,20 @@ namespace Prototipos_TUTASA.Almacenes;
 
 internal static class GuiaAlmacen
 {
-    private static List<GuiaEntidad> guias = new();
+    public static List<GuiaEntidad> Guias = new();
 
     static GuiaAlmacen()
     {
         if (File.Exists("DATOS/Guias.json"))
         {
             string json = File.ReadAllText("DATOS/Guias.json");
-            guias = JsonSerializer.Deserialize<List<GuiaEntidad>>(json);
+            Guias = JsonSerializer.Deserialize<List<GuiaEntidad>>(json);
         }
     }
 
     public static void Guardar()
     {
-        string json = JsonSerializer.Serialize(guias);
+        string json = JsonSerializer.Serialize(Guias);
         File.WriteAllText("DATOS/Guias.json", json);
     }
 }

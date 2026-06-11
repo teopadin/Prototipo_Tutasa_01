@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Prototipos_TUTASA.Almacenes;
 
 namespace Prototipos_TUTASA.Imposición.Imposición_Agencia
 {
@@ -13,67 +14,60 @@ namespace Prototipos_TUTASA.Imposición.Imposición_Agencia
 
         public ModeloImposicionAgencia()
         {
-            var cdCapital = new CentroDistribucion { idCD = 1, nombre = "Capital y GBA" };
-            var cdCentro = new CentroDistribucion { idCD = 2, nombre = "Centro - Córdoba" };
-            var cdNorte = new CentroDistribucion { idCD = 3, nombre = "Norte - Tucumán" };
-            var cdEste = new CentroDistribucion { idCD = 4, nombre = "Este - Corrientes" };
-            var cdCordillera = new CentroDistribucion { idCD = 5, nombre = "Cordillera - Neuquén" };
-            var cdSur = new CentroDistribucion { idCD = 6, nombre = "Sur - Viedma" };
-
-            CentrosDeDistribucion = new List<CentroDistribucion>
+            Clientes = new List<Cliente>();
+            foreach (var clienteEntidad in ClienteAlmacen.Clientes)
             {
-                cdCapital,
-                cdCentro,
-                cdNorte,
-                cdEste,
-                cdCordillera,
-                cdSur
-            };
+                Clientes.Add(new Cliente
+                {
+                    razonSocial = clienteEntidad.razonSocial,
+                    cuit = clienteEntidad.cuit,
+                    telefono = clienteEntidad.telefono,
+                    calle = clienteEntidad.calle,
+                    altura = clienteEntidad.altura,
+                    piso = clienteEntidad.piso,
+                    codigoPostal = clienteEntidad.codigoPostal,
+                    ciudad = clienteEntidad.ciudad
+                });
+            }
 
-            var cliente1 = new Cliente
+            CentrosDeDistribucion = new List<CentroDistribucion>();
+            foreach (var cdEntidad in CentroDistribucionAlmacen.CentrosDeDistribucion)
             {
-                razonSocial = "Distribuidora El Sol SRL",
-                cuit = 30712345678,
-                telefono = "1145678901",
-                calle = "Av. Corrientes",
-                altura = 1500,
-                piso = "PB",
-                codigoPostal = "1043",
-                ciudad = "Buenos Aires"
-            };
+                CentrosDeDistribucion.Add(new CentroDistribucion
+                {
+                    idCD = cdEntidad.idCD,
+                    nombre = cdEntidad.nombre
+                });
+            }
 
-            var cliente2 = new Cliente
+            Agencias = new List<Agencia>();
+            foreach (var agenciaEntidad in AgenciaAlmacen.Agencias)
             {
-                razonSocial = "Importadora del Norte SA",
-                cuit = 30787654321,
-                telefono = "1167890123",
-                calle = "San Martín",
-                altura = 320,
-                piso = "2",
-                codigoPostal = "1004",
-                ciudad = "Buenos Aires"
-            };
+                Agencias.Add(new Agencia
+                {
+                    idAgencia = agenciaEntidad.idAgencia,
+                    razonSocial = agenciaEntidad.razonSocial,
+                    idCD = agenciaEntidad.idCD
+                });
+            }
 
-            Clientes = new List<Cliente> { cliente1, cliente2 };
+            AgenciaOperadora = Agencias.Count > 0 ? Agencias[0] : null;
+            CdOrigen = AgenciaOperadora != null ? BuscarCD(AgenciaOperadora.idCD) : null;
 
-            var agencia1 = new Agencia
-            {
-                idAgencia = 1,
-                razonSocial = "Agencia Norte SA",
-                idCD = cdCapital.idCD
-            };
-
-            var agencia2 = new Agencia
-            {
-                idAgencia = 2,
-                razonSocial = "Agencia Sur SRL",
-                idCD = cdCapital.idCD
-            };
-
-            Agencias = new List<Agencia> { agencia1, agencia2 };
-            AgenciaOperadora = agencia1;
-            CdOrigen = BuscarCD(AgenciaOperadora.idCD);
             Guias = new List<Guia>();
+            if (AgenciaOperadora != null)
+            {
+                foreach (var guiaEntidad in GuiaAlmacen.Guias)
+                {
+                    if (guiaEntidad.idAgenciaOrigen == AgenciaOperadora.idAgencia)
+                    {
+                        Guias.Add(new Guia
+                        {
+                            NroGuia = guiaEntidad.NroGuia
+                        });
+                    }
+                }
+            }
         }
 
         public Guia RegistrarImposicion()
