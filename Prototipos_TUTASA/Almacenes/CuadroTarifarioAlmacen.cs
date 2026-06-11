@@ -4,7 +4,7 @@ namespace Prototipos_TUTASA.Almacenes;
 
 internal static class CuadroTarifarioAlmacen
 {
-    private static List<CuadroTarifarioEntidad> cuadrosTarifarios = new();
+    public static List<CuadroTarifarioEntidad> cuadrosTarifarios = new();
 
     static CuadroTarifarioAlmacen()
     {

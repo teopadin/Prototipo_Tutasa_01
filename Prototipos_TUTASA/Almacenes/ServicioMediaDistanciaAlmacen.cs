@@ -4,7 +4,7 @@ namespace Prototipos_TUTASA.Almacenes;
 
 internal static class ServicioMediaDistanciaAlmacen
 {
-    private static List<ServicioMediaDistanciaEntidad> serviciosMediaDistancia = new();
+    public static List<ServicioMediaDistanciaEntidad> serviciosMediaDistancia = new();
 
     static ServicioMediaDistanciaAlmacen()
     {

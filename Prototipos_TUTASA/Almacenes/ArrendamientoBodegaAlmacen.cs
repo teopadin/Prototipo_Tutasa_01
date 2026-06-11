@@ -4,7 +4,7 @@ namespace Prototipos_TUTASA.Almacenes;
 
 internal static class ArrendamientoBodegaAlmacen
 {
-    private static List<ArrendamientoBodegaEntidad> arrendamientos = new();
+    public static List<ArrendamientoBodegaEntidad> arrendamientos = new();
 
     static ArrendamientoBodegaAlmacen()
     {

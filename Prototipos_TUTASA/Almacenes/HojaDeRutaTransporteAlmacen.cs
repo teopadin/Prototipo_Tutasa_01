@@ -4,7 +4,7 @@ namespace Prototipos_TUTASA.Almacenes;
 
 internal static class HojaDeRutaTransporteAlmacen
 {
-    private static List<HojaDeRutaTransporteEntidad> hojasDeRutaTransporte = new();
+    public static List<HojaDeRutaTransporteEntidad> hojasDeRutaTransporte = new();
 
     static HojaDeRutaTransporteAlmacen()
     {

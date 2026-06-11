@@ -4,7 +4,7 @@ namespace Prototipos_TUTASA.Almacenes;
 
 internal static class HojaDeRutaRetiroAlmacen
 {
-    private static List<HojaDeRutaRetiroEntidad> hojasDeRutaRetiro = new();
+    public static List<HojaDeRutaRetiroEntidad> hojasDeRutaRetiro = new();
 
     static HojaDeRutaRetiroAlmacen()
     {

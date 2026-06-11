@@ -4,7 +4,7 @@ namespace Prototipos_TUTASA.Almacenes;
 
 internal static class DetalleFacturaAlmacen
 {
-    private static List<DetalleFacturaEntidad> detallesFactura = new();
+    public static List<DetalleFacturaEntidad> detallesFactura = new();
 
     static DetalleFacturaAlmacen()
     {
