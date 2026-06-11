@@ -148,13 +148,10 @@ namespace Prototipos_TUTASA.Generación_Hoja_De_Ruta_De_Transporte
 
         private void btnGenerarHDR_Click(object sender, EventArgs e)
         {
-            // Validar que haya al menos una guía seleccionada
             List<Guia> guiasSeleccionadas = new List<Guia>();
             foreach (ListViewItem item in lvGuiasPendientes.Items)
-            {
                 if (item.Checked)
                     guiasSeleccionadas.Add((Guia)item.Tag);
-            }
 
             if (guiasSeleccionadas.Count == 0)
             {
@@ -162,7 +159,6 @@ namespace Prototipos_TUTASA.Generación_Hoja_De_Ruta_De_Transporte
                 return;
             }
 
-            // Validar que haya un servicio seleccionado
             ServicioMediaDistancia servicioSeleccionado = null;
             if (lvServicios.SelectedItems.Count > 0)
                 servicioSeleccionado = (ServicioMediaDistancia)lvServicios.SelectedItems[0].Tag;
@@ -173,23 +169,9 @@ namespace Prototipos_TUTASA.Generación_Hoja_De_Ruta_De_Transporte
                 return;
             }
 
-            HojaDeRutaTransporte nuevaHDR = new HojaDeRutaTransporte();
-            nuevaHDR.NroHDR = modelo.HojasDeRuta.Count + 1;
+            var nuevaHDR = modelo.GenerarHDR(guiasSeleccionadas, servicioSeleccionado);
+            MessageBox.Show($"Hoja de Ruta de Transporte {nuevaHDR.nroHDR} generada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            // Actualizar capacidad usada del servicio
-            int totalBultos = 0;
-            foreach (var guia in guiasSeleccionadas)
-            {
-                totalBultos += guia.EquivalenteS;
-                guia.Estado = EstadoGuiaEnum.PendienteDeDespacho;
-            }
-            servicioSeleccionado.capacidadUsada += totalBultos;
-
-            modelo.HojasDeRuta.Add(nuevaHDR);
-
-            MessageBox.Show($"Hoja de Ruta de Transporte {nuevaHDR.NroHDR} generada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            // Limpiar la pantalla para una nueva operación
             lvServicios.Items.Clear();
             txtBultos.Text = "0";
             CargarGuiasPendientes();
