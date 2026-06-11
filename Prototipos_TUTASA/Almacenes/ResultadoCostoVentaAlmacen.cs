@@ -4,24 +4,20 @@ namespace Prototipos_TUTASA.Almacenes;
 
 internal static class ResultadoCostoVentaAlmacen
 {
-    private const string Archivo = "DATOS/ResultadosCostoVenta.json";
     private static List<ResultadoCostoVentaEntidad> resultados = new();
 
     static ResultadoCostoVentaAlmacen()
     {
-        if (File.Exists(Archivo))
+        if (File.Exists("DATOS/ResultadosCostoVenta.json"))
         {
-            string json = File.ReadAllText(Archivo);
-            resultados = JsonSerializer.Deserialize<List<ResultadoCostoVentaEntidad>>(json) ?? new();
+            string json = File.ReadAllText("DATOS/ResultadosCostoVenta.json");
+            resultados = JsonSerializer.Deserialize<List<ResultadoCostoVentaEntidad>>(json);
         }
     }
 
-    public static List<ResultadoCostoVentaEntidad> ObtenerTodos() { return resultados; }
-
     public static void Guardar()
     {
-        Directory.CreateDirectory("DATOS");
         string json = JsonSerializer.Serialize(resultados);
-        File.WriteAllText(Archivo, json);
+        File.WriteAllText("DATOS/ResultadosCostoVenta.json", json);
     }
 }

@@ -4,24 +4,20 @@ namespace Prototipos_TUTASA.Almacenes;
 
 internal static class EmpresaTransporteAlmacen
 {
-    private const string Archivo = "DATOS/EmpresasTransporte.json";
     private static List<EmpresaTransporteEntidad> empresas = new();
 
     static EmpresaTransporteAlmacen()
     {
-        if (File.Exists(Archivo))
+        if (File.Exists("DATOS/EmpresasTransporte.json"))
         {
-            string json = File.ReadAllText(Archivo);
-            empresas = JsonSerializer.Deserialize<List<EmpresaTransporteEntidad>>(json) ?? new();
+            string json = File.ReadAllText("DATOS/EmpresasTransporte.json");
+            empresas = JsonSerializer.Deserialize<List<EmpresaTransporteEntidad>>(json);
         }
     }
 
-    public static List<EmpresaTransporteEntidad> ObtenerTodos() { return empresas; }
-
     public static void Guardar()
     {
-        Directory.CreateDirectory("DATOS");
         string json = JsonSerializer.Serialize(empresas);
-        File.WriteAllText(Archivo, json);
+        File.WriteAllText("DATOS/EmpresasTransporte.json", json);
     }
 }

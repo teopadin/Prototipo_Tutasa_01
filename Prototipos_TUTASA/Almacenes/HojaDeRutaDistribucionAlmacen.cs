@@ -4,24 +4,20 @@ namespace Prototipos_TUTASA.Almacenes;
 
 internal static class HojaDeRutaDistribucionAlmacen
 {
-    private const string Archivo = "DATOS/HojasDeRutaDistribucion.json";
     private static List<HojaDeRutaDistribucionEntidad> hojasDeRutaDistribucion = new();
 
     static HojaDeRutaDistribucionAlmacen()
     {
-        if (File.Exists(Archivo))
+        if (File.Exists("DATOS/HojasDeRutaDistribucion.json"))
         {
-            string json = File.ReadAllText(Archivo);
-            hojasDeRutaDistribucion = JsonSerializer.Deserialize<List<HojaDeRutaDistribucionEntidad>>(json) ?? new();
+            string json = File.ReadAllText("DATOS/HojasDeRutaDistribucion.json");
+            hojasDeRutaDistribucion = JsonSerializer.Deserialize<List<HojaDeRutaDistribucionEntidad>>(json);
         }
     }
 
-    public static List<HojaDeRutaDistribucionEntidad> ObtenerTodos() { return hojasDeRutaDistribucion; }
-
     public static void Guardar()
     {
-        Directory.CreateDirectory("DATOS");
         string json = JsonSerializer.Serialize(hojasDeRutaDistribucion);
-        File.WriteAllText(Archivo, json);
+        File.WriteAllText("DATOS/HojasDeRutaDistribucion.json", json);
     }
 }
