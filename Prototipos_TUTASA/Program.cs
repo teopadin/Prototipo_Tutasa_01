@@ -29,7 +29,7 @@ namespace Prototipos_TUTASA
             //Application.Run(new Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia.Recepcion_HDR_Retiro_Agencia());
             //Application.Run(new Rendir_HDR_De_Retiro());
             //Application.Run(new Admisión.Admisión());
-            Application.Run(new GenerarHojaDeRutaDeTransporte());
+            //Application.Run(new GenerarHojaDeRutaDeTransporte());
             //Application.Run(new Despacho_Servicios_Media_Distancia.Despacho_Servicios_Media_Distancia());
             //Application.Run(new Prototipos_TUTASA.RecepcionMediaDistancia.RecepcionMediaDistancia());
             //Application.Run(new HojaDeRutaDeDistribucionDestinatario());
@@ -40,7 +40,7 @@ namespace Prototipos_TUTASA
             //Application.Run(new ConsultarEstadoDelPedido_v2.ConsultarEstadoDelPedido());
             //Application.Run(new resultadocostosvsventas());
             //Application.Run(new Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrienteXCliente_v2.EstadoCuentaCorrienteXCliente());
-            //Application.Run(new EntregaAgencia());
+            Application.Run(new EntregaAgencia());
         }
     }
 }
