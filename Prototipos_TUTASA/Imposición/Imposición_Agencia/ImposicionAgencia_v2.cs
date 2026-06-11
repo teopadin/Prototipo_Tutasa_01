@@ -263,7 +263,7 @@ namespace Prototipos_TUTASA.ImposiciónAgencia_v2
             tbCiudadDest.Clear();
         }
 
-        
+
 
         private bool ValidarDomicilioPuertaPuerta()
         {
@@ -276,15 +276,21 @@ namespace Prototipos_TUTASA.ImposiciónAgencia_v2
                 return false;
             }
 
+            if (!EsSoloTexto(tbCalleDest.Text))
+            {
+                MostrarAviso("El campo Calle ingresado no es válido.");
+                return false;
+            }
+
             if (!int.TryParse(tbAlturaDest.Text.Trim(), out int alturaDestino) || alturaDestino <= 0)
             {
                 MostrarAviso("El campo Altura ingresado no es válido.");
                 return false;
             }
 
-            if (!EsSoloNumerico(tbCDDest.Text))
+            if (!EsSoloTexto(tbCiudadDest.Text))
             {
-                MostrarAviso("El campo Codigo postal ingresado no es válido.");
+                MostrarAviso("El campo Ciudad ingresado no es válido.");
                 return false;
             }
 

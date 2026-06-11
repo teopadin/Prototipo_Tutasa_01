@@ -277,15 +277,21 @@ namespace Prototipos_TUTASA.ImposiciónCD_V2
                 return false;
             }
 
+            if (!EsSoloTexto(textBox1.Text))
+            {
+                MostrarAviso("El campo Calle ingresado no es válido.");
+                return false;
+            }
+
             if (!int.TryParse(textBox2.Text.Trim(), out int alturaDestino) || alturaDestino <= 0)
             {
                 MostrarAviso("El campo Altura ingresado no es válido.");
                 return false;
             }
 
-            if (!EsSoloNumerico(textBox4.Text))
+            if (!EsSoloTexto(textBox5.Text))
             {
-                MostrarAviso("El campo Codigo postal ingresado no es válido.");
+                MostrarAviso("El campo Ciudad ingresado no es válido.");
                 return false;
             }
 
