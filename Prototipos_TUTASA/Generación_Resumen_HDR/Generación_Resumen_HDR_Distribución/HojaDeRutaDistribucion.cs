@@ -7,9 +7,9 @@ namespace Prototipos_TUTASA.ClasesResumenHDRDistribucion
     {
         public int NroHDR { get; set; }
         public DateTime Fecha { get; set; }
-        public int DniTransportistaAsignado { get; set; }
+        public int dniTransportistaAsignado { get; set; }
         public List<DestinatarioGuia> DetalleGuias { get; set; }
-        public EstadoHojaDeRutaEnum Estado { get; set; }
+        public EstadoHojaDeRutaEnum estado { get; set; }
 
         public HojaDeRutaDistribucion()
         {

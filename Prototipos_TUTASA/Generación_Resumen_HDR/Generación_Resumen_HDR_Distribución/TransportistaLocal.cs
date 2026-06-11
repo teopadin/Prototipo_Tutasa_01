@@ -2,19 +2,19 @@ namespace Prototipos_TUTASA.ClasesResumenHDRDistribucion
 {
     internal class TransportistaLocal
     {
-        public int DniTransportista { get; set; }
-        public string Nombre { get; set; }
-        public string Apellido { get; set; }
+        public int dniTransportista { get; set; }
+        public string nombre { get; set; }
+        public string apellido { get; set; }
 
         public TransportistaLocal()
         {
-            Nombre = string.Empty;
-            Apellido = string.Empty;
+            nombre = string.Empty;
+            apellido = string.Empty;
         }
 
         public override string ToString()
         {
-            return $"{Nombre} {Apellido}";
+            return $"{nombre} {apellido}";
         }
     }
 }
