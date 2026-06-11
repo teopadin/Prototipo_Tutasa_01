@@ -20,8 +20,8 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_CD
 
         public ModeloEntregaEnCD()
         {
-            var cdCapital = new CentroDistribucion { IdCD = 1, Nombre = "Capital y GBA" };
-            var cdCentro = new CentroDistribucion { IdCD = 2, Nombre = "Centro - Córdoba" };
+            var cdCapital = new CentroDistribucion { idCD = 1, nombre = "Capital y GBA" };
+            var cdCentro = new CentroDistribucion { idCD = 2, nombre = "Centro - Córdoba" };
 
             cdActual = cdCapital;
 
@@ -30,29 +30,29 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_CD
                 new Guia
                 {
                     NroGuia = "CD02-0002",
-                    Estado = EstadoGuiaEnum.PendienteDeRetiroEnCD,
-                    idCDDestino = cdCapital.IdCD,
+                    estado = EstadoGuiaEnum.PendienteDeRetiroEnCD,
+                    idCDDestino = cdCapital.idCD,
                     Destinatario = new DestinatarioGuia { nombre = "Ana", apellido = "Pérez", Dni = 40123456 }
                 },
                 new Guia
                 {
                     NroGuia = "CD01-0007",
-                    Estado = EstadoGuiaEnum.PendienteDeRetiroEnCD,
-                    idCDDestino = cdCapital.IdCD,
+                    estado = EstadoGuiaEnum.PendienteDeRetiroEnCD,
+                    idCDDestino = cdCapital.idCD,
                     Destinatario = new DestinatarioGuia { nombre = "Juan", apellido = "Rodríguez", Dni = 41234567 }
                 },
                 new Guia
                 {
                     NroGuia = "CD03-0001",
-                    Estado = EstadoGuiaEnum.EnDistribucion,
-                    idCDDestino = cdCapital.IdCD,
+                    estado = EstadoGuiaEnum.EnDistribucion,
+                    idCDDestino = cdCapital.idCD,
                     Destinatario = new DestinatarioGuia { nombre = "María", apellido = "González", Dni = 42345678 }
                 },
                 new Guia
                 {
                     NroGuia = "CD02-0009",
-                    Estado = EstadoGuiaEnum.PendienteDeRetiroEnCD,
-                    idCDDestino = cdCentro.IdCD,
+                    estado = EstadoGuiaEnum.PendienteDeRetiroEnCD,
+                    idCDDestino = cdCentro.idCD,
                     Destinatario = new DestinatarioGuia { nombre = "Carlos", apellido = "López", Dni = 43567890 }
                 }
             };
@@ -87,13 +87,13 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_CD
                 return false;
             }
 
-            if (guia.idCDDestino != cdActual.IdCD)
+            if (guia.idCDDestino != cdActual.idCD)
             {
                 mensaje = "La guía ingresada no corresponde al Centro de Distribución actual.";
                 return false;
             }
 
-            if (guia.Estado != EstadoGuiaEnum.PendienteDeRetiroEnCD)
+            if (guia.estado != EstadoGuiaEnum.PendienteDeRetiroEnCD)
             {
                 mensaje = "La guía no se encuentra pendiente de retiro en CD.";
                 return false;
@@ -186,7 +186,7 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_CD
             DateTime fechaEntrega = DateTime.Now;
 
             ultimoNroRecibo++;
-            guiaSeleccionada.Estado = EstadoGuiaEnum.Entregada;
+            guiaSeleccionada.estado = EstadoGuiaEnum.Entregada;
         }
 
         private static bool CoincideTexto(string textoRegistrado, string textoIngresado)

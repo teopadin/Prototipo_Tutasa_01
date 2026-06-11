@@ -21,28 +21,28 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia
                 new Guia
                 {
                     NroGuia = "AG01-0001",
-                    Estado = EstadoGuiaEnum.PendienteDeRetiroEnAgencia,
+                    estado = EstadoGuiaEnum.PendienteDeRetiroEnAgencia,
                     idAgenciaDestino = agenciaCapital,
                     Destinatario = new DestinatarioGuia { nombre = "Ana", apellido = "Pérez", Dni = 40123456 }
                 },
                 new Guia
                 {
                     NroGuia = "AG01-0002",
-                    Estado = EstadoGuiaEnum.PendienteDeRetiroEnAgencia,
+                    estado = EstadoGuiaEnum.PendienteDeRetiroEnAgencia,
                     idAgenciaDestino = agenciaCapital,
                     Destinatario = new DestinatarioGuia { nombre = "Juan", apellido = "Rodríguez", Dni = 41234567 }
                 },
                 new Guia
                 {
                     NroGuia = "AG01-0003",
-                    Estado = EstadoGuiaEnum.Entregada,
+                    estado = EstadoGuiaEnum.Entregada,
                     idAgenciaDestino = agenciaCapital,
                     Destinatario = new DestinatarioGuia { nombre = "María", apellido = "González", Dni = 42345678 }
                 },
                 new Guia
                 {
                     NroGuia = "AG02-0001",
-                    Estado = EstadoGuiaEnum.PendienteDeRetiroEnAgencia,
+                    estado  = EstadoGuiaEnum.PendienteDeRetiroEnAgencia,
                     idAgenciaDestino = agenciaCentro,
                     Destinatario = new DestinatarioGuia { nombre = "Carlos", apellido = "López", Dni = 43567890 }
                 }
@@ -87,7 +87,7 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia
                 return false;
             }
 
-            if (guiaEncontrada.Estado != EstadoGuiaEnum.PendienteDeRetiroEnAgencia)
+            if (guiaEncontrada.estado != EstadoGuiaEnum.PendienteDeRetiroEnAgencia)
             {
                 mensaje = "La guía no se encuentra pendiente de retiro en agencia.";
                 return false;
@@ -140,7 +140,7 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia
 
         private void RegistrarEntregaInterna(Guia guia)
         {
-            guia.Estado = EstadoGuiaEnum.Entregada;
+            guia.estado = EstadoGuiaEnum.Entregada;
         }
 
         private static bool CoincideDestinatario(Guia guia, string nombre, string apellido, int dni)
