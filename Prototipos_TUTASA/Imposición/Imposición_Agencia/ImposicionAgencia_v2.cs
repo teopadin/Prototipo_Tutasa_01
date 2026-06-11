@@ -52,6 +52,18 @@ namespace Prototipos_TUTASA.ImposiciónAgencia_v2
                 return;
             }
 
+            if (!EsSoloTexto(txtNombreDest.Text))
+            {
+                MostrarAviso("El campo Nombre ingresado no es válido.");
+                return;
+            }
+
+            if (!EsSoloTexto(txtApellidoDest.Text))
+            {
+                MostrarAviso("El campo Apellido ingresado no es válido.");
+                return;
+            }
+
             if (!int.TryParse(txtDNIDest.Text.Trim(), out int dniDestinatario) || dniDestinatario <= 0)
             {
                 MostrarAviso("El campo DNI ingresado no es válido.");
@@ -381,6 +393,20 @@ namespace Prototipos_TUTASA.ImposiciónAgencia_v2
             foreach (char caracter in valor.Trim())
             {
                 if (!char.IsDigit(caracter))
+                    return false;
+            }
+
+            return true;
+        }
+
+        private bool EsSoloTexto(string valor)
+        {
+            if (string.IsNullOrWhiteSpace(valor))
+                return false;
+
+            foreach (char caracter in valor.Trim())
+            {
+                if (!char.IsLetter(caracter) && caracter != ' ')
                     return false;
             }
 

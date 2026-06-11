@@ -21,7 +21,7 @@ namespace Prototipos_TUTASA
         static void Main()
         {
             ApplicationConfiguration.Initialize();
-            //Application.Run(new Prototipos_TUTASA.ImposiciónAgencia_v2.ImposicionAgencia_v2());
+            Application.Run(new Prototipos_TUTASA.ImposiciónAgencia_v2.ImposicionAgencia_v2());
             //Application.Run(new Prototipos_TUTASA.ImposiciónCallCenter_v2.ImposicionCallCenter_v2());
             //Application.Run(new Prototipos_TUTASA.ImposiciónCD_V2.ImposiciónCD_V2());
             //Application.Run(new GeneracionHojaDeRutaRetiro());
@@ -29,7 +29,7 @@ namespace Prototipos_TUTASA
             //Application.Run(new Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia.Recepcion_HDR_Retiro_Agencia());
             //Application.Run(new Rendir_HDR_De_Retiro());
             //Application.Run(new Admisión.Admisión());
-            Application.Run(new GenerarHojaDeRutaDeTransporte());
+            //Application.Run(new GenerarHojaDeRutaDeTransporte());
             //Application.Run(new Despacho_Servicios_Media_Distancia.Despacho_Servicios_Media_Distancia());
             //Application.Run(new Prototipos_TUTASA.RecepcionMediaDistancia.RecepcionMediaDistancia());
             //Application.Run(new HojaDeRutaDeDistribucionDestinatario());
