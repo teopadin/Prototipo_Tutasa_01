@@ -240,19 +240,9 @@ namespace Prototipos_TUTASA.HojaDeRutaDeDistribucion
                 return;
             }
 
-            HojaDeRutaDistribucion nuevaHDR = new HojaDeRutaDistribucion();
-            nuevaHDR.NroHDR = modelo.HojasDeRuta.Count + 1;
-            nuevaHDR.Fecha = dtpFecha.Value.Date;
 
-            // Cambiar el estado de las guías a EnDistribucion
-            foreach (var guia in guiasSeleccionadas)
-                guia.Estado = EstadoGuiaEnum.EnDistribucion;
 
-            // Incrementar las HDR asignadas al transportista
-            transportistaSeleccionado.HdrAsignadas++;
-
-            modelo.HojasDeRuta.Add(nuevaHDR);
-
+            var nuevaHDR = modelo.GenerarHDR(guiasSeleccionadas, transportistaSeleccionado, dtpFecha.Value.Date);
             MessageBox.Show($"Hoja de Ruta de Distribución {nuevaHDR.NroHDR} generada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             // Limpiar la pantalla para una nueva operación

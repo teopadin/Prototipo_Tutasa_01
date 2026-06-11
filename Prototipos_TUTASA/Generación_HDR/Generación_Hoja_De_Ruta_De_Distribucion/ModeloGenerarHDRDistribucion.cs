@@ -88,5 +88,21 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Distribu
             }
             return null;
         }
+
+        // En el modelo
+        public HojaDeRutaDistribucion GenerarHDR(List<Guia> guias, TransportistaLocal transportista, DateTime fecha)
+        {
+            HojaDeRutaDistribucion nuevaHDR = new HojaDeRutaDistribucion();
+            nuevaHDR.NroHDR = HojasDeRuta.Count + 1;
+            nuevaHDR.Fecha = fecha;
+
+            foreach (var guia in guias)
+                guia.Estado = EstadoGuiaEnum.EnDistribucion;
+
+            transportista.HdrAsignadas++;
+            HojasDeRuta.Add(nuevaHDR);
+
+            return nuevaHDR;
+        }
     }
 }
