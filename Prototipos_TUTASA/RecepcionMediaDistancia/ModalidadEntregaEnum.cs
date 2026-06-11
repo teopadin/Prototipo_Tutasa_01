@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Prototipos_TUTASA.RecepcionMediaDistancia
 {
-    public enum ModalidadEntrega
+    public enum ModalidadEntregaEnum
     {
         EntregaDomicilio,
         EntregaAgencia,

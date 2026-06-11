@@ -108,7 +108,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
         {
             if (guia.CDActual == guia.CDDestino)
             {
-                if (guia.modalidadEntrega == ModalidadEntrega.EntregaCD)
+                if (guia.modalidadEntrega == ModalidadEntregaEnum.EntregaCD)
                 {
                     guia.estado = EstadoGuiaEnum.PendienteDeRetiroEnCD;
                 }
