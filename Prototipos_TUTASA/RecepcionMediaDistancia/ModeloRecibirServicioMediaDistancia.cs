@@ -47,7 +47,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
                 CDOrigen = cdCordoba,
                 CDActual = cdCordoba,
                 CDDestino = cdMendoza,
-                estado = EstadoGuia.EnTransito
+                estado = EstadoGuiaEnum.EnTransito
             };
 
             var guia2 = new Guia
@@ -58,7 +58,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
                 CDOrigen = cdCordoba,
                 CDActual = cdCordoba,
                 CDDestino = cdMendoza,
-                estado = EstadoGuia.EnTransito
+                estado = EstadoGuiaEnum.EnTransito
             };
 
             var guia3 = new Guia
@@ -69,13 +69,13 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
                 CDOrigen = cdCordoba,
                 CDActual = cdCordoba,
                 CDDestino = cdMendoza,
-                estado = EstadoGuia.EnTransito
+                estado = EstadoGuiaEnum.EnTransito
             };
 
             var hdr1 = new HojaDeRutaTransporte
             {
                 NroHDR = 1001,
-                estado = EstadoHojaDeRuta.EnCurso,
+                estado = EstadoHojaDeRutaEnum.EnCurso,
                 DetalleGuias = new List<Guia>
                 {
                     guia1,
@@ -86,7 +86,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             var hdr2 = new HojaDeRutaTransporte
             {
                 NroHDR = 1002,
-                estado = EstadoHojaDeRuta.EnCurso,
+                estado = EstadoHojaDeRutaEnum.EnCurso,
                 DetalleGuias = new List<Guia>
                 {
                     guia3
@@ -116,7 +116,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
                 CDOrigen = cdMendoza,
                 CDActual = cdMendoza,
                 CDDestino = cdCordoba,
-                estado = EstadoGuia.EnTransito
+                estado = EstadoGuiaEnum.EnTransito
             };
 
             var guia5 = new Guia
@@ -127,13 +127,13 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
                 CDOrigen = cdMendoza,
                 CDActual = cdMendoza,
                 CDDestino = cdCordoba,
-                estado = EstadoGuia.EnTransito
+                estado = EstadoGuiaEnum.EnTransito
             };
 
             var hdr3 = new HojaDeRutaTransporte
             {
                 NroHDR = 2001,
-                estado = EstadoHojaDeRuta.EnCurso,
+                estado = EstadoHojaDeRutaEnum.EnCurso,
                 DetalleGuias = new List<Guia>
                 {
                     guia4,
@@ -162,13 +162,13 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
                 CDOrigen = cdCordoba,
                 CDActual = cdCordoba,
                 CDDestino = cdBuenosAires,
-                estado = EstadoGuia.EnTransito
+                estado = EstadoGuiaEnum.EnTransito
             };
 
             var hdr4 = new HojaDeRutaTransporte
             {
                 NroHDR = 3001,
-                estado = EstadoHojaDeRuta.EnCurso,
+                estado = EstadoHojaDeRutaEnum.EnCurso,
                 DetalleGuias = new List<Guia>
                 {
                     guia6

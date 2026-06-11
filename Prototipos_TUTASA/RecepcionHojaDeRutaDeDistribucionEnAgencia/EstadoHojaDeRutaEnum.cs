@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
 {
-    public enum EstadoHojaDeRuta
+    public enum EstadoHojaDeRutaEnum
     {
         EnCurso,
         Recibida,

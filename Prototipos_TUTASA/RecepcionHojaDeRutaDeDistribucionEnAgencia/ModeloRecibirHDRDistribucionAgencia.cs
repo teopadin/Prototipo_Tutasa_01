@@ -61,7 +61,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
                 NroGuia = "GD-0001",
                 TipoBulto = TiposBultoEnum.S,
                 idAgenciaOrigen = agencia1.idAgencia,
-                estado = EstadoGuia.EnDistribucion
+                estado = EstadoGuiaEnum.EnDistribucion
             };
 
             var g2 = new Guia
@@ -69,7 +69,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
                 NroGuia = "GD-0002",
                 TipoBulto = TiposBultoEnum.M,
                 idAgenciaOrigen = agencia1.idAgencia,
-                estado = EstadoGuia.EnDistribucion
+                estado = EstadoGuiaEnum.EnDistribucion
             };
 
             var g3 = new Guia
@@ -77,7 +77,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
                 NroGuia = "GD-0003",
                 TipoBulto = TiposBultoEnum.L,
                 idAgenciaOrigen = agencia1.idAgencia,
-                estado = EstadoGuia.EnDistribucion
+                estado = EstadoGuiaEnum.EnDistribucion
             };
 
             var g4 = new Guia
@@ -85,7 +85,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
                 NroGuia = "GD-0004",
                 TipoBulto = TiposBultoEnum.XL,
                 idAgenciaOrigen = agencia2.idAgencia,
-                estado = EstadoGuia.EnDistribucion
+                estado = EstadoGuiaEnum.EnDistribucion
             };
             Guias = new List<Guia>
             {
@@ -106,7 +106,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
                     g1.NroGuia,
                     g2.NroGuia
                 },
-                estado = EstadoHojaDeRuta.EnCurso
+                estado = EstadoHojaDeRutaEnum.EnCurso
             };
 
             // HDR válida adicional
@@ -119,7 +119,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
                 {
                     g3.NroGuia
                 },
-                estado = EstadoHojaDeRuta.EnCurso
+                estado = EstadoHojaDeRutaEnum.EnCurso
             };
 
             // HDR de otra agencia (Excepción 3)
@@ -132,7 +132,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
                 {
                     g4.NroGuia
                 },
-                estado = EstadoHojaDeRuta.EnCurso
+                estado = EstadoHojaDeRutaEnum.EnCurso
             };
 
             // HDR ya recibida (Excepción 4)
@@ -145,7 +145,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
                 {
                     g1.NroGuia
                 },
-                estado = EstadoHojaDeRuta.Recibida,
+                estado = EstadoHojaDeRutaEnum.Recibida,
                 Fecha = new DateTime(2026, 5, 25)
             };
 

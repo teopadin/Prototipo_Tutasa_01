@@ -18,6 +18,6 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
 
         public List<string> DetalleGuias { get; set; }
 
-        public EstadoHojaDeRuta estado { get; set; }
+        public EstadoHojaDeRutaEnum estado { get; set; }
     }
 }

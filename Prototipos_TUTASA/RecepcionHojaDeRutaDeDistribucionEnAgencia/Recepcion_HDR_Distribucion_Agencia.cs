@@ -102,7 +102,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
             }
 
             // Excepción 4
-            if (hdr.estado == EstadoHojaDeRuta.Recibida)
+            if (hdr.estado == EstadoHojaDeRutaEnum.Recibida)
             {
                 MessageBox.Show("La hoja de ruta ingresada ya fue confirmada como recibida.");
 
@@ -147,7 +147,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
 
         private void actualizarEstadoHDR(HojaDeRutaDistribucion hdr)
         {
-            hdr.estado = EstadoHojaDeRuta.Recibida;
+            hdr.estado = EstadoHojaDeRutaEnum.Recibida;
         }
 
         private void actualizarEstadoGuia(HojaDeRutaDistribucion hdr)
@@ -158,7 +158,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
 
                 if (guia != null)
                 {
-                    guia.estado = EstadoGuia.PendienteDeRetiroEnAgencia;
+                    guia.estado = EstadoGuiaEnum.PendienteDeRetiroEnAgencia;
                 }
             }
         }
