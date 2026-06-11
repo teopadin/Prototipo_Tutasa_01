@@ -29,18 +29,30 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia
             listViewGuiasRetiradas.Items.Clear();
         }
 
+
         private void CargarHDR(HojaDeRutaRetiro hdr)
         {
             txtAgencia.Text = hdr.AgenciaHDR.razonSocial;
 
-            txtFletero.Text =$"{hdr.Transportista.nombre} {hdr.Transportista.apellido}";
+            TransportistaLocal transportista = modelo.BuscarTransportista(hdr.dniTransportistaAsignado);
+
+            if (transportista != null)
+            {
+                txtFletero.Text = $"{transportista.nombre} {transportista.apellido}";
+            }
 
             listViewGuiasRetiradas.Items.Clear();
 
-            foreach (var guia in hdr.DetalleGuias)
+            foreach (string nroGuia in hdr.DetalleGuias)
             {
-                ListViewItem item = new ListViewItem(guia.NroGuia);
-                item.SubItems.Add(guia.TipoBulto.ToString());
+                Guia guia = modelo.BuscarGuia(nroGuia);
+
+                ListViewItem item = new ListViewItem(nroGuia);
+
+                if (guia != null)
+                {
+                    item.SubItems.Add(guia.TipoBulto.ToString());
+                }
 
                 listViewGuiasRetiradas.Items.Add(item);
             }

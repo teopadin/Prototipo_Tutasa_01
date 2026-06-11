@@ -8,8 +8,8 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
     {
         public string NroGuia { get; set; }
         public TiposBultoEnum TipoBulto { get; set; }
-        public Agencia AgenciaGuia { get; set; }
+        public int idAgenciaOrigen { get; set; }
 
-        public EstadoGuia estado { get; set; }
+        public EstadoGuiaEnum estado { get; set; }
     }
 }

@@ -101,25 +101,25 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
 
         private void actualizarEstadoHDR(HojaDeRutaTransporte hdr)
         {
-            hdr.estado = EstadoHojaDeRuta.Recibida;
+            hdr.estado = EstadoHojaDeRutaEnum.Recibida;
         }
 
         private void actualizarEstadoGuia(Guia guia)
         {
             if (guia.CDActual == guia.CDDestino)
             {
-                if (guia.modalidadEntrega == ModalidadEntrega.EntregaCD)
+                if (guia.modalidadEntrega == ModalidadEntregaEnum.EntregaCD)
                 {
-                    guia.estado = EstadoGuia.PendienteDeRetiroEnCD;
+                    guia.estado = EstadoGuiaEnum.PendienteDeRetiroEnCD;
                 }
                 else
                 {
-                    guia.estado = EstadoGuia.EnCDDestino;
+                    guia.estado = EstadoGuiaEnum.EnCDDestino;
                 }
             }
             else
             {
-                guia.estado = EstadoGuia.Admitida;
+                guia.estado = EstadoGuiaEnum.Admitida;
             }
         }
 

@@ -43,39 +43,39 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             {
                 NroGuia = "G0001",
                 TipoBulto = TiposBultoEnum.S,
-                modalidadEntrega = ModalidadEntrega.EntregaDomicilio,
+                modalidadEntrega = ModalidadEntregaEnum.EntregaDomicilio,
                 CDOrigen = cdCordoba,
                 CDActual = cdCordoba,
                 CDDestino = cdMendoza,
-                estado = EstadoGuia.EnTransito
+                estado = EstadoGuiaEnum.EnTransito
             };
 
             var guia2 = new Guia
             {
                 NroGuia = "G0002",
                 TipoBulto = TiposBultoEnum.M,
-                modalidadEntrega = ModalidadEntrega.EntregaAgencia,
+                modalidadEntrega = ModalidadEntregaEnum.EntregaAgencia,
                 CDOrigen = cdCordoba,
                 CDActual = cdCordoba,
                 CDDestino = cdMendoza,
-                estado = EstadoGuia.EnTransito
+                estado = EstadoGuiaEnum.EnTransito
             };
 
             var guia3 = new Guia
             {
                 NroGuia = "G0003",
                 TipoBulto = TiposBultoEnum.XL,
-                modalidadEntrega = ModalidadEntrega.EntregaCD,
+                modalidadEntrega = ModalidadEntregaEnum.EntregaCD,
                 CDOrigen = cdCordoba,
                 CDActual = cdCordoba,
                 CDDestino = cdMendoza,
-                estado = EstadoGuia.EnTransito
+                estado = EstadoGuiaEnum.EnTransito
             };
 
             var hdr1 = new HojaDeRutaTransporte
             {
                 NroHDR = 1001,
-                estado = EstadoHojaDeRuta.EnCurso,
+                estado = EstadoHojaDeRutaEnum.EnCurso,
                 DetalleGuias = new List<Guia>
                 {
                     guia1,
@@ -86,7 +86,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             var hdr2 = new HojaDeRutaTransporte
             {
                 NroHDR = 1002,
-                estado = EstadoHojaDeRuta.EnCurso,
+                estado = EstadoHojaDeRutaEnum.EnCurso,
                 DetalleGuias = new List<Guia>
                 {
                     guia3
@@ -112,28 +112,28 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             {
                 NroGuia = "G0004",
                 TipoBulto = TiposBultoEnum.L,
-                modalidadEntrega = ModalidadEntrega.EntregaDomicilio,
+                modalidadEntrega = ModalidadEntregaEnum.EntregaDomicilio,
                 CDOrigen = cdMendoza,
                 CDActual = cdMendoza,
                 CDDestino = cdCordoba,
-                estado = EstadoGuia.EnTransito
+                estado = EstadoGuiaEnum.EnTransito
             };
 
             var guia5 = new Guia
             {
                 NroGuia = "G0005",
                 TipoBulto = TiposBultoEnum.M,
-                modalidadEntrega = ModalidadEntrega.EntregaCD,
+                modalidadEntrega = ModalidadEntregaEnum.EntregaCD,
                 CDOrigen = cdMendoza,
                 CDActual = cdMendoza,
                 CDDestino = cdCordoba,
-                estado = EstadoGuia.EnTransito
+                estado = EstadoGuiaEnum.EnTransito
             };
 
             var hdr3 = new HojaDeRutaTransporte
             {
                 NroHDR = 2001,
-                estado = EstadoHojaDeRuta.EnCurso,
+                estado = EstadoHojaDeRutaEnum.EnCurso,
                 DetalleGuias = new List<Guia>
                 {
                     guia4,
@@ -158,17 +158,17 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             {
                 NroGuia = "G0006",
                 TipoBulto = TiposBultoEnum.S,
-                modalidadEntrega = ModalidadEntrega.EntregaDomicilio,
+                modalidadEntrega = ModalidadEntregaEnum.EntregaDomicilio,
                 CDOrigen = cdCordoba,
                 CDActual = cdCordoba,
                 CDDestino = cdBuenosAires,
-                estado = EstadoGuia.EnTransito
+                estado = EstadoGuiaEnum.EnTransito
             };
 
             var hdr4 = new HojaDeRutaTransporte
             {
                 NroHDR = 3001,
-                estado = EstadoHojaDeRuta.EnCurso,
+                estado = EstadoHojaDeRutaEnum.EnCurso,
                 DetalleGuias = new List<Guia>
                 {
                     guia6

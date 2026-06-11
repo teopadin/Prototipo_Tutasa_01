@@ -4,10 +4,9 @@ using System.Text;
 
 namespace Prototipos_TUTASA.RecepcionMediaDistancia
 {
-    public enum ModalidadEntrega
+    public enum EstadoHojaDeRutaEnum
     {
-        EntregaDomicilio,
-        EntregaAgencia,
-        EntregaCD
+        EnCurso,
+        Recibida
     }
 }

@@ -11,6 +11,8 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
         public List<HojaDeRutaDistribucion> HojasDeRutaDistribucion { get; set; }
 
         public HojaDeRutaDistribucion HdrActual { get; set; }
+        public List<TransportistaLocal> Transportistas { get; set; }
+        public List<Guia> Guias { get; set; }
 
         public ModeloRecibirHDRDistribucionAgencia()
         {
@@ -35,14 +37,22 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
             // Transportistas
             var t1 = new TransportistaLocal
             {
+                dniTransportistaAsignado = 40497355,
                 nombre = "Carlos",
                 apellido = "Gomez",
             };
 
             var t2 = new TransportistaLocal
             {
+                dniTransportistaAsignado = 35397312,
                 nombre = "Laura",
                 apellido = "Martinez",
+            };
+            
+            Transportistas = new List<TransportistaLocal>
+            {
+                 t1,
+                 t2
             };
 
             // Guías
@@ -50,32 +60,39 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
             {
                 NroGuia = "GD-0001",
                 TipoBulto = TiposBultoEnum.S,
-                AgenciaGuia = agencia1,
-                estado = EstadoGuia.EnDistribucion
+                idAgenciaOrigen = agencia1.idAgencia,
+                estado = EstadoGuiaEnum.EnDistribucion
             };
 
             var g2 = new Guia
             {
                 NroGuia = "GD-0002",
                 TipoBulto = TiposBultoEnum.M,
-                AgenciaGuia = agencia1,
-                estado = EstadoGuia.EnDistribucion
+                idAgenciaOrigen = agencia1.idAgencia,
+                estado = EstadoGuiaEnum.EnDistribucion
             };
 
             var g3 = new Guia
             {
                 NroGuia = "GD-0003",
                 TipoBulto = TiposBultoEnum.L,
-                AgenciaGuia = agencia1,
-                estado = EstadoGuia.EnDistribucion
+                idAgenciaOrigen = agencia1.idAgencia,
+                estado = EstadoGuiaEnum.EnDistribucion
             };
 
             var g4 = new Guia
             {
                 NroGuia = "GD-0004",
                 TipoBulto = TiposBultoEnum.XL,
-                AgenciaGuia = agencia2,
-                estado = EstadoGuia.EnDistribucion
+                idAgenciaOrigen = agencia2.idAgencia,
+                estado = EstadoGuiaEnum.EnDistribucion
+            };
+            Guias = new List<Guia>
+            {
+                g1,
+                g2,
+                g3,
+                g4
             };
 
             // HDR válida
@@ -83,13 +100,13 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
             {
                 NroHDR = 1001,
                 AgenciaHDR = agencia1,
-                Transportista = t1,
-                DetalleGuias = new List<Guia>
+                dniTransportistaAsignado = t1.dniTransportistaAsignado,
+                DetalleGuias = new List<string>
                 {
-                    g1,
-                    g2
+                    g1.NroGuia,
+                    g2.NroGuia
                 },
-                estado = EstadoHojaDeRuta.EnCurso
+                estado = EstadoHojaDeRutaEnum.EnCurso
             };
 
             // HDR válida adicional
@@ -97,12 +114,12 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
             {
                 NroHDR = 1002,
                 AgenciaHDR = agencia1,
-                Transportista = t2,
-                DetalleGuias = new List<Guia>
+                dniTransportistaAsignado = t2.dniTransportistaAsignado,
+                DetalleGuias = new List<string>
                 {
-                    g3
+                    g3.NroGuia
                 },
-                estado = EstadoHojaDeRuta.EnCurso
+                estado = EstadoHojaDeRutaEnum.EnCurso
             };
 
             // HDR de otra agencia (Excepción 3)
@@ -110,12 +127,12 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
             {
                 NroHDR = 1003,
                 AgenciaHDR = agencia2,
-                Transportista = t1,
-                DetalleGuias = new List<Guia>
+                dniTransportistaAsignado = t1.dniTransportistaAsignado,
+                DetalleGuias = new List<string>
                 {
-                    g4
+                    g4.NroGuia
                 },
-                estado = EstadoHojaDeRuta.EnCurso
+                estado = EstadoHojaDeRutaEnum.EnCurso
             };
 
             // HDR ya recibida (Excepción 4)
@@ -123,12 +140,12 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
             {
                 NroHDR = 1004,
                 AgenciaHDR = agencia1,
-                Transportista = t2,
-                DetalleGuias = new List<Guia>
+                dniTransportistaAsignado = t2.dniTransportistaAsignado,
+                DetalleGuias = new List<string>
                 {
-                    g1
+                    g1.NroGuia
                 },
-                estado = EstadoHojaDeRuta.Recibida,
+                estado = EstadoHojaDeRutaEnum.Recibida,
                 Fecha = new DateTime(2026, 5, 25)
             };
 
@@ -141,6 +158,14 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
             };
 
         
+        }
+        public TransportistaLocal BuscarTransportista(int dni)
+        {
+            return Transportistas.FirstOrDefault(t => t.dniTransportistaAsignado == dni);
+        }
+        public Guia BuscarGuia(string nroGuia)
+        {
+            return Guias.FirstOrDefault(g => g.NroGuia == nroGuia);
         }
     }
 }

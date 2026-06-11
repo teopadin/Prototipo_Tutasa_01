@@ -12,22 +12,34 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia
         public HojaDeRutaRetiro HdrActual { get; set; }
 
         public List<HojaDeRutaRetiro> HojasDeRutaRetiro { get; set; }
+        public List<TransportistaLocal> Transportistas { get; set; }
+        public List<Guia> Guias { get; set; }
 
         public ModeloRecibirHDRRetiroAgencia()
         {
 
             // Transportistas
+
             var t1 = new TransportistaLocal
             {
+                dniTransportistaAsignado= 21412444,
                 nombre = "Carlos",
                 apellido = "Gomez"
             };
 
             var t2 = new TransportistaLocal
             {
+                dniTransportistaAsignado = 22443311,
                 nombre = "Laura",
                 apellido = "Martinez"
             };
+
+            Transportistas = new List<TransportistaLocal>
+            {
+                 t1,
+                 t2
+            };
+
 
             // Agencias
             var agencia1 = new Agencia
@@ -49,34 +61,39 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia
             {
                 NroGuia = "A001-0001",
                 TipoBulto = TiposBultoEnum.S,
-                AgenciaGuia = agencia1
+                idAgenciaOrigen = agencia1.idAgencia
             };
 
             var guia2 = new Guia
             {
                 NroGuia = "A001-0002",
                 TipoBulto = TiposBultoEnum.XL,
-                AgenciaGuia = agencia1
+                idAgenciaOrigen = agencia1.idAgencia
             };
 
             var guia3 = new Guia
             {
                 NroGuia = "A002-0001",
                 TipoBulto = TiposBultoEnum.M,
-                AgenciaGuia = agencia2
+                idAgenciaOrigen = agencia2.idAgencia
             };
-
+            Guias = new List<Guia>
+            {
+                    guia1,
+                    guia2,
+                    guia3
+            };
             // HDR válida
             var hdr1 = new HojaDeRutaRetiro
             {
                 NroHDR = 1001,
                 AgenciaHDR = agencia1,
-                Transportista = t1,
+                dniTransportistaAsignado = t1.dniTransportistaAsignado,
                 estado = EstadoHojaDeRutaEnum.EnCurso,
-                DetalleGuias = new List<Guia>
+                DetalleGuias = new List<string>
                 {
-                    guia1,
-                    guia2
+                    guia1.NroGuia,
+                    guia2.NroGuia
                 }
             };
 
@@ -85,11 +102,11 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia
             {
                 NroHDR = 1002,
                 AgenciaHDR = agencia2,
-                Transportista = t2,
+                dniTransportistaAsignado = t2.dniTransportistaAsignado,
                 estado = EstadoHojaDeRutaEnum.EnCurso,
-                DetalleGuias = new List<Guia>
+                DetalleGuias = new List<string>
                 {
-                    guia3
+                    guia3.NroGuia   
                 }
             };
 
@@ -99,11 +116,11 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia
                 NroHDR = 1003,
                 Fecha = new DateTime(2026, 5, 25),
                 AgenciaHDR = agencia1,
-                Transportista = t1,
+                dniTransportistaAsignado = t1.dniTransportistaAsignado,
                 estado = EstadoHojaDeRutaEnum.Recibida,
-                DetalleGuias = new List<Guia>
+                DetalleGuias = new List<string>
                 {
-                    guia1
+                    guia1.NroGuia
                 }
             };
             HojasDeRutaRetiro = new List<HojaDeRutaRetiro>
@@ -112,6 +129,15 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia
                 hdr2,
                 hdr3
             };
+
+        }
+        public TransportistaLocal BuscarTransportista(int dni)
+        {
+            return Transportistas.FirstOrDefault(t => t.dniTransportistaAsignado == dni);
+        }
+        public Guia BuscarGuia(string nroGuia)
+        {
+            return Guias.FirstOrDefault(g => g.NroGuia == nroGuia);
         }
     }
 }

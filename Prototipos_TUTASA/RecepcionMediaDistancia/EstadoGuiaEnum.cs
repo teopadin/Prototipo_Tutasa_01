@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Prototipos_TUTASA.RecepcionMediaDistancia
 {
-    public enum EstadoGuia
+    public enum EstadoGuiaEnum
     {
         Admitida,
         EnTransito,
