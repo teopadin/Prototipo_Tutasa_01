@@ -51,7 +51,7 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
             var hdrSeleccionada = (HojaDeRutaTransporte)ServicioCmb.SelectedItem;
 
             // 1. Destino dinámico según el IdCDDestino del diagrama
-            switch (hdrSeleccionada.IdCDDestino)
+            switch (hdrSeleccionada.idCDDestino)
             {
                 case 1: CdDestinoTxtb.Text = "CD Córdoba - Terminal Central"; break;
                 case 2: CdDestinoTxtb.Text = "CD Mendoza - Terminal Del Sol"; break;
@@ -62,19 +62,19 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
             }
 
             // 2. Mostramos el ID del Servicio directo en el TextBox
-            IdServicioTxtb.Text = hdrSeleccionada.IdServicio.ToString();
+            IdServicioTxtb.Text = hdrSeleccionada.idServicio.ToString();
 
             // 3. Buscamos el objeto Servicio real en el modelo mediante la conexión del ID
-            var servicioAsociado = modelo.BuscarServicioPorId(hdrSeleccionada.IdServicio);
+            var servicioAsociado = modelo.BuscarServicioPorId(hdrSeleccionada.idServicio);
 
             if (servicioAsociado != null)
             {
                 // ALINEADO: Usamos el ID para buscar a la empresa en su respectivo almacén
-                var empresaAsociada = modelo.BuscarEmpresa(servicioAsociado.IdEmpresa);
+                var empresaAsociada = modelo.BuscarEmpresa(servicioAsociado.idEmpresa);
 
                 if (empresaAsociada != null)
                 {
-                    EmpresaTxtb.Text = empresaAsociada.RazonSocial;
+                    EmpresaTxtb.Text = empresaAsociada.razonSocial;
                 }
                 else
                 {
@@ -87,8 +87,8 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
             foreach (var g in hdrSeleccionada.DetalleGuias)
             {
                 var item = new ListViewItem(g.NroGuia);
-                item.SubItems.Add(g.Cliente.RazonSocial);
-                item.SubItems.Add(g.Destinatario.Nombre + " " + g.Destinatario.Apellido);
+                item.SubItems.Add(g.Cliente.razonSocial);
+                item.SubItems.Add(g.Destinatario.nombre + " " + g.Destinatario.apellido);
                 item.SubItems.Add(g.TipoBulto.ToString());
                 DespachoLst.Items.Add(item);
             }
@@ -115,7 +115,7 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
             }
 
             var confirma = MessageBox.Show(
-                "¿Confirma el despacho del Servicio " + hdrSeleccionada.NroHDR + "?\n" +
+                "¿Confirma el despacho del Servicio " + hdrSeleccionada.nroHDR + "?\n" +
                 "Se emitirán 3 copias de la HDR Transporte.",
                 "Confirmar despacho",
                 MessageBoxButtons.YesNo,
@@ -129,7 +129,7 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
                 return;
             }
 
-            MessageBox.Show("Despacho registrado con éxito. Se emiten 3 copias de la HDR " + hdrSeleccionada.NroHDR + ".");
+            MessageBox.Show("Despacho registrado con éxito. Se emiten 3 copias de la HDR " + hdrSeleccionada.nroHDR + ".");
 
             CargarCombobox();
             LimpiarPantalla();
