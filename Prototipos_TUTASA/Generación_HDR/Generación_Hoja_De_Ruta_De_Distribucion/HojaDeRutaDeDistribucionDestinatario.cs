@@ -241,7 +241,6 @@ namespace Prototipos_TUTASA.HojaDeRutaDeDistribucion
             }
 
 
-
             var nuevaHDR = modelo.GenerarHDR(guiasSeleccionadas, transportistaSeleccionado, dtpFecha.Value.Date);
             MessageBox.Show($"Hoja de Ruta de Distribución {nuevaHDR.NroHDR} generada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

@@ -4,7 +4,7 @@ namespace Prototipos_TUTASA.Almacenes;
 
 internal static class CuentaCorrienteClienteAlmacen
 {
-    private static List<CuentaCorrienteClienteEntidad> cuentasCorrientes = new();
+    public static List<CuentaCorrienteClienteEntidad> cuentasCorrientes = new();
 
     static CuentaCorrienteClienteAlmacen()
     {

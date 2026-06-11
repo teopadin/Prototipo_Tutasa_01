@@ -4,7 +4,7 @@ namespace Prototipos_TUTASA.Almacenes;
 
 internal static class ResultadoCostoVentaAlmacen
 {
-    private static List<ResultadoCostoVentaEntidad> resultados = new();
+    public static List<ResultadoCostoVentaEntidad> resultados = new();
 
     static ResultadoCostoVentaAlmacen()
     {

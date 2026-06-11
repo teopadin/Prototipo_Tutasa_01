@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using Prototipos_TUTASA.Almacenes;
+using Prototipos_TUTASA.Auxiliares;
 
 namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Distribucion
 {
@@ -9,98 +10,150 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Distribu
         public CentroDistribucion CdEmisor { get; set; }
         public List<CentroDistribucion> CentrosDeDistribucion { get; set; }
         public List<Agencia> Agencias { get; set; }
-        public Queue<Guia> Guias { get; set; }
+        public List<Guia> Guias { get; set; }
         public List<TransportistaLocal> Transportistas { get; set; }
         public bool Actualizando { get; set; } = false;
-        public List<HojaDeRutaDistribucion> HojasDeRuta { get; set; } = new List<HojaDeRutaDistribucion>();
 
         public ModeloGenerarHDRDistribucion()
         {
-            // CDs (ahora con idCD)
-            var cdCapital = new CentroDistribucion { idCD = 1, nombre = "Capital y GBA" };
-            var cdCentro = new CentroDistribucion { idCD = 2, nombre = "Centro - Córdoba" };
-            var cdNorte = new CentroDistribucion { idCD = 3, nombre = "Norte - Tucumán" };
-            var cdEste = new CentroDistribucion { idCD = 4, nombre = "Este - Corrientes" };
-            var cdCordillera = new CentroDistribucion { idCD = 5, nombre = "Cordillera - Neuquén" };
-            var cdSur = new CentroDistribucion { idCD = 6, nombre = "Sur - Viedma" };
-
-            CentrosDeDistribucion = new List<CentroDistribucion>
+            // ---- CENTROS DE DISTRIBUCION ----
+            CentrosDeDistribucion = new List<CentroDistribucion>();
+            foreach (var cd in CentroDistribucionAlmacen.CentrosDeDistribucion)   // <-- VERIFICAR NOMBRE
             {
-                cdCapital, cdCentro, cdNorte, cdEste, cdCordillera, cdSur
-            };
+                CentrosDeDistribucion.Add(new CentroDistribucion
+                {
+                    idCD = cd.idCD,
+                    nombre = cd.nombre
+                });
+            }
 
-            CdEmisor = cdCapital;
+            // CD emisor fijo (Capital, idCD = 1) hasta tener el CD logueado
+            CdEmisor = BuscarCD(1);
 
-            // Transportistas (idCD ahora es int)
-            var t1 = new TransportistaLocal { dniTransportista = 12345678, nombre = "Carlos", apellido = "Gomez", idCD = cdCapital.idCD, HdrAsignadas = 2 };
-            var t2 = new TransportistaLocal { dniTransportista = 23456789, nombre = "Laura", apellido = "Martinez", idCD = cdCapital.idCD, HdrAsignadas = 0 };
-            var t3 = new TransportistaLocal { dniTransportista = 34567890, nombre = "Pedro", apellido = "Lopez", idCD = cdCentro.idCD, HdrAsignadas = 1 };
-
-            Transportistas = new List<TransportistaLocal> { t1, t2, t3 };
-
-            // Agencias (con idAgencia, idCD int)
-            var agencia1 = new Agencia { idAgencia = 1, razonSocial = "Agencia Norte SA", calle = "Av. Corrientes", altura = 1234, piso = "PB", codigoPostal = "1043", ciudad = "Buenos Aires", idCD = cdCapital.idCD };
-            var agencia2 = new Agencia { idAgencia = 2, razonSocial = "Agencia Sur SRL", calle = "San Martín", altura = 500, piso = "1", codigoPostal = "1043", ciudad = "Buenos Aires", idCD = cdCapital.idCD };
-
-            Agencias = new List<Agencia> { agencia1, agencia2 };
-
-            // Destinatarios (composición: se quedan como objetos dentro de la guía)
-            var dest1 = new DestinatarioGuia { Dni = 40123456, nombre = "Ana", apellido = "Pérez", calle = "Av. Rivadavia", altura = 3200, piso = "3B", codigoPostal = "1406", ciudad = "Buenos Aires" };
-            var dest2 = new DestinatarioGuia { Dni = 41234567, nombre = "Juan", apellido = "Rodríguez", calle = "Av. Santa Fe", altura = 3200, piso = "3B", codigoPostal = "1406", ciudad = "Buenos Aires" };
-            var dest3 = new DestinatarioGuia { Dni = 42345678, nombre = "María", apellido = "González", calle = "Belgrano", altura = 750, piso = "PB", codigoPostal = "5000", ciudad = "Córdoba" };
-
-            // Guías (CD por id, agencia por id, destinatario objeto)
-            var guiasEnOrdenDeLlegada = new List<Guia>
+            // ---- AGENCIAS ----
+            Agencias = new List<Agencia>();
+            foreach (var ag in AgenciaAlmacen.Agencias)   // <-- VERIFICAR NOMBRE
             {
-                // Puerta a puerta, origen CD Norte, destino Capital
-                new Guia { NroGuia = "CD03-0001", ModalidadEntrega = ModalidadEntregaEnum.EntregaDomicilio, Estado = EstadoGuiaEnum.EnCDDestino, idCDOrigen = cdNorte.idCD, idCDDestino = cdCapital.idCD, Destinatario = dest1, idAgenciaDestino = null },
+                Agencias.Add(new Agencia
+                {
+                    idAgencia = ag.idAgencia,
+                    razonSocial = ag.razonSocial,
+                    calle = ag.calle,
+                    altura = ag.altura,
+                    piso = ag.piso,
+                    codigoPostal = ag.codigoPostal,
+                    ciudad = ag.ciudad,
+                    idCD = ag.idCD
+                });
+            }
 
-                // Puerta a puerta, origen CD Centro, destino Capital - misma dirección que CD03-0001 para probar filtro
-                new Guia { NroGuia = "CD02-0001", ModalidadEntrega = ModalidadEntregaEnum.EntregaDomicilio, Estado = EstadoGuiaEnum.EnCDDestino, idCDOrigen = cdCentro.idCD, idCDDestino = cdCapital.idCD, Destinatario = dest2, idAgenciaDestino = null },
+            // ---- TRANSPORTISTAS ----
+            Transportistas = new List<TransportistaLocal>();
+            foreach (var t in TransportistaLocalAlmacen.transportistas)   // <-- VERIFICAR NOMBRE
+            {
+                Transportistas.Add(new TransportistaLocal
+                {
+                    dniTransportista = t.dniTransportista,
+                    nombre = t.nombre,
+                    apellido = t.apellido,
+                    idCD = t.idCD,
+                    HdrAsignadas = t.HdrAsignadas
+                });
+            }
 
-                // Retiro en agencia, agencia 1, destino Capital
-                new Guia { NroGuia = "A001-0001", ModalidadEntrega = ModalidadEntregaEnum.EntregaAgencia, Estado = EstadoGuiaEnum.EnCDDestino, idCDOrigen = cdNorte.idCD, idCDDestino = cdCapital.idCD, Destinatario = null, idAgenciaDestino = agencia1.idAgencia },
-
-                // Retiro en agencia, agencia 2, destino Capital
-                new Guia { NroGuia = "A002-0001", ModalidadEntrega = ModalidadEntregaEnum.EntregaAgencia, Estado = EstadoGuiaEnum.EnCDDestino, idCDOrigen = cdNorte.idCD, idCDDestino = cdCapital.idCD, Destinatario = null, idAgenciaDestino = agencia2.idAgencia },
-
-                // Retiro en agencia, agencia 1, destino Capital
-                new Guia { NroGuia = "A001-0002", ModalidadEntrega = ModalidadEntregaEnum.EntregaAgencia, Estado = EstadoGuiaEnum.EnCDDestino, idCDOrigen = cdNorte.idCD, idCDDestino = cdCapital.idCD, Destinatario = null, idAgenciaDestino = agencia1.idAgencia },
-
-                // Puerta a puerta, destino Córdoba - NO debe aparecer (CD destino != CD emisor)
-                new Guia { NroGuia = "CD01-0001", ModalidadEntrega = ModalidadEntregaEnum.EntregaDomicilio, Estado = EstadoGuiaEnum.EnCDDestino, idCDOrigen = cdCapital.idCD, idCDDestino = cdCentro.idCD, Destinatario = dest3, idAgenciaDestino = null },
-
-                // En distribución - NO debe aparecer (estado incorrecto)
-                new Guia { NroGuia = "CD03-0002", ModalidadEntrega = ModalidadEntregaEnum.EntregaDomicilio, Estado = EstadoGuiaEnum.EnDistribucion, idCDOrigen = cdNorte.idCD, idCDDestino = cdCapital.idCD, Destinatario = dest1, idAgenciaDestino = null },
-
-                new Guia { NroGuia = "CD01-0002", ModalidadEntrega = ModalidadEntregaEnum.EntregaDomicilio, Estado = EstadoGuiaEnum.Admitida, idCDOrigen = cdCapital.idCD, idCDDestino = cdCapital.idCD, Destinatario = dest1, idAgenciaDestino = null },
-            };
-            Guias = new Queue<Guia>(guiasEnOrdenDeLlegada);
+            // ---- GUIAS ----
+            Guias = new List<Guia>();
+            foreach (var g in GuiaAlmacen.Guias)
+            {
+                Guias.Add(new Guia
+                {
+                    NroGuia = g.NroGuia,
+                    ModalidadEntrega = g.modalidadEntrega,
+                    Estado = g.estado,
+                    idCDOrigen = g.idCDOrigen,
+                    idCDDestino = g.idCDDestino,
+                    Destinatario = g.Destinatario,
+                    idAgenciaDestino = g.idAgenciaDestino == 0 ? (int?)null : g.idAgenciaDestino
+                });
+            }
         }
 
-        // Busca una agencia por su id. Devuelve null si no existe.
-        public Agencia BuscarAgencia(int idAgencia)
+        private CentroDistribucion BuscarCD(int idCD)
         {
-            foreach (Agencia agencia in Agencias)
-            {
-                if (agencia.idAgencia == idAgencia)
-                    return agencia;
-            }
+            foreach (var cd in CentrosDeDistribucion)
+                if (cd.idCD == idCD) return cd;
             return null;
         }
 
-        // En el modelo
-        public HojaDeRutaDistribucion GenerarHDR(List<Guia> guias, TransportistaLocal transportista, DateTime fecha)
+        public Agencia BuscarAgencia(int idAgencia)
         {
-            HojaDeRutaDistribucion nuevaHDR = new HojaDeRutaDistribucion();
-            nuevaHDR.NroHDR = HojasDeRuta.Count + 1;
+            foreach (var agencia in Agencias)
+                if (agencia.idAgencia == idAgencia) return agencia;
+            return null;
+        }
+
+        private GuiaEntidad BuscarGuiaEntidad(string nroGuia)
+        {
+            foreach (var g in GuiaAlmacen.Guias)
+                if (g.NroGuia == nroGuia) return g;
+            return null;
+        }
+
+        private TransportistaLocalEntidad BuscarTransportistaEntidad(int dni)
+        {
+            foreach (var t in TransportistaLocalAlmacen.transportistas)   // <-- VERIFICAR NOMBRE
+                if (t.dniTransportista == dni) return t;
+            return null;
+        }
+
+        public HojaDeRutaDistribucionEntidad GenerarHDR(List<Guia> guias, TransportistaLocal transportista, DateTime fecha)
+        {
+            var nuevaHDR = new HojaDeRutaDistribucionEntidad();
+            nuevaHDR.NroHDR = HojaDeRutaDistribucionAlmacen.ProximoNro();
             nuevaHDR.Fecha = fecha;
+            nuevaHDR.estado = EstadoHojaDeRutaEnum.Generada;
+            nuevaHDR.dniTransportistaAsignado = transportista.dniTransportista;
 
+            // Todas las guias comparten direccion (lo garantiza el filtro de la pantalla)
+            Guia guiaRef = guias[0];
+            if (guiaRef.ModalidadEntrega == ModalidadEntregaEnum.EntregaDomicilio)
+            {
+                nuevaHDR.Calle = guiaRef.Destinatario.calle;
+                nuevaHDR.Altura = guiaRef.Destinatario.altura;
+                nuevaHDR.Piso = guiaRef.Destinatario.piso;
+                nuevaHDR.CodigoPostal = guiaRef.Destinatario.codigoPostal;
+                nuevaHDR.Destinatario = $"{guiaRef.Destinatario.nombre} {guiaRef.Destinatario.apellido}";
+            }
+            else
+            {
+                Agencia agencia = BuscarAgencia(guiaRef.idAgenciaDestino.Value);
+                nuevaHDR.Calle = agencia.calle;
+                nuevaHDR.Altura = agencia.altura;
+                nuevaHDR.Piso = agencia.piso;
+                nuevaHDR.CodigoPostal = agencia.codigoPostal;
+                nuevaHDR.Destinatario = agencia.razonSocial;
+            }
+
+            // Detalle de guias + cambio de estado en el almacen
             foreach (var guia in guias)
-                guia.Estado = EstadoGuiaEnum.EnDistribucion;
+            {
+                nuevaHDR.DetalleGuias.Add(guia.NroGuia);
 
-            transportista.HdrAsignadas++;
-            HojasDeRuta.Add(nuevaHDR);
+                GuiaEntidad guiaEntidad = BuscarGuiaEntidad(guia.NroGuia);
+                if (guiaEntidad != null)
+                    guiaEntidad.estado = EstadoGuiaEnum.EnDistribucion;
+            }
+
+            // Incremento de HDR asignadas del transportista en el almacen
+            TransportistaLocalEntidad transportistaEntidad = BuscarTransportistaEntidad(transportista.dniTransportista);
+            if (transportistaEntidad != null)
+                transportistaEntidad.HdrAsignadas++;
+
+            // Persistencia
+            HojaDeRutaDistribucionAlmacen.Agregar(nuevaHDR);
+            HojaDeRutaDistribucionAlmacen.Guardar();
+            GuiaAlmacen.Guardar();
+            TransportistaLocalAlmacen.Guardar();
 
             return nuevaHDR;
         }

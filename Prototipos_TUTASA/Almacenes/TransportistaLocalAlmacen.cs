@@ -4,7 +4,7 @@ namespace Prototipos_TUTASA.Almacenes;
 
 internal static class TransportistaLocalAlmacen
 {
-    private static List<TransportistaLocalEntidad> transportistas = new();
+    public static List<TransportistaLocalEntidad> transportistas = new();
 
     static TransportistaLocalAlmacen()
     {

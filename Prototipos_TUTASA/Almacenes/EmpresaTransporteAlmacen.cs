@@ -4,7 +4,7 @@ namespace Prototipos_TUTASA.Almacenes;
 
 internal static class EmpresaTransporteAlmacen
 {
-    private static List<EmpresaTransporteEntidad> empresas = new();
+    public static List<EmpresaTransporteEntidad> empresas = new();
 
     static EmpresaTransporteAlmacen()
     {
