@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Prototipos_TUTASA.Almacenes;
 
 namespace Prototipos_TUTASA.Imposición.Imposición_CD
 {
@@ -14,66 +15,56 @@ namespace Prototipos_TUTASA.Imposición.Imposición_CD
 
         public ModeloImposicionCD()
         {
-            // CDs
-            var cdCapital = new CentroDistribucion { idCD = 1, nombre = "Capital y GBA" };
-            var cdCentro = new CentroDistribucion { idCD = 2, nombre = "Centro - Córdoba" };
-            var cdNorte = new CentroDistribucion { idCD = 3, nombre = "Norte - Tucumán" };
-            var cdEste = new CentroDistribucion { idCD = 4, nombre = "Este - Corrientes" };
-            var cdCordillera = new CentroDistribucion { idCD = 5, nombre = "Cordillera - Neuquén" };
-            var cdSur = new CentroDistribucion { idCD = 6, nombre = "Sur - Viedma" };
-
-            CentrosDeDistribucion = new List<CentroDistribucion>
+            CentrosDeDistribucion = new List<CentroDistribucion>();
+            foreach (var cdEntidad in CentroDistribucionAlmacen.CentrosDeDistribucion)
             {
-                cdCapital, cdCentro, cdNorte, cdEste, cdCordillera, cdSur
-            };
+                CentrosDeDistribucion.Add(new CentroDistribucion
+                {
+                    idCD = cdEntidad.idCD,
+                    nombre = cdEntidad.nombre
+                });
+            }
 
-            // El CD donde se está operando (CdOrigen de las guías que se generen)
-            CdOrigen = cdCapital;
+            CdOrigen = CentrosDeDistribucion.Count > 0 ? CentrosDeDistribucion[0] : null;
 
-            // Clientes (remitentes)
-            var cliente1 = new Cliente
+            Clientes = new List<Cliente>();
+            foreach (var clienteEntidad in ClienteAlmacen.Clientes)
             {
-                razonSocial = "Distribuidora El Sol SRL",
-                cuit = 30712345678,
-                telefono = "1145678901",
-                calle = "Av. Corrientes",
-                altura = 1500,
-                piso = "PB",
-                codigoPostal = "1043",
-                ciudad = "Buenos Aires"
-            };
-            var cliente2 = new Cliente
+                Clientes.Add(new Cliente
+                {
+                    razonSocial = clienteEntidad.razonSocial,
+                    cuit = clienteEntidad.cuit,
+                    telefono = clienteEntidad.telefono,
+                    calle = clienteEntidad.calle,
+                    altura = clienteEntidad.altura,
+                    piso = clienteEntidad.piso,
+                    codigoPostal = clienteEntidad.codigoPostal,
+                    ciudad = clienteEntidad.ciudad
+                });
+            }
+
+            Agencias = new List<Agencia>();
+            foreach (var agenciaEntidad in AgenciaAlmacen.Agencias)
             {
-                razonSocial = "Importadora del Norte SA",
-                cuit = 30798765432,
-                telefono = "1167890123",
-                calle = "San Martín",
-                altura = 320,
-                piso = "2",
-                codigoPostal = "1004",
-                ciudad = "Buenos Aires"
-            };
+                Agencias.Add(new Agencia
+                {
+                    idAgencia = agenciaEntidad.idAgencia,
+                    razonSocial = agenciaEntidad.razonSocial,
+                    idCD = agenciaEntidad.idCD
+                });
+            }
 
-            Clientes = new List<Cliente> { cliente1, cliente2 };
-
-            // Agencias (para modalidad Retiro en Agencia)
-            var agencia1 = new Agencia
-            {
-                idAgencia = 1,
-                razonSocial = "Agencia Norte SA",
-                idCD = cdCapital.idCD
-            };
-            var agencia2 = new Agencia
-            {
-                idAgencia = 2,
-                razonSocial = "Agencia Sur SRL",
-                idCD = cdCapital.idCD
-            };
-
-            Agencias = new List<Agencia> { agencia1, agencia2 };
-
-            // Guías generadas al registrar imposiciones (arranca vacía)
             Guias = new List<Guia>();
+            foreach (var guiaEntidad in GuiaAlmacen.Guias)
+            {
+                if (guiaEntidad.TipoImposicion == Prototipos_TUTASA.Auxiliares.TipoImposicionEnum.CD)
+                {
+                    Guias.Add(new Guia
+                    {
+                        NroGuia = guiaEntidad.NroGuia
+                    });
+                }
+            }
         }
 
         public CentroDistribucion BuscarCD(int idCD)
