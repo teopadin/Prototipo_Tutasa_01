@@ -6,7 +6,7 @@ namespace Prototipos_TUTASA.Admisión
 {
     internal class Cliente
     {
-        public int IdCliente { get; set; }
-        public string RazonSocial { get; set; }
+        public int idCliente { get; set; }
+        public string razonSocial { get; set; }
     }
 }

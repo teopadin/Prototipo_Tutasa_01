@@ -13,7 +13,7 @@ namespace Prototipos_TUTASA.Admisión
         public DestinatarioGuia Destinatario { get; set; }
         public TiposBultoEnum TipoBulto { get; set; }
         public ModalidadEntregaEnum ModalidadEntrega { get; set; }
-        public EstadoGuiaEnum Estado { get; set; }
+        public EstadoGuiaEnum estado { get; set; }
         public TarifaCalculadaGuia TarifaCalculada { get; set; }
     }
 }
