@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Prototipos_TUTASA.Almacenes;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -9,88 +10,82 @@ namespace Prototipos_TUTASA.Admisión
         // CD desde el que se realiza la admisión (lo reconoce el sistema)
         private int idCDAdmisionActual = 1;
 
-        private List<Cliente> clientes = new List<Cliente>
-        {
-            new Cliente { idCliente = 100, razonSocial = "Tecno Distribuciones S.A." },
-            new Cliente { idCliente = 200, razonSocial = "Importadora del Sur SRL" },
-            new Cliente { idCliente = 300, razonSocial = "Comercial Norte" }
-        };
+        private List<Cliente> clientes;
 
-        private List<CentroDistribucion> cds = new List<CentroDistribucion>
-        {
-            new CentroDistribucion { idCD = 1, nombre = "CD Buenos Aires" },
-            new CentroDistribucion { idCD = 2, nombre = "CD Córdoba" },
-            new CentroDistribucion { idCD = 3, nombre = "CD Mendoza" }
-        };
+        private List<CentroDistribucion> cds;
 
-        // Tarifas por cliente: precio del flete según cliente, CDOrigen, CDDestino y tipo de bulto
-        private List<CuadroTarifario> cuadroTarifario = new List<CuadroTarifario>
-        {
-            new CuadroTarifario { IdTarifa = 1, IdCDOrigen = 1, IdCDDestino = 2, TipoBulto = TiposBultoEnum.M, PrecioFlete = 1500m },
-            new CuadroTarifario { IdTarifa = 2, IdCDOrigen = 1, IdCDDestino = 1, TipoBulto = TiposBultoEnum.S, PrecioFlete = 500m },
-            new CuadroTarifario { IdTarifa = 3, IdCDOrigen = 1, IdCDDestino = 1, TipoBulto = TiposBultoEnum.L, PrecioFlete = 1000m },
-            new CuadroTarifario { IdTarifa = 4, IdCDOrigen = 1, IdCDDestino = 3, TipoBulto = TiposBultoEnum.XL, PrecioFlete = 3000m }
-        };
+        private List<CuadroTarifario> cuadroTarifario;
 
-        // Costos extras fijos del sistema (montos por concepto)
-        private List<CostoExtra> costosExtra = new List<CostoExtra>
-        {
-            new CostoExtra { TipoCostoExtra = TipoCostoExtraEnum.RetiroDomicilio, Monto = 500m },
-            new CostoExtra { TipoCostoExtra = TipoCostoExtraEnum.EntregaDomicilio, Monto = 800m },
-            new CostoExtra { TipoCostoExtra = TipoCostoExtraEnum.EntregaAgencia, Monto = 400m }
-        };
+        private List<CostoExtra> costosExtra;
 
-        private List<Guia> guias = new List<Guia>
+        private List<Guia> guias;
+
+        public ModeloAdmision()
         {
-            // Guía 1: caso general → quedará "Admitida"
-            new Guia
+            clientes = new List<Cliente>();
+            foreach (var clienteEntidad in ClienteAlmacen.Clientes)
             {
-                NroGuia = "CD01-0001",
-                IdCliente = 100,
-                TipoImposicion = TipoImposicionEnum.CallCenter,
-                IdCDDestino = 2,
-                Destinatario = new DestinatarioGuia { Dni = 30111222, nombre = "Juan", apellido = "Pérez" },
-                TipoBulto = TiposBultoEnum.M,
-                ModalidadEntrega = ModalidadEntregaEnum.EntregaDomicilio,
-                estado = EstadoGuiaEnum.Retirada
-            },
-            // Guía 2: caso especial → quedará "Pendiente de retiro en CD"
-            new Guia
-            {
-                NroGuia = "CD01-0002",
-                IdCliente = 200,
-                TipoImposicion = TipoImposicionEnum.Agencia,
-                IdCDDestino = 1,
-                Destinatario = new DestinatarioGuia { Dni = 28444555, nombre = "María", apellido = "González" },
-                TipoBulto = TiposBultoEnum.S,
-                ModalidadEntrega = ModalidadEntregaEnum.EntregaCD,
-                estado = EstadoGuiaEnum.Retirada
-            },
-            // Guía 3: caso general (mismo CD pero no es Retiro en CD)
-            new Guia
-            {
-                NroGuia = "CD01-0003",
-                IdCliente = 300,
-                TipoImposicion = TipoImposicionEnum.Agencia,
-                IdCDDestino = 1,
-                Destinatario = new DestinatarioGuia { Dni = 35777888, nombre = "Carlos", apellido = "López" },
-                TipoBulto = TiposBultoEnum.L,
-                ModalidadEntrega = ModalidadEntregaEnum.EntregaDomicilio,
-                estado = EstadoGuiaEnum.Retirada
-            },
-            // Guía 4: estado distinto a "Retirada" → no se puede admitir
-            new Guia
-            {
-                NroGuia = "CD01-0004",
-                IdCliente = 100,
-                TipoImposicion = TipoImposicionEnum.CD,
-                IdCDDestino = 3,
-                Destinatario = new DestinatarioGuia { Dni = 30111222, nombre = "Juan", apellido = "Pérez" },
-                TipoBulto = TiposBultoEnum.XL,
-                ModalidadEntrega = ModalidadEntregaEnum.EntregaAgencia,
-                estado = EstadoGuiaEnum.Admitida
+                clientes.Add(new Cliente
+                {
+                    idCliente = clienteEntidad.idCliente,
+                    razonSocial = clienteEntidad.razonSocial
+                });
             }
-        };
+
+            cds = new List<CentroDistribucion>();
+            foreach (var cdEntidad in CentroDistribucionAlmacen.CentrosDeDistribucion)
+            {
+                cds.Add(new CentroDistribucion
+                {
+                    idCD = cdEntidad.idCD,
+                    nombre = cdEntidad.nombre
+                });
+            }
+
+            cuadroTarifario = new List<CuadroTarifario>();
+            foreach (var tarifaEntidad in CuadroTarifarioAlmacen.cuadrosTarifarios)
+            {
+                cuadroTarifario.Add(new CuadroTarifario
+                {
+                    IdTarifa = tarifaEntidad.IdTarifa,
+                    IdCDOrigen = tarifaEntidad.IdCDOrigen,
+                    IdCDDestino = tarifaEntidad.IdCDDestino,
+                    TipoBulto = (TiposBultoEnum)tarifaEntidad.TipoBulto,
+                    PrecioFlete = tarifaEntidad.PrecioFlete
+                });
+            }
+
+            costosExtra = new List<CostoExtra>();
+            foreach (var costoEntidad in CostoExtraAlmacen.costosExtra)
+            {
+                costosExtra.Add(new CostoExtra
+                {
+                    TipoCostoExtra = (TipoCostoExtraEnum)costoEntidad.TipoCostoExtra,
+                    Monto = costoEntidad.Monto
+                });
+            }
+
+            guias = new List<Guia>();
+            foreach (var guiaEntidad in GuiaAlmacen.Guias)
+            {
+                guias.Add(new Guia
+                {
+                    NroGuia = guiaEntidad.NroGuia,
+                    IdCliente = guiaEntidad.IdCliente,
+                    TipoImposicion = (TipoImposicionEnum)guiaEntidad.TipoImposicion,
+                    IdCDDestino = guiaEntidad.idCDDestino,
+                    Destinatario = new DestinatarioGuia
+                    {
+                        Dni = guiaEntidad.Destinatario.Dni,
+                        nombre = guiaEntidad.Destinatario.nombre,
+                        apellido = guiaEntidad.Destinatario.apellido
+                    },
+                    TipoBulto = (TiposBultoEnum)guiaEntidad.TipoBulto,
+                    ModalidadEntrega = (ModalidadEntregaEnum)guiaEntidad.modalidadEntrega,
+                    estado = (EstadoGuiaEnum)guiaEntidad.estado
+                });
+            }
+        }
 
         // Busca una guía por su número. Devuelve null si no existe.
         public Guia BuscarGuia(string nroGuia)

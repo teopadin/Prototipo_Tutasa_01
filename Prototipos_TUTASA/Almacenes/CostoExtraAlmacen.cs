@@ -4,7 +4,7 @@ namespace Prototipos_TUTASA.Almacenes;
 
 internal static class CostoExtraAlmacen
 {
-    private static List<CostoExtraEntidad> costosExtra = new();
+    public static List<CostoExtraEntidad> costosExtra = new();
 
     static CostoExtraAlmacen()
     {
