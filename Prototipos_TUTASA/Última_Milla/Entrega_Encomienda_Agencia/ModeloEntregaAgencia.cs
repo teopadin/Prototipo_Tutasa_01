@@ -22,28 +22,28 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia
                 {
                     NroGuia = "AG01-0001",
                     estado = EstadoGuiaEnum.PendienteDeRetiroEnAgencia,
-                    idAgenciaDestino = agenciaCapital,
+                    idAgenciaDestino = agenciaCapital.idAgencia,
                     Destinatario = new DestinatarioGuia { nombre = "Ana", apellido = "Pérez", Dni = 40123456 }
                 },
                 new Guia
                 {
                     NroGuia = "AG01-0002",
                     estado = EstadoGuiaEnum.PendienteDeRetiroEnAgencia,
-                    idAgenciaDestino = agenciaCapital,
+                    idAgenciaDestino = agenciaCapital.idAgencia,
                     Destinatario = new DestinatarioGuia { nombre = "Juan", apellido = "Rodríguez", Dni = 41234567 }
                 },
                 new Guia
                 {
                     NroGuia = "AG01-0003",
                     estado = EstadoGuiaEnum.Entregada,
-                    idAgenciaDestino = agenciaCapital,
+                    idAgenciaDestino = agenciaCapital.idAgencia,
                     Destinatario = new DestinatarioGuia { nombre = "María", apellido = "González", Dni = 42345678 }
                 },
                 new Guia
                 {
                     NroGuia = "AG02-0001",
                     estado  = EstadoGuiaEnum.PendienteDeRetiroEnAgencia,
-                    idAgenciaDestino = agenciaCentro,
+                    idAgenciaDestino = agenciaCapital.idAgencia,
                     Destinatario = new DestinatarioGuia { nombre = "Carlos", apellido = "López", Dni = 43567890 }
                 }
             };
@@ -75,13 +75,13 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia
                 return false;
             }
 
-            if (guiaEncontrada.idAgenciaDestino == null || guiaEncontrada.Destinatario == null)
+            if (guiaEncontrada.Destinatario == null)
             {
                 mensaje = "La guía no tiene datos completos para registrar la entrega.";
                 return false;
             }
 
-            if (guiaEncontrada.idAgenciaDestino.razonSocial != AgenciaActual.razonSocial)
+            if (guiaEncontrada.idAgenciaDestino != AgenciaActual.idAgencia)
             {
                 mensaje = "La guía ingresada no corresponde a la agencia actual.";
                 return false;

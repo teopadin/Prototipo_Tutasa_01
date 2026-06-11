@@ -6,7 +6,7 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia
     {
         public string NroGuia { get; set; }
         public EstadoGuiaEnum estado { get; set; }
-        public Agencia idAgenciaDestino { get; set; }
+        public int idAgenciaDestino { get; set; }
         public DestinatarioGuia Destinatario { get; set; }
     }
 }
