@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Prototipos_TUTASA.Almacenes;
-using Prototipos_TUTASA.Auxiliares;
 
 namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Distribucion
 {
@@ -18,7 +17,7 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Distribu
         {
             // ---- CENTROS DE DISTRIBUCION ----
             CentrosDeDistribucion = new List<CentroDistribucion>();
-            foreach (var cd in CentroDistribucionAlmacen.CentrosDeDistribucion)   // <-- VERIFICAR NOMBRE
+            foreach (var cd in CentroDistribucionAlmacen.CentrosDeDistribucion)
             {
                 CentrosDeDistribucion.Add(new CentroDistribucion
                 {
@@ -32,7 +31,7 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Distribu
 
             // ---- AGENCIAS ----
             Agencias = new List<Agencia>();
-            foreach (var ag in AgenciaAlmacen.Agencias)   // <-- VERIFICAR NOMBRE
+            foreach (var ag in AgenciaAlmacen.Agencias)
             {
                 Agencias.Add(new Agencia
                 {
@@ -49,7 +48,7 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Distribu
 
             // ---- TRANSPORTISTAS ----
             Transportistas = new List<TransportistaLocal>();
-            foreach (var t in TransportistaLocalAlmacen.transportistas)   // <-- VERIFICAR NOMBRE
+            foreach (var t in TransportistaLocalAlmacen.transportistas)
             {
                 Transportistas.Add(new TransportistaLocal
                 {
@@ -68,11 +67,21 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Distribu
                 Guias.Add(new Guia
                 {
                     NroGuia = g.NroGuia,
-                    ModalidadEntrega = g.modalidadEntrega,
-                    Estado = g.estado,
+                    modalidadEntrega = (ModalidadEntregaEnum)g.modalidadEntrega,   // casteo enum
+                    estado = (EstadoGuiaEnum)g.estado,                             // casteo enum
                     idCDOrigen = g.idCDOrigen,
                     idCDDestino = g.idCDDestino,
-                    Destinatario = g.Destinatario,
+                    Destinatario = new DestinatarioGuia                            // reconstruido campo a campo
+                    {
+                        Dni = g.Destinatario.Dni,
+                        nombre = g.Destinatario.nombre,
+                        apellido = g.Destinatario.apellido,
+                        calle = g.Destinatario.calle,
+                        altura = g.Destinatario.altura,
+                        piso = g.Destinatario.piso,
+                        codigoPostal = g.Destinatario.codigoPostal,
+                        ciudad = g.Destinatario.ciudad
+                    },
                     idAgenciaDestino = g.idAgenciaDestino == 0 ? (int?)null : g.idAgenciaDestino
                 });
             }
@@ -101,28 +110,36 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Distribu
 
         private TransportistaLocalEntidad BuscarTransportistaEntidad(int dni)
         {
-            foreach (var t in TransportistaLocalAlmacen.transportistas)   // <-- VERIFICAR NOMBRE
+            foreach (var t in TransportistaLocalAlmacen.transportistas)
                 if (t.dniTransportista == dni) return t;
             return null;
+        }
+
+        private int ProximoNroHDR()
+        {
+            int max = 0;
+            foreach (var hdr in HojaDeRutaDistribucionAlmacen.hojasDeRutaDistribucion)
+                if (hdr.NroHDR > max) max = hdr.NroHDR;
+            return max + 1;
         }
 
         public HojaDeRutaDistribucionEntidad GenerarHDR(List<Guia> guias, TransportistaLocal transportista, DateTime fecha)
         {
             var nuevaHDR = new HojaDeRutaDistribucionEntidad();
-            nuevaHDR.NroHDR = HojaDeRutaDistribucionAlmacen.ProximoNro();
+            nuevaHDR.NroHDR = ProximoNroHDR();
             nuevaHDR.Fecha = fecha;
-            nuevaHDR.estado = EstadoHojaDeRutaEnum.Generada;
+            nuevaHDR.estado = Prototipos_TUTASA.Auxiliares.EstadoHojaDeRutaEnum.Generada;
             nuevaHDR.dniTransportistaAsignado = transportista.dniTransportista;
 
-            // Todas las guias comparten direccion (lo garantiza el filtro de la pantalla)
+            // Todas comparten direccion (lo garantiza el filtro de la pantalla)
             Guia guiaRef = guias[0];
-            if (guiaRef.ModalidadEntrega == ModalidadEntregaEnum.EntregaDomicilio)
+            if (guiaRef.modalidadEntrega == ModalidadEntregaEnum.EntregaDomicilio)
             {
                 nuevaHDR.Calle = guiaRef.Destinatario.calle;
                 nuevaHDR.Altura = guiaRef.Destinatario.altura;
                 nuevaHDR.Piso = guiaRef.Destinatario.piso;
                 nuevaHDR.CodigoPostal = guiaRef.Destinatario.codigoPostal;
-                nuevaHDR.Destinatario = $"{guiaRef.Destinatario.nombre} {guiaRef.Destinatario.apellido}";
+                nuevaHDR.Destinatario = guiaRef.Destinatario.nombre + " " + guiaRef.Destinatario.apellido;
             }
             else
             {
@@ -134,23 +151,23 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Distribu
                 nuevaHDR.Destinatario = agencia.razonSocial;
             }
 
-            // Detalle de guias + cambio de estado en el almacen
+            // Detalle + cambio de estado de cada guia EN EL ALMACEN (esto persiste)
             foreach (var guia in guias)
             {
                 nuevaHDR.DetalleGuias.Add(guia.NroGuia);
 
                 GuiaEntidad guiaEntidad = BuscarGuiaEntidad(guia.NroGuia);
                 if (guiaEntidad != null)
-                    guiaEntidad.estado = EstadoGuiaEnum.EnDistribucion;
+                    guiaEntidad.estado = Prototipos_TUTASA.Auxiliares.EstadoGuiaEnum.EnDistribucion;
             }
 
-            // Incremento de HDR asignadas del transportista en el almacen
+            // Incremento HDR asignadas del transportista EN EL ALMACEN
             TransportistaLocalEntidad transportistaEntidad = BuscarTransportistaEntidad(transportista.dniTransportista);
             if (transportistaEntidad != null)
                 transportistaEntidad.HdrAsignadas++;
 
             // Persistencia
-            HojaDeRutaDistribucionAlmacen.Agregar(nuevaHDR);
+            HojaDeRutaDistribucionAlmacen.hojasDeRutaDistribucion.Add(nuevaHDR);
             HojaDeRutaDistribucionAlmacen.Guardar();
             GuiaAlmacen.Guardar();
             TransportistaLocalAlmacen.Guardar();
