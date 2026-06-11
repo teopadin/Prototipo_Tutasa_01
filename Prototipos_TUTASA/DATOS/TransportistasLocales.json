@@ -1,0 +1,26 @@
+[
+  {
+    "dniTransportista": 30111222,
+    "nombre": "Carlos",
+    "apellido": "Gomez",
+    "contratoVigente": true,
+    "idCD": 1,
+    "HdrAsignadas": 1
+  },
+  {
+    "dniTransportista": 30222333,
+    "nombre": "Laura",
+    "apellido": "Martinez",
+    "contratoVigente": true,
+    "idCD": 1,
+    "HdrAsignadas": 1
+  },
+  {
+    "dniTransportista": 30333444,
+    "nombre": "Silvia",
+    "apellido": "Castro",
+    "contratoVigente": true,
+    "idCD": 2,
+    "HdrAsignadas": 0
+  }
+]

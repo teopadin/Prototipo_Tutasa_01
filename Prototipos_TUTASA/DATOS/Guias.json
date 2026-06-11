@@ -1,66 +1,314 @@
 [
   {
     "NroGuia": "CD02-0002",
-    "Estado": "PendienteDeRetiroEnCD",
-    "IdCDDestino": 1,
-    "IdAgenciaDestino": null,
-    "DniDestinatario": 40123456,
-    "FechaEntrega": null
+    "IdCliente": 1,
+    "TipoImposicion": "CD",
+    "idCDOrigen": 2,
+    "idAgenciaOrigen": 0,
+    "idCDActual": 1,
+    "modalidadEntrega": "EntregaCD",
+    "idCDDestino": 1,
+    "idAgenciaDestino": 0,
+    "Destinatario": {
+      "Dni": 40123456,
+      "nombre": "Ana",
+      "apellido": "Perez",
+      "calle": "Av. Rivadavia",
+      "altura": 3200,
+      "piso": "",
+      "codigoPostal": "1406",
+      "ciudad": "CABA",
+      "telefono": "1123456789"
+    },
+    "TipoBulto": "S",
+    "EquivalenteS": 1,
+    "estado": "PendienteDeRetiroEnCD",
+    "Historial": [
+      {
+        "FechaCambio": "2026-06-10T00:00:00",
+        "Estado": "PendienteDeRetiroEnCD",
+        "Donde": "Capital y GBA"
+      }
+    ],
+    "TarifaCalculada": {
+      "PrecioFlete": 2500.0,
+      "ExtraRetiroDomicilio": 0.0,
+      "ExtraEntregaDomicilio": 0.0,
+      "ExtraEntregaAgencia": 0.0,
+      "TarifaTotal": 2500.0
+    }
   },
   {
     "NroGuia": "CD01-0007",
-    "Estado": "PendienteDeRetiroEnCD",
-    "IdCDDestino": 1,
-    "IdAgenciaDestino": null,
-    "DniDestinatario": 41234567,
-    "FechaEntrega": null
+    "IdCliente": 1,
+    "TipoImposicion": "CD",
+    "idCDOrigen": 1,
+    "idAgenciaOrigen": 0,
+    "idCDActual": 1,
+    "modalidadEntrega": "EntregaCD",
+    "idCDDestino": 1,
+    "idAgenciaDestino": 0,
+    "Destinatario": {
+      "Dni": 41234567,
+      "nombre": "Juan",
+      "apellido": "Rodriguez",
+      "calle": "Av. Corrientes",
+      "altura": 1500,
+      "piso": "2B",
+      "codigoPostal": "1042",
+      "ciudad": "CABA",
+      "telefono": "1134567890"
+    },
+    "TipoBulto": "M",
+    "EquivalenteS": 2,
+    "estado": "PendienteDeRetiroEnCD",
+    "Historial": [
+      {
+        "FechaCambio": "2026-06-10T00:00:00",
+        "Estado": "PendienteDeRetiroEnCD",
+        "Donde": "Capital y GBA"
+      }
+    ],
+    "TarifaCalculada": {
+      "PrecioFlete": 3200.0,
+      "ExtraRetiroDomicilio": 0.0,
+      "ExtraEntregaDomicilio": 0.0,
+      "ExtraEntregaAgencia": 0.0,
+      "TarifaTotal": 3200.0
+    }
   },
   {
     "NroGuia": "CD03-0001",
-    "Estado": "EnDistribucion",
-    "IdCDDestino": 1,
-    "IdAgenciaDestino": null,
-    "DniDestinatario": 42345678,
-    "FechaEntrega": null
+    "IdCliente": 2,
+    "TipoImposicion": "CallCenter",
+    "idCDOrigen": 1,
+    "idAgenciaOrigen": 0,
+    "idCDActual": 1,
+    "modalidadEntrega": "EntregaDomicilio",
+    "idCDDestino": 1,
+    "idAgenciaDestino": 0,
+    "Destinatario": {
+      "Dni": 42345678,
+      "nombre": "Maria",
+      "apellido": "Gonzalez",
+      "calle": "Av. Santa Fe",
+      "altura": 2450,
+      "piso": "",
+      "codigoPostal": "1425",
+      "ciudad": "CABA",
+      "telefono": "1145678901"
+    },
+    "TipoBulto": "S",
+    "EquivalenteS": 1,
+    "estado": "EnDistribucion",
+    "Historial": [
+      {
+        "FechaCambio": "2026-06-10T00:00:00",
+        "Estado": "EnDistribucion",
+        "Donde": "Capital y GBA"
+      }
+    ],
+    "TarifaCalculada": {
+      "PrecioFlete": 2500.0,
+      "ExtraRetiroDomicilio": 500.0,
+      "ExtraEntregaDomicilio": 700.0,
+      "ExtraEntregaAgencia": 0.0,
+      "TarifaTotal": 3700.0
+    }
   },
   {
     "NroGuia": "CD02-0009",
-    "Estado": "PendienteDeRetiroEnCD",
-    "IdCDDestino": 2,
-    "IdAgenciaDestino": null,
-    "DniDestinatario": 43567890,
-    "FechaEntrega": null
+    "IdCliente": 2,
+    "TipoImposicion": "CD",
+    "idCDOrigen": 1,
+    "idAgenciaOrigen": 0,
+    "idCDActual": 2,
+    "modalidadEntrega": "EntregaCD",
+    "idCDDestino": 2,
+    "idAgenciaDestino": 0,
+    "Destinatario": {
+      "Dni": 43567890,
+      "nombre": "Carlos",
+      "apellido": "Lopez",
+      "calle": "Bv. San Juan",
+      "altura": 780,
+      "piso": "",
+      "codigoPostal": "5000",
+      "ciudad": "Cordoba",
+      "telefono": "3514567890"
+    },
+    "TipoBulto": "L",
+    "EquivalenteS": 4,
+    "estado": "PendienteDeRetiroEnCD",
+    "Historial": [
+      {
+        "FechaCambio": "2026-06-10T00:00:00",
+        "Estado": "PendienteDeRetiroEnCD",
+        "Donde": "Centro - Cordoba"
+      }
+    ],
+    "TarifaCalculada": {
+      "PrecioFlete": 5200.0,
+      "ExtraRetiroDomicilio": 0.0,
+      "ExtraEntregaDomicilio": 0.0,
+      "ExtraEntregaAgencia": 0.0,
+      "TarifaTotal": 5200.0
+    }
   },
   {
     "NroGuia": "AG01-0001",
-    "Estado": "PendienteDeRetiroEnAgencia",
-    "IdCDDestino": null,
-    "IdAgenciaDestino": 1,
-    "DniDestinatario": 40123456,
-    "FechaEntrega": null
+    "IdCliente": 1,
+    "TipoImposicion": "Agencia",
+    "idCDOrigen": 1,
+    "idAgenciaOrigen": 1,
+    "idCDActual": 1,
+    "modalidadEntrega": "EntregaAgencia",
+    "idCDDestino": 1,
+    "idAgenciaDestino": 1,
+    "Destinatario": {
+      "Dni": 40123456,
+      "nombre": "Ana",
+      "apellido": "Perez",
+      "calle": "Av. Rivadavia",
+      "altura": 3200,
+      "piso": "",
+      "codigoPostal": "1406",
+      "ciudad": "CABA",
+      "telefono": "1123456789"
+    },
+    "TipoBulto": "S",
+    "EquivalenteS": 1,
+    "estado": "PendienteDeRetiroEnAgencia",
+    "Historial": [
+      {
+        "FechaCambio": "2026-06-10T00:00:00",
+        "Estado": "PendienteDeRetiroEnAgencia",
+        "Donde": "Agencia Capital y GBA"
+      }
+    ],
+    "TarifaCalculada": {
+      "PrecioFlete": 2500.0,
+      "ExtraRetiroDomicilio": 0.0,
+      "ExtraEntregaDomicilio": 0.0,
+      "ExtraEntregaAgencia": 400.0,
+      "TarifaTotal": 2900.0
+    }
   },
   {
     "NroGuia": "AG01-0002",
-    "Estado": "PendienteDeRetiroEnAgencia",
-    "IdCDDestino": null,
-    "IdAgenciaDestino": 1,
-    "DniDestinatario": 41234567,
-    "FechaEntrega": null
+    "IdCliente": 1,
+    "TipoImposicion": "Agencia",
+    "idCDOrigen": 1,
+    "idAgenciaOrigen": 1,
+    "idCDActual": 1,
+    "modalidadEntrega": "EntregaAgencia",
+    "idCDDestino": 1,
+    "idAgenciaDestino": 1,
+    "Destinatario": {
+      "Dni": 41234567,
+      "nombre": "Juan",
+      "apellido": "Rodriguez",
+      "calle": "Av. Corrientes",
+      "altura": 1500,
+      "piso": "2B",
+      "codigoPostal": "1042",
+      "ciudad": "CABA",
+      "telefono": "1134567890"
+    },
+    "TipoBulto": "M",
+    "EquivalenteS": 2,
+    "estado": "PendienteDeRetiroEnAgencia",
+    "Historial": [
+      {
+        "FechaCambio": "2026-06-10T00:00:00",
+        "Estado": "PendienteDeRetiroEnAgencia",
+        "Donde": "Agencia Capital y GBA"
+      }
+    ],
+    "TarifaCalculada": {
+      "PrecioFlete": 3200.0,
+      "ExtraRetiroDomicilio": 0.0,
+      "ExtraEntregaDomicilio": 0.0,
+      "ExtraEntregaAgencia": 400.0,
+      "TarifaTotal": 3600.0
+    }
   },
   {
     "NroGuia": "AG01-0003",
-    "Estado": "Entregada",
-    "IdCDDestino": null,
-    "IdAgenciaDestino": 1,
-    "DniDestinatario": 42345678,
-    "FechaEntrega": "2026-06-10T00:00:00"
+    "IdCliente": 2,
+    "TipoImposicion": "Agencia",
+    "idCDOrigen": 1,
+    "idAgenciaOrigen": 1,
+    "idCDActual": 1,
+    "modalidadEntrega": "EntregaAgencia",
+    "idCDDestino": 1,
+    "idAgenciaDestino": 1,
+    "Destinatario": {
+      "Dni": 42345678,
+      "nombre": "Maria",
+      "apellido": "Gonzalez",
+      "calle": "Av. Santa Fe",
+      "altura": 2450,
+      "piso": "",
+      "codigoPostal": "1425",
+      "ciudad": "CABA",
+      "telefono": "1145678901"
+    },
+    "TipoBulto": "S",
+    "EquivalenteS": 1,
+    "estado": "Entregada",
+    "Historial": [
+      {
+        "FechaCambio": "2026-06-10T00:00:00",
+        "Estado": "Entregada",
+        "Donde": "Agencia Capital y GBA"
+      }
+    ],
+    "TarifaCalculada": {
+      "PrecioFlete": 2500.0,
+      "ExtraRetiroDomicilio": 0.0,
+      "ExtraEntregaDomicilio": 0.0,
+      "ExtraEntregaAgencia": 400.0,
+      "TarifaTotal": 2900.0
+    }
   },
   {
     "NroGuia": "AG02-0001",
-    "Estado": "PendienteDeRetiroEnAgencia",
-    "IdCDDestino": null,
-    "IdAgenciaDestino": 2,
-    "DniDestinatario": 43567890,
-    "FechaEntrega": null
+    "IdCliente": 2,
+    "TipoImposicion": "Agencia",
+    "idCDOrigen": 2,
+    "idAgenciaOrigen": 2,
+    "idCDActual": 2,
+    "modalidadEntrega": "EntregaAgencia",
+    "idCDDestino": 2,
+    "idAgenciaDestino": 2,
+    "Destinatario": {
+      "Dni": 43567890,
+      "nombre": "Carlos",
+      "apellido": "Lopez",
+      "calle": "Bv. San Juan",
+      "altura": 780,
+      "piso": "",
+      "codigoPostal": "5000",
+      "ciudad": "Cordoba",
+      "telefono": "3514567890"
+    },
+    "TipoBulto": "L",
+    "EquivalenteS": 4,
+    "estado": "PendienteDeRetiroEnAgencia",
+    "Historial": [
+      {
+        "FechaCambio": "2026-06-10T00:00:00",
+        "Estado": "PendienteDeRetiroEnAgencia",
+        "Donde": "Agencia Centro - Cordoba"
+      }
+    ],
+    "TarifaCalculada": {
+      "PrecioFlete": 5200.0,
+      "ExtraRetiroDomicilio": 0.0,
+      "ExtraEntregaDomicilio": 0.0,
+      "ExtraEntregaAgencia": 400.0,
+      "TarifaTotal": 5600.0
+    }
   }
 ]

@@ -1,0 +1,14 @@
+[
+  {
+    "TipoCostoExtra": "RetiroDomicilio",
+    "Monto": 500.0
+  },
+  {
+    "TipoCostoExtra": "EntregaDomicilio",
+    "Monto": 700.0
+  },
+  {
+    "TipoCostoExtra": "EntregaAgencia",
+    "Monto": 400.0
+  }
+]

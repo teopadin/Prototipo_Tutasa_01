@@ -1,12 +1,26 @@
 [
   {
-    "IdAgencia": 1,
-    "Nombre": "Capital y GBA",
-    "RazonSocial": "Agencia Capital y GBA"
+    "idAgencia": 1,
+    "razonSocial": "Agencia Capital y GBA",
+    "idCD": 1,
+    "calle": "Av. Corrientes",
+    "altura": 1500,
+    "codigoPostal": "1042",
+    "piso": "",
+    "telefono": 1143210001,
+    "ciudad": "CABA",
+    "convenioVigente": true
   },
   {
-    "IdAgencia": 2,
-    "Nombre": "Centro - Córdoba",
-    "RazonSocial": "Agencia Centro - Córdoba"
+    "idAgencia": 2,
+    "razonSocial": "Agencia Centro - Cordoba",
+    "idCD": 2,
+    "calle": "Bv. San Juan",
+    "altura": 780,
+    "codigoPostal": "5000",
+    "piso": "",
+    "telefono": 3514320002,
+    "ciudad": "Cordoba",
+    "convenioVigente": true
   }
 ]

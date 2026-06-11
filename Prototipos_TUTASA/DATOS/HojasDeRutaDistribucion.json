@@ -1,0 +1,32 @@
+[
+  {
+    "NroHDR": 201,
+    "Fecha": "2026-06-10T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30111222,
+    "Calle": "Av. Rivadavia",
+    "Altura": 3200,
+    "Piso": "",
+    "CodigoPostal": "1406",
+    "Destinatario": "Ana Perez",
+    "DetalleGuias": [
+      "CD02-0002"
+    ],
+    "motivoNoCumplida": "DestinatarioAusente"
+  },
+  {
+    "NroHDR": 202,
+    "Fecha": "2026-06-10T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30222333,
+    "Calle": "Av. Santa Fe",
+    "Altura": 2450,
+    "Piso": "",
+    "CodigoPostal": "1425",
+    "Destinatario": "Maria Gonzalez",
+    "DetalleGuias": [
+      "CD03-0001"
+    ],
+    "motivoNoCumplida": "DestinatarioAusente"
+  }
+]

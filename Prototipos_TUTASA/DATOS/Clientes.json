@@ -1,0 +1,24 @@
+[
+  {
+    "idCliente": 1,
+    "cuit": 20333123121,
+    "razonSocial": "Juan Perez SRL",
+    "telefono": "1144441111",
+    "calle": "Av. Corrientes",
+    "altura": 1200,
+    "piso": "4A",
+    "ciudad": "CABA",
+    "codigoPostal": "1043"
+  },
+  {
+    "idCliente": 2,
+    "cuit": 30711222333,
+    "razonSocial": "Mundo Fox S.A.",
+    "telefono": "3514442222",
+    "calle": "Av. Colon",
+    "altura": 900,
+    "piso": "",
+    "ciudad": "Cordoba",
+    "codigoPostal": "5000"
+  }
+]

@@ -1,10 +1,22 @@
 [
   {
-    "IdCD": 1,
-    "Nombre": "Capital y GBA"
+    "idCD": 1,
+    "nombre": "Capital y GBA",
+    "altura": 3200,
+    "piso": "",
+    "codigoPostal": "1406",
+    "calle": "Av. Rivadavia",
+    "ciudad": "CABA",
+    "telefono": 1145601000
   },
   {
-    "IdCD": 2,
-    "Nombre": "Centro - Córdoba"
+    "idCD": 2,
+    "nombre": "Centro - Cordoba",
+    "altura": 1800,
+    "piso": "",
+    "codigoPostal": "5000",
+    "calle": "Av. Colon",
+    "ciudad": "Cordoba",
+    "telefono": 3514602000
   }
 ]

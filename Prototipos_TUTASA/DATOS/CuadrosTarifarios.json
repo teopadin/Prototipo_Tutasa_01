@@ -1,0 +1,16 @@
+[
+  {
+    "IdTarifa": 1,
+    "IdCDOrigen": 1,
+    "IdCDDestino": 1,
+    "TipoBulto": "S",
+    "PrecioFlete": 2500.0
+  },
+  {
+    "IdTarifa": 2,
+    "IdCDOrigen": 1,
+    "IdCDDestino": 2,
+    "TipoBulto": "L",
+    "PrecioFlete": 5200.0
+  }
+]

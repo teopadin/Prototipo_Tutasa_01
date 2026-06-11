@@ -1,0 +1,12 @@
+[
+  {
+    "idCliente": 1,
+    "saldoActual": 15000.0,
+    "estadoCuenta": "SaldoAdeudado"
+  },
+  {
+    "idCliente": 2,
+    "saldoActual": 0.0,
+    "estadoCuenta": "SinSaldo"
+  }
+]
