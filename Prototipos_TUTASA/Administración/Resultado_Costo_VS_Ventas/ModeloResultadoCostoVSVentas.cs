@@ -11,8 +11,7 @@ namespace Prototipos_TUTASA.ResultadoCostoVSVentas_v2
         public List<ServicioMediaDistancia> Servicios { get; set; }
         public List<HojaDeRutaTransporte> HojasDeRutaTransporte { get; set; }
         public List<ArrendamientoBodega> ArrendamientosBodega { get; set; }
-        private Dictionary<string, decimal> importesVentaPorGuia;
-        private Dictionary<string, DateTime> fechasEntregaPorGuia;
+        public List<Guia> Guias { get; set; }
 
         public ModeloResultadoCostoVSVentas()
         {
@@ -27,40 +26,30 @@ namespace Prototipos_TUTASA.ResultadoCostoVSVentas_v2
 
             Servicios = new List<ServicioMediaDistancia>
             {
-                CrearServicio("SMD-001", 1, new DateTime(2026, 5, 3), 1, 2, 42),
-                CrearServicio("SMD-002", 2, new DateTime(2026, 5, 10), 1, 3, 37),
-                CrearServicio("SMD-003", 1, new DateTime(2026, 4, 20), 1, 2, 45),
-                CrearServicio("SMD-004", 1, new DateTime(2026, 3, 15), 1, 2, 38),
-                CrearServicio("SMD-005", 2, new DateTime(2026, 3, 22), 1, 3, 35),
-                CrearServicio("SMD-006", 2, new DateTime(2026, 2, 8), 1, 3, 36),
-                CrearServicio("SMD-007", 1, new DateTime(2026, 1, 12), 1, 2, 44),
-                CrearServicio("SMD-008", 3, new DateTime(2026, 6, 2), 2, 4, 40),
-                CrearServicio("SMD-009", 4, new DateTime(2026, 6, 6), 1, 4, 32),
-                CrearServicio("SMD-010", 3, new DateTime(2026, 5, 18), 2, 3, 28),
-                CrearServicio("SMD-011", 4, new DateTime(2026, 5, 24), 1, 2, 31),
-                CrearServicio("SMD-012", 3, new DateTime(2026, 4, 8), 2, 4, 39),
-                CrearServicio("SMD-013", 4, new DateTime(2026, 4, 14), 1, 3, 34),
-                CrearServicio("SMD-014", 3, new DateTime(2026, 3, 5), 2, 3, 30),
-                CrearServicio("SMD-015", 4, new DateTime(2026, 2, 19), 1, 4, 29)
+                CrearServicio("SMD-001", 1), CrearServicio("SMD-002", 2), CrearServicio("SMD-003", 1),
+                CrearServicio("SMD-004", 1), CrearServicio("SMD-005", 2), CrearServicio("SMD-006", 2),
+                CrearServicio("SMD-007", 1), CrearServicio("SMD-008", 3), CrearServicio("SMD-009", 4),
+                CrearServicio("SMD-010", 3), CrearServicio("SMD-011", 4), CrearServicio("SMD-012", 3),
+                CrearServicio("SMD-013", 4), CrearServicio("SMD-014", 3), CrearServicio("SMD-015", 4)
             };
 
             HojasDeRutaTransporte = new List<HojaDeRutaTransporte>
             {
-                CrearHDR(100, "SMD-001", new DateTime(2026, 5, 3), 1, 2, "CD01-0001", "CD01-0002", "CD01-0003"),
-                CrearHDR(101, "SMD-002", new DateTime(2026, 5, 10), 1, 3, "CD02-0001"),
-                CrearHDR(102, "SMD-003", new DateTime(2026, 4, 20), 1, 2, "CD01-0090"),
-                CrearHDR(103, "SMD-004", new DateTime(2026, 3, 15), 1, 2, "CD01-0080", "CD01-0081"),
-                CrearHDR(104, "SMD-005", new DateTime(2026, 3, 22), 1, 3, "CD02-0080"),
-                CrearHDR(105, "SMD-006", new DateTime(2026, 2, 8), 1, 3, "CD02-0070", "CD02-0071"),
-                CrearHDR(106, "SMD-007", new DateTime(2026, 1, 12), 1, 2, "CD01-0060", "CD01-0061"),
-                CrearHDR(107, "SMD-008", new DateTime(2026, 6, 2), 2, 4, "CD03-0100", "CD03-0101"),
-                CrearHDR(108, "SMD-009", new DateTime(2026, 6, 6), 1, 4, "CD04-0100", "CD04-0101", "CD04-0102"),
-                CrearHDR(109, "SMD-010", new DateTime(2026, 5, 18), 2, 3, "CD03-0090", "CD03-0091"),
-                CrearHDR(110, "SMD-011", new DateTime(2026, 5, 24), 1, 2, "CD04-0090"),
-                CrearHDR(111, "SMD-012", new DateTime(2026, 4, 8), 2, 4, "CD03-0080", "CD03-0081", "CD03-0082"),
-                CrearHDR(112, "SMD-013", new DateTime(2026, 4, 14), 1, 3, "CD04-0080", "CD04-0081"),
-                CrearHDR(113, "SMD-014", new DateTime(2026, 3, 5), 2, 3, "CD03-0070"),
-                CrearHDR(114, "SMD-015", new DateTime(2026, 2, 19), 1, 4, "CD04-0070", "CD04-0071")
+                CrearHDR(100, "SMD-001", "CD01-0001", "CD01-0002", "CD01-0003"),
+                CrearHDR(101, "SMD-002", "CD02-0001"),
+                CrearHDR(102, "SMD-003", "CD01-0090"),
+                CrearHDR(103, "SMD-004", "CD01-0080", "CD01-0081"),
+                CrearHDR(104, "SMD-005", "CD02-0080"),
+                CrearHDR(105, "SMD-006", "CD02-0070", "CD02-0071"),
+                CrearHDR(106, "SMD-007", "CD01-0060", "CD01-0061"),
+                CrearHDR(107, "SMD-008", "CD03-0100", "CD03-0101"),
+                CrearHDR(108, "SMD-009", "CD04-0100", "CD04-0101", "CD04-0102"),
+                CrearHDR(109, "SMD-010", "CD03-0090", "CD03-0091"),
+                CrearHDR(110, "SMD-011", "CD04-0090"),
+                CrearHDR(111, "SMD-012", "CD03-0080", "CD03-0081", "CD03-0082"),
+                CrearHDR(112, "SMD-013", "CD04-0080", "CD04-0081"),
+                CrearHDR(113, "SMD-014", "CD03-0070"),
+                CrearHDR(114, "SMD-015", "CD04-0070", "CD04-0071")
             };
 
             ArrendamientosBodega = new List<ArrendamientoBodega>
@@ -82,40 +71,38 @@ namespace Prototipos_TUTASA.ResultadoCostoVSVentas_v2
                 CrearArrendamiento(15, 4, new DateTime(2026, 2, 1), 21400)
             };
 
-            importesVentaPorGuia = new Dictionary<string, decimal>
+            // Guías con su tarifa calculada y su historial.
+            // La fecha MinValue significa "no entregada" → no se le registra el estado Entregada.
+            Guias = new List<Guia>
             {
-                { "CD01-0001", 15000 }, { "CD01-0002", 21000 }, { "CD01-0003", 18000 },
-                { "CD02-0001", 30000 }, { "CD01-0090", 19000 }, { "CD01-0080", 22000 },
-                { "CD01-0081", 17500 }, { "CD02-0080", 28700 }, { "CD02-0070", 26500 },
-                { "CD02-0071", 31200 }, { "CD01-0060", 20500 }, { "CD01-0061", 18500 },
-                { "CD03-0100", 33400 }, { "CD03-0101", 29800 },
-                { "CD04-0100", 24100 }, { "CD04-0101", 26700 }, { "CD04-0102", 31000 },
-                { "CD03-0090", 22500 }, { "CD03-0091", 28600 },
-                { "CD04-0090", 35700 },
-                { "CD03-0080", 19200 }, { "CD03-0081", 21300 }, { "CD03-0082", 24900 },
-                { "CD04-0080", 27600 }, { "CD04-0081", 22800 },
-                { "CD03-0070", 30400 },
-                { "CD04-0070", 26300 }, { "CD04-0071", 29200 }
-            };
-
-            fechasEntregaPorGuia = new Dictionary<string, DateTime>
-            {
-                { "CD01-0001", new DateTime(2026, 5, 5) }, { "CD01-0002", new DateTime(2026, 5, 6) },
-                { "CD01-0003", DateTime.MinValue }, { "CD02-0001", new DateTime(2026, 5, 12) },
-                { "CD01-0090", new DateTime(2026, 4, 22) }, { "CD01-0080", new DateTime(2026, 3, 18) },
-                { "CD01-0081", new DateTime(2026, 3, 20) }, { "CD02-0080", new DateTime(2026, 3, 25) },
-                { "CD02-0070", new DateTime(2026, 2, 11) }, { "CD02-0071", new DateTime(2026, 2, 13) },
-                { "CD01-0060", new DateTime(2026, 1, 14) }, { "CD01-0061", new DateTime(2026, 1, 16) },
-                { "CD03-0100", new DateTime(2026, 6, 4) }, { "CD03-0101", new DateTime(2026, 6, 5) },
-                { "CD04-0100", new DateTime(2026, 6, 8) }, { "CD04-0101", new DateTime(2026, 6, 9) },
-                { "CD04-0102", DateTime.MinValue },
-                { "CD03-0090", new DateTime(2026, 5, 20) }, { "CD03-0091", new DateTime(2026, 5, 21) },
-                { "CD04-0090", new DateTime(2026, 5, 27) },
-                { "CD03-0080", new DateTime(2026, 4, 10) }, { "CD03-0081", new DateTime(2026, 4, 11) },
-                { "CD03-0082", new DateTime(2026, 4, 12) },
-                { "CD04-0080", new DateTime(2026, 4, 16) }, { "CD04-0081", new DateTime(2026, 4, 18) },
-                { "CD03-0070", new DateTime(2026, 3, 8) },
-                { "CD04-0070", new DateTime(2026, 2, 22) }, { "CD04-0071", new DateTime(2026, 2, 23) }
+                CrearGuia("CD01-0001", 15000, new DateTime(2026, 5, 5)),
+                CrearGuia("CD01-0002", 21000, new DateTime(2026, 5, 6)),
+                CrearGuia("CD01-0003", 18000, DateTime.MinValue),
+                CrearGuia("CD02-0001", 30000, new DateTime(2026, 5, 12)),
+                CrearGuia("CD01-0090", 19000, new DateTime(2026, 4, 22)),
+                CrearGuia("CD01-0080", 22000, new DateTime(2026, 3, 18)),
+                CrearGuia("CD01-0081", 17500, new DateTime(2026, 3, 20)),
+                CrearGuia("CD02-0080", 28700, new DateTime(2026, 3, 25)),
+                CrearGuia("CD02-0070", 26500, new DateTime(2026, 2, 11)),
+                CrearGuia("CD02-0071", 31200, new DateTime(2026, 2, 13)),
+                CrearGuia("CD01-0060", 20500, new DateTime(2026, 1, 14)),
+                CrearGuia("CD01-0061", 18500, new DateTime(2026, 1, 16)),
+                CrearGuia("CD03-0100", 33400, new DateTime(2026, 6, 4)),
+                CrearGuia("CD03-0101", 29800, new DateTime(2026, 6, 5)),
+                CrearGuia("CD04-0100", 24100, new DateTime(2026, 6, 8)),
+                CrearGuia("CD04-0101", 26700, new DateTime(2026, 6, 9)),
+                CrearGuia("CD04-0102", 31000, DateTime.MinValue),
+                CrearGuia("CD03-0090", 22500, new DateTime(2026, 5, 20)),
+                CrearGuia("CD03-0091", 28600, new DateTime(2026, 5, 21)),
+                CrearGuia("CD04-0090", 35700, new DateTime(2026, 5, 27)),
+                CrearGuia("CD03-0080", 19200, new DateTime(2026, 4, 10)),
+                CrearGuia("CD03-0081", 21300, new DateTime(2026, 4, 11)),
+                CrearGuia("CD03-0082", 24900, new DateTime(2026, 4, 12)),
+                CrearGuia("CD04-0080", 27600, new DateTime(2026, 4, 16)),
+                CrearGuia("CD04-0081", 22800, new DateTime(2026, 4, 18)),
+                CrearGuia("CD03-0070", 30400, new DateTime(2026, 3, 8)),
+                CrearGuia("CD04-0070", 26300, new DateTime(2026, 2, 22)),
+                CrearGuia("CD04-0071", 29200, new DateTime(2026, 2, 23))
             };
         }
 
@@ -155,38 +142,40 @@ namespace Prototipos_TUTASA.ResultadoCostoVSVentas_v2
             };
         }
 
+        // Ventas: empresa -> servicios -> sus HDR (DetalleHDRs) -> guías de la HDR -> tarifa de cada guía entregada en el periodo
         private decimal ObtenerVentas(int idEmpresa, DateTime periodo)
         {
             decimal totalVentas = 0;
 
-            List<string> idsServicioEmpresa = Servicios
-                .Where(s => s.idEmpresa == idEmpresa)
-                .Select(s => s.idServicio)
-                .ToList();
-
-            foreach (HojaDeRutaTransporte hdr in HojasDeRutaTransporte)
+            foreach (ServicioMediaDistancia servicio in Servicios)
             {
-                if (!idsServicioEmpresa.Contains(hdr.idServicio))
+                if (servicio.idEmpresa != idEmpresa)
                     continue;
 
-
-                foreach (string nroGuia in hdr.DetalleGuias)
+                foreach (int nroHDR in servicio.DetalleHDRs)
                 {
-                    if (!fechasEntregaPorGuia.ContainsKey(nroGuia))
+                    HojaDeRutaTransporte hdr = BuscarHDR(nroHDR);
+                    if (hdr == null)
                         continue;
 
-                    if (!importesVentaPorGuia.ContainsKey(nroGuia))
-                        continue;
+                    foreach (string nroGuia in hdr.DetalleGuias)
+                    {
+                        Guia guia = BuscarGuia(nroGuia);
+                        if (guia == null)
+                            continue;
 
-                    DateTime fechaEntrega = fechasEntregaPorGuia[nroGuia];
+                        DateTime fechaEntrega = ObtenerFechaEntrega(guia);
 
-                    if (fechaEntrega == DateTime.MinValue)
-                        continue;
+                        // Si no tiene fecha de entrega, la guía no se entregó todavía
+                        if (fechaEntrega == DateTime.MinValue)
+                            continue;
 
-                    if (fechaEntrega.Year != periodo.Year || fechaEntrega.Month != periodo.Month)
-                        continue;
+                        // Solo cuentan las entregas del periodo consultado
+                        if (fechaEntrega.Year != periodo.Year || fechaEntrega.Month != periodo.Month)
+                            continue;
 
-                    totalVentas += importesVentaPorGuia[nroGuia];
+                        totalVentas += guia.TarifaCalculada.TarifaTotal;
+                    }
                 }
             }
 
@@ -211,17 +200,50 @@ namespace Prototipos_TUTASA.ResultadoCostoVSVentas_v2
             return totalCostos;
         }
 
-        private ServicioMediaDistancia CrearServicio(string idServicio, int idEmpresa, DateTime fechaSalida, int idCDOrigen, int idCDDestino, int capacidadDisponible)
+        // Busca una HDR por su número. Devuelve null si no existe.
+        private HojaDeRutaTransporte BuscarHDR(int nroHDR)
+        {
+            foreach (HojaDeRutaTransporte hdr in HojasDeRutaTransporte)
+            {
+                if (hdr.nroHDR == nroHDR)
+                    return hdr;
+            }
+            return null;
+        }
+
+        // Busca una guía por su número. Devuelve null si no existe.
+        private Guia BuscarGuia(string nroGuia)
+        {
+            foreach (Guia guia in Guias)
+            {
+                if (guia.NroGuia == nroGuia)
+                    return guia;
+            }
+            return null;
+        }
+
+        // Obtiene la fecha de entrega de una guía desde su historial (estado Entregada).
+        // Devuelve MinValue si la guía no fue entregada.
+        private DateTime ObtenerFechaEntrega(Guia guia)
+        {
+            foreach (HistorialEstadoGuia registro in guia.Historial)
+            {
+                if (registro.Estado == EstadoGuiaEnum.Entregada)
+                    return registro.FechaCambio;
+            }
+            return DateTime.MinValue;
+        }
+
+        private ServicioMediaDistancia CrearServicio(string idServicio, int idEmpresa)
         {
             return new ServicioMediaDistancia
             {
                 idServicio = idServicio,
-                idEmpresa = idEmpresa,
-
+                idEmpresa = idEmpresa
             };
         }
 
-        private HojaDeRutaTransporte CrearHDR(int nroHDR, string idServicio, DateTime fechaGeneracion, int idCDOrigen, int idCDDestino, params string[] guias)
+        private HojaDeRutaTransporte CrearHDR(int nroHDR, string idServicio, params string[] guias)
         {
             HojaDeRutaTransporte hdr = new HojaDeRutaTransporte
             {
@@ -233,9 +255,7 @@ namespace Prototipos_TUTASA.ResultadoCostoVSVentas_v2
             ServicioMediaDistancia servicio = Servicios.FirstOrDefault(s => s.idServicio == idServicio);
 
             if (servicio != null)
-            {
                 servicio.DetalleHDRs.Add(nroHDR);
-            }
 
             return hdr;
         }
@@ -249,6 +269,28 @@ namespace Prototipos_TUTASA.ResultadoCostoVSVentas_v2
                 periodo = periodo,
                 importeMensual = importeMensual
             };
+        }
+
+        private Guia CrearGuia(string nroGuia, decimal tarifaTotal, DateTime fechaEntrega)
+        {
+            Guia guia = new Guia
+            {
+                NroGuia = nroGuia,
+                TarifaCalculada = new TarifaCalculadaGuia { TarifaTotal = tarifaTotal },
+                Historial = new List<HistorialEstadoGuia>()
+            };
+
+            // Solo registra la entrega si efectivamente se entregó
+            if (fechaEntrega != DateTime.MinValue)
+            {
+                guia.Historial.Add(new HistorialEstadoGuia
+                {
+                    FechaCambio = fechaEntrega,
+                    Estado = EstadoGuiaEnum.Entregada
+                });
+            }
+
+            return guia;
         }
     }
 }
