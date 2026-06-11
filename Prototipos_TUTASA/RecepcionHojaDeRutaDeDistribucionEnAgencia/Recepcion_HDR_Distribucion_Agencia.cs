@@ -34,15 +34,26 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
         {
             txtAgencia.Text = hdr.AgenciaHDR.razonSocial;
 
-            txtFletero.Text =
-                $"{hdr.Transportista.nombre} {hdr.Transportista.apellido}";
+            TransportistaLocal transportista = modelo.BuscarTransportista(hdr.dniTransportistaAsignado);
+
+            if (transportista != null)
+            {
+                txtFletero.Text = $"{transportista.nombre} {transportista.apellido}";
+            }
 
             listView1.Items.Clear();
 
-            foreach (var guia in hdr.DetalleGuias)
+
+            foreach (string nroGuia in hdr.DetalleGuias)
             {
-                ListViewItem item = new ListViewItem(guia.NroGuia);
-                item.SubItems.Add(guia.TipoBulto.ToString());
+                Guia guia = modelo.BuscarGuia(nroGuia);
+
+                ListViewItem item = new ListViewItem(nroGuia);
+
+                if (guia != null)
+                {
+                    item.SubItems.Add(guia.TipoBulto.ToString());
+                }
 
                 listView1.Items.Add(item);
             }
@@ -141,9 +152,14 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
 
         private void actualizarEstadoGuia(HojaDeRutaDistribucion hdr)
         {
-            foreach (var guia in hdr.DetalleGuias)
+            foreach (string nroGuia in hdr.DetalleGuias)
             {
-                guia.estado = EstadoGuia.PendienteDeRetiroEnAgencia;
+                Guia guia = modelo.BuscarGuia(nroGuia);
+
+                if (guia != null)
+                {
+                    guia.estado = EstadoGuia.PendienteDeRetiroEnAgencia;
+                }
             }
         }
 
