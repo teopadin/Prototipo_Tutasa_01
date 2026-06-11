@@ -4,7 +4,7 @@ namespace Prototipos_TUTASA.Almacenes;
 
 internal class ServicioMediaDistanciaEntidad
 {
-    public int idServicio { get; set; }
+    public string idServicio { get; set; }
     public int idEmpresa { get; set; }
     public DateTime fechaSalida { get; set; }
     public DateTime fechaLlegada { get; set; }

@@ -7,7 +7,7 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transpor
 {
     internal class ServicioMediaDistancia
     {
-        public int idServicio { get; set; }
+        public string idServicio { get; set; }
         public int idEmpresa { get; set; }
         public TipoArrendamientoEnum tipoArrendamiento { get; set; }
         public int capacidadUsada { get; set; }
