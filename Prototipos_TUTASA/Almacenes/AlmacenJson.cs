@@ -1,7 +1,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Prototipos_TUTASA.Auxiliares;
+namespace Prototipos_TUTASA.Almacenes;
 
 internal static class AlmacenJson
 {
