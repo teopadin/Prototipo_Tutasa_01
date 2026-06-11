@@ -7,7 +7,6 @@ using System.Text;
 using System.Windows.Forms;
 using Prototipos_TUTASA.Despacho_Servicios_Media_Distancia;
 
-
 namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
 {
     public partial class Despacho_Servicios_Media_Distancia : Form
@@ -50,47 +49,50 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
 
             var hdrSeleccionada = (HojaDeRutaTransporte)ServicioCmb.SelectedItem;
 
-            // 1. Destino dinámico según el IdCDDestino del diagrama
-            switch (hdrSeleccionada.idCDDestino)
+            // 1. Destino dinámico consultando al Modelo (mucho más limpio que el switch)
+            var cd = modelo.BuscarCD(hdrSeleccionada.idCDDestino);
+            CdDestinoTxtb.Text = cd != null ? cd.nombre : "Centro de Distribución Desconocido";
+
+            // 2. Mostramos el ID del Servicio (ya es string en la HDR)
+            IdServicioTxtb.Text = hdrSeleccionada.idServicio;
+
+            // 3. Buscamos el objeto Servicio real. Como en la HDR es string y en el Servicio es int, lo parseamos
+            if (int.TryParse(hdrSeleccionada.idServicio, out int idServicioInt))
             {
-                case 1: CdDestinoTxtb.Text = "CD Córdoba - Terminal Central"; break;
-                case 2: CdDestinoTxtb.Text = "CD Mendoza - Terminal Del Sol"; break;
-                case 3: CdDestinoTxtb.Text = "CD Rosario - Terminal Mariano Moreno"; break;
-                case 4: CdDestinoTxtb.Text = "CD Mar del Plata - Terminal Ferroautomotora"; break;
-                case 5: CdDestinoTxtb.Text = "CD Bariloche - Terminal Río Negro"; break;
-                default: CdDestinoTxtb.Text = "Centro de Distribución Desconocido"; break;
-            }
+                var servicioAsociado = modelo.BuscarServicioPorId(idServicioInt);
 
-            // 2. Mostramos el ID del Servicio directo en el TextBox
-            IdServicioTxtb.Text = hdrSeleccionada.idServicio.ToString();
-
-            // 3. Buscamos el objeto Servicio real en el modelo mediante la conexión del ID
-            var servicioAsociado = modelo.BuscarServicioPorId(hdrSeleccionada.idServicio);
-
-            if (servicioAsociado != null)
-            {
-                // ALINEADO: Usamos el ID para buscar a la empresa en su respectivo almacén
-                var empresaAsociada = modelo.BuscarEmpresa(servicioAsociado.idEmpresa);
-
-                if (empresaAsociada != null)
+                if (servicioAsociado != null)
                 {
-                    EmpresaTxtb.Text = empresaAsociada.razonSocial;
+                    var empresaAsociada = modelo.BuscarEmpresa(servicioAsociado.idEmpresa);
+                    EmpresaTxtb.Text = empresaAsociada != null ? empresaAsociada.razonSocial : "Empresa no encontrada";
                 }
                 else
                 {
-                    EmpresaTxtb.Text = "Empresa no encontrada";
+                    EmpresaTxtb.Text = "Servicio no encontrado";
                 }
             }
 
             DespachoLst.Items.Clear();
 
-            foreach (var g in hdrSeleccionada.DetalleGuias)
+            // 4. Llenamos la grilla buscando cada guía a través de su string (NroGuia)
+            foreach (string nroGuia in hdrSeleccionada.DetalleGuias)
             {
-                var item = new ListViewItem(g.NroGuia);
-                item.SubItems.Add(g.Cliente.razonSocial);
-                item.SubItems.Add(g.Destinatario.nombre + " " + g.Destinatario.apellido);
-                item.SubItems.Add(g.TipoBulto.ToString());
-                DespachoLst.Items.Add(item);
+                // Le pedimos la guía real al modelo
+                var guiaReal = modelo.BuscarGuia(nroGuia);
+
+                if (guiaReal != null)
+                {
+                    var item = new ListViewItem(guiaReal.NroGuia);
+
+                    // Buscamos el cliente en el modelo usando el IdCliente de la guía
+                    var cliente = modelo.BuscarCliente(guiaReal.IdCliente);
+                    item.SubItems.Add(cliente != null ? cliente.razonSocial : "Desconocido");
+
+                    item.SubItems.Add(guiaReal.Destinatario.nombre + " " + guiaReal.Destinatario.apellido);
+                    item.SubItems.Add(guiaReal.TipoBulto.ToString());
+
+                    DespachoLst.Items.Add(item);
+                }
             }
 
             BultoTxtb.Text = modelo.CalcularBultosEnS(hdrSeleccionada).ToString();
@@ -99,7 +101,6 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
 
         private void ConfirmarBtn_Click(object sender, EventArgs e)
         {
-            // Instanciamos la selección localmente para verificar
             var hdrSeleccionada = ServicioCmb.SelectedItem as HojaDeRutaTransporte;
 
             if (hdrSeleccionada == null)
@@ -114,8 +115,9 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
                 return;
             }
 
+            // Ojo acá: es NroHDR con mayúscula inicial según tu clase
             var confirma = MessageBox.Show(
-                "¿Confirma el despacho del Servicio " + hdrSeleccionada.nroHDR + "?\n" +
+                "¿Confirma el despacho del Servicio " + hdrSeleccionada.NroHDR + "?\n" +
                 "Se emitirán 3 copias de la HDR Transporte.",
                 "Confirmar despacho",
                 MessageBoxButtons.YesNo,
@@ -123,13 +125,13 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
 
             if (confirma != DialogResult.Yes) return;
 
-            // Le pasamos la HDR seleccionada al modelo
             if (!modelo.ConfirmarDespacho(hdrSeleccionada))
             {
                 return;
             }
 
-            MessageBox.Show("Despacho registrado con éxito. Se emiten 3 copias de la HDR " + hdrSeleccionada.nroHDR + ".");
+            // Ojo acá: también NroHDR mayúscula
+            MessageBox.Show("Despacho registrado con éxito. Se emiten 3 copias de la HDR " + hdrSeleccionada.NroHDR + ".");
 
             CargarCombobox();
             LimpiarPantalla();
@@ -142,7 +144,6 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
 
         private void LimpiarPantalla()
         {
-            // Ya no hay que limpiar "hdrSeleccionada = null" porque ya no existe a nivel global
             CdDestinoTxtb.Text = "";
             EmpresaTxtb.Text = "";
             IdServicioTxtb.Text = "";
