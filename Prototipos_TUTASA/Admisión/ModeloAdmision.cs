@@ -214,7 +214,6 @@ namespace Prototipos_TUTASA.Admisión
             Guia guia = BuscarGuia(nroGuia);
             if (guia == null) return;
 
-            // Calcula y guarda la tarifa en la guía (la pantalla no la muestra pero el sistema la necesita)
             guia.TarifaCalculada = CalcularTarifa(guia);
 
             // Caso especial: el CD destino es el mismo que el CD de admisión Y modalidad es Retiro en CD
@@ -226,6 +225,21 @@ namespace Prototipos_TUTASA.Admisión
             {
                 guia.estado = EstadoGuiaEnum.Admitida;
             }
+
+            foreach (var guiaEntidad in GuiaAlmacen.Guias)
+            {
+                if (guiaEntidad.NroGuia == nroGuia)
+                {
+                    guiaEntidad.estado = (Auxiliares.EstadoGuiaEnum)guia.estado;
+                    guiaEntidad.TarifaCalculada.PrecioFlete = guia.TarifaCalculada.PrecioFlete;
+                    guiaEntidad.TarifaCalculada.ExtraRetiroDomicilio = guia.TarifaCalculada.ExtraRetiroDomicilio;
+                    guiaEntidad.TarifaCalculada.ExtraEntregaDomicilio = guia.TarifaCalculada.ExtraEntregaDomicilio;
+                    guiaEntidad.TarifaCalculada.ExtraEntregaAgencia = guia.TarifaCalculada.ExtraEntregaAgencia;
+                    guiaEntidad.TarifaCalculada.TarifaTotal = guia.TarifaCalculada.TarifaTotal;
+                    break;
+                }
+            }
+            GuiaAlmacen.Guardar();
         }
 
         // Rechaza la admisión: pasa la guía a "Cancelada"
@@ -235,6 +249,16 @@ namespace Prototipos_TUTASA.Admisión
             if (guia == null) return;
 
             guia.estado = EstadoGuiaEnum.Cancelada;
+
+            foreach (var guiaEntidad in GuiaAlmacen.Guias)
+            {
+                if (guiaEntidad.NroGuia == nroGuia)
+                {
+                    guiaEntidad.estado = (Auxiliares.EstadoGuiaEnum)guia.estado;
+                    break;
+                }
+            }
+            GuiaAlmacen.Guardar();
         }
 
         // Métodos de formato para mostrar en pantalla
