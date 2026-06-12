@@ -1,25 +1,13 @@
 Plan de Prueba: Entrega en Agencia - Otra guía válida
 
-Datos
-Guía: AG01-0002
-Nombre: Juan
-Apellido: Rodriguez
-DNI: 41234567
-Checkbox DNI: marcado
-
 Pasos
-1- Ingresar AG01-0002 en el campo de guía.
+1- Ingresar AG01-0002.
 2- Presionar Buscar.
-3- Verificar que se muestran los datos del destinatario Juan Rodriguez, DNI 41234567.
-4- Ingresar Nombre Juan.
-5- Ingresar Apellido Rodriguez.
-6- Ingresar DNI 41234567.
-7- Marcar el checkbox de DNI verificado.
-8- Presionar Registrar Entrega.
+3- Verificar: Juan Rodriguez, DNI 41234567.
+4- Ingresar Nombre Juan, Apellido Rodriguez, DNI 41234567.
+5- Marcar checkbox DNI verificado.
+6- Presionar Registrar Entrega.
 
 Resultado esperado
-1- El sistema muestra el mensaje "Entrega registrada con éxito para la guía N° AG01-0002.".
-2- La guía queda en estado Entregada durante la ejecución.
-
-Aclaración
-En esta versión el modelo todavía usa datos hardcodeados. Los datos base del caso ya están replicados en DATOS para migrar luego la fuente.
+"Entrega registrada con éxito para la guía N° AG01-0002."
+La guía queda en estado Entregada.
