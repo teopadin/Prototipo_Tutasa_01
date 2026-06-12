@@ -20,5 +20,38 @@
     "piso": "",
     "ciudad": "Cordoba",
     "codigoPostal": "5000"
+  },
+  {
+    "idCliente": 3,
+    "cuit": 30111111118,
+    "razonSocial": "Empresa ABC SA",
+    "telefono": "1143333333",
+    "calle": "Av. Rivadavia",
+    "altura": 3200,
+    "piso": "3B",
+    "ciudad": "CABA",
+    "codigoPostal": "1406"
+  },
+  {
+    "idCliente": 4,
+    "cuit": 30222222227,
+    "razonSocial": "Distribuidora XYZ SRL",
+    "telefono": "1144444444",
+    "calle": "Av. Rivadavia",
+    "altura": 3200,
+    "piso": "3B",
+    "ciudad": "CABA",
+    "codigoPostal": "1406"
+  },
+  {
+    "idCliente": 5,
+    "cuit": 30333333336,
+    "razonSocial": "Comercio El Sol",
+    "telefono": "3514555555",
+    "calle": "Belgrano",
+    "altura": 750,
+    "piso": "PB",
+    "ciudad": "Cordoba",
+    "codigoPostal": "5000"
   }
 ]

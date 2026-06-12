@@ -1,0 +1,23 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Text;
+
+namespace Prototipos_TUTASA.PRUEBAS._3.Admision
+{
+    public partial class _030_Admision_CasoExitoso: Component
+    {    
+        public _030_Admision_CasoExitoso()
+        {
+            InitializeComponent();
+        }
+
+        public _030_Admision_CasoExitoso(IContainer container)
+        {
+            container.Add(this);
+
+            InitializeComponent();
+        }
+    }
+}
