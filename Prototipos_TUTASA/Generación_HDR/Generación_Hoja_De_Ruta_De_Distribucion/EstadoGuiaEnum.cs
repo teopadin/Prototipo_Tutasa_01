@@ -6,8 +6,17 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Distribu
 {
     internal enum EstadoGuiaEnum
     {
+        Impuesta,
+        IncluidaEnHDRRetiro,
+        Retirada,
+        Admitida,
+        PendienteDeDespacho,
+        EnTransito,
         EnCDDestino,
         EnDistribucion,
-        Admitida
+        PendienteDeRetiroEnAgencia,
+        PendienteDeRetiroEnCD,
+        Entregada,
+        Cancelada
     }
 }

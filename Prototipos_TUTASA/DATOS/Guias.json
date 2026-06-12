@@ -1388,5 +1388,38 @@
       "ExtraEntregaAgencia": 1000.0,
       "TarifaTotal": 30000.0
     }
+  },
+  {
+    "NroGuia": "CD01-0030",
+    "IdCliente": 1,
+    "TipoImposicion": "CD",
+    "idCDOrigen": 3,
+    "idAgenciaOrigen": 0,
+    "idCDActual": 1,
+    "modalidadEntrega": "EntregaDomicilio",
+    "idCDDestino": 1,
+    "idAgenciaDestino": 0,
+    "Destinatario": {
+      "Dni": 40123456,
+      "nombre": "Ana",
+      "apellido": "Pérez",
+      "calle": "Av. Rivadavia",
+      "altura": 3200,
+      "piso": "3B",
+      "codigoPostal": "1406",
+      "ciudad": "Buenos Aires",
+      "telefono": "011-4000-0000"
+    },
+    "TipoBulto": "M",
+    "EquivalenteS": 2,
+    "estado": "EnCDDestino",
+    "Historial": [],
+    "TarifaCalculada": {
+      "PrecioFlete": 0,
+      "ExtraRetiroDomicilio": 0,
+      "ExtraEntregaDomicilio": 0,
+      "ExtraEntregaAgencia": 0,
+      "TarifaTotal": 0
+    }
   }
 ]
