@@ -8,5 +8,6 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
     {
         public int idServicio { get; set; }
         public int idEmpresa { get; set; }
+        public DateTime fechaLlegada { get; set; }
     }
 }

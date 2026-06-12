@@ -89,9 +89,9 @@
             label3.Location = new Point(30, 82);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(166, 25);
+            label3.Size = new Size(148, 25);
             label3.TabIndex = 19;
-            label3.Text = "Fecha de Despacho";
+            label3.Text = "Fecha de Llegada";
             // 
             // FechaDtp
             // 

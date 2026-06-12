@@ -11,8 +11,8 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
 {
     internal class ModeloDespachoServiciosMediaDistancia
     {
-        private List<HojaDeRutaTransporte> hdrs;
-        private List<ServicioMediaDistancia> servicios;
+        public List<ServicioMediaDistancia> servicios { get; set; }
+        public List<HojaDeRutaTransporte> hdrs { get; set; }
         private List<EmpresaTransporte> almacenEmpresas;
         private List<Cliente> almacenClientes;
         private List<CentroDistribucion> almacenCDs;
@@ -55,14 +55,15 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
 
             // 4. Inicializamos y cargamos Servicios
             servicios = new List<ServicioMediaDistancia>();
-            foreach (var servicioEntidad in ServicioMediaDistanciaAlmacen.serviciosMediaDistancia) // <-- Corregido
+            foreach (var servicioEntidad in ServicioMediaDistanciaAlmacen.serviciosMediaDistancia)
             {
                 servicios.Add(new ServicioMediaDistancia
                 {
-                    // Nota: Si en tu clase ServicioMediaDistancia (del modelo) idServicio es int, 
-                    // dejá el int.Parse. Si lo cambiaste a string, sacale el int.Parse()
                     idServicio = int.Parse(servicioEntidad.idServicio),
-                    idEmpresa = servicioEntidad.idEmpresa
+                    idEmpresa = servicioEntidad.idEmpresa,
+
+                    // AGREGAR ESTA LÍNEA:
+                    fechaLlegada = servicioEntidad.fechaLlegada
                 });
             }
 
@@ -122,8 +123,11 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
         public EmpresaTransporte BuscarEmpresa(int id) => almacenEmpresas.Find(e => e.idEmpresa == id);
         public Cliente BuscarCliente(int id) => almacenClientes.Find(c => c.idCliente == id);
         public CentroDistribucion BuscarCD(int id) => almacenCDs.Find(cd => cd.idCD == id);
-        public ServicioMediaDistancia BuscarServicioPorId(int id) => servicios.Find(s => s.idServicio == id);
-        public Guia BuscarGuia(string nroGuia) => almacenGuias.Find(g => g.NroGuia == nroGuia);
+        public ServicioMediaDistancia BuscarServicioPorId(string id)
+        {
+            return servicios.FirstOrDefault(s => s.idServicio.ToString() == id);
+        }
+            public Guia BuscarGuia(string nroGuia) => almacenGuias.Find(g => g.NroGuia == nroGuia);
 
         // --- MÉTODOS DE LÓGICA (Siguen iguales) ---
         internal List<HojaDeRutaTransporte> ObtenerHDRsPendientes() => hdrs.FindAll(h => h.estado == EstadoHojaDeRutaEnum.Generada);
@@ -154,20 +158,39 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
             return acumulador;
         }
 
-        internal bool ConfirmarDespacho(HojaDeRutaTransporte hdr)
+        public bool ConfirmarDespacho(HojaDeRutaTransporte hdr)
         {
-            if (hdr == null) return false;
-
-            foreach (var nroGuia in hdr.DetalleGuias)
+            try
             {
-                Guia guiaReal = BuscarGuia(nroGuia);
-                if (guiaReal != null)
+                // 1. Buscamos el servicio asociado a esta HDR en nuestra lista en memoria
+                var servicioLocal = servicios.FirstOrDefault(s => s.idServicio.ToString() == hdr.idServicio);
+
+                if (servicioLocal != null)
                 {
-                    guiaReal.estado = EstadoGuiaEnum.EnTransito;
+                    // Le asignamos la fecha de llegada confirmando el despacho
+                    servicioLocal.fechaLlegada = DateTime.Now;
                 }
+
+                // 2. Buscamos la entidad original del Almacén para impactar el JSON global del grupo
+                var entidadAlmacen = Prototipos_TUTASA.Almacenes.ServicioMediaDistanciaAlmacen.serviciosMediaDistancia
+                    .FirstOrDefault(x => x.idServicio == hdr.idServicio);
+
+                if (entidadAlmacen != null)
+                {
+                    entidadAlmacen.fechaLlegada = DateTime.Now;
+                }
+
+                // 3. Guardamos los cambios de manera persistente en el archivo ServiciosMediaDistancia.json
+                Prototipos_TUTASA.Almacenes.ServicioMediaDistanciaAlmacen.Guardar();
+
+                // (Acá podés agregar también lógica para cambiar el estado de la HDR o de las Guías si lo necesitan)
+
+                return true;
             }
-            hdr.estado = EstadoHojaDeRutaEnum.EnCurso;
-            return true;
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }

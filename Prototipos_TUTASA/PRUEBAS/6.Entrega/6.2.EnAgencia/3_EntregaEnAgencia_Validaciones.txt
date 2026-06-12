@@ -14,16 +14,3 @@ Pasos:
 10- Buscar AG01-0001, ingresar Nombre Ana, Apellido Perez, DNI 11111111 (incorrecto), marcar checkbox y presionar Registrar Entrega.
 11- Buscar AG01-0001, ingresar Nombre Laura (incorrecto), Apellido Perez, DNI 40123456, marcar checkbox y presionar Registrar Entrega.
 
-Resultados esperados:
-
-1- "Debe ingresar un número de guía."
-2- "El número de guía debe tener un formato válido, por ejemplo CD02-0002, AG01-0001 o A001-0001."
-3- "No se encontró una guía con el número ingresado."
-4- "La guía ingresada no corresponde a la agencia actual."
-5- "La guía no se encuentra pendiente de retiro en agencia."
-6- "Debe buscar una guía válida antes de registrar la entrega."
-7- "Debe completar nombre, apellido y DNI de quien retira."
-8- "El DNI ingresado no tiene un formato válido."
-9- "Debe confirmar que el documento de identidad fue presentado y verificado."
-10- "Los datos de quien retira no coinciden con el destinatario de la guía."
-11- "Los datos de quien retira no coinciden con el destinatario de la guía."

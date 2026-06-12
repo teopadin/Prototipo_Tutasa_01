@@ -808,7 +808,7 @@
   },
   {
     "NroGuia": "CD01-0016",
-    "IdCliente": 0,
+    "IdCliente": 1,
     "TipoImposicion": "CD",
     "idCDOrigen": 1,
     "idAgenciaOrigen": 0,
@@ -1068,6 +1068,325 @@
       "ExtraEntregaDomicilio": 0,
       "ExtraEntregaAgencia": 0,
       "TarifaTotal": 0
+    }
+  },
+  {
+    "NroGuia": "CD01-9001",
+    "IdCliente": 1,
+    "TipoImposicion": "CallCenter",
+    "idCDOrigen": 1,
+    "idAgenciaOrigen": 0,
+    "idCDActual": 1,
+    "modalidadEntrega": "EntregaDomicilio",
+    "idCDDestino": 2,
+    "idAgenciaDestino": 0,
+    "Destinatario": {
+      "Dni": 32111222,
+      "nombre": "Sofía",
+      "apellido": "Martínez",
+      "calle": "Av. Hipólito Yrigoyen",
+      "altura": 1234,
+      "piso": "",
+      "codigoPostal": "5000",
+      "ciudad": "Cordoba",
+      "telefono": "3511112222"
+    },
+    "TipoBulto": "M",
+    "EquivalenteS": 2,
+    "estado": "Retirada",
+    "Historial": [
+      {
+        "FechaCambio": "2026-06-10T00:00:00",
+        "Estado": "Retirada",
+        "Donde": "Capital y GBA"
+      }
+    ],
+    "TarifaCalculada": {
+      "PrecioFlete": 0.0,
+      "ExtraRetiroDomicilio": 0.0,
+      "ExtraEntregaDomicilio": 0.0,
+      "ExtraEntregaAgencia": 0.0,
+      "TarifaTotal": 0.0
+    }
+  },
+  {
+    "NroGuia": "CD01-9002",
+    "IdCliente": 2,
+    "TipoImposicion": "CD",
+    "idCDOrigen": 1,
+    "idAgenciaOrigen": 0,
+    "idCDActual": 1,
+    "modalidadEntrega": "EntregaCD",
+    "idCDDestino": 1,
+    "idAgenciaDestino": 0,
+    "Destinatario": {
+      "Dni": 28555666,
+      "nombre": "Diego",
+      "apellido": "Romero",
+      "calle": "Av. Corrientes",
+      "altura": 4500,
+      "piso": "",
+      "codigoPostal": "1195",
+      "ciudad": "CABA",
+      "telefono": "1155556666"
+    },
+    "TipoBulto": "S",
+    "EquivalenteS": 1,
+    "estado": "Retirada",
+    "Historial": [
+      {
+        "FechaCambio": "2026-06-10T00:00:00",
+        "Estado": "Retirada",
+        "Donde": "Capital y GBA"
+      }
+    ],
+    "TarifaCalculada": {
+      "PrecioFlete": 0.0,
+      "ExtraRetiroDomicilio": 0.0,
+      "ExtraEntregaDomicilio": 0.0,
+      "ExtraEntregaAgencia": 0.0,
+      "TarifaTotal": 0.0
+    }
+  },
+  {
+    "NroGuia": "CD01-9003",
+    "IdCliente": 1,
+    "TipoImposicion": "Agencia",
+    "idCDOrigen": 1,
+    "idAgenciaOrigen": 1,
+    "idCDActual": 1,
+    "modalidadEntrega": "EntregaAgencia",
+    "idCDDestino": 2,
+    "idAgenciaDestino": 2,
+    "Destinatario": {
+      "Dni": 35888999,
+      "nombre": "Lucía",
+      "apellido": "Fernández",
+      "calle": "Bv. Chacabuco",
+      "altura": 800,
+      "piso": "",
+      "codigoPostal": "5000",
+      "ciudad": "Cordoba",
+      "telefono": "3518889999"
+    },
+    "TipoBulto": "L",
+    "EquivalenteS": 4,
+    "estado": "Retirada",
+    "Historial": [
+      {
+        "FechaCambio": "2026-06-10T00:00:00",
+        "Estado": "Retirada",
+        "Donde": "Capital y GBA"
+      }
+    ],
+    "TarifaCalculada": {
+      "PrecioFlete": 0.0,
+      "ExtraRetiroDomicilio": 0.0,
+      "ExtraEntregaDomicilio": 0.0,
+      "ExtraEntregaAgencia": 0.0,
+      "TarifaTotal": 0.0
+    }
+  },
+  {
+    "NroGuia": "CD01-9004",
+    "IdCliente": 1,
+    "TipoImposicion": "CD",
+    "idCDOrigen": 1,
+    "idAgenciaOrigen": 0,
+    "idCDActual": 1,
+    "modalidadEntrega": "EntregaDomicilio",
+    "idCDDestino": 2,
+    "idAgenciaDestino": 0,
+    "Destinatario": {
+      "Dni": 33999888,
+      "nombre": "Pedro",
+      "apellido": "García",
+      "calle": "Av. Belgrano",
+      "altura": 700,
+      "piso": "",
+      "codigoPostal": "1092",
+      "ciudad": "CABA",
+      "telefono": "1133339999"
+    },
+    "TipoBulto": "M",
+    "EquivalenteS": 2,
+    "estado": "Admitida",
+    "Historial": [
+      {
+        "FechaCambio": "2026-06-10T00:00:00",
+        "Estado": "Admitida",
+        "Donde": "Capital y GBA"
+      }
+    ],
+    "TarifaCalculada": {
+      "PrecioFlete": 0.0,
+      "ExtraRetiroDomicilio": 0.0,
+      "ExtraEntregaDomicilio": 0.0,
+      "ExtraEntregaAgencia": 0.0,
+      "TarifaTotal": 0.0
+    }
+  },
+
+  {
+    "NroGuia": "AG02-9001",
+    "IdCliente": 2,
+    "TipoImposicion": "Agencia",
+    "idCDOrigen": 2,
+    "idAgenciaOrigen": 2,
+    "idCDActual": 1,
+    "modalidadEntrega": "EntregaAgencia",
+    "idCDDestino": 1,
+    "idAgenciaDestino": 1,
+    "Destinatario": {
+      "Dni": 31222333,
+      "nombre": "Valeria",
+      "apellido": "Sosa",
+      "calle": "Av. Mitre",
+      "altura": 250,
+      "piso": "",
+      "codigoPostal": "1430",
+      "ciudad": "CABA",
+      "telefono": "1122223333"
+    },
+    "TipoBulto": "M",
+    "EquivalenteS": 2,
+    "estado": "Entregada",
+    "Historial": [
+      {
+        "FechaCambio": "2026-05-01T00:00:00",
+        "Estado": "Impuesta",
+        "Donde": "Agencia Centro - Cordoba"
+      },
+      {
+        "FechaCambio": "2026-05-02T00:00:00",
+        "Estado": "IncluidaEnHDRRetiro",
+        "Donde": "Agencia Centro - Cordoba"
+      },
+      {
+        "FechaCambio": "2026-05-03T00:00:00",
+        "Estado": "Retirada",
+        "Donde": "Con transportista local Cordoba"
+      },
+      {
+        "FechaCambio": "2026-05-04T00:00:00",
+        "Estado": "Admitida",
+        "Donde": "Centro - Cordoba"
+      },
+      {
+        "FechaCambio": "2026-05-05T00:00:00",
+        "Estado": "PendienteDeDespacho",
+        "Donde": "Centro - Cordoba"
+      },
+      {
+        "FechaCambio": "2026-05-06T00:00:00",
+        "Estado": "EnTransito",
+        "Donde": "En servicio Cordoba - Capital y GBA"
+      },
+      {
+        "FechaCambio": "2026-05-07T00:00:00",
+        "Estado": "EnCDDestino",
+        "Donde": "Capital y GBA"
+      },
+      {
+        "FechaCambio": "2026-05-08T00:00:00",
+        "Estado": "EnDistribucion",
+        "Donde": "Con transportista local Capital y GBA"
+      },
+      {
+        "FechaCambio": "2026-05-08T00:00:00",
+        "Estado": "PendienteDeRetiroEnAgencia",
+        "Donde": "Agencia Capital y GBA"
+      },
+      {
+        "FechaCambio": "2026-05-09T00:00:00",
+        "Estado": "Entregada",
+        "Donde": "Agencia Capital y GBA"
+      }
+    ],
+    "TarifaCalculada": {
+      "PrecioFlete": 0.0,
+      "ExtraRetiroDomicilio": 0.0,
+      "ExtraEntregaDomicilio": 0.0,
+      "ExtraEntregaAgencia": 0.0,
+      "TarifaTotal": 0.0
+    }
+  },
+  {
+    "NroGuia": "RCV-901",
+    "IdCliente": 1,
+    "TipoImposicion": "CD",
+    "idCDOrigen": 1,
+    "idAgenciaOrigen": 0,
+    "idCDActual": 3,
+    "modalidadEntrega": "EntregaDomicilio",
+    "idCDDestino": 3,
+    "idAgenciaDestino": 0,
+    "Destinatario": {
+      "Dni": 40111111,
+      "nombre": "Laura",
+      "apellido": "Mendez",
+      "calle": "San Martin",
+      "altura": 1200,
+      "piso": "",
+      "codigoPostal": "5000",
+      "ciudad": "Cordoba",
+      "telefono": "3511111111"
+    },
+    "TipoBulto": "L",
+    "EquivalenteS": 4,
+    "estado": "Entregada",
+    "Historial": [
+      {
+        "FechaCambio": "2026-06-10T00:00:00",
+        "Estado": "Entregada",
+        "Donde": "Centro de Distribucion Cordoba"
+      }
+    ],
+    "TarifaCalculada": {
+      "PrecioFlete": 78000.0,
+      "ExtraRetiroDomicilio": 0.0,
+      "ExtraEntregaDomicilio": 2000.0,
+      "ExtraEntregaAgencia": 0.0,
+      "TarifaTotal": 80000.0
+    }
+  },
+  {
+    "NroGuia": "RCV-902",
+    "IdCliente": 2,
+    "TipoImposicion": "CD",
+    "idCDOrigen": 1,
+    "idAgenciaOrigen": 0,
+    "idCDActual": 3,
+    "modalidadEntrega": "EntregaAgencia",
+    "idCDDestino": 3,
+    "idAgenciaDestino": 1,
+    "Destinatario": {
+      "Dni": 40222222,
+      "nombre": "Martin",
+      "apellido": "Silva",
+      "calle": "Colon",
+      "altura": 900,
+      "piso": "2A",
+      "codigoPostal": "5000",
+      "ciudad": "Cordoba",
+      "telefono": "3512222222"
+    },
+    "TipoBulto": "M",
+    "EquivalenteS": 2,
+    "estado": "Entregada",
+    "Historial": [
+      {
+        "FechaCambio": "2026-06-10T00:00:00",
+        "Estado": "Entregada",
+        "Donde": "Centro de Distribucion Cordoba"
+      }
+    ],
+    "TarifaCalculada": {
+      "PrecioFlete": 29000.0,
+      "ExtraRetiroDomicilio": 0.0,
+      "ExtraEntregaDomicilio": 0.0,
+      "ExtraEntregaAgencia": 1000.0,
+      "TarifaTotal": 30000.0
     }
   }
 ]

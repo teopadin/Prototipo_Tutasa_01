@@ -1,0 +1,26 @@
+﻿Plan de Prueba: Generación HDR de Retiro – Caso exitoso (camino feliz)
+1. Abrir la pantalla Generar HDR de Retiro.
+2. Verificar: CD emisor = "Capital y GBA" y Fecha = fecha del día (11/6/2026).
+3. Verificar: En la lista de "Guías pendientes de retiro" aparecen exactamente las siguientes guías con sus respectivos datos:
+CD01-0017: CallCenter | Juan Perez SRL | Av. Corrientes 1200 4A | CP 1043 | CABA | Bulto: M
+CD01-0018: CallCenter | Mundo Fox S.A. | Av. Colon 900 | CP 5000 | Cordoba | Bulto: L
+CD01-0019: CallCenter | Empresa ABC SA | Av. Rivadavia 3200 3B | CP 1406 | CABA | Bulto: S
+AG01-0020: Agencia | Agencia Capital y GBA | Av. Corrientes 1500 | CP 1042 | CABA | Bulto: S
+AG01-0021: Agencia | Agencia Capital y GBA | Av. Corrientes 1500 | CP 1042 | CABA | Bulto: XL
+4. Tildar la guía AG01-0020.
+5. Verificar: * La guía AG01-0021 (misma dirección: Av. Corrientes 1500, CABA) queda seleccionable en negro.
+6. Las guías CD01-0017, CD01-0018 y CD01-0019 (direcciones distintas) se deshabilitan y quedan en gris.
+7. Se despliega abajo la sección "Transportista Local asignado".
+8. Tildar la guía AG01-0021.
+9. Verificar: En la lista de transportistas locales asignados aparecen los fletes que coinciden con el CD de origen, detallando su ID, Nombre, Apellido y HDR Asignadas:
+30111222: Carlos Gomez | HDR Asignadas: 1
+30222333: Laura Martinez | HDR Asignadas: 1
+45678901: Sofia Diaz | HDR Asignadas: 1
+10. Seleccionar el transportista Carlos Gomez (o cualquiera de la lista disponible).
+11. Presionar "Generar HDR".
+12. Verificar mensaje: "Hoja de Ruta de Retiro 1041 generada con éxito."
+13. Verificar: La pantalla se limpia y las guías AG01-0020 y AG01-0021 ya no aparecen en la lista de pendientes.
+14. Salir del sistema.
+15. Archivo HojasDeRutaRetiro.json: Se verifica un nuevo registro con el NroHDR generado 1041, estado "Generada", dniTransportistaAsignado de Carlos Gomez, dirección del retiro (Av. Corrientes 1500) y el detalle de guías con AG01-0020 y AG01-0021.
+16. Archivo Guias.json: Las guías AG01-0020 y AG01-0021 cambian su estado a "EnRetiro" (o el estado intermedio que maneje tu negocio).
+17. Archivo TransportistasLocales.json: Carlos Gomez pasa a tener HdrAsignadas = 2 (sumando 1 a su valor inicial).

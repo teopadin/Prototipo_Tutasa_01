@@ -17,6 +17,10 @@ namespace Prototipos_TUTASA
 {
     internal static class Program
     {
+        public static int CodigoCDActual { get; set; } = 1;
+        public static int CodigoAgenciaActual { get; set; } = 1;
+        public static bool IniciaDesdeAgencia { get; set; } = false;
+
         [STAThread]
         static void Main()
         {
@@ -40,7 +44,7 @@ namespace Prototipos_TUTASA
             //Application.Run(new ConsultarEstadoDelPedido_v2.ConsultarEstadoDelPedido());
             //Application.Run(new resultadocostosvsventas());
             //Application.Run(new Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrienteXCliente_v2.EstadoCuentaCorrienteXCliente());
-            Application.Run(new EntregaAgencia());
+            Application.Run(new Menu());
         }
     }
 }

@@ -32,7 +32,6 @@
             lblCDDestino = new Label();
             lvGuiasPendientes = new ListView();
             colNumeroGuia = new ColumnHeader();
-            colFechaGuia = new ColumnHeader();
             colTipoBultoLista = new ColumnHeader();
             colCDFinal = new ColumnHeader();
             lvServicios = new ListView();
@@ -74,7 +73,7 @@
             // lvGuiasPendientes
             // 
             lvGuiasPendientes.CheckBoxes = true;
-            lvGuiasPendientes.Columns.AddRange(new ColumnHeader[] { colNumeroGuia, colFechaGuia, colTipoBultoLista, colCDFinal });
+            lvGuiasPendientes.Columns.AddRange(new ColumnHeader[] { colNumeroGuia, colTipoBultoLista, colCDFinal });
             lvGuiasPendientes.FullRowSelect = true;
             lvGuiasPendientes.Location = new Point(12, 77);
             lvGuiasPendientes.Name = "lvGuiasPendientes";
@@ -88,11 +87,6 @@
             // 
             colNumeroGuia.Text = "Nro Guia";
             colNumeroGuia.Width = 200;
-            // 
-            // colFechaGuia
-            // 
-            colFechaGuia.Text = "Fecha";
-            colFechaGuia.Width = 200;
             // 
             // colTipoBultoLista
             // 
@@ -236,7 +230,6 @@
         private ListView lvGuiasPendientes;
         private ColumnHeader colNumeroGuia;
         private ColumnHeader colTipoBultoLista;
-        private ColumnHeader colFechaGuia;
         private ListView lvServicios;
         private ColumnHeader columnHeader1;
         private ColumnHeader columnHeader2;

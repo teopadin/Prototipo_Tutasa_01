@@ -1,0 +1,9 @@
+﻿Plan de Prueba: Resumen Hoja de Ruta de Retiro - Caso exitoso
+
+Pasos
+1- Desplegar botón de “Transportista Local asignado”
+2- Seleccionar Carlos Gomez.
+3- Presionar Generar Resumen.
+4- Verificar mensaje “Resumen de HDR de Retiro se ha generado con éxito.”
+5- Presionar Aceptar.
+6- //Falta sumar la actualización del .JSON

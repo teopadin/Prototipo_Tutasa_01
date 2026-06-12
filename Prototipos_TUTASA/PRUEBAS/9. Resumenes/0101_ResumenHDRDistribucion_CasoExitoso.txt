@@ -1,0 +1,10 @@
+﻿Plan de Prueba: Resumen Hoja de Ruta de Distribución - Caso exitoso
+
+Pasos
+
+1- Desplegar opción “Transportista Local asignado”.
+2- Seleccionqr Carlos Gomez.
+3- Presionar "Generar Resumen".
+4- Verificar mensaje “Resumen de HDR de Distribución se ha generado con éxito.”.
+5- Presionar Aceptar.
+6- //Faltaría lo del .JSON.

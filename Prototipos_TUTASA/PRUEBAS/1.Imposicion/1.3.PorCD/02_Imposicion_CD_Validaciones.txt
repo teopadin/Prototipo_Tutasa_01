@@ -1,0 +1,15 @@
+﻿Plan de Prueba: Imposición en CD - Entrega en CD - Validaciones
+
+Pasos:
+
+1- Abrir la pantalla Imposición en CD, no seleccionar Razón Social y presionar Registrar Imposición y Admisión.
+2- Seleccionar una Razón Social válida, dejar vacío Nombre, Apellido, DNI o Teléfono del destinatario y presionar Registrar Imposición y Admisión.
+3- Seleccionar una Razón Social válida, ingresar Nombre Ana123, completar Apellido, DNI y Teléfono correctamente, seleccionar tamaño de bulto, seleccionar modalidad Entrega en CD, seleccionar CD Destino y presionar Registrar Imposición y Admisión.
+4- Seleccionar una Razón Social válida, ingresar Nombre Ana, ingresar Apellido Perez123, completar DNI y Teléfono correctamente, seleccionar tamaño de bulto, seleccionar modalidad Entrega en CD, seleccionar CD Destino y presionar Registrar Imposición y Admisión.
+5- Seleccionar una Razón Social válida, ingresar Nombre Ana, ingresar Apellido Perez, ingresar DNI abc, completar Teléfono correctamente, seleccionar tamaño de bulto, seleccionar modalidad Entrega en CD, seleccionar CD Destino y presionar Registrar Imposición y Admisión.
+6- Seleccionar una Razón Social válida, ingresar Nombre Ana, ingresar Apellido Perez, ingresar DNI 40123456, ingresar Teléfono 112abc, seleccionar tamaño de bulto, seleccionar modalidad Entrega en CD, seleccionar CD Destino y presionar Registrar Imposición y Admisión.
+7- Seleccionar una Razón Social válida, completar Nombre, Apellido, DNI y Teléfono del destinatario correctamente, no seleccionar tamaño de bulto, seleccionar modalidad Entrega en CD, seleccionar CD Destino y presionar Registrar Imposición y Admisión.
+8- Seleccionar una Razón Social válida, completar Nombre, Apellido, DNI y Teléfono del destinatario correctamente, seleccionar tamaño de bulto, no seleccionar modalidad de entrega y presionar Registrar Imposición y Admisión.
+9- Seleccionar una Razón Social válida, completar Nombre, Apellido, DNI y Teléfono del destinatario correctamente, seleccionar tamaño de bulto, seleccionar modalidad Entrega en CD, no seleccionar CD Destino y presionar Registrar Imposición y Admisión.
+10- Seleccionar una Razón Social válida, completar Nombre, Apellido, DNI y Teléfono del destinatario correctamente, seleccionar tamaño de bulto, seleccionar modalidad Entrega en CD, seleccionar CD Destino y presionar Registrar Imposición y Admisión.
+

@@ -25,7 +25,7 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_CD
         public ModeloEntregaEnCD()
         {
             CentroDistribucionEntidad cdCapital = CentroDistribucionAlmacen.CentrosDeDistribucion
-                .FirstOrDefault(cd => cd.idCD == 1);
+                .FirstOrDefault(cd => cd.idCD == Program.CodigoCDActual);
 
             cdActual = cdCapital != null
                 ? new CentroDistribucion { idCD = cdCapital.idCD, nombre = cdCapital.nombre }

@@ -27,74 +27,62 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
             LimpiarPantalla();
         }
 
-        private void CargarCombobox()
-        {
-            ServicioCmb.Items.Clear();
-            foreach (var hdr in modelo.ObtenerHDRsPendientes())
-            {
-                ServicioCmb.Items.Add(hdr);
-            }
-
-            TotalGeneralTxtb.Text = modelo.CalcularTotalGeneralPendiente().ToString();
-        }
-
         private void ServicioCmb_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // Limpiamos antes de buscar para evitar que queden datos de una selección previa
             if (ServicioCmb.SelectedItem == null)
             {
+                LimpiarPantalla(); // Asegurate de que esta función limpie todos los TextBoxes
                 TotalGeneralTxtb.Text = modelo.CalcularTotalGeneralPendiente().ToString();
-                LimpiarPantalla();
                 return;
             }
 
             var hdrSeleccionada = (HojaDeRutaTransporte)ServicioCmb.SelectedItem;
 
-            // 1. Destino dinámico consultando al Modelo (mucho más limpio que el switch)
+            // 1. Destino dinámico
             var cd = modelo.BuscarCD(hdrSeleccionada.idCDDestino);
             CdDestinoTxtb.Text = cd != null ? cd.nombre : "Centro de Distribución Desconocido";
 
-            // 2. Mostramos el ID del Servicio (ya es string en la HDR)
+            // 2. ID del Servicio
             IdServicioTxtb.Text = hdrSeleccionada.idServicio;
 
-            // 3. Buscamos el objeto Servicio real. Como en la HDR es string y en el Servicio es int, lo parseamos
-            if (int.TryParse(hdrSeleccionada.idServicio, out int idServicioInt))
-            {
-                var servicioAsociado = modelo.BuscarServicioPorId(idServicioInt);
+            // 3. Búsqueda de Servicio y Empresa (SIN INT.TRYPARSE)
+            // Como tu ID es "SMD-001", usamos directamente el string
+            var servicioAsociado = modelo.BuscarServicioPorId(hdrSeleccionada.idServicio);
 
-                if (servicioAsociado != null)
-                {
-                    var empresaAsociada = modelo.BuscarEmpresa(servicioAsociado.idEmpresa);
-                    EmpresaTxtb.Text = empresaAsociada != null ? empresaAsociada.razonSocial : "Empresa no encontrada";
-                }
-                else
-                {
-                    EmpresaTxtb.Text = "Servicio no encontrado";
-                }
+            if (servicioAsociado != null)
+            {
+                var empresaAsociada = modelo.BuscarEmpresa(servicioAsociado.idEmpresa);
+                EmpresaTxtb.Text = empresaAsociada != null ? empresaAsociada.razonSocial : "Empresa no encontrada";
+            }
+            else
+            {
+                EmpresaTxtb.Text = "Servicio no encontrado";
             }
 
+            // 4. Llenado de la lista (ListView)
             DespachoLst.Items.Clear();
 
-            // 4. Llenamos la grilla buscando cada guía a través de su string (NroGuia)
-            foreach (string nroGuia in hdrSeleccionada.DetalleGuias)
+            if (hdrSeleccionada.DetalleGuias != null)
             {
-                // Le pedimos la guía real al modelo
-                var guiaReal = modelo.BuscarGuia(nroGuia);
-
-                if (guiaReal != null)
+                foreach (string nroGuia in hdrSeleccionada.DetalleGuias)
                 {
-                    var item = new ListViewItem(guiaReal.NroGuia);
+                    var guiaReal = modelo.BuscarGuia(nroGuia);
+                    if (guiaReal != null)
+                    {
+                        var item = new ListViewItem(guiaReal.NroGuia);
 
-                    // Buscamos el cliente en el modelo usando el IdCliente de la guía
-                    var cliente = modelo.BuscarCliente(guiaReal.IdCliente);
-                    item.SubItems.Add(cliente != null ? cliente.razonSocial : "Desconocido");
+                        var cliente = modelo.BuscarCliente(guiaReal.IdCliente);
+                        item.SubItems.Add(cliente != null ? cliente.razonSocial : "Desconocido");
+                        item.SubItems.Add(guiaReal.Destinatario.nombre + " " + guiaReal.Destinatario.apellido);
+                        item.SubItems.Add(guiaReal.TipoBulto.ToString());
 
-                    item.SubItems.Add(guiaReal.Destinatario.nombre + " " + guiaReal.Destinatario.apellido);
-                    item.SubItems.Add(guiaReal.TipoBulto.ToString());
-
-                    DespachoLst.Items.Add(item);
+                        DespachoLst.Items.Add(item);
+                    }
                 }
             }
 
+            // 5. Cálculos
             BultoTxtb.Text = modelo.CalcularBultosEnS(hdrSeleccionada).ToString();
             TotalBultoTxtb.Text = modelo.CalcularTotalBultos(hdrSeleccionada).ToString();
         }
@@ -105,7 +93,7 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
 
             if (hdrSeleccionada == null)
             {
-                MessageBox.Show("Debe seleccionar un Servicio.");
+                MessageBox.Show("Debe seleccionar un Servicio/HDR.");
                 return;
             }
 
@@ -115,9 +103,8 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
                 return;
             }
 
-            // Ojo acá: es NroHDR con mayúscula inicial según tu clase
             var confirma = MessageBox.Show(
-                "¿Confirma el despacho del Servicio " + hdrSeleccionada.NroHDR + "?\n" +
+                "¿Confirma el despacho del Servicio de la HDR N° " + hdrSeleccionada.NroHDR + "?\n" +
                 "Se emitirán 3 copias de la HDR Transporte.",
                 "Confirmar despacho",
                 MessageBoxButtons.YesNo,
@@ -125,16 +112,38 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
 
             if (confirma != DialogResult.Yes) return;
 
+            // Al pasarle la HDR al modelo, el modelo se va a encargar de buscar 
+            // su servicio asociado, clavarle el DateTime.Now y guardar el JSON.
             if (!modelo.ConfirmarDespacho(hdrSeleccionada))
             {
+                MessageBox.Show("Ocurrió un error al registrar el despacho.");
                 return;
             }
 
-            // Ojo acá: también NroHDR mayúscula
-            MessageBox.Show("Despacho registrado con éxito. Se emiten 3 copias de la HDR " + hdrSeleccionada.NroHDR + ".");
+            MessageBox.Show("Despacho registrado con éxito. Se emiten 3 copias de la HDR N° " + hdrSeleccionada.NroHDR + ".");
 
+            // Al recargar el combo, la HDR que acabamos de despachar ya no va a aparecer
             CargarCombobox();
             LimpiarPantalla();
+        }
+
+        private void CargarCombobox()
+        {
+            /* 1. Buscamos los IDs de los servicios que NO fueron despachados (fechaLlegada es default)
+            var idsServiciosPendientes = modelo.servicios
+                .Where(s => s.fechaLlegada == default(DateTime))
+                .Select(s => s.idServicio.ToString())
+                .ToList();
+
+            // 2. Filtramos las Hojas de Ruta locales para mostrar solo las que pertenezcan a esos servicios pendientes
+            var hdrsPendientes = modelo.hdrs
+                .Where(h => idsServiciosPendientes.Contains(h.idServicio))
+                .ToList();
+            */
+            // 3. Cargamos el ComboBox con el filtro aplicado
+            ServicioCmb.DataSource = null;
+            ServicioCmb.DataSource = modelo.hdrs;
+            ServicioCmb.DisplayMember = "NroHDR"; // Muestra el número de HDR en el combo
         }
 
         private void CancelarBtn_Click(object sender, EventArgs e)

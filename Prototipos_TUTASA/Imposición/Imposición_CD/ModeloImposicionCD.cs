@@ -25,7 +25,11 @@ namespace Prototipos_TUTASA.Imposición.Imposición_CD
                 });
             }
 
-            CdOrigen = CentrosDeDistribucion.Count > 0 ? CentrosDeDistribucion[0] : null;
+            CdOrigen = BuscarCD(Program.CodigoCDActual);
+            if (CdOrigen == null && CentrosDeDistribucion.Count > 0)
+            {
+                CdOrigen = CentrosDeDistribucion[0];
+            }
 
             Clientes = new List<Cliente>();
             foreach (var clienteEntidad in ClienteAlmacen.Clientes)

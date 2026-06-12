@@ -367,7 +367,7 @@
             // 
             lblTitulo.Font = new Font("Segoe UI", 16F);
             lblTitulo.ForeColor = Color.FromArgb(30, 30, 30);
-            lblTitulo.Location = new Point(15, 12);
+            lblTitulo.Location = new Point(15, 10);
             lblTitulo.Margin = new Padding(4, 0, 4, 0);
             lblTitulo.Name = "lblTitulo";
             lblTitulo.Size = new Size(650, 59);

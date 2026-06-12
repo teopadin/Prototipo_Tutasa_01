@@ -1,0 +1,34 @@
+﻿Plan de Prueba: Rendir HDR de Distribucion - Caso Exitoso (HDR No Cumplida)
+
+Datos de partida:
+- Transportista: dni 22222222 (Gomez, Maria)
+- HDR 1004 -> Destinatario: Ana Martinez, DetalleGuias: G-D-004 (ModalidadEntrega: EntregaDomicilio), estado: EnCurso
+- HDR 1005 -> Destinatario: Carlos Sosa, DetalleGuias: G-D-005 (ModalidadEntrega: EntregaDomicilio), estado: Recibida
+
+1- Abrir la pantalla "Rendir HDR de Distribucion".
+2- En el combo "Fletero" seleccionar "Gomez, Maria" (dni 22222222).
+3- Verificar: se cargan 2 filas en la grilla con las HDR 1004 y 1005, cada una con su destinatario, direccion y estado actual.
+4- Seleccionar en la grilla la fila correspondiente a la HDR 1004.
+5- Marcar el radio "No Cumplida".
+6- Verificar: se habilita el combo "Motivo".
+7- Presionar "Aplicar" sin seleccionar ningun motivo.
+8- Verificar mensaje: "Debe seleccionar un motivo cuando la HDR es No Cumplida."
+9- Presionar "Aceptar".
+10- En el combo "Motivo" seleccionar "DestinatarioAusente".
+11- Presionar "Aplicar".
+12- Verificar: en la grilla, la columna Estado de la fila 1004 cambia a "NoCumplida".
+13- Seleccionar la fila de la HDR 1005, marcar el radio "Cumplida" y presionar "Aplicar".
+14- Verificar: en la grilla, la columna Estado de la fila 1005 cambia a "Cumplida".
+15- Verificar: campo "Total Rendidas" = 2, "Total Cumplidas" = 1, "Total No Cumplidas" = 1.
+16- Presionar "Registrar Rendicion".
+17- Verificar mensaje: "Rendicion registrada con exito. Total HDR rendidas: 2"
+18- Presionar "Aceptar".
+19- Salir del sistema.
+
+20- Archivo HojasDeRutaDistribucion.json: registros existentes
+    con NroHDR 1004, con estado "NoCumplida" y motivoNoCumplida "DestinatarioAusente".
+    con NroHDR 1005, con estado "Cumplida".
+
+21- Archivo Guias.json: registros existentes
+    con NroGuia G-D-004 (ModalidadEntrega "EntregaDomicilio"), estado "EnCDDestino".
+    con NroGuia G-D-005 (ModalidadEntrega "EntregaDomicilio"), estado "Entregada".

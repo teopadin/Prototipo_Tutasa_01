@@ -1,0 +1,16 @@
+﻿Plan de Prueba: Imposición en CD - Entrega en CD - Caso exitoso
+
+Pasos
+1- Abrir la pantalla Imposición en CD.
+2- Seleccionar la razón social Juan Perez SRL.
+3- Verificar que se completan automáticamente los datos del remitente.
+4- Ingresar Nombre destinatario Ana.
+5- Ingresar Apellido destinatario Perez.
+6- Ingresar DNI destinatario 40123456.
+7- Ingresar Teléfono destinatario 1123456789.
+8- Seleccionar tamaño de bulto S.
+9- Seleccionar modalidad Entrega en CD.
+10- Seleccionar CD Destino Capital y GBA.
+11- Presionar Registrar Imposición y Admisión.
+12- El sistema muestra el mensaje "Guía N° XXXX generada y admitida con éxito.".
+13- La guía se genera en el archivo Guias.json.
