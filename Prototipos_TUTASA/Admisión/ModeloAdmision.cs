@@ -50,7 +50,7 @@ namespace Prototipos_TUTASA.Admisión
                     IdTarifa = tarifaEntidad.IdTarifa,
                     IdCDOrigen = tarifaEntidad.IdCDOrigen,
                     IdCDDestino = tarifaEntidad.IdCDDestino,
-                    TipoBulto = (TiposBultoEnum)tarifaEntidad.TipoBulto,
+                    TipoBulto = Enum.Parse<TiposBultoEnum>(tarifaEntidad.TipoBulto.ToString()),
                     PrecioFlete = tarifaEntidad.PrecioFlete
                 });
             }
@@ -60,7 +60,7 @@ namespace Prototipos_TUTASA.Admisión
             {
                 costosExtra.Add(new CostoExtra
                 {
-                    TipoCostoExtra = (TipoCostoExtraEnum)costoEntidad.TipoCostoExtra,
+                    TipoCostoExtra = Enum.Parse<TipoCostoExtraEnum>(costoEntidad.TipoCostoExtra.ToString()),
                     Monto = costoEntidad.Monto
                 });
             }
@@ -68,11 +68,17 @@ namespace Prototipos_TUTASA.Admisión
             guias = new List<Guia>();
             foreach (var guiaEntidad in GuiaAlmacen.Guias)
             {
+                EstadoGuiaEnum estadoLocal;
+                if (!Enum.TryParse<EstadoGuiaEnum>(guiaEntidad.estado.ToString(), out estadoLocal))
+                {
+                    continue; // saltar guías en estados que Admisión no maneja
+                }
+
                 guias.Add(new Guia
                 {
                     NroGuia = guiaEntidad.NroGuia,
                     IdCliente = guiaEntidad.IdCliente,
-                    TipoImposicion = (TipoImposicionEnum)guiaEntidad.TipoImposicion,
+                    TipoImposicion = Enum.Parse<TipoImposicionEnum>(guiaEntidad.TipoImposicion.ToString()),
                     IdCDDestino = guiaEntidad.idCDDestino,
                     Destinatario = new DestinatarioGuia
                     {
@@ -80,9 +86,9 @@ namespace Prototipos_TUTASA.Admisión
                         nombre = guiaEntidad.Destinatario.nombre,
                         apellido = guiaEntidad.Destinatario.apellido
                     },
-                    TipoBulto = (TiposBultoEnum)guiaEntidad.TipoBulto,
-                    ModalidadEntrega = (ModalidadEntregaEnum)guiaEntidad.modalidadEntrega,
-                    estado = (EstadoGuiaEnum)guiaEntidad.estado
+                    TipoBulto = Enum.Parse<TiposBultoEnum>(guiaEntidad.TipoBulto.ToString()),
+                    ModalidadEntrega = Enum.Parse<ModalidadEntregaEnum>(guiaEntidad.modalidadEntrega.ToString()),
+                    estado = estadoLocal
                 });
             }
         }
@@ -230,7 +236,7 @@ namespace Prototipos_TUTASA.Admisión
             {
                 if (guiaEntidad.NroGuia == nroGuia)
                 {
-                    guiaEntidad.estado = (Auxiliares.EstadoGuiaEnum)guia.estado;
+                    guiaEntidad.estado = Enum.Parse<Auxiliares.EstadoGuiaEnum>(guia.estado.ToString());
                     guiaEntidad.TarifaCalculada.PrecioFlete = guia.TarifaCalculada.PrecioFlete;
                     guiaEntidad.TarifaCalculada.ExtraRetiroDomicilio = guia.TarifaCalculada.ExtraRetiroDomicilio;
                     guiaEntidad.TarifaCalculada.ExtraEntregaDomicilio = guia.TarifaCalculada.ExtraEntregaDomicilio;
@@ -254,7 +260,7 @@ namespace Prototipos_TUTASA.Admisión
             {
                 if (guiaEntidad.NroGuia == nroGuia)
                 {
-                    guiaEntidad.estado = (Auxiliares.EstadoGuiaEnum)guia.estado;
+                    guiaEntidad.estado = Enum.Parse<Auxiliares.EstadoGuiaEnum>(guia.estado.ToString());
                     break;
                 }
             }
