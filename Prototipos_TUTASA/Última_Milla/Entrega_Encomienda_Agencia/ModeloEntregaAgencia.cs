@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using Prototipos_TUTASA.Almacenes;
+using Prototipos_TUTASA.Auxiliares;
 
 namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia
 {
@@ -11,41 +13,62 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia
 
         public ModeloEntregaAgencia()
         {
-            var agenciaCapital = new Agencia { idAgencia = 1, razonSocial = "Capital y GBA" };
-            var agenciaCentro = new Agencia { idAgencia = 2, razonSocial = "Centro - Córdoba" };
-
-            AgenciaActual = agenciaCapital;
-
-            guias = new List<Guia>
+            // Cargar agencias desde AgenciaAlmacen
+            List<Agencia> agencias = new List<Agencia>();
+            foreach (var agenciaEntidad in AgenciaAlmacen.Agencias)
             {
-                new Guia
+                agencias.Add(new Agencia
                 {
-                    NroGuia = "AG01-0001",
-                    estado = EstadoGuiaEnum.PendienteDeRetiroEnAgencia,
-                    idAgenciaDestino = agenciaCapital.idAgencia,
-                    Destinatario = new DestinatarioGuia { nombre = "Ana", apellido = "Pérez", Dni = 40123456 }
-                },
-                new Guia
+                    idAgencia = agenciaEntidad.idAgencia,
+                    razonSocial = agenciaEntidad.razonSocial
+                });
+            }
+
+            // Asignar la primera agencia como agencia operadora
+            AgenciaActual = agencias.Count > 0 ? agencias[0] : null;
+
+            // Cargar guías desde GuiaAlmacen
+            guias = new List<Guia>();
+            if (AgenciaActual != null)
+            {
+                foreach (var guiaEntidad in GuiaAlmacen.Guias)
                 {
-                    NroGuia = "AG01-0002",
-                    estado = EstadoGuiaEnum.PendienteDeRetiroEnAgencia,
-                    idAgenciaDestino = agenciaCapital.idAgencia,
-                    Destinatario = new DestinatarioGuia { nombre = "Juan", apellido = "Rodríguez", Dni = 41234567 }
-                },
-                new Guia
-                {
-                    NroGuia = "AG01-0003",
-                    estado = EstadoGuiaEnum.Entregada,
-                    idAgenciaDestino = agenciaCapital.idAgencia,
-                    Destinatario = new DestinatarioGuia { nombre = "María", apellido = "González", Dni = 42345678 }
-                },
-                new Guia
-                {
-                    NroGuia = "AG02-0001",
-                    estado  = EstadoGuiaEnum.PendienteDeRetiroEnAgencia,
-                    idAgenciaDestino = agenciaCapital.idAgencia,
-                    Destinatario = new DestinatarioGuia { nombre = "Carlos", apellido = "López", Dni = 43567890 }
+                    if (guiaEntidad.idAgenciaDestino == AgenciaActual.idAgencia)
+                    {
+                        // Mapear el estado desde EstadoGuiaEnum de Auxiliares al local
+                        EstadoGuiaEnum estadoLocal = MapearEstado(guiaEntidad.estado);
+
+                        // Mapear DestinatarioGuia desde Almacenes al local
+                        DestinatarioGuia destinatarioLocal = null;
+                        if (guiaEntidad.Destinatario != null)
+                        {
+                            destinatarioLocal = new DestinatarioGuia
+                            {
+                                nombre = guiaEntidad.Destinatario.nombre,
+                                apellido = guiaEntidad.Destinatario.apellido,
+                                Dni = guiaEntidad.Destinatario.Dni
+                            };
+                        }
+
+                        guias.Add(new Guia
+                        {
+                            NroGuia = guiaEntidad.NroGuia,
+                            estado = estadoLocal,
+                            idAgenciaDestino = guiaEntidad.idAgenciaDestino,
+                            Destinatario = destinatarioLocal
+                        });
+                    }
                 }
+            }
+        }
+
+        private static EstadoGuiaEnum MapearEstado(Auxiliares.EstadoGuiaEnum estadoAuxiliar)
+        {
+            return estadoAuxiliar switch
+            {
+                Auxiliares.EstadoGuiaEnum.PendienteDeRetiroEnAgencia => EstadoGuiaEnum.PendienteDeRetiroEnAgencia,
+                Auxiliares.EstadoGuiaEnum.Entregada => EstadoGuiaEnum.Entregada,
+                _ => EstadoGuiaEnum.PendienteDeRetiroEnAgencia
             };
         }
 
