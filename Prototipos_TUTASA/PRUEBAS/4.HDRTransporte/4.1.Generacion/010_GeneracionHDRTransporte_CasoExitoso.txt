@@ -1,24 +1,24 @@
 ﻿Plan de Prueba: Generación HDR de Transporte – Caso exitoso (camino feliz)
 
-Abrir la pantalla Generar Hoja de Ruta de Transporte.
-Verificar: el combo CD Destino lista todos los centros menos el emisor (Centro - Córdoba, Norte - Tucumán, Este - Corrientes, Cordillera - Neuquén, Sur - Viedma).
-Seleccionar en el combo CD Destino: "Centro - Córdoba".
-Verificar: En la lista de "Guías" aparecen las guías admitidas del CD emisor con sus datos:
+1. Abrir la pantalla Generar Hoja de Ruta de Transporte.
+2. Verificar: el combo CD Destino lista todos los centros menos el emisor (Centro - Córdoba, Norte - Tucumán, Este - Corrientes, Cordillera - Neuquén, Sur - Viedma).
+3. Seleccionar en el combo CD Destino: "Centro - Córdoba".
+4. Verificar: En la lista de "Guías" aparecen las guías admitidas del CD emisor con sus datos:
 CD01-0017: Bulto M | Norte - Tucumán
 CD01-0018: Bulto L | Centro - Córdoba
 CD01-0019: Bulto S | Este - Corrientes
 AG01-0020: Bulto S | Norte - Tucumán
 AG01-0021: Bulto XL | Sur - Viedma
 CD02-0022: Bulto M | Norte - Tucumán
-Tildar las guías CD01-0017, CD01-0018 y AG01-0020.
-Verificar: el campo "Bultos seleccionados (equiv. en S)" muestra 7 (M=2 + L=4 + S=1).
-Verificar: En la sección "Servicios disponibles" aparecen los servicios con origen en el CD emisor, destino Centro - Córdoba y capacidad suficiente para los 7 bultos, detallando ID Servicio, Empresa, Tipo de Servicio, Capacidad disponible y Fecha y hora de salida:
+5. Tildar las guías CD01-0017, CD01-0018 y AG01-0020.
+6. Verificar: el campo "Bultos seleccionados (equiv. en S)" muestra 7 (M=2 + L=4 + S=1).
+7. Verificar: En la sección "Servicios disponibles" aparecen los servicios con origen en el CD emisor, destino Centro - Córdoba y capacidad suficiente para los 7 bultos, detallando ID Servicio, Empresa, Tipo de Servicio, Capacidad disponible y Fecha y hora de salida:
 ID 3 | Transporte Federal S.A. | Tipo B | Capacidad disp. 80 | 12/06/2026 10:30
-Seleccionar el servicio ID 3 (Transporte Federal S.A.).
-Presionar "Generar HDR".
-Verificar mensaje: "Hoja de Ruta de Transporte [NroHDR] generada con éxito."
-Verificar: La pantalla se limpia, "Bultos seleccionados" vuelve a 0 y las guías CD01-0017, CD01-0018 y AG01-0020 ya no aparecen en la lista.
-Salir del sistema.
-Archivo HojasDeRutaTransporte.json: Se verifica un nuevo registro con el NroHDR generado, estado "Generada", idCDOrigen del emisor, idCDDestino correspondiente a Centro - Córdoba, idServicio "3" y el detalle de guías con CD01-0017, CD01-0018 y AG01-0020.
-Archivo Guias.json: Las guías CD01-0017, CD01-0018 y AG01-0020 cambian su estado a "PendienteDeDespacho".
-Archivo ServiciosMediaDistancia.json: El servicio ID 3 baja su capacidadDisponible en 7 (de 80 a 73, por los 7 bultos despachados según la equivalencia).
+8. Seleccionar el servicio ID 3 (Transporte Federal S.A.).
+9. Presionar "Generar HDR".
+10. Verificar mensaje: "Hoja de Ruta de Transporte [NroHDR] generada con éxito."
+11. Verificar: La pantalla se limpia, "Bultos seleccionados" vuelve a 0 y las guías CD01-0017, CD01-0018 y AG01-0020 ya no aparecen en la lista.
+12. Salir del sistema.
+13. Archivo HojasDeRutaTransporte.json: Se verifica un nuevo registro con el NroHDR generado, estado "Generada", idCDOrigen del emisor, idCDDestino correspondiente a Centro - Córdoba, idServicio "3" y el detalle de guías con CD01-0017, CD01-0018 y AG01-0020.
+14. Archivo Guias.json: Las guías CD01-0017, CD01-0018 y AG01-0020 cambian su estado a "PendienteDeDespacho".
+15. Archivo ServiciosMediaDistancia.json: El servicio ID 3 baja su capacidadDisponible en 7 (de 80 a 73, por los 7 bultos despachados según la equivalencia).
