@@ -18,5 +18,45 @@
     "calle": "Av. Colon",
     "ciudad": "Cordoba",
     "telefono": "3514602000"
+  },
+  {
+    "idCD": 3,
+    "nombre": "Norte - Tucumán",
+    "altura": 450,
+    "piso": "",
+    "codigoPostal": "4000",
+    "calle": "Av. Mate de Luna",
+    "ciudad": "San Miguel de Tucumán",
+    "telefono": "3814203000"
+  },
+  {
+    "idCD": 4,
+    "nombre": "Este - Corrientes",
+    "altura": 1100,
+    "piso": "",
+    "codigoPostal": "3400",
+    "calle": "Av. 3 de Abril",
+    "ciudad": "Corrientes",
+    "telefono": "3794304000"
+  },
+  {
+    "idCD": 5,
+    "nombre": "Cordillera - Neuquén",
+    "altura": 800,
+    "piso": "",
+    "codigoPostal": "8300",
+    "calle": "Av. Olascoaga",
+    "ciudad": "Neuquén",
+    "telefono": "2994405000"
+  },
+  {
+    "idCD": 6,
+    "nombre": "Sur - Viedma",
+    "altura": 250,
+    "piso": "",
+    "codigoPostal": "8500",
+    "calle": "Calle Caseros",
+    "ciudad": "Viedma",
+    "telefono": "2920426000"
   }
 ]
