@@ -13,6 +13,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
         public HojaDeRutaDistribucion HdrActual { get; set; }
         public List<TransportistaLocal> Transportistas { get; set; }
         public List<Guia> Guias { get; set; }
+        public List<Agencia> Agencias { get; set; }
 
         public ModeloRecibirHDRDistribucionAgencia()
         {
@@ -31,8 +32,15 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
 
             };
 
+
             // Simulación operador logueado
             AgenciaLogueada = agencia1;
+
+            Agencias = new List<Agencia>
+            {
+                agencia1,
+                agencia2
+            };
 
             // Transportistas
             var t1 = new TransportistaLocal
@@ -167,5 +175,10 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
         {
             return Guias.FirstOrDefault(g => g.NroGuia == nroGuia);
         }
+        public Agencia BuscarAgencia(int? idAgencia)
+        {
+            return Agencias.FirstOrDefault(a => a.idAgencia == idAgencia);
+        }
     }
+
 }

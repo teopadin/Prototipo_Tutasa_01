@@ -32,7 +32,12 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
         }
         private void CargarHDR(HojaDeRutaDistribucion hdr)
         {
-            txtAgencia.Text = hdr.AgenciaHDR.razonSocial;
+            Agencia agencia = modelo.BuscarAgencia(hdr.idAgenciaDestino);
+
+            if (agencia != null)
+            {
+                txtAgencia.Text = agencia.razonSocial;
+            }
 
             TransportistaLocal transportista = modelo.BuscarTransportista(hdr.dniTransportistaAsignado);
 
@@ -93,7 +98,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
             }
 
             // Excepción 3
-            if (hdr.AgenciaHDR.idAgencia != modelo.AgenciaLogueada.idAgencia)
+            if (hdr.idAgenciaDestino != modelo.AgenciaLogueada.idAgencia)
             {
                 MessageBox.Show("La hoja de ruta ingresada no corresponde a su agencia.");
 
