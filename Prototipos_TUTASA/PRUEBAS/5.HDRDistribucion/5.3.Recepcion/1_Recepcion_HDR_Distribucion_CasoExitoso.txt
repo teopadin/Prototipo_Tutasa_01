@@ -1,4 +1,4 @@
-Plan de Prueba: Recepcion de Hoja de Ruta de Retiro en Agencia - Caso éxitoso
+Plan de Prueba: Recepcion de Hoja de Ruta de Distribucion en Agencia - Caso éxitoso
 
 Pasos
 1- Ingresar XXXX-XXXX.
@@ -6,9 +6,9 @@ Pasos
 3- Verificar: Agencia: NombreAgencia, Transportista Local: NombreApellido.
 4- Verificar lista de guias incluidas en la HDR.
 5- Presionar Confirmar Recepcion.
-6- Verificar mensaje: "Recepción de HDR N° XXXX confirmada con éxito.
+6- Verificar mensaje: "Recepción de HDR N° XXXX confirmada con éxito".
 7- Presionar Aceptar.
 8- Salir del sistema presionando la cruz del extremo superior derecho de la pantalla.
-9- Archivo HojasDeRutaRetiro.json: registro existente
+9- Archivo HojasDeRutaDistribucion.json: registro existente
    con NroHDR XXXX-XXXX,
    con estado "Recibida".
