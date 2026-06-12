@@ -8,7 +8,7 @@ namespace Prototipos_TUTASA.Admisión
     internal class ModeloAdmision
     {
         // CD desde el que se realiza la admisión (lo reconoce el sistema)
-        private int idCDAdmisionActual = 1;
+        private int idCDAdmisionActual;
 
         private List<Cliente> clientes;
 
@@ -22,6 +22,8 @@ namespace Prototipos_TUTASA.Admisión
 
         public ModeloAdmision()
         {
+            idCDAdmisionActual = Program.CodigoCDActual;
+
             clientes = new List<Cliente>();
             foreach (var clienteEntidad in ClienteAlmacen.Clientes)
             {

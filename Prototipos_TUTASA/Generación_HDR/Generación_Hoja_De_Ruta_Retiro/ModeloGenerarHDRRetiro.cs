@@ -27,7 +27,11 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_Retiro
                 });
             }
 
-            CdEmisor = BuscarCD(2); // CD fijo (Capital) hasta tener el CD logueado
+            CdEmisor = BuscarCD(Program.CodigoCDActual);
+            if (CdEmisor == null && CentrosDeDistribucion.Count > 0)
+            {
+                CdEmisor = CentrosDeDistribucion[0];
+            }
 
             // ---- CLIENTES ----
             Clientes = new List<Cliente>();

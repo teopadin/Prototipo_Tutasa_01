@@ -51,7 +51,20 @@ namespace Prototipos_TUTASA.Imposición.Imposición_Agencia
                 });
             }
 
-            AgenciaOperadora = Agencias.Count > 0 ? Agencias[0] : null;
+            AgenciaOperadora = null;
+            foreach (Agencia agencia in Agencias)
+            {
+                if (agencia.idAgencia == Program.CodigoAgenciaActual)
+                {
+                    AgenciaOperadora = agencia;
+                    break;
+                }
+            }
+
+            if (AgenciaOperadora == null && Agencias.Count > 0)
+            {
+                AgenciaOperadora = Agencias[0];
+            }
             CdOrigen = AgenciaOperadora != null ? BuscarCD(AgenciaOperadora.idCD) : null;
 
             Guias = new List<Guia>();
