@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Prototipos_TUTASA.Almacenes;
 using Prototipos_TUTASA.ClasesResumenHDRRetiro;
+using EstadoHojaDeRutaAlmacen = Prototipos_TUTASA.Auxiliares.EstadoHojaDeRutaEnum;
 using HojaRetiroResumen = Prototipos_TUTASA.ClasesResumenHDRRetiro.HojaDeRutaRetiro;
 
 namespace Prototipos_TUTASA
@@ -21,7 +23,7 @@ namespace Prototipos_TUTASA
 
         public ModeloResumenHDRRetiro()
         {
-            CargarDatosDePrueba();
+            CargarDatosDesdeAlmacenes();
         }
 
         private bool BuscarHojasAsignadas(TransportistaLocal transportista, DateTime fecha, out List<HojaRetiroResumen> hojas)
@@ -84,8 +86,17 @@ namespace Prototipos_TUTASA
             foreach (HojaRetiroResumen hoja in hojasSeleccionadas)
             {
                 hoja.estado = EstadoHojaDeRutaEnum.EnCurso;
+
+                HojaDeRutaRetiroEntidad hojaEntidad = HojaDeRutaRetiroAlmacen.hojasDeRutaRetiro
+                    .FirstOrDefault(h => h.NroHDR == hoja.NroHDR);
+
+                if (hojaEntidad != null)
+                {
+                    hojaEntidad.estado = EstadoHojaDeRutaAlmacen.EnCurso;
+                }
             }
 
+            HojaDeRutaRetiroAlmacen.Guardar();
             LimpiarSeleccion();
             return true;
         }
@@ -155,48 +166,72 @@ namespace Prototipos_TUTASA
             return new Cliente();
         }
 
-        private string RegistrarGuia(string nroGuia, Cliente cliente)
+        private void RegistrarGuia(string nroGuia)
         {
-            clientesPorGuia[nroGuia] = cliente;
-            return nroGuia;
+            GuiaEntidad guiaEntidad = GuiaAlmacen.Guias
+                .FirstOrDefault(g => string.Equals(g.NroGuia, nroGuia, StringComparison.OrdinalIgnoreCase));
+
+            if (guiaEntidad == null)
+            {
+                return;
+            }
+
+            ClienteEntidad clienteEntidad = ClienteAlmacen.Clientes
+                .FirstOrDefault(c => c.idCliente == guiaEntidad.IdCliente);
+
+            if (clienteEntidad == null)
+            {
+                return;
+            }
+
+            clientesPorGuia[nroGuia] = new Cliente
+            {
+                idCliente = clienteEntidad.idCliente,
+                calle = clienteEntidad.calle,
+                altura = clienteEntidad.altura,
+                codigoPostal = clienteEntidad.codigoPostal
+            };
         }
 
-        private void CargarDatosDePrueba()
+        private void CargarDatosDesdeAlmacenes()
         {
-            var carlos = new TransportistaLocal { dniTransportista = 12345678, nombre = "Carlos", apellido = "Gomez" };
-            var laura = new TransportistaLocal { dniTransportista = 23456789, nombre = "Laura", apellido = "Martinez" };
-
-            transportistas.Add(carlos);
-            transportistas.Add(laura);
-
-            AgregarHojaDeRuta(1, DateTime.Today, carlos, new List<string>
+            foreach (TransportistaLocalEntidad transportistaEntidad in TransportistaLocalAlmacen.transportistas)
             {
-                RegistrarGuia("RET-0001", new Cliente { idCliente = 1, calle = "Av. Rivadavia", altura = 3200, codigoPostal = "1406" }),
-                RegistrarGuia("RET-0002", new Cliente { idCliente = 1, calle = "Av. Rivadavia", altura = 3200, codigoPostal = "1406" })
-            });
+                transportistas.Add(new TransportistaLocal
+                {
+                    dniTransportista = transportistaEntidad.dniTransportista,
+                    nombre = transportistaEntidad.nombre,
+                    apellido = transportistaEntidad.apellido
+                });
+            }
 
-            AgregarHojaDeRuta(2, DateTime.Today, carlos, new List<string>
+            foreach (HojaDeRutaRetiroEntidad hojaEntidad in HojaDeRutaRetiroAlmacen.hojasDeRutaRetiro)
             {
-                RegistrarGuia("RET-0003", new Cliente { idCliente = 2, calle = "Av. Corrientes", altura = 1234, codigoPostal = "1043" }),
-                RegistrarGuia("RET-0004", new Cliente { idCliente = 2, calle = "Av. Corrientes", altura = 1234, codigoPostal = "1043" })
-            });
+                foreach (string nroGuia in hojaEntidad.DetalleGuias)
+                {
+                    RegistrarGuia(nroGuia);
+                }
 
-            AgregarHojaDeRuta(3, DateTime.Today, laura, new List<string>
-            {
-                RegistrarGuia("RET-0005", new Cliente { idCliente = 3, calle = "San Martin", altura = 500, codigoPostal = "1043" })
-            });
+                hojasDeRuta.Add(new HojaRetiroResumen
+                {
+                    NroHDR = hojaEntidad.NroHDR,
+                    Fecha = hojaEntidad.Fecha,
+                    dniTransportistaAsignado = hojaEntidad.dniTransportistaAsignado,
+                    DetalleGuias = hojaEntidad.DetalleGuias.ToList(),
+                    estado = ConvertirEstado(hojaEntidad.estado)
+                });
+            }
         }
 
-        private void AgregarHojaDeRuta(int nroHDR, DateTime fecha, TransportistaLocal transportista, List<string> detalleGuias)
+        private EstadoHojaDeRutaEnum ConvertirEstado(EstadoHojaDeRutaAlmacen estado)
         {
-            hojasDeRuta.Add(new HojaRetiroResumen
+            switch (estado)
             {
-                NroHDR = nroHDR,
-                Fecha = fecha,
-                dniTransportistaAsignado = transportista.dniTransportista,
-                DetalleGuias = detalleGuias,
-                estado = EstadoHojaDeRutaEnum.Generada
-            });
+                case EstadoHojaDeRutaAlmacen.EnCurso:
+                    return EstadoHojaDeRutaEnum.EnCurso;
+                default:
+                    return EstadoHojaDeRutaEnum.Generada;
+            }
         }
     }
 }

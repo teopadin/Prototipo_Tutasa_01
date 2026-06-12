@@ -1,7 +1,7 @@
 [
   {
-    "NroHDR": 101,
-    "Fecha": "2026-06-10T00:00:00",
+    "NroHDR": 1001,
+    "Fecha": "2026-06-11T00:00:00",
     "estado": "Generada",
     "dniTransportistaAsignado": 30111222,
     "idAgenciaOrigen": null,
@@ -17,8 +17,635 @@
     "motivoNoCumplida": "Otro"
   },
   {
-    "NroHDR": 102,
-    "Fecha": "2026-06-10T00:00:00",
+    "NroHDR": 1002,
+    "Fecha": "2026-06-11T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30333444,
+    "idAgenciaOrigen": 2,
+    "Calle": "Av. Colon",
+    "Altura": 900,
+    "Piso": "",
+    "CodigoPostal": "5000",
+    "Remitente": "Mundo Fox S.A.",
+    "DetalleGuias": [
+      "AG02-0001"
+    ],
+    "motivoNoCumplida": "Otro"
+  },
+  {
+    "NroHDR": 1003,
+    "Fecha": "2026-06-12T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30111222,
+    "idAgenciaOrigen": null,
+    "Calle": "Av. Corrientes",
+    "Altura": 1200,
+    "Piso": "4A",
+    "CodigoPostal": "1043",
+    "Remitente": "Juan Perez SRL",
+    "DetalleGuias": [
+      "CD02-0002",
+      "CD01-0007"
+    ],
+    "motivoNoCumplida": "Otro"
+  },
+  {
+    "NroHDR": 1004,
+    "Fecha": "2026-06-12T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30333444,
+    "idAgenciaOrigen": 2,
+    "Calle": "Av. Colon",
+    "Altura": 900,
+    "Piso": "",
+    "CodigoPostal": "5000",
+    "Remitente": "Mundo Fox S.A.",
+    "DetalleGuias": [
+      "AG02-0001"
+    ],
+    "motivoNoCumplida": "Otro"
+  },
+  {
+    "NroHDR": 1005,
+    "Fecha": "2026-06-13T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30111222,
+    "idAgenciaOrigen": null,
+    "Calle": "Av. Corrientes",
+    "Altura": 1200,
+    "Piso": "4A",
+    "CodigoPostal": "1043",
+    "Remitente": "Juan Perez SRL",
+    "DetalleGuias": [
+      "CD02-0002",
+      "CD01-0007"
+    ],
+    "motivoNoCumplida": "Otro"
+  },
+  {
+    "NroHDR": 1006,
+    "Fecha": "2026-06-13T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30333444,
+    "idAgenciaOrigen": 2,
+    "Calle": "Av. Colon",
+    "Altura": 900,
+    "Piso": "",
+    "CodigoPostal": "5000",
+    "Remitente": "Mundo Fox S.A.",
+    "DetalleGuias": [
+      "AG02-0001"
+    ],
+    "motivoNoCumplida": "Otro"
+  },
+  {
+    "NroHDR": 1007,
+    "Fecha": "2026-06-14T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30111222,
+    "idAgenciaOrigen": null,
+    "Calle": "Av. Corrientes",
+    "Altura": 1200,
+    "Piso": "4A",
+    "CodigoPostal": "1043",
+    "Remitente": "Juan Perez SRL",
+    "DetalleGuias": [
+      "CD02-0002",
+      "CD01-0007"
+    ],
+    "motivoNoCumplida": "Otro"
+  },
+  {
+    "NroHDR": 1008,
+    "Fecha": "2026-06-14T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30333444,
+    "idAgenciaOrigen": 2,
+    "Calle": "Av. Colon",
+    "Altura": 900,
+    "Piso": "",
+    "CodigoPostal": "5000",
+    "Remitente": "Mundo Fox S.A.",
+    "DetalleGuias": [
+      "AG02-0001"
+    ],
+    "motivoNoCumplida": "Otro"
+  },
+  {
+    "NroHDR": 1009,
+    "Fecha": "2026-06-15T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30111222,
+    "idAgenciaOrigen": null,
+    "Calle": "Av. Corrientes",
+    "Altura": 1200,
+    "Piso": "4A",
+    "CodigoPostal": "1043",
+    "Remitente": "Juan Perez SRL",
+    "DetalleGuias": [
+      "CD02-0002",
+      "CD01-0007"
+    ],
+    "motivoNoCumplida": "Otro"
+  },
+  {
+    "NroHDR": 1010,
+    "Fecha": "2026-06-15T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30333444,
+    "idAgenciaOrigen": 2,
+    "Calle": "Av. Colon",
+    "Altura": 900,
+    "Piso": "",
+    "CodigoPostal": "5000",
+    "Remitente": "Mundo Fox S.A.",
+    "DetalleGuias": [
+      "AG02-0001"
+    ],
+    "motivoNoCumplida": "Otro"
+  },
+  {
+    "NroHDR": 1011,
+    "Fecha": "2026-06-16T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30111222,
+    "idAgenciaOrigen": null,
+    "Calle": "Av. Corrientes",
+    "Altura": 1200,
+    "Piso": "4A",
+    "CodigoPostal": "1043",
+    "Remitente": "Juan Perez SRL",
+    "DetalleGuias": [
+      "CD02-0002",
+      "CD01-0007"
+    ],
+    "motivoNoCumplida": "Otro"
+  },
+  {
+    "NroHDR": 1012,
+    "Fecha": "2026-06-16T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30333444,
+    "idAgenciaOrigen": 2,
+    "Calle": "Av. Colon",
+    "Altura": 900,
+    "Piso": "",
+    "CodigoPostal": "5000",
+    "Remitente": "Mundo Fox S.A.",
+    "DetalleGuias": [
+      "AG02-0001"
+    ],
+    "motivoNoCumplida": "Otro"
+  },
+  {
+    "NroHDR": 1013,
+    "Fecha": "2026-06-17T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30111222,
+    "idAgenciaOrigen": null,
+    "Calle": "Av. Corrientes",
+    "Altura": 1200,
+    "Piso": "4A",
+    "CodigoPostal": "1043",
+    "Remitente": "Juan Perez SRL",
+    "DetalleGuias": [
+      "CD02-0002",
+      "CD01-0007"
+    ],
+    "motivoNoCumplida": "Otro"
+  },
+  {
+    "NroHDR": 1014,
+    "Fecha": "2026-06-17T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30333444,
+    "idAgenciaOrigen": 2,
+    "Calle": "Av. Colon",
+    "Altura": 900,
+    "Piso": "",
+    "CodigoPostal": "5000",
+    "Remitente": "Mundo Fox S.A.",
+    "DetalleGuias": [
+      "AG02-0001"
+    ],
+    "motivoNoCumplida": "Otro"
+  },
+  {
+    "NroHDR": 1015,
+    "Fecha": "2026-06-18T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30111222,
+    "idAgenciaOrigen": null,
+    "Calle": "Av. Corrientes",
+    "Altura": 1200,
+    "Piso": "4A",
+    "CodigoPostal": "1043",
+    "Remitente": "Juan Perez SRL",
+    "DetalleGuias": [
+      "CD02-0002",
+      "CD01-0007"
+    ],
+    "motivoNoCumplida": "Otro"
+  },
+  {
+    "NroHDR": 1016,
+    "Fecha": "2026-06-18T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30333444,
+    "idAgenciaOrigen": 2,
+    "Calle": "Av. Colon",
+    "Altura": 900,
+    "Piso": "",
+    "CodigoPostal": "5000",
+    "Remitente": "Mundo Fox S.A.",
+    "DetalleGuias": [
+      "AG02-0001"
+    ],
+    "motivoNoCumplida": "Otro"
+  },
+  {
+    "NroHDR": 1017,
+    "Fecha": "2026-06-19T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30111222,
+    "idAgenciaOrigen": null,
+    "Calle": "Av. Corrientes",
+    "Altura": 1200,
+    "Piso": "4A",
+    "CodigoPostal": "1043",
+    "Remitente": "Juan Perez SRL",
+    "DetalleGuias": [
+      "CD02-0002",
+      "CD01-0007"
+    ],
+    "motivoNoCumplida": "Otro"
+  },
+  {
+    "NroHDR": 1018,
+    "Fecha": "2026-06-19T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30333444,
+    "idAgenciaOrigen": 2,
+    "Calle": "Av. Colon",
+    "Altura": 900,
+    "Piso": "",
+    "CodigoPostal": "5000",
+    "Remitente": "Mundo Fox S.A.",
+    "DetalleGuias": [
+      "AG02-0001"
+    ],
+    "motivoNoCumplida": "Otro"
+  },
+  {
+    "NroHDR": 1019,
+    "Fecha": "2026-06-20T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30111222,
+    "idAgenciaOrigen": null,
+    "Calle": "Av. Corrientes",
+    "Altura": 1200,
+    "Piso": "4A",
+    "CodigoPostal": "1043",
+    "Remitente": "Juan Perez SRL",
+    "DetalleGuias": [
+      "CD02-0002",
+      "CD01-0007"
+    ],
+    "motivoNoCumplida": "Otro"
+  },
+  {
+    "NroHDR": 1020,
+    "Fecha": "2026-06-20T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30333444,
+    "idAgenciaOrigen": 2,
+    "Calle": "Av. Colon",
+    "Altura": 900,
+    "Piso": "",
+    "CodigoPostal": "5000",
+    "Remitente": "Mundo Fox S.A.",
+    "DetalleGuias": [
+      "AG02-0001"
+    ],
+    "motivoNoCumplida": "Otro"
+  },
+  {
+    "NroHDR": 1021,
+    "Fecha": "2026-06-21T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30111222,
+    "idAgenciaOrigen": null,
+    "Calle": "Av. Corrientes",
+    "Altura": 1200,
+    "Piso": "4A",
+    "CodigoPostal": "1043",
+    "Remitente": "Juan Perez SRL",
+    "DetalleGuias": [
+      "CD02-0002",
+      "CD01-0007"
+    ],
+    "motivoNoCumplida": "Otro"
+  },
+  {
+    "NroHDR": 1022,
+    "Fecha": "2026-06-21T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30333444,
+    "idAgenciaOrigen": 2,
+    "Calle": "Av. Colon",
+    "Altura": 900,
+    "Piso": "",
+    "CodigoPostal": "5000",
+    "Remitente": "Mundo Fox S.A.",
+    "DetalleGuias": [
+      "AG02-0001"
+    ],
+    "motivoNoCumplida": "Otro"
+  },
+  {
+    "NroHDR": 1023,
+    "Fecha": "2026-06-22T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30111222,
+    "idAgenciaOrigen": null,
+    "Calle": "Av. Corrientes",
+    "Altura": 1200,
+    "Piso": "4A",
+    "CodigoPostal": "1043",
+    "Remitente": "Juan Perez SRL",
+    "DetalleGuias": [
+      "CD02-0002",
+      "CD01-0007"
+    ],
+    "motivoNoCumplida": "Otro"
+  },
+  {
+    "NroHDR": 1024,
+    "Fecha": "2026-06-22T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30333444,
+    "idAgenciaOrigen": 2,
+    "Calle": "Av. Colon",
+    "Altura": 900,
+    "Piso": "",
+    "CodigoPostal": "5000",
+    "Remitente": "Mundo Fox S.A.",
+    "DetalleGuias": [
+      "AG02-0001"
+    ],
+    "motivoNoCumplida": "Otro"
+  },
+  {
+    "NroHDR": 1025,
+    "Fecha": "2026-06-23T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30111222,
+    "idAgenciaOrigen": null,
+    "Calle": "Av. Corrientes",
+    "Altura": 1200,
+    "Piso": "4A",
+    "CodigoPostal": "1043",
+    "Remitente": "Juan Perez SRL",
+    "DetalleGuias": [
+      "CD02-0002",
+      "CD01-0007"
+    ],
+    "motivoNoCumplida": "Otro"
+  },
+  {
+    "NroHDR": 1026,
+    "Fecha": "2026-06-23T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30333444,
+    "idAgenciaOrigen": 2,
+    "Calle": "Av. Colon",
+    "Altura": 900,
+    "Piso": "",
+    "CodigoPostal": "5000",
+    "Remitente": "Mundo Fox S.A.",
+    "DetalleGuias": [
+      "AG02-0001"
+    ],
+    "motivoNoCumplida": "Otro"
+  },
+  {
+    "NroHDR": 1027,
+    "Fecha": "2026-06-24T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30111222,
+    "idAgenciaOrigen": null,
+    "Calle": "Av. Corrientes",
+    "Altura": 1200,
+    "Piso": "4A",
+    "CodigoPostal": "1043",
+    "Remitente": "Juan Perez SRL",
+    "DetalleGuias": [
+      "CD02-0002",
+      "CD01-0007"
+    ],
+    "motivoNoCumplida": "Otro"
+  },
+  {
+    "NroHDR": 1028,
+    "Fecha": "2026-06-24T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30333444,
+    "idAgenciaOrigen": 2,
+    "Calle": "Av. Colon",
+    "Altura": 900,
+    "Piso": "",
+    "CodigoPostal": "5000",
+    "Remitente": "Mundo Fox S.A.",
+    "DetalleGuias": [
+      "AG02-0001"
+    ],
+    "motivoNoCumplida": "Otro"
+  },
+  {
+    "NroHDR": 1029,
+    "Fecha": "2026-06-25T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30111222,
+    "idAgenciaOrigen": null,
+    "Calle": "Av. Corrientes",
+    "Altura": 1200,
+    "Piso": "4A",
+    "CodigoPostal": "1043",
+    "Remitente": "Juan Perez SRL",
+    "DetalleGuias": [
+      "CD02-0002",
+      "CD01-0007"
+    ],
+    "motivoNoCumplida": "Otro"
+  },
+  {
+    "NroHDR": 1030,
+    "Fecha": "2026-06-25T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30333444,
+    "idAgenciaOrigen": 2,
+    "Calle": "Av. Colon",
+    "Altura": 900,
+    "Piso": "",
+    "CodigoPostal": "5000",
+    "Remitente": "Mundo Fox S.A.",
+    "DetalleGuias": [
+      "AG02-0001"
+    ],
+    "motivoNoCumplida": "Otro"
+  },
+  {
+    "NroHDR": 1031,
+    "Fecha": "2026-06-26T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30111222,
+    "idAgenciaOrigen": null,
+    "Calle": "Av. Corrientes",
+    "Altura": 1200,
+    "Piso": "4A",
+    "CodigoPostal": "1043",
+    "Remitente": "Juan Perez SRL",
+    "DetalleGuias": [
+      "CD02-0002",
+      "CD01-0007"
+    ],
+    "motivoNoCumplida": "Otro"
+  },
+  {
+    "NroHDR": 1032,
+    "Fecha": "2026-06-26T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30333444,
+    "idAgenciaOrigen": 2,
+    "Calle": "Av. Colon",
+    "Altura": 900,
+    "Piso": "",
+    "CodigoPostal": "5000",
+    "Remitente": "Mundo Fox S.A.",
+    "DetalleGuias": [
+      "AG02-0001"
+    ],
+    "motivoNoCumplida": "Otro"
+  },
+  {
+    "NroHDR": 1033,
+    "Fecha": "2026-06-27T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30111222,
+    "idAgenciaOrigen": null,
+    "Calle": "Av. Corrientes",
+    "Altura": 1200,
+    "Piso": "4A",
+    "CodigoPostal": "1043",
+    "Remitente": "Juan Perez SRL",
+    "DetalleGuias": [
+      "CD02-0002",
+      "CD01-0007"
+    ],
+    "motivoNoCumplida": "Otro"
+  },
+  {
+    "NroHDR": 1034,
+    "Fecha": "2026-06-27T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30333444,
+    "idAgenciaOrigen": 2,
+    "Calle": "Av. Colon",
+    "Altura": 900,
+    "Piso": "",
+    "CodigoPostal": "5000",
+    "Remitente": "Mundo Fox S.A.",
+    "DetalleGuias": [
+      "AG02-0001"
+    ],
+    "motivoNoCumplida": "Otro"
+  },
+  {
+    "NroHDR": 1035,
+    "Fecha": "2026-06-28T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30111222,
+    "idAgenciaOrigen": null,
+    "Calle": "Av. Corrientes",
+    "Altura": 1200,
+    "Piso": "4A",
+    "CodigoPostal": "1043",
+    "Remitente": "Juan Perez SRL",
+    "DetalleGuias": [
+      "CD02-0002",
+      "CD01-0007"
+    ],
+    "motivoNoCumplida": "Otro"
+  },
+  {
+    "NroHDR": 1036,
+    "Fecha": "2026-06-28T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30333444,
+    "idAgenciaOrigen": 2,
+    "Calle": "Av. Colon",
+    "Altura": 900,
+    "Piso": "",
+    "CodigoPostal": "5000",
+    "Remitente": "Mundo Fox S.A.",
+    "DetalleGuias": [
+      "AG02-0001"
+    ],
+    "motivoNoCumplida": "Otro"
+  },
+  {
+    "NroHDR": 1037,
+    "Fecha": "2026-06-29T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30111222,
+    "idAgenciaOrigen": null,
+    "Calle": "Av. Corrientes",
+    "Altura": 1200,
+    "Piso": "4A",
+    "CodigoPostal": "1043",
+    "Remitente": "Juan Perez SRL",
+    "DetalleGuias": [
+      "CD02-0002",
+      "CD01-0007"
+    ],
+    "motivoNoCumplida": "Otro"
+  },
+  {
+    "NroHDR": 1038,
+    "Fecha": "2026-06-29T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30333444,
+    "idAgenciaOrigen": 2,
+    "Calle": "Av. Colon",
+    "Altura": 900,
+    "Piso": "",
+    "CodigoPostal": "5000",
+    "Remitente": "Mundo Fox S.A.",
+    "DetalleGuias": [
+      "AG02-0001"
+    ],
+    "motivoNoCumplida": "Otro"
+  },
+  {
+    "NroHDR": 1039,
+    "Fecha": "2026-06-30T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30111222,
+    "idAgenciaOrigen": null,
+    "Calle": "Av. Corrientes",
+    "Altura": 1200,
+    "Piso": "4A",
+    "CodigoPostal": "1043",
+    "Remitente": "Juan Perez SRL",
+    "DetalleGuias": [
+      "CD02-0002",
+      "CD01-0007"
+    ],
+    "motivoNoCumplida": "Otro"
+  },
+  {
+    "NroHDR": 1040,
+    "Fecha": "2026-06-30T00:00:00",
     "estado": "Generada",
     "dniTransportistaAsignado": 30333444,
     "idAgenciaOrigen": 2,

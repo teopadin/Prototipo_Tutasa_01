@@ -14,6 +14,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia
         public List<HojaDeRutaRetiro> HojasDeRutaRetiro { get; set; }
         public List<TransportistaLocal> Transportistas { get; set; }
         public List<Guia> Guias { get; set; }
+        public List<Agencia> Agencias { get; set; }
 
         public ModeloRecibirHDRRetiroAgencia()
         {
@@ -55,6 +56,12 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia
             };
 
             AgenciaLogueada = agencia1;
+            
+            Agencias = new List<Agencia>
+            {
+                agencia1,
+                agencia2
+            };
 
             // Guías
             var guia1 = new Guia
@@ -87,7 +94,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia
             var hdr1 = new HojaDeRutaRetiro
             {
                 NroHDR = 1001,
-                AgenciaHDR = agencia1,
+                idAgenciaOrigen = agencia1.idAgencia,
                 dniTransportistaAsignado = t1.dniTransportistaAsignado,
                 estado = EstadoHojaDeRutaEnum.EnCurso,
                 DetalleGuias = new List<string>
@@ -101,7 +108,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia
             var hdr2 = new HojaDeRutaRetiro
             {
                 NroHDR = 1002,
-                AgenciaHDR = agencia2,
+                idAgenciaOrigen = agencia2.idAgencia,
                 dniTransportistaAsignado = t2.dniTransportistaAsignado,
                 estado = EstadoHojaDeRutaEnum.EnCurso,
                 DetalleGuias = new List<string>
@@ -115,7 +122,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia
             {
                 NroHDR = 1003,
                 Fecha = new DateTime(2026, 5, 25),
-                AgenciaHDR = agencia1,
+                idAgenciaOrigen = agencia1.idAgencia,
                 dniTransportistaAsignado = t1.dniTransportistaAsignado,
                 estado = EstadoHojaDeRutaEnum.Recibida,
                 DetalleGuias = new List<string>
@@ -138,6 +145,10 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia
         public Guia BuscarGuia(string nroGuia)
         {
             return Guias.FirstOrDefault(g => g.NroGuia == nroGuia);
+        }
+        public Agencia BuscarAgencia(int? idAgencia)
+        {
+            return Agencias.FirstOrDefault(a => a.idAgencia == idAgencia);
         }
     }
 }

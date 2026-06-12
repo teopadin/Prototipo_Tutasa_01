@@ -1,0 +1,13 @@
+Plan de Prueba: Entrega en Agencia - Otra guía válida
+
+Pasos
+1- Ingresar AG01-0002.
+2- Presionar Buscar.
+3- Verificar: Juan Rodriguez, DNI 41234567.
+4- Ingresar Nombre Juan, Apellido Rodriguez, DNI 41234567.
+5- Marcar checkbox DNI verificado.
+6- Presionar Registrar Entrega.
+
+Resultado esperado
+"Entrega registrada con éxito para la guía N° AG01-0002."
+La guía queda en estado Entregada.

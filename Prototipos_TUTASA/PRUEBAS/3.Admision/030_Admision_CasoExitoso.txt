@@ -1,0 +1,18 @@
+﻿Plan de Prueba: Admisión - Caso exitoso 3 (Rechazo de admisión)
+
+1- Ingresar CD01-9003 en el campo Nro de Guía.
+2- Presionar Buscar.
+3- Verificar datos en la sección Información de Guía:
+   Cliente: Juan Perez SRL,
+   CD Destino: Centro - Córdoba,
+   Destinatario: Fernández, Lucía (DNI: 35888999),
+   Tipo de Bulto: L (hasta 10 kg),
+   Modalidad de Entrega: Entrega en Agencia.
+4- Presionar Rechazar Admisión.
+5- Verificar mensaje: "Guía N° CD01-9003 cancelada".
+6- Presionar Aceptar.
+7- Verificar: los campos Nro de Guía, Cliente, CD Destino, Destinatario, Tipo de Bulto y Modalidad de Entrega quedan vacíos.
+8- Salir del sistema presionando la cruz del extremo superior derecho de la pantalla.
+9- Archivo Guias.json: registro existente
+   con NroGuia CD01-9003,
+   con estado "Cancelada".

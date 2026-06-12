@@ -13,6 +13,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
         public HojaDeRutaDistribucion HdrActual { get; set; }
         public List<TransportistaLocal> Transportistas { get; set; }
         public List<Guia> Guias { get; set; }
+        public List<Agencia> Agencias { get; set; }
 
         public ModeloRecibirHDRDistribucionAgencia()
         {
@@ -31,8 +32,15 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
 
             };
 
+
             // Simulación operador logueado
             AgenciaLogueada = agencia1;
+
+            Agencias = new List<Agencia>
+            {
+                agencia1,
+                agencia2
+            };
 
             // Transportistas
             var t1 = new TransportistaLocal
@@ -60,7 +68,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
             {
                 NroGuia = "GD-0001",
                 TipoBulto = TiposBultoEnum.S,
-                idAgenciaOrigen = agencia1.idAgencia,
+                idAgenciaDestino = agencia1.idAgencia,
                 estado = EstadoGuiaEnum.EnDistribucion
             };
 
@@ -68,7 +76,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
             {
                 NroGuia = "GD-0002",
                 TipoBulto = TiposBultoEnum.M,
-                idAgenciaOrigen = agencia1.idAgencia,
+                idAgenciaDestino = agencia1.idAgencia,
                 estado = EstadoGuiaEnum.EnDistribucion
             };
 
@@ -76,7 +84,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
             {
                 NroGuia = "GD-0003",
                 TipoBulto = TiposBultoEnum.L,
-                idAgenciaOrigen = agencia1.idAgencia,
+                idAgenciaDestino = agencia1.idAgencia,
                 estado = EstadoGuiaEnum.EnDistribucion
             };
 
@@ -84,7 +92,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
             {
                 NroGuia = "GD-0004",
                 TipoBulto = TiposBultoEnum.XL,
-                idAgenciaOrigen = agencia2.idAgencia,
+                idAgenciaDestino = agencia2.idAgencia,
                 estado = EstadoGuiaEnum.EnDistribucion
             };
             Guias = new List<Guia>
@@ -99,7 +107,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
             var hdr1 = new HojaDeRutaDistribucion
             {
                 NroHDR = 1001,
-                AgenciaHDR = agencia1,
+                idAgenciaDestino = agencia1.idAgencia,
                 dniTransportistaAsignado = t1.dniTransportistaAsignado,
                 DetalleGuias = new List<string>
                 {
@@ -113,7 +121,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
             var hdr2 = new HojaDeRutaDistribucion
             {
                 NroHDR = 1002,
-                AgenciaHDR = agencia1,
+                idAgenciaDestino = agencia1.idAgencia,
                 dniTransportistaAsignado = t2.dniTransportistaAsignado,
                 DetalleGuias = new List<string>
                 {
@@ -126,7 +134,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
             var hdr3 = new HojaDeRutaDistribucion
             {
                 NroHDR = 1003,
-                AgenciaHDR = agencia2,
+                idAgenciaDestino = agencia2.idAgencia,
                 dniTransportistaAsignado = t1.dniTransportistaAsignado,
                 DetalleGuias = new List<string>
                 {
@@ -139,7 +147,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
             var hdr4 = new HojaDeRutaDistribucion
             {
                 NroHDR = 1004,
-                AgenciaHDR = agencia1,
+                idAgenciaDestino = agencia1.idAgencia,
                 dniTransportistaAsignado = t2.dniTransportistaAsignado,
                 DetalleGuias = new List<string>
                 {
@@ -167,5 +175,10 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
         {
             return Guias.FirstOrDefault(g => g.NroGuia == nroGuia);
         }
+        public Agencia BuscarAgencia(int? idAgencia)
+        {
+            return Agencias.FirstOrDefault(a => a.idAgencia == idAgencia);
+        }
     }
+
 }

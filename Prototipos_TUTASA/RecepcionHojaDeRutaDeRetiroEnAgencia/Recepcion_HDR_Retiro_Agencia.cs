@@ -32,7 +32,12 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia
 
         private void CargarHDR(HojaDeRutaRetiro hdr)
         {
-            txtAgencia.Text = hdr.AgenciaHDR.razonSocial;
+            Agencia agencia = modelo.BuscarAgencia(hdr.idAgenciaOrigen);
+
+            if (agencia != null)
+            {
+                txtAgencia.Text = agencia.razonSocial;
+            }
 
             TransportistaLocal transportista = modelo.BuscarTransportista(hdr.dniTransportistaAsignado);
 
@@ -73,7 +78,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia
             }
 
             // Excepción 3
-            if (hdr.AgenciaHDR.idAgencia != modelo.AgenciaLogueada.idAgencia)
+            if (hdr.idAgenciaOrigen != modelo.AgenciaLogueada.idAgencia)
             {
                 MessageBox.Show("La hoja de ruta ingresada no corresponde a su agencia.");
                 txtNroHDR.Clear();
