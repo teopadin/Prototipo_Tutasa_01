@@ -8,6 +8,6 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
     {
         public int NroHDR { get; set; }
         public EstadoHojaDeRutaEnum estado { get; set; }
-        public List<Guia> DetalleGuias { get; set; }
+        public List<string> DetalleGuias { get; set; }
     }
 }

@@ -40,22 +40,51 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
         {
             if (cmboIDServicio.SelectedItem == null)
                 return;
-            ServicioMediaDistancia servicio = (ServicioMediaDistancia)cmboIDServicio.SelectedItem;
+
+            ServicioMediaDistancia servicio =
+                (ServicioMediaDistancia)cmboIDServicio.SelectedItem;
+
             modelo.ServicioActual = servicio;
-            txtEmpresaTransporte.Text = servicio.EmpresaTransporte.razonSocial;
+
+            txtEmpresaTransporte.Text =
+                modelo.BuscarEmpresa(servicio.idEmpresa).razonSocial;
+
             dateTimeFechaDespacho.Value = servicio.fechaLlegada.Value;
+
             lvGuias.Items.Clear();
+
             int cantidadGuias = 0;
 
-            foreach (var hdr in servicio.DetalleHDRs)
+            foreach (int nroHDR in servicio.DetalleHDRs)
             {
-                foreach (var guia in hdr.DetalleGuias)
+                HojaDeRutaTransporte hdr = modelo.BuscarHDR(nroHDR);
+
+                if (hdr == null)
+                    continue;
+
+                foreach (string nroGuia in hdr.DetalleGuias)
                 {
-                    ListViewItem item = new ListViewItem(guia.NroGuia);
+                    Guia guia = modelo.BuscarGuia(nroGuia);
+
+                    if (guia == null)
+                        continue;
+
+                    CentroDistribucion cdOrigen =
+                        modelo.BuscarCD(guia.idCDOrigen);
+
+                    ListViewItem item =
+                        new ListViewItem(guia.NroGuia);
+
                     item.SubItems.Add(guia.TipoBulto.ToString());
                     item.SubItems.Add(hdr.NroHDR.ToString());
-                    item.SubItems.Add(guia.CDOrigen.nombre);
+
+                    if (cdOrigen != null)
+                        item.SubItems.Add(cdOrigen.nombre);
+                    else
+                        item.SubItems.Add("");
+
                     lvGuias.Items.Add(item);
+
                     cantidadGuias++;
                 }
             }
@@ -83,13 +112,23 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
         {
             registrarRecepcion();
 
-            foreach (var hdr in modelo.ServicioActual.DetalleHDRs)
+            foreach (int nroHDR in modelo.ServicioActual.DetalleHDRs)
             {
+                HojaDeRutaTransporte hdr = modelo.BuscarHDR(nroHDR);
+
+                if (hdr == null)
+                    continue;
+
                 actualizarEstadoHDR(hdr);
 
-                foreach (var guia in hdr.DetalleGuias)
+                foreach (string nroGuia in hdr.DetalleGuias)
                 {
-                    actualizarEstadoGuia(guia);
+                    Guia guia = modelo.BuscarGuia(nroGuia);
+
+                    if (guia != null)
+                    {
+                        actualizarEstadoGuia(guia);
+                    }
                 }
             }
         }
@@ -106,7 +145,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
 
         private void actualizarEstadoGuia(Guia guia)
         {
-            if (guia.CDActual == guia.CDDestino)
+            if (guia.idCDActual == guia.idCDDestino)
             {
                 if (guia.modalidadEntrega == ModalidadEntregaEnum.EntregaCD)
                 {
