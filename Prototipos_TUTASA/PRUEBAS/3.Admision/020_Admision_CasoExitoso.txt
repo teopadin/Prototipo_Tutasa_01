@@ -1,23 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Text;
+﻿Plan de Prueba: Admisión - Caso exitoso 2 (Admisión especial - Retiro en CD)
 
-namespace Prototipos_TUTASA.PRUEBAS._3.Admision
-{
-    public partial class _020_Admision_CasoExitoso: Component
-    {    
-        public _020_Admision_CasoExitoso()
-        {
-            InitializeComponent();
-        }
-
-        public _020_Admision_CasoExitoso(IContainer container)
-        {
-            container.Add(this);
-
-            InitializeComponent();
-        }
-    }
-}
+1- Ingresar CD01-9002 en el campo Nro de Guía.
+2- Presionar Buscar.
+3- Verificar: se despliegan los datos en la sección Información de Guía.
+4- Verificar datos:
+   Cliente: Mundo Fox S.A.,
+   CD Destino: Capital y GBA,
+   Destinatario: Romero, Diego (DNI: 28555666),
+   Tipo de Bulto: S (hasta 2.5 kg),
+   Modalidad de Entrega: Entrega en CD.
+5- Presionar Confirmar Admisión.
+6- Verificar mensaje: "Guía N° CD01-9002 admitida con éxito".
+7- Verificar: los campos de la pantalla quedan vacíos.
+8- Salir del sistema.
+9- Archivo Guias.json: registro existente
+   con NroGuia CD01-9002,
+   con estado "PendienteDeRetiroEnCD" y tarifa calculada persistida.
