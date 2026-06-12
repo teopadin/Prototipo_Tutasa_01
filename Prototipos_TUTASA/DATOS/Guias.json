@@ -808,7 +808,7 @@
   },
   {
     "NroGuia": "CD01-0016",
-    "IdCliente": 0,
+    "IdCliente": 1,
     "TipoImposicion": "CD",
     "idCDOrigen": 1,
     "idAgenciaOrigen": 0,

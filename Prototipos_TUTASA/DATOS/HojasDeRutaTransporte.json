@@ -5,10 +5,10 @@
     "idCDOrigen": 1,
     "idCDDestino": 2,
     "estado": "Generada",
-    "idServicio": "SMD-001",
+    "idServicio": "1",
     "DetalleGuias": [
-      "CD02-0009",
-      "AG02-0001"
+        "CD01-0016",
+        "AG02-0001"
     ]
   }
 ]
