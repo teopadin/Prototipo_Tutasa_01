@@ -1,14 +1,16 @@
 Plan de Prueba: Recepcion de Hoja de Ruta de Retiro en Agencia - Caso éxitoso
 
-Pasos
-1- Ingresar XXXX-XXXX.
+Contexto:
+1- En el menú, seleccionar Agencia actual: Agencia Centro - Cordoba.
+2- Abrir la pantalla Recepcion de Hoja de Ruta de Retiro en Agencia.
+
+Pasos:
+1- Ingresar 1002.
 2- Presionar Buscar.
-3- Verificar: Agencia: NombreAgencia, Transportista Local: NombreApellido.
-4- Verificar lista de guias incluidas en la HDR.
+3- Verificar: Agencia: Agencia Centro - Cordoba, Transportista Local: Silvia Castro.
+4- Verificar lista de guias incluidas en la HDR: AG02-0001.
 5- Presionar Confirmar Recepcion.
-6- Verificar mensaje: "Recepción de HDR N° XXXX confirmada con éxito.
+6- Verificar mensaje: "Recepción de HDR N° 1002 confirmada con éxito.".
 7- Presionar Aceptar.
 8- Salir del sistema presionando la cruz del extremo superior derecho de la pantalla.
-9- Archivo HojasDeRutaRetiro.json: registro existente
-   con NroHDR XXXX-XXXX,
-   con estado "Recibida".
+9- Verificar que la HDR queda en estado Recibida durante la ejecución.

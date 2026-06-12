@@ -1,1 +1,24 @@
-﻿
+﻿Plan de Prueba: Resumen Hoja de Ruta de Distribución - Validaciones
+
+Pasos:
+
+1- Abrir la pantalla Resumen Hoja de Ruta de Distribución.
+2- No seleccionar ningún fletero.
+3- Presionar Generar Resumen.
+4- Verificar mensaje: "Debe seleccionar un fletero.".
+5- Presionar Aceptar.
+6- Verificar: la grilla de Hoja de Ruta de distribución asignada al Fletero queda vacía.
+7- Verificar: Total Domicilios a Visitar muestra 0.
+8- Verificar: Total Bultos a Entregar muestra 0.
+9- Archivo HojasDeRutaDistribucion.json: no debe modificarse ningún registro.
+
+10- Seleccionar un fletero con Hojas de Ruta de Distribución generadas para la fecha actual.
+11- Verificar: la grilla muestra las Hojas de Ruta de Distribución asignadas al fletero.
+12- Presionar Cancelar.
+13- Verificar: no se genera ningún resumen.
+14- Archivo HojasDeRutaDistribucion.json: las hojas de ruta seleccionadas deben mantenerse en estado "Generada".
+
+15- Ejecutar el caso exitoso de Resumen Hoja de Ruta de Distribución para un fletero.
+16- Volver a abrir la pantalla Resumen Hoja de Ruta de Distribución.
+17- Verificar: el fletero utilizado en el caso exitoso no aparece nuevamente si ya no tiene Hojas de Ruta de Distribución en estado "Generada" para la fecha actual.
+18- Verificar: no se puede generar dos veces el mismo resumen.

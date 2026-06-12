@@ -1,0 +1,12 @@
+Plan de Prueba: Recepcion Media Distancia - Validaciones
+
+Pasos:
+1- Abrir la pantalla Recepcion Media Distancia.
+2- Verificar que se cargan únicamente servicios con fecha de llegada y sin fecha de recepción.
+3- Quitar la selección del combo de servicios, si la pantalla lo permite.
+4- Presionar Confirmar Recepcion.
+5- Verificar mensaje: "Debe seleccionar un servicio.".
+6- Presionar Cancelar.
+7- Verificar mensaje: "La recepción no será registrada. ¿Desea continuar?".
+8- Confirmar con Sí.
+9- Verificar que la pantalla se cierra sin registrar la recepción.

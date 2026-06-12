@@ -6,4 +6,4 @@ Pasos
 3- Presionar Generar Resumen.
 4- Verificar mensaje “Resumen de HDR de Retiro se ha generado con éxito.”
 5- Presionar Aceptar.
-6- //Falta sumar la actualización del .JSON
+6- Archivo HojasDeRutaRetiro.json: las hojas de ruta incluidas en el resumen deben quedar con estado "EnCurso".

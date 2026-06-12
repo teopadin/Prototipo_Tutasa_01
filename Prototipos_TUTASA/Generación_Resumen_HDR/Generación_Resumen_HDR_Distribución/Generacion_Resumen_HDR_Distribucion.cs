@@ -33,19 +33,14 @@ namespace Prototipos_TUTASA
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (comboBox1.SelectedItem == null)
+            if (comboBox1.SelectedItem is not TransportistaLocal transportistaSeleccionado)
             {
                 MessageBox.Show("Debe seleccionar un fletero.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            if (!modelo.HayHojasSeleccionadas)
-            {
-                MessageBox.Show("No hay Hojas de Ruta de Distribución asignadas al fletero para la fecha seleccionada.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (!modelo.GenerarResumen(out string mensaje))
+            if (!modelo.SeleccionarHojasAsignadas(transportistaSeleccionado, dateTimePicker1.Value.Date, out string mensaje)
+                || !modelo.GenerarResumen(out mensaje))
             {
                 MessageBox.Show(mensaje, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;

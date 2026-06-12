@@ -32,5 +32,17 @@
     "DetalleGuias": [
       "RCV-902"
     ]
+  },
+  {
+    "nroHDR": 399,
+    "fechaGeneracion": "2026-06-10T00:00:00",
+    "idCDOrigen": 1,
+    "idCDDestino": 2,
+    "estado": "Cumplida",
+    "idServicio": "199",
+    "DetalleGuias": [
+      "CD01-0016",
+      "AG02-0001"
+    ]
   }
 ]
