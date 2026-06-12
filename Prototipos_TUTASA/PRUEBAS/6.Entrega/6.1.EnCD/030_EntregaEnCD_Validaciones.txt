@@ -1,6 +1,5 @@
 Plan de Prueba: Entrega en CD - Validaciones
 
-
 Pasos:
 
 1- Dejar vacío el campo de guía y presionar Buscar.

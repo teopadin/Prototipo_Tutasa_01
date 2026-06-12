@@ -1,1 +1,34 @@
-﻿
+﻿Plan de Prueba: Estado Cuenta Corriente por Cliente - Caso exitoso
+
+1- Seleccionar "Juan Perez SRL" en el campo Razón Social.
+2- Presionar Buscar.
+3- Verificar datos del cliente:
+   CUIT: 20333123121,
+   Estado de Cuenta: Saldo pendiente,
+   Saldo Actual: Debe $15.000,00.
+4- Verificar: se despliega al menos una guía pendiente de facturación en la grilla.
+5- Verificar fila de la grilla:
+   Número de Guía: RCV-901,
+   Tipo de Servicio: Guía CD,
+   Origen: CD 1,
+   Destino: CD 3,
+   Importe: $80.000,00,
+   Estado: Pendiente de facturación.
+6- Verificar: Cantidad de Servicios muestra 1.
+7- Verificar: Total a Facturar muestra $80.000,00.
+8- Presionar Emitir Factura.
+9- Verificar mensaje: "Factura 2 emitida con éxito.
+Guías facturadas: RCV-901".
+10- Presionar Aceptar.
+11- Verificar: la grilla de servicios pendientes queda vacía para el cliente seleccionado.
+12- Verificar: Cantidad de Servicios muestra 0.
+13- Verificar: el Saldo Actual del cliente se actualiza sumando el importe facturado.
+14- Salir del sistema presionando la cruz del extremo superior derecho de la pantalla.
+15- Archivo Facturas.json: última entrada agregada debe contener
+   nroFactura 2,
+   idCliente 1,
+   importeTotal 80000.0.
+16- Archivo DetallesFactura.json: registro de la guía RCV-901 debe quedar
+   con nroFactura 2.
+17- Archivo CuentasCorrientesClientes.json: registro con idCliente 1 debe quedar
+   con saldoActual 95000.0.

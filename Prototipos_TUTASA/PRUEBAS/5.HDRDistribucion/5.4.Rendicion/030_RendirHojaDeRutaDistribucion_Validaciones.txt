@@ -1,0 +1,48 @@
+﻿usiPlan de Prueba: Rendir HDR de Distribucion - Validaciones
+
+Datos de partida:
+- Transportista: dni 55555555 (Lopez, Roberto) -> sin HDR de distribucion pendientes de rendicion.
+- Transportista: dni 11111111 (Perez, Juan) -> HDR 1001, 1002 y 1003 pendientes de rendicion.
+
+1- Abrir la pantalla "Rendir HDR de Distribucion".
+2- Presionar "Registrar Rendicion" sin haber seleccionado ningun transportista (grilla vacia).
+3- Verificar mensaje: "No hay HDR para rendir."
+4- Presionar "Aceptar".
+
+5- En el combo "Fletero" seleccionar "Lopez, Roberto" (dni 55555555).
+6- Verificar mensaje: "El transportista seleccionado no tiene HDR de distribucion pendientes de rendicion."
+7- Presionar "Aceptar".
+8- Verificar: la grilla permanece vacia.
+
+9- En el combo "Fletero" seleccionar "Perez, Juan" (dni 11111111).
+10- Verificar: se cargan 3 filas en la grilla con las HDR 1001, 1002 y 1003.
+11- Presionar "Aplicar" sin haber seleccionado ninguna fila de la grilla.
+12- Verificar mensaje: "Debe seleccionar una HDR de la lista."
+13- Presionar "Aceptar".
+
+14- Seleccionar en la grilla la fila correspondiente a la HDR 1001.
+15- Presionar "Aplicar" sin marcar ningun radio ("Cumplida" / "No Cumplida").
+16- Verificar mensaje: "Debe seleccionar Cumplida o No Cumplida para la HDR."
+17- Presionar "Aceptar".
+
+18- Marcar el radio "No Cumplida".
+19- Verificar: se habilita el combo "Motivo".
+20- Presionar "Aplicar" sin seleccionar ningun motivo.
+21- Verificar mensaje: "Debe seleccionar un motivo cuando la HDR es No Cumplida."
+22- Presionar "Aceptar".
+
+23- En el combo "Motivo" seleccionar "DiscrepanciaConGuia".
+24- Presionar "Aplicar".
+25- Verificar: en la grilla, la columna Estado de la fila 1001 cambia a "NoCumplida".
+
+26- Presionar "Registrar Rendicion" sin haber aplicado un estado a las HDR 1002 y 1003.
+27- Verificar mensaje: "Debe aplicar un estado a todas las HDR antes de registrar la rendicion."
+28- Presionar "Aceptar".
+
+29- Salir del sistema presionando la cruz del extremo superior derecho de la pantalla.
+
+30- Archivo HojasDeRutaDistribucion.json: registros existentes
+    con NroHDR 1001, con estado "NoCumplida" y motivoNoCumplida "DiscrepanciaConGuia".
+    con NroHDR 1002 y 1003, sin cambios (estado original, sin rendicion registrada).
+
+31- Archivo Guias.json: sin cambios respecto al estado inicial (no se llego a registrar la rendicion).

@@ -1,0 +1,35 @@
+﻿Plan de Prueba: Rendir HDR de Distribucion - Caso Exitoso (HDR Cumplida)
+
+Datos de partida:
+- Transportista: dni 11111111 (Perez, Juan)
+- HDR 1001 -> Destinatario: Juan Garcia, DetalleGuias: G-D-001 (ModalidadEntrega: EntregaDomicilio), estado: EnCurso
+- HDR 1002 -> Destinatario: Maria Lopez, DetalleGuias: G-D-002 (ModalidadEntrega: EntregaCD), estado: EnCurso
+- HDR 1003 -> Destinatario: Pedro Ramirez, DetalleGuias: G-D-003 (ModalidadEntrega: EntregaAgencia), estado: Recibida
+
+1- Abrir la pantalla "Rendir HDR de Distribucion".
+2- En el combo "Fletero" seleccionar "Perez, Juan" (dni 11111111).
+3- Verificar: se cargan 3 filas en la grilla con las HDR 1001, 1002 y 1003, cada una con su destinatario, direccion y estado actual.
+4- Seleccionar en la grilla la fila correspondiente a la HDR 1001.
+5- Verificar: se habilita el recuadro "Estado de la HDR seleccionada (1001)" junto con los radios "Cumplida" y "No Cumplida".
+6- Marcar el radio "Cumplida".
+7- Verificar: el combo "Motivo" permanece deshabilitado.
+8- Presionar "Aplicar".
+9- Verificar: en la grilla, la columna Estado de la fila 1001 cambia a "Cumplida".
+10- Seleccionar la fila de la HDR 1002, marcar el radio "Cumplida" y presionar "Aplicar".
+11- Verificar: en la grilla, la columna Estado de la fila 1002 cambia a "Cumplida".
+12- Seleccionar la fila de la HDR 1003, marcar el radio "Cumplida" y presionar "Aplicar".
+13- Verificar: en la grilla, la columna Estado de la fila 1003 cambia a "Cumplida".
+14- Verificar: campo "Total Rendidas" = 3, "Total Cumplidas" = 3, "Total No Cumplidas" = 0.
+15- Presionar "Registrar Rendicion".
+16- Verificar mensaje: "Rendicion registrada con exito. Total HDR rendidas: 3"
+17- Presionar "Aceptar".
+18- Salir del sistema.
+
+19- Archivo HojasDeRutaDistribucion.json: registros existentes
+    con NroHDR 1001, 1002 y 1003,
+    con estado "Cumplida".
+
+20- Archivo Guias.json: registros existentes
+    con NroGuia G-D-001 (ModalidadEntrega "EntregaDomicilio"), estado "Entregada".
+    con NroGuia G-D-002 (ModalidadEntrega "EntregaCD"), estado sin cambios "PendienteDeRetiroEnCD".
+    con NroGuia G-D-003 (ModalidadEntrega "EntregaAgencia"), estado sin cambios "PendienteDeRetiroEnAgencia".
