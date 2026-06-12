@@ -59,11 +59,15 @@
             btnConsultarEstado = new Button();
             btnEntregaAgencia = new Button();
             btnEntregaCD = new Button();
+            gbAdministracion = new GroupBox();
+            btnResultadoCostoVentas = new Button();
+            btnEstadoCuentaCorriente = new Button();
             gbEntorno.SuspendLayout();
             gbInicio.SuspendLayout();
             gbRetiro.SuspendLayout();
             gbDistribucion.SuspendLayout();
             gbEntrega.SuspendLayout();
+            gbAdministracion.SuspendLayout();
             SuspendLayout();
             //
             // lblTitulo
@@ -375,11 +379,41 @@
             btnEntregaCD.Text = "Entrega en CD";
             btnEntregaCD.UseVisualStyleBackColor = true;
             //
+            // gbAdministracion
+            //
+            gbAdministracion.Controls.Add(btnResultadoCostoVentas);
+            gbAdministracion.Controls.Add(btnEstadoCuentaCorriente);
+            gbAdministracion.Location = new Point(742, 330);
+            gbAdministracion.Name = "gbAdministracion";
+            gbAdministracion.Size = new Size(210, 100);
+            gbAdministracion.TabIndex = 6;
+            gbAdministracion.TabStop = false;
+            gbAdministracion.Text = "Administración";
+            //
+            // btnResultadoCostoVentas
+            //
+            btnResultadoCostoVentas.Location = new Point(16, 61);
+            btnResultadoCostoVentas.Name = "btnResultadoCostoVentas";
+            btnResultadoCostoVentas.Size = new Size(176, 28);
+            btnResultadoCostoVentas.TabIndex = 1;
+            btnResultadoCostoVentas.Text = "Resultado Costo/Ventas";
+            btnResultadoCostoVentas.UseVisualStyleBackColor = true;
+            //
+            // btnEstadoCuentaCorriente
+            //
+            btnEstadoCuentaCorriente.Location = new Point(16, 26);
+            btnEstadoCuentaCorriente.Name = "btnEstadoCuentaCorriente";
+            btnEstadoCuentaCorriente.Size = new Size(176, 28);
+            btnEstadoCuentaCorriente.TabIndex = 0;
+            btnEstadoCuentaCorriente.Text = "Estado Cuenta Corriente";
+            btnEstadoCuentaCorriente.UseVisualStyleBackColor = true;
+            //
             // Menu
             //
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(970, 490);
+            Controls.Add(gbAdministracion);
             Controls.Add(gbEntrega);
             Controls.Add(gbDistribucion);
             Controls.Add(gbRetiro);
@@ -394,6 +428,7 @@
             gbRetiro.ResumeLayout(false);
             gbDistribucion.ResumeLayout(false);
             gbEntrega.ResumeLayout(false);
+            gbAdministracion.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -431,5 +466,8 @@
         private Button btnConsultarEstado;
         private Button btnEntregaAgencia;
         private Button btnEntregaCD;
+        private GroupBox gbAdministracion;
+        private Button btnResultadoCostoVentas;
+        private Button btnEstadoCuentaCorriente;
     }
 }

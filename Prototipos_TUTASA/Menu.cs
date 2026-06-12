@@ -77,6 +77,9 @@ namespace Prototipos_TUTASA
             btnEntregaCD.Click += (sender, e) => Abrir(new Última_Milla.Entrega_Encomienda_CD.EntregaEncomiendaCD());
             btnEntregaAgencia.Click += (sender, e) => Abrir(new Última_Milla.Entrega_Encomienda_Agencia.EntregaAgencia());
             btnConsultarEstado.Click += (sender, e) => Abrir(new ConsultarEstadoDelPedido_v2.ConsultarEstadoDelPedido());
+
+            btnEstadoCuentaCorriente.Click += (sender, e) => Abrir(new Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrienteXCliente_v2.EstadoCuentaCorrienteXCliente());
+            btnResultadoCostoVentas.Click += (sender, e) => Abrir(new ResultadoCostoVSVentas_v2.resultadocostosvsventas());
         }
 
         private void Entorno_Changed(object sender, EventArgs e)
