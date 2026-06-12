@@ -1310,5 +1310,83 @@
       "ExtraEntregaAgencia": 0.0,
       "TarifaTotal": 0.0
     }
+  },
+  {
+    "NroGuia": "RCV-901",
+    "IdCliente": 1,
+    "TipoImposicion": "CD",
+    "idCDOrigen": 1,
+    "idAgenciaOrigen": 0,
+    "idCDActual": 3,
+    "modalidadEntrega": "EntregaDomicilio",
+    "idCDDestino": 3,
+    "idAgenciaDestino": 0,
+    "Destinatario": {
+      "Dni": 40111111,
+      "nombre": "Laura",
+      "apellido": "Mendez",
+      "calle": "San Martin",
+      "altura": 1200,
+      "piso": "",
+      "codigoPostal": "5000",
+      "ciudad": "Cordoba",
+      "telefono": "3511111111"
+    },
+    "TipoBulto": "L",
+    "EquivalenteS": 4,
+    "estado": "Entregada",
+    "Historial": [
+      {
+        "FechaCambio": "2026-06-10T00:00:00",
+        "Estado": "Entregada",
+        "Donde": "Centro de Distribucion Cordoba"
+      }
+    ],
+    "TarifaCalculada": {
+      "PrecioFlete": 78000.0,
+      "ExtraRetiroDomicilio": 0.0,
+      "ExtraEntregaDomicilio": 2000.0,
+      "ExtraEntregaAgencia": 0.0,
+      "TarifaTotal": 80000.0
+    }
+  },
+  {
+    "NroGuia": "RCV-902",
+    "IdCliente": 2,
+    "TipoImposicion": "CD",
+    "idCDOrigen": 1,
+    "idAgenciaOrigen": 0,
+    "idCDActual": 3,
+    "modalidadEntrega": "EntregaAgencia",
+    "idCDDestino": 3,
+    "idAgenciaDestino": 1,
+    "Destinatario": {
+      "Dni": 40222222,
+      "nombre": "Martin",
+      "apellido": "Silva",
+      "calle": "Colon",
+      "altura": 900,
+      "piso": "2A",
+      "codigoPostal": "5000",
+      "ciudad": "Cordoba",
+      "telefono": "3512222222"
+    },
+    "TipoBulto": "M",
+    "EquivalenteS": 2,
+    "estado": "Entregada",
+    "Historial": [
+      {
+        "FechaCambio": "2026-06-10T00:00:00",
+        "Estado": "Entregada",
+        "Donde": "Centro de Distribucion Cordoba"
+      }
+    ],
+    "TarifaCalculada": {
+      "PrecioFlete": 29000.0,
+      "ExtraRetiroDomicilio": 0.0,
+      "ExtraEntregaDomicilio": 0.0,
+      "ExtraEntregaAgencia": 1000.0,
+      "TarifaTotal": 30000.0
+    }
   }
 ]
