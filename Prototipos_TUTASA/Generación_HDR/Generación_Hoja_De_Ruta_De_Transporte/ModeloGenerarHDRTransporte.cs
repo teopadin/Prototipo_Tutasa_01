@@ -100,10 +100,10 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transpor
             return null;
         }
 
-        private ServicioMediaDistanciaEntidad BuscarServicioEntidad(int idServicio)
+        private ServicioMediaDistanciaEntidad BuscarServicioEntidad(string idServicio)
         {
             foreach (var s in ServicioMediaDistanciaAlmacen.serviciosMediaDistancia)
-                if (s.idServicio == idServicio.ToString()) return s;
+                if (s.idServicio == idServicio) return s;
             return null;
         }
 
@@ -123,7 +123,7 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transpor
             nuevaHDR.estado = Auxiliares.EstadoHojaDeRutaEnum.Generada;   // entidad -> Auxiliares
             nuevaHDR.idCDOrigen = CdEmisor.idCD;
             nuevaHDR.idCDDestino = servicio.idCDDestino;
-            nuevaHDR.idServicio = servicio.idServicio.ToString();
+            nuevaHDR.idServicio = servicio.idServicio;
 
             int totalBultos = 0;
             foreach (var guia in guias)
