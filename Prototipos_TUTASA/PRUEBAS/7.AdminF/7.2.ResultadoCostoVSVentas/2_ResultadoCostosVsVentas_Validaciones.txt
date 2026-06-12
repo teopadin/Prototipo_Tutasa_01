@@ -1,0 +1,10 @@
+﻿Plan de Prueba: Resultado Costos VS Ventas - Validaciones
+
+1- Presionar Mostrar sin seleccionar una empresa de transporte.
+2- Presionar Aceptar.
+3- Seleccionar "Transporte Federal S.A." en el campo Empresa de Transporte.
+4- Seleccionar un periodo posterior al mes actual.
+5- Presionar Mostrar.
+8- Presionar Aceptar.
+9- Seleccionar el periodo 05/2026.
+10- Presionar Mostrar.

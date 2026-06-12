@@ -1,0 +1,16 @@
+﻿Plan de Prueba: Resultado Costos VS Ventas - Caso exitoso
+
+1- Seleccionar "Transporte Federal S.A." en el campo Empresa de Transporte.
+2- Seleccionar el periodo 06/2026.
+3- Presionar Mostrar.
+4- Verificar que muestra informaciòn
+5- Seleccionar "Logística Norte SRL" en el campo Empresa de Transporte.
+6- Presionar Mostrar.
+7- Verificar que muestra informaciòn
+8- Salir del sistema presionando la cruz del extremo superior derecho de la pantalla.
+9- Archivo Guias.json: registros existentes
+   con NroGuia RCV-901 y estado "Entregada",
+   con NroGuia RCV-902 y estado "Entregada".
+10- Archivo ArrendamientosBodega.json: registros existentes
+   con idEmpresa 1 e importeMensual 45000.0,
+   con idEmpresa 2 e importeMensual 50000.0.

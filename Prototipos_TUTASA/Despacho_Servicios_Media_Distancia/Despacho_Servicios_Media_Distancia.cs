@@ -129,21 +129,9 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
 
         private void CargarCombobox()
         {
-            /* 1. Buscamos los IDs de los servicios que NO fueron despachados (fechaLlegada es default)
-            var idsServiciosPendientes = modelo.servicios
-                .Where(s => s.fechaLlegada == default(DateTime))
-                .Select(s => s.idServicio.ToString())
-                .ToList();
-
-            // 2. Filtramos las Hojas de Ruta locales para mostrar solo las que pertenezcan a esos servicios pendientes
-            var hdrsPendientes = modelo.hdrs
-                .Where(h => idsServiciosPendientes.Contains(h.idServicio))
-                .ToList();
-            */
-            // 3. Cargamos el ComboBox con el filtro aplicado
             ServicioCmb.DataSource = null;
-            ServicioCmb.DataSource = modelo.hdrs;
-            ServicioCmb.DisplayMember = "NroHDR"; // Muestra el número de HDR en el combo
+            ServicioCmb.DataSource = modelo.ObtenerHDRsPendientes();
+            ServicioCmb.DisplayMember = "NroHDR";
         }
 
         private void CancelarBtn_Click(object sender, EventArgs e)

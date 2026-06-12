@@ -1,0 +1,25 @@
+﻿Plan de Prueba: Generación Hoja de Ruta de Distribución - Validaciones
+
+1- Abrir la pantalla Generación Hoja de Ruta de Distribución.
+2- Verificar que el campo CD Emisor se completa automáticamente.
+3- Verificar que la fecha se completa con la fecha actual.
+4- Verificar que se cargan en la grilla las guías a distribuir correspondientes al CD Emisor.
+5- Presionar Generar HDR sin seleccionar ninguna guía.
+6- Verificar mensaje: "Debe seleccionar al menos una guía y un fletero para generar la Hoja de Ruta de Distribución.".
+7- Presionar Aceptar.
+8- Verificar que no se genera una Hoja de Ruta de Distribución nueva.
+9- Verificar que no se modifica el estado de ninguna guía.
+10- Seleccionar una guía a distribuir de la grilla.
+11- Verificar que se actualiza la cantidad de guías seleccionadas.
+12- Verificar que se cargan los fleteros correspondientes al CD Emisor.
+13- Presionar Generar HDR sin seleccionar fletero.
+14- Verificar mensaje: "Debe seleccionar al menos una guía y un fletero para generar la Hoja de Ruta de Distribución.".
+15- Presionar Aceptar.
+16- Verificar que no se genera una Hoja de Ruta de Distribución nueva.
+17- Verificar que no se modifica el estado de ninguna guía.
+18- Verificar que no se incrementa la cantidad de HDR asignadas a ningún fletero.
+19- Seleccionar una guía a distribuir de la grilla.
+20- Intentar seleccionar una segunda guía con domicilio distinto, marcada en color gris.
+21- Verificar que el sistema no permite seleccionar la guía con domicilio distinto.
+22- Verificar que solo quedan seleccionables las guías con el mismo domicilio que la primera guía seleccionada.
+23- Salir de la pantalla presionando Cancelar.

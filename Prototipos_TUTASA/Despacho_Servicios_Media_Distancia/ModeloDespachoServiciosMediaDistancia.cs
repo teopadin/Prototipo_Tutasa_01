@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using System;
 using System.Collections.Generic;
 using Prototipos_TUTASA.Almacenes;
+using Prototipos_TUTASA.Auxiliares;
 
 namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
 {
@@ -162,28 +163,27 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
         {
             try
             {
-                // 1. Buscamos el servicio asociado a esta HDR en nuestra lista en memoria
+                // 1. Actualizamos el servicio en memoria y en el almacén (igual que antes)
                 var servicioLocal = servicios.FirstOrDefault(s => s.idServicio.ToString() == hdr.idServicio);
-
                 if (servicioLocal != null)
-                {
-                    // Le asignamos la fecha de llegada confirmando el despacho
                     servicioLocal.fechaLlegada = DateTime.Now;
-                }
 
-                // 2. Buscamos la entidad original del Almacén para impactar el JSON global del grupo
-                var entidadAlmacen = Prototipos_TUTASA.Almacenes.ServicioMediaDistanciaAlmacen.serviciosMediaDistancia
+                var servicioAlmacen = ServicioMediaDistanciaAlmacen.serviciosMediaDistancia
                     .FirstOrDefault(x => x.idServicio == hdr.idServicio);
+                if (servicioAlmacen != null)
+                    servicioAlmacen.fechaLlegada = DateTime.Now;
 
-                if (entidadAlmacen != null)
-                {
-                    entidadAlmacen.fechaLlegada = DateTime.Now;
-                }
+                ServicioMediaDistanciaAlmacen.Guardar();
 
-                // 3. Guardamos los cambios de manera persistente en el archivo ServiciosMediaDistancia.json
-                Prototipos_TUTASA.Almacenes.ServicioMediaDistanciaAlmacen.Guardar();
+                // 2. NUEVO: actualizamos el estado de la HDR (local y almacén)
+                hdr.estado = EstadoHojaDeRutaEnum.EnCurso;
 
-                // (Acá podés agregar también lógica para cambiar el estado de la HDR o de las Guías si lo necesitan)
+                var hdrAlmacen = HojaDeRutaTransporteAlmacen.hojasDeRutaTransporte
+                    .FirstOrDefault(h => h.nroHDR == hdr.NroHDR);
+                if (hdrAlmacen != null)
+                    hdrAlmacen.estado = (Prototipos_TUTASA.Auxiliares.EstadoHojaDeRutaEnum)(int)EstadoHojaDeRutaEnum.EnCurso;
+
+                HojaDeRutaTransporteAlmacen.Guardar();
 
                 return true;
             }

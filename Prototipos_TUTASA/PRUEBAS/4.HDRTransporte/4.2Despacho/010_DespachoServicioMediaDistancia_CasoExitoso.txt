@@ -1,0 +1,43 @@
+﻿Plan de Prueba: Despacho de Servicios de Media Distancia - Caso Exitoso (HDR Generada)
+
+Datos de partida:
+- HDR 301 -> idServicio: "1", idCDOrigen: 1, idCDDestino: 2, estado: "Generada"
+  DetalleGuias: CD01-0016, AG02-0001
+- HDR 301 es la unica HDR de transporte en estado "Generada" (pendiente de despacho).
+- Servicio "1" -> idEmpresa: 1 (Transporte Federal S.A.), capacidadDisponible: 160,
+  idCDOrigen: 1, idCDDestino: 2, fechaLlegada: 2026-06-13T08:00:00
+- CD 2 -> nombre: "Centro - Cordoba"
+- Guia CD01-0016 -> IdCliente: 1 (Juan Perez SRL), TipoBulto: M, Destinatario: nombre/apellido vacios
+- Guia AG02-0001 -> IdCliente: 2 (Mundo Fox S.A.), TipoBulto: L, Destinatario: Carlos Lopez
+
+1- Abrir la pantalla "Despacho de Servicios de Media Distancia".
+2- Verificar: el campo "Fecha" se carga con la fecha actual.
+3- Verificar: campo "Total General" (pendientes) = 2 (la HDR 301 tiene 2 guias y es la unica Generada).
+4- Verificar: en el combo de Servicio/HDR aparece unicamente la HDR "301", seleccionada por defecto.
+5- Verificar: campo "CD Destino" = "Centro - Cordoba".
+6- Verificar: campo "Id Servicio" = "1".
+7- Verificar: campo "Empresa" = "Transporte Federal S.A.".
+8- Verificar: la grilla muestra 2 filas:
+   Fila 1 -> Guia: CD01-0016, Cliente: "Juan Perez SRL", Destinatario: " " (vacio), Tipo Bulto: "M".
+   Fila 2 -> Guia: AG02-0001, Cliente: "Mundo Fox S.A.", Destinatario: "Carlos Lopez", Tipo Bulto: "L".
+9- Verificar: campo "Bulto en S" = 6 (M=2 + L=4).
+10- Verificar: campo "Total Bulto" = 2.
+11- Presionar "Confirmar".
+12- Verificar mensaje (titulo "Confirmar despacho"): "¿Confirma el despacho del Servicio de la HDR N° 301?
+Se emitirán 3 copias de la HDR Transporte."
+13- Presionar "Sí".
+14- Verificar mensaje: "Despacho registrado con éxito. Se emiten 3 copias de la HDR N° 301."
+15- Presionar "Aceptar".
+16- Verificar: la pantalla se limpia (CD Destino, Empresa, Id Servicio vacios, grilla vacia,
+    Bulto en S y Total Bulto vacios).
+17- Verificar: el combo de Servicio/HDR queda vacio (no quedan HDR de transporte pendientes).
+18- Verificar: campo "Total General" = 0.
+19- Salir del sistema.
+
+20- Archivo ServiciosMediaDistancia.json: registro existente
+    con idServicio "1",
+    con fechaLlegada actualizada a la fecha y hora del despacho (distinta de "2026-06-13T08:00:00").
+
+21- Archivo HojasDeRutaTransporte.json: registro existente
+    con nroHDR 301,
+    con estado actualizado a "EnCurso".
