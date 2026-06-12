@@ -8,6 +8,7 @@ internal class HojaDeRutaDistribucionEntidad
     public DateTime Fecha { get; set; }
     public EstadoHojaDeRutaEnum estado { get; set; }
     public int dniTransportistaAsignado { get; set; }
+    public int? idAgenciaDestino { get; set; }
     public string Calle { get; set; }
     public int Altura { get; set; }
     public string Piso { get; set; }
