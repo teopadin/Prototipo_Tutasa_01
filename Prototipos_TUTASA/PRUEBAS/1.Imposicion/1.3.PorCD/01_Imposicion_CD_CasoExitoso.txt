@@ -1,23 +1,5 @@
 ﻿Plan de Prueba: Imposición en CD - Entrega en CD - Caso exitoso
 
-Datos
-Razón Social: Juan Perez SRL
-CUIT: 20333123121
-Teléfono remitente: 1144441111
-Calle remitente: Av. Corrientes
-Altura remitente: 1200
-Piso remitente: 4A
-Código Postal remitente: 1043
-Ciudad remitente: CABA
-
-Nombre destinatario: Ana
-Apellido destinatario: Perez
-DNI destinatario: 40123456
-Teléfono destinatario: 1123456789
-Tamaño de bulto: S
-Modalidad: Entrega en CD
-CD Destino: Capital y GBA
-
 Pasos
 1- Abrir la pantalla Imposición en CD.
 2- Seleccionar la razón social Juan Perez SRL.
@@ -30,9 +12,5 @@ Pasos
 9- Seleccionar modalidad Entrega en CD.
 10- Seleccionar CD Destino Capital y GBA.
 11- Presionar Registrar Imposición y Admisión.
-
-Resultado esperado
-1- El sistema muestra el mensaje "Guía N° XXXX generada y admitida con éxito.".
-2- La guía se genera con numeración de CD, por ejemplo "CD01-0001".
-3- La guía queda registrada durante la ejecución.
-4- La ciudad del destinatario queda asociada al nombre del CD seleccionado.
+12- El sistema muestra el mensaje "Guía N° XXXX generada y admitida con éxito.".
+13- La guía se genera en el archivo Guias.json.

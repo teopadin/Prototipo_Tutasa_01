@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Prototipos_TUTASA.Almacenes;
 
 namespace Prototipos_TUTASA.ResultadoCostoVSVentas_v2
 {
@@ -15,95 +16,60 @@ namespace Prototipos_TUTASA.ResultadoCostoVSVentas_v2
 
         public ModeloResultadoCostoVSVentas()
         {
-            EmpresasTransporte = new List<EmpresaTransporte>
+            EmpresasTransporte = new List<EmpresaTransporte>();
+            foreach (var empresaEntidad in EmpresaTransporteAlmacen.empresas)
             {
-                new EmpresaTransporte { idEmpresa = 1, razonSocial = "Transportes del Sur SA", convenioVigente = true },
-                new EmpresaTransporte { idEmpresa = 2, razonSocial = "Logística Norte SRL", convenioVigente = true },
-                new EmpresaTransporte { idEmpresa = 3, razonSocial = "Rápido del Este", convenioVigente = true },
-                new EmpresaTransporte { idEmpresa = 4, razonSocial = "Expreso Mediterráneo", convenioVigente = true },
-                new EmpresaTransporte { idEmpresa = 5, razonSocial = "Cargas Patagonia SRL", convenioVigente = false }
-            };
+                EmpresasTransporte.Add(new EmpresaTransporte
+                {
+                    idEmpresa = empresaEntidad.idEmpresa,
+                    razonSocial = empresaEntidad.razonSocial,
+                    convenioVigente = empresaEntidad.convenioVigente
+                });
+            }
 
-            Servicios = new List<ServicioMediaDistancia>
+            Servicios = new List<ServicioMediaDistancia>();
+            foreach (var servicioEntidad in ServicioMediaDistanciaAlmacen.serviciosMediaDistancia)
             {
-                CrearServicio("SMD-001", 1), CrearServicio("SMD-002", 2), CrearServicio("SMD-003", 1),
-                CrearServicio("SMD-004", 1), CrearServicio("SMD-005", 2), CrearServicio("SMD-006", 2),
-                CrearServicio("SMD-007", 1), CrearServicio("SMD-008", 3), CrearServicio("SMD-009", 4),
-                CrearServicio("SMD-010", 3), CrearServicio("SMD-011", 4), CrearServicio("SMD-012", 3),
-                CrearServicio("SMD-013", 4), CrearServicio("SMD-014", 3), CrearServicio("SMD-015", 4)
-            };
+                Servicios.Add(new ServicioMediaDistancia
+                {
+                    idServicio = servicioEntidad.idServicio,
+                    idEmpresa = servicioEntidad.idEmpresa,
+                    DetalleHDRs = servicioEntidad.DetalleHDRs != null
+                        ? new List<int>(servicioEntidad.DetalleHDRs)
+                        : new List<int>()
+                });
+            }
 
-            HojasDeRutaTransporte = new List<HojaDeRutaTransporte>
+            HojasDeRutaTransporte = new List<HojaDeRutaTransporte>();
+            foreach (var hdrEntidad in HojaDeRutaTransporteAlmacen.hojasDeRutaTransporte)
             {
-                CrearHDR(100, "SMD-001", "CD01-0001", "CD01-0002", "CD01-0003"),
-                CrearHDR(101, "SMD-002", "CD02-0001"),
-                CrearHDR(102, "SMD-003", "CD01-0090"),
-                CrearHDR(103, "SMD-004", "CD01-0080", "CD01-0081"),
-                CrearHDR(104, "SMD-005", "CD02-0080"),
-                CrearHDR(105, "SMD-006", "CD02-0070", "CD02-0071"),
-                CrearHDR(106, "SMD-007", "CD01-0060", "CD01-0061"),
-                CrearHDR(107, "SMD-008", "CD03-0100", "CD03-0101"),
-                CrearHDR(108, "SMD-009", "CD04-0100", "CD04-0101", "CD04-0102"),
-                CrearHDR(109, "SMD-010", "CD03-0090", "CD03-0091"),
-                CrearHDR(110, "SMD-011", "CD04-0090"),
-                CrearHDR(111, "SMD-012", "CD03-0080", "CD03-0081", "CD03-0082"),
-                CrearHDR(112, "SMD-013", "CD04-0080", "CD04-0081"),
-                CrearHDR(113, "SMD-014", "CD03-0070"),
-                CrearHDR(114, "SMD-015", "CD04-0070", "CD04-0071")
-            };
+                HojasDeRutaTransporte.Add(new HojaDeRutaTransporte
+                {
+                    nroHDR = hdrEntidad.nroHDR,
+                    idServicio = hdrEntidad.idServicio,
+                    DetalleGuias = hdrEntidad.DetalleGuias != null
+                        ? new List<string>(hdrEntidad.DetalleGuias)
+                        : new List<string>()
+                });
+            }
 
-            ArrendamientosBodega = new List<ArrendamientoBodega>
+            ArrendamientosBodega = new List<ArrendamientoBodega>();
+            foreach (var arrendamientoEntidad in ArrendamientoBodegaAlmacen.arrendamientos)
             {
-                CrearArrendamiento(1, 1, new DateTime(2026, 5, 1), 26000),
-                CrearArrendamiento(2, 2, new DateTime(2026, 5, 1), 18000),
-                CrearArrendamiento(3, 1, new DateTime(2026, 4, 1), 24000),
-                CrearArrendamiento(4, 1, new DateTime(2026, 3, 1), 23500),
-                CrearArrendamiento(5, 2, new DateTime(2026, 3, 1), 18500),
-                CrearArrendamiento(6, 2, new DateTime(2026, 2, 1), 19500),
-                CrearArrendamiento(7, 1, new DateTime(2026, 1, 1), 22500),
-                CrearArrendamiento(8, 3, new DateTime(2026, 6, 1), 27500),
-                CrearArrendamiento(9, 4, new DateTime(2026, 6, 1), 22400),
-                CrearArrendamiento(10, 3, new DateTime(2026, 5, 1), 25100),
-                CrearArrendamiento(11, 4, new DateTime(2026, 5, 1), 20900),
-                CrearArrendamiento(12, 3, new DateTime(2026, 4, 1), 24600),
-                CrearArrendamiento(13, 4, new DateTime(2026, 4, 1), 19800),
-                CrearArrendamiento(14, 3, new DateTime(2026, 3, 1), 23200),
-                CrearArrendamiento(15, 4, new DateTime(2026, 2, 1), 21400)
-            };
+                ArrendamientosBodega.Add(new ArrendamientoBodega
+                {
+                    idArrendamiento = arrendamientoEntidad.idArrendamiento,
+                    idEmpresa = arrendamientoEntidad.idEmpresa,
+                    periodo = arrendamientoEntidad.periodo,
+                    importeMensual = arrendamientoEntidad.importeMensual
+                });
+            }
 
-            // Guías con su tarifa calculada y su historial.
-            // La fecha MinValue significa "no entregada" → no se le registra el estado Entregada.
-            Guias = new List<Guia>
+            Guias = new List<Guia>();
+            foreach (var guiaEntidad in GuiaAlmacen.Guias)
             {
-                CrearGuia("CD01-0001", 15000, new DateTime(2026, 5, 5)),
-                CrearGuia("CD01-0002", 21000, new DateTime(2026, 5, 6)),
-                CrearGuia("CD01-0003", 18000, DateTime.MinValue),
-                CrearGuia("CD02-0001", 30000, new DateTime(2026, 5, 12)),
-                CrearGuia("CD01-0090", 19000, new DateTime(2026, 4, 22)),
-                CrearGuia("CD01-0080", 22000, new DateTime(2026, 3, 18)),
-                CrearGuia("CD01-0081", 17500, new DateTime(2026, 3, 20)),
-                CrearGuia("CD02-0080", 28700, new DateTime(2026, 3, 25)),
-                CrearGuia("CD02-0070", 26500, new DateTime(2026, 2, 11)),
-                CrearGuia("CD02-0071", 31200, new DateTime(2026, 2, 13)),
-                CrearGuia("CD01-0060", 20500, new DateTime(2026, 1, 14)),
-                CrearGuia("CD01-0061", 18500, new DateTime(2026, 1, 16)),
-                CrearGuia("CD03-0100", 33400, new DateTime(2026, 6, 4)),
-                CrearGuia("CD03-0101", 29800, new DateTime(2026, 6, 5)),
-                CrearGuia("CD04-0100", 24100, new DateTime(2026, 6, 8)),
-                CrearGuia("CD04-0101", 26700, new DateTime(2026, 6, 9)),
-                CrearGuia("CD04-0102", 31000, DateTime.MinValue),
-                CrearGuia("CD03-0090", 22500, new DateTime(2026, 5, 20)),
-                CrearGuia("CD03-0091", 28600, new DateTime(2026, 5, 21)),
-                CrearGuia("CD04-0090", 35700, new DateTime(2026, 5, 27)),
-                CrearGuia("CD03-0080", 19200, new DateTime(2026, 4, 10)),
-                CrearGuia("CD03-0081", 21300, new DateTime(2026, 4, 11)),
-                CrearGuia("CD03-0082", 24900, new DateTime(2026, 4, 12)),
-                CrearGuia("CD04-0080", 27600, new DateTime(2026, 4, 16)),
-                CrearGuia("CD04-0081", 22800, new DateTime(2026, 4, 18)),
-                CrearGuia("CD03-0070", 30400, new DateTime(2026, 3, 8)),
-                CrearGuia("CD04-0070", 26300, new DateTime(2026, 2, 22)),
-                CrearGuia("CD04-0071", 29200, new DateTime(2026, 2, 23))
-            };
+                Guias.Add(MapearGuia(guiaEntidad));
+            }
         }
 
         public List<EmpresaTransporte> ObtenerEmpresasTransporte()
@@ -142,7 +108,6 @@ namespace Prototipos_TUTASA.ResultadoCostoVSVentas_v2
             };
         }
 
-        // Ventas: empresa -> servicios -> sus HDR (DetalleHDRs) -> guías de la HDR -> tarifa de cada guía entregada en el periodo
         private decimal ObtenerVentas(int idEmpresa, DateTime periodo)
         {
             decimal totalVentas = 0;
@@ -166,12 +131,13 @@ namespace Prototipos_TUTASA.ResultadoCostoVSVentas_v2
 
                         DateTime fechaEntrega = ObtenerFechaEntrega(guia);
 
-                        // Si no tiene fecha de entrega, la guía no se entregó todavía
                         if (fechaEntrega == DateTime.MinValue)
                             continue;
 
-                        // Solo cuentan las entregas del periodo consultado
                         if (fechaEntrega.Year != periodo.Year || fechaEntrega.Month != periodo.Month)
+                            continue;
+
+                        if (guia.TarifaCalculada == null)
                             continue;
 
                         totalVentas += guia.TarifaCalculada.TarifaTotal;
@@ -200,7 +166,6 @@ namespace Prototipos_TUTASA.ResultadoCostoVSVentas_v2
             return totalCostos;
         }
 
-        // Busca una HDR por su número. Devuelve null si no existe.
         private HojaDeRutaTransporte BuscarHDR(int nroHDR)
         {
             foreach (HojaDeRutaTransporte hdr in HojasDeRutaTransporte)
@@ -211,7 +176,6 @@ namespace Prototipos_TUTASA.ResultadoCostoVSVentas_v2
             return null;
         }
 
-        // Busca una guía por su número. Devuelve null si no existe.
         private Guia BuscarGuia(string nroGuia)
         {
             foreach (Guia guia in Guias)
@@ -222,10 +186,11 @@ namespace Prototipos_TUTASA.ResultadoCostoVSVentas_v2
             return null;
         }
 
-        // Obtiene la fecha de entrega de una guía desde su historial (estado Entregada).
-        // Devuelve MinValue si la guía no fue entregada.
         private DateTime ObtenerFechaEntrega(Guia guia)
         {
+            if (guia.Historial == null)
+                return DateTime.MinValue;
+
             foreach (HistorialEstadoGuia registro in guia.Historial)
             {
                 if (registro.Estado == EstadoGuiaEnum.Entregada)
@@ -234,60 +199,33 @@ namespace Prototipos_TUTASA.ResultadoCostoVSVentas_v2
             return DateTime.MinValue;
         }
 
-        private ServicioMediaDistancia CrearServicio(string idServicio, int idEmpresa)
-        {
-            return new ServicioMediaDistancia
-            {
-                idServicio = idServicio,
-                idEmpresa = idEmpresa
-            };
-        }
-
-        private HojaDeRutaTransporte CrearHDR(int nroHDR, string idServicio, params string[] guias)
-        {
-            HojaDeRutaTransporte hdr = new HojaDeRutaTransporte
-            {
-                nroHDR = nroHDR,
-                idServicio = idServicio,
-                DetalleGuias = guias.ToList()
-            };
-
-            ServicioMediaDistancia servicio = Servicios.FirstOrDefault(s => s.idServicio == idServicio);
-
-            if (servicio != null)
-                servicio.DetalleHDRs.Add(nroHDR);
-
-            return hdr;
-        }
-
-        private ArrendamientoBodega CrearArrendamiento(int id, int idEmpresa, DateTime periodo, decimal importeMensual)
-        {
-            return new ArrendamientoBodega
-            {
-                idArrendamiento = id,
-                idEmpresa = idEmpresa,
-                periodo = periodo,
-                importeMensual = importeMensual
-            };
-        }
-
-        private Guia CrearGuia(string nroGuia, decimal tarifaTotal, DateTime fechaEntrega)
+        private Guia MapearGuia(GuiaEntidad guiaEntidad)
         {
             Guia guia = new Guia
             {
-                NroGuia = nroGuia,
-                TarifaCalculada = new TarifaCalculadaGuia { TarifaTotal = tarifaTotal },
+                NroGuia = guiaEntidad.NroGuia,
+                TarifaCalculada = new TarifaCalculadaGuia
+                {
+                    TarifaTotal = guiaEntidad.TarifaCalculada != null
+                        ? guiaEntidad.TarifaCalculada.TarifaTotal
+                        : 0
+                },
                 Historial = new List<HistorialEstadoGuia>()
             };
 
-            // Solo registra la entrega si efectivamente se entregó
-            if (fechaEntrega != DateTime.MinValue)
+            if (guiaEntidad.Historial != null)
             {
-                guia.Historial.Add(new HistorialEstadoGuia
+                foreach (var historialEntidad in guiaEntidad.Historial)
                 {
-                    FechaCambio = fechaEntrega,
-                    Estado = EstadoGuiaEnum.Entregada
-                });
+                    if (historialEntidad.Estado != Prototipos_TUTASA.Auxiliares.EstadoGuiaEnum.Entregada)
+                        continue;
+
+                    guia.Historial.Add(new HistorialEstadoGuia
+                    {
+                        FechaCambio = historialEntidad.FechaCambio,
+                        Estado = EstadoGuiaEnum.Entregada
+                    });
+                }
             }
 
             return guia;
