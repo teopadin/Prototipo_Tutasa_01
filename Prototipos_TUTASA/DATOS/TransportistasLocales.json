@@ -22,5 +22,21 @@
     "contratoVigente": true,
     "idCD": 2,
     "HdrAsignadas": 0
+  },
+  {
+    "dniTransportista": 45678901,
+    "nombre": "Sofia",
+    "apellido": "Diaz",
+    "contratoVigente": true,
+    "idCD": 1,
+    "HdrAsignadas": 1
+  },
+  {
+    "dniTransportista": 34567890,
+    "nombre": "Pedro",
+    "apellido": "Lopez",
+    "contratoVigente": true,
+    "idCD": 2,
+    "HdrAsignadas": 1
   }
 ]

@@ -1,16 +1,62 @@
 [
   {
-    "idServicio": "SMD-001",
+    "idServicio": "1",
     "idEmpresa": 1,
-    "fechaSalida": "2026-06-10T08:00:00",
-    "fechaLlegada": "2026-06-10T16:00:00",
-    "fechaRecepcion": "2026-06-10T17:00:00",
+    "fechaSalida": "2026-06-12T08:00:00",
+    "fechaLlegada": "2026-06-13T08:00:00",
+    "fechaRecepcion": "2026-06-13T10:00:00",
+    "capacidadDisponible": 160,
+    "idCDOrigen": 1,
+    "idCDDestino": 3,
+    "DetalleHDRs": [],
+    "tipoArrendamiento": "A"
+  },
+  {
+    "idServicio": "2",
+    "idEmpresa": 2,
+    "fechaSalida": "2026-06-12T14:00:00",
+    "fechaLlegada": "2026-06-13T14:00:00",
+    "fechaRecepcion": "2026-06-13T16:00:00",
+    "capacidadDisponible": 5,
+    "idCDOrigen": 1,
+    "idCDDestino": 3,
+    "DetalleHDRs": [],
+    "tipoArrendamiento": "C"
+  },
+  {
+    "idServicio": "3",
+    "idEmpresa": 1,
+    "fechaSalida": "2026-06-12T10:30:00",
+    "fechaLlegada": "2026-06-12T20:30:00",
+    "fechaRecepcion": "2026-06-12T22:00:00",
     "capacidadDisponible": 80,
     "idCDOrigen": 1,
     "idCDDestino": 2,
-    "DetalleHDRs": [
-      301
-    ],
+    "DetalleHDRs": [],
     "tipoArrendamiento": "B"
+  },
+  {
+    "idServicio": "4",
+    "idEmpresa": 2,
+    "fechaSalida": "2026-06-12T16:00:00",
+    "fechaLlegada": "2026-06-13T16:00:00",
+    "fechaRecepcion": "2026-06-13T18:00:00",
+    "capacidadDisponible": 2,
+    "idCDOrigen": 1,
+    "idCDDestino": 4,
+    "DetalleHDRs": [],
+    "tipoArrendamiento": "D"
+  },
+  {
+    "idServicio": "5",
+    "idEmpresa": 1,
+    "fechaSalida": "2026-06-12T09:00:00",
+    "fechaLlegada": "2026-06-13T09:00:00",
+    "fechaRecepcion": "2026-06-13T11:00:00",
+    "capacidadDisponible": 100,
+    "idCDOrigen": 2,
+    "idCDDestino": 3,
+    "DetalleHDRs": [],
+    "tipoArrendamiento": "A"
   }
 ]
