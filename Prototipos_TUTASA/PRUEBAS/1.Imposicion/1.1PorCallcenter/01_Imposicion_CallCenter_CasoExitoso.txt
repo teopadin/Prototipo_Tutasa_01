@@ -1,24 +1,5 @@
 ﻿Plan de Prueba: Imposición Call Center - Entrega en Agencia - Caso exitoso
 
-Datos
-Razón Social: Juan Perez SRL
-CUIT: 20333123121
-Teléfono remitente: 1144441111
-Calle remitente: Av. Corrientes
-Altura remitente: 1200
-Piso remitente: 4A
-Código Postal remitente: 1043
-Ciudad remitente: CABA
-
-Nombre destinatario: Ana
-Apellido destinatario: Perez
-DNI destinatario: 40123456
-Teléfono destinatario: 1123456789
-Tamaño de bulto: S
-Modalidad: Entrega en Agencia
-CD Origen: Capital y GBA
-Agencia destino: Agencia Capital y GBA
-
 Pasos
 1- Abrir la pantalla Imposición Call Center.
 2- Seleccionar la razón social Juan Perez SRL.
@@ -32,8 +13,5 @@ Pasos
 10- Seleccionar CD Origen Capital y GBA.
 11- Seleccionar Agencia destino Agencia Capital y GBA.
 12- Presionar Registrar Imposición.
-
-Resultado esperado
-1- El sistema muestra el mensaje "Guía N° XXXX generada con éxito.".
-2- La guía queda registrada durante la ejecución.
-3- La guía queda asociada a la agencia destino Agencia Capital y GBA.
+13- El sistema muestra el mensaje "Guía N° XXXX generada con éxito.".
+14- En el archivo Guias.json se genera la guia en estado impuesta

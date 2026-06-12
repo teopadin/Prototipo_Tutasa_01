@@ -1,181 +1,22 @@
 ﻿Plan de Prueba: Imposición en Agencia - Entrega a domicilio - Validaciones
 
-Caso 1 - Razón Social vacía
-1- Abrir la pantalla Imposición en Agencia.
-2- No seleccionar Razón Social.
-3- Presionar Registrar Imposición.
-Resultado esperado: "Debe completar todos los campos obligatorios."
+Pasos:
 
-Caso 2 - Datos obligatorios del destinatario vacíos
-1- Seleccionar Razón Social Juan Perez SRL.
-2- Dejar vacío Nombre, Apellido, DNI o Teléfono del destinatario.
-3- Presionar Registrar Imposición.
-Resultado esperado: "Debe completar todos los campos obligatorios."
+1- Abrir la pantalla Imposición en Agencia, no seleccionar Razón Social y presionar Registrar Imposición.
+2- Seleccionar Razón Social Juan Perez SRL, dejar vacío Nombre, Apellido, DNI o Teléfono del destinatario y presionar Registrar Imposición.
+3- Seleccionar Razón Social Juan Perez SRL, ingresar Nombre Carlos123, completar Apellido, DNI y Teléfono correctamente, seleccionar tamaño de bulto L, seleccionar modalidad Puerta a puerta, completar domicilio correctamente, seleccionar CD Destino Centro - Cordoba y presionar Registrar Imposición.
+4- Seleccionar Razón Social Juan Perez SRL, ingresar Nombre Carlos, ingresar Apellido Lopez123, completar DNI y Teléfono correctamente, seleccionar tamaño de bulto L, seleccionar modalidad Puerta a puerta, completar domicilio correctamente, seleccionar CD Destino Centro - Cordoba y presionar Registrar Imposición.
+5- Seleccionar Razón Social Juan Perez SRL, ingresar Nombre Carlos, ingresar Apellido Lopez, ingresar DNI abc, completar Teléfono correctamente, seleccionar tamaño de bulto L, seleccionar modalidad Puerta a puerta, completar domicilio correctamente, seleccionar CD Destino Centro - Cordoba y presionar Registrar Imposición.
+6- Seleccionar Razón Social Juan Perez SRL, ingresar Nombre Carlos, ingresar Apellido Lopez, ingresar DNI 43567890, ingresar Teléfono 351abc, seleccionar tamaño de bulto L, seleccionar modalidad Puerta a puerta, completar domicilio correctamente, seleccionar CD Destino Centro - Cordoba y presionar Registrar Imposición.
+7- Seleccionar Razón Social Juan Perez SRL, completar los datos del destinatario correctamente, no seleccionar tamaño de bulto, seleccionar modalidad Puerta a puerta, completar domicilio correctamente, seleccionar CD Destino Centro - Cordoba y presionar Registrar Imposición.
+8- Seleccionar Razón Social Juan Perez SRL, completar los datos del destinatario correctamente, seleccionar tamaño de bulto L, no seleccionar modalidad de entrega y presionar Registrar Imposición.
+9- Seleccionar Razón Social Juan Perez SRL, completar los datos del destinatario correctamente, seleccionar tamaño de bulto L, seleccionar modalidad Puerta a puerta, dejar vacío el campo Calle, completar Altura, Código Postal y Ciudad, seleccionar CD Destino Centro - Cordoba y presionar Registrar Imposición.
+10- Seleccionar Razón Social Juan Perez SRL, completar los datos del destinatario correctamente, seleccionar tamaño de bulto L, seleccionar modalidad Puerta a puerta, completar Calle, Código Postal y Ciudad, dejar vacío el campo Altura, seleccionar CD Destino Centro - Cordoba y presionar Registrar Imposición.
+11- Seleccionar Razón Social Juan Perez SRL, completar los datos del destinatario correctamente, seleccionar tamaño de bulto L, seleccionar modalidad Puerta a puerta, completar Calle, Altura y Ciudad, dejar vacío el campo Código Postal, seleccionar CD Destino Centro - Cordoba y presionar Registrar Imposición.
+12- Seleccionar Razón Social Juan Perez SRL, completar los datos del destinatario correctamente, seleccionar tamaño de bulto L, seleccionar modalidad Puerta a puerta, completar Calle, Altura y Código Postal, dejar vacío el campo Ciudad, seleccionar CD Destino Centro - Cordoba y presionar Registrar Imposición.
+13- Seleccionar Razón Social Juan Perez SRL, completar los datos del destinatario correctamente, seleccionar tamaño de bulto L, seleccionar modalidad Puerta a puerta, ingresar Calle Bv San Juan 123, completar Altura, Código Postal y Ciudad correctamente, seleccionar CD Destino Centro - Cordoba y presionar Registrar Imposición.
+14- Seleccionar Razón Social Juan Perez SRL, completar los datos del destinatario correctamente, seleccionar tamaño de bulto L, seleccionar modalidad Puerta a puerta, ingresar Calle Bv San Juan, ingresar Altura abc, completar Código Postal y Ciudad correctamente, seleccionar CD Destino Centro - Cordoba y presionar Registrar Imposición.
+15- Seleccionar Razón Social Juan Perez SRL, completar los datos del destinatario correctamente, seleccionar tamaño de bulto L, seleccionar modalidad Puerta a puerta, completar Calle, Altura y Código Postal correctamente, ingresar Ciudad Cordoba123, seleccionar CD Destino Centro - Cordoba y presionar Registrar Imposición.
+16- Seleccionar Razón Social Juan Perez SRL, completar los datos del destinatario correctamente, seleccionar tamaño de bulto L, seleccionar modalidad Puerta a puerta, completar Calle, Altura, Código Postal y Ciudad correctamente, no seleccionar CD Destino y presionar Registrar Imposición.
+17- Seleccionar Razón Social Juan Perez SRL, completar los datos del destinatario correctamente, seleccionar tamaño de bulto L, seleccionar modalidad Puerta a puerta, ingresar Calle Bv San Juan, ingresar Altura 780, ingresar Código Postal T4000, ingresar Ciudad Cordoba, seleccionar CD Destino Centro - Cordoba y presionar Registrar Imposición.
 
-Caso 3 - Nombre inválido
-1- Seleccionar Razón Social Juan Perez SRL.
-2- Ingresar Nombre Carlos123.
-3- Completar Apellido, DNI y Teléfono correctamente.
-4- Seleccionar tamaño de bulto L.
-5- Seleccionar modalidad Puerta a puerta.
-6- Completar domicilio correctamente.
-7- Seleccionar CD Destino Centro - Cordoba.
-8- Presionar Registrar Imposición.
-Resultado esperado: "El campo Nombre ingresado no es válido."
-
-Caso 4 - Apellido inválido
-1- Seleccionar Razón Social Juan Perez SRL.
-2- Ingresar Nombre Carlos.
-3- Ingresar Apellido Lopez123.
-4- Completar DNI y Teléfono correctamente.
-5- Seleccionar tamaño de bulto L.
-6- Seleccionar modalidad Puerta a puerta.
-7- Completar domicilio correctamente.
-8- Seleccionar CD Destino Centro - Cordoba.
-9- Presionar Registrar Imposición.
-Resultado esperado: "El campo Apellido ingresado no es válido."
-
-Caso 5 - DNI inválido
-1- Seleccionar Razón Social Juan Perez SRL.
-2- Ingresar Nombre Carlos.
-3- Ingresar Apellido Lopez.
-4- Ingresar DNI abc.
-5- Completar Teléfono correctamente.
-6- Seleccionar tamaño de bulto L.
-7- Seleccionar modalidad Puerta a puerta.
-8- Completar domicilio correctamente.
-9- Seleccionar CD Destino Centro - Cordoba.
-10- Presionar Registrar Imposición.
-Resultado esperado: "El campo DNI ingresado no es válido."
-
-Caso 6 - Teléfono inválido
-1- Seleccionar Razón Social Juan Perez SRL.
-2- Ingresar Nombre Carlos.
-3- Ingresar Apellido Lopez.
-4- Ingresar DNI 43567890.
-5- Ingresar Teléfono 351abc.
-6- Seleccionar tamaño de bulto L.
-7- Seleccionar modalidad Puerta a puerta.
-8- Completar domicilio correctamente.
-9- Seleccionar CD Destino Centro - Cordoba.
-10- Presionar Registrar Imposición.
-Resultado esperado: "El campo Teléfono ingresado no es válido."
-
-Caso 7 - Tamaño de bulto sin seleccionar
-1- Seleccionar Razón Social Juan Perez SRL.
-2- Completar los datos del destinatario correctamente.
-3- No seleccionar tamaño de bulto.
-4- Seleccionar modalidad Puerta a puerta.
-5- Completar domicilio correctamente.
-6- Seleccionar CD Destino Centro - Cordoba.
-7- Presionar Registrar Imposición.
-Resultado esperado: "Debe completar todos los campos obligatorios."
-
-Caso 8 - Modalidad de entrega sin seleccionar
-1- Seleccionar Razón Social Juan Perez SRL.
-2- Completar los datos del destinatario correctamente.
-3- Seleccionar tamaño de bulto L.
-4- No seleccionar modalidad de entrega.
-5- Presionar Registrar Imposición.
-Resultado esperado: "Debe completar todos los campos obligatorios."
-
-Caso 9 - Calle vacía
-1- Seleccionar Razón Social Juan Perez SRL.
-2- Completar los datos del destinatario correctamente.
-3- Seleccionar tamaño de bulto L.
-4- Seleccionar modalidad Puerta a puerta.
-5- Dejar vacío el campo Calle.
-6- Completar Altura, Código Postal y Ciudad.
-7- Seleccionar CD Destino Centro - Cordoba.
-8- Presionar Registrar Imposición.
-Resultado esperado: "Debe completar todos los campos obligatorios."
-
-Caso 10 - Altura vacía
-1- Seleccionar Razón Social Juan Perez SRL.
-2- Completar los datos del destinatario correctamente.
-3- Seleccionar tamaño de bulto L.
-4- Seleccionar modalidad Puerta a puerta.
-5- Completar Calle, Código Postal y Ciudad.
-6- Dejar vacío el campo Altura.
-7- Seleccionar CD Destino Centro - Cordoba.
-8- Presionar Registrar Imposición.
-Resultado esperado: "Debe completar todos los campos obligatorios."
-
-Caso 11 - Código Postal vacío
-1- Seleccionar Razón Social Juan Perez SRL.
-2- Completar los datos del destinatario correctamente.
-3- Seleccionar tamaño de bulto L.
-4- Seleccionar modalidad Puerta a puerta.
-5- Completar Calle, Altura y Ciudad.
-6- Dejar vacío el campo Código Postal.
-7- Seleccionar CD Destino Centro - Cordoba.
-8- Presionar Registrar Imposición.
-Resultado esperado: "Debe completar todos los campos obligatorios."
-
-Caso 12 - Ciudad vacía
-1- Seleccionar Razón Social Juan Perez SRL.
-2- Completar los datos del destinatario correctamente.
-3- Seleccionar tamaño de bulto L.
-4- Seleccionar modalidad Puerta a puerta.
-5- Completar Calle, Altura y Código Postal.
-6- Dejar vacío el campo Ciudad.
-7- Seleccionar CD Destino Centro - Cordoba.
-8- Presionar Registrar Imposición.
-Resultado esperado: "Debe completar todos los campos obligatorios."
-
-Caso 13 - Calle inválida
-1- Seleccionar Razón Social Juan Perez SRL.
-2- Completar los datos del destinatario correctamente.
-3- Seleccionar tamaño de bulto L.
-4- Seleccionar modalidad Puerta a puerta.
-5- Ingresar Calle Bv San Juan 123.
-6- Completar Altura, Código Postal y Ciudad correctamente.
-7- Seleccionar CD Destino Centro - Cordoba.
-8- Presionar Registrar Imposición.
-Resultado esperado: "El campo Calle ingresado no es válido."
-
-Caso 14 - Altura inválida
-1- Seleccionar Razón Social Juan Perez SRL.
-2- Completar los datos del destinatario correctamente.
-3- Seleccionar tamaño de bulto L.
-4- Seleccionar modalidad Puerta a puerta.
-5- Ingresar Calle Bv San Juan.
-6- Ingresar Altura abc.
-7- Completar Código Postal y Ciudad correctamente.
-8- Seleccionar CD Destino Centro - Cordoba.
-9- Presionar Registrar Imposición.
-Resultado esperado: "El campo Altura ingresado no es válido."
-
-Caso 15 - Ciudad inválida
-1- Seleccionar Razón Social Juan Perez SRL.
-2- Completar los datos del destinatario correctamente.
-3- Seleccionar tamaño de bulto L.
-4- Seleccionar modalidad Puerta a puerta.
-5- Completar Calle, Altura y Código Postal correctamente.
-6- Ingresar Ciudad Cordoba123.
-7- Seleccionar CD Destino Centro - Cordoba.
-8- Presionar Registrar Imposición.
-Resultado esperado: "El campo Ciudad ingresado no es válido."
-
-Caso 16 - CD Destino sin seleccionar
-1- Seleccionar Razón Social Juan Perez SRL.
-2- Completar los datos del destinatario correctamente.
-3- Seleccionar tamaño de bulto L.
-4- Seleccionar modalidad Puerta a puerta.
-5- Completar Calle, Altura, Código Postal y Ciudad correctamente.
-6- No seleccionar CD Destino.
-7- Presionar Registrar Imposición.
-Resultado esperado: "Debe seleccionar un centro de distribución destino."
-
-Caso 17 - Código Postal alfanumérico válido
-1- Seleccionar Razón Social Juan Perez SRL.
-2- Completar los datos del destinatario correctamente.
-3- Seleccionar tamaño de bulto L.
-4- Seleccionar modalidad Puerta a puerta.
-5- Ingresar Calle Bv San Juan.
-6- Ingresar Altura 780.
-7- Ingresar Código Postal T4000.
-8- Ingresar Ciudad Cordoba.
-9- Seleccionar CD Destino Centro - Cordoba.
-10- Presionar Registrar Imposición.
-Resultado esperado: "Guía N° XXXX generada con éxito."
