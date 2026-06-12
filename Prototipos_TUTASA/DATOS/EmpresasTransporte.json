@@ -3,5 +3,10 @@
     "idEmpresa": 1,
     "razonSocial": "Transporte Federal S.A.",
     "convenioVigente": true
+  },
+  {
+    "idEmpresa": 2,
+    "razonSocial": "Logística Norte SRL",
+    "convenioVigente": true
   }
 ]
