@@ -1,7 +1,9 @@
-﻿using Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_Retiro;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using Prototipos_TUTASA.Almacenes;
+using EstadoHojaDeRutaAlmacen = Prototipos_TUTASA.Auxiliares.EstadoHojaDeRutaEnum;
+using TipoBultoAlmacen = Prototipos_TUTASA.Auxiliares.TiposBultoEnum;
 
 namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia
 {
@@ -14,123 +16,85 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia
         public List<HojaDeRutaRetiro> HojasDeRutaRetiro { get; set; }
         public List<TransportistaLocal> Transportistas { get; set; }
         public List<Guia> Guias { get; set; }
+        public List<Agencia> Agencias { get; set; }
 
         public ModeloRecibirHDRRetiroAgencia()
         {
-
-            // Transportistas
-
-            var t1 = new TransportistaLocal
-            {
-                dniTransportistaAsignado= 21412444,
-                nombre = "Carlos",
-                apellido = "Gomez"
-            };
-
-            var t2 = new TransportistaLocal
-            {
-                dniTransportistaAsignado = 22443311,
-                nombre = "Laura",
-                apellido = "Martinez"
-            };
-
-            Transportistas = new List<TransportistaLocal>
-            {
-                 t1,
-                 t2
-            };
-
-
-            // Agencias
-            var agencia1 = new Agencia
-            {
-                idAgencia = 1,
-                razonSocial = "Agencia Norte SA"
-            };
-
-            var agencia2 = new Agencia
-            {
-                idAgencia = 2,
-                razonSocial = "Agencia Sur SRL"
-            };
-
-            AgenciaLogueada = agencia1;
-
-            // Guías
-            var guia1 = new Guia
-            {
-                NroGuia = "A001-0001",
-                TipoBulto = TiposBultoEnum.S,
-                idAgenciaOrigen = agencia1.idAgencia
-            };
-
-            var guia2 = new Guia
-            {
-                NroGuia = "A001-0002",
-                TipoBulto = TiposBultoEnum.XL,
-                idAgenciaOrigen = agencia1.idAgencia
-            };
-
-            var guia3 = new Guia
-            {
-                NroGuia = "A002-0001",
-                TipoBulto = TiposBultoEnum.M,
-                idAgenciaOrigen = agencia2.idAgencia
-            };
-            Guias = new List<Guia>
-            {
-                    guia1,
-                    guia2,
-                    guia3
-            };
-            // HDR válida
-            var hdr1 = new HojaDeRutaRetiro
-            {
-                NroHDR = 1001,
-                AgenciaHDR = agencia1,
-                dniTransportistaAsignado = t1.dniTransportistaAsignado,
-                estado = EstadoHojaDeRutaEnum.EnCurso,
-                DetalleGuias = new List<string>
-                {
-                    guia1.NroGuia,
-                    guia2.NroGuia
-                }
-            };
-
-            // HDR de otra agencia
-            var hdr2 = new HojaDeRutaRetiro
-            {
-                NroHDR = 1002,
-                AgenciaHDR = agencia2,
-                dniTransportistaAsignado = t2.dniTransportistaAsignado,
-                estado = EstadoHojaDeRutaEnum.EnCurso,
-                DetalleGuias = new List<string>
-                {
-                    guia3.NroGuia   
-                }
-            };
-
-            // HDR ya recibida
-            var hdr3 = new HojaDeRutaRetiro
-            {
-                NroHDR = 1003,
-                Fecha = new DateTime(2026, 5, 25),
-                AgenciaHDR = agencia1,
-                dniTransportistaAsignado = t1.dniTransportistaAsignado,
-                estado = EstadoHojaDeRutaEnum.Recibida,
-                DetalleGuias = new List<string>
-                {
-                    guia1.NroGuia
-                }
-            };
-            HojasDeRutaRetiro = new List<HojaDeRutaRetiro>
-            {
-                hdr1,
-                hdr2,
-                hdr3
-            };
-
+            CargarTransportistas();
+            CargarAgencias();
+            CargarGuias();
+            CargarHojasDeRutaRetiro();
         }
+
+        private void CargarTransportistas()
+        {
+            Transportistas = new List<TransportistaLocal>();
+
+            foreach (TransportistaLocalEntidad transportistaEntidad in TransportistaLocalAlmacen.transportistas)
+            {
+                Transportistas.Add(new TransportistaLocal
+                {
+                    dniTransportistaAsignado = transportistaEntidad.dniTransportista,
+                    nombre = transportistaEntidad.nombre,
+                    apellido = transportistaEntidad.apellido
+                });
+            }
+        }
+
+        private void CargarAgencias()
+        {
+            Agencias = new List<Agencia>();
+
+            foreach (AgenciaEntidad agenciaEntidad in AgenciaAlmacen.Agencias)
+            {
+                Agencias.Add(new Agencia
+                {
+                    idAgencia = agenciaEntidad.idAgencia,
+                    razonSocial = agenciaEntidad.razonSocial
+                });
+            }
+
+            AgenciaLogueada = BuscarAgencia(Program.CodigoAgenciaActual);
+
+            if (AgenciaLogueada == null && Agencias.Count > 0)
+            {
+                AgenciaLogueada = Agencias[0];
+            }
+        }
+
+        private void CargarGuias()
+        {
+            Guias = new List<Guia>();
+
+            foreach (GuiaEntidad guiaEntidad in GuiaAlmacen.Guias)
+            {
+                Guias.Add(new Guia
+                {
+                    NroGuia = guiaEntidad.NroGuia,
+                    TipoBulto = ConvertirTipoBulto(guiaEntidad.TipoBulto),
+                    idAgenciaOrigen = guiaEntidad.idAgenciaOrigen
+                });
+            }
+        }
+
+        private void CargarHojasDeRutaRetiro()
+        {
+            HojasDeRutaRetiro = new List<HojaDeRutaRetiro>();
+
+            foreach (HojaDeRutaRetiroEntidad hojaEntidad in HojaDeRutaRetiroAlmacen.hojasDeRutaRetiro)
+            {
+                HojasDeRutaRetiro.Add(new HojaDeRutaRetiro
+                {
+                    NroHDR = hojaEntidad.NroHDR,
+                    Fecha = hojaEntidad.Fecha,
+                    idAgenciaOrigen = hojaEntidad.idAgenciaOrigen,
+                    dniTransportistaAsignado = hojaEntidad.dniTransportistaAsignado,
+                    estado = ConvertirEstadoHojaDeRuta(hojaEntidad.estado),
+                    DetalleGuias = new List<string>(hojaEntidad.DetalleGuias)
+                });
+            }
+        }
+
         public TransportistaLocal BuscarTransportista(int dni)
         {
             return Transportistas.FirstOrDefault(t => t.dniTransportistaAsignado == dni);
@@ -138,6 +102,31 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia
         public Guia BuscarGuia(string nroGuia)
         {
             return Guias.FirstOrDefault(g => g.NroGuia == nroGuia);
+        }
+        public Agencia BuscarAgencia(int? idAgencia)
+        {
+            return Agencias.FirstOrDefault(a => a.idAgencia == idAgencia);
+        }
+
+        private static TiposBultoEnum ConvertirTipoBulto(TipoBultoAlmacen tipoBulto)
+        {
+            return tipoBulto switch
+            {
+                TipoBultoAlmacen.M => TiposBultoEnum.M,
+                TipoBultoAlmacen.L => TiposBultoEnum.L,
+                TipoBultoAlmacen.XL => TiposBultoEnum.XL,
+                _ => TiposBultoEnum.S
+            };
+        }
+
+        private static EstadoHojaDeRutaEnum ConvertirEstadoHojaDeRuta(EstadoHojaDeRutaAlmacen estado)
+        {
+            if (estado == EstadoHojaDeRutaAlmacen.Recibida)
+            {
+                return EstadoHojaDeRutaEnum.Recibida;
+            }
+
+            return EstadoHojaDeRutaEnum.EnCurso;
         }
     }
 }

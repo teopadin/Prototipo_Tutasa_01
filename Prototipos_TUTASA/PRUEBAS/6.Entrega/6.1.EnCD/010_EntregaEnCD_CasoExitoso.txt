@@ -1,12 +1,5 @@
 Plan de Prueba: Entrega en CD - Caso éxitoso
 
-Datos
-Guía: CD02-0002
-Nombre: Ana
-Apellido: Perez
-DNI: 40123456
-Checkbox DNI: marcado
-
 Pasos
 1- Ingresar CD02-0002 en el campo de guía.
 2- Presionar Buscar.
@@ -16,10 +9,6 @@ Pasos
 6- Ingresar DNI 40123456.
 7- Marcar el checkbox de DNI verificado.
 8- Presionar Registrar Entrega.
-
-Resultado esperado
-1- El sistema muestra el mensaje "Entrega en CD se ha generado con éxito.".
-2- La guía queda en estado Entregada durante la ejecución.
-
-Aclaración
-En esta versión el modelo todavía usa datos hardcodeados. Los datos base del caso ya están replicados en DATOS para migrar luego la fuente.
+9- Verificar que el sistema muestra el mensaje "Entrega en CD se ha generado con éxito.".
+10- Verificar que la guía queda en estado Entregada.
+11- Archivo Guias.json: ultimo registro con CD02-0002, destinatario Ana Perez, DNI 40123456, estado "Entregado".

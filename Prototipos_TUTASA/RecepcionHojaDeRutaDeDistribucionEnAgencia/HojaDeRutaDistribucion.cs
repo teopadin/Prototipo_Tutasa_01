@@ -9,10 +9,8 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
     {
         public int NroHDR { get; set; }
 
-
         public DateTime Fecha { get; set; }
-
-        public Agencia AgenciaHDR { get; set; }
+        public int idAgenciaDestino { get; set; }
 
         public int dniTransportistaAsignado { get; set; }
 

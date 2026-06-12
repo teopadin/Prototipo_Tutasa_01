@@ -1,0 +1,21 @@
+﻿Plan de Prueba: Imposición en Agencia - Entrega a domicilio - Caso exitoso
+
+Pasos
+1- Abrir la pantalla Imposición en Agencia.
+2- Seleccionar la razón social Juan Perez SRL.
+3- Verificar que se completan automáticamente los datos del remitente.
+4- Ingresar Nombre destinatario Carlos.
+5- Ingresar Apellido destinatario Lopez.
+6- Ingresar DNI destinatario 43567890.
+7- Ingresar Teléfono destinatario 3514567890.
+8- Seleccionar tamaño de bulto L.
+9- Seleccionar modalidad Entrega a Domicilio.
+10- Ingresar Calle Bv San Juan.
+11- Ingresar Altura 780.
+12- Dejar Piso vacío.
+13- Ingresar Código Postal 5000.
+14- Ingresar Ciudad Cordoba.
+15- Seleccionar CD Destino Centro - Cordoba.
+16- Presionar Registrar Imposicion.
+17- El sistema muestra el mensaje "Guía N° XXXX generada con éxito.".
+18- La guía se genera en Guias.json en estado Impuesta.

@@ -24,8 +24,23 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia
                 });
             }
 
-            // Asignar la primera agencia como agencia operadora
-            AgenciaActual = agencias.Count > 0 ? agencias[0] : null;
+            // Asignar la agencia operadora segun el entorno seleccionado
+            Agencia agenciaActual = null;
+            foreach (Agencia agencia in agencias)
+            {
+                if (agencia.idAgencia == Program.CodigoAgenciaActual)
+                {
+                    agenciaActual = agencia;
+                    break;
+                }
+            }
+
+            if (agenciaActual == null && agencias.Count > 0)
+            {
+                agenciaActual = agencias[0];
+            }
+
+            AgenciaActual = agenciaActual;
 
             // Cargar guías desde GuiaAlmacen
             guias = new List<Guia>();

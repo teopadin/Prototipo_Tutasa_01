@@ -1,6 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using Prototipos_TUTASA.Almacenes;
+using EstadoGuiaAlmacen = Prototipos_TUTASA.Auxiliares.EstadoGuiaEnum;
+using EstadoHojaDeRutaAlmacen = Prototipos_TUTASA.Auxiliares.EstadoHojaDeRutaEnum;
+using ModalidadEntregaAlmacen = Prototipos_TUTASA.Auxiliares.ModalidadEntregaEnum;
+using TipoBultoAlmacen = Prototipos_TUTASA.Auxiliares.TiposBultoEnum;
 
 namespace Prototipos_TUTASA.RecepcionMediaDistancia
 {
@@ -16,223 +21,123 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
 
         public ModeloRecibirServicioMediaDistancia() 
         {
-            // CDs
-            var cdCordoba = new CentroDistribucion
-            {
-                idCD = 0,
-                nombre = "Centro - Córdoba"
-            };
-
-            var cdMendoza = new CentroDistribucion
-            {
-                idCD = 1,
-                nombre = "Cuyo - Mendoza"
-            };
-            
-            var cdBuenosAires = new CentroDistribucion
-            {
-                idCD = 2,
-                nombre = "Capital Federal - Buenos Aires"
-            };
-            CDs = new List<CentroDistribucion>
-            {
-                cdCordoba,
-                cdMendoza,
-                cdBuenosAires
-            };
-
-            // Empresa Transporte
-            var empresa1 = new EmpresaTransporte
-            {
-                idEmpresa = 11,
-                razonSocial = "Transportes Argentinos"
-            };
-
-            var empresa2 = new EmpresaTransporte
-            {
-                idEmpresa = 12,
-                razonSocial = "Expreso Nacional"
-            };
-
-            Empresas = new List<EmpresaTransporte>
-            {
-                empresa1,
-                empresa2
-            };
-
-            // SERVICIO 1
-            var guia1 = new Guia
-            {
-                NroGuia = "G0001",
-                TipoBulto = TiposBultoEnum.S,
-                modalidadEntrega = ModalidadEntregaEnum.EntregaDomicilio,
-                idCDOrigen = cdCordoba.idCD,
-                idCDActual = cdCordoba.idCD,
-                idCDDestino = cdMendoza.idCD,
-                estado = EstadoGuiaEnum.EnTransito
-            };
-
-            var guia2 = new Guia
-            {
-                NroGuia = "G0002",
-                TipoBulto = TiposBultoEnum.M,
-                modalidadEntrega = ModalidadEntregaEnum.EntregaAgencia,
-                idCDOrigen = cdCordoba.idCD,
-                idCDActual = cdCordoba.idCD,
-                idCDDestino = cdMendoza.idCD,
-                estado = EstadoGuiaEnum.EnTransito
-            };
-
-            var guia3 = new Guia
-            {
-                NroGuia = "G0003",
-                TipoBulto = TiposBultoEnum.XL,
-                modalidadEntrega = ModalidadEntregaEnum.EntregaCD,
-                idCDOrigen = cdCordoba.idCD,
-                idCDActual = cdCordoba.idCD,
-                idCDDestino = cdMendoza.idCD,
-                estado = EstadoGuiaEnum.EnTransito
-            };
-
-            var hdr1 = new HojaDeRutaTransporte
-            {
-                NroHDR = 1001,
-                estado = EstadoHojaDeRutaEnum.EnCurso,
-                DetalleGuias = new List<string>
-                {
-                    guia1.NroGuia,
-                    guia2.NroGuia
-                }
-            };
-
-            var hdr2 = new HojaDeRutaTransporte
-            {
-                NroHDR = 1002,
-                estado = EstadoHojaDeRutaEnum.EnCurso,
-                DetalleGuias = new List<string>
-                {
-                    guia3.NroGuia
-                }
-            };
-
-            var servicio1 = new ServicioMediaDistancia
-            {
-                idServicio = 1,
-                idEmpresa = empresa1.idEmpresa,
-                fechaLlegada= new DateTime(2026, 6, 2, 8, 30, 0),
-                fechaRecepcion= null,
-                DetalleHDRs = new List<int>
-                {
-                    hdr1.NroHDR,
-                    hdr2.NroHDR
-                }
-            };
-
-            // SERVICIO 2
-
-            var guia4 = new Guia
-            {
-                NroGuia = "G0004",
-                TipoBulto = TiposBultoEnum.L,
-                modalidadEntrega = ModalidadEntregaEnum.EntregaDomicilio,
-                idCDOrigen = cdMendoza.idCD,
-                idCDActual = cdMendoza.idCD,
-                idCDDestino = cdCordoba.idCD,
-                estado = EstadoGuiaEnum.EnTransito
-            };
-
-            var guia5 = new Guia
-            {
-                NroGuia = "G0005",
-                TipoBulto = TiposBultoEnum.M,
-                modalidadEntrega = ModalidadEntregaEnum.EntregaCD,
-                idCDOrigen = cdMendoza.idCD,
-                idCDActual = cdMendoza.idCD,
-                idCDDestino = cdCordoba.idCD,
-                estado = EstadoGuiaEnum.EnTransito
-            };
-
-            var hdr3 = new HojaDeRutaTransporte
-            {
-                NroHDR = 2001,
-                estado = EstadoHojaDeRutaEnum.EnCurso,
-                DetalleGuias = new List<string>
-                {
-                    guia4.NroGuia,
-                    guia5.NroGuia
-                }
-            };
-
-            var servicio2 = new ServicioMediaDistancia
-            {
-                idServicio = 2,
-                idEmpresa = empresa2.idEmpresa,
-                fechaLlegada = new DateTime(2026, 5, 29, 16, 30, 0),
-                fechaRecepcion = null,
-                DetalleHDRs = new List<int>
-                {
-                    hdr3.NroHDR
-                }
-            };
-
-            //SERVICIO 3
-            var guia6 = new Guia
-            {
-                NroGuia = "G0006",
-                TipoBulto = TiposBultoEnum.S,
-                modalidadEntrega = ModalidadEntregaEnum.EntregaDomicilio,
-                idCDOrigen = cdCordoba.idCD,
-                idCDActual = cdCordoba.idCD,
-                idCDDestino = cdBuenosAires.idCD,
-                estado = EstadoGuiaEnum.EnTransito
-            };
-
-            var hdr4 = new HojaDeRutaTransporte
-            {
-                NroHDR = 3001,
-                estado = EstadoHojaDeRutaEnum.EnCurso,
-                DetalleGuias = new List<string>
-                {
-                    guia6.NroGuia
-                }
-            };
-
-            var servicio3 = new ServicioMediaDistancia
-            {
-                idServicio = 3,
-                idEmpresa = empresa1.idEmpresa,
-                fechaLlegada = new DateTime(2026, 5, 25, 11, 30, 0),
-                fechaRecepcion = new DateTime(2026, 5, 30, 15, 30, 0),
-                DetalleHDRs = new List<int>
-                {
-                    hdr4.NroHDR
-                }
-            };
-
-            Servicios = new List<ServicioMediaDistancia>
-            {
-                servicio1,
-                servicio2,
-                servicio3
-            };
-            Guias = new List<Guia>
-            {
-                guia1,
-                guia2,
-                guia3,
-                guia4,
-                guia5,
-                guia6
-            };
-            HDRs = new List<HojaDeRutaTransporte>
-            {
-                hdr1,
-                hdr2,
-                hdr3,
-                hdr4
-            };
+            CargarCentrosDeDistribucion();
+            CargarEmpresas();
+            CargarGuias();
+            CargarHDRs();
+            CargarServicios();
 
         }
+
+        private void CargarCentrosDeDistribucion()
+        {
+            CDs = new List<CentroDistribucion>();
+
+            foreach (CentroDistribucionEntidad cdEntidad in CentroDistribucionAlmacen.CentrosDeDistribucion)
+            {
+                CDs.Add(new CentroDistribucion
+                {
+                    idCD = cdEntidad.idCD,
+                    nombre = cdEntidad.nombre
+                });
+            }
+
+            CdEmisor = BuscarCD(Program.CodigoCDActual);
+
+            if (CdEmisor == null && CDs.Count > 0)
+            {
+                CdEmisor = CDs[0];
+            }
+        }
+
+        private void CargarEmpresas()
+        {
+            Empresas = new List<EmpresaTransporte>();
+
+            foreach (EmpresaTransporteEntidad empresaEntidad in EmpresaTransporteAlmacen.empresas)
+            {
+                Empresas.Add(new EmpresaTransporte
+                {
+                    idEmpresa = empresaEntidad.idEmpresa,
+                    razonSocial = empresaEntidad.razonSocial
+                });
+            }
+        }
+
+        private void CargarGuias()
+        {
+            Guias = new List<Guia>();
+
+            foreach (GuiaEntidad guiaEntidad in GuiaAlmacen.Guias)
+            {
+                Guias.Add(new Guia
+                {
+                    NroGuia = guiaEntidad.NroGuia,
+                    TipoBulto = ConvertirTipoBulto(guiaEntidad.TipoBulto),
+                    modalidadEntrega = ConvertirModalidadEntrega(guiaEntidad.modalidadEntrega),
+                    estado = ConvertirEstadoGuia(guiaEntidad.estado),
+                    idCDOrigen = guiaEntidad.idCDOrigen,
+                    idCDActual = guiaEntidad.idCDActual,
+                    idCDDestino = guiaEntidad.idCDDestino
+                });
+            }
+        }
+
+        private void CargarHDRs()
+        {
+            HDRs = new List<HojaDeRutaTransporte>();
+
+            foreach (HojaDeRutaTransporteEntidad hdrEntidad in HojaDeRutaTransporteAlmacen.hojasDeRutaTransporte)
+            {
+                HDRs.Add(new HojaDeRutaTransporte
+                {
+                    NroHDR = hdrEntidad.nroHDR,
+                    estado = ConvertirEstadoHojaDeRuta(hdrEntidad.estado),
+                    DetalleGuias = new List<string>(hdrEntidad.DetalleGuias)
+                });
+            }
+        }
+
+        private void CargarServicios()
+        {
+            Servicios = new List<ServicioMediaDistancia>();
+
+            foreach (ServicioMediaDistanciaEntidad servicioEntidad in ServicioMediaDistanciaAlmacen.serviciosMediaDistancia)
+            {
+                Servicios.Add(new ServicioMediaDistancia
+                {
+                    idServicio = servicioEntidad.idServicio,
+                    idEmpresa = servicioEntidad.idEmpresa,
+                    fechaLlegada = servicioEntidad.fechaLlegada,
+                    fechaRecepcion = servicioEntidad.fechaRecepcion == DateTime.MinValue ? null : servicioEntidad.fechaRecepcion,
+                    DetalleHDRs = ObtenerDetalleHDRs(servicioEntidad)
+                });
+            }
+        }
+
+        private static List<int> ObtenerDetalleHDRs(ServicioMediaDistanciaEntidad servicioEntidad)
+        {
+            List<int> detalleHDRs = new List<int>();
+
+            foreach (int nroHDR in servicioEntidad.DetalleHDRs)
+            {
+                if (!detalleHDRs.Contains(nroHDR))
+                {
+                    detalleHDRs.Add(nroHDR);
+                }
+            }
+
+            foreach (HojaDeRutaTransporteEntidad hdrEntidad in HojaDeRutaTransporteAlmacen.hojasDeRutaTransporte)
+            {
+                if (hdrEntidad.idServicio == servicioEntidad.idServicio && !detalleHDRs.Contains(hdrEntidad.nroHDR))
+                {
+                    detalleHDRs.Add(hdrEntidad.nroHDR);
+                }
+            }
+
+            return detalleHDRs;
+        }
+
         public EmpresaTransporte BuscarEmpresa(int idEmpresa)
         {
             return Empresas.FirstOrDefault(e => e.idEmpresa == idEmpresa);
@@ -248,6 +153,48 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
         public CentroDistribucion BuscarCD(int idCD)
         {
             return CDs.FirstOrDefault(c => c.idCD == idCD);
+        }
+
+        private static TiposBultoEnum ConvertirTipoBulto(TipoBultoAlmacen tipoBulto)
+        {
+            return tipoBulto switch
+            {
+                TipoBultoAlmacen.M => TiposBultoEnum.M,
+                TipoBultoAlmacen.L => TiposBultoEnum.L,
+                TipoBultoAlmacen.XL => TiposBultoEnum.XL,
+                _ => TiposBultoEnum.S
+            };
+        }
+
+        private static ModalidadEntregaEnum ConvertirModalidadEntrega(ModalidadEntregaAlmacen modalidadEntrega)
+        {
+            return modalidadEntrega switch
+            {
+                ModalidadEntregaAlmacen.EntregaAgencia => ModalidadEntregaEnum.EntregaAgencia,
+                ModalidadEntregaAlmacen.EntregaCD => ModalidadEntregaEnum.EntregaCD,
+                _ => ModalidadEntregaEnum.EntregaDomicilio
+            };
+        }
+
+        private static EstadoGuiaEnum ConvertirEstadoGuia(EstadoGuiaAlmacen estado)
+        {
+            return estado switch
+            {
+                EstadoGuiaAlmacen.EnTransito => EstadoGuiaEnum.EnTransito,
+                EstadoGuiaAlmacen.EnCDDestino => EstadoGuiaEnum.EnCDDestino,
+                EstadoGuiaAlmacen.PendienteDeRetiroEnCD => EstadoGuiaEnum.PendienteDeRetiroEnCD,
+                _ => EstadoGuiaEnum.Admitida
+            };
+        }
+
+        private static EstadoHojaDeRutaEnum ConvertirEstadoHojaDeRuta(EstadoHojaDeRutaAlmacen estado)
+        {
+            if (estado == EstadoHojaDeRutaAlmacen.Recibida)
+            {
+                return EstadoHojaDeRutaEnum.Recibida;
+            }
+
+            return EstadoHojaDeRutaEnum.EnCurso;
         }
 
     }

@@ -8,7 +8,7 @@ namespace Prototipos_TUTASA.Admisión
     internal class ModeloAdmision
     {
         // CD desde el que se realiza la admisión (lo reconoce el sistema)
-        private int idCDAdmisionActual = 1;
+        private int idCDAdmisionActual;
 
         private List<Cliente> clientes;
 
@@ -22,6 +22,8 @@ namespace Prototipos_TUTASA.Admisión
 
         public ModeloAdmision()
         {
+            idCDAdmisionActual = Program.CodigoCDActual;
+
             clientes = new List<Cliente>();
             foreach (var clienteEntidad in ClienteAlmacen.Clientes)
             {
@@ -50,7 +52,7 @@ namespace Prototipos_TUTASA.Admisión
                     IdTarifa = tarifaEntidad.IdTarifa,
                     IdCDOrigen = tarifaEntidad.IdCDOrigen,
                     IdCDDestino = tarifaEntidad.IdCDDestino,
-                    TipoBulto = (TiposBultoEnum)tarifaEntidad.TipoBulto,
+                    TipoBulto = Enum.Parse<TiposBultoEnum>(tarifaEntidad.TipoBulto.ToString()),
                     PrecioFlete = tarifaEntidad.PrecioFlete
                 });
             }
@@ -60,7 +62,7 @@ namespace Prototipos_TUTASA.Admisión
             {
                 costosExtra.Add(new CostoExtra
                 {
-                    TipoCostoExtra = (TipoCostoExtraEnum)costoEntidad.TipoCostoExtra,
+                    TipoCostoExtra = Enum.Parse<TipoCostoExtraEnum>(costoEntidad.TipoCostoExtra.ToString()),
                     Monto = costoEntidad.Monto
                 });
             }
@@ -68,11 +70,17 @@ namespace Prototipos_TUTASA.Admisión
             guias = new List<Guia>();
             foreach (var guiaEntidad in GuiaAlmacen.Guias)
             {
+                EstadoGuiaEnum estadoLocal;
+                if (!Enum.TryParse<EstadoGuiaEnum>(guiaEntidad.estado.ToString(), out estadoLocal))
+                {
+                    continue; // saltar guías en estados que Admisión no maneja
+                }
+
                 guias.Add(new Guia
                 {
                     NroGuia = guiaEntidad.NroGuia,
                     IdCliente = guiaEntidad.IdCliente,
-                    TipoImposicion = (TipoImposicionEnum)guiaEntidad.TipoImposicion,
+                    TipoImposicion = Enum.Parse<TipoImposicionEnum>(guiaEntidad.TipoImposicion.ToString()),
                     IdCDDestino = guiaEntidad.idCDDestino,
                     Destinatario = new DestinatarioGuia
                     {
@@ -80,9 +88,9 @@ namespace Prototipos_TUTASA.Admisión
                         nombre = guiaEntidad.Destinatario.nombre,
                         apellido = guiaEntidad.Destinatario.apellido
                     },
-                    TipoBulto = (TiposBultoEnum)guiaEntidad.TipoBulto,
-                    ModalidadEntrega = (ModalidadEntregaEnum)guiaEntidad.modalidadEntrega,
-                    estado = (EstadoGuiaEnum)guiaEntidad.estado
+                    TipoBulto = Enum.Parse<TiposBultoEnum>(guiaEntidad.TipoBulto.ToString()),
+                    ModalidadEntrega = Enum.Parse<ModalidadEntregaEnum>(guiaEntidad.modalidadEntrega.ToString()),
+                    estado = estadoLocal
                 });
             }
         }
@@ -214,7 +222,6 @@ namespace Prototipos_TUTASA.Admisión
             Guia guia = BuscarGuia(nroGuia);
             if (guia == null) return;
 
-            // Calcula y guarda la tarifa en la guía (la pantalla no la muestra pero el sistema la necesita)
             guia.TarifaCalculada = CalcularTarifa(guia);
 
             // Caso especial: el CD destino es el mismo que el CD de admisión Y modalidad es Retiro en CD
@@ -226,6 +233,21 @@ namespace Prototipos_TUTASA.Admisión
             {
                 guia.estado = EstadoGuiaEnum.Admitida;
             }
+
+            foreach (var guiaEntidad in GuiaAlmacen.Guias)
+            {
+                if (guiaEntidad.NroGuia == nroGuia)
+                {
+                    guiaEntidad.estado = Enum.Parse<Auxiliares.EstadoGuiaEnum>(guia.estado.ToString());
+                    guiaEntidad.TarifaCalculada.PrecioFlete = guia.TarifaCalculada.PrecioFlete;
+                    guiaEntidad.TarifaCalculada.ExtraRetiroDomicilio = guia.TarifaCalculada.ExtraRetiroDomicilio;
+                    guiaEntidad.TarifaCalculada.ExtraEntregaDomicilio = guia.TarifaCalculada.ExtraEntregaDomicilio;
+                    guiaEntidad.TarifaCalculada.ExtraEntregaAgencia = guia.TarifaCalculada.ExtraEntregaAgencia;
+                    guiaEntidad.TarifaCalculada.TarifaTotal = guia.TarifaCalculada.TarifaTotal;
+                    break;
+                }
+            }
+            GuiaAlmacen.Guardar();
         }
 
         // Rechaza la admisión: pasa la guía a "Cancelada"
@@ -235,6 +257,16 @@ namespace Prototipos_TUTASA.Admisión
             if (guia == null) return;
 
             guia.estado = EstadoGuiaEnum.Cancelada;
+
+            foreach (var guiaEntidad in GuiaAlmacen.Guias)
+            {
+                if (guiaEntidad.NroGuia == nroGuia)
+                {
+                    guiaEntidad.estado = Enum.Parse<Auxiliares.EstadoGuiaEnum>(guia.estado.ToString());
+                    break;
+                }
+            }
+            GuiaAlmacen.Guardar();
         }
 
         // Métodos de formato para mostrar en pantalla
