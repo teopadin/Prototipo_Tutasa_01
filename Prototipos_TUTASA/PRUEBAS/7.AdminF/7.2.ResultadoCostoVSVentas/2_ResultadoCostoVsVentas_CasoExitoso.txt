@@ -3,31 +3,22 @@
 1- Seleccionar "Transporte Federal S.A." en el campo Empresa de Transporte.
 2- Seleccionar el periodo 06/2026.
 3- Presionar Mostrar.
-4- Verificar: se agrega una fila en la grilla de resultados.
-5- Verificar fila de la grilla:
+4- Verificar: se agrega una fila en la grilla de resultados:
    Periodo: 06/2026,
    Ventas: $80.000,00,
    Costos: $45.000,00,
    Resultado: $35.000,00.
-6- Seleccionar "Logística Norte SRL" en el campo Empresa de Transporte.
-7- Mantener seleccionado el periodo 06/2026.
-8- Presionar Mostrar.
-9- Verificar: se agrega una fila en la grilla de resultados.
-10- Verificar fila de la grilla:
+5- Seleccionar "Logística Norte SRL" en el campo Empresa de Transporte.
+6- Presionar Mostrar.
+7- Verificar: se agrega una fila en la grilla de resultados:
    Periodo: 06/2026,
    Ventas: $30.000,00,
    Costos: $50.000,00,
    Resultado: -$20.000,00.
-11- Salir del sistema presionando la cruz del extremo superior derecho de la pantalla.
-12- Archivo ServiciosMediaDistancia.json: registros existentes
-   con idServicio 101, idEmpresa 1 y DetalleHDRs [901],
-   con idServicio 102, idEmpresa 2 y DetalleHDRs [902].
-13- Archivo HojasDeRutaTransporte.json: registros existentes
-   con nroHDR 901 y DetalleGuias ["RCV-901"],
-   con nroHDR 902 y DetalleGuias ["RCV-902"].
-14- Archivo Guias.json: registros existentes
-   con NroGuia RCV-901, estado "Entregada" y TarifaTotal 80000.0,
-   con NroGuia RCV-902, estado "Entregada" y TarifaTotal 30000.0.
-15- Archivo ArrendamientosBodega.json: registros existentes
-   con idEmpresa 1, periodo 2026-06-01 e importeMensual 45000.0,
-   con idEmpresa 2, periodo 2026-06-01 e importeMensual 50000.0.
+8- Salir del sistema presionando la cruz del extremo superior derecho de la pantalla.
+9- Archivo Guias.json: registros existentes
+   con NroGuia RCV-901 y estado "Entregada",
+   con NroGuia RCV-902 y estado "Entregada".
+10- Archivo ArrendamientosBodega.json: registros existentes
+   con idEmpresa 1 e importeMensual 45000.0,
+   con idEmpresa 2 e importeMensual 50000.0.
