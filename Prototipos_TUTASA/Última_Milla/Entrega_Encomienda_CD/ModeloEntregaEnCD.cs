@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
+using Prototipos_TUTASA.Almacenes;
+using EstadoGuiaAlmacen = Prototipos_TUTASA.Auxiliares.EstadoGuiaEnum;
 
 namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_CD
 {
@@ -8,6 +11,7 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_CD
     {
         private readonly CentroDistribucion cdActual;
         private readonly List<Guia> guias;
+        private readonly Dictionary<string, GuiaEntidad> guiasEntidadPorNumero;
         private Guia guiaSeleccionada = new Guia();
         private int ultimoNroRecibo;
 
@@ -20,42 +24,21 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_CD
 
         public ModeloEntregaEnCD()
         {
-            var cdCapital = new CentroDistribucion { idCD = 1, nombre = "Capital y GBA" };
-            var cdCentro = new CentroDistribucion { idCD = 2, nombre = "Centro - Córdoba" };
+            CentroDistribucionEntidad cdCapital = CentroDistribucionAlmacen.CentrosDeDistribucion
+                .FirstOrDefault(cd => cd.idCD == 1);
 
-            cdActual = cdCapital;
+            cdActual = cdCapital != null
+                ? new CentroDistribucion { idCD = cdCapital.idCD, nombre = cdCapital.nombre }
+                : new CentroDistribucion { idCD = 1, nombre = "Capital y GBA" };
 
-            guias = new List<Guia>
+            guias = new List<Guia>();
+            guiasEntidadPorNumero = new Dictionary<string, GuiaEntidad>(StringComparer.OrdinalIgnoreCase);
+
+            foreach (GuiaEntidad guiaEntidad in GuiaAlmacen.Guias)
             {
-                new Guia
-                {
-                    NroGuia = "CD02-0002",
-                    estado = EstadoGuiaEnum.PendienteDeRetiroEnCD,
-                    idCDDestino = cdCapital.idCD,
-                    Destinatario = new DestinatarioGuia { nombre = "Ana", apellido = "Pérez", Dni = 40123456 }
-                },
-                new Guia
-                {
-                    NroGuia = "CD01-0007",
-                    estado = EstadoGuiaEnum.PendienteDeRetiroEnCD,
-                    idCDDestino = cdCapital.idCD,
-                    Destinatario = new DestinatarioGuia { nombre = "Juan", apellido = "Rodríguez", Dni = 41234567 }
-                },
-                new Guia
-                {
-                    NroGuia = "CD03-0001",
-                    estado = EstadoGuiaEnum.EnDistribucion,
-                    idCDDestino = cdCapital.idCD,
-                    Destinatario = new DestinatarioGuia { nombre = "María", apellido = "González", Dni = 42345678 }
-                },
-                new Guia
-                {
-                    NroGuia = "CD02-0009",
-                    estado = EstadoGuiaEnum.PendienteDeRetiroEnCD,
-                    idCDDestino = cdCentro.idCD,
-                    Destinatario = new DestinatarioGuia { nombre = "Carlos", apellido = "López", Dni = 43567890 }
-                }
-            };
+                guiasEntidadPorNumero[guiaEntidad.NroGuia] = guiaEntidad;
+                guias.Add(ConvertirGuia(guiaEntidad));
+            }
         }
 
         public bool BuscarGuia(string nroGuiaTexto, out string mensaje)
@@ -187,6 +170,48 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_CD
 
             ultimoNroRecibo++;
             guiaSeleccionada.estado = EstadoGuiaEnum.Entregada;
+
+            if (guiasEntidadPorNumero.TryGetValue(guiaSeleccionada.NroGuia, out GuiaEntidad guiaEntidad))
+            {
+                guiaEntidad.estado = EstadoGuiaAlmacen.Entregada;
+                guiaEntidad.Historial.Add(new Prototipos_TUTASA.Almacenes.HistorialEstadoGuia
+                {
+                    FechaCambio = fechaEntrega,
+                    Estado = EstadoGuiaAlmacen.Entregada,
+                    Donde = cdActual.nombre
+                });
+
+                GuiaAlmacen.Guardar();
+            }
+        }
+
+        private static Guia ConvertirGuia(GuiaEntidad guiaEntidad)
+        {
+            return new Guia
+            {
+                NroGuia = guiaEntidad.NroGuia,
+                estado = ConvertirEstado(guiaEntidad.estado),
+                idCDDestino = guiaEntidad.idCDDestino,
+                Destinatario = new DestinatarioGuia
+                {
+                    nombre = guiaEntidad.Destinatario.nombre,
+                    apellido = guiaEntidad.Destinatario.apellido,
+                    Dni = guiaEntidad.Destinatario.Dni
+                }
+            };
+        }
+
+        private static EstadoGuiaEnum ConvertirEstado(EstadoGuiaAlmacen estado)
+        {
+            switch (estado)
+            {
+                case EstadoGuiaAlmacen.PendienteDeRetiroEnCD:
+                    return EstadoGuiaEnum.PendienteDeRetiroEnCD;
+                case EstadoGuiaAlmacen.Entregada:
+                    return EstadoGuiaEnum.Entregada;
+                default:
+                    return EstadoGuiaEnum.EnDistribucion;
+            }
         }
 
         private static bool CoincideTexto(string textoRegistrado, string textoIngresado)
