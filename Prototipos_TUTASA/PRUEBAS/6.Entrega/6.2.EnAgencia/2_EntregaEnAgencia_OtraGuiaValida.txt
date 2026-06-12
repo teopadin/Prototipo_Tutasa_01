@@ -7,7 +7,4 @@ Pasos
 4- Ingresar Nombre Juan, Apellido Rodriguez, DNI 41234567.
 5- Marcar checkbox DNI verificado.
 6- Presionar Registrar Entrega.
-
-Resultado esperado
-"Entrega registrada con éxito para la guía N° AG01-0002."
-La guía queda en estado Entregada.
+7- Archivo Guias.json: ultimo registro con AG01-0002, destinatario Juan Rodriguez, DNI 401234567, estado "Entregado".

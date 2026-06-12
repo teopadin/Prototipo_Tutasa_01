@@ -7,7 +7,4 @@ Pasos
 4- Ingresar Nombre Ana, Apellido Perez, DNI 40123456.
 5- Marcar checkbox DNI verificado.
 6- Presionar Registrar Entrega.
-
-Resultado esperado
-"Entrega registrada con éxito para la guía N° AG01-0001."
-La guía queda en estado Entregada.
+7- Archivo Guias.json: ultimo registro con AG01-0001, destinatario Ana Perez, DNI 40123456, estado "Entregado".
