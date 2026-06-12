@@ -52,7 +52,13 @@ namespace Prototipos_TUTASA.HojaDeRutaDeDistribucion
                 }
                 else
                 {
+                    if (guia.idAgenciaDestino == null)
+                        continue;   // guia de agencia sin agencia destino: la salteo
+
                     Agencia agencia = modelo.BuscarAgencia(guia.idAgenciaDestino.Value);
+                    if (agencia == null)
+                        continue;   // por las dudas, si el id no existe en el almacen
+
                     razonSocial = agencia.razonSocial;
                     dni = "-";
                     calle = agencia.calle;
