@@ -1,7 +1,7 @@
 [
   {
-    "NroHDR": 201,
-    "Fecha": "2026-06-10T00:00:00",
+    "NroHDR": 2001,
+    "Fecha": "2026-06-11T00:00:00",
     "estado": "Generada",
     "dniTransportistaAsignado": 30111222,
     "Calle": "Av. Rivadavia",
@@ -15,8 +15,578 @@
     "motivoNoCumplida": "DestinatarioAusente"
   },
   {
-    "NroHDR": 202,
-    "Fecha": "2026-06-10T00:00:00",
+    "NroHDR": 2002,
+    "Fecha": "2026-06-11T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30222333,
+    "Calle": "Av. Santa Fe",
+    "Altura": 2450,
+    "Piso": "",
+    "CodigoPostal": "1425",
+    "Destinatario": "Maria Gonzalez",
+    "DetalleGuias": [
+      "CD03-0001"
+    ],
+    "motivoNoCumplida": "DestinatarioAusente"
+  },
+  {
+    "NroHDR": 2003,
+    "Fecha": "2026-06-12T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30111222,
+    "Calle": "Av. Rivadavia",
+    "Altura": 3200,
+    "Piso": "",
+    "CodigoPostal": "1406",
+    "Destinatario": "Ana Perez",
+    "DetalleGuias": [
+      "CD02-0002"
+    ],
+    "motivoNoCumplida": "DestinatarioAusente"
+  },
+  {
+    "NroHDR": 2004,
+    "Fecha": "2026-06-12T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30222333,
+    "Calle": "Av. Santa Fe",
+    "Altura": 2450,
+    "Piso": "",
+    "CodigoPostal": "1425",
+    "Destinatario": "Maria Gonzalez",
+    "DetalleGuias": [
+      "CD03-0001"
+    ],
+    "motivoNoCumplida": "DestinatarioAusente"
+  },
+  {
+    "NroHDR": 2005,
+    "Fecha": "2026-06-13T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30111222,
+    "Calle": "Av. Rivadavia",
+    "Altura": 3200,
+    "Piso": "",
+    "CodigoPostal": "1406",
+    "Destinatario": "Ana Perez",
+    "DetalleGuias": [
+      "CD02-0002"
+    ],
+    "motivoNoCumplida": "DestinatarioAusente"
+  },
+  {
+    "NroHDR": 2006,
+    "Fecha": "2026-06-13T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30222333,
+    "Calle": "Av. Santa Fe",
+    "Altura": 2450,
+    "Piso": "",
+    "CodigoPostal": "1425",
+    "Destinatario": "Maria Gonzalez",
+    "DetalleGuias": [
+      "CD03-0001"
+    ],
+    "motivoNoCumplida": "DestinatarioAusente"
+  },
+  {
+    "NroHDR": 2007,
+    "Fecha": "2026-06-14T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30111222,
+    "Calle": "Av. Rivadavia",
+    "Altura": 3200,
+    "Piso": "",
+    "CodigoPostal": "1406",
+    "Destinatario": "Ana Perez",
+    "DetalleGuias": [
+      "CD02-0002"
+    ],
+    "motivoNoCumplida": "DestinatarioAusente"
+  },
+  {
+    "NroHDR": 2008,
+    "Fecha": "2026-06-14T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30222333,
+    "Calle": "Av. Santa Fe",
+    "Altura": 2450,
+    "Piso": "",
+    "CodigoPostal": "1425",
+    "Destinatario": "Maria Gonzalez",
+    "DetalleGuias": [
+      "CD03-0001"
+    ],
+    "motivoNoCumplida": "DestinatarioAusente"
+  },
+  {
+    "NroHDR": 2009,
+    "Fecha": "2026-06-15T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30111222,
+    "Calle": "Av. Rivadavia",
+    "Altura": 3200,
+    "Piso": "",
+    "CodigoPostal": "1406",
+    "Destinatario": "Ana Perez",
+    "DetalleGuias": [
+      "CD02-0002"
+    ],
+    "motivoNoCumplida": "DestinatarioAusente"
+  },
+  {
+    "NroHDR": 2010,
+    "Fecha": "2026-06-15T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30222333,
+    "Calle": "Av. Santa Fe",
+    "Altura": 2450,
+    "Piso": "",
+    "CodigoPostal": "1425",
+    "Destinatario": "Maria Gonzalez",
+    "DetalleGuias": [
+      "CD03-0001"
+    ],
+    "motivoNoCumplida": "DestinatarioAusente"
+  },
+  {
+    "NroHDR": 2011,
+    "Fecha": "2026-06-16T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30111222,
+    "Calle": "Av. Rivadavia",
+    "Altura": 3200,
+    "Piso": "",
+    "CodigoPostal": "1406",
+    "Destinatario": "Ana Perez",
+    "DetalleGuias": [
+      "CD02-0002"
+    ],
+    "motivoNoCumplida": "DestinatarioAusente"
+  },
+  {
+    "NroHDR": 2012,
+    "Fecha": "2026-06-16T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30222333,
+    "Calle": "Av. Santa Fe",
+    "Altura": 2450,
+    "Piso": "",
+    "CodigoPostal": "1425",
+    "Destinatario": "Maria Gonzalez",
+    "DetalleGuias": [
+      "CD03-0001"
+    ],
+    "motivoNoCumplida": "DestinatarioAusente"
+  },
+  {
+    "NroHDR": 2013,
+    "Fecha": "2026-06-17T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30111222,
+    "Calle": "Av. Rivadavia",
+    "Altura": 3200,
+    "Piso": "",
+    "CodigoPostal": "1406",
+    "Destinatario": "Ana Perez",
+    "DetalleGuias": [
+      "CD02-0002"
+    ],
+    "motivoNoCumplida": "DestinatarioAusente"
+  },
+  {
+    "NroHDR": 2014,
+    "Fecha": "2026-06-17T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30222333,
+    "Calle": "Av. Santa Fe",
+    "Altura": 2450,
+    "Piso": "",
+    "CodigoPostal": "1425",
+    "Destinatario": "Maria Gonzalez",
+    "DetalleGuias": [
+      "CD03-0001"
+    ],
+    "motivoNoCumplida": "DestinatarioAusente"
+  },
+  {
+    "NroHDR": 2015,
+    "Fecha": "2026-06-18T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30111222,
+    "Calle": "Av. Rivadavia",
+    "Altura": 3200,
+    "Piso": "",
+    "CodigoPostal": "1406",
+    "Destinatario": "Ana Perez",
+    "DetalleGuias": [
+      "CD02-0002"
+    ],
+    "motivoNoCumplida": "DestinatarioAusente"
+  },
+  {
+    "NroHDR": 2016,
+    "Fecha": "2026-06-18T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30222333,
+    "Calle": "Av. Santa Fe",
+    "Altura": 2450,
+    "Piso": "",
+    "CodigoPostal": "1425",
+    "Destinatario": "Maria Gonzalez",
+    "DetalleGuias": [
+      "CD03-0001"
+    ],
+    "motivoNoCumplida": "DestinatarioAusente"
+  },
+  {
+    "NroHDR": 2017,
+    "Fecha": "2026-06-19T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30111222,
+    "Calle": "Av. Rivadavia",
+    "Altura": 3200,
+    "Piso": "",
+    "CodigoPostal": "1406",
+    "Destinatario": "Ana Perez",
+    "DetalleGuias": [
+      "CD02-0002"
+    ],
+    "motivoNoCumplida": "DestinatarioAusente"
+  },
+  {
+    "NroHDR": 2018,
+    "Fecha": "2026-06-19T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30222333,
+    "Calle": "Av. Santa Fe",
+    "Altura": 2450,
+    "Piso": "",
+    "CodigoPostal": "1425",
+    "Destinatario": "Maria Gonzalez",
+    "DetalleGuias": [
+      "CD03-0001"
+    ],
+    "motivoNoCumplida": "DestinatarioAusente"
+  },
+  {
+    "NroHDR": 2019,
+    "Fecha": "2026-06-20T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30111222,
+    "Calle": "Av. Rivadavia",
+    "Altura": 3200,
+    "Piso": "",
+    "CodigoPostal": "1406",
+    "Destinatario": "Ana Perez",
+    "DetalleGuias": [
+      "CD02-0002"
+    ],
+    "motivoNoCumplida": "DestinatarioAusente"
+  },
+  {
+    "NroHDR": 2020,
+    "Fecha": "2026-06-20T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30222333,
+    "Calle": "Av. Santa Fe",
+    "Altura": 2450,
+    "Piso": "",
+    "CodigoPostal": "1425",
+    "Destinatario": "Maria Gonzalez",
+    "DetalleGuias": [
+      "CD03-0001"
+    ],
+    "motivoNoCumplida": "DestinatarioAusente"
+  },
+  {
+    "NroHDR": 2021,
+    "Fecha": "2026-06-21T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30111222,
+    "Calle": "Av. Rivadavia",
+    "Altura": 3200,
+    "Piso": "",
+    "CodigoPostal": "1406",
+    "Destinatario": "Ana Perez",
+    "DetalleGuias": [
+      "CD02-0002"
+    ],
+    "motivoNoCumplida": "DestinatarioAusente"
+  },
+  {
+    "NroHDR": 2022,
+    "Fecha": "2026-06-21T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30222333,
+    "Calle": "Av. Santa Fe",
+    "Altura": 2450,
+    "Piso": "",
+    "CodigoPostal": "1425",
+    "Destinatario": "Maria Gonzalez",
+    "DetalleGuias": [
+      "CD03-0001"
+    ],
+    "motivoNoCumplida": "DestinatarioAusente"
+  },
+  {
+    "NroHDR": 2023,
+    "Fecha": "2026-06-22T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30111222,
+    "Calle": "Av. Rivadavia",
+    "Altura": 3200,
+    "Piso": "",
+    "CodigoPostal": "1406",
+    "Destinatario": "Ana Perez",
+    "DetalleGuias": [
+      "CD02-0002"
+    ],
+    "motivoNoCumplida": "DestinatarioAusente"
+  },
+  {
+    "NroHDR": 2024,
+    "Fecha": "2026-06-22T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30222333,
+    "Calle": "Av. Santa Fe",
+    "Altura": 2450,
+    "Piso": "",
+    "CodigoPostal": "1425",
+    "Destinatario": "Maria Gonzalez",
+    "DetalleGuias": [
+      "CD03-0001"
+    ],
+    "motivoNoCumplida": "DestinatarioAusente"
+  },
+  {
+    "NroHDR": 2025,
+    "Fecha": "2026-06-23T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30111222,
+    "Calle": "Av. Rivadavia",
+    "Altura": 3200,
+    "Piso": "",
+    "CodigoPostal": "1406",
+    "Destinatario": "Ana Perez",
+    "DetalleGuias": [
+      "CD02-0002"
+    ],
+    "motivoNoCumplida": "DestinatarioAusente"
+  },
+  {
+    "NroHDR": 2026,
+    "Fecha": "2026-06-23T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30222333,
+    "Calle": "Av. Santa Fe",
+    "Altura": 2450,
+    "Piso": "",
+    "CodigoPostal": "1425",
+    "Destinatario": "Maria Gonzalez",
+    "DetalleGuias": [
+      "CD03-0001"
+    ],
+    "motivoNoCumplida": "DestinatarioAusente"
+  },
+  {
+    "NroHDR": 2027,
+    "Fecha": "2026-06-24T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30111222,
+    "Calle": "Av. Rivadavia",
+    "Altura": 3200,
+    "Piso": "",
+    "CodigoPostal": "1406",
+    "Destinatario": "Ana Perez",
+    "DetalleGuias": [
+      "CD02-0002"
+    ],
+    "motivoNoCumplida": "DestinatarioAusente"
+  },
+  {
+    "NroHDR": 2028,
+    "Fecha": "2026-06-24T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30222333,
+    "Calle": "Av. Santa Fe",
+    "Altura": 2450,
+    "Piso": "",
+    "CodigoPostal": "1425",
+    "Destinatario": "Maria Gonzalez",
+    "DetalleGuias": [
+      "CD03-0001"
+    ],
+    "motivoNoCumplida": "DestinatarioAusente"
+  },
+  {
+    "NroHDR": 2029,
+    "Fecha": "2026-06-25T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30111222,
+    "Calle": "Av. Rivadavia",
+    "Altura": 3200,
+    "Piso": "",
+    "CodigoPostal": "1406",
+    "Destinatario": "Ana Perez",
+    "DetalleGuias": [
+      "CD02-0002"
+    ],
+    "motivoNoCumplida": "DestinatarioAusente"
+  },
+  {
+    "NroHDR": 2030,
+    "Fecha": "2026-06-25T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30222333,
+    "Calle": "Av. Santa Fe",
+    "Altura": 2450,
+    "Piso": "",
+    "CodigoPostal": "1425",
+    "Destinatario": "Maria Gonzalez",
+    "DetalleGuias": [
+      "CD03-0001"
+    ],
+    "motivoNoCumplida": "DestinatarioAusente"
+  },
+  {
+    "NroHDR": 2031,
+    "Fecha": "2026-06-26T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30111222,
+    "Calle": "Av. Rivadavia",
+    "Altura": 3200,
+    "Piso": "",
+    "CodigoPostal": "1406",
+    "Destinatario": "Ana Perez",
+    "DetalleGuias": [
+      "CD02-0002"
+    ],
+    "motivoNoCumplida": "DestinatarioAusente"
+  },
+  {
+    "NroHDR": 2032,
+    "Fecha": "2026-06-26T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30222333,
+    "Calle": "Av. Santa Fe",
+    "Altura": 2450,
+    "Piso": "",
+    "CodigoPostal": "1425",
+    "Destinatario": "Maria Gonzalez",
+    "DetalleGuias": [
+      "CD03-0001"
+    ],
+    "motivoNoCumplida": "DestinatarioAusente"
+  },
+  {
+    "NroHDR": 2033,
+    "Fecha": "2026-06-27T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30111222,
+    "Calle": "Av. Rivadavia",
+    "Altura": 3200,
+    "Piso": "",
+    "CodigoPostal": "1406",
+    "Destinatario": "Ana Perez",
+    "DetalleGuias": [
+      "CD02-0002"
+    ],
+    "motivoNoCumplida": "DestinatarioAusente"
+  },
+  {
+    "NroHDR": 2034,
+    "Fecha": "2026-06-27T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30222333,
+    "Calle": "Av. Santa Fe",
+    "Altura": 2450,
+    "Piso": "",
+    "CodigoPostal": "1425",
+    "Destinatario": "Maria Gonzalez",
+    "DetalleGuias": [
+      "CD03-0001"
+    ],
+    "motivoNoCumplida": "DestinatarioAusente"
+  },
+  {
+    "NroHDR": 2035,
+    "Fecha": "2026-06-28T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30111222,
+    "Calle": "Av. Rivadavia",
+    "Altura": 3200,
+    "Piso": "",
+    "CodigoPostal": "1406",
+    "Destinatario": "Ana Perez",
+    "DetalleGuias": [
+      "CD02-0002"
+    ],
+    "motivoNoCumplida": "DestinatarioAusente"
+  },
+  {
+    "NroHDR": 2036,
+    "Fecha": "2026-06-28T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30222333,
+    "Calle": "Av. Santa Fe",
+    "Altura": 2450,
+    "Piso": "",
+    "CodigoPostal": "1425",
+    "Destinatario": "Maria Gonzalez",
+    "DetalleGuias": [
+      "CD03-0001"
+    ],
+    "motivoNoCumplida": "DestinatarioAusente"
+  },
+  {
+    "NroHDR": 2037,
+    "Fecha": "2026-06-29T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30111222,
+    "Calle": "Av. Rivadavia",
+    "Altura": 3200,
+    "Piso": "",
+    "CodigoPostal": "1406",
+    "Destinatario": "Ana Perez",
+    "DetalleGuias": [
+      "CD02-0002"
+    ],
+    "motivoNoCumplida": "DestinatarioAusente"
+  },
+  {
+    "NroHDR": 2038,
+    "Fecha": "2026-06-29T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30222333,
+    "Calle": "Av. Santa Fe",
+    "Altura": 2450,
+    "Piso": "",
+    "CodigoPostal": "1425",
+    "Destinatario": "Maria Gonzalez",
+    "DetalleGuias": [
+      "CD03-0001"
+    ],
+    "motivoNoCumplida": "DestinatarioAusente"
+  },
+  {
+    "NroHDR": 2039,
+    "Fecha": "2026-06-30T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30111222,
+    "Calle": "Av. Rivadavia",
+    "Altura": 3200,
+    "Piso": "",
+    "CodigoPostal": "1406",
+    "Destinatario": "Ana Perez",
+    "DetalleGuias": [
+      "CD02-0002"
+    ],
+    "motivoNoCumplida": "DestinatarioAusente"
+  },
+  {
+    "NroHDR": 2040,
+    "Fecha": "2026-06-30T00:00:00",
     "estado": "Generada",
     "dniTransportistaAsignado": 30222333,
     "Calle": "Av. Santa Fe",
