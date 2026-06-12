@@ -1,34 +1,29 @@
 Plan de Prueba: Entrega en Agencia - Validaciones
 
-Caso 1 - Guía vacía
-Resultado: "Debe ingresar un número de guía."
+Pasos:
 
-Caso 2 - Guía con formato inválido (NO-EXISTE)
-Resultado: "El número de guía debe tener un formato válido, por ejemplo CD02-0002, AG01-0001 o A001-0001."
+1- Dejar vacío el campo de guía y presionar Buscar.
+2- Ingresar NO-EXISTE y presionar Buscar.
+3- Ingresar AG99-9999 (válido pero inexistente) y presionar Buscar.
+4- Ingresar AG02-0001 (guía de otra agencia) y presionar Buscar.
+5- Ingresar AG01-0003 (ya entregada) y presionar Buscar.
+6- Presionar Registrar Entrega sin buscar guía previamente.
+7- Buscar AG01-0001, dejar vacíos nombre/apellido/DNI y presionar Registrar Entrega.
+8- Buscar AG01-0001, ingresar DNI abc (no numérico), marcar checkbox y presionar Registrar Entrega.
+9- Buscar AG01-0001, completar datos, dejar checkbox DNI sin marcar y presionar Registrar Entrega.
+10- Buscar AG01-0001, ingresar Nombre Ana, Apellido Perez, DNI 11111111 (incorrecto), marcar checkbox y presionar Registrar Entrega.
+11- Buscar AG01-0001, ingresar Nombre Laura (incorrecto), Apellido Perez, DNI 40123456, marcar checkbox y presionar Registrar Entrega.
 
-Caso 3 - Guía válida pero inexistente (AG99-9999)
-Resultado: "No se encontró una guía con el número ingresado."
+Resultados esperados:
 
-Caso 4 - Guía de otra agencia (AG02-0001)
-Resultado: "La guía ingresada no corresponde a la agencia actual."
-
-Caso 5 - Guía con estado inválido (AG01-0003 ya entregada)
-Resultado: "La guía no se encuentra pendiente de retiro en agencia."
-
-Caso 6 - Campos vacíos (buscar AG01-0001, dejar nombre/apellido/DNI vacíos)
-Resultado: "Debe completar nombre, apellido y DNI de quien retira."
-
-Caso 7 - DNI no numérico (abc)
-Resultado: "El DNI ingresado no tiene un formato válido."
-
-Caso 8 - Checkbox DNI sin marcar
-Resultado: "Debe confirmar que el documento de identidad fue presentado y verificado."
-
-Caso 9 - Datos no coinciden (DNI 11111111 en lugar de 40123456)
-Resultado: "Los datos de quien retira no coinciden con el destinatario de la guía."
-
-Caso 10 - Nombre incorrecto (Laura en lugar de Ana)
-Resultado: "Los datos de quien retira no coinciden con el destinatario de la guía."
-
-Caso 11 - Mayúsculas y minúsculas (ana, perez)
-Resultado: "Entrega registrada con éxito para la guía N° AG01-0001." (debe ser case-insensitive)
+1- "Debe ingresar un número de guía."
+2- "El número de guía debe tener un formato válido, por ejemplo CD02-0002, AG01-0001 o A001-0001."
+3- "No se encontró una guía con el número ingresado."
+4- "La guía ingresada no corresponde a la agencia actual."
+5- "La guía no se encuentra pendiente de retiro en agencia."
+6- "Debe buscar una guía válida antes de registrar la entrega."
+7- "Debe completar nombre, apellido y DNI de quien retira."
+8- "El DNI ingresado no tiene un formato válido."
+9- "Debe confirmar que el documento de identidad fue presentado y verificado."
+10- "Los datos de quien retira no coinciden con el destinatario de la guía."
+11- "Los datos de quien retira no coinciden con el destinatario de la guía."
