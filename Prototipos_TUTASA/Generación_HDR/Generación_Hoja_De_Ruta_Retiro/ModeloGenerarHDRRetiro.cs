@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using Prototipos_TUTASA.Almacenes;
 
 namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_Retiro
 {
@@ -13,85 +13,186 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_Retiro
         public List<Guia> Guias { get; set; }
         public List<TransportistaLocal> Transportistas { get; set; }
         public bool Actualizando { get; set; } = false;
-        public List<HojaDeRutaRetiro> HojasDeRuta { get; set; } = new List<HojaDeRutaRetiro>();
 
         public ModeloGenerarHDRRetiro()
         {
-            // CDs (ahora con idCD)
-            var cdCapital = new CentroDistribucion { idCD = 1, nombre = "Capital y GBA" };
-            var cdCentro = new CentroDistribucion { idCD = 2, nombre = "Centro - Córdoba" };
-            var cdNorte = new CentroDistribucion { idCD = 3, nombre = "Norte - Tucumán" };
-            var cdEste = new CentroDistribucion { idCD = 4, nombre = "Este - Corrientes" };
-            var cdCordillera = new CentroDistribucion { idCD = 5, nombre = "Cordillera - Neuquén" };
-            var cdSur = new CentroDistribucion { idCD = 6, nombre = "Sur - Viedma" };
-
-            CentrosDeDistribucion = new List<CentroDistribucion>
+            // ---- CENTROS DE DISTRIBUCION ----
+            CentrosDeDistribucion = new List<CentroDistribucion>();
+            foreach (var cd in CentroDistribucionAlmacen.CentrosDeDistribucion)
             {
-                cdCapital, cdCentro, cdNorte, cdEste, cdCordillera, cdSur
-            };
+                CentrosDeDistribucion.Add(new CentroDistribucion
+                {
+                    idCD = cd.idCD,
+                    nombre = cd.nombre
+                });
+            }
 
-            CdEmisor = cdCapital;
+            CdEmisor = BuscarCD(2); // CD fijo (Capital) hasta tener el CD logueado
 
-            // Transportistas (idCD ahora es int)
-            var t1 = new TransportistaLocal { dniTransportista = 12345678, nombre = "Carlos", apellido = "Gomez", idCD = cdCapital.idCD, HdrAsignadas = 2 };
-            var t2 = new TransportistaLocal { dniTransportista = 23456789, nombre = "Laura", apellido = "Martinez", idCD = cdCapital.idCD, HdrAsignadas = 0 };
-            var t3 = new TransportistaLocal { dniTransportista = 34567890, nombre = "Pedro", apellido = "Lopez", idCD = cdCentro.idCD, HdrAsignadas = 1 };
-
-            Transportistas = new List<TransportistaLocal> { t1, t2, t3 };
-
-            // Agencias (con idAgencia, idCD int)
-            var agencia1 = new Agencia { idAgencia = 1, razonSocial = "Agencia Norte SA", calle = "Av. Corrientes", altura = 1234, piso = "PB", codigoPostal = "1043", ciudad = "Buenos Aires", idCD = cdCapital.idCD };
-            var agencia2 = new Agencia { idAgencia = 2, razonSocial = "Agencia Sur SRL", calle = "San Martín", altura = 500, piso = "1", codigoPostal = "1043", ciudad = "Buenos Aires", idCD = cdCapital.idCD };
-
-            Agencias = new List<Agencia> { agencia1, agencia2 };
-
-            // Clientes (con idCliente)
-            var cliente1 = new Cliente { idCliente = 1, razonSocial = "Empresa ABC SA", calle = "Av. Rivadavia", altura = 3200, piso = "3B", codigoPostal = "1406", ciudad = "Buenos Aires" };
-            var cliente2 = new Cliente { idCliente = 2, razonSocial = "Distribuidora XYZ SRL", calle = "Av. Rivadavia", altura = 3200, piso = "3B", codigoPostal = "1406", ciudad = "Buenos Aires" };
-            var cliente3 = new Cliente { idCliente = 3, razonSocial = "Comercio El Sol", calle = "Belgrano", altura = 750, piso = "PB", codigoPostal = "5000", ciudad = "Córdoba" };
-
-            Clientes = new List<Cliente> { cliente1, cliente2, cliente3 };
-
-            // Guías (todas las referencias ahora por id)
-            Guias = new List<Guia>
+            // ---- CLIENTES ----
+            Clientes = new List<Cliente>();
+            foreach (var c in ClienteAlmacen.Clientes)
             {
-                // Domicilio cliente, origen Capital - misma dirección para probar filtro
-                new Guia { NroGuia = "CD01-0001", TipoImposicion = TipoImposicionEnum.CallCenter, TipoBulto = TipoBultoEnum.M, Estado = EstadoGuiaEnum.Impuesta, idCDOrigen = cdCapital.idCD, idCDDestino = cdNorte.idCD, IdCliente = cliente1.idCliente, idAgenciaOrigen = null },
-                new Guia { NroGuia = "CD01-0002", TipoImposicion = TipoImposicionEnum.CallCenter, TipoBulto = TipoBultoEnum.L, Estado = EstadoGuiaEnum.Impuesta, idCDOrigen = cdCapital.idCD, idCDDestino = cdCentro.idCD, IdCliente = cliente2.idCliente, idAgenciaOrigen = null },
+                Clientes.Add(new Cliente
+                {
+                    idCliente = c.idCliente,
+                    razonSocial = c.razonSocial,
+                    calle = c.calle,
+                    altura = c.altura,
+                    piso = c.piso,
+                    codigoPostal = c.codigoPostal,
+                    ciudad = c.ciudad
+                });
+            }
 
-                // Retiro en agencia, origen Capital
-                new Guia { NroGuia = "A001-0001", TipoImposicion = TipoImposicionEnum.Agencia, TipoBulto = TipoBultoEnum.S, Estado = EstadoGuiaEnum.Impuesta, idCDOrigen = cdCapital.idCD, idCDDestino = cdNorte.idCD, IdCliente = null, idAgenciaOrigen = agencia1.idAgencia },
-                new Guia { NroGuia = "A001-0002", TipoImposicion = TipoImposicionEnum.Agencia, TipoBulto = TipoBultoEnum.XL, Estado = EstadoGuiaEnum.Impuesta, idCDOrigen = cdCapital.idCD, idCDDestino = cdEste.idCD, IdCliente = null, idAgenciaOrigen = agencia1.idAgencia },
-                new Guia { NroGuia = "A002-0001", TipoImposicion = TipoImposicionEnum.Agencia, TipoBulto = TipoBultoEnum.M, Estado = EstadoGuiaEnum.Impuesta, idCDOrigen = cdCapital.idCD, idCDDestino = cdSur.idCD, IdCliente = null, idAgenciaOrigen = agencia2.idAgencia },
+            // ---- AGENCIAS ----
+            Agencias = new List<Agencia>();
+            foreach (var ag in AgenciaAlmacen.Agencias)
+            {
+                Agencias.Add(new Agencia
+                {
+                    idAgencia = ag.idAgencia,
+                    razonSocial = ag.razonSocial,
+                    calle = ag.calle,
+                    altura = ag.altura,
+                    piso = ag.piso,
+                    codigoPostal = ag.codigoPostal,
+                    ciudad = ag.ciudad,
+                    idCD = ag.idCD
+                });
+            }
 
-                // Domicilio cliente, origen Córdoba - NO debe aparecer (CD origen != CD emisor)
-                new Guia { NroGuia = "CD02-0001", TipoImposicion = TipoImposicionEnum.CallCenter, TipoBulto = TipoBultoEnum.S, Estado = EstadoGuiaEnum.Impuesta, idCDOrigen = cdCentro.idCD, idCDDestino = cdNorte.idCD, IdCliente = cliente3.idCliente, idAgenciaOrigen = null },
+            // ---- TRANSPORTISTAS ----
+            Transportistas = new List<TransportistaLocal>();
+            foreach (var t in TransportistaLocalAlmacen.transportistas)
+            {
+                Transportistas.Add(new TransportistaLocal
+                {
+                    dniTransportista = t.dniTransportista,
+                    nombre = t.nombre,
+                    apellido = t.apellido,
+                    idCD = t.idCD,
+                    HdrAsignadas = t.HdrAsignadas
+                });
+            }
 
-                // En otro estado - NO debe aparecer
-                new Guia { NroGuia = "CD01-0003", TipoImposicion = TipoImposicionEnum.CallCenter, TipoBulto = TipoBultoEnum.L, Estado = EstadoGuiaEnum.IncluidaEnHDRRetiro, idCDOrigen = cdCapital.idCD, idCDDestino = cdNorte.idCD, IdCliente = cliente1.idCliente, idAgenciaOrigen = null },
-            };
+            // ---- GUIAS ----
+            Guias = new List<Guia>();
+            foreach (var g in GuiaAlmacen.Guias)
+            {
+                Guias.Add(new Guia
+                {
+                    NroGuia = g.NroGuia,
+                    TipoImposicion = (TipoImposicionEnum)g.TipoImposicion,   
+                    TipoBulto = (TipoBultoEnum)g.TipoBulto,                  
+                    Estado = (EstadoGuiaEnum)g.estado,                       
+                    idCDOrigen = g.idCDOrigen,
+                    idCDDestino = g.idCDDestino,
+                    IdCliente = g.IdCliente == 0 ? (int?)null : g.IdCliente,
+                    idAgenciaOrigen = g.idAgenciaOrigen == 0 ? (int?)null : g.idAgenciaOrigen
+                });
+            }
         }
 
-        // Busca un cliente por su id. Devuelve null si no existe.
         public Cliente BuscarCliente(int idCliente)
         {
-            foreach (Cliente cliente in Clientes)
-            {
-                if (cliente.idCliente == idCliente)
-                    return cliente;
-            }
+            foreach (var cliente in Clientes)
+                if (cliente.idCliente == idCliente) return cliente;
             return null;
         }
 
-        // Busca una agencia por su id. Devuelve null si no existe.
         public Agencia BuscarAgencia(int idAgencia)
         {
-            foreach (Agencia agencia in Agencias)
-            {
-                if (agencia.idAgencia == idAgencia)
-                    return agencia;
-            }
+            foreach (var agencia in Agencias)
+                if (agencia.idAgencia == idAgencia) return agencia;
             return null;
+        }
+
+        public CentroDistribucion BuscarCD(int idCD)
+        {
+            foreach (var cd in CentrosDeDistribucion)
+                if (cd.idCD == idCD) return cd;
+            return null;
+        }
+
+        private GuiaEntidad BuscarGuiaEntidad(string nroGuia)
+        {
+            foreach (var g in GuiaAlmacen.Guias)
+                if (g.NroGuia == nroGuia) return g;
+            return null;
+        }
+
+        private TransportistaLocalEntidad BuscarTransportistaEntidad(int dni)
+        {
+            foreach (var t in TransportistaLocalAlmacen.transportistas)
+                if (t.dniTransportista == dni) return t;
+            return null;
+        }
+
+        private int ProximoNroHDR()
+        {
+            int max = 0;
+            foreach (var hdr in HojaDeRutaRetiroAlmacen.hojasDeRutaRetiro)
+                if (hdr.NroHDR > max) max = hdr.NroHDR;
+            return max + 1;
+        }
+
+        public HojaDeRutaRetiroEntidad GenerarHDR(List<Guia> guias, TransportistaLocal transportista, DateTime fecha)
+        {
+            var nuevaHDR = new HojaDeRutaRetiroEntidad();
+            nuevaHDR.NroHDR = ProximoNroHDR();
+            nuevaHDR.Fecha = fecha;
+            nuevaHDR.estado = Auxiliares.EstadoHojaDeRutaEnum.Generada;
+            nuevaHDR.dniTransportistaAsignado = transportista.dniTransportista;
+
+        
+            Guia guiaRef = guias[0];
+            if (guiaRef.TipoImposicion == TipoImposicionEnum.CallCenter)
+            {
+                Cliente cliente = BuscarCliente(guiaRef.IdCliente.Value);
+                nuevaHDR.Calle = cliente.calle;
+                nuevaHDR.Altura = cliente.altura;
+                nuevaHDR.Piso = cliente.piso;
+                nuevaHDR.CodigoPostal = cliente.codigoPostal;
+                nuevaHDR.Remitente = cliente.razonSocial;
+                nuevaHDR.idAgenciaOrigen = null;  
+            }
+            else
+            {
+                Agencia agencia = BuscarAgencia(guiaRef.idAgenciaOrigen.Value);
+                nuevaHDR.Calle = agencia.calle;
+                nuevaHDR.Altura = agencia.altura;
+                nuevaHDR.Piso = agencia.piso;
+                nuevaHDR.CodigoPostal = agencia.codigoPostal;
+                nuevaHDR.Remitente = agencia.razonSocial;
+                nuevaHDR.idAgenciaOrigen = agencia.idAgencia;
+            }
+
+
+            foreach (var guia in guias)
+            {
+                nuevaHDR.DetalleGuias.Add(guia.NroGuia);
+
+                guia.Estado = EstadoGuiaEnum.IncluidaEnHDRRetiro;  
+
+                GuiaEntidad guiaEntidad = BuscarGuiaEntidad(guia.NroGuia);
+                if (guiaEntidad != null)
+                    guiaEntidad.estado = Auxiliares.EstadoGuiaEnum.IncluidaEnHDRRetiro;   
+            }
+
+
+            transportista.HdrAsignadas++;  
+            TransportistaLocalEntidad transportistaEntidad = BuscarTransportistaEntidad(transportista.dniTransportista);
+            if (transportistaEntidad != null)
+                transportistaEntidad.HdrAsignadas++; 
+
+
+            HojaDeRutaRetiroAlmacen.hojasDeRutaRetiro.Add(nuevaHDR);
+            HojaDeRutaRetiroAlmacen.Guardar();
+            GuiaAlmacen.Guardar();
+            TransportistaLocalAlmacen.Guardar();
+
+            return nuevaHDR;
         }
     }
 }

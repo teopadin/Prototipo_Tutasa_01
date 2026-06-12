@@ -202,13 +202,10 @@ namespace Prototipos_TUTASA.HojaDeRutaRetiro
 
         private void btnGenerarHdr_Click(object sender, EventArgs e)
         {
-            // Validar que haya al menos una guía seleccionada
             List<Guia> guiasSeleccionadas = new List<Guia>();
             foreach (ListViewItem item in lvGuiasPendientes.Items)
-            {
                 if (item.Checked)
                     guiasSeleccionadas.Add((Guia)item.Tag);
-            }
 
             if (guiasSeleccionadas.Count == 0)
             {
@@ -216,7 +213,6 @@ namespace Prototipos_TUTASA.HojaDeRutaRetiro
                 return;
             }
 
-            // Validar que haya un fletero seleccionado
             TransportistaLocal transportistaSeleccionado = null;
             if (lvFleteros.SelectedItems.Count > 0)
                 transportistaSeleccionado = (TransportistaLocal)lvFleteros.SelectedItems[0].Tag;
@@ -227,22 +223,9 @@ namespace Prototipos_TUTASA.HojaDeRutaRetiro
                 return;
             }
 
-            Generación_HDR.Generación_Hoja_De_Ruta_Retiro.HojaDeRutaRetiro nuevaHDR = new Generación_HDR.Generación_Hoja_De_Ruta_Retiro.HojaDeRutaRetiro();
-            nuevaHDR.NroHDR = modelo.HojasDeRuta.Count + 1;
-            nuevaHDR.Fecha = dtpFecha.Value.Date;
+            var nuevaHDR = modelo.GenerarHDR(guiasSeleccionadas, transportistaSeleccionado, dtpFecha.Value.Date);
+            MessageBox.Show($"Hoja de Ruta de Retiro {nuevaHDR.NroHDR} generada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            // Cambiar el estado de las guías a IncluidaEnHDRRetiro
-            foreach (var guia in guiasSeleccionadas)
-                guia.Estado = EstadoGuiaEnum.IncluidaEnHDRRetiro;
-
-            // Incrementar las HDR asignadas al transportista
-            transportistaSeleccionado.HdrAsignadas++;
-
-            modelo.HojasDeRuta.Add(nuevaHDR);
-
-            MessageBox.Show($"Hoja de Ruta de Retiro  {nuevaHDR.NroHDR} generada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            // Limpiar la pantalla para una nueva operación
             lvFleteros.Items.Clear();
             CargarGuiasImpuestas();
         }
