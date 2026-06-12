@@ -124,7 +124,7 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transpor
             var nuevaHDR = new HojaDeRutaTransporteEntidad();
             nuevaHDR.nroHDR = ProximoNroHDR();
             nuevaHDR.fechaGeneracion = DateTime.Now;
-            nuevaHDR.estado = Auxiliares.EstadoHojaDeRutaEnum.Generada;   // entidad -> Auxiliares
+            nuevaHDR.estado = Auxiliares.EstadoHojaDeRutaEnum.Generada;  
             nuevaHDR.idCDOrigen = CdEmisor.idCD;
             nuevaHDR.idCDDestino = servicio.idCDDestino;
             nuevaHDR.idServicio = servicio.idServicio;
