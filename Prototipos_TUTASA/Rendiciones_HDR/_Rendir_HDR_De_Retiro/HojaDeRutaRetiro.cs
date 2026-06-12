@@ -9,6 +9,8 @@ namespace Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Retiro
     {
         public int NroHDR { get; set; }
         public int dniTransportistaAsignado { get; set; }
+        public int? idAgenciaOrigen { get; set; }
+
         public string Remitente { get; set; }
         public string Calle { get; set; }
         public int Altura { get; set; }
