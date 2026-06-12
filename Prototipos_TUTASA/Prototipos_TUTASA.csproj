@@ -46,7 +46,6 @@
     <Folder Include="PRUEBAS\5.HDRDistribucion\5.1Generacion\" />
     <Folder Include="PRUEBAS\5.HDRDistribucion\5.2.GeneracionResumen\" />
     <Folder Include="PRUEBAS\5.HDRDistribucion\5.3.Recepcion\" />
-    <Folder Include="PRUEBAS\5.HDRDistribucion\5.4.Rendicion\" />
     <Folder Include="PRUEBAS\6.Entrega\6.1.EnCD\" />
   </ItemGroup>
 
