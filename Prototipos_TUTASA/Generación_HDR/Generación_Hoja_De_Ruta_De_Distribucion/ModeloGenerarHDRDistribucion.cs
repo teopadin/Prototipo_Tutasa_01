@@ -26,8 +26,11 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Distribu
                 });
             }
 
-            // CD emisor fijo (Capital, idCD = 1) hasta tener el CD logueado
-            CdEmisor = BuscarCD(1);
+            CdEmisor = BuscarCD(Program.CodigoCDActual);
+            if (CdEmisor == null && CentrosDeDistribucion.Count > 0)
+            {
+                CdEmisor = CentrosDeDistribucion[0];
+            }
 
             // ---- AGENCIAS ----
             Agencias = new List<Agencia>();

@@ -26,7 +26,11 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transpor
                 });
             }
 
-            CdEmisor = BuscarCD(1); // CD fijo (Capital) hasta tener el CD logueado
+            CdEmisor = BuscarCD(Program.CodigoCDActual);
+            if (CdEmisor == null && CentrosDeDistribucion.Count > 0)
+            {
+                CdEmisor = CentrosDeDistribucion[0];
+            }
 
             // ---- EMPRESAS ----
             Empresas = new List<EmpresaTransporte>();

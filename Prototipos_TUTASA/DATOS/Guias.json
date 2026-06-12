@@ -1069,5 +1069,161 @@
       "ExtraEntregaAgencia": 0,
       "TarifaTotal": 0
     }
+  },
+  {
+    "NroGuia": "CD01-9001",
+    "IdCliente": 1,
+    "TipoImposicion": "CallCenter",
+    "idCDOrigen": 1,
+    "idAgenciaOrigen": 0,
+    "idCDActual": 1,
+    "modalidadEntrega": "EntregaDomicilio",
+    "idCDDestino": 2,
+    "idAgenciaDestino": 0,
+    "Destinatario": {
+      "Dni": 32111222,
+      "nombre": "Sofía",
+      "apellido": "Martínez",
+      "calle": "Av. Hipólito Yrigoyen",
+      "altura": 1234,
+      "piso": "",
+      "codigoPostal": "5000",
+      "ciudad": "Cordoba",
+      "telefono": "3511112222"
+    },
+    "TipoBulto": "M",
+    "EquivalenteS": 2,
+    "estado": "Retirada",
+    "Historial": [
+      {
+        "FechaCambio": "2026-06-10T00:00:00",
+        "Estado": "Retirada",
+        "Donde": "Capital y GBA"
+      }
+    ],
+    "TarifaCalculada": {
+      "PrecioFlete": 0.0,
+      "ExtraRetiroDomicilio": 0.0,
+      "ExtraEntregaDomicilio": 0.0,
+      "ExtraEntregaAgencia": 0.0,
+      "TarifaTotal": 0.0
+    }
+  },
+  {
+    "NroGuia": "CD01-9002",
+    "IdCliente": 2,
+    "TipoImposicion": "CD",
+    "idCDOrigen": 1,
+    "idAgenciaOrigen": 0,
+    "idCDActual": 1,
+    "modalidadEntrega": "EntregaCD",
+    "idCDDestino": 1,
+    "idAgenciaDestino": 0,
+    "Destinatario": {
+      "Dni": 28555666,
+      "nombre": "Diego",
+      "apellido": "Romero",
+      "calle": "Av. Corrientes",
+      "altura": 4500,
+      "piso": "",
+      "codigoPostal": "1195",
+      "ciudad": "CABA",
+      "telefono": "1155556666"
+    },
+    "TipoBulto": "S",
+    "EquivalenteS": 1,
+    "estado": "Retirada",
+    "Historial": [
+      {
+        "FechaCambio": "2026-06-10T00:00:00",
+        "Estado": "Retirada",
+        "Donde": "Capital y GBA"
+      }
+    ],
+    "TarifaCalculada": {
+      "PrecioFlete": 0.0,
+      "ExtraRetiroDomicilio": 0.0,
+      "ExtraEntregaDomicilio": 0.0,
+      "ExtraEntregaAgencia": 0.0,
+      "TarifaTotal": 0.0
+    }
+  },
+  {
+    "NroGuia": "CD01-9003",
+    "IdCliente": 1,
+    "TipoImposicion": "Agencia",
+    "idCDOrigen": 1,
+    "idAgenciaOrigen": 1,
+    "idCDActual": 1,
+    "modalidadEntrega": "EntregaAgencia",
+    "idCDDestino": 2,
+    "idAgenciaDestino": 2,
+    "Destinatario": {
+      "Dni": 35888999,
+      "nombre": "Lucía",
+      "apellido": "Fernández",
+      "calle": "Bv. Chacabuco",
+      "altura": 800,
+      "piso": "",
+      "codigoPostal": "5000",
+      "ciudad": "Cordoba",
+      "telefono": "3518889999"
+    },
+    "TipoBulto": "L",
+    "EquivalenteS": 4,
+    "estado": "Retirada",
+    "Historial": [
+      {
+        "FechaCambio": "2026-06-10T00:00:00",
+        "Estado": "Retirada",
+        "Donde": "Capital y GBA"
+      }
+    ],
+    "TarifaCalculada": {
+      "PrecioFlete": 0.0,
+      "ExtraRetiroDomicilio": 0.0,
+      "ExtraEntregaDomicilio": 0.0,
+      "ExtraEntregaAgencia": 0.0,
+      "TarifaTotal": 0.0
+    }
+  },
+  {
+    "NroGuia": "CD01-9004",
+    "IdCliente": 1,
+    "TipoImposicion": "CD",
+    "idCDOrigen": 1,
+    "idAgenciaOrigen": 0,
+    "idCDActual": 1,
+    "modalidadEntrega": "EntregaDomicilio",
+    "idCDDestino": 2,
+    "idAgenciaDestino": 0,
+    "Destinatario": {
+      "Dni": 33999888,
+      "nombre": "Pedro",
+      "apellido": "García",
+      "calle": "Av. Belgrano",
+      "altura": 700,
+      "piso": "",
+      "codigoPostal": "1092",
+      "ciudad": "CABA",
+      "telefono": "1133339999"
+    },
+    "TipoBulto": "M",
+    "EquivalenteS": 2,
+    "estado": "Admitida",
+    "Historial": [
+      {
+        "FechaCambio": "2026-06-10T00:00:00",
+        "Estado": "Admitida",
+        "Donde": "Capital y GBA"
+      }
+    ],
+    "TarifaCalculada": {
+      "PrecioFlete": 0.0,
+      "ExtraRetiroDomicilio": 0.0,
+      "ExtraEntregaDomicilio": 0.0,
+      "ExtraEntregaAgencia": 0.0,
+      "TarifaTotal": 0.0
+    }
   }
 ]
