@@ -1,0 +1,111 @@
+﻿Plan de Prueba: Imposición Call Center - Validaciones
+
+Caso 1 - Razón Social vacía
+1- Abrir la pantalla Imposición Call Center.
+2- No seleccionar Razón Social.
+3- Presionar Registrar Imposición.
+Resultado esperado: "Debe completar todos los campos obligatorios."
+
+Caso 2 - Datos obligatorios del destinatario vacíos
+1- Seleccionar una Razón Social válida.
+2- Dejar vacío Nombre, Apellido, DNI o Teléfono del destinatario.
+3- Presionar Registrar Imposición.
+Resultado esperado: "Debe completar todos los campos obligatorios."
+
+Caso 3 - Nombre inválido
+1- Seleccionar una Razón Social válida.
+2- Ingresar Nombre Juan123.
+3- Completar Apellido, DNI y Teléfono correctamente.
+4- Seleccionar tamaño de bulto.
+5- Seleccionar modalidad Entrega en Agencia.
+6- Seleccionar CD Origen.
+7- Seleccionar Agencia destino.
+8- Presionar Registrar Imposición.
+Resultado esperado: "El campo Nombre ingresado no es válido."
+
+Caso 4 - Apellido inválido
+1- Seleccionar una Razón Social válida.
+2- Ingresar Nombre Juan.
+3- Ingresar Apellido Perez123.
+4- Completar DNI y Teléfono correctamente.
+5- Seleccionar tamaño de bulto.
+6- Seleccionar modalidad Entrega en Agencia.
+7- Seleccionar CD Origen.
+8- Seleccionar Agencia destino.
+9- Presionar Registrar Imposición.
+Resultado esperado: "El campo Apellido ingresado no es válido."
+
+Caso 5 - DNI inválido
+1- Seleccionar una Razón Social válida.
+2- Ingresar Nombre Juan.
+3- Ingresar Apellido Perez.
+4- Ingresar DNI abc.
+5- Completar Teléfono correctamente.
+6- Seleccionar tamaño de bulto.
+7- Seleccionar modalidad Entrega en Agencia.
+8- Seleccionar CD Origen.
+9- Seleccionar Agencia destino.
+10- Presionar Registrar Imposición.
+Resultado esperado: "El campo DNI ingresado no es válido."
+
+Caso 6 - Teléfono inválido
+1- Seleccionar una Razón Social válida.
+2- Ingresar Nombre Juan.
+3- Ingresar Apellido Perez.
+4- Ingresar DNI 40123456.
+5- Ingresar Teléfono 381abc.
+6- Seleccionar tamaño de bulto.
+7- Seleccionar modalidad Entrega en Agencia.
+8- Seleccionar CD Origen.
+9- Seleccionar Agencia destino.
+10- Presionar Registrar Imposición.
+Resultado esperado: "El campo Teléfono ingresado no es válido."
+
+Caso 7 - Tamaño de bulto sin seleccionar
+1- Seleccionar una Razón Social válida.
+2- Completar los datos del destinatario correctamente.
+3- No seleccionar tamaño de bulto.
+4- Seleccionar modalidad Entrega en Agencia.
+5- Seleccionar CD Origen.
+6- Seleccionar Agencia destino.
+7- Presionar Registrar Imposición.
+Resultado esperado: "Debe completar todos los campos obligatorios."
+
+Caso 8 - Modalidad de entrega sin seleccionar
+1- Seleccionar una Razón Social válida.
+2- Completar los datos del destinatario correctamente.
+3- Seleccionar tamaño de bulto.
+4- No seleccionar modalidad de entrega.
+5- Seleccionar CD Origen.
+6- Presionar Registrar Imposición.
+Resultado esperado: "Debe completar todos los campos obligatorios."
+
+Caso 9 - CD Origen sin seleccionar
+1- Seleccionar una Razón Social válida.
+2- Completar los datos del destinatario correctamente.
+3- Seleccionar tamaño de bulto.
+4- Seleccionar modalidad Entrega en Agencia.
+5- No seleccionar CD Origen.
+6- Seleccionar Agencia destino.
+7- Presionar Registrar Imposición.
+Resultado esperado: "Debe completar todos los campos obligatorios."
+
+Caso 10 - Agencia destino sin seleccionar
+1- Seleccionar una Razón Social válida.
+2- Completar los datos del destinatario correctamente.
+3- Seleccionar tamaño de bulto.
+4- Seleccionar modalidad Entrega en Agencia.
+5- Seleccionar CD Origen.
+6- No seleccionar Agencia destino.
+7- Presionar Registrar Imposición.
+Resultado esperado: "Debe completar todos los campos obligatorios."
+
+Caso 11 - Registro válido
+1- Seleccionar una Razón Social válida.
+2- Completar Nombre, Apellido, DNI y Teléfono del destinatario correctamente.
+3- Seleccionar tamaño de bulto.
+4- Seleccionar modalidad Entrega en Agencia.
+5- Seleccionar CD Origen.
+6- Seleccionar Agencia destino.
+7- Presionar Registrar Imposición.
+Resultado esperado: "Guía N° XXXX generada con éxito."

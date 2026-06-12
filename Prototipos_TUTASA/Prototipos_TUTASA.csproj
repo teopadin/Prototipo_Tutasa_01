@@ -36,9 +36,6 @@
 
   <ItemGroup>
     <Folder Include="DATOS\" />
-    <Folder Include="PRUEBAS\1.Imposicion\1.1PorCallcenter\" />
-    <Folder Include="PRUEBAS\1.Imposicion\1.2.PorAgencia\" />
-    <Folder Include="PRUEBAS\1.Imposicion\1.3.PorCD\" />
     <Folder Include="PRUEBAS\2.HDRRetiro\2.1.Generacion\" />
     <Folder Include="PRUEBAS\2.HDRRetiro\2.2.GeneracionResumen\" />
     <Folder Include="PRUEBAS\2.HDRRetiro\2.3.Recepcion\" />
