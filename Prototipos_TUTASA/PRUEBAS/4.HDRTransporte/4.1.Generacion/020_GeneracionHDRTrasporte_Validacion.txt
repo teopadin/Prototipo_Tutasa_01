@@ -1,0 +1,25 @@
+﻿Plan de Prueba: Generación Hoja de Ruta de Transporte - Validaciones
+
+1- Abrir la pantalla Generación Hoja de Ruta de Transporte.
+2- Verificar que se carga la lista de CD Destino disponibles, excluyendo el CD Emisor actual.
+3- Presionar Generar HDR sin seleccionar ninguna guía pendiente.
+4- Verificar mensaje: "Debe seleccionar al menos una guía y un servicio de transporte antes de generar la hoja de ruta.".
+5- Presionar Aceptar.
+6- Seleccionar un CD Destino.
+7- Verificar que se cargan las guías pendientes correspondientes.
+8- Seleccionar una guía pendiente.
+9- Verificar que el campo Bultos se actualiza según los bultos equivalentes seleccionados.
+10- Verificar que se cargan los servicios de transporte disponibles con capacidad suficiente.
+11- Presionar Generar HDR sin seleccionar un servicio de transporte.
+12- Verificar mensaje: "Debe seleccionar un servicio de transporte antes de generar la hoja de ruta.".
+13- Presionar Aceptar.
+14- Seleccionar guías pendientes hasta superar la capacidad disponible de los servicios.
+15- Verificar mensaje: "No hay servicios disponibles con capacidad suficiente para los bultos seleccionados. Modifique la selección de guías.".
+16- Presionar Aceptar.
+17- Verificar que no se genera una Hoja de Ruta de Transporte nueva.
+18- Verificar que no se modifica el estado de ninguna guía.
+19- Verificar que no se descuenta capacidad de ningún servicio de transporte.
+20- Seleccionar un CD Destino sin encomiendas pendientes.
+21- Verificar mensaje: "No hay encomiendas pendientes para ese CD destino.".
+22- Presionar Aceptar.
+23- Salir de la pantalla presionando Cancelar.
