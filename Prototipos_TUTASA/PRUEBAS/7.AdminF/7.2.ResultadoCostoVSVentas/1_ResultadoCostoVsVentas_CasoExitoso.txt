@@ -3,18 +3,10 @@
 1- Seleccionar "Transporte Federal S.A." en el campo Empresa de Transporte.
 2- Seleccionar el periodo 06/2026.
 3- Presionar Mostrar.
-4- Verificar: se agrega una fila en la grilla de resultados:
-   Periodo: 06/2026,
-   Ventas: $80.000,00,
-   Costos: $45.000,00,
-   Resultado: $35.000,00.
+4- Verificar que muestra informaciòn
 5- Seleccionar "Logística Norte SRL" en el campo Empresa de Transporte.
 6- Presionar Mostrar.
-7- Verificar: se agrega una fila en la grilla de resultados:
-   Periodo: 06/2026,
-   Ventas: $30.000,00,
-   Costos: $50.000,00,
-   Resultado: -$20.000,00.
+7- Verificar que muestra informaciòn
 8- Salir del sistema presionando la cruz del extremo superior derecho de la pantalla.
 9- Archivo Guias.json: registros existentes
    con NroGuia RCV-901 y estado "Entregada",

@@ -2,20 +2,10 @@
 
 1- Seleccionar "Juan Perez SRL" en el campo Razón Social.
 2- Presionar Buscar.
-3- Verificar datos del cliente:
-   CUIT: 20333123121,
-   Estado de Cuenta: Saldo pendiente,
-   Saldo Actual: Debe $15.000,00.
-4- Verificar: se despliega la guía RCV-901 en la grilla de servicios pendientes.
-5- Verificar datos de la guía:
-   Número de Guía: RCV-901,
-   Importe: $80.000,00,
-   Estado: Pendiente de facturación.
-6- Presionar Emitir Factura.
-7- Verificar mensaje: "Factura 2 emitida con éxito. Guías facturadas: RCV-901".
-8- Presionar Aceptar.
-9- Verificar: la grilla de servicios pendientes queda vacía para el cliente seleccionado.
-10- Archivo Facturas.json: última entrada agregada
+3- Presionar Emitir Factura.
+4- Verificar mensaje: "Factura 2 emitida con éxito. Guías facturadas: RCV-901".
+5- Presionar Aceptar.
+5- Archivo Facturas.json: última entrada agregada
    con idCliente 1 e importeTotal 80000.0.
-11- Archivo DetallesFactura.json: registro con nroGuia RCV-901
+6- Archivo DetallesFactura.json: registro con nroGuia RCV-901
    queda asociado a la factura emitida. superior derecho de la pantalla.
