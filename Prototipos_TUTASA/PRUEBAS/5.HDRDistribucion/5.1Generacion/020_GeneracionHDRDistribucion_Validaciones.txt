@@ -1,0 +1,16 @@
+﻿Plan de Prueba: Generación HDR de Distribución – Validaciones
+
+1. Abrir la pantalla Generar HDR de Distribución.
+2.Sin tildar ninguna guía y sin seleccionar ningún transportista, presionar "Generar HDR".
+3. Verificar mensaje: "Debe seleccionar al menos una guía y un fletero para generar la Hoja de Ruta de Distribución."
+4. Presionar Aceptar.
+5. Tildar una guía (por ejemplo CD03-0001), pero no seleccionar ningún transportista de la lista.
+6. Presionar "Generar HDR".
+7. Verificar mensaje: "Debe seleccionar al menos una guía y un fletero para generar la Hoja de Ruta de Distribución."
+8. Presionar Aceptar.
+9. Verificar: la guía sigue tildada y la pantalla no generó ninguna HDR.
+10. Destildar la guía. Seleccionar un transportista de la lista, pero no tildar ninguna guía.
+11. Presionar "Generar HDR".
+12. Verificar mensaje: "Debe seleccionar al menos una guía y un fletero para generar la Hoja de Ruta de Distribución."
+13. Presionar Aceptar.
+14. Salir del sistema presionando la cruz del extremo superior derecho de la pantalla.

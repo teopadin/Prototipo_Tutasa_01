@@ -159,6 +159,8 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Distribu
             {
                 nuevaHDR.DetalleGuias.Add(guia.NroGuia);
 
+                guia.estado = EstadoGuiaEnum.EnDistribucion;
+
                 GuiaEntidad guiaEntidad = BuscarGuiaEntidad(guia.NroGuia);
                 if (guiaEntidad != null)
                     guiaEntidad.estado = Prototipos_TUTASA.Auxiliares.EstadoGuiaEnum.EnDistribucion;
