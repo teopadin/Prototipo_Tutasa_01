@@ -2,6 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Prototipos_TUTASA.ClasesResumenHDRDistribucion;
+using DestinatarioGuiaResumen = Prototipos_TUTASA.ClasesResumenHDRDistribucion.DestinatarioGuia;
+using EstadoHojaDeRutaEntidadEnum = Prototipos_TUTASA.Auxiliares.EstadoHojaDeRutaEnum;
+using GuiaAlmacen = Prototipos_TUTASA.Almacenes.GuiaAlmacen;
+using GuiaEntidad = Prototipos_TUTASA.Almacenes.GuiaEntidad;
+using HojaDeRutaDistribucionAlmacen = Prototipos_TUTASA.Almacenes.HojaDeRutaDistribucionAlmacen;
+using HojaDeRutaDistribucionEntidad = Prototipos_TUTASA.Almacenes.HojaDeRutaDistribucionEntidad;
+using TransportistaLocalAlmacen = Prototipos_TUTASA.Almacenes.TransportistaLocalAlmacen;
+using TransportistaLocalEntidad = Prototipos_TUTASA.Almacenes.TransportistaLocalEntidad;
 
 namespace Prototipos_TUTASA
 {
@@ -9,7 +17,8 @@ namespace Prototipos_TUTASA
     {
         private readonly List<TransportistaLocal> transportistas = new List<TransportistaLocal>();
         private readonly List<HojaDeRutaDistribucion> hojasDeRuta = new List<HojaDeRutaDistribucion>();
-        private readonly Dictionary<string, DestinatarioGuia> destinatariosPorGuia = new Dictionary<string, DestinatarioGuia>(StringComparer.OrdinalIgnoreCase);
+        private readonly Dictionary<string, DestinatarioGuiaResumen> destinatariosPorGuia = new Dictionary<string, DestinatarioGuiaResumen>(StringComparer.OrdinalIgnoreCase);
+        private readonly Dictionary<int, HojaDeRutaDistribucionEntidad> hojasEntidadPorNroHDR = new Dictionary<int, HojaDeRutaDistribucionEntidad>();
         private List<HojaDeRutaDistribucion> hojasSeleccionadas = new List<HojaDeRutaDistribucion>();
         private int ultimoNroResumen;
 
@@ -20,7 +29,7 @@ namespace Prototipos_TUTASA
 
         public ModeloResumenHDRDistribucion()
         {
-            CargarDatosDePrueba();
+            CargarDatosDesdeAlmacenes();
         }
 
         private bool BuscarHojasAsignadas(TransportistaLocal transportista, DateTime fecha, out List<HojaDeRutaDistribucion> hojas)
@@ -83,8 +92,14 @@ namespace Prototipos_TUTASA
             foreach (HojaDeRutaDistribucion hoja in hojasSeleccionadas)
             {
                 hoja.estado = EstadoHojaDeRutaEnum.EnCurso;
+
+                if (hojasEntidadPorNroHDR.TryGetValue(hoja.NroHDR, out HojaDeRutaDistribucionEntidad hojaEntidad))
+                {
+                    hojaEntidad.estado = EstadoHojaDeRutaEntidadEnum.EnCurso;
+                }
             }
 
+            HojaDeRutaDistribucionAlmacen.Guardar();
             LimpiarSeleccion();
             return true;
         }
@@ -99,11 +114,11 @@ namespace Prototipos_TUTASA
             return hoja.DetalleGuias.Count;
         }
 
-        public DestinatarioGuia ObtenerDestinatarioPrincipal(HojaDeRutaDistribucion hoja)
+        public DestinatarioGuiaResumen ObtenerDestinatarioPrincipal(HojaDeRutaDistribucion hoja)
         {
             if (hoja.DetalleGuias.Count == 0)
             {
-                return new DestinatarioGuia();
+                return new DestinatarioGuiaResumen();
             }
 
             return ObtenerDestinatario(hoja.DetalleGuias[0]);
@@ -140,67 +155,71 @@ namespace Prototipos_TUTASA
 
         private string ObtenerClaveDomicilio(string nroGuia)
         {
-            DestinatarioGuia guia = ObtenerDestinatario(nroGuia);
+            DestinatarioGuiaResumen guia = ObtenerDestinatario(nroGuia);
             return $"{guia.calle}|{guia.altura}|{guia.codigoPostal}".ToUpperInvariant();
         }
 
-        private DestinatarioGuia ObtenerDestinatario(string nroGuia)
+        private DestinatarioGuiaResumen ObtenerDestinatario(string nroGuia)
         {
-            if (destinatariosPorGuia.TryGetValue(nroGuia, out DestinatarioGuia destinatario))
+            if (destinatariosPorGuia.TryGetValue(nroGuia, out DestinatarioGuiaResumen destinatario))
             {
                 return destinatario;
             }
 
-            return new DestinatarioGuia();
+            return new DestinatarioGuiaResumen();
         }
 
-        private string RegistrarGuia(string nroGuia, DestinatarioGuia destinatario)
+        private void RegistrarDestinatariosPorGuia()
         {
-            destinatariosPorGuia[nroGuia] = destinatario;
-            return nroGuia;
+            foreach (GuiaEntidad guiaEntidad in GuiaAlmacen.Guias)
+            {
+                destinatariosPorGuia[guiaEntidad.NroGuia] = new DestinatarioGuiaResumen
+                {
+                    Dni = guiaEntidad.Destinatario.Dni,
+                    calle = guiaEntidad.Destinatario.calle,
+                    altura = guiaEntidad.Destinatario.altura,
+                    codigoPostal = guiaEntidad.Destinatario.codigoPostal
+                };
+            }
         }
 
-        private void CargarDatosDePrueba()
+        private void CargarDatosDesdeAlmacenes()
         {
-            var carlos = new TransportistaLocal { dniTransportista = 12345678, nombre = "Carlos", apellido = "Gomez" };
-            var laura = new TransportistaLocal { dniTransportista = 23456789, nombre = "Laura", apellido = "Martinez" };
+            RegistrarDestinatariosPorGuia();
 
-            transportistas.Add(carlos);
-            transportistas.Add(laura);
-
-            AgregarHojaDeRuta(1, DateTime.Today, carlos, new List<string>
+            foreach (TransportistaLocalEntidad transportistaEntidad in TransportistaLocalAlmacen.transportistas)
             {
-                RegistrarGuia("CD02-0002", new DestinatarioGuia { Dni = 40123456, calle = "Av. Rivadavia", altura = 3200, codigoPostal = "1406" }),
-                RegistrarGuia("CD02-0003", new DestinatarioGuia { Dni = 40123456, calle = "Av. Rivadavia", altura = 3200, codigoPostal = "1406" })
-            });
+                transportistas.Add(new TransportistaLocal
+                {
+                    dniTransportista = transportistaEntidad.dniTransportista,
+                    nombre = transportistaEntidad.nombre,
+                    apellido = transportistaEntidad.apellido
+                });
+            }
 
-            AgregarHojaDeRuta(2, DateTime.Today, carlos, new List<string>
+            foreach (HojaDeRutaDistribucionEntidad hojaEntidad in HojaDeRutaDistribucionAlmacen.hojasDeRutaDistribucion)
             {
-                RegistrarGuia("CD01-0007", new DestinatarioGuia { Dni = 0, calle = "Av. Corrientes", altura = 1234, codigoPostal = "1043" }),
-                RegistrarGuia("CD01-0008", new DestinatarioGuia { Dni = 0, calle = "Av. Corrientes", altura = 1234, codigoPostal = "1043" })
-            });
+                hojasEntidadPorNroHDR[hojaEntidad.NroHDR] = hojaEntidad;
 
-            AgregarHojaDeRuta(3, DateTime.Today, laura, new List<string>
-            {
-                RegistrarGuia("CD03-0001", new DestinatarioGuia { Dni = 42345678, calle = "Belgrano", altura = 750, codigoPostal = "5000" })
-            });
-
-            AgregarHojaDeRuta(4, DateTime.Today.AddDays(1), carlos, new List<string>
-            {
-                RegistrarGuia("CD04-0001", new DestinatarioGuia { Dni = 0, calle = "San Martin", altura = 500, codigoPostal = "1043" })
-            });
+                hojasDeRuta.Add(new HojaDeRutaDistribucion
+                {
+                    NroHDR = hojaEntidad.NroHDR,
+                    Fecha = hojaEntidad.Fecha,
+                    dniTransportistaAsignado = hojaEntidad.dniTransportistaAsignado,
+                    DetalleGuias = hojaEntidad.DetalleGuias.ToList(),
+                    estado = MapearEstado(hojaEntidad.estado)
+                });
+            }
         }
 
-        private void AgregarHojaDeRuta(int nroHDR, DateTime fecha, TransportistaLocal transportista, List<string> detalleGuias)
+        private EstadoHojaDeRutaEnum MapearEstado(EstadoHojaDeRutaEntidadEnum estado)
         {
-            hojasDeRuta.Add(new HojaDeRutaDistribucion
+            if (estado == EstadoHojaDeRutaEntidadEnum.Generada)
             {
-                NroHDR = nroHDR,
-                Fecha = fecha,
-                dniTransportistaAsignado = transportista.dniTransportista,
-                DetalleGuias = detalleGuias,
-                estado = EstadoHojaDeRutaEnum.Generada
-            });
+                return EstadoHojaDeRutaEnum.Generada;
+            }
+
+            return EstadoHojaDeRutaEnum.EnCurso;
         }
     }
 }
