@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using Prototipos_TUTASA.Almacenes;
+using EstadoGuiaAlmacen = Prototipos_TUTASA.Auxiliares.EstadoGuiaEnum;
+using EstadoHojaDeRutaAlmacen = Prototipos_TUTASA.Auxiliares.EstadoHojaDeRutaEnum;
+using TipoBultoAlmacen = Prototipos_TUTASA.Auxiliares.TiposBultoEnum;
 
 namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
 {
@@ -17,156 +21,82 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
 
         public ModeloRecibirHDRDistribucionAgencia()
         {
-            
-            // Agencias
-            var agencia1 = new Agencia
-            {
-                idAgencia = 1,
-                razonSocial = "Agencia Norte SA",
-            };
-
-            var agencia2 = new Agencia
-            {
-                idAgencia = 2,
-                razonSocial = "Agencia Sur SRL",
-
-            };
-
-
-            // Simulación operador logueado
-            AgenciaLogueada = agencia1;
-
-            Agencias = new List<Agencia>
-            {
-                agencia1,
-                agencia2
-            };
-
-            // Transportistas
-            var t1 = new TransportistaLocal
-            {
-                dniTransportistaAsignado = 40497355,
-                nombre = "Carlos",
-                apellido = "Gomez",
-            };
-
-            var t2 = new TransportistaLocal
-            {
-                dniTransportistaAsignado = 35397312,
-                nombre = "Laura",
-                apellido = "Martinez",
-            };
-            
-            Transportistas = new List<TransportistaLocal>
-            {
-                 t1,
-                 t2
-            };
-
-            // Guías
-            var g1 = new Guia
-            {
-                NroGuia = "GD-0001",
-                TipoBulto = TiposBultoEnum.S,
-                idAgenciaDestino = agencia1.idAgencia,
-                estado = EstadoGuiaEnum.EnDistribucion
-            };
-
-            var g2 = new Guia
-            {
-                NroGuia = "GD-0002",
-                TipoBulto = TiposBultoEnum.M,
-                idAgenciaDestino = agencia1.idAgencia,
-                estado = EstadoGuiaEnum.EnDistribucion
-            };
-
-            var g3 = new Guia
-            {
-                NroGuia = "GD-0003",
-                TipoBulto = TiposBultoEnum.L,
-                idAgenciaDestino = agencia1.idAgencia,
-                estado = EstadoGuiaEnum.EnDistribucion
-            };
-
-            var g4 = new Guia
-            {
-                NroGuia = "GD-0004",
-                TipoBulto = TiposBultoEnum.XL,
-                idAgenciaDestino = agencia2.idAgencia,
-                estado = EstadoGuiaEnum.EnDistribucion
-            };
-            Guias = new List<Guia>
-            {
-                g1,
-                g2,
-                g3,
-                g4
-            };
-
-            // HDR válida
-            var hdr1 = new HojaDeRutaDistribucion
-            {
-                NroHDR = 1001,
-                idAgenciaDestino = agencia1.idAgencia,
-                dniTransportistaAsignado = t1.dniTransportistaAsignado,
-                DetalleGuias = new List<string>
-                {
-                    g1.NroGuia,
-                    g2.NroGuia
-                },
-                estado = EstadoHojaDeRutaEnum.EnCurso
-            };
-
-            // HDR válida adicional
-            var hdr2 = new HojaDeRutaDistribucion
-            {
-                NroHDR = 1002,
-                idAgenciaDestino = agencia1.idAgencia,
-                dniTransportistaAsignado = t2.dniTransportistaAsignado,
-                DetalleGuias = new List<string>
-                {
-                    g3.NroGuia
-                },
-                estado = EstadoHojaDeRutaEnum.EnCurso
-            };
-
-            // HDR de otra agencia (Excepción 3)
-            var hdr3 = new HojaDeRutaDistribucion
-            {
-                NroHDR = 1003,
-                idAgenciaDestino = agencia2.idAgencia,
-                dniTransportistaAsignado = t1.dniTransportistaAsignado,
-                DetalleGuias = new List<string>
-                {
-                    g4.NroGuia
-                },
-                estado = EstadoHojaDeRutaEnum.EnCurso
-            };
-
-            // HDR ya recibida (Excepción 4)
-            var hdr4 = new HojaDeRutaDistribucion
-            {
-                NroHDR = 1004,
-                idAgenciaDestino = agencia1.idAgencia,
-                dniTransportistaAsignado = t2.dniTransportistaAsignado,
-                DetalleGuias = new List<string>
-                {
-                    g1.NroGuia
-                },
-                estado = EstadoHojaDeRutaEnum.Recibida,
-                Fecha = new DateTime(2026, 5, 25)
-            };
-
-            HojasDeRutaDistribucion = new List<HojaDeRutaDistribucion>
-            {
-                hdr1,
-                hdr2,
-                hdr3,
-                hdr4
-            };
-
-        
+            CargarAgencias();
+            CargarTransportistas();
+            CargarGuias();
+            CargarHojasDeRutaDistribucion();
         }
+
+        private void CargarAgencias()
+        {
+            Agencias = new List<Agencia>();
+
+            foreach (AgenciaEntidad agenciaEntidad in AgenciaAlmacen.Agencias)
+            {
+                Agencias.Add(new Agencia
+                {
+                    idAgencia = agenciaEntidad.idAgencia,
+                    razonSocial = agenciaEntidad.razonSocial
+                });
+            }
+
+            AgenciaLogueada = BuscarAgencia(Program.CodigoAgenciaActual);
+
+            if (AgenciaLogueada == null && Agencias.Count > 0)
+            {
+                AgenciaLogueada = Agencias[0];
+            }
+        }
+
+        private void CargarTransportistas()
+        {
+            Transportistas = new List<TransportistaLocal>();
+
+            foreach (TransportistaLocalEntidad transportistaEntidad in TransportistaLocalAlmacen.transportistas)
+            {
+                Transportistas.Add(new TransportistaLocal
+                {
+                    dniTransportistaAsignado = transportistaEntidad.dniTransportista,
+                    nombre = transportistaEntidad.nombre,
+                    apellido = transportistaEntidad.apellido
+                });
+            }
+        }
+
+        private void CargarGuias()
+        {
+            Guias = new List<Guia>();
+
+            foreach (GuiaEntidad guiaEntidad in GuiaAlmacen.Guias)
+            {
+                Guias.Add(new Guia
+                {
+                    NroGuia = guiaEntidad.NroGuia,
+                    TipoBulto = ConvertirTipoBulto(guiaEntidad.TipoBulto),
+                    idAgenciaDestino = guiaEntidad.idAgenciaDestino,
+                    estado = ConvertirEstadoGuia(guiaEntidad.estado)
+                });
+            }
+        }
+
+        private void CargarHojasDeRutaDistribucion()
+        {
+            HojasDeRutaDistribucion = new List<HojaDeRutaDistribucion>();
+
+            foreach (HojaDeRutaDistribucionEntidad hojaEntidad in HojaDeRutaDistribucionAlmacen.hojasDeRutaDistribucion)
+            {
+                HojasDeRutaDistribucion.Add(new HojaDeRutaDistribucion
+                {
+                    NroHDR = hojaEntidad.NroHDR,
+                    Fecha = hojaEntidad.Fecha,
+                    idAgenciaDestino = hojaEntidad.idAgenciaDestino ?? BuscarAgenciaDestinoDesdeGuias(hojaEntidad.DetalleGuias),
+                    dniTransportistaAsignado = hojaEntidad.dniTransportistaAsignado,
+                    DetalleGuias = new List<string>(hojaEntidad.DetalleGuias),
+                    estado = ConvertirEstadoHojaDeRuta(hojaEntidad.estado)
+                });
+            }
+        }
+
         public TransportistaLocal BuscarTransportista(int dni)
         {
             return Transportistas.FirstOrDefault(t => t.dniTransportistaAsignado == dni);
@@ -178,6 +108,52 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
         public Agencia BuscarAgencia(int? idAgencia)
         {
             return Agencias.FirstOrDefault(a => a.idAgencia == idAgencia);
+        }
+
+        private int BuscarAgenciaDestinoDesdeGuias(List<string> detalleGuias)
+        {
+            foreach (string nroGuia in detalleGuias)
+            {
+                Guia guia = BuscarGuia(nroGuia);
+
+                if (guia != null && guia.idAgenciaDestino > 0)
+                {
+                    return guia.idAgenciaDestino;
+                }
+            }
+
+            return 0;
+        }
+
+        private static TiposBultoEnum ConvertirTipoBulto(TipoBultoAlmacen tipoBulto)
+        {
+            return tipoBulto switch
+            {
+                TipoBultoAlmacen.M => TiposBultoEnum.M,
+                TipoBultoAlmacen.L => TiposBultoEnum.L,
+                TipoBultoAlmacen.XL => TiposBultoEnum.XL,
+                _ => TiposBultoEnum.S
+            };
+        }
+
+        private static EstadoGuiaEnum ConvertirEstadoGuia(EstadoGuiaAlmacen estado)
+        {
+            if (estado == EstadoGuiaAlmacen.PendienteDeRetiroEnAgencia)
+            {
+                return EstadoGuiaEnum.PendienteDeRetiroEnAgencia;
+            }
+
+            return EstadoGuiaEnum.EnDistribucion;
+        }
+
+        private static EstadoHojaDeRutaEnum ConvertirEstadoHojaDeRuta(EstadoHojaDeRutaAlmacen estado)
+        {
+            if (estado == EstadoHojaDeRutaAlmacen.Recibida)
+            {
+                return EstadoHojaDeRutaEnum.Recibida;
+            }
+
+            return EstadoHojaDeRutaEnum.EnCurso;
         }
     }
 
