@@ -12,5 +12,12 @@
     "IdCDDestino": 2,
     "TipoBulto": "L",
     "PrecioFlete": 5200.0
+  },
+  {
+    "IdTarifa": 3,
+    "IdCDOrigen": 1,
+    "IdCDDestino": 2,
+    "TipoBulto": "M",
+    "PrecioFlete": 3000.0
   }
 ]
