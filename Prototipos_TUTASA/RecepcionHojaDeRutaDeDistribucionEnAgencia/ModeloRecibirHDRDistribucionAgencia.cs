@@ -60,7 +60,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
             {
                 NroGuia = "GD-0001",
                 TipoBulto = TiposBultoEnum.S,
-                idAgenciaOrigen = agencia1.idAgencia,
+                idAgenciaDestino = agencia1.idAgencia,
                 estado = EstadoGuiaEnum.EnDistribucion
             };
 
@@ -68,7 +68,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
             {
                 NroGuia = "GD-0002",
                 TipoBulto = TiposBultoEnum.M,
-                idAgenciaOrigen = agencia1.idAgencia,
+                idAgenciaDestino = agencia1.idAgencia,
                 estado = EstadoGuiaEnum.EnDistribucion
             };
 
@@ -76,7 +76,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
             {
                 NroGuia = "GD-0003",
                 TipoBulto = TiposBultoEnum.L,
-                idAgenciaOrigen = agencia1.idAgencia,
+                idAgenciaDestino = agencia1.idAgencia,
                 estado = EstadoGuiaEnum.EnDistribucion
             };
 
@@ -84,7 +84,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
             {
                 NroGuia = "GD-0004",
                 TipoBulto = TiposBultoEnum.XL,
-                idAgenciaOrigen = agencia2.idAgencia,
+                idAgenciaDestino = agencia2.idAgencia,
                 estado = EstadoGuiaEnum.EnDistribucion
             };
             Guias = new List<Guia>
