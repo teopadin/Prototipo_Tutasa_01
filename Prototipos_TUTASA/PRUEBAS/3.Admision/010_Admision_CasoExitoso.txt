@@ -1,18 +1,18 @@
 ﻿Plan de Prueba: Admisión - Caso exitoso 1 (Admisión normal)
 
-1- Ingresar CD01-0008 en el campo Número de Guía.
-2-Presionar Buscar.
-3- Verificar que se muestran los datos de la guía:
-
-Cliente, CD Destino, Destinatario, Tipo de Bulto, Modalidad de Entrega.
-Estado actual: Retirada.
-
-
-Verificar que el sistema indica que la guía es admisible.
-Verificar el cálculo de tarifa: flete CD origen→destino + extra retiro a domicilio + extra entrega a domicilio.
-Presionar Confirmar Admisión.
-Verificar mensaje de confirmación.
-Buscar nuevamente la guía CD01-0008.
-Verificar que el estado pasó a Admitida.
-Salir del sistema.
-Archivo Guias.json: registro CD01-0008 con estado Admitida y tarifa calculada persistida.
+1- Ingresar CD01-9001 en el campo Nro de Guía.
+2- Presionar Buscar.
+3- Verificar: se despliegan los datos en la sección Información de Guía.
+4- Verificar datos:
+   Cliente: Cliente: Juan Perez SRL,
+   CD Destino: Centro - Córdoba,
+   Destinatario: Martínez, Sofía (DNI: 32111222),
+   Tipo de Bulto: M (hasta 5 kg),
+   Modalidad de Entrega: Entrega a Domicilio.
+5- Presionar Confirmar Admisión.
+6- Verificar mensaje: "Guía N° CD01-9001 admitida con éxito".
+7- Verificar: los campos de la pantalla quedan vacíos.
+8- Salir del sistema.
+9- Archivo Guias.json: registro existente
+   con NroGuia CD01-9001,
+   con estado "Admitida" y tarifa calculada persistida.
