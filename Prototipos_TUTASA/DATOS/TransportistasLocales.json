@@ -5,7 +5,7 @@
     "apellido": "Gomez",
     "contratoVigente": true,
     "idCD": 1,
-    "HdrAsignadas": 1
+    "HdrAsignadas": 2
   },
   {
     "dniTransportista": 30222333,
@@ -13,7 +13,7 @@
     "apellido": "Martinez",
     "contratoVigente": true,
     "idCD": 1,
-    "HdrAsignadas": 1
+    "HdrAsignadas": 2
   },
   {
     "dniTransportista": 30333444,

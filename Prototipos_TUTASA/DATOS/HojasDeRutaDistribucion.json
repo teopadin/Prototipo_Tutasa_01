@@ -598,5 +598,53 @@
       "CD03-0001"
     ],
     "motivoNoCumplida": "DestinatarioAusente"
+  },
+  {
+    "NroHDR": 2097,
+    "Fecha": "2026-06-11T00:00:00",
+    "estado": "EnCurso",
+    "dniTransportistaAsignado": 30111222,
+    "idAgenciaDestino": 1,
+    "Calle": "Av. Rivadavia",
+    "Altura": 3200,
+    "Piso": "",
+    "CodigoPostal": "1406",
+    "Destinatario": "Ana Perez",
+    "DetalleGuias": [
+      "AG01-0001"
+    ],
+    "motivoNoCumplida": "DestinatarioAusente"
+  },
+  {
+    "NroHDR": 2098,
+    "Fecha": "2026-06-11T00:00:00",
+    "estado": "Recibida",
+    "dniTransportistaAsignado": 30111222,
+    "idAgenciaDestino": 1,
+    "Calle": "Av. Rivadavia",
+    "Altura": 3200,
+    "Piso": "",
+    "CodigoPostal": "1406",
+    "Destinatario": "Ana Perez",
+    "DetalleGuias": [
+      "AG01-0001"
+    ],
+    "motivoNoCumplida": "DestinatarioAusente"
+  },
+  {
+    "NroHDR": 2099,
+    "Fecha": "2026-06-11T00:00:00",
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30333444,
+    "idAgenciaDestino": 2,
+    "Calle": "Av. Colon",
+    "Altura": 900,
+    "Piso": "",
+    "CodigoPostal": "5000",
+    "Destinatario": "Roberto Sanchez",
+    "DetalleGuias": [
+      "AG02-0001"
+    ],
+    "motivoNoCumplida": "DestinatarioAusente"
   }
 ]

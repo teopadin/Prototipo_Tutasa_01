@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using Prototipos_TUTASA.Almacenes;
 
 namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transporte
@@ -15,9 +18,13 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transpor
 
         public ModeloGenerarHDRTransporte()
         {
-            // ---- CENTROS DE DISTRIBUCION ----
+            List<CentroDistribucionEntidad> cdsArchivo = LeerJson<List<CentroDistribucionEntidad>>("CentrosDeDistribucion.json");
+            List<EmpresaTransporteEntidad> empresasArchivo = LeerJson<List<EmpresaTransporteEntidad>>("EmpresasTransporte.json");
+            List<ServicioMediaDistanciaEntidad> serviciosArchivo = LeerJson<List<ServicioMediaDistanciaEntidad>>("ServiciosMediaDistancia.json");
+            List<GuiaEntidad> guiasArchivo = LeerJson<List<GuiaEntidad>>("Guias.json");
+
             CentrosDeDistribucion = new List<CentroDistribucion>();
-            foreach (var cd in CentroDistribucionAlmacen.CentrosDeDistribucion)
+            foreach (var cd in cdsArchivo)
             {
                 CentrosDeDistribucion.Add(new CentroDistribucion
                 {
@@ -32,9 +39,8 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transpor
                 CdEmisor = CentrosDeDistribucion[0];
             }
 
-            // ---- EMPRESAS ----
             Empresas = new List<EmpresaTransporte>();
-            foreach (var emp in EmpresaTransporteAlmacen.empresas)
+            foreach (var emp in empresasArchivo)
             {
                 Empresas.Add(new EmpresaTransporte
                 {
@@ -43,37 +49,50 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transpor
                 });
             }
 
-            // ---- SERVICIOS ----
             Servicios = new List<ServicioMediaDistancia>();
-            foreach (var s in ServicioMediaDistanciaAlmacen.serviciosMediaDistancia)
+            foreach (var s in serviciosArchivo)
             {
                 var servicioDominio = new ServicioMediaDistancia
                 {
-                    idServicio = s.idServicio,                      
+                    idServicio = s.idServicio,
                     idEmpresa = s.idEmpresa,
-                    tipoArrendamiento = (TipoArrendamientoEnum)s.tipoArrendamiento, // casteo
+                    tipoArrendamiento = ConvertirTipoArrendamiento(s.tipoArrendamiento),
                     idCDOrigen = s.idCDOrigen,
                     idCDDestino = s.idCDDestino,
                     fechaSalida = s.fechaSalida
                 };
-               
+
                 servicioDominio.capacidadUsada = servicioDominio.CapacidadMaxima - s.capacidadDisponible;
                 Servicios.Add(servicioDominio);
             }
 
-            // ---- GUIAS ----
             Guias = new List<Guia>();
-            foreach (var g in GuiaAlmacen.Guias)
+            foreach (var g in guiasArchivo)
             {
+                if (g.estado != Prototipos_TUTASA.Auxiliares.EstadoGuiaEnum.Admitida)
+                {
+                    continue;
+                }
+
+                if (g.idCDActual != CdEmisor.idCD)
+                {
+                    continue;
+                }
+
+                if (g.idCDDestino == CdEmisor.idCD)
+                {
+                    continue;
+                }
+
                 Guias.Add(new Guia
                 {
                     NroGuia = g.NroGuia,
-                    TipoBulto = (TiposBultoEnum)g.TipoBulto,       // casteo
-                    Estado = (EstadoGuiaEnum)g.estado,             // casteo
+                    TipoBulto = ConvertirTipoBulto(g.TipoBulto),
+                    Estado = EstadoGuiaEnum.Admitida,
                     idCDOrigen = g.idCDOrigen,
                     idCDDestino = g.idCDDestino,
                     idCDActual = g.idCDActual,
-                    EquivalenteS = g.EquivalenteS                  // <-- esto faltaba (si no, bultos da 0)
+                    EquivalenteS = g.EquivalenteS
                 });
             }
         }
@@ -87,6 +106,7 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transpor
         {
             foreach (var cd in CentrosDeDistribucion)
                 if (cd.idCD == idCD) return cd;
+
             return null;
         }
 
@@ -94,67 +114,180 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transpor
         {
             foreach (var empresa in Empresas)
                 if (empresa.idEmpresa == idEmpresa) return empresa;
+
             return null;
         }
 
-        private GuiaEntidad BuscarGuiaEntidad(string nroGuia)
+        private GuiaEntidad BuscarGuiaEntidad(List<GuiaEntidad> guiasArchivo, string nroGuia)
         {
-            foreach (var g in GuiaAlmacen.Guias)
+            foreach (var g in guiasArchivo)
                 if (g.NroGuia == nroGuia) return g;
+
             return null;
         }
 
-        private ServicioMediaDistanciaEntidad BuscarServicioEntidad(string idServicio)
+        private ServicioMediaDistanciaEntidad BuscarServicioEntidad(List<ServicioMediaDistanciaEntidad> serviciosArchivo, string idServicio)
         {
-            foreach (var s in ServicioMediaDistanciaAlmacen.serviciosMediaDistancia)
+            foreach (var s in serviciosArchivo)
                 if (s.idServicio == idServicio) return s;
+
             return null;
         }
 
-        private int ProximoNroHDR()
+        private int ProximoNroHDR(List<HojaDeRutaTransporteEntidad> hojasArchivo)
         {
             int max = 0;
-            foreach (var hdr in HojaDeRutaTransporteAlmacen.hojasDeRutaTransporte)
+
+            foreach (var hdr in hojasArchivo)
                 if (hdr.nroHDR > max) max = hdr.nroHDR;
+
             return max + 1;
         }
 
         public HojaDeRutaTransporteEntidad GenerarHDR(List<Guia> guias, ServicioMediaDistancia servicio)
         {
+            List<HojaDeRutaTransporteEntidad> hojasArchivo = LeerJson<List<HojaDeRutaTransporteEntidad>>("HojasDeRutaTransporte.json");
+            List<GuiaEntidad> guiasArchivo = LeerJson<List<GuiaEntidad>>("Guias.json");
+            List<ServicioMediaDistanciaEntidad> serviciosArchivo = LeerJson<List<ServicioMediaDistanciaEntidad>>("ServiciosMediaDistancia.json");
+
             var nuevaHDR = new HojaDeRutaTransporteEntidad();
-            nuevaHDR.nroHDR = ProximoNroHDR();
+            nuevaHDR.nroHDR = ProximoNroHDR(hojasArchivo);
             nuevaHDR.fechaGeneracion = DateTime.Now;
-            nuevaHDR.estado = Auxiliares.EstadoHojaDeRutaEnum.Generada;  
+            nuevaHDR.estado = Prototipos_TUTASA.Auxiliares.EstadoHojaDeRutaEnum.Generada;
             nuevaHDR.idCDOrigen = CdEmisor.idCD;
             nuevaHDR.idCDDestino = servicio.idCDDestino;
             nuevaHDR.idServicio = servicio.idServicio;
 
             int totalBultos = 0;
+
             foreach (var guia in guias)
             {
                 nuevaHDR.DetalleGuias.Add(guia.NroGuia);
                 totalBultos += guia.EquivalenteS;
 
-                guia.Estado = EstadoGuiaEnum.PendienteDeDespacho;   // dominio (para que desaparezca de la lista al refrescar)
+                guia.Estado = EstadoGuiaEnum.PendienteDeDespacho;
 
-                GuiaEntidad guiaEntidad = BuscarGuiaEntidad(guia.NroGuia);
+                GuiaEntidad guiaEntidad = BuscarGuiaEntidad(guiasArchivo, guia.NroGuia);
                 if (guiaEntidad != null)
-                    guiaEntidad.estado = Auxiliares.EstadoGuiaEnum.PendienteDeDespacho;   // entidad (persiste)
+                {
+                    guiaEntidad.estado = Prototipos_TUTASA.Auxiliares.EstadoGuiaEnum.PendienteDeDespacho;
+
+                    guiaEntidad.Historial.Add(new HistorialEstadoGuia
+                    {
+                        FechaCambio = DateTime.Today,
+                        Estado = Prototipos_TUTASA.Auxiliares.EstadoGuiaEnum.PendienteDeDespacho,
+                        Donde = CdEmisor.nombre
+                    });
+                }
             }
 
-            // Capacidad: descuento bultos
-            servicio.capacidadUsada += totalBultos;   // dominio
-            ServicioMediaDistanciaEntidad servicioEntidad = BuscarServicioEntidad(servicio.idServicio);
-            if (servicioEntidad != null)
-                servicioEntidad.capacidadDisponible -= totalBultos;   // entidad (persiste)
+            servicio.capacidadUsada += totalBultos;
 
-            // Persistencia
-            HojaDeRutaTransporteAlmacen.hojasDeRutaTransporte.Add(nuevaHDR);
-            HojaDeRutaTransporteAlmacen.Guardar();
-            GuiaAlmacen.Guardar();
-            ServicioMediaDistanciaAlmacen.Guardar();
+            ServicioMediaDistanciaEntidad servicioEntidad = BuscarServicioEntidad(serviciosArchivo, servicio.idServicio);
+            if (servicioEntidad != null)
+            {
+                servicioEntidad.capacidadDisponible -= totalBultos;
+                servicioEntidad.DetalleHDRs.Add(nuevaHDR.nroHDR);
+            }
+
+            hojasArchivo.Add(nuevaHDR);
+
+            HojaDeRutaTransporteAlmacen.hojasDeRutaTransporte = hojasArchivo;
+            GuiaAlmacen.Guias = guiasArchivo;
+            ServicioMediaDistanciaAlmacen.serviciosMediaDistancia = serviciosArchivo;
+
+            GuardarJson("HojasDeRutaTransporte.json", hojasArchivo);
+            GuardarJson("Guias.json", guiasArchivo);
+            GuardarJson("ServiciosMediaDistancia.json", serviciosArchivo);
 
             return nuevaHDR;
+        }
+
+        private TiposBultoEnum ConvertirTipoBulto(Prototipos_TUTASA.Auxiliares.TiposBultoEnum tipo)
+        {
+            return (TiposBultoEnum)Enum.Parse(typeof(TiposBultoEnum), tipo.ToString());
+        }
+
+        private TipoArrendamientoEnum ConvertirTipoArrendamiento(Prototipos_TUTASA.Auxiliares.TipoArrendamientoEnum tipo)
+        {
+            return (TipoArrendamientoEnum)Enum.Parse(typeof(TipoArrendamientoEnum), tipo.ToString());
+        }
+
+        private T LeerJson<T>(string nombreArchivo) where T : new()
+        {
+            string ruta = Path.Combine(ObtenerCarpetaDatos(), nombreArchivo);
+
+            if (!File.Exists(ruta))
+            {
+                return new T();
+            }
+
+            string json = File.ReadAllText(ruta);
+            T datos = JsonSerializer.Deserialize<T>(json, ObtenerOpcionesJson());
+
+            if (datos == null)
+            {
+                return new T();
+            }
+
+            return datos;
+        }
+
+        private void GuardarJson<T>(string nombreArchivo, T datos)
+        {
+            string carpetaDatos = ObtenerCarpetaDatos();
+
+            if (!Directory.Exists(carpetaDatos))
+            {
+                Directory.CreateDirectory(carpetaDatos);
+            }
+
+            string ruta = Path.Combine(carpetaDatos, nombreArchivo);
+            string json = JsonSerializer.Serialize(datos, ObtenerOpcionesJson());
+
+            File.WriteAllText(ruta, json);
+        }
+
+        private JsonSerializerOptions ObtenerOpcionesJson()
+        {
+            JsonSerializerOptions opciones = new JsonSerializerOptions();
+            opciones.WriteIndented = true;
+            opciones.Converters.Add(new JsonStringEnumConverter());
+
+            return opciones;
+        }
+
+        private string ObtenerCarpetaDatos()
+        {
+            DirectoryInfo directorio = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
+
+            while (directorio != null)
+            {
+                string archivoProyecto = Path.Combine(directorio.FullName, "Prototipos_TUTASA.csproj");
+
+                if (File.Exists(archivoProyecto))
+                {
+                    return Path.Combine(directorio.FullName, "DATOS");
+                }
+
+                directorio = directorio.Parent;
+            }
+
+            directorio = new DirectoryInfo(Directory.GetCurrentDirectory());
+
+            while (directorio != null)
+            {
+                string archivoProyecto = Path.Combine(directorio.FullName, "Prototipos_TUTASA.csproj");
+
+                if (File.Exists(archivoProyecto))
+                {
+                    return Path.Combine(directorio.FullName, "DATOS");
+                }
+
+                directorio = directorio.Parent;
+            }
+
+            return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "DATOS");
         }
     }
 }

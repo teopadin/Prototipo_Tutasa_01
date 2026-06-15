@@ -862,8 +862,14 @@
     },
     "TipoBulto": "M",
     "EquivalenteS": 2,
-    "estado": "Impuesta",
-    "Historial": [],
+    "estado": "IncluidaEnHDRRetiro",
+    "Historial": [
+      {
+        "FechaCambio": "2026-06-15T00:00:00-03:00",
+        "Estado": "IncluidaEnHDRRetiro",
+        "Donde": "Capital y GBA"
+      }
+    ],
     "TarifaCalculada": {
       "PrecioFlete": 0,
       "ExtraRetiroDomicilio": 0,
@@ -895,8 +901,14 @@
     },
     "TipoBulto": "L",
     "EquivalenteS": 4,
-    "estado": "Impuesta",
-    "Historial": [],
+    "estado": "IncluidaEnHDRRetiro",
+    "Historial": [
+      {
+        "FechaCambio": "2026-06-15T00:00:00-03:00",
+        "Estado": "IncluidaEnHDRRetiro",
+        "Donde": "Capital y GBA"
+      }
+    ],
     "TarifaCalculada": {
       "PrecioFlete": 0,
       "ExtraRetiroDomicilio": 0,
@@ -1311,7 +1323,7 @@
     }
   },
   {
-    "NroGuia": "RCV-901",
+    "NroGuia": "CD01-9005",
     "IdCliente": 1,
     "TipoImposicion": "CD",
     "idCDOrigen": 1,
@@ -1350,7 +1362,7 @@
     }
   },
   {
-    "NroGuia": "RCV-902",
+    "NroGuia": "CD01-9006",
     "IdCliente": 2,
     "TipoImposicion": "CD",
     "idCDOrigen": 1,
@@ -1389,153 +1401,30 @@
     }
   },
   {
-    "NroGuia": "CD02-0023",
-    "IdCliente": 1,
-    "TipoImposicion": "CallCenter",
-    "idCDOrigen": 2,
-    "idAgenciaOrigen": 0,
-    "idCDActual": 2,
-    "modalidadEntrega": "EntregaAgencia",
-    "idCDDestino": 1,
-    "idAgenciaDestino": 1,
-    "Destinatario": {
-      "Dni": 23456546,
-      "nombre": "pepe",
-      "apellido": "lopez",
-      "calle": "",
-      "altura": 0,
-      "piso": "",
-      "codigoPostal": "",
-      "ciudad": "",
-      "telefono": "1123456789"
-    },
-    "TipoBulto": "S",
-    "EquivalenteS": 1,
-    "estado": "Impuesta",
-    "Historial": [
-      {
-        "FechaCambio": "2026-06-15T00:00:00-03:00",
-        "Estado": "Impuesta",
-        "Donde": "Centro - Cordoba"
-      }
-    ],
-    "TarifaCalculada": {
-      "PrecioFlete": 0,
-      "ExtraRetiroDomicilio": 0,
-      "ExtraEntregaDomicilio": 0,
-      "ExtraEntregaAgencia": 0,
-      "TarifaTotal": 0
-    }
-  },
-  {
-    "NroGuia": "AG001-0001",
-    "IdCliente": 1,
-    "TipoImposicion": "Agencia",
-    "idCDOrigen": 1,
-    "idAgenciaOrigen": 1,
-    "idCDActual": 1,
-    "modalidadEntrega": "EntregaCD",
-    "idCDDestino": 4,
-    "idAgenciaDestino": 0,
-    "Destinatario": {
-      "Dni": 45464758,
-      "nombre": "pepe",
-      "apellido": "lopez",
-      "calle": "",
-      "altura": 0,
-      "piso": "",
-      "codigoPostal": "",
-      "ciudad": "Este - Corrientes",
-      "telefono": "1123456789"
-    },
-    "TipoBulto": "L",
-    "EquivalenteS": 4,
-    "estado": "Impuesta",
-    "Historial": [
-      {
-        "FechaCambio": "2026-06-15T00:00:00-03:00",
-        "Estado": "Impuesta",
-        "Donde": "Agencia Capital y GBA"
-      }
-    ],
-    "TarifaCalculada": {
-      "PrecioFlete": 0,
-      "ExtraRetiroDomicilio": 0,
-      "ExtraEntregaDomicilio": 0,
-      "ExtraEntregaAgencia": 0,
-      "TarifaTotal": 0
-    }
-  },
-  {
-    "NroGuia": "CD01-9005",
+    "NroGuia": "CD01-0030",
     "IdCliente": 1,
     "TipoImposicion": "CD",
-    "idCDOrigen": 1,
+    "idCDOrigen": 3,
     "idAgenciaOrigen": 0,
     "idCDActual": 1,
-    "modalidadEntrega": "EntregaAgencia",
-    "idCDDestino": 1,
-    "idAgenciaDestino": 1,
-    "Destinatario": {
-      "Dni": 45686259,
-      "nombre": "teo",
-      "apellido": "padin",
-      "calle": "",
-      "altura": 0,
-      "piso": "",
-      "codigoPostal": "",
-      "ciudad": "",
-      "telefono": "1120345676"
-    },
-    "TipoBulto": "S",
-    "EquivalenteS": 1,
-    "estado": "Admitida",
-    "Historial": [
-      {
-        "FechaCambio": "2026-06-15T00:00:00-03:00",
-        "Estado": "Admitida",
-        "Donde": "Capital y GBA"
-      }
-    ],
-    "TarifaCalculada": {
-      "PrecioFlete": 0,
-      "ExtraRetiroDomicilio": 0,
-      "ExtraEntregaDomicilio": 0,
-      "ExtraEntregaAgencia": 0,
-      "TarifaTotal": 0
-    }
-  },
-  {
-    "NroGuia": "AG001-0002",
-    "IdCliente": 1,
-    "TipoImposicion": "Agencia",
-    "idCDOrigen": 1,
-    "idAgenciaOrigen": 1,
-    "idCDActual": 1,
     "modalidadEntrega": "EntregaDomicilio",
-    "idCDDestino": 2,
+    "idCDDestino": 1,
     "idAgenciaDestino": 0,
     "Destinatario": {
-      "Dni": 43567890,
-      "nombre": "Carlos",
-      "apellido": "Lopez",
-      "calle": "Bv San Juan",
-      "altura": 780,
-      "piso": "",
-      "codigoPostal": "5000",
-      "ciudad": "Cordoba",
-      "telefono": "3514567890"
+      "Dni": 40123456,
+      "nombre": "Ana",
+      "apellido": "P\u00E9rez",
+      "calle": "Av. Rivadavia",
+      "altura": 3200,
+      "piso": "3B",
+      "codigoPostal": "1406",
+      "ciudad": "Buenos Aires",
+      "telefono": "011-4000-0000"
     },
-    "TipoBulto": "L",
-    "EquivalenteS": 4,
-    "estado": "Impuesta",
-    "Historial": [
-      {
-        "FechaCambio": "2026-06-15T00:00:00-03:00",
-        "Estado": "Impuesta",
-        "Donde": "Agencia Capital y GBA"
-      }
-    ],
+    "TipoBulto": "M",
+    "EquivalenteS": 2,
+    "estado": "EnCDDestino",
+    "Historial": [],
     "TarifaCalculada": {
       "PrecioFlete": 0,
       "ExtraRetiroDomicilio": 0,
