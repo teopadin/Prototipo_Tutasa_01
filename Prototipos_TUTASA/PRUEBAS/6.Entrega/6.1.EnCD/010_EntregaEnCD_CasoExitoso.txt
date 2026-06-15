@@ -1,14 +1,16 @@
-Plan de Prueba: Entrega en CD - Caso éxitoso
+Plan de Prueba: Entrega en CD - Caso Exitoso
 
 Pasos
-1- Ingresar CD02-0002 en el campo de guía.
+1- Ingresar CD02-0002 en el campo Guía.
 2- Presionar Buscar.
-3- Verificar que se muestran los datos del destinatario Ana Perez, DNI 40123456.
-4- Ingresar Nombre Ana.
-5- Ingresar Apellido Perez.
-6- Ingresar DNI 40123456.
-7- Marcar el checkbox de DNI verificado.
+3- Verificar que se muestran en pantalla los datos del destinatario:
+   - Nombre: Ana
+   - Apellido: Perez
+   - DNI: 40123456
+4- Ingresar Nombre: Ana.
+5- Ingresar Apellido: Perez.
+6- Ingresar DNI: 40123456.
+7- Marcar el checkbox "Documento de identidad presentado y verificado".
 8- Presionar Registrar Entrega.
-9- Verificar que el sistema muestra el mensaje "Entrega en CD se ha generado con éxito.".
-10- Verificar que la guía queda en estado Entregada.
-11- Archivo Guias.json: ultimo registro con CD02-0002, destinatario Ana Perez, DNI 40123456, estado "Entregado".
+9- Cerrar la ventana emergente "Entrega en CD se ha generado con éxito." pulsando OK.
+10- Validar en el archivo Guias.json que la guía con NroGuia CD02-0002, destinatario Ana Perez y DNI 40123456 queda en estado "Entregada".

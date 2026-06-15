@@ -11,8 +11,9 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_CD
     {
         private readonly CentroDistribucion cdActual;
         private readonly List<Guia> guias;
-        private readonly Dictionary<string, GuiaEntidad> guiasEntidadPorNumero;
+        private readonly List<GuiaEntidad> guiasEntidad;
         private Guia guiaSeleccionada = new Guia();
+        private GuiaEntidad guiaEntidadSeleccionada = new GuiaEntidad();
         private int ultimoNroRecibo;
 
         public bool HayGuiaSeleccionada { get; private set; }
@@ -32,11 +33,11 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_CD
                 : new CentroDistribucion { idCD = 1, nombre = "Capital y GBA" };
 
             guias = new List<Guia>();
-            guiasEntidadPorNumero = new Dictionary<string, GuiaEntidad>(StringComparer.OrdinalIgnoreCase);
+            guiasEntidad = new List<GuiaEntidad>();
 
             foreach (GuiaEntidad guiaEntidad in GuiaAlmacen.Guias)
             {
-                guiasEntidadPorNumero[guiaEntidad.NroGuia] = guiaEntidad;
+                guiasEntidad.Add(guiaEntidad);
                 guias.Add(ConvertirGuia(guiaEntidad));
             }
         }
@@ -58,7 +59,7 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_CD
                 return false;
             }
 
-            if (!BuscarGuiaDisponible(nroGuia, out Guia guia))
+            if (!BuscarGuiaDisponible(nroGuia, out Guia guia, out GuiaEntidad guiaEntidad))
             {
                 mensaje = "No se encontró una guía con el número ingresado.";
                 return false;
@@ -83,6 +84,7 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_CD
             }
 
             guiaSeleccionada = guia;
+            guiaEntidadSeleccionada = guiaEntidad;
             HayGuiaSeleccionada = true;
             mensaje = string.Empty;
             return true;
@@ -139,21 +141,25 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_CD
         public void LimpiarSeleccion()
         {
             guiaSeleccionada = new Guia();
+            guiaEntidadSeleccionada = new GuiaEntidad();
             HayGuiaSeleccionada = false;
         }
 
-        private bool BuscarGuiaDisponible(string nroGuia, out Guia guiaEncontrada)
+        private bool BuscarGuiaDisponible(string nroGuia, out Guia guiaEncontrada, out GuiaEntidad guiaEntidadEncontrada)
         {
-            foreach (Guia guia in guias)
+            for (int i = 0; i < guias.Count; i++)
             {
+                Guia guia = guias[i];
                 if (string.Equals(guia.NroGuia, nroGuia, StringComparison.OrdinalIgnoreCase))
                 {
                     guiaEncontrada = guia;
+                    guiaEntidadEncontrada = guiasEntidad[i];
                     return true;
                 }
             }
 
             guiaEncontrada = new Guia();
+            guiaEntidadEncontrada = new GuiaEntidad();
             return false;
         }
 
@@ -171,18 +177,15 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_CD
             ultimoNroRecibo++;
             guiaSeleccionada.estado = EstadoGuiaEnum.Entregada;
 
-            if (guiasEntidadPorNumero.TryGetValue(guiaSeleccionada.NroGuia, out GuiaEntidad guiaEntidad))
+            guiaEntidadSeleccionada.estado = EstadoGuiaAlmacen.Entregada;
+            guiaEntidadSeleccionada.Historial.Add(new Prototipos_TUTASA.Almacenes.HistorialEstadoGuia
             {
-                guiaEntidad.estado = EstadoGuiaAlmacen.Entregada;
-                guiaEntidad.Historial.Add(new Prototipos_TUTASA.Almacenes.HistorialEstadoGuia
-                {
-                    FechaCambio = fechaEntrega,
-                    Estado = EstadoGuiaAlmacen.Entregada,
-                    Donde = cdActual.nombre
-                });
+                FechaCambio = fechaEntrega,
+                Estado = EstadoGuiaAlmacen.Entregada,
+                Donde = cdActual.nombre
+            });
 
-                GuiaAlmacen.Guardar();
-            }
+            GuiaAlmacen.Guardar();
         }
 
         private static Guia ConvertirGuia(GuiaEntidad guiaEntidad)
