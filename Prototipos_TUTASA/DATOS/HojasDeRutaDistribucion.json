@@ -602,7 +602,7 @@
   {
     "NroHDR": 2097,
     "Fecha": "2026-06-11T00:00:00",
-    "estado": "Generada",
+    "estado": "EnCurso",
     "dniTransportistaAsignado": 30111222,
     "idAgenciaDestino": 1,
     "Calle": "Av. Rivadavia",
