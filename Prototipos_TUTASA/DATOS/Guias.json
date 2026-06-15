@@ -324,7 +324,7 @@
     "Destinatario": {
       "Dni": 40123456,
       "nombre": "Ana",
-      "apellido": "Pérez",
+      "apellido": "P\u00E9rez",
       "calle": "Av. Rivadavia",
       "altura": 3200,
       "piso": "3B",
@@ -357,7 +357,7 @@
     "Destinatario": {
       "Dni": 41234567,
       "nombre": "Juan",
-      "apellido": "Rodríguez",
+      "apellido": "Rodr\u00EDguez",
       "calle": "Av. Rivadavia",
       "altura": 3200,
       "piso": "3B",
@@ -389,8 +389,8 @@
     "idAgenciaDestino": 0,
     "Destinatario": {
       "Dni": 42345678,
-      "nombre": "María",
-      "apellido": "González",
+      "nombre": "Mar\u00EDa",
+      "apellido": "Gonz\u00E1lez",
       "calle": "Av. Santa Fe",
       "altura": 2450,
       "piso": "",
@@ -488,8 +488,8 @@
     "idAgenciaDestino": 0,
     "Destinatario": {
       "Dni": 43456789,
-      "nombre": "Lucía",
-      "apellido": "Fernández",
+      "nombre": "Luc\u00EDa",
+      "apellido": "Fern\u00E1ndez",
       "calle": "Defensa",
       "altura": 800,
       "piso": "2A",
@@ -1082,9 +1082,9 @@
     "idAgenciaDestino": 0,
     "Destinatario": {
       "Dni": 32111222,
-      "nombre": "Sofía",
-      "apellido": "Martínez",
-      "calle": "Av. Hipólito Yrigoyen",
+      "nombre": "Sof\u00EDa",
+      "apellido": "Mart\u00EDnez",
+      "calle": "Av. Hip\u00F3lito Yrigoyen",
       "altura": 1234,
       "piso": "",
       "codigoPostal": "5000",
@@ -1160,8 +1160,8 @@
     "idAgenciaDestino": 2,
     "Destinatario": {
       "Dni": 35888999,
-      "nombre": "Lucía",
-      "apellido": "Fernández",
+      "nombre": "Luc\u00EDa",
+      "apellido": "Fern\u00E1ndez",
       "calle": "Bv. Chacabuco",
       "altura": 800,
       "piso": "",
@@ -1200,7 +1200,7 @@
     "Destinatario": {
       "Dni": 33999888,
       "nombre": "Pedro",
-      "apellido": "García",
+      "apellido": "Garc\u00EDa",
       "calle": "Av. Belgrano",
       "altura": 700,
       "piso": "",
@@ -1226,7 +1226,6 @@
       "TarifaTotal": 0.0
     }
   },
-
   {
     "NroGuia": "AG02-9001",
     "IdCliente": 2,
@@ -1387,6 +1386,162 @@
       "ExtraEntregaDomicilio": 0.0,
       "ExtraEntregaAgencia": 1000.0,
       "TarifaTotal": 30000.0
+    }
+  },
+  {
+    "NroGuia": "CD02-0023",
+    "IdCliente": 1,
+    "TipoImposicion": "CallCenter",
+    "idCDOrigen": 2,
+    "idAgenciaOrigen": 0,
+    "idCDActual": 2,
+    "modalidadEntrega": "EntregaAgencia",
+    "idCDDestino": 1,
+    "idAgenciaDestino": 1,
+    "Destinatario": {
+      "Dni": 23456546,
+      "nombre": "pepe",
+      "apellido": "lopez",
+      "calle": "",
+      "altura": 0,
+      "piso": "",
+      "codigoPostal": "",
+      "ciudad": "",
+      "telefono": "1123456789"
+    },
+    "TipoBulto": "S",
+    "EquivalenteS": 1,
+    "estado": "Impuesta",
+    "Historial": [
+      {
+        "FechaCambio": "2026-06-15T00:00:00-03:00",
+        "Estado": "Impuesta",
+        "Donde": "Centro - Cordoba"
+      }
+    ],
+    "TarifaCalculada": {
+      "PrecioFlete": 0,
+      "ExtraRetiroDomicilio": 0,
+      "ExtraEntregaDomicilio": 0,
+      "ExtraEntregaAgencia": 0,
+      "TarifaTotal": 0
+    }
+  },
+  {
+    "NroGuia": "AG001-0001",
+    "IdCliente": 1,
+    "TipoImposicion": "Agencia",
+    "idCDOrigen": 1,
+    "idAgenciaOrigen": 1,
+    "idCDActual": 1,
+    "modalidadEntrega": "EntregaCD",
+    "idCDDestino": 4,
+    "idAgenciaDestino": 0,
+    "Destinatario": {
+      "Dni": 45464758,
+      "nombre": "pepe",
+      "apellido": "lopez",
+      "calle": "",
+      "altura": 0,
+      "piso": "",
+      "codigoPostal": "",
+      "ciudad": "Este - Corrientes",
+      "telefono": "1123456789"
+    },
+    "TipoBulto": "L",
+    "EquivalenteS": 4,
+    "estado": "Impuesta",
+    "Historial": [
+      {
+        "FechaCambio": "2026-06-15T00:00:00-03:00",
+        "Estado": "Impuesta",
+        "Donde": "Agencia Capital y GBA"
+      }
+    ],
+    "TarifaCalculada": {
+      "PrecioFlete": 0,
+      "ExtraRetiroDomicilio": 0,
+      "ExtraEntregaDomicilio": 0,
+      "ExtraEntregaAgencia": 0,
+      "TarifaTotal": 0
+    }
+  },
+  {
+    "NroGuia": "CD01-9005",
+    "IdCliente": 1,
+    "TipoImposicion": "CD",
+    "idCDOrigen": 1,
+    "idAgenciaOrigen": 0,
+    "idCDActual": 1,
+    "modalidadEntrega": "EntregaAgencia",
+    "idCDDestino": 1,
+    "idAgenciaDestino": 1,
+    "Destinatario": {
+      "Dni": 45686259,
+      "nombre": "teo",
+      "apellido": "padin",
+      "calle": "",
+      "altura": 0,
+      "piso": "",
+      "codigoPostal": "",
+      "ciudad": "",
+      "telefono": "1120345676"
+    },
+    "TipoBulto": "S",
+    "EquivalenteS": 1,
+    "estado": "Admitida",
+    "Historial": [
+      {
+        "FechaCambio": "2026-06-15T00:00:00-03:00",
+        "Estado": "Admitida",
+        "Donde": "Capital y GBA"
+      }
+    ],
+    "TarifaCalculada": {
+      "PrecioFlete": 0,
+      "ExtraRetiroDomicilio": 0,
+      "ExtraEntregaDomicilio": 0,
+      "ExtraEntregaAgencia": 0,
+      "TarifaTotal": 0
+    }
+  },
+  {
+    "NroGuia": "AG001-0002",
+    "IdCliente": 1,
+    "TipoImposicion": "Agencia",
+    "idCDOrigen": 1,
+    "idAgenciaOrigen": 1,
+    "idCDActual": 1,
+    "modalidadEntrega": "EntregaDomicilio",
+    "idCDDestino": 2,
+    "idAgenciaDestino": 0,
+    "Destinatario": {
+      "Dni": 43567890,
+      "nombre": "Carlos",
+      "apellido": "Lopez",
+      "calle": "Bv San Juan",
+      "altura": 780,
+      "piso": "",
+      "codigoPostal": "5000",
+      "ciudad": "Cordoba",
+      "telefono": "3514567890"
+    },
+    "TipoBulto": "L",
+    "EquivalenteS": 4,
+    "estado": "Impuesta",
+    "Historial": [
+      {
+        "FechaCambio": "2026-06-15T00:00:00-03:00",
+        "Estado": "Impuesta",
+        "Donde": "Agencia Capital y GBA"
+      }
+    ],
+    "TarifaCalculada": {
+      "PrecioFlete": 0,
+      "ExtraRetiroDomicilio": 0,
+      "ExtraEntregaDomicilio": 0,
+      "ExtraEntregaAgencia": 0,
+      "TarifaTotal": 0
     }
   }
 ]

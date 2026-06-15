@@ -154,7 +154,7 @@ namespace Prototipos_TUTASA.ImposiciónCallCenter_v2
                 destinatario.ciudad = cdDestino.nombre;
             }
 
-            Guia guia = modelo.RegistrarImposicion(tipoBulto, modalidadEntrega, destinatario, cdOrigen, cdDestino, agenciaDestino);
+            Guia guia = modelo.RegistrarImposicion(tipoBulto, modalidadEntrega, destinatario, cdOrigen, cdDestino, agenciaDestino, cliente);
             MessageBox.Show("Guía N° " + guia.NroGuia + " generada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Close();
         }

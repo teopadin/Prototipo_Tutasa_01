@@ -3,7 +3,14 @@
 Pasos
 1- Abrir la pantalla Imposición en CD.
 2- Seleccionar la razón social Juan Perez SRL.
-3- Verificar que se completan automáticamente los datos del remitente.
+3- Verificar que se completan automáticamente los datos del remitente:
+   - CUIT: 20333123121
+   - Teléfono: 1144441111
+   - Calle: Av. Corrientes
+   - Altura: 1200
+   - Piso: 4A
+   - Código Postal: 1043
+   - Ciudad: CABA
 4- Ingresar Nombre destinatario Ana.
 5- Ingresar Apellido destinatario Perez.
 6- Ingresar DNI destinatario 40123456.
@@ -12,5 +19,39 @@ Pasos
 9- Seleccionar modalidad Entrega en CD.
 10- Seleccionar CD Destino Capital y GBA.
 11- Presionar Registrar Imposición y Admisión.
-12- El sistema muestra el mensaje "Guía N° XXXX generada y admitida con éxito.".
-13- La guía se genera en el archivo Guias.json.
+12- El sistema muestra el mensaje "Guía N° CD01-9005 generada y admitida con éxito.".
+13- En el archivo Guias.json, verificar al final:
+{
+  "NroGuia": "CD01-9005",
+  "IdCliente": 1,
+  "TipoImposicion": "CD",
+  "idCDOrigen": 1,
+  "idAgenciaOrigen": 0,
+  "idCDActual": 1,
+  "modalidadEntrega": "EntregaCD",
+  "idCDDestino": 1,
+  "idAgenciaDestino": 0,
+  "Destinatario": {
+    "Dni": "40123456",
+    "nombre": "Ana",
+    "apellido": "Perez",
+    "calle": "",
+    "altura": 0,
+    "piso": "",
+    "codigoPostal": "",
+    "ciudad": "Capital y GBA",
+    "telefono": "1123456789"
+  },
+  "TipoBulto": "S",
+  "EquivalenteS": 1,
+  "estado": "Admitida",
+  "Historial": [
+    {
+      "Estado": "Admitida",
+      "Donde": "Capital y GBA"
+    }
+  ],
+  "TarifaCalculada": {
+    "TarifaTotal": 0
+  }
+}

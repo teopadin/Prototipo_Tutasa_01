@@ -3,7 +3,14 @@
 Pasos
 1- Abrir la pantalla Imposición en Agencia.
 2- Seleccionar la razón social Juan Perez SRL.
-3- Verificar que se completan automáticamente los datos del remitente.
+3- Verificar que se completan automáticamente los datos del remitente:
+   - CUIT: 20333123121
+   - Teléfono: 1144441111
+   - Calle: Av. Corrientes
+   - Altura: 1200
+   - Piso: 4A
+   - Código Postal: 1043
+   - Ciudad: CABA
 4- Ingresar Nombre destinatario Carlos.
 5- Ingresar Apellido destinatario Lopez.
 6- Ingresar DNI destinatario 43567890.
@@ -16,6 +23,40 @@ Pasos
 13- Ingresar Código Postal 5000.
 14- Ingresar Ciudad Cordoba.
 15- Seleccionar CD Destino Centro - Cordoba.
-16- Presionar Registrar Imposicion.
-17- El sistema muestra el mensaje "Guía N° XXXX generada con éxito.".
-18- La guía se genera en Guias.json en estado Impuesta.
+16- Presionar Registrar Imposición.
+17- El sistema muestra el mensaje "Guía N° AG001-0002 generada con éxito.".
+18- En el archivo Guias.json, verificar al final:
+{
+  "NroGuia": "AG001-0002",
+  "IdCliente": 1,
+  "TipoImposicion": "Agencia",
+  "idCDOrigen": 1,
+  "idAgenciaOrigen": 1,
+  "idCDActual": 1,
+  "modalidadEntrega": "EntregaDomicilio",
+  "idCDDestino": 2,
+  "idAgenciaDestino": 0,
+  "Destinatario": {
+    "Dni": 43567890,
+    "nombre": "Carlos",
+    "apellido": "Lopez",
+    "calle": "Bv San Juan",
+    "altura": 780,
+    "piso": "",
+    "codigoPostal": "5000",
+    "ciudad": "Cordoba",
+    "telefono": "3514567890"
+  },
+  "TipoBulto": "L",
+  "EquivalenteS": 4,
+  "estado": "Impuesta",
+  "Historial": [
+    {
+      "Estado": "Impuesta",
+      "Donde": "Agencia Capital y GBA"
+    }
+  ],
+  "TarifaCalculada": {
+    "TarifaTotal": 0
+  }
+}

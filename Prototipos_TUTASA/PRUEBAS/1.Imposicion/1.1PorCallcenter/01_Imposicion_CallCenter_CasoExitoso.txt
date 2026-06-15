@@ -3,7 +3,14 @@
 Pasos
 1- Abrir la pantalla Imposición Call Center.
 2- Seleccionar la razón social Juan Perez SRL.
-3- Verificar que se completan automáticamente los datos del remitente.
+3- Verificar que se completan automáticamente los datos del remitente:
+   - CUIT: 20333123121
+   - Teléfono: 1144441111
+   - Calle: Av. Corrientes
+   - Altura: 1200
+   - Piso: 4A
+   - Código Postal: 1043
+   - Ciudad: CABA
 4- Ingresar Nombre destinatario Ana.
 5- Ingresar Apellido destinatario Perez.
 6- Ingresar DNI destinatario 40123456.
@@ -13,5 +20,39 @@ Pasos
 10- Seleccionar CD Origen Capital y GBA.
 11- Seleccionar Agencia destino Agencia Capital y GBA.
 12- Presionar Registrar Imposición.
-13- El sistema muestra el mensaje "Guía N° XXXX generada con éxito.".
-14- En el archivo Guias.json se genera la guia en estado impuesta
+13- El sistema muestra el mensaje "Guía N° CD01-9005 generada con éxito.".
+14- En el archivo Guias.json, verificar al final:
+{
+  "NroGuia": "CD01-9005",
+  "IdCliente": 1,
+  "TipoImposicion": "CallCenter",
+  "idCDOrigen": 1,
+  "idAgenciaOrigen": 0,
+  "idCDActual": 1,
+  "modalidadEntrega": "EntregaAgencia",
+  "idCDDestino": 1,
+  "idAgenciaDestino": 1,
+  "Destinatario": {
+    "Dni": 40123456,
+    "nombre": "Ana",
+    "apellido": "Perez",
+    "calle": "",
+    "altura": 0,
+    "piso": "",
+    "codigoPostal": "",
+    "ciudad": "",
+    "telefono": "1123456789"
+  },
+  "TipoBulto": "S",
+  "EquivalenteS": 1,
+  "estado": "Impuesta",
+  "Historial": [
+    {
+      "Estado": "Impuesta",
+      "Donde": "Capital y GBA"
+    }
+  ],
+  "TarifaCalculada": {
+    "TarifaTotal": 0
+  }
+}
