@@ -324,7 +324,7 @@
     "Destinatario": {
       "Dni": 40123456,
       "nombre": "Ana",
-      "apellido": "P\u00E9rez",
+      "apellido": "Pérez",
       "calle": "Av. Rivadavia",
       "altura": 3200,
       "piso": "3B",
@@ -357,7 +357,7 @@
     "Destinatario": {
       "Dni": 41234567,
       "nombre": "Juan",
-      "apellido": "Rodr\u00EDguez",
+      "apellido": "Rodríguez",
       "calle": "Av. Rivadavia",
       "altura": 3200,
       "piso": "3B",
@@ -389,8 +389,8 @@
     "idAgenciaDestino": 0,
     "Destinatario": {
       "Dni": 42345678,
-      "nombre": "Mar\u00EDa",
-      "apellido": "Gonz\u00E1lez",
+      "nombre": "María",
+      "apellido": "González",
       "calle": "Av. Santa Fe",
       "altura": 2450,
       "piso": "",
@@ -488,8 +488,8 @@
     "idAgenciaDestino": 0,
     "Destinatario": {
       "Dni": 43456789,
-      "nombre": "Luc\u00EDa",
-      "apellido": "Fern\u00E1ndez",
+      "nombre": "Lucía",
+      "apellido": "Fernández",
       "calle": "Defensa",
       "altura": 800,
       "piso": "2A",
@@ -862,14 +862,8 @@
     },
     "TipoBulto": "M",
     "EquivalenteS": 2,
-    "estado": "IncluidaEnHDRRetiro",
-    "Historial": [
-      {
-        "FechaCambio": "2026-06-15T00:00:00-03:00",
-        "Estado": "IncluidaEnHDRRetiro",
-        "Donde": "Capital y GBA"
-      }
-    ],
+    "estado": "Impuesta",
+    "Historial": [],
     "TarifaCalculada": {
       "PrecioFlete": 0,
       "ExtraRetiroDomicilio": 0,
@@ -901,14 +895,8 @@
     },
     "TipoBulto": "L",
     "EquivalenteS": 4,
-    "estado": "IncluidaEnHDRRetiro",
-    "Historial": [
-      {
-        "FechaCambio": "2026-06-15T00:00:00-03:00",
-        "Estado": "IncluidaEnHDRRetiro",
-        "Donde": "Capital y GBA"
-      }
-    ],
+    "estado": "Impuesta",
+    "Historial": [],
     "TarifaCalculada": {
       "PrecioFlete": 0,
       "ExtraRetiroDomicilio": 0,
@@ -1094,9 +1082,9 @@
     "idAgenciaDestino": 0,
     "Destinatario": {
       "Dni": 32111222,
-      "nombre": "Sof\u00EDa",
-      "apellido": "Mart\u00EDnez",
-      "calle": "Av. Hip\u00F3lito Yrigoyen",
+      "nombre": "Sofía",
+      "apellido": "Martínez",
+      "calle": "Av. Hipólito Yrigoyen",
       "altura": 1234,
       "piso": "",
       "codigoPostal": "5000",
@@ -1172,8 +1160,8 @@
     "idAgenciaDestino": 2,
     "Destinatario": {
       "Dni": 35888999,
-      "nombre": "Luc\u00EDa",
-      "apellido": "Fern\u00E1ndez",
+      "nombre": "Lucía",
+      "apellido": "Fernández",
       "calle": "Bv. Chacabuco",
       "altura": 800,
       "piso": "",
@@ -1212,7 +1200,7 @@
     "Destinatario": {
       "Dni": 33999888,
       "nombre": "Pedro",
-      "apellido": "Garc\u00EDa",
+      "apellido": "García",
       "calle": "Av. Belgrano",
       "altura": 700,
       "piso": "",
@@ -1238,6 +1226,7 @@
       "TarifaTotal": 0.0
     }
   },
+
   {
     "NroGuia": "AG02-9001",
     "IdCliente": 2,
@@ -1413,7 +1402,7 @@
     "Destinatario": {
       "Dni": 40123456,
       "nombre": "Ana",
-      "apellido": "P\u00E9rez",
+      "apellido": "Pérez",
       "calle": "Av. Rivadavia",
       "altura": 3200,
       "piso": "3B",
