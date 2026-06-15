@@ -1,10 +1,20 @@
-﻿Plan de Prueba: Resumen Hoja de Ruta de Distribución - Caso exitoso
+﻿Plan de Prueba: Resumen Hoja de Ruta de Distribución - Caso Exitoso
 
 Pasos
 
-1- Desplegar opción “Transportista Local asignado”.
-2- Seleccionqr Carlos Gomez.
-3- Presionar "Generar Resumen".
-4- Verificar mensaje “Resumen de HDR de Distribución se ha generado con éxito.”.
-5- Presionar Aceptar.
-6- Archivo HojasDeRutaDistribucion.json: las hojas de ruta incluidas en el resumen deben quedar con estado "EnCurso".
+1- Abrir la pantalla Resumen Hoja de Ruta de Distribución desde el menú de pruebas.
+2- Verificar que la Fecha muestra la fecha actual y no permite modificarse.
+3- Desplegar el combo "Transportista Local asignado".
+4- Seleccionar Carlos Gomez.
+5- Verificar que la grilla muestra la Hoja de Ruta de Distribución asignada al fletero:
+   - Nro de Hoja de Ruta: 2009
+   - DNI Destinatario: 40123456
+   - Calle: Av. Rivadavia
+   - Altura: 3200
+   - CP: 1406
+   - Cantidad de Bultos: 1
+6- Verificar que "Total Domicilios a Visitar" muestra 1.
+7- Verificar que "Total Bultos a Entregar" muestra 1.
+8- Presionar Generar Resumen.
+9- Cerrar la ventana emergente "Resumen de HDR de Distribución se ha generado con éxito." pulsando OK.
+10- Validar en el archivo HojasDeRutaDistribucion.json que la hoja con NroHDR 2009 cambia de estado "Generada" a estado "EnCurso".

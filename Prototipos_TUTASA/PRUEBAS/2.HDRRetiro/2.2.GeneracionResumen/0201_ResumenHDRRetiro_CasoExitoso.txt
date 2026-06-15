@@ -1,9 +1,18 @@
-﻿Plan de Prueba: Resumen Hoja de Ruta de Retiro - Caso exitoso
+﻿Plan de Prueba: Resumen Hoja de Ruta de Retiro - Caso Exitoso
 
 Pasos
-1- Desplegar botón de “Transportista Local asignado”
-2- Seleccionar Carlos Gomez.
-3- Presionar Generar Resumen.
-4- Verificar mensaje “Resumen de HDR de Retiro se ha generado con éxito.”
-5- Presionar Aceptar.
-6- Archivo HojasDeRutaRetiro.json: las hojas de ruta incluidas en el resumen deben quedar con estado "EnCurso".
+1- Abrir la pantalla Resumen Hoja de Ruta de Retiro desde el menú de pruebas.
+2- Verificar que la Fecha muestra la fecha actual y no permite modificarse.
+3- Desplegar el combo "Transportista Local asignado".
+4- Seleccionar Carlos Gomez.
+5- Verificar que la grilla muestra la Hoja de Ruta de Retiro asignada al fletero:
+   - Nro de Hoja de Ruta: 1009
+   - Calle: Av. Corrientes
+   - Altura: 1200
+   - CP: 1043
+   - Cantidad de Bultos: 2
+6- Verificar que "Total Domicilios a Visitar" muestra 1.
+7- Verificar que "Total Bultos a Retirar" muestra 2.
+8- Presionar Generar Resumen.
+9- Cerrar la ventana emergente "Resumen de HDR de Retiro se ha generado con éxito." pulsando OK.
+10- Validar en el archivo HojasDeRutaRetiro.json que la hoja con NroHDR 1009 cambia de estado "Generada" a estado "EnCurso".
