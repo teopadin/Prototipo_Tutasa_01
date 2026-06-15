@@ -7,5 +7,5 @@
 5- Presionar Aceptar.
 5- Archivo Facturas.json: última entrada agregada
    con idCliente 1 e importeTotal 80000.0.
-6- Archivo DetallesFactura.json: registro con nroGuia RCV-901
+6- Archivo DetallesFactura.json: registro con nroGuia CD01-9005
    queda asociado a la factura emitida. superior derecho de la pantalla.
