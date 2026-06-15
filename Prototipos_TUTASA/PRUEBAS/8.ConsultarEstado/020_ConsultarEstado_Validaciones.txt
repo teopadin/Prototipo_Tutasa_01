@@ -1,21 +1,21 @@
 ﻿Plan de Prueba: Consultar Estado - Validaciones
 
-1- Presionar Buscar con el campo "Número de Guía:" vacío.
+1- Presionar "Buscar" con el campo "Número de Guía:" vacío.
 2- Verificar mensaje: "Debe ingresar un número de guía".
-3- Presionar "Aceptar".
+3- Presionar "Aceptar" y verificar que se cierra la ventana emergente.
 4- Ingresar "NO EXISTE" en el campo de guía.
-5- Presionar Buscar.
+5- Presionar "Buscar".
 6- Verificar mensaje: "La guía N° NO EXISTE no existe".
-7- Presionar "Aceptar".
+7- Presionar la cruz del extremo superior derecho y verificar que se cierra la ventana emergente.
 8- Ingresar "CD99-9999" en el campo de guía.
-9- Presionar Buscar.
+9- Presionar "Buscar".
 10- Verificar mensaje: "La guía N° CD99-9999 no existe".
 11- Presionar "Aceptar".
 12- Ingresar "AG02-9001" en el campo de guía.
-13- Presionar Buscar.
-14- Verificar que aparecen exactamente 10 filas en el historial en la grilla.
-15- Borrar la información del campo de guía e ingresar "CD99-9999".
-16- Presionar Buscar.
+13- Presionar "Buscar".
+14- Verificar: aparecen exactamente 10 filas en el historial en la grilla.
+15- Borrar la información del campo "Número de guía" e ingresar "CD99-9999".
+16- Presionar "Buscar".
 17- Verificar mensaje: "La guía N° CD99-9999 no existe".
 18- Presionar "Aceptar".
 19- Verificar: la grilla queda vacía.
