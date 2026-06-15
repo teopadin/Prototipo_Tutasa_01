@@ -1,22 +1,22 @@
-﻿Plan de PruPlan de Prueba: Admisión - Validaciones
+﻿Plan de Prueba: Admisión - Validaciones
 
-1- Presionar Buscar con el campo Nro de Guía vacío.
+1- Presionar "Buscar" con el campo "Nro de Guía" vacío.
 2- Verificar mensaje: "Debe ingresar un número de guía".
-3- Presionar Aceptar.
-4- Ingresar CD99-9999 en el campo Nro de Guía.
-5- Presionar Buscar.
+3- Presionar "Aceptar".
+4- Ingresar "CD99-9999" en el campo "Nro de Guía".
+5- Presionar "Buscar".
 6- Verificar mensaje: "La guía N° CD99-9999 no existe".
-7- Presionar Aceptar.
-8- Verificar: los campos de información quedan vacíos.
-9- Ingresar CD01-9004 en el campo Nro de Guía.
-10- Presionar Buscar.
+7- Presionar la cruz del extremo superior derecho y verificar que se cierra la ventana emergente.
+8- Verificar: los campos "Cliente", "CD Destino", "Destinatario", "Tipo de Bulto" y "Modalidad de Entrega" quedan vacíos.
+9- Borrar "CD99-9999" en el campo "Nro de Guía" e ingresar "CD01-9004" en el campo "Nro de Guía".
+10- Presionar "Buscar".
 11- Verificar mensaje: "La guía N° CD01-9004 no está disponible para admitir".
-12- Presionar Aceptar.
-13- Verificar: los campos de información quedan vacíos.
-14- Presionar Confirmar Admisión.
+12- Presionar "Aceptar".
+13- Verificar: los campos "Cliente", "CD Destino", "Destinatario", "Tipo de Bulto" y "Modalidad de Entrega" quedan vacíos.
+14- Presionar "Confirmar Admisión".
 15- Verificar mensaje: "Debe buscar una guía válida primero".
-16- Presionar Aceptar.
-17- Presionar Rechazar Admisión.
+16- Presionar "Aceptar".
+17- Presionar "Rechazar Admisión".
 18- Verificar mensaje: "Debe buscar una guía válida primero".
-19- Presionar Aceptar.
+19- Presionar "Aceptar".
 20- Salir del sistema presionando la cruz del extremo superior derecho de la pantalla.
