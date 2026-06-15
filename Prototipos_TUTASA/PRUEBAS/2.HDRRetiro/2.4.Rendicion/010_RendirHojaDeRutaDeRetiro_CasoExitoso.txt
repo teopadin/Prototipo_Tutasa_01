@@ -1,0 +1,32 @@
+﻿Plan de Prueba: Rendir HDR de Retiro - Caso Exitoso (HDR Cumplida)
+
+Datos de partida:
+- Transportista: dni 22222222 (Gomez, Maria)
+- HDR 2004 -> Remitente: Logistica Norte, DetalleGuias: G-R-004, estado: Recibida
+- HDR 2005 -> Remitente: Comercial Este, DetalleGuias: G-R-005, estado: Recibida
+- Guia G-R-004 -> estado: IncluidaEnHDRRetiro
+- Guia G-R-005 -> estado: IncluidaEnHDRRetiro
+
+1- Abrir la pantalla "Rendir HDR de Retiro".
+2- En el combo "Fletero" seleccionar "Gomez, Maria" (dni 22222222).
+3- Verificar: se cargan 2 filas en la grilla con las HDR 2004 y 2005, cada una con su remitente, direccion y estado "Recibida".
+4- Seleccionar en la grilla la fila correspondiente a la HDR 2004.
+5- Verificar: se habilita el recuadro "Estado de la HDR seleccionada (2004)" junto con los radios "Cumplida" y "No Cumplida".
+6- Marcar el radio "Cumplida".
+7- Verificar: el combo "Motivo" permanece deshabilitado.
+8- Presionar "Aplicar".
+9- Verificar: en la grilla, la columna Estado de la fila 2004 cambia a "Cumplida".
+10- Seleccionar la fila de la HDR 2005, marcar el radio "Cumplida" y presionar "Aplicar".
+11- Verificar: en la grilla, la columna Estado de la fila 2005 cambia a "Cumplida".
+12- Verificar: campo "Total Rendidas" = 2, "Total Cumplidas" = 2, "Total No Cumplidas" = 0.
+13- Presionar "Registrar Rendicion".
+14- Verificar mensaje: "Rendicion registrada con exito. Total HDR rendidas: 2"
+15- Presionar "Aceptar".
+16- Salir del sistema.
+
+17- Archivo HojasDeRutaRetiro.json: registros existentes
+    con NroHDR 2004 y 2005, con estado "Cumplida".
+
+18- Archivo Guias.json: registros existentes
+    con NroGuia G-R-004, estado "Retirada".
+    con NroGuia G-R-005, estado "Retirada".

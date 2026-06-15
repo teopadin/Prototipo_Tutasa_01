@@ -1,0 +1,23 @@
+Plan de Prueba: Recepcion de Hoja de Ruta de Retiro en Agencia - Validaciones
+
+Contexto:
+1- En el menú, seleccionar Agencia actual: Agencia Centro - Cordoba.
+2- Abrir la pantalla Recepcion de Hoja de Ruta de Retiro en Agencia.
+
+Pasos:
+1- Dejar vacío el campo Nro HDR y presionar Buscar.
+2- Verificar mensaje: "Debe ingresar un número de HDR para realizar la búsqueda.".
+3- Ingresar ABC y presionar Buscar.
+4- Verificar mensaje: "Debe ingresar un número de HDR válido.".
+5- Ingresar 9999 y presionar Buscar.
+6- Verificar mensaje: "No se encontró ninguna hoja de ruta con el número ingresado. Verifique e intente nuevamente.".
+7- Ingresar 1001 y presionar Buscar.
+8- Verificar mensaje: "La hoja de ruta ingresada no corresponde a su agencia.".
+9- Ingresar 1099 y presionar Buscar.
+10- Verificar mensaje: "La hoja de ruta ingresada ya fue confirmada como recibida.".
+11- Presionar Confirmar Recepcion sin haber buscado una HDR válida.
+12- Verificar mensaje: "Debe buscar una HDR antes de confirmar la recepción.".
+13- Presionar Cancelar.
+14- Verificar mensaje: "La recepción no será registrada. ¿Desea continuar?".
+15- Confirmar con Sí.
+16- Verificar que la pantalla se cierra sin registrar la recepción.

@@ -1,18 +1,21 @@
 ﻿Plan de Prueba: Admisión - Caso exitoso 1 (Admisión normal)
 
-1- Ingresar CD01-9001 en el campo Nro de Guía.
-2- Presionar Buscar.
+1- Ingresar "CD01-9001" en el campo "Nro de Guía".
+2- Presionar "Buscar".
 3- Verificar datos en la sección Información de Guía:
-   Cliente: Juan Perez SRL,
-   CD Destino: Centro - Córdoba,
-   Destinatario: Martínez, Sofía (DNI: 32111222),
-   Tipo de Bulto: M (hasta 5 kg),
-   Modalidad de Entrega: Entrega a Domicilio.
-4- Presionar Confirmar Admisión.
+   Cliente: "Juan Perez SRL",
+   CD Destino: "Centro - Córdoba",
+   Destinatario: "Martínez, Sofía (DNI: 32111222)",
+   Tipo de Bulto: "M (hasta 5 kg)",
+   Modalidad de Entrega: "Entrega a Domicilio".
+4- Presionar "Confirmar Admisión".
 5- Verificar mensaje: "Guía N° CD01-9001 admitida con éxito".
-6- Presionar Aceptar.
-7- Verificar: los campos Nro de Guía, Cliente, CD Destino, Destinatario, Tipo de Bulto y Modalidad de Entrega quedan vacíos.
+6- Presionar "Aceptar".
+7- Verificar: los campos "Nro de Guía", "Cliente", "CD Destino", "Destinatario", "Tipo de Bulto" y "Modalidad de Entrega" quedan vacíos.
 8- Salir del sistema presionando la cruz del extremo superior derecho de la pantalla.
-9- Archivo Guias.json: registro existente
+9- Archivo Guias.json: verificar registro existente
    con NroGuia CD01-9001,
-   con estado "Admitida".
+   con estado "Admitida" y TarifaCalculada
+   (PrecioFlete: 3000, ExtraRetiroDomicilio: 500,
+   ExtraEntregaDomicilio: 700, ExtraEntregaAgencia: 0,
+   TarifaTotal: 4200).

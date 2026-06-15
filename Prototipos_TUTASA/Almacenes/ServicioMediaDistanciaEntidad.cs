@@ -8,7 +8,7 @@ internal class ServicioMediaDistanciaEntidad
     public int idEmpresa { get; set; }
     public DateTime fechaSalida { get; set; }
     public DateTime fechaLlegada { get; set; }
-    public DateTime fechaRecepcion { get; set; }
+    public DateTime? fechaRecepcion { get; set; }
     public int capacidadDisponible { get; set; }
     public int idCDOrigen { get; set; }
     public int idCDDestino { get; set; }

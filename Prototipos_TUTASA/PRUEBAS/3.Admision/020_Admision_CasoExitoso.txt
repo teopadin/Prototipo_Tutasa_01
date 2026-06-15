@@ -1,18 +1,21 @@
 ﻿Plan de Prueba: Admisión - Caso exitoso 2 (Admisión especial - Retiro en CD)
 
-1- Ingresar CD01-9002 en el campo Nro de Guía.
-2- Presionar Buscar.
+1- Ingresar "CD01-9002" en el campo "Nro de Guía".
+2- Presionar "Buscar".
 3- Verificar datos en la sección Información de Guía:
-   Cliente: Mundo Fox S.A.,
-   CD Destino: Capital y GBA,
-   Destinatario: Romero, Diego (DNI: 28555666),
-   Tipo de Bulto: S (hasta 2.5 kg),
-   Modalidad de Entrega: Entrega en CD.
-4- Presionar Confirmar Admisión.
+   Cliente: "Mundo Fox S.A.",
+   CD Destino: "Capital y GBA",
+   Destinatario: "Romero, Diego (DNI: 28555666)",
+   Tipo de Bulto: "S (hasta 2.5 kg)",
+   Modalidad de Entrega: "Entrega en CD".
+4- Presionar "Confirmar Admisión".
 5- Verificar mensaje: "Guía N° CD01-9002 admitida con éxito".
-6- Presionar Aceptar.
-7- Verificar: los campos Nro de Guía, Cliente, CD Destino, Destinatario, Tipo de Bulto y Modalidad de Entrega quedan vacíos.
+6- Presionar "Aceptar".
+7- Verificar: los campos "Nro de Guía", "Cliente", "CD Destino", "Destinatario", "Tipo de Bulto" y "Modalidad de Entrega" quedan vacíos.
 8- Salir del sistema presionando la cruz del extremo superior derecho de la pantalla.
-9- Archivo Guias.json: registro existente
+9- Archivo Guias.json: verificar registro existente
    con NroGuia CD01-9002,
-   con estado "PendienteDeRetiroEnCD".
+   con estado "PendienteDeRetiroEnCD" y TarifaCalculada
+   (PrecioFlete: 2500, ExtraRetiroDomicilio: 0,
+   ExtraEntregaDomicilio: 0, ExtraEntregaAgencia: 0,
+   TarifaTotal: 2500).

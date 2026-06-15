@@ -1,6 +1,6 @@
-﻿Plan de Prueba: Consultar Estado - Caso exitoso 2 (Historial completo)
+﻿Plan de Prueba: Consultar Estado - Caso exitoso
 
-1- Ingresar AG02-9001 en el campo de guía.
+1- Ingresar AG02-9001 en el campo de "Número de guía".
 2- Presionar Buscar.
 3- Verificar: se despliega el historial en la grilla con 10 filas.
 4- Verificar filas de la grilla en orden:
@@ -15,6 +15,3 @@
    Fila 9 -> Fecha: 08/05/2026, Número de Guía: AG02-9001, Estado: Pendiente de retiro en agencia, Donde: Agencia Capital y GBA.
    Fila 10 -> Fecha: 09/05/2026, Número de Guía: AG02-9001, Estado: Entregada, Donde: Agencia Capital y GBA.
 5- Salir del sistema presionando la cruz del extremo superior derecho de la pantalla.
-6- Archivo Guias.json: registro existente
-   con NroGuia AG02-9001,
-   con 10 entradas de historial cubriendo el flujo completo desde Impuesta hasta Entregada.

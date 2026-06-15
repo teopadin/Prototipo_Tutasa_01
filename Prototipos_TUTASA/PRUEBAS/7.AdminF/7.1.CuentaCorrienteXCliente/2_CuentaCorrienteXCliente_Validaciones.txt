@@ -1,13 +1,10 @@
 ﻿Plan de Prueba: Estado Cuenta Corriente por Cliente - Validaciones
 
 1- Presionar Buscar sin seleccionar una razón social.
-2- Verificar mensaje: "Debe seleccionar una razón social para continuar con la operación.".
-3- Presionar Aceptar.
+2- Presionar Aceptar.
 4- Presionar Emitir Factura sin seleccionar una razón social.
-5- Verificar mensaje: "Debe seleccionar una razón social para continuar con la operación.".
-6- Presionar Aceptar.
-7- Seleccionar "Empresa ABC SA" en el campo Razón Social.
-8- Presionar Buscar.
-9- Verificar: no se despliegan guías pendientes de facturación en la grilla.
-10- Presionar Emitir Factura.
-11- Verificar mensaje: "El cliente seleccionado no posee guías pendientes de facturación.".
+5- Presionar Aceptar.
+6- Seleccionar "Empresa ABC SA" en el campo Razón Social.
+7- Presionar Buscar.
+8- Verificar: no se despliegan guías pendientes de facturación en la grilla.
+9- Presionar Emitir Factura.

@@ -46,9 +46,28 @@ namespace Prototipos_TUTASA
 
         public bool SeleccionarHojasAsignadas(TransportistaLocal transportista, DateTime fecha)
         {
+            string mensaje;
+            return SeleccionarHojasAsignadas(transportista, fecha, out mensaje);
+        }
+
+        public bool SeleccionarHojasAsignadas(TransportistaLocal transportista, DateTime fecha, out string mensaje)
+        {
             LimpiarSeleccion();
+            mensaje = string.Empty;
+
+            if (transportista == null)
+            {
+                mensaje = "Debe seleccionar un fletero.";
+                return false;
+            }
 
             if (!BuscarHojasAsignadas(transportista, fecha, out List<HojaDeRutaDistribucion> hojas))
+            {
+                mensaje = "No hay Hojas de Ruta de Distribución asignadas al fletero para la fecha seleccionada.";
+                return false;
+            }
+
+            if (!ValidarHojas(hojas, out mensaje))
             {
                 return false;
             }
@@ -87,6 +106,11 @@ namespace Prototipos_TUTASA
                 return false;
             }
 
+            if (!ValidarHojas(hojasSeleccionadas, out mensaje))
+            {
+                return false;
+            }
+
             ultimoNroResumen++;
 
             foreach (HojaDeRutaDistribucion hoja in hojasSeleccionadas)
@@ -101,6 +125,34 @@ namespace Prototipos_TUTASA
 
             HojaDeRutaDistribucionAlmacen.Guardar();
             LimpiarSeleccion();
+            return true;
+        }
+
+        private bool ValidarHojas(List<HojaDeRutaDistribucion> hojas, out string mensaje)
+        {
+            mensaje = string.Empty;
+
+            foreach (HojaDeRutaDistribucion hoja in hojas)
+            {
+                if (hoja.DetalleGuias.Count == 0)
+                {
+                    mensaje = $"La Hoja de Ruta de Distribución N° {hoja.NroHDR} no tiene guías asociadas.";
+                    return false;
+                }
+
+                if (!hojasEntidadPorNroHDR.TryGetValue(hoja.NroHDR, out HojaDeRutaDistribucionEntidad hojaEntidad))
+                {
+                    mensaje = $"La Hoja de Ruta de Distribución N° {hoja.NroHDR} no existe.";
+                    return false;
+                }
+
+                if (hojaEntidad.estado != EstadoHojaDeRutaEntidadEnum.Generada)
+                {
+                    mensaje = $"La Hoja de Ruta de Distribución N° {hoja.NroHDR} no se encuentra en estado Generada.";
+                    return false;
+                }
+            }
+
             return true;
         }
 
