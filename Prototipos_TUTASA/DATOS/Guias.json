@@ -1312,7 +1312,7 @@
     }
   },
   {
-    "NroGuia": "RCV-901",
+    "NroGuia": "CD01-9005",
     "IdCliente": 1,
     "TipoImposicion": "CD",
     "idCDOrigen": 1,
@@ -1351,7 +1351,7 @@
     }
   },
   {
-    "NroGuia": "RCV-902",
+    "NroGuia": "CD01-9006",
     "IdCliente": 2,
     "TipoImposicion": "CD",
     "idCDOrigen": 1,
