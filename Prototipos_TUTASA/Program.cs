@@ -42,7 +42,7 @@ namespace Prototipos_TUTASA
             //Application.Run(new Prototipos_TUTASA.Rendiciones_HDR.Rendir_HDR_De_Distribucion());
             //Application.Run(new EntregaEncomiendaCD());
             //Application.Run(new ConsultarEstadoDelPedido_v2.ConsultarEstadoDelPedido());
-            Application.Run(new resultadocostosvsventas());
+            //Application.Run(new resultadocostosvsventas());
             //Application.Run(new Prototipos_TUTASA.Admisión_CallCenteryAgencia_v2.EstadoCuentaCorrienteXCliente_v2.EstadoCuentaCorrienteXCliente());
             Application.Run(new Menu());
         }
