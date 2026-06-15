@@ -13,6 +13,7 @@ namespace Prototipos_TUTASA
         private readonly List<TransportistaLocal> transportistas = new List<TransportistaLocal>();
         private readonly List<HojaRetiroResumen> hojasDeRuta = new List<HojaRetiroResumen>();
         private readonly Dictionary<string, Cliente> clientesPorGuia = new Dictionary<string, Cliente>(StringComparer.OrdinalIgnoreCase);
+        private readonly Dictionary<int, HojaDeRutaRetiroEntidad> hojasEntidadPorNroHDR = new Dictionary<int, HojaDeRutaRetiroEntidad>();
         private List<HojaRetiroResumen> hojasSeleccionadas = new List<HojaRetiroResumen>();
         private int ultimoNroResumen;
 
@@ -106,23 +107,23 @@ namespace Prototipos_TUTASA
             }
 
             ultimoNroResumen++;
+            CambiarHojasSeleccionadasAEnCurso();
+            HojaDeRutaRetiroAlmacen.Guardar();
+            LimpiarSeleccion();
+            return true;
+        }
 
+        private void CambiarHojasSeleccionadasAEnCurso()
+        {
             foreach (HojaRetiroResumen hoja in hojasSeleccionadas)
             {
                 hoja.estado = EstadoHojaDeRutaEnum.EnCurso;
 
-                HojaDeRutaRetiroEntidad hojaEntidad = HojaDeRutaRetiroAlmacen.hojasDeRutaRetiro
-                    .FirstOrDefault(h => h.NroHDR == hoja.NroHDR);
-
-                if (hojaEntidad != null)
+                if (hojasEntidadPorNroHDR.TryGetValue(hoja.NroHDR, out HojaDeRutaRetiroEntidad hojaEntidad))
                 {
                     hojaEntidad.estado = EstadoHojaDeRutaAlmacen.EnCurso;
                 }
             }
-
-            HojaDeRutaRetiroAlmacen.Guardar();
-            LimpiarSeleccion();
-            return true;
         }
 
         private bool ValidarHojas(List<HojaRetiroResumen> hojas, out string mensaje)
@@ -137,10 +138,7 @@ namespace Prototipos_TUTASA
                     return false;
                 }
 
-                HojaDeRutaRetiroEntidad hojaEntidad = HojaDeRutaRetiroAlmacen.hojasDeRutaRetiro
-                    .FirstOrDefault(h => h.NroHDR == hoja.NroHDR);
-
-                if (hojaEntidad == null)
+                if (!hojasEntidadPorNroHDR.TryGetValue(hoja.NroHDR, out HojaDeRutaRetiroEntidad hojaEntidad))
                 {
                     mensaje = $"La Hoja de Ruta de Retiro N° {hoja.NroHDR} no existe.";
                     return false;
@@ -262,6 +260,8 @@ namespace Prototipos_TUTASA
 
             foreach (HojaDeRutaRetiroEntidad hojaEntidad in HojaDeRutaRetiroAlmacen.hojasDeRutaRetiro)
             {
+                hojasEntidadPorNroHDR[hojaEntidad.NroHDR] = hojaEntidad;
+
                 foreach (string nroGuia in hojaEntidad.DetalleGuias)
                 {
                     RegistrarGuia(nroGuia);

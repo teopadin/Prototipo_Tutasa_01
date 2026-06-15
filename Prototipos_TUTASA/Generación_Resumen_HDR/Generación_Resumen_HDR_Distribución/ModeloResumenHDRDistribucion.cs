@@ -112,7 +112,14 @@ namespace Prototipos_TUTASA
             }
 
             ultimoNroResumen++;
+            CambiarHojasSeleccionadasAEnCurso();
+            HojaDeRutaDistribucionAlmacen.Guardar();
+            LimpiarSeleccion();
+            return true;
+        }
 
+        private void CambiarHojasSeleccionadasAEnCurso()
+        {
             foreach (HojaDeRutaDistribucion hoja in hojasSeleccionadas)
             {
                 hoja.estado = EstadoHojaDeRutaEnum.EnCurso;
@@ -122,10 +129,6 @@ namespace Prototipos_TUTASA
                     hojaEntidad.estado = EstadoHojaDeRutaEntidadEnum.EnCurso;
                 }
             }
-
-            HojaDeRutaDistribucionAlmacen.Guardar();
-            LimpiarSeleccion();
-            return true;
         }
 
         private bool ValidarHojas(List<HojaDeRutaDistribucion> hojas, out string mensaje)
