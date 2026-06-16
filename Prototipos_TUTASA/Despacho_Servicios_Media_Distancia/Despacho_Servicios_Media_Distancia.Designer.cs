@@ -20,10 +20,6 @@
             lblTitulo = new Label();
             ServicioCmb = new ComboBox();
             label1 = new Label();
-            label3 = new Label();
-            FechaLlegadaTxtb = new TextBox();
-            label10 = new Label();
-            FechaRecepcionTxtb = new TextBox();
             ConfirmarBtn = new Button();
             CancelarBtn = new Button();
             DespachoLst = new ListView();
@@ -58,7 +54,7 @@
             // ServicioCmb
             // 
             ServicioCmb.FormattingEnabled = true;
-            ServicioCmb.Location = new Point(233, 137);
+            ServicioCmb.Location = new Point(233, 81);
             ServicioCmb.Name = "ServicioCmb";
             ServicioCmb.Size = new Size(393, 33);
             ServicioCmb.TabIndex = 3;
@@ -67,51 +63,15 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(30, 138);
+            label1.Location = new Point(23, 89);
             label1.Name = "label1";
-            label1.Size = new Size(108, 25);
+            label1.Size = new Size(96, 25);
             label1.TabIndex = 4;
             label1.Text = "ID Servicio";
             // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(30, 82);
-            label3.Margin = new Padding(4, 0, 4, 0);
-            label3.Name = "label3";
-            label3.Size = new Size(148, 25);
-            label3.TabIndex = 19;
-            label3.Text = "Fecha de Llegada";
-            // 
-            // FechaLlegadaTxtb
-            // 
-            FechaLlegadaTxtb.Location = new Point(233, 82);
-            FechaLlegadaTxtb.Name = "FechaLlegadaTxtb";
-            FechaLlegadaTxtb.ReadOnly = true;
-            FechaLlegadaTxtb.Size = new Size(170, 31);
-            FechaLlegadaTxtb.TabIndex = 30;
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Location = new Point(430, 82);
-            label10.Margin = new Padding(4, 0, 4, 0);
-            label10.Name = "label10";
-            label10.Size = new Size(170, 25);
-            label10.TabIndex = 47;
-            label10.Text = "Fecha de Recepción";
-            // 
-            // FechaRecepcionTxtb
-            // 
-            FechaRecepcionTxtb.Location = new Point(620, 82);
-            FechaRecepcionTxtb.Name = "FechaRecepcionTxtb";
-            FechaRecepcionTxtb.ReadOnly = true;
-            FechaRecepcionTxtb.Size = new Size(170, 31);
-            FechaRecepcionTxtb.TabIndex = 48;
-            // 
             // ConfirmarBtn
             // 
-            ConfirmarBtn.Location = new Point(279, 703);
+            ConfirmarBtn.Location = new Point(279, 629);
             ConfirmarBtn.Margin = new Padding(4, 5, 4, 5);
             ConfirmarBtn.Name = "ConfirmarBtn";
             ConfirmarBtn.Size = new Size(170, 73);
@@ -122,7 +82,7 @@
             // 
             // CancelarBtn
             // 
-            CancelarBtn.Location = new Point(456, 703);
+            CancelarBtn.Location = new Point(456, 629);
             CancelarBtn.Margin = new Padding(4, 5, 4, 5);
             CancelarBtn.Name = "CancelarBtn";
             CancelarBtn.Size = new Size(170, 73);
@@ -134,10 +94,10 @@
             // DespachoLst
             // 
             DespachoLst.Columns.AddRange(new ColumnHeader[] { NroGuia, Remitente, Destinatario, TipoBulto, NroHDR });
-            DespachoLst.Location = new Point(30, 343);
+            DespachoLst.Location = new Point(13, 258);
             DespachoLst.Margin = new Padding(4, 5, 4, 5);
             DespachoLst.Name = "DespachoLst";
-            DespachoLst.Size = new Size(945, 181);
+            DespachoLst.Size = new Size(1002, 216);
             DespachoLst.TabIndex = 33;
             DespachoLst.UseCompatibleStateImageBehavior = false;
             DespachoLst.View = View.Details;
@@ -170,7 +130,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(23, 548);
+            label4.Location = new Point(18, 496);
             label4.Margin = new Padding(1, 0, 1, 0);
             label4.Name = "label4";
             label4.Size = new Size(162, 25);
@@ -179,7 +139,7 @@
             // 
             // BultoTxtb
             // 
-            BultoTxtb.Location = new Point(189, 547);
+            BultoTxtb.Location = new Point(184, 495);
             BultoTxtb.Margin = new Padding(1, 2, 1, 2);
             BultoTxtb.Name = "BultoTxtb";
             BultoTxtb.ReadOnly = true;
@@ -189,7 +149,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(320, 552);
+            label2.Location = new Point(315, 500);
             label2.Margin = new Padding(1, 0, 1, 0);
             label2.Name = "label2";
             label2.Size = new Size(128, 25);
@@ -198,7 +158,7 @@
             // 
             // TotalBultoTxtb
             // 
-            TotalBultoTxtb.Location = new Point(451, 547);
+            TotalBultoTxtb.Location = new Point(446, 495);
             TotalBultoTxtb.Margin = new Padding(1, 2, 1, 2);
             TotalBultoTxtb.Name = "TotalBultoTxtb";
             TotalBultoTxtb.ReadOnly = true;
@@ -208,7 +168,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(30, 197);
+            label5.Location = new Point(23, 141);
             label5.Name = "label5";
             label5.Size = new Size(102, 25);
             label5.TabIndex = 38;
@@ -217,7 +177,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(30, 242);
+            label6.Location = new Point(23, 191);
             label6.Name = "label6";
             label6.Size = new Size(180, 25);
             label6.TabIndex = 39;
@@ -225,7 +185,7 @@
             // 
             // CdDestinoTxtb
             // 
-            CdDestinoTxtb.Location = new Point(233, 192);
+            CdDestinoTxtb.Location = new Point(233, 135);
             CdDestinoTxtb.Name = "CdDestinoTxtb";
             CdDestinoTxtb.ReadOnly = true;
             CdDestinoTxtb.Size = new Size(393, 31);
@@ -233,7 +193,7 @@
             // 
             // EmpresaTxtb
             // 
-            EmpresaTxtb.Location = new Point(233, 238);
+            EmpresaTxtb.Location = new Point(233, 191);
             EmpresaTxtb.Name = "EmpresaTxtb";
             EmpresaTxtb.ReadOnly = true;
             EmpresaTxtb.Size = new Size(393, 31);
@@ -242,7 +202,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(244, 662);
+            label8.Location = new Point(244, 584);
             label8.Name = "label8";
             label8.Size = new Size(473, 25);
             label8.TabIndex = 44;
@@ -251,7 +211,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(591, 552);
+            label9.Location = new Point(586, 500);
             label9.Margin = new Padding(1, 0, 1, 0);
             label9.Name = "label9";
             label9.Size = new Size(260, 25);
@@ -260,7 +220,7 @@
             // 
             // TotalGeneralTxtb
             // 
-            TotalGeneralTxtb.Location = new Point(856, 548);
+            TotalGeneralTxtb.Location = new Point(851, 496);
             TotalGeneralTxtb.Margin = new Padding(1, 2, 1, 2);
             TotalGeneralTxtb.Name = "TotalGeneralTxtb";
             TotalGeneralTxtb.ReadOnly = true;
@@ -271,7 +231,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(989, 817);
+            ClientSize = new Size(1028, 734);
             Controls.Add(TotalGeneralTxtb);
             Controls.Add(label9);
             Controls.Add(label8);
@@ -286,10 +246,6 @@
             Controls.Add(DespachoLst);
             Controls.Add(CancelarBtn);
             Controls.Add(ConfirmarBtn);
-            Controls.Add(FechaRecepcionTxtb);
-            Controls.Add(label10);
-            Controls.Add(FechaLlegadaTxtb);
-            Controls.Add(label3);
             Controls.Add(label1);
             Controls.Add(ServicioCmb);
             Controls.Add(lblTitulo);
@@ -305,10 +261,6 @@
         private Label lblTitulo;
         private ComboBox ServicioCmb;
         private Label label1;
-        private Label label3;
-        private TextBox FechaLlegadaTxtb;
-        private Label label10;
-        private TextBox FechaRecepcionTxtb;
         private Button ConfirmarBtn;
         private Button CancelarBtn;
         private ListView DespachoLst;

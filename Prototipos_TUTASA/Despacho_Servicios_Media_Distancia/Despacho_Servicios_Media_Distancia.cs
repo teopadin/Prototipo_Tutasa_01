@@ -45,9 +45,6 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
             ServicioMediaDistancia servicio = (ServicioMediaDistancia)ServicioCmb.SelectedItem;
             modelo.ServicioActual = servicio;
 
-            FechaLlegadaTxtb.Text = "";
-            FechaRecepcionTxtb.Text = "";
-
             CentroDistribucion cdDestino = modelo.BuscarCD(servicio.idCDDestino);
             CdDestinoTxtb.Text = cdDestino != null ? cdDestino.nombre : "";
 
@@ -119,8 +116,6 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
 
         private void LimpiarPantalla()
         {
-            FechaLlegadaTxtb.Text = "";
-            FechaRecepcionTxtb.Text = "";
             CdDestinoTxtb.Text = "";
             EmpresaTxtb.Text = "";
             DespachoLst.Items.Clear();
