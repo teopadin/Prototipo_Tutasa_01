@@ -9,7 +9,7 @@
 7- Presionar Aceptar.
 8- Verificar que no se genera una Hoja de Ruta de Retiro nueva.
 9- Verificar que no se modifica el estado de ninguna guía.
-10- Seleccionar una guía pendiente de la grilla.
+10- Seleccionar la guia "CD01-0017".
 11- Verificar que se cargan los fleteros correspondientes al CD Emisor.
 12- Presionar Generar HDR sin seleccionar fletero.
 13- Verificar mensaje: "Debe seleccionar al menos una guía y un fletero para generar la Hoja de Ruta de Retiro.".
@@ -17,8 +17,7 @@
 15- Verificar que no se genera una Hoja de Ruta de Retiro nueva.
 16- Verificar que no se modifica el estado de ninguna guía.
 17- Verificar que no se incrementa la cantidad de HDR asignadas a ningún fletero.
-18- Seleccionar una guía pendiente de la grilla.
-19- Intentar seleccionar una segunda guía con domicilio distinto, marcada en color gris.
-20- Verificar que el sistema no permite seleccionar la guía con domicilio distinto.
-21- Verificar que solo quedan seleccionables las guías con el mismo domicilio que la primera guía seleccionada.
-22- Salir de la pantalla presionando Cancelar.
+18- Intentar seleccionar una segunda guía con domicilio distinto, marcada en color gris.
+19- Verificar que el sistema no permite seleccionar la guía con domicilio distinto.
+20- Verificar que solo quedan seleccionables las guías con el mismo domicilio que la primera guía seleccionada.
+21- Salir de la pantalla presionando Cancelar.

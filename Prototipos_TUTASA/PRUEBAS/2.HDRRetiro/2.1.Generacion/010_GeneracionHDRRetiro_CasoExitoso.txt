@@ -16,11 +16,13 @@ AG01-0021: Agencia | Agencia Capital y GBA | Av. Corrientes 1500 | CP 1042 | CAB
 30111222: Carlos Gomez | HDR Asignadas: 1
 30222333: Laura Martinez | HDR Asignadas: 1
 45678901: Sofia Diaz | HDR Asignadas: 1
-10. Seleccionar el transportista Carlos Gomez (o cualquiera de la lista disponible).
+10. Seleccionar el transportista Carlos Gomez.
 11. Presionar "Generar HDR".
-12. Verificar mensaje: "Hoja de Ruta de Retiro 1041 generada con éxito."
+12. Verificar mensaje: "Hoja de Ruta de Retiro 1100 generada con éxito."
 13. Verificar: La pantalla se limpia y las guías AG01-0020 y AG01-0021 ya no aparecen en la lista de pendientes.
 14. Salir del sistema.
-15. Archivo HojasDeRutaRetiro.json: Se verifica un nuevo registro con el NroHDR generado 1041, estado "Generada", dniTransportistaAsignado de Carlos Gomez, dirección del retiro (Av. Corrientes 1500) y el detalle de guías con AG01-0020 y AG01-0021.
-16. Archivo Guias.json: Las guías AG01-0020 y AG01-0021 cambian su estado a "EnRetiro" (o el estado intermedio que maneje tu negocio).
+15. Archivo HojasDeRutaRetiro.json: Se verifica un nuevo registro con "NroHDR": 1100,
+    "Fecha": "2026-06-15T00:00:00-03:00", "estado": "Generada", "dniTransportistaAsignado": 30111222, "idAgenciaOrigen": 1, "Calle": "Av. Corrientes", "Altura": 1500, "Piso": "", "CodigoPostal": "1042", "Remitente": "Agencia Capital y GBA", "DetalleGuias": ["AG01-0020",
+      "AG01-0021"], "motivoNoCumplida": "Otro"
+16. Archivo Guias.json: Las guías con nroHDR = AG01-0020 y AG01-0021 cambian su estado a "IncluidaEnHDRRetiro".
 17. Archivo TransportistasLocales.json: Carlos Gomez pasa a tener HdrAsignadas = 2 (sumando 1 a su valor inicial).

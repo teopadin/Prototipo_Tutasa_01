@@ -1,13 +1,13 @@
 ﻿Plan de Prueba: Generación HDR de Distribución – Caso exitoso (camino feliz)
 
 1. Abrir la pantalla Generar HDR de Distribución.
-2. Verificar: CD emisor = "Capital y GBA" y Fecha = fecha del día (12/6/2026).
+2. Verificar: CD emisor = "Capital y GBA" y Fecha = fecha del día de la prueba.
 3. Verificar: En la lista de "Guías pendientes de distribución" aparecen exactamente las siguientes guías con sus respectivos datos:
 CD03-0001: EntregaDomicilio | Ana Pérez | DNI 40123456 | Av. Rivadavia 3200 | Piso 3B | CP 1406 | Buenos Aires
 CD02-0002: EntregaDomicilio | Juan Rodríguez | DNI 41234567 | Av. Rivadavia 3200 | Piso 3B | CP 1406 | Buenos Aires
 CD03-0003: EntregaDomicilio | María González | DNI 42345678 | Av. Santa Fe 2450 | CP 1425 | Buenos Aires
-CD03-0004: EntregaAgencia | Agencia Capital… | Av. Corrientes 1500 | CP 1042 | CABA
-CD03-0005: EntregaAgencia | Agencia Capital… | Av. Corrientes 1500 | CP 1042 | CABA
+CD03-0004: EntregaAgencia | Agencia Capital y GBA | Av. Corrientes 1500 | CP 1042 | CABA
+CD03-0005: EntregaAgencia | Agencia Capital y GBA | Av. Corrientes 1500 | CP 1042 | CABA
 CD01-0006: EntregaDomicilio | Lucía Fernández | DNI 43456789 | Defensa 800 | Piso 2A | CP 1065 | Buenos Aires
 CD01-0030: EntregaDomicilio | Ana Pérez | DNI 40123456 | Av. Rivadavia 3200 | Piso 3B | CP 1406 | Buenos Aires
 4. Tildar la guía CD03-0001.
@@ -21,11 +21,26 @@ Las guías CD03-0003, CD03-0004, CD03-0005 y CD01-0006 (direcciones distintas) s
 30111222: Carlos Gomez | HDR Asignadas: 1
 30222333: Laura Martinez | HDR Asignadas: 1
 45678901: Sofia Diaz | HDR Asignadas: 1
-10. Seleccionar el transportista Laura Martinez (o cualquiera de la lista disponible).
+10. Seleccionar el transportista Laura Martinez.
 11. Presionar "Generar HDR".
-12. Verificar mensaje: "Hoja de Ruta de Distribución 2041 generada con éxito."
+12. Verificar mensaje: "Hoja de Ruta de Distribución 2100 generada con éxito."
 13. Verificar: La pantalla se limpia y las guías CD03-0001, CD02-0002 y CD01-0030 ya no aparecen en la lista de pendientes.
 14. Salir del sistema.
-15. Archivo HojasDeRutaDistribucion.json: Se verifica un nuevo registro con el NroHDR 2041, estado "Generada", dniTransportistaAsignado de Laura Martinez (30222333), dirección de distribución (Av. Rivadavia 3200, 3B, CP 1406) y el detalle de guías con CD03-0001, CD02-0002 y CD01-0030.
-16.	Archivo Guias.json: Las guías CD03-0001, CD02-0002 y CD01-0030 cambian su estado a "EnDistribucion".
-17. Archivo TransportistasLocales.json: Laura Martinez pasa a tener HdrAsignadas = 2 (sumando 1 a su valor inicial de 1).
+15. Revisar al final del archivo HojasDeRutaDistribucion.json: Se verifica un nuevo registro con el "NroHDR": 2100,
+    "Fecha": (fecha exacta del momento de la generación),
+    "estado": "Generada",
+    "dniTransportistaAsignado": 30222333,
+    "idAgenciaDestino": null,
+    "Calle": "Av. Rivadavia",
+    "Altura": 3200,
+    "Piso": "3B",
+    "CodigoPostal": "1406",
+    "Destinatario": "Ana Pérez",
+    "DetalleGuias": [
+      "CD03-0001",
+      "CD02-0002",
+      "CD01-0030"
+    ]
+16.	Revisar en el archivo Guias.json: Las guías CD03-0001, CD02-0002 y CD01-0030 cambian su estado a "EnDistribucion".
+17. Revisar en el archivo TransportistasLocales.json: El transportista 30222333 (Laura Martinez) sube su HdrAsignadas en 1 (de 1 a 2).
+
