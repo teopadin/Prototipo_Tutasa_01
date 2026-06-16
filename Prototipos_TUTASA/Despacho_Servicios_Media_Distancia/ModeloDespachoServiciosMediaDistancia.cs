@@ -1,87 +1,85 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Collections.Generic;
-using System.Windows.Forms;
-using System;
-using System.Collections.Generic;
+using System.Linq;
 using Prototipos_TUTASA.Almacenes;
-using Prototipos_TUTASA.Auxiliares;
+using EstadoGuiaAlmacen = Prototipos_TUTASA.Auxiliares.EstadoGuiaEnum;
+using EstadoHojaDeRutaAlmacen = Prototipos_TUTASA.Auxiliares.EstadoHojaDeRutaEnum;
+using ModalidadEntregaAlmacen = Prototipos_TUTASA.Auxiliares.ModalidadEntregaEnum;
+using TipoBultoAlmacen = Prototipos_TUTASA.Auxiliares.TiposBultoEnum;
 
 namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
 {
     internal class ModeloDespachoServiciosMediaDistancia
     {
-        public List<ServicioMediaDistancia> servicios { get; set; }
-        public List<HojaDeRutaTransporte> hdrs { get; set; }
-        private List<EmpresaTransporte> almacenEmpresas;
-        private List<Cliente> almacenClientes;
-        private List<CentroDistribucion> almacenCDs;
-        private List<Guia> almacenGuias;
+        public List<ServicioMediaDistancia> Servicios { get; set; }
+        public ServicioMediaDistancia ServicioActual { get; set; }
+        public List<EmpresaTransporte> Empresas { get; set; }
+        public List<HojaDeRutaTransporte> HDRs { get; set; }
+        public List<Guia> Guias { get; set; }
+        public List<CentroDistribucion> CDs { get; set; }
+        public List<Cliente> Clientes { get; set; }
 
         public ModeloDespachoServiciosMediaDistancia()
         {
-            // 1. Inicializamos y cargamos Empresas de Transporte
-            almacenEmpresas = new List<EmpresaTransporte>();
-            foreach (var empresaEntidad in EmpresaTransporteAlmacen.empresas)
-            {
-                almacenEmpresas.Add(new EmpresaTransporte
-                {
-                    idEmpresa = empresaEntidad.idEmpresa,
-                    razonSocial = empresaEntidad.razonSocial
-                });
-            }
+            CargarCentrosDeDistribucion();
+            CargarEmpresas();
+            CargarClientes();
+            CargarGuias();
+            CargarHDRs();
+            CargarServicios();
+        }
 
-            // 2. Inicializamos y cargamos Clientes
-            almacenClientes = new List<Cliente>();
-            foreach (var clienteEntidad in ClienteAlmacen.Clientes)
-            {
-                almacenClientes.Add(new Cliente
-                {
-                    idCliente = clienteEntidad.idCliente,
-                    razonSocial = clienteEntidad.razonSocial
-                });
-            }
-
-            // 3. Inicializamos y cargamos Centros de Distribución
-            almacenCDs = new List<CentroDistribucion>();
+        private void CargarCentrosDeDistribucion()
+        {
+            CDs = new List<CentroDistribucion>();
             foreach (var cdEntidad in CentroDistribucionAlmacen.CentrosDeDistribucion)
             {
-                almacenCDs.Add(new CentroDistribucion
+                CDs.Add(new CentroDistribucion
                 {
                     idCD = cdEntidad.idCD,
                     nombre = cdEntidad.nombre
                 });
             }
+        }
 
-            // 4. Inicializamos y cargamos Servicios
-            servicios = new List<ServicioMediaDistancia>();
-            foreach (var servicioEntidad in ServicioMediaDistanciaAlmacen.serviciosMediaDistancia)
+        private void CargarEmpresas()
+        {
+            Empresas = new List<EmpresaTransporte>();
+            foreach (var empresaEntidad in EmpresaTransporteAlmacen.empresas)
             {
-                servicios.Add(new ServicioMediaDistancia
+                Empresas.Add(new EmpresaTransporte
                 {
-                    idServicio = int.Parse(servicioEntidad.idServicio),
-                    idEmpresa = servicioEntidad.idEmpresa,
-
-                    // AGREGAR ESTA LÍNEA:
-                    fechaLlegada = servicioEntidad.fechaLlegada
+                    idEmpresa = empresaEntidad.idEmpresa,
+                    razonSocial = empresaEntidad.razonSocial
                 });
             }
+        }
 
-            // 5. Inicializamos y cargamos Guías
-            almacenGuias = new List<Guia>();
+        private void CargarClientes()
+        {
+            Clientes = new List<Cliente>();
+            foreach (var clienteEntidad in ClienteAlmacen.Clientes)
+            {
+                Clientes.Add(new Cliente
+                {
+                    idCliente = clienteEntidad.idCliente,
+                    razonSocial = clienteEntidad.razonSocial
+                });
+            }
+        }
+
+        private void CargarGuias()
+        {
+            Guias = new List<Guia>();
             foreach (var guiaEntidad in GuiaAlmacen.Guias)
             {
-                almacenGuias.Add(new Guia
+                Guias.Add(new Guia
                 {
                     NroGuia = guiaEntidad.NroGuia,
                     IdCliente = guiaEntidad.IdCliente,
-
-                    // Le agregamos el casteo explícito a estos dos:
-                    TipoBulto = (TiposBultoEnum)guiaEntidad.TipoBulto,
-                    estado = (EstadoGuiaEnum)guiaEntidad.estado,
-
+                    TipoBulto = ConvertirTipoBulto(guiaEntidad.TipoBulto),
                     EquivalenteS = guiaEntidad.EquivalenteS,
+                    estado = ConvertirEstadoGuia(guiaEntidad.estado),
                     Destinatario = new DestinatarioGuia
                     {
                         nombre = guiaEntidad.Destinatario.nombre,
@@ -89,108 +87,166 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
                     }
                 });
             }
+        }
 
-            // 6. Inicializamos y cargamos Hojas de Ruta Transporte
-            hdrs = new List<HojaDeRutaTransporte>();
-            foreach (var hdrEntidad in HojaDeRutaTransporteAlmacen.hojasDeRutaTransporte) // <-- Corregido
+        private void CargarHDRs()
+        {
+            HDRs = new List<HojaDeRutaTransporte>();
+            foreach (var hdrEntidad in HojaDeRutaTransporteAlmacen.hojasDeRutaTransporte)
             {
-                var nuevaHDR = new HojaDeRutaTransporte
+                HDRs.Add(new HojaDeRutaTransporte
                 {
                     NroHDR = hdrEntidad.nroHDR,
-
-                    // Le agregamos el casteo explícito acá:
-                    estado = (EstadoHojaDeRutaEnum)hdrEntidad.estado,
-
                     idServicio = hdrEntidad.idServicio,
                     idCDDestino = hdrEntidad.idCDDestino,
                     fechaGeneracion = hdrEntidad.fechaGeneracion,
-                    DetalleGuias = new List<string>()
-                };
-
-                // Pasamos los strings de las guías de la entidad a nuestra HDR local
-                if (hdrEntidad.DetalleGuias != null)
-                {
-                    foreach (var nroGuia in hdrEntidad.DetalleGuias)
-                    {
-                        nuevaHDR.DetalleGuias.Add(nroGuia);
-                    }
-                }
-
-                hdrs.Add(nuevaHDR);
+                    estado = ConvertirEstadoHojaDeRuta(hdrEntidad.estado),
+                    DetalleGuias = new List<string>(hdrEntidad.DetalleGuias)
+                });
             }
         }
 
-        // --- MÉTODOS BUSCADORES (Siguen iguales) ---
-        public EmpresaTransporte BuscarEmpresa(int id) => almacenEmpresas.Find(e => e.idEmpresa == id);
-        public Cliente BuscarCliente(int id) => almacenClientes.Find(c => c.idCliente == id);
-        public CentroDistribucion BuscarCD(int id) => almacenCDs.Find(cd => cd.idCD == id);
-        public ServicioMediaDistancia BuscarServicioPorId(string id)
+        private void CargarServicios()
         {
-            return servicios.FirstOrDefault(s => s.idServicio.ToString() == id);
+            Servicios = new List<ServicioMediaDistancia>();
+            foreach (var servicioEntidad in ServicioMediaDistanciaAlmacen.serviciosMediaDistancia)
+            {
+                Servicios.Add(new ServicioMediaDistancia
+                {
+                    idServicio = servicioEntidad.idServicio,
+                    idEmpresa = servicioEntidad.idEmpresa,
+                    fechaLlegada = servicioEntidad.fechaLlegada,
+                    fechaRecepcion = servicioEntidad.fechaRecepcion,
+                    idCDOrigen = servicioEntidad.idCDOrigen,
+                    idCDDestino = servicioEntidad.idCDDestino,
+                    DetalleHDRs = new List<int>(servicioEntidad.DetalleHDRs)
+                });
+            }
         }
-            public Guia BuscarGuia(string nroGuia) => almacenGuias.Find(g => g.NroGuia == nroGuia);
 
-        // --- MÉTODOS DE LÓGICA (Siguen iguales) ---
-        internal List<HojaDeRutaTransporte> ObtenerHDRsPendientes() => hdrs.FindAll(h => h.estado == EstadoHojaDeRutaEnum.Generada);
+        public EmpresaTransporte BuscarEmpresa(int idEmpresa) => Empresas.FirstOrDefault(e => e.idEmpresa == idEmpresa);
+        public HojaDeRutaTransporte BuscarHDR(int nroHDR) => HDRs.FirstOrDefault(h => h.NroHDR == nroHDR);
+        public Guia BuscarGuia(string nroGuia) => Guias.FirstOrDefault(g => g.NroGuia == nroGuia);
+        public CentroDistribucion BuscarCD(int idCD) => CDs.FirstOrDefault(c => c.idCD == idCD);
+        public Cliente BuscarCliente(int idCliente) => Clientes.FirstOrDefault(c => c.idCliente == idCliente);
 
-        internal int CalcularBultosEnS(HojaDeRutaTransporte hdr)
+        public int CalcularBultosEnS(ServicioMediaDistancia servicio)
         {
             int total = 0;
-            foreach (var nroGuia in hdr.DetalleGuias)
+            foreach (int nroHDR in servicio.DetalleHDRs)
             {
-                Guia g = BuscarGuia(nroGuia);
-                if (g != null)
+                HojaDeRutaTransporte hdr = BuscarHDR(nroHDR);
+                if (hdr == null) continue;
+                foreach (string nroGuia in hdr.DetalleGuias)
                 {
-                    if (g.TipoBulto == TiposBultoEnum.S) total += 1;
-                    else if (g.TipoBulto == TiposBultoEnum.M) total += 2;
-                    else if (g.TipoBulto == TiposBultoEnum.L) total += 4;
-                    else if (g.TipoBulto == TiposBultoEnum.XL) total += 8;
+                    Guia g = BuscarGuia(nroGuia);
+                    if (g != null) total += g.EquivalenteS;
                 }
             }
             return total;
         }
 
-        internal int CalcularTotalBultos(HojaDeRutaTransporte hdr) => hdr?.DetalleGuias.Count ?? 0;
-
-        internal int CalcularTotalGeneralPendiente()
+        public int CalcularTotalBultos(ServicioMediaDistancia servicio)
         {
-            int acumulador = 0;
-            foreach (var h in ObtenerHDRsPendientes()) acumulador += h.DetalleGuias.Count;
-            return acumulador;
+            int total = 0;
+            foreach (int nroHDR in servicio.DetalleHDRs)
+            {
+                HojaDeRutaTransporte hdr = BuscarHDR(nroHDR);
+                if (hdr != null) total += hdr.DetalleGuias.Count;
+            }
+            return total;
         }
 
-        public bool ConfirmarDespacho(HojaDeRutaTransporte hdr)
+        public int CalcularTotalGeneralPendiente()
         {
-            try
+            int total = 0;
+            foreach (var s in Servicios.FindAll(s => s.fechaLlegada == null && s.fechaRecepcion == null))
             {
-                // 1. Actualizamos el servicio en memoria y en el almacén (igual que antes)
-                var servicioLocal = servicios.FirstOrDefault(s => s.idServicio.ToString() == hdr.idServicio);
-                if (servicioLocal != null)
-                    servicioLocal.fechaLlegada = DateTime.Now;
+                total += CalcularTotalBultos(s);
+            }
+            return total;
+        }
 
-                var servicioAlmacen = ServicioMediaDistanciaAlmacen.serviciosMediaDistancia
-                    .FirstOrDefault(x => x.idServicio == hdr.idServicio);
-                if (servicioAlmacen != null)
-                    servicioAlmacen.fechaLlegada = DateTime.Now;
+        public void ConfirmarDespacho()
+        {
+            ServicioActual.fechaLlegada = DateTime.Now;
 
-                ServicioMediaDistanciaAlmacen.Guardar();
+            var servicioAlmacen = ServicioMediaDistanciaAlmacen.serviciosMediaDistancia
+                .FirstOrDefault(s => s.idServicio == ServicioActual.idServicio);
+            if (servicioAlmacen != null)
+                servicioAlmacen.fechaLlegada = DateTime.Now;
 
-                // 2. NUEVO: actualizamos el estado de la HDR (local y almacén)
+            foreach (int nroHDR in ServicioActual.DetalleHDRs)
+            {
+                HojaDeRutaTransporte hdr = BuscarHDR(nroHDR);
+                if (hdr == null) continue;
+
                 hdr.estado = EstadoHojaDeRutaEnum.EnCurso;
 
                 var hdrAlmacen = HojaDeRutaTransporteAlmacen.hojasDeRutaTransporte
-                    .FirstOrDefault(h => h.nroHDR == hdr.NroHDR);
+                    .FirstOrDefault(h => h.nroHDR == nroHDR);
                 if (hdrAlmacen != null)
-                    hdrAlmacen.estado = (Prototipos_TUTASA.Auxiliares.EstadoHojaDeRutaEnum)(int)EstadoHojaDeRutaEnum.EnCurso;
+                    hdrAlmacen.estado = EstadoHojaDeRutaAlmacen.EnCurso;
 
-                HojaDeRutaTransporteAlmacen.Guardar();
+                foreach (string nroGuia in hdr.DetalleGuias)
+                {
+                    Guia g = BuscarGuia(nroGuia);
+                    if (g != null) g.estado = EstadoGuiaEnum.EnTransito;
 
-                return true;
+                    var guiaAlmacen = GuiaAlmacen.Guias.FirstOrDefault(gua => gua.NroGuia == nroGuia);
+                    if (guiaAlmacen != null)
+                        guiaAlmacen.estado = EstadoGuiaAlmacen.EnTransito;
+                }
             }
-            catch (Exception)
+
+            ServicioMediaDistanciaAlmacen.Guardar();
+            HojaDeRutaTransporteAlmacen.Guardar();
+            GuiaAlmacen.Guardar();
+        }
+
+        private static TiposBultoEnum ConvertirTipoBulto(TipoBultoAlmacen t)
+        {
+            return t switch
             {
-                return false;
-            }
+                TipoBultoAlmacen.S => TiposBultoEnum.S,
+                TipoBultoAlmacen.M => TiposBultoEnum.M,
+                TipoBultoAlmacen.L => TiposBultoEnum.L,
+                TipoBultoAlmacen.XL => TiposBultoEnum.XL,
+                _ => TiposBultoEnum.S
+            };
+        }
+
+        private static EstadoGuiaEnum ConvertirEstadoGuia(EstadoGuiaAlmacen e)
+        {
+            return e switch
+            {
+                EstadoGuiaAlmacen.Impuesta => EstadoGuiaEnum.Impuesta,
+                EstadoGuiaAlmacen.IncluidaEnHDRRetiro => EstadoGuiaEnum.IncluidaEnHDRRetiro,
+                EstadoGuiaAlmacen.Retirada => EstadoGuiaEnum.Retirada,
+                EstadoGuiaAlmacen.Admitida => EstadoGuiaEnum.Admitida,
+                EstadoGuiaAlmacen.PendienteDeDespacho => EstadoGuiaEnum.PendienteDeDespacho,
+                EstadoGuiaAlmacen.EnTransito => EstadoGuiaEnum.EnTransito,
+                EstadoGuiaAlmacen.EnCDDestino => EstadoGuiaEnum.EnCDDestino,
+                EstadoGuiaAlmacen.EnDistribucion => EstadoGuiaEnum.EnDistribucion,
+                EstadoGuiaAlmacen.PendienteDeRetiroEnAgencia => EstadoGuiaEnum.PendienteDeRetiroEnAgencia,
+                EstadoGuiaAlmacen.PendienteDeRetiroEnCD => EstadoGuiaEnum.PendienteDeRetiroEnCD,
+                EstadoGuiaAlmacen.Entregada => EstadoGuiaEnum.Entregada,
+                EstadoGuiaAlmacen.Cancelada => EstadoGuiaEnum.Cancelada,
+                _ => EstadoGuiaEnum.Impuesta
+            };
+        }
+
+        private static EstadoHojaDeRutaEnum ConvertirEstadoHojaDeRuta(EstadoHojaDeRutaAlmacen e)
+        {
+            return e switch
+            {
+                EstadoHojaDeRutaAlmacen.Generada => EstadoHojaDeRutaEnum.Generada,
+                EstadoHojaDeRutaAlmacen.EnCurso => EstadoHojaDeRutaEnum.EnCurso,
+                EstadoHojaDeRutaAlmacen.Recibida => EstadoHojaDeRutaEnum.Recibida,
+                EstadoHojaDeRutaAlmacen.Cumplida => EstadoHojaDeRutaEnum.Cumplida,
+                EstadoHojaDeRutaAlmacen.NoCumplida => EstadoHojaDeRutaEnum.NoCumplida,
+                _ => EstadoHojaDeRutaEnum.Generada
+            };
         }
     }
 }

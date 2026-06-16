@@ -8,6 +8,8 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
     {
         Generada,
         EnCurso,
-        Recibida
+        Recibida,
+        Cumplida,
+        NoCumplida
     }
 }

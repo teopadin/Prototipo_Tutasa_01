@@ -2,15 +2,8 @@
 {
     partial class Despacho_Servicios_Media_Distancia
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -22,17 +15,15 @@
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             lblTitulo = new Label();
             ServicioCmb = new ComboBox();
             label1 = new Label();
             label3 = new Label();
-            FechaDtp = new DateTimePicker();
+            FechaLlegadaTxtb = new TextBox();
+            label10 = new Label();
+            FechaRecepcionTxtb = new TextBox();
             ConfirmarBtn = new Button();
             CancelarBtn = new Button();
             DespachoLst = new ListView();
@@ -40,16 +31,15 @@
             Remitente = new ColumnHeader();
             Destinatario = new ColumnHeader();
             TipoBulto = new ColumnHeader();
+            NroHDR = new ColumnHeader();
             label4 = new Label();
             BultoTxtb = new TextBox();
             label2 = new Label();
             TotalBultoTxtb = new TextBox();
             label5 = new Label();
             label6 = new Label();
-            label7 = new Label();
             CdDestinoTxtb = new TextBox();
             EmpresaTxtb = new TextBox();
-            IdServicioTxtb = new TextBox();
             label8 = new Label();
             label9 = new Label();
             TotalGeneralTxtb = new TextBox();
@@ -81,7 +71,7 @@
             label1.Name = "label1";
             label1.Size = new Size(108, 25);
             label1.TabIndex = 4;
-            label1.Text = "Nro Servicio";
+            label1.Text = "ID Servicio";
             // 
             // label3
             // 
@@ -93,12 +83,31 @@
             label3.TabIndex = 19;
             label3.Text = "Fecha de Llegada";
             // 
-            // FechaDtp
+            // FechaLlegadaTxtb
             // 
-            FechaDtp.Location = new Point(233, 82);
-            FechaDtp.Name = "FechaDtp";
-            FechaDtp.Size = new Size(393, 31);
-            FechaDtp.TabIndex = 30;
+            FechaLlegadaTxtb.Location = new Point(233, 82);
+            FechaLlegadaTxtb.Name = "FechaLlegadaTxtb";
+            FechaLlegadaTxtb.ReadOnly = true;
+            FechaLlegadaTxtb.Size = new Size(170, 31);
+            FechaLlegadaTxtb.TabIndex = 30;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(430, 82);
+            label10.Margin = new Padding(4, 0, 4, 0);
+            label10.Name = "label10";
+            label10.Size = new Size(170, 25);
+            label10.TabIndex = 47;
+            label10.Text = "Fecha de Recepción";
+            // 
+            // FechaRecepcionTxtb
+            // 
+            FechaRecepcionTxtb.Location = new Point(620, 82);
+            FechaRecepcionTxtb.Name = "FechaRecepcionTxtb";
+            FechaRecepcionTxtb.ReadOnly = true;
+            FechaRecepcionTxtb.Size = new Size(170, 31);
+            FechaRecepcionTxtb.TabIndex = 48;
             // 
             // ConfirmarBtn
             // 
@@ -124,7 +133,7 @@
             // 
             // DespachoLst
             // 
-            DespachoLst.Columns.AddRange(new ColumnHeader[] { NroGuia, Remitente, Destinatario, TipoBulto });
+            DespachoLst.Columns.AddRange(new ColumnHeader[] { NroGuia, Remitente, Destinatario, TipoBulto, NroHDR });
             DespachoLst.Location = new Point(30, 343);
             DespachoLst.Margin = new Padding(4, 5, 4, 5);
             DespachoLst.Name = "DespachoLst";
@@ -141,17 +150,22 @@
             // Remitente
             // 
             Remitente.Text = "Remitente";
-            Remitente.Width = 150;
+            Remitente.Width = 200;
             // 
             // Destinatario
             // 
             Destinatario.Text = "Destinatario";
-            Destinatario.Width = 200;
+            Destinatario.Width = 250;
             // 
             // TipoBulto
             // 
             TipoBulto.Text = "Tipo de bulto";
-            TipoBulto.Width = 500;
+            TipoBulto.Width = 200;
+            // 
+            // NroHDR
+            // 
+            NroHDR.Text = "Nro HDR";
+            NroHDR.Width = 140;
             // 
             // label4
             // 
@@ -209,15 +223,6 @@
             label6.TabIndex = 39;
             label6.Text = "Empresa de ómnibus";
             // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(30, 287);
-            label7.Name = "label7";
-            label7.Size = new Size(96, 25);
-            label7.TabIndex = 40;
-            label7.Text = "ID Servicio";
-            // 
             // CdDestinoTxtb
             // 
             CdDestinoTxtb.Location = new Point(233, 192);
@@ -233,14 +238,6 @@
             EmpresaTxtb.ReadOnly = true;
             EmpresaTxtb.Size = new Size(393, 31);
             EmpresaTxtb.TabIndex = 42;
-            // 
-            // IdServicioTxtb
-            // 
-            IdServicioTxtb.Location = new Point(233, 287);
-            IdServicioTxtb.Name = "IdServicioTxtb";
-            IdServicioTxtb.ReadOnly = true;
-            IdServicioTxtb.Size = new Size(393, 31);
-            IdServicioTxtb.TabIndex = 43;
             // 
             // label8
             // 
@@ -278,10 +275,8 @@
             Controls.Add(TotalGeneralTxtb);
             Controls.Add(label9);
             Controls.Add(label8);
-            Controls.Add(IdServicioTxtb);
             Controls.Add(EmpresaTxtb);
             Controls.Add(CdDestinoTxtb);
-            Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(TotalBultoTxtb);
@@ -291,7 +286,9 @@
             Controls.Add(DespachoLst);
             Controls.Add(CancelarBtn);
             Controls.Add(ConfirmarBtn);
-            Controls.Add(FechaDtp);
+            Controls.Add(FechaRecepcionTxtb);
+            Controls.Add(label10);
+            Controls.Add(FechaLlegadaTxtb);
             Controls.Add(label3);
             Controls.Add(label1);
             Controls.Add(ServicioCmb);
@@ -309,7 +306,9 @@
         private ComboBox ServicioCmb;
         private Label label1;
         private Label label3;
-        private DateTimePicker FechaDtp;
+        private TextBox FechaLlegadaTxtb;
+        private Label label10;
+        private TextBox FechaRecepcionTxtb;
         private Button ConfirmarBtn;
         private Button CancelarBtn;
         private ListView DespachoLst;
@@ -317,16 +316,15 @@
         private ColumnHeader Remitente;
         private ColumnHeader Destinatario;
         private ColumnHeader TipoBulto;
+        private ColumnHeader NroHDR;
         private Label label4;
         private TextBox BultoTxtb;
         private Label label2;
         private TextBox TotalBultoTxtb;
         private Label label5;
         private Label label6;
-        private Label label7;
         private TextBox CdDestinoTxtb;
         private TextBox EmpresaTxtb;
-        private TextBox IdServicioTxtb;
         private Label label8;
         private Label label9;
         private TextBox TotalGeneralTxtb;
