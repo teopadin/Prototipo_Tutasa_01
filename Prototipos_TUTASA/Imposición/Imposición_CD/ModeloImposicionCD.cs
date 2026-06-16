@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Text.Json;
 using Prototipos_TUTASA.Almacenes;
 
 namespace Prototipos_TUTASA.Imposición.Imposición_CD
@@ -113,9 +111,7 @@ namespace Prototipos_TUTASA.Imposición.Imposición_CD
             Agencia agenciaDestino,
             Cliente cliente)
         {
-            List<Prototipos_TUTASA.Almacenes.GuiaEntidad> guiasArchivo = LeerGuiasDesdeArchivo();
-
-            string nroGuia = GenerarNumeroGuia(guiasArchivo);
+            string nroGuia = GenerarNumeroGuia(GuiaAlmacen.Guias);
 
             Guia guia = new Guia
             {
@@ -157,65 +153,10 @@ namespace Prototipos_TUTASA.Imposición.Imposición_CD
                 Donde = CdOrigen.nombre
             });
 
-            guiasArchivo.Add(guiaEntidad);
-            GuardarGuiasEnArchivo(guiasArchivo);
-
-            GuiaAlmacen.Guias = guiasArchivo;
+            GuiaAlmacen.Guias.Add(guiaEntidad);
             Guias.Add(guia);
 
             return guia;
-        }
-
-        private List<Prototipos_TUTASA.Almacenes.GuiaEntidad> LeerGuiasDesdeArchivo()
-        {
-            string ruta = ObtenerRutaGuiasJson();
-
-            if (!File.Exists(ruta))
-                return new List<Prototipos_TUTASA.Almacenes.GuiaEntidad>();
-
-            string json = File.ReadAllText(ruta);
-
-            if (string.IsNullOrWhiteSpace(json))
-                return new List<Prototipos_TUTASA.Almacenes.GuiaEntidad>();
-
-            return JsonSerializer.Deserialize<List<Prototipos_TUTASA.Almacenes.GuiaEntidad>>(json);
-        }
-
-        private void GuardarGuiasEnArchivo(List<Prototipos_TUTASA.Almacenes.GuiaEntidad> guias)
-        {
-            string ruta = ObtenerRutaGuiasJson();
-
-            string json = JsonSerializer.Serialize(guias, new JsonSerializerOptions
-            {
-                WriteIndented = true
-            });
-
-            File.WriteAllText(ruta, json);
-        }
-
-        private string ObtenerRutaGuiasJson()
-        {
-            DirectoryInfo carpeta = new DirectoryInfo(AppContext.BaseDirectory);
-
-            while (carpeta != null)
-            {
-                string[] archivosProyecto = Directory.GetFiles(carpeta.FullName, "*.csproj");
-
-                if (archivosProyecto.Length > 0)
-                {
-                    string carpetaDatos = Path.Combine(carpeta.FullName, "DATOS");
-                    string ruta = Path.Combine(carpetaDatos, "Guias.json");
-
-                    if (!Directory.Exists(carpetaDatos))
-                        Directory.CreateDirectory(carpetaDatos);
-
-                    return ruta;
-                }
-
-                carpeta = carpeta.Parent;
-            }
-
-            return Path.Combine(AppContext.BaseDirectory, "DATOS", "Guias.json");
         }
 
         private int ObtenerIdCliente(Cliente cliente)
