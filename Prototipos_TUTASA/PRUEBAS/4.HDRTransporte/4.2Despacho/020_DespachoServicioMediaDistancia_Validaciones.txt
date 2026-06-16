@@ -1,0 +1,32 @@
+﻿Plan de Prueba: Despacho de Servicios de Media Distancia - Validaciones
+
+1- Abrir la pantalla Despacho de Servicios de Media Distancia.
+2- Sin seleccionar ningún servicio en el combo ID Servicio, presionar "Confirmar despacho".
+3- Verificar mensaje: "Debe seleccionar un servicio."
+4- Presionar "Aceptar".
+5- En el combo ID Servicio seleccionar "200" y verificar que se completan CD Destino Centro - Cordoba, Empresa de ómnibus Transporte Federal S.A., Bultos (equiv. en S) 6, Total de Bultos 2 y la grilla con 2 filas (CD01-0016 y AG02-0001).
+6- Presionar "Confirmar despacho".
+7- Verificar mensaje: "¿Confirma el despacho del Servicio N° 200? Se emitirán 3 copias de la HDR Transporte."
+8- Presionar "No".
+9- Verificar que la pantalla mantiene los datos del servicio "200" cargados y el combo sigue mostrando "200" seleccionado.
+10- Presionar "Cancelar".
+11- Verificar mensaje: "El despacho no será registrado. ¿Desea continuar?"
+12- Presionar "No".
+13- Verificar que la pantalla sigue abierta con los datos cargados.
+14- Presionar nuevamente "Cancelar".
+15- Verificar mensaje: "El despacho no será registrado. ¿Desea continuar?"
+16- Presionar "Sí".
+17- Verificar que la pantalla se cierra.
+18- Salir del sistema presionando la cruz del extremo superior derecho de la pantalla.
+
+19- Archivo ServiciosMediaDistancia.json: verificar registro existente
+    con idServicio "200",
+    con fechaLlegada null (sin cambios) y fechaRecepcion null (sin cambios).
+
+20- Archivo HojasDeRutaTransporte.json: verificar registro existente
+    con nroHDR 301,
+    con estado "Generada" (sin cambios).
+
+21- Archivo Guias.json: verificar registros existentes
+    con NroGuia "CD01-0016", estado "PendienteDeDespacho" (sin cambios).
+    con NroGuia "AG02-0001", estado "PendienteDeRetiroEnAgencia" (sin cambios).

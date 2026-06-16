@@ -39,7 +39,6 @@
     <Folder Include="PRUEBAS\2.HDRRetiro\2.3.Recepcion\" />
     <Folder Include="PRUEBAS\2.HDRRetiro\2.4.Rendicion\" />
     <Folder Include="PRUEBAS\4.HDRTransporte\4.1.Generacion\" />
-    <Folder Include="PRUEBAS\4.HDRTransporte\4.2Despacho\" />
     <Folder Include="PRUEBAS\4.HDRTransporte\4.3.Recepcion\" />
     <Folder Include="PRUEBAS\5.HDRDistribucion\5.3.Recepcion\" />
     <Folder Include="PRUEBAS\6.Entrega\6.1.EnCD\" />
