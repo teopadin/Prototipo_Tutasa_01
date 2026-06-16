@@ -1,0 +1,26 @@
+﻿[
+  {
+    "idTarifaTransportista": 1,
+    "TipoBulto": "S",
+    "MontoRetiro": 300,
+    "MontoDistribucion": 400
+  },
+  {
+    "idTarifaTransportista": 2,
+    "TipoBulto": "M",
+    "MontoRetiro": 500,
+    "MontoDistribucion": 600
+  },
+  {
+    "idTarifaTransportista": 3,
+    "TipoBulto": "L",
+    "MontoRetiro": 800,
+    "MontoDistribucion": 1000
+  },
+  {
+    "idTarifaTransportista": 4,
+    "TipoBulto": "XL",
+    "MontoRetiro": 1300,
+    "MontoDistribucion": 1600
+  }
+]

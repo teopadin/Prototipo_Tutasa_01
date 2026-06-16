@@ -10,6 +10,8 @@ namespace Prototipos_TUTASA.Admisión
         public int IdCliente { get; set; }
         public TipoImposicionEnum TipoImposicion { get; set; }
         public int IdCDDestino { get; set; }
+        public int idAgenciaOrigen { get; set; }
+        public int idAgenciaDestino { get; set; }
         public DestinatarioGuia Destinatario { get; set; }
         public TiposBultoEnum TipoBulto { get; set; }
         public ModalidadEntregaEnum ModalidadEntrega { get; set; }

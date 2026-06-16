@@ -35,7 +35,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DATOS\" />
     <Folder Include="PRUEBAS\2.HDRRetiro\2.3.Recepcion\" />
     <Folder Include="PRUEBAS\2.HDRRetiro\2.4.Rendicion\" />
     <Folder Include="PRUEBAS\4.HDRTransporte\4.1.Generacion\" />

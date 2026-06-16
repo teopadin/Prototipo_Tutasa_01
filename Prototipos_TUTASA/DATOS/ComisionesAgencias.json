@@ -1,0 +1,58 @@
+﻿[
+  {
+    "idComision": 1,
+    "idAgencia": 1,
+    "TipoBulto": "S",
+    "MontoPorImposicion": 200,
+    "MontoPorEntrega": 250
+  },
+  {
+    "idComision": 2,
+    "idAgencia": 1,
+    "TipoBulto": "M",
+    "MontoPorImposicion": 350,
+    "MontoPorEntrega": 400
+  },
+  {
+    "idComision": 3,
+    "idAgencia": 1,
+    "TipoBulto": "L",
+    "MontoPorImposicion": 600,
+    "MontoPorEntrega": 700
+  },
+  {
+    "idComision": 4,
+    "idAgencia": 1,
+    "TipoBulto": "XL",
+    "MontoPorImposicion": 900,
+    "MontoPorEntrega": 1100
+  },
+  {
+    "idComision": 5,
+    "idAgencia": 2,
+    "TipoBulto": "S",
+    "MontoPorImposicion": 180,
+    "MontoPorEntrega": 230
+  },
+  {
+    "idComision": 6,
+    "idAgencia": 2,
+    "TipoBulto": "M",
+    "MontoPorImposicion": 320,
+    "MontoPorEntrega": 380
+  },
+  {
+    "idComision": 7,
+    "idAgencia": 2,
+    "TipoBulto": "L",
+    "MontoPorImposicion": 550,
+    "MontoPorEntrega": 650
+  },
+  {
+    "idComision": 8,
+    "idAgencia": 2,
+    "TipoBulto": "XL",
+    "MontoPorImposicion": 850,
+    "MontoPorEntrega": 1050
+  }
+]

@@ -20,6 +20,10 @@ namespace Prototipos_TUTASA.Admisión
 
         private List<Guia> guias;
 
+        private List<TarifaTransportistaLocal> tarifasTransportistas;
+
+        private List<ComisionAgencia> comisionesAgencias;
+
         public ModeloAdmision()
         {
             idCDAdmisionActual = Program.CodigoCDActual;
@@ -67,6 +71,29 @@ namespace Prototipos_TUTASA.Admisión
                 });
             }
 
+            tarifasTransportistas = new List<TarifaTransportistaLocal>();
+            foreach (var tarifaEntidad in TarifaTransportistaLocalAlmacen.tarifasTransportistas)
+            {
+                tarifasTransportistas.Add(new TarifaTransportistaLocal
+                {
+                    TipoBulto = Enum.Parse<TiposBultoEnum>(tarifaEntidad.TipoBulto.ToString()),
+                    MontoRetiro = tarifaEntidad.MontoRetiro,
+                    MontoDistribucion = tarifaEntidad.MontoDistribucion
+                });
+            }
+
+            comisionesAgencias = new List<ComisionAgencia>();
+            foreach (var comisionEntidad in ComisionAgenciaAlmacen.comisionesAgencias)
+            {
+                comisionesAgencias.Add(new ComisionAgencia
+                {
+                    idAgencia = comisionEntidad.idAgencia,
+                    TipoBulto = Enum.Parse<TiposBultoEnum>(comisionEntidad.TipoBulto.ToString()),
+                    MontoPorImposicion = comisionEntidad.MontoPorImposicion,
+                    MontoPorEntrega = comisionEntidad.MontoPorEntrega
+                });
+            }
+
             guias = new List<Guia>();
             foreach (var guiaEntidad in GuiaAlmacen.Guias)
             {
@@ -82,6 +109,8 @@ namespace Prototipos_TUTASA.Admisión
                     IdCliente = guiaEntidad.IdCliente,
                     TipoImposicion = Enum.Parse<TipoImposicionEnum>(guiaEntidad.TipoImposicion.ToString()),
                     IdCDDestino = guiaEntidad.idCDDestino,
+                    idAgenciaOrigen = guiaEntidad.idAgenciaOrigen,
+                    idAgenciaDestino = guiaEntidad.idAgenciaDestino,
                     Destinatario = new DestinatarioGuia
                     {
                         Dni = guiaEntidad.Destinatario.Dni,
@@ -130,6 +159,26 @@ namespace Prototipos_TUTASA.Admisión
                 {
                     return cd;
                 }
+            }
+            return null;
+        }
+
+        private TarifaTransportistaLocal BuscarTarifaTransportista(TiposBultoEnum tipoBulto)
+        {
+            foreach (TarifaTransportistaLocal tarifa in tarifasTransportistas)
+            {
+                if (tarifa.TipoBulto == tipoBulto)
+                    return tarifa;
+            }
+            return null;
+        }
+
+        private ComisionAgencia BuscarComisionAgencia(int idAgencia, TiposBultoEnum tipoBulto)
+        {
+            foreach (ComisionAgencia comision in comisionesAgencias)
+            {
+                if (comision.idAgencia == idAgencia && comision.TipoBulto == tipoBulto)
+                    return comision;
             }
             return null;
         }
@@ -209,6 +258,53 @@ namespace Prototipos_TUTASA.Admisión
                 }
             }
 
+            // === Cargos a pagar por TUTASA ===
+
+            // Cargo a fletero por retiro (si la imposición fue por CallCenter, hubo retiro a domicilio)
+            if (guia.TipoImposicion == TipoImposicionEnum.CallCenter)
+            {
+                TarifaTransportistaLocal tarifaT = BuscarTarifaTransportista(guia.TipoBulto);
+                if (tarifaT != null)
+                {
+                    tarifaCalc.CostoFleteroRetiro = tarifaT.MontoRetiro;
+                }
+            }
+
+            // Comisión a agencia origen (si la imposición fue en Agencia)
+            if (guia.TipoImposicion == TipoImposicionEnum.Agencia)
+            {
+                ComisionAgencia comisionOrigen = BuscarComisionAgencia(guia.idAgenciaOrigen, guia.TipoBulto);
+                if (comisionOrigen != null)
+                {
+                    tarifaCalc.ComisionAgenciaOrigen = comisionOrigen.MontoPorImposicion;
+                }
+            }
+
+            // Cargo a fletero por distribución (si la modalidad de entrega es Domicilio)
+            if (guia.ModalidadEntrega == ModalidadEntregaEnum.EntregaDomicilio)
+            {
+                TarifaTransportistaLocal tarifaT = BuscarTarifaTransportista(guia.TipoBulto);
+                if (tarifaT != null)
+                {
+                    tarifaCalc.CostoFleteroDistribucion = tarifaT.MontoDistribucion;
+                }
+            }
+
+            // Comisión a agencia destino (si la modalidad de entrega es Agencia)
+            if (guia.ModalidadEntrega == ModalidadEntregaEnum.EntregaAgencia)
+            {
+                ComisionAgencia comisionDestino = BuscarComisionAgencia(guia.idAgenciaDestino, guia.TipoBulto);
+                if (comisionDestino != null)
+                {
+                    tarifaCalc.ComisionAgenciaDestino = comisionDestino.MontoPorEntrega;
+                }
+            }
+
+            tarifaCalc.TotalCostosEmpresa = tarifaCalc.CostoFleteroRetiro
+                                          + tarifaCalc.CostoFleteroDistribucion
+                                          + tarifaCalc.ComisionAgenciaOrigen
+                                          + tarifaCalc.ComisionAgenciaDestino;
+
             tarifaCalc.TarifaTotal = tarifaCalc.PrecioFlete
                                    + tarifaCalc.ExtraRetiroDomicilio
                                    + tarifaCalc.ExtraEntregaDomicilio
@@ -244,6 +340,12 @@ namespace Prototipos_TUTASA.Admisión
                     guiaEntidad.TarifaCalculada.ExtraEntregaDomicilio = guia.TarifaCalculada.ExtraEntregaDomicilio;
                     guiaEntidad.TarifaCalculada.ExtraEntregaAgencia = guia.TarifaCalculada.ExtraEntregaAgencia;
                     guiaEntidad.TarifaCalculada.TarifaTotal = guia.TarifaCalculada.TarifaTotal;
+                    // NUEVOS:
+                    guiaEntidad.TarifaCalculada.CostoFleteroRetiro = guia.TarifaCalculada.CostoFleteroRetiro;
+                    guiaEntidad.TarifaCalculada.CostoFleteroDistribucion = guia.TarifaCalculada.CostoFleteroDistribucion;
+                    guiaEntidad.TarifaCalculada.ComisionAgenciaOrigen = guia.TarifaCalculada.ComisionAgenciaOrigen;
+                    guiaEntidad.TarifaCalculada.ComisionAgenciaDestino = guia.TarifaCalculada.ComisionAgenciaDestino;
+                    guiaEntidad.TarifaCalculada.TotalCostosEmpresa = guia.TarifaCalculada.TotalCostosEmpresa;
                     break;
                 }
             }
