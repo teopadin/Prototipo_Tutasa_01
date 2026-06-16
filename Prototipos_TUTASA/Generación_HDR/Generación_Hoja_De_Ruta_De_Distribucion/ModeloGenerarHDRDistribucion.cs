@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using Prototipos_TUTASA.Almacenes;
 
 namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Distribucion
@@ -18,13 +15,8 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Distribu
 
         public ModeloGenerarHDRDistribucion()
         {
-            List<CentroDistribucionEntidad> cdsArchivo = LeerJson<List<CentroDistribucionEntidad>>("CentrosDeDistribucion.json");
-            List<AgenciaEntidad> agenciasArchivo = LeerJson<List<AgenciaEntidad>>("Agencias.json");
-            List<TransportistaLocalEntidad> transportistasArchivo = LeerJson<List<TransportistaLocalEntidad>>("TransportistasLocales.json");
-            List<GuiaEntidad> guiasArchivo = LeerJson<List<GuiaEntidad>>("Guias.json");
-
             CentrosDeDistribucion = new List<CentroDistribucion>();
-            foreach (var cd in cdsArchivo)
+            foreach (var cd in CentroDistribucionAlmacen.CentrosDeDistribucion)
             {
                 CentrosDeDistribucion.Add(new CentroDistribucion
                 {
@@ -40,7 +32,7 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Distribu
             }
 
             Agencias = new List<Agencia>();
-            foreach (var ag in agenciasArchivo)
+            foreach (var ag in AgenciaAlmacen.Agencias)
             {
                 Agencias.Add(new Agencia
                 {
@@ -56,7 +48,7 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Distribu
             }
 
             Transportistas = new List<TransportistaLocal>();
-            foreach (var t in transportistasArchivo)
+            foreach (var t in TransportistaLocalAlmacen.transportistas)
             {
                 Transportistas.Add(new TransportistaLocal
                 {
@@ -69,7 +61,7 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Distribu
             }
 
             Guias = new List<Guia>();
-            foreach (var g in guiasArchivo)
+            foreach (var g in GuiaAlmacen.Guias)
             {
                 bool esEnCDDestino = g.estado == Prototipos_TUTASA.Auxiliares.EstadoGuiaEnum.EnCDDestino &&
                                      g.idCDDestino == CdEmisor.idCD;
@@ -150,12 +142,8 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Distribu
 
         public HojaDeRutaDistribucionEntidad GenerarHDR(List<Guia> guias, TransportistaLocal transportista, DateTime fecha)
         {
-            List<HojaDeRutaDistribucionEntidad> hojasArchivo = LeerJson<List<HojaDeRutaDistribucionEntidad>>("HojasDeRutaDistribucion.json");
-            List<GuiaEntidad> guiasArchivo = LeerJson<List<GuiaEntidad>>("Guias.json");
-            List<TransportistaLocalEntidad> transportistasArchivo = LeerJson<List<TransportistaLocalEntidad>>("TransportistasLocales.json");
-
             var nuevaHDR = new HojaDeRutaDistribucionEntidad();
-            nuevaHDR.NroHDR = ProximoNroHDR(hojasArchivo);
+            nuevaHDR.NroHDR = ProximoNroHDR(HojaDeRutaDistribucionAlmacen.hojasDeRutaDistribucion);
             nuevaHDR.Fecha = fecha;
             nuevaHDR.estado = Prototipos_TUTASA.Auxiliares.EstadoHojaDeRutaEnum.Generada;
             nuevaHDR.dniTransportistaAsignado = transportista.dniTransportista;
@@ -190,7 +178,7 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Distribu
 
                 guia.estado = EstadoGuiaEnum.EnDistribucion;
 
-                GuiaEntidad guiaEntidad = BuscarGuiaEntidad(guiasArchivo, guia.NroGuia);
+                GuiaEntidad guiaEntidad = BuscarGuiaEntidad(GuiaAlmacen.Guias, guia.NroGuia);
                 if (guiaEntidad != null)
                 {
                     guiaEntidad.estado = Prototipos_TUTASA.Auxiliares.EstadoGuiaEnum.EnDistribucion;
@@ -206,21 +194,17 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Distribu
 
             transportista.HdrAsignadas++;
 
-            TransportistaLocalEntidad transportistaEntidad = BuscarTransportistaEntidad(transportistasArchivo, transportista.dniTransportista);
+            TransportistaLocalEntidad transportistaEntidad = BuscarTransportistaEntidad(TransportistaLocalAlmacen.transportistas, transportista.dniTransportista);
             if (transportistaEntidad != null)
             {
                 transportistaEntidad.HdrAsignadas++;
             }
 
-            hojasArchivo.Add(nuevaHDR);
+            HojaDeRutaDistribucionAlmacen.hojasDeRutaDistribucion.Add(nuevaHDR);
 
-            HojaDeRutaDistribucionAlmacen.hojasDeRutaDistribucion = hojasArchivo;
-            GuiaAlmacen.Guias = guiasArchivo;
-            TransportistaLocalAlmacen.transportistas = transportistasArchivo;
-
-            GuardarJson("HojasDeRutaDistribucion.json", hojasArchivo);
-            GuardarJson("Guias.json", guiasArchivo);
-            GuardarJson("TransportistasLocales.json", transportistasArchivo);
+            GuiaAlmacen.Guardar();
+            TransportistaLocalAlmacen.Guardar();
+            HojaDeRutaDistribucionAlmacen.Guardar();
 
             return nuevaHDR;
         }
@@ -233,83 +217,6 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Distribu
         private EstadoGuiaEnum ConvertirEstadoGuia(Prototipos_TUTASA.Auxiliares.EstadoGuiaEnum estado)
         {
             return (EstadoGuiaEnum)Enum.Parse(typeof(EstadoGuiaEnum), estado.ToString());
-        }
-
-        private T LeerJson<T>(string nombreArchivo) where T : new()
-        {
-            string ruta = Path.Combine(ObtenerCarpetaDatos(), nombreArchivo);
-
-            if (!File.Exists(ruta))
-            {
-                return new T();
-            }
-
-            string json = File.ReadAllText(ruta);
-            T datos = JsonSerializer.Deserialize<T>(json, ObtenerOpcionesJson());
-
-            if (datos == null)
-            {
-                return new T();
-            }
-
-            return datos;
-        }
-
-        private void GuardarJson<T>(string nombreArchivo, T datos)
-        {
-            string carpetaDatos = ObtenerCarpetaDatos();
-
-            if (!Directory.Exists(carpetaDatos))
-            {
-                Directory.CreateDirectory(carpetaDatos);
-            }
-
-            string ruta = Path.Combine(carpetaDatos, nombreArchivo);
-            string json = JsonSerializer.Serialize(datos, ObtenerOpcionesJson());
-
-            File.WriteAllText(ruta, json);
-        }
-
-        private JsonSerializerOptions ObtenerOpcionesJson()
-        {
-            JsonSerializerOptions opciones = new JsonSerializerOptions();
-            opciones.WriteIndented = true;
-            opciones.Converters.Add(new JsonStringEnumConverter());
-
-            return opciones;
-        }
-
-        private string ObtenerCarpetaDatos()
-        {
-            DirectoryInfo directorio = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
-
-            while (directorio != null)
-            {
-                string archivoProyecto = Path.Combine(directorio.FullName, "Prototipos_TUTASA.csproj");
-
-                if (File.Exists(archivoProyecto))
-                {
-                    return Path.Combine(directorio.FullName, "DATOS");
-                }
-
-                directorio = directorio.Parent;
-            }
-
-            directorio = new DirectoryInfo(Directory.GetCurrentDirectory());
-
-            while (directorio != null)
-            {
-                string archivoProyecto = Path.Combine(directorio.FullName, "Prototipos_TUTASA.csproj");
-
-                if (File.Exists(archivoProyecto))
-                {
-                    return Path.Combine(directorio.FullName, "DATOS");
-                }
-
-                directorio = directorio.Parent;
-            }
-
-            return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "DATOS");
         }
     }
 }

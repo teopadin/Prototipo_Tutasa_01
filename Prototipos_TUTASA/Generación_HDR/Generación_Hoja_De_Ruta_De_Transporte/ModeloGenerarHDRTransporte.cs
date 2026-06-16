@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using Prototipos_TUTASA.Almacenes;
 
 namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transporte
@@ -18,13 +15,8 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transpor
 
         public ModeloGenerarHDRTransporte()
         {
-            List<CentroDistribucionEntidad> cdsArchivo = LeerJson<List<CentroDistribucionEntidad>>("CentrosDeDistribucion.json");
-            List<EmpresaTransporteEntidad> empresasArchivo = LeerJson<List<EmpresaTransporteEntidad>>("EmpresasTransporte.json");
-            List<ServicioMediaDistanciaEntidad> serviciosArchivo = LeerJson<List<ServicioMediaDistanciaEntidad>>("ServiciosMediaDistancia.json");
-            List<GuiaEntidad> guiasArchivo = LeerJson<List<GuiaEntidad>>("Guias.json");
-
             CentrosDeDistribucion = new List<CentroDistribucion>();
-            foreach (var cd in cdsArchivo)
+            foreach (var cd in CentroDistribucionAlmacen.CentrosDeDistribucion)
             {
                 CentrosDeDistribucion.Add(new CentroDistribucion
                 {
@@ -40,7 +32,7 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transpor
             }
 
             Empresas = new List<EmpresaTransporte>();
-            foreach (var emp in empresasArchivo)
+            foreach (var emp in EmpresaTransporteAlmacen.empresas)
             {
                 Empresas.Add(new EmpresaTransporte
                 {
@@ -50,8 +42,18 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transpor
             }
 
             Servicios = new List<ServicioMediaDistancia>();
-            foreach (var s in serviciosArchivo)
+            foreach (var s in ServicioMediaDistanciaAlmacen.serviciosMediaDistancia)
             {
+                if (s.fechaSalida.Date < Program.FechaPrueba)
+                {
+                    continue;
+                }
+
+                if (s.fechaLlegada != null || s.fechaRecepcion != null)
+                {
+                    continue;
+                }
+
                 var servicioDominio = new ServicioMediaDistancia
                 {
                     idServicio = s.idServicio,
@@ -67,7 +69,7 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transpor
             }
 
             Guias = new List<Guia>();
-            foreach (var g in guiasArchivo)
+            foreach (var g in GuiaAlmacen.Guias)
             {
                 if (g.estado != Prototipos_TUTASA.Auxiliares.EstadoGuiaEnum.Admitida)
                 {
@@ -146,12 +148,8 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transpor
 
         public HojaDeRutaTransporteEntidad GenerarHDR(List<Guia> guias, ServicioMediaDistancia servicio)
         {
-            List<HojaDeRutaTransporteEntidad> hojasArchivo = LeerJson<List<HojaDeRutaTransporteEntidad>>("HojasDeRutaTransporte.json");
-            List<GuiaEntidad> guiasArchivo = LeerJson<List<GuiaEntidad>>("Guias.json");
-            List<ServicioMediaDistanciaEntidad> serviciosArchivo = LeerJson<List<ServicioMediaDistanciaEntidad>>("ServiciosMediaDistancia.json");
-
             var nuevaHDR = new HojaDeRutaTransporteEntidad();
-            nuevaHDR.nroHDR = ProximoNroHDR(hojasArchivo);
+            nuevaHDR.nroHDR = ProximoNroHDR(HojaDeRutaTransporteAlmacen.hojasDeRutaTransporte);
             nuevaHDR.fechaGeneracion = DateTime.Now;
             nuevaHDR.estado = Prototipos_TUTASA.Auxiliares.EstadoHojaDeRutaEnum.Generada;
             nuevaHDR.idCDOrigen = CdEmisor.idCD;
@@ -167,7 +165,7 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transpor
 
                 guia.Estado = EstadoGuiaEnum.PendienteDeDespacho;
 
-                GuiaEntidad guiaEntidad = BuscarGuiaEntidad(guiasArchivo, guia.NroGuia);
+                GuiaEntidad guiaEntidad = BuscarGuiaEntidad(GuiaAlmacen.Guias, guia.NroGuia);
                 if (guiaEntidad != null)
                 {
                     guiaEntidad.estado = Prototipos_TUTASA.Auxiliares.EstadoGuiaEnum.PendienteDeDespacho;
@@ -183,22 +181,18 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transpor
 
             servicio.capacidadUsada += totalBultos;
 
-            ServicioMediaDistanciaEntidad servicioEntidad = BuscarServicioEntidad(serviciosArchivo, servicio.idServicio);
+            ServicioMediaDistanciaEntidad servicioEntidad = BuscarServicioEntidad(ServicioMediaDistanciaAlmacen.serviciosMediaDistancia, servicio.idServicio);
             if (servicioEntidad != null)
             {
                 servicioEntidad.capacidadDisponible -= totalBultos;
                 servicioEntidad.DetalleHDRs.Add(nuevaHDR.nroHDR);
             }
 
-            hojasArchivo.Add(nuevaHDR);
+            HojaDeRutaTransporteAlmacen.hojasDeRutaTransporte.Add(nuevaHDR);
 
-            HojaDeRutaTransporteAlmacen.hojasDeRutaTransporte = hojasArchivo;
-            GuiaAlmacen.Guias = guiasArchivo;
-            ServicioMediaDistanciaAlmacen.serviciosMediaDistancia = serviciosArchivo;
-
-            GuardarJson("HojasDeRutaTransporte.json", hojasArchivo);
-            GuardarJson("Guias.json", guiasArchivo);
-            GuardarJson("ServiciosMediaDistancia.json", serviciosArchivo);
+            GuiaAlmacen.Guardar();
+            ServicioMediaDistanciaAlmacen.Guardar();
+            HojaDeRutaTransporteAlmacen.Guardar();
 
             return nuevaHDR;
         }
@@ -211,83 +205,6 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transpor
         private TipoArrendamientoEnum ConvertirTipoArrendamiento(Prototipos_TUTASA.Auxiliares.TipoArrendamientoEnum tipo)
         {
             return (TipoArrendamientoEnum)Enum.Parse(typeof(TipoArrendamientoEnum), tipo.ToString());
-        }
-
-        private T LeerJson<T>(string nombreArchivo) where T : new()
-        {
-            string ruta = Path.Combine(ObtenerCarpetaDatos(), nombreArchivo);
-
-            if (!File.Exists(ruta))
-            {
-                return new T();
-            }
-
-            string json = File.ReadAllText(ruta);
-            T datos = JsonSerializer.Deserialize<T>(json, ObtenerOpcionesJson());
-
-            if (datos == null)
-            {
-                return new T();
-            }
-
-            return datos;
-        }
-
-        private void GuardarJson<T>(string nombreArchivo, T datos)
-        {
-            string carpetaDatos = ObtenerCarpetaDatos();
-
-            if (!Directory.Exists(carpetaDatos))
-            {
-                Directory.CreateDirectory(carpetaDatos);
-            }
-
-            string ruta = Path.Combine(carpetaDatos, nombreArchivo);
-            string json = JsonSerializer.Serialize(datos, ObtenerOpcionesJson());
-
-            File.WriteAllText(ruta, json);
-        }
-
-        private JsonSerializerOptions ObtenerOpcionesJson()
-        {
-            JsonSerializerOptions opciones = new JsonSerializerOptions();
-            opciones.WriteIndented = true;
-            opciones.Converters.Add(new JsonStringEnumConverter());
-
-            return opciones;
-        }
-
-        private string ObtenerCarpetaDatos()
-        {
-            DirectoryInfo directorio = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
-
-            while (directorio != null)
-            {
-                string archivoProyecto = Path.Combine(directorio.FullName, "Prototipos_TUTASA.csproj");
-
-                if (File.Exists(archivoProyecto))
-                {
-                    return Path.Combine(directorio.FullName, "DATOS");
-                }
-
-                directorio = directorio.Parent;
-            }
-
-            directorio = new DirectoryInfo(Directory.GetCurrentDirectory());
-
-            while (directorio != null)
-            {
-                string archivoProyecto = Path.Combine(directorio.FullName, "Prototipos_TUTASA.csproj");
-
-                if (File.Exists(archivoProyecto))
-                {
-                    return Path.Combine(directorio.FullName, "DATOS");
-                }
-
-                directorio = directorio.Parent;
-            }
-
-            return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "DATOS");
         }
     }
 }

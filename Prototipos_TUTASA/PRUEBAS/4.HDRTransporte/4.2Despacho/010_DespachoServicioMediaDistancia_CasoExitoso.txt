@@ -1,7 +1,7 @@
 ﻿Plan de Prueba: Despacho de Servicios de Media Distancia - Caso exitoso
 
 1- Abrir la pantalla Despacho de Servicios de Media Distancia.
-2- Verificar que el combo ID Servicio muestra únicamente la opción "200".
+2- Verificar que el combo ID Servicio muestra los idServicio "3" y "200".
 3- Verificar que el campo Bultos Pendientes de Despacho muestra 2.
 4- En el combo ID Servicio seleccionar "200".
 5- Verificar que se completan los datos del servicio:

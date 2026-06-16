@@ -20,6 +20,7 @@ namespace Prototipos_TUTASA
         public static int CodigoCDActual { get; set; } = 1;
         public static int CodigoAgenciaActual { get; set; } = 1;
         public static bool IniciaDesdeAgencia { get; set; } = false;
+        public static DateTime FechaPrueba { get; set; } = new DateTime(2026, 6, 12);
 
         [STAThread]
         static void Main()

@@ -14,8 +14,8 @@ CD01-9004: Bulto M | Centro - Cordoba
 5. Tildar las guías CD01-0011, CD01-0012 y CD01-9004.
 6. Verificar: el campo "Bultos seleccionados (equiv. en S)" muestra 11 (XL = 8, S = 1, M = 2).
 7. Verificar: En la sección "Servicios disponibles" aparecen los servicios con origen en el CD emisor, destino Centro - Córdoba y capacidad suficiente para los "11 bultos", detallando ID Servicio, Empresa, Tipo de Servicio, Capacidad disponible y Fecha y hora de salida:
-ID 3 | Transporte Federal S.A. | Tipo B | Capacidad disp. 80 | 12/06/2026 10:30
-ID 199 | Transporte Federal S.A. | Tipo A | Capacidad disp. 120 | 12/06/2026 08:00
+ID 3 | Transporte Federal S.A. | Tipo B | Capacidad disp. 80 | 12/07/2026 10:30
+ID 200 | Transporte Federal S.A. | Tipo A | Capacidad disp. 120 | 12/07/2026 08:00
 8. Seleccionar el servicio ID 3 (Transporte Federal S.A.).
 9. Presionar "Generar HDR".
 10. Verificar mensaje: "Hoja de Ruta de Transporte 903 generada con éxito."
