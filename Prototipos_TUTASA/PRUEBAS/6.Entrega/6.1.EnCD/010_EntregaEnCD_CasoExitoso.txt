@@ -13,4 +13,4 @@ Pasos
 7- Marcar el checkbox "Documento de identidad presentado y verificado".
 8- Presionar Registrar Entrega.
 9- Cerrar la ventana emergente "Entrega en CD se ha generado con éxito." pulsando OK.
-10- Validar en el archivo Guias.json que la guía con NroGuia CD02-0002, destinatario Ana Perez y DNI 40123456 queda en estado "Entregada".
+10- Validar en el archivo bin\Debug\net10.0-windows\DATOS\Guias.json que la guía con NroGuia CD02-0002, destinatario Ana Perez y DNI 40123456 queda en estado "Entregada" y agrega en Historial una nueva entrada con Estado "Entregada" y Donde "Capital y GBA".

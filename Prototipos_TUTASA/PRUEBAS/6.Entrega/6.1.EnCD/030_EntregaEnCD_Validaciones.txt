@@ -2,15 +2,16 @@ Plan de Prueba: Entrega en CD - Validaciones
 
 Pasos:
 
-1- Dejar vacío el campo de guía y presionar Buscar.
-2- Ingresar NO-EXISTE y presionar Buscar.
-3- Ingresar CD99-9999 (formato válido pero inexistente) y presionar Buscar.
-4- Ingresar CD02-0009 (guía de otro Centro de Distribución) y presionar Buscar.
-5- Ingresar CD03-0001 (estado inválido) y presionar Buscar.
-6- Presionar Registrar Entrega sin buscar guía previamente.
-7- Buscar CD02-0002, dejar vacíos nombre, apellido y DNI y presionar Registrar Entrega.
-8- Buscar CD02-0002, ingresar Nombre Ana, Apellido Perez, DNI abc (no numérico), marcar checkbox DNI y presionar Registrar Entrega.
-9- Buscar CD02-0002, ingresar Nombre Ana, Apellido Perez, DNI 40123456, dejar checkbox DNI sin marcar y presionar Registrar Entrega.
-10- Buscar CD02-0002, ingresar Nombre Ana, Apellido Perez, DNI 11111111 (incorrecto), marcar checkbox DNI y presionar Registrar Entrega.
-11- Buscar CD02-0002, ingresar Nombre Laura (incorrecto), Apellido Perez, DNI 40123456, marcar checkbox DNI y presionar Registrar Entrega.
-12- Buscar CD02-0002, ingresar Nombre ana, Apellido perez (sin tildes/minúsculas), DNI 40123456, marcar checkbox DNI y presionar Registrar Entrega.
+1- Abrir la pantalla Entrega en CD, dejar vacío el campo Guía y presionar Buscar.
+2- Ingresar NO-EXISTE en el campo Guía y presionar Buscar.
+3- Ingresar CD99-9999 en el campo Guía y presionar Buscar.
+4- Ingresar CD02-0009 en el campo Guía y presionar Buscar.
+5- Ingresar CD03-0001 en el campo Guía y presionar Buscar.
+6- Abrir la pantalla Entrega en CD, no buscar ninguna guía y presionar Registrar Entrega.
+7- Ingresar CD02-0002 en el campo Guía, presionar Buscar, dejar vacíos Nombre, Apellido y DNI de quien retira y presionar Registrar Entrega.
+8- Ingresar CD02-0002 en el campo Guía, presionar Buscar, ingresar Nombre Ana, Apellido Perez y DNI abc, marcar el checkbox Documento de identidad presentado y verificado y presionar Registrar Entrega.
+9- Ingresar CD02-0002 en el campo Guía, presionar Buscar, ingresar Nombre Ana, Apellido Perez y DNI 40123456, no marcar el checkbox Documento de identidad presentado y verificado y presionar Registrar Entrega.
+10- Ingresar CD02-0002 en el campo Guía, presionar Buscar, ingresar Nombre Ana, Apellido Perez y DNI 11111111, marcar el checkbox Documento de identidad presentado y verificado y presionar Registrar Entrega.
+11- Ingresar CD02-0002 en el campo Guía, presionar Buscar, ingresar Nombre Laura, Apellido Perez y DNI 40123456, marcar el checkbox Documento de identidad presentado y verificado y presionar Registrar Entrega.
+12- Ingresar CD02-0002 en el campo Guía, presionar Buscar, cambiar el campo Guía por CD01-0007, ingresar Nombre Ana, Apellido Perez y DNI 40123456, marcar el checkbox Documento de identidad presentado y verificado y presionar Registrar Entrega.
+13- Ingresar CD02-0002 en el campo Guía, presionar Buscar, ingresar Nombre ana, Apellido perez y DNI 40123456, marcar el checkbox Documento de identidad presentado y verificado y presionar Registrar Entrega.
