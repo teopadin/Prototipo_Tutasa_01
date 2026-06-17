@@ -44,7 +44,7 @@ namespace Prototipos_TUTASA.Generación_HDR.Generación_Hoja_De_Ruta_De_Transpor
             Servicios = new List<ServicioMediaDistancia>();
             foreach (var s in ServicioMediaDistanciaAlmacen.serviciosMediaDistancia)
             {
-                if (s.fechaSalida.Date < Program.FechaPrueba)
+                if (s.fechaSalida.Date < DateTime.Today)
                 {
                     continue;
                 }
