@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using Prototipos_TUTASA.Almacenes;
-using Prototipos_TUTASA.Auxiliares;
+using EstadoGuiaAlmacen = Prototipos_TUTASA.Auxiliares.EstadoGuiaEnum;
 
 namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia
 {
@@ -10,85 +11,43 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia
     {
         public Agencia AgenciaActual { get; }
         private readonly List<Guia> guias;
+        private readonly List<GuiaEntidad> guiasEntidad;
+        private Guia guiaSeleccionada = new Guia();
+        private GuiaEntidad guiaEntidadSeleccionada = new GuiaEntidad();
+
+        public bool HayGuiaSeleccionada { get; private set; }
 
         public ModeloEntregaAgencia()
         {
-            // Cargar agencias desde AgenciaAlmacen
-            List<Agencia> agencias = new List<Agencia>();
-            foreach (var agenciaEntidad in AgenciaAlmacen.Agencias)
+            AgenciaEntidad agenciaEntidadActual = AgenciaAlmacen.Agencias
+                .FirstOrDefault(a => a.idAgencia == Program.CodigoAgenciaActual);
+
+            if (agenciaEntidadActual == null && AgenciaAlmacen.Agencias.Count > 0)
             {
-                agencias.Add(new Agencia
-                {
-                    idAgencia = agenciaEntidad.idAgencia,
-                    razonSocial = agenciaEntidad.razonSocial
-                });
+                agenciaEntidadActual = AgenciaAlmacen.Agencias[0];
             }
 
-            // Asignar la agencia operadora segun el entorno seleccionado
-            Agencia agenciaActual = null;
-            foreach (Agencia agencia in agencias)
-            {
-                if (agencia.idAgencia == Program.CodigoAgenciaActual)
+            AgenciaActual = agenciaEntidadActual != null
+                ? new Agencia
                 {
-                    agenciaActual = agencia;
-                    break;
+                    idAgencia = agenciaEntidadActual.idAgencia,
+                    razonSocial = agenciaEntidadActual.razonSocial
                 }
-            }
+                : null;
 
-            if (agenciaActual == null && agencias.Count > 0)
-            {
-                agenciaActual = agencias[0];
-            }
-
-            AgenciaActual = agenciaActual;
-
-            // Cargar guías desde GuiaAlmacen
             guias = new List<Guia>();
-            if (AgenciaActual != null)
+            guiasEntidad = new List<GuiaEntidad>();
+
+            foreach (GuiaEntidad guiaEntidad in GuiaAlmacen.Guias)
             {
-                foreach (var guiaEntidad in GuiaAlmacen.Guias)
-                {
-                    if (guiaEntidad.idAgenciaDestino == AgenciaActual.idAgencia)
-                    {
-                        // Mapear el estado desde EstadoGuiaEnum de Auxiliares al local
-                        EstadoGuiaEnum estadoLocal = MapearEstado(guiaEntidad.estado);
-
-                        // Mapear DestinatarioGuia desde Almacenes al local
-                        DestinatarioGuia destinatarioLocal = null;
-                        if (guiaEntidad.Destinatario != null)
-                        {
-                            destinatarioLocal = new DestinatarioGuia
-                            {
-                                nombre = guiaEntidad.Destinatario.nombre,
-                                apellido = guiaEntidad.Destinatario.apellido,
-                                Dni = guiaEntidad.Destinatario.Dni
-                            };
-                        }
-
-                        guias.Add(new Guia
-                        {
-                            NroGuia = guiaEntidad.NroGuia,
-                            estado = estadoLocal,
-                            idAgenciaDestino = guiaEntidad.idAgenciaDestino,
-                            Destinatario = destinatarioLocal
-                        });
-                    }
-                }
+                guiasEntidad.Add(guiaEntidad);
+                guias.Add(ConvertirGuia(guiaEntidad));
             }
-        }
-
-        private static EstadoGuiaEnum MapearEstado(Auxiliares.EstadoGuiaEnum estadoAuxiliar)
-        {
-            return estadoAuxiliar switch
-            {
-                Auxiliares.EstadoGuiaEnum.PendienteDeRetiroEnAgencia => EstadoGuiaEnum.PendienteDeRetiroEnAgencia,
-                Auxiliares.EstadoGuiaEnum.Entregada => EstadoGuiaEnum.Entregada,
-                _ => EstadoGuiaEnum.PendienteDeRetiroEnAgencia
-            };
         }
 
         public bool BuscarGuia(string nroGuiaTexto, out Guia guiaEncontrada, out string mensaje)
         {
+            LimpiarSeleccion();
             guiaEncontrada = null;
             mensaje = string.Empty;
 
@@ -105,32 +64,34 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia
                 return false;
             }
 
-            guiaEncontrada = guias.Find(g => string.Equals(g.NroGuia, nroGuia, StringComparison.OrdinalIgnoreCase));
-
-            if (guiaEncontrada == null)
+            if (!BuscarGuiaDisponible(nroGuia, out Guia guia, out GuiaEntidad guiaEntidad))
             {
                 mensaje = "No se encontró una guía con el número ingresado.";
                 return false;
             }
 
-            if (guiaEncontrada.Destinatario == null)
+            if (guia.Destinatario == null)
             {
                 mensaje = "La guía no tiene datos completos para registrar la entrega.";
                 return false;
             }
 
-            if (guiaEncontrada.idAgenciaDestino != AgenciaActual.idAgencia)
+            if (AgenciaActual == null || guia.idAgenciaDestino != AgenciaActual.idAgencia)
             {
                 mensaje = "La guía ingresada no corresponde a la agencia actual.";
                 return false;
             }
 
-            if (guiaEncontrada.estado != EstadoGuiaEnum.PendienteDeRetiroEnAgencia)
+            if (guia.estado != EstadoGuiaEnum.PendienteDeRetiroEnAgencia)
             {
                 mensaje = "La guía no se encuentra pendiente de retiro en agencia.";
                 return false;
             }
 
+            guiaSeleccionada = guia;
+            guiaEntidadSeleccionada = guiaEntidad;
+            HayGuiaSeleccionada = true;
+            guiaEncontrada = guiaSeleccionada;
             return true;
         }
 
@@ -138,9 +99,15 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia
         {
             mensaje = string.Empty;
 
-            if (!BuscarGuia(nroGuiaTexto, out Guia guia, out string mensajeBusqueda))
+            if (!HayGuiaSeleccionada)
             {
-                mensaje = mensajeBusqueda;
+                mensaje = "Debe buscar una guía válida antes de registrar la entrega.";
+                return false;
+            }
+
+            if (!string.Equals(guiaSeleccionada.NroGuia, nroGuiaTexto.Trim(), StringComparison.OrdinalIgnoreCase))
+            {
+                mensaje = "Debe volver a buscar la guía antes de registrar la entrega.";
                 return false;
             }
 
@@ -166,26 +133,94 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia
                 return false;
             }
 
-            if (!CoincideDestinatario(guia, nombre, apellido, dni))
+            if (!CoincideDestinatario(nombre, apellido, dni))
             {
                 mensaje = "Los datos de quien retira no coinciden con el destinatario de la guía.";
                 return false;
             }
 
-            RegistrarEntregaInterna(guia);
+            RegistrarEntregaInterna();
             return true;
         }
 
-        private void RegistrarEntregaInterna(Guia guia)
+        public void LimpiarSeleccion()
         {
-            guia.estado = EstadoGuiaEnum.Entregada;
+            guiaSeleccionada = new Guia();
+            guiaEntidadSeleccionada = new GuiaEntidad();
+            HayGuiaSeleccionada = false;
         }
 
-        private static bool CoincideDestinatario(Guia guia, string nombre, string apellido, int dni)
+        private bool BuscarGuiaDisponible(string nroGuia, out Guia guiaEncontrada, out GuiaEntidad guiaEntidadEncontrada)
         {
-            return guia.Destinatario.Dni == dni
-                && CoincideTexto(guia.Destinatario.nombre, nombre)
-                && CoincideTexto(guia.Destinatario.apellido, apellido);
+            for (int i = 0; i < guias.Count; i++)
+            {
+                Guia guia = guias[i];
+                if (string.Equals(guia.NroGuia, nroGuia, StringComparison.OrdinalIgnoreCase))
+                {
+                    guiaEncontrada = guia;
+                    guiaEntidadEncontrada = guiasEntidad[i];
+                    return true;
+                }
+            }
+
+            guiaEncontrada = new Guia();
+            guiaEntidadEncontrada = new GuiaEntidad();
+            return false;
+        }
+
+        private bool CoincideDestinatario(string nombre, string apellido, int dni)
+        {
+            return guiaSeleccionada.Destinatario.Dni == dni
+                && CoincideTexto(guiaSeleccionada.Destinatario.nombre, nombre)
+                && CoincideTexto(guiaSeleccionada.Destinatario.apellido, apellido);
+        }
+
+        private void RegistrarEntregaInterna()
+        {
+            DateTime fechaEntrega = DateTime.Now;
+
+            guiaSeleccionada.estado = EstadoGuiaEnum.Entregada;
+
+            guiaEntidadSeleccionada.estado = EstadoGuiaAlmacen.Entregada;
+            guiaEntidadSeleccionada.Historial.Add(new HistorialEstadoGuia
+            {
+                FechaCambio = fechaEntrega,
+                Estado = EstadoGuiaAlmacen.Entregada,
+                Donde = AgenciaActual?.razonSocial ?? string.Empty
+            });
+
+            GuiaAlmacen.Guardar();
+        }
+
+        private static Guia ConvertirGuia(GuiaEntidad guiaEntidad)
+        {
+            return new Guia
+            {
+                NroGuia = guiaEntidad.NroGuia,
+                estado = ConvertirEstado(guiaEntidad.estado),
+                idAgenciaDestino = guiaEntidad.idAgenciaDestino,
+                Destinatario = guiaEntidad.Destinatario == null
+                    ? null
+                    : new DestinatarioGuia
+                    {
+                        nombre = guiaEntidad.Destinatario.nombre,
+                        apellido = guiaEntidad.Destinatario.apellido,
+                        Dni = guiaEntidad.Destinatario.Dni
+                    }
+            };
+        }
+
+        private static EstadoGuiaEnum ConvertirEstado(EstadoGuiaAlmacen estado)
+        {
+            switch (estado)
+            {
+                case EstadoGuiaAlmacen.PendienteDeRetiroEnAgencia:
+                    return EstadoGuiaEnum.PendienteDeRetiroEnAgencia;
+                case EstadoGuiaAlmacen.Entregada:
+                    return EstadoGuiaEnum.Entregada;
+                default:
+                    return EstadoGuiaEnum.PendienteDeRetiroEnAgencia;
+            }
         }
 
         private static bool CoincideTexto(string textoRegistrado, string textoIngresado)
@@ -259,6 +294,4 @@ namespace Prototipos_TUTASA.Última_Milla.Entrega_Encomienda_Agencia
                 || (caracter >= 'a' && caracter <= 'z');
         }
     }
-
-
 }
