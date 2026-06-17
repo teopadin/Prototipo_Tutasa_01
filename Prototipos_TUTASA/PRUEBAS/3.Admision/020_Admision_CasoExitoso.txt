@@ -18,4 +18,6 @@
    con estado "PendienteDeRetiroEnCD" y TarifaCalculada
    (PrecioFlete: 2500, ExtraRetiroDomicilio: 0,
    ExtraEntregaDomicilio: 0, ExtraEntregaAgencia: 0,
-   TarifaTotal: 2500).
+   TarifaTotal: 2500, CostoFleteroRetiro: 0,
+   CostoFleteroDistribucion: 0, ComisionAgenciaOrigen: 0,
+   ComisionAgenciaDestino: 0, TotalCostosEmpresa: 0).

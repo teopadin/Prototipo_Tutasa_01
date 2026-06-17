@@ -18,4 +18,6 @@
    con estado "Admitida" y TarifaCalculada
    (PrecioFlete: 3000, ExtraRetiroDomicilio: 500,
    ExtraEntregaDomicilio: 700, ExtraEntregaAgencia: 0,
-   TarifaTotal: 4200).
+   TarifaTotal: 4200, CostoFleteroRetiro: 500,
+   CostoFleteroDistribucion: 600, ComisionAgenciaOrigen: 0,
+   ComisionAgenciaDestino: 0, TotalCostosEmpresa: 1100).
