@@ -2,23 +2,15 @@
 
 Pasos:
 
-1- Abrir la pantalla Resumen Hoja de Ruta de Distribución.
-2- No seleccionar ningún fletero.
-3- Presionar Generar Resumen.
-4- Verificar mensaje: "Debe seleccionar un fletero.".
-5- Presionar Aceptar.
-6- Verificar: la grilla de Hoja de Ruta de distribución asignada al Fletero queda vacía.
-7- Verificar: Total Domicilios a Visitar muestra 0.
-8- Verificar: Total Bultos a Entregar muestra 0.
-9- Archivo HojasDeRutaDistribucion.json: no debe modificarse ningún registro.
-
-10- Seleccionar un fletero con Hojas de Ruta de Distribución generadas para la fecha actual.
-11- Verificar: la grilla muestra las Hojas de Ruta de Distribución asignadas al fletero.
-12- Presionar Cancelar.
-13- Verificar: no se genera ningún resumen.
-14- Archivo HojasDeRutaDistribucion.json: las hojas de ruta seleccionadas deben mantenerse en estado "Generada".
-
-15- Ejecutar el caso exitoso de Resumen Hoja de Ruta de Distribución para un fletero.
-16- Volver a abrir la pantalla Resumen Hoja de Ruta de Distribución.
-17- Verificar: el fletero utilizado en el caso exitoso no aparece nuevamente si ya no tiene Hojas de Ruta de Distribución en estado "Generada" para la fecha actual.
-18- Verificar: no se puede generar dos veces el mismo resumen.
+1- Abrir la pantalla Resumen Hoja de Ruta de Distribución desde el menú de pruebas, no seleccionar Transportista Local asignado y presionar Generar Resumen.
+2- Cerrar la ventana emergente "Debe seleccionar un fletero." pulsando OK.
+3- Verificar que la grilla "Hoja de Ruta de Distribución asignada al Fletero" queda vacía, "Total Domicilios a Visitar" muestra 0 y "Total Bultos a Entregar" muestra 0.
+4- Validar en el archivo HojasDeRutaDistribucion.json que no se modifica ningún registro.
+5- Abrir la pantalla Resumen Hoja de Ruta de Distribución desde el menú de pruebas, desplegar el combo Transportista Local asignado, seleccionar Carlos Gomez y presionar Cancelar.
+6- Validar en el archivo HojasDeRutaDistribucion.json que la hoja de ruta de distribución de Carlos Gomez para la fecha actual se mantiene en estado "Generada".
+7- Abrir la pantalla Resumen Hoja de Ruta de Distribución desde el menú de pruebas, desplegar el combo Transportista Local asignado, seleccionar Carlos Gomez y presionar Generar Resumen.
+8- Cerrar la ventana emergente "Resumen de HDR de Distribución se ha generado con éxito." pulsando OK.
+9- Validar en el archivo HojasDeRutaDistribucion.json que la hoja de ruta de distribución de Carlos Gomez para la fecha actual cambia de estado "Generada" a estado "EnCurso".
+10- Volver a abrir la pantalla Resumen Hoja de Ruta de Distribución desde el menú de pruebas y desplegar el combo Transportista Local asignado.
+11- Verificar que Carlos Gomez no aparece en el combo si ya no tiene Hojas de Ruta de Distribución en estado "Generada" para la fecha actual.
+12- Verificar que no se puede generar dos veces el mismo resumen para la misma Hoja de Ruta de Distribución.
