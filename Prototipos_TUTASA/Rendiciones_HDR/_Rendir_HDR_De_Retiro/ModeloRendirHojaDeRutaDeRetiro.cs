@@ -153,7 +153,7 @@ namespace Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Retiro
             {
                 if (hdr.estado != EstadoHojaDeRutaEnum.Cumplida && hdr.estado != EstadoHojaDeRutaEnum.NoCumplida)
                 {
-                    MessageBox.Show("Hay HDR sin su estado, completelas para poder registrar la rendicion.");
+                    MessageBox.Show("Hay hojas de ruta sin su estado nuevo, completelas para poder registrar la rendicion.");
                     return false;
                 }
             }
