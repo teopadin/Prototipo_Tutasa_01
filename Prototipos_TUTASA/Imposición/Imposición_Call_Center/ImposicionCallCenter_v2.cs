@@ -50,7 +50,7 @@ namespace Prototipos_TUTASA.ImposiciónCallCenter_v2
                 return;
             }
 
-            
+
 
             if (string.IsNullOrWhiteSpace(txtNombreDest.Text) ||
                 string.IsNullOrWhiteSpace(txtApellidoDest.Text) ||
@@ -119,6 +119,13 @@ namespace Prototipos_TUTASA.ImposiciónCallCenter_v2
             {
                 if (!ValidarDomicilioPuertaPuerta())
                     return;
+
+                cdDestino = comboBox2.SelectedItem as CentroDistribucion;
+                if (cdDestino == null)
+                {
+                    MostrarAviso("Debe seleccionar un centro de distribución destino.");
+                    return;
+                }
 
                 destinatario.calle = textBox1.Text.Trim();
                 destinatario.altura = int.Parse(textBox2.Text.Trim());
@@ -254,7 +261,7 @@ namespace Prototipos_TUTASA.ImposiciónCallCenter_v2
         {
             groupBox4.Enabled = radioButton5.Checked;
             groupBox7.Enabled = radioButton6.Checked;
-            groupBox5.Enabled = radioButton7.Checked;
+            groupBox5.Enabled = radioButton5.Checked || radioButton7.Checked;
 
             if (!radioButton5.Checked)
                 LimpiarDomicilioPuertaPuerta();
@@ -262,7 +269,7 @@ namespace Prototipos_TUTASA.ImposiciónCallCenter_v2
             if (!radioButton6.Checked)
                 comboBox3.SelectedIndex = -1;
 
-            if (!radioButton7.Checked)
+            if (!radioButton5.Checked && !radioButton7.Checked)
                 comboBox2.SelectedIndex = -1;
         }
 
@@ -307,7 +314,7 @@ namespace Prototipos_TUTASA.ImposiciónCallCenter_v2
 
             return true;
         }
-        
+
 
         private bool TryObtenerTipoBulto(out TipoBultoEnum tipoBulto)
         {
@@ -394,6 +401,11 @@ namespace Prototipos_TUTASA.ImposiciónCallCenter_v2
         private void MostrarAviso(string mensaje)
         {
             MessageBox.Show(mensaje, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        private void groupBox5_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

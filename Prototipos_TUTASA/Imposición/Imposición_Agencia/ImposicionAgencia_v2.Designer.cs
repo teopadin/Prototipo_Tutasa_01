@@ -122,9 +122,9 @@
             groupBox1.Controls.Add(lblTelRem);
             groupBox1.Controls.Add(txtTelRem);
             groupBox1.Location = new Point(16, 76);
-            groupBox1.Margin = new Padding(4, 4, 4, 4);
+            groupBox1.Margin = new Padding(4);
             groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(4, 4, 4, 4);
+            groupBox1.Padding = new Padding(4);
             groupBox1.Size = new Size(1576, 227);
             groupBox1.TabIndex = 2;
             groupBox1.TabStop = false;
@@ -133,7 +133,7 @@
             // txtCiudadRemitente
             // 
             txtCiudadRemitente.Location = new Point(476, 163);
-            txtCiudadRemitente.Margin = new Padding(5, 5, 5, 5);
+            txtCiudadRemitente.Margin = new Padding(5);
             txtCiudadRemitente.MaxLength = 40;
             txtCiudadRemitente.Name = "txtCiudadRemitente";
             txtCiudadRemitente.Size = new Size(504, 39);
@@ -152,7 +152,7 @@
             // txtCodigoPostalRemitente
             // 
             txtCodigoPostalRemitente.Location = new Point(264, 163);
-            txtCodigoPostalRemitente.Margin = new Padding(5, 5, 5, 5);
+            txtCodigoPostalRemitente.Margin = new Padding(5);
             txtCodigoPostalRemitente.MaxLength = 10;
             txtCodigoPostalRemitente.Name = "txtCodigoPostalRemitente";
             txtCodigoPostalRemitente.Size = new Size(182, 39);
@@ -171,7 +171,7 @@
             // txtPisoRemitente
             // 
             txtPisoRemitente.Location = new Point(159, 163);
-            txtPisoRemitente.Margin = new Padding(5, 5, 5, 5);
+            txtPisoRemitente.Margin = new Padding(5);
             txtPisoRemitente.MaxLength = 10;
             txtPisoRemitente.Name = "txtPisoRemitente";
             txtPisoRemitente.Size = new Size(88, 39);
@@ -190,7 +190,7 @@
             // txtAlturaRemitente
             // 
             txtAlturaRemitente.Location = new Point(12, 163);
-            txtAlturaRemitente.Margin = new Padding(5, 5, 5, 5);
+            txtAlturaRemitente.Margin = new Padding(5);
             txtAlturaRemitente.Name = "txtAlturaRemitente";
             txtAlturaRemitente.Size = new Size(133, 39);
             txtAlturaRemitente.TabIndex = 35;
@@ -208,7 +208,7 @@
             // txtCalleRemitente
             // 
             txtCalleRemitente.Location = new Point(775, 68);
-            txtCalleRemitente.Margin = new Padding(5, 5, 5, 5);
+            txtCalleRemitente.Margin = new Padding(5);
             txtCalleRemitente.MaxLength = 50;
             txtCalleRemitente.Name = "txtCalleRemitente";
             txtCalleRemitente.Size = new Size(571, 39);
@@ -238,7 +238,7 @@
             // 
             cboRazonSocial.Items.AddRange(new object[] { "Acme SA", "Distribuidora Norte SRL", "Logística del Sur SA" });
             cboRazonSocial.Location = new Point(10, 68);
-            cboRazonSocial.Margin = new Padding(4, 4, 4, 4);
+            cboRazonSocial.Margin = new Padding(4);
             cboRazonSocial.Name = "cboRazonSocial";
             cboRazonSocial.Size = new Size(233, 40);
             cboRazonSocial.TabIndex = 23;
@@ -256,7 +256,7 @@
             // txtCUIT
             // 
             txtCUIT.Location = new Point(283, 68);
-            txtCUIT.Margin = new Padding(4, 4, 4, 4);
+            txtCUIT.Margin = new Padding(4);
             txtCUIT.Name = "txtCUIT";
             txtCUIT.Size = new Size(181, 39);
             txtCUIT.TabIndex = 25;
@@ -274,7 +274,7 @@
             // txtTelRem
             // 
             txtTelRem.Location = new Point(503, 70);
-            txtTelRem.Margin = new Padding(4, 4, 4, 4);
+            txtTelRem.Margin = new Padding(4);
             txtTelRem.Name = "txtTelRem";
             txtTelRem.Size = new Size(239, 39);
             txtTelRem.TabIndex = 33;
@@ -290,9 +290,9 @@
             groupBox2.Controls.Add(lblTelDest);
             groupBox2.Controls.Add(txtTelDest);
             groupBox2.Location = new Point(16, 308);
-            groupBox2.Margin = new Padding(4, 4, 4, 4);
+            groupBox2.Margin = new Padding(4);
             groupBox2.Name = "groupBox2";
-            groupBox2.Padding = new Padding(4, 4, 4, 4);
+            groupBox2.Padding = new Padding(4);
             groupBox2.Size = new Size(1576, 154);
             groupBox2.TabIndex = 3;
             groupBox2.TabStop = false;
@@ -311,7 +311,7 @@
             // txtNombreDest
             // 
             txtNombreDest.Location = new Point(14, 95);
-            txtNombreDest.Margin = new Padding(4, 4, 4, 4);
+            txtNombreDest.Margin = new Padding(4);
             txtNombreDest.Name = "txtNombreDest";
             txtNombreDest.Size = new Size(430, 39);
             txtNombreDest.TabIndex = 33;
@@ -329,7 +329,7 @@
             // txtApellidoDest
             // 
             txtApellidoDest.Location = new Point(503, 95);
-            txtApellidoDest.Margin = new Padding(4, 4, 4, 4);
+            txtApellidoDest.Margin = new Padding(4);
             txtApellidoDest.Name = "txtApellidoDest";
             txtApellidoDest.Size = new Size(406, 39);
             txtApellidoDest.TabIndex = 35;
@@ -347,7 +347,7 @@
             // txtDNIDest
             // 
             txtDNIDest.Location = new Point(940, 95);
-            txtDNIDest.Margin = new Padding(4, 4, 4, 4);
+            txtDNIDest.Margin = new Padding(4);
             txtDNIDest.Name = "txtDNIDest";
             txtDNIDest.Size = new Size(302, 39);
             txtDNIDest.TabIndex = 37;
@@ -366,7 +366,7 @@
             // txtTelDest
             // 
             txtTelDest.Location = new Point(1278, 95);
-            txtTelDest.Margin = new Padding(4, 4, 4, 4);
+            txtTelDest.Margin = new Padding(4);
             txtTelDest.Name = "txtTelDest";
             txtTelDest.Size = new Size(289, 39);
             txtTelDest.TabIndex = 39;
@@ -610,7 +610,7 @@
             groupBox5.Size = new Size(351, 369);
             groupBox5.TabIndex = 29;
             groupBox5.TabStop = false;
-            groupBox5.Text = "Entrega en CD";
+            groupBox5.Text = "Seleccionar CD Destino";
             // 
             // label7
             // 
@@ -699,7 +699,7 @@
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Controls.Add(lblTitulo);
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             Name = "ImposicionAgencia_v2";
             Text = "Imposición en Agencia";
             Load += ImposicionAgencia_v2_Load;
