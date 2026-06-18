@@ -5,7 +5,7 @@ Contexto:
 2- Abrir la pantalla Recepcion de Hoja de Ruta de Retiro en Agencia.
 
 Pasos:
-1- Ingresar 1002.
+1- Ingresar en Nro Hoja de Ruta: 1002.
 2- Presionar Buscar.
 3- Verificar: Agencia: Agencia Centro - Cordoba, Transportista Local: Silvia Castro.
 4- Verificar lista de guias incluidas en la HDR: AG02-0001.
@@ -14,3 +14,6 @@ Pasos:
 7- Presionar Aceptar.
 8- Salir del sistema presionando la cruz del extremo superior derecho de la pantalla.
 9- Verificar que la HDR queda en estado Recibida durante la ejecución.
+	Archivo HojasDeRutaRetiro.json: verificar registro existente
+	con NroHDR 1002 
+	con estado "Recibida"

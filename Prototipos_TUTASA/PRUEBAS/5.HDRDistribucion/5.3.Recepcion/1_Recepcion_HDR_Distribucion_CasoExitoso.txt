@@ -5,13 +5,18 @@ Contexto:
 2- Abrir la pantalla Recepcion de Hoja de Ruta de Distribucion en Agencia.
 
 Pasos:
-1- Ingresar 2097.
+1- Ingresar Nro Hoja de Ruta: 2097.
 2- Presionar Buscar.
-3- Verificar: Agencia: Agencia Capital y GBA, Transportista Local: Carlos Gomez.
-4- Verificar lista de guias incluidas en la HDR: AG01-0001.
+3- Verificar: Agencia: Agencia Capital y GBA, Transportista Local: Carlos Gomez. Fecha recepción: bloqueada
+4- Verificar lista de guias incluidas en la HDR, Nro de Guia: AG01-0001, Tipo de Bulto: S
 5- Presionar Confirmar Recepcion.
 6- Verificar mensaje: "Recepción de HDR N° 2097 confirmada con éxito.".
 7- Presionar Aceptar.
 8- Salir del sistema presionando la cruz del extremo superior derecho de la pantalla.
 9- Verificar que la HDR queda en estado Recibida durante la ejecución.
-10- Verificar que las guías incluidas quedan en estado PendienteDeRetiroEnAgencia durante la ejecución.
+	Archivo HojasDeRutaDistribucion.json: verificar registro existente
+	con NroHDR 2097 
+	con estado "Recibida"
+	Archivo Guias.json: verificar registro existente
+	con NroGuia: AG01-0001
+	con estado "PendienteDeRetiroEnAgencia"

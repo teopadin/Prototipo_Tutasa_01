@@ -3,9 +3,18 @@ Plan de Prueba: Recepcion Media Distancia - Caso exitoso
 Pasos:
 1- Abrir la pantalla Recepcion Media Distancia.
 2- Seleccionar el servicio 199 en el combo de servicios pendientes.
-3- Verificar que se muestra la empresa Transporte Federal S.A.
-4- Verificar que se muestran las guías asociadas a la HDR 399.
+3- Verificar Empresa Transporte: Transporte Federal S.A., Cantidad de Guías: 2, Fecha de Llegada: sábado, 13 de Junio de 2026
+4- Verificar Nro Guía: CD01-0016, Típo Bulto: M, Nro HDR a la que pertenece: 399, CD Origen: Capital y GBA;
+			 Nro Guía: AG02-0001, Típo Bulto: L, Nro HDR a la que pertenece: 399, CD Origen: Centro - Córdoba;
 5- Presionar Confirmar Recepcion.
 6- Verificar mensaje: "Servicio Nº 199 recibido con éxito.".
 7- Verificar que el servicio queda con fecha de recepción cargada durante la ejecución.
-8- Verificar que la HDR asociada queda en estado Recibida durante la ejecución.
+8- Verificar que la HDR queda en estado Recibida durante la ejecución.
+	Archivo HojasDeRutaTransporte.json: verificar registro existente
+	con NroHDR 399 
+	con estado "Recibida"
+	Archivo Guias.json: verificar registro existente
+	con NroGuia: CD01-0016
+	con estado "EnCDDestino"
+	con NroGuia: AG02-0001
+	con estado "EnCDDestino"
