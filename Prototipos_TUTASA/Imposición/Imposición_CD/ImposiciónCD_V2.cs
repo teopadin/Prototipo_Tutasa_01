@@ -117,12 +117,18 @@ namespace Prototipos_TUTASA.ImposiciónCD_V2
                 if (!ValidarDomicilioPuertaPuerta())
                     return;
 
+                cdDestino = comboBox2.SelectedItem as CentroDistribucion;
+                if (cdDestino == null)
+                {
+                    MostrarAviso("Debe seleccionar un centro de distribución destino.");
+                    return;
+                }
+
                 destinatario.calle = textBox1.Text.Trim();
                 destinatario.altura = int.Parse(textBox2.Text.Trim());
                 destinatario.piso = textBox3.Text.Trim();
                 destinatario.codigoPostal = textBox4.Text.Trim();
                 destinatario.ciudad = textBox5.Text.Trim();
-                cdDestino = modelo.ObtenerCentroDistribucionPorCiudad(destinatario.ciudad);
             }
             else if (modalidadEntrega == ModalidadEntregaEnum.EntregaAgencia)
             {
@@ -244,7 +250,7 @@ namespace Prototipos_TUTASA.ImposiciónCD_V2
         {
             groupBox2.Enabled = radioButton5.Checked;
             groupBox3.Enabled = radioButton6.Checked;
-            groupBox4.Enabled = radioButton7.Checked;
+            groupBox4.Enabled = radioButton5.Checked || radioButton7.Checked;
 
             if (!radioButton5.Checked)
                 LimpiarDomicilioPuertaPuerta();
@@ -252,7 +258,7 @@ namespace Prototipos_TUTASA.ImposiciónCD_V2
             if (!radioButton6.Checked)
                 comboBox1.SelectedIndex = -1;
 
-            if (!radioButton7.Checked)
+            if (!radioButton5.Checked && !radioButton7.Checked)
                 comboBox2.SelectedIndex = -1;
         }
 

@@ -471,7 +471,7 @@
             groupBox4.Size = new Size(454, 367);
             groupBox4.TabIndex = 27;
             groupBox4.TabStop = false;
-            groupBox4.Text = "Entrega en CD";
+            groupBox4.Text = "Seleccionar CD Destino";
             // 
             // label7
             // 

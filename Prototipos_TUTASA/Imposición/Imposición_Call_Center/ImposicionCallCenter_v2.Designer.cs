@@ -450,7 +450,8 @@
             groupBox5.Size = new Size(342, 362);
             groupBox5.TabIndex = 35;
             groupBox5.TabStop = false;
-            groupBox5.Text = "Entrega en CD";
+            groupBox5.Text = "Seleccionar CD";
+            groupBox5.Enter += groupBox5_Enter;
             // 
             // label7
             // 
