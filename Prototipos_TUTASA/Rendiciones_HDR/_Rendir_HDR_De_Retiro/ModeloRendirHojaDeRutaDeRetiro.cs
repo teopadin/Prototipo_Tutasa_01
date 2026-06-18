@@ -196,10 +196,17 @@ namespace Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Retiro
 
                     if (guiaEntidad != null)
                     {
+                        Auxiliares.EstadoGuiaEnum estadoAnterior = guiaEntidad.estado;
+
                         if (hdr.estado == EstadoHojaDeRutaEnum.Cumplida)
                             guiaEntidad.estado = Auxiliares.EstadoGuiaEnum.Retirada;
                         else if (hdr.estado == EstadoHojaDeRutaEnum.NoCumplida)
                             guiaEntidad.estado = Auxiliares.EstadoGuiaEnum.Impuesta;
+
+                        if (guiaEntidad.estado == estadoAnterior)
+                        {
+                            continue;
+                        }
 
                         if (guiaEntidad.Historial == null)
                         {
