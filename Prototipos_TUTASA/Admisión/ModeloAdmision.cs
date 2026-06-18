@@ -346,6 +346,12 @@ namespace Prototipos_TUTASA.Admisión
                     guiaEntidad.TarifaCalculada.ComisionAgenciaOrigen = guia.TarifaCalculada.ComisionAgenciaOrigen;
                     guiaEntidad.TarifaCalculada.ComisionAgenciaDestino = guia.TarifaCalculada.ComisionAgenciaDestino;
                     guiaEntidad.TarifaCalculada.TotalCostosEmpresa = guia.TarifaCalculada.TotalCostosEmpresa;
+                    guiaEntidad.Historial.Add(new HistorialEstadoGuia
+                    {
+                        FechaCambio = fechaAdmision,
+                        Estado = guiaEntidad.estado,
+                        Donde = BuscarCD(idCDAdmisionActual)?.nombre ?? ""
+                    });
                     break;
                 }
             }
@@ -365,6 +371,12 @@ namespace Prototipos_TUTASA.Admisión
                 if (guiaEntidad.NroGuia == nroGuia)
                 {
                     guiaEntidad.estado = Enum.Parse<Auxiliares.EstadoGuiaEnum>(guia.estado.ToString());
+                    guiaEntidad.Historial.Add(new HistorialEstadoGuia
+                    {
+                        FechaCambio = fechaAdmision,
+                        Estado = guiaEntidad.estado,
+                        Donde = BuscarCD(idCDAdmisionActual)?.nombre ?? ""
+                    });
                     break;
                 }
             }
