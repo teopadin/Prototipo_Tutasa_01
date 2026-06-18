@@ -136,6 +136,7 @@ namespace Prototipos_TUTASA.Imposición.Imposición_Agencia
             });
 
             GuiaAlmacen.Guias.Add(guiaEntidad);
+            GuiaAlmacen.Guardar();
             Guias.Add(guia);
 
             return guia;

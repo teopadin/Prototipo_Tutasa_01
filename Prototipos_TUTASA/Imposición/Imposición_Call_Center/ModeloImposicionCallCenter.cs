@@ -126,6 +126,7 @@ namespace Prototipos_TUTASA.Imposición.ImposicionCallCenter_v2
             });
 
             GuiaAlmacen.Guias.Add(guiaEntidad);
+            GuiaAlmacen.Guardar();
             Guias.Add(guia);
 
             return guia;
