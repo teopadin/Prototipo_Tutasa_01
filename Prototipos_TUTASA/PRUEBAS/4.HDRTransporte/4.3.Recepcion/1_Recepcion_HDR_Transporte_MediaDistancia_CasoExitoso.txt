@@ -13,8 +13,13 @@ Pasos:
 	Archivo HojasDeRutaTransporte.json: verificar registro existente
 	con NroHDR 399 
 	con estado "Recibida"
+	{"nroHDR":399,"fechaGeneracion":"2026-06-10T00:00:00","idCDOrigen":1,"idCDDestino":2,"estado":"Recibida","idServicio":"199","DetalleGuias":["CD01-0016","AG02-0001"]}]
 	Archivo Guias.json: verificar registro existente
 	con NroGuia: CD01-0016
 	con estado "EnCDDestino"
 	con NroGuia: AG02-0001
 	con estado "EnCDDestino"
+	Archivo ServiciosMediaDistancia.json: verificar registro existente
+	con idServicio: 199
+	con fechaRecepcion: ACTUAL
+	{"idServicio":"199","idEmpresa":1,"fechaSalida":"2026-06-12T08:00:00","fechaLlegada":"2026-06-13T09:00:00","fechaRecepcion":"ACTUAL","capacidadDisponible":120,"idCDOrigen":1,"idCDDestino":2,"DetalleHDRs":[399],"tipoArrendamiento":"A"}

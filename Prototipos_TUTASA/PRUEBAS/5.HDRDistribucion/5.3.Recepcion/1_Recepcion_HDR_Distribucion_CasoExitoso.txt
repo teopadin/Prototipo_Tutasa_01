@@ -17,6 +17,7 @@ Pasos:
 	Archivo HojasDeRutaDistribucion.json: verificar registro existente
 	con NroHDR 2097 
 	con estado "Recibida"
+	{"NroHDR":2097,"Fecha":ACTUAL,"estado":"Recibida","dniTransportistaAsignado":30111222,"idAgenciaDestino":1,"Calle":"Av. Rivadavia","Altura":3200,"Piso":"","CodigoPostal":"1406","Destinatario":"Ana Perez","DetalleGuias":["AG01-0001"]}
 	Archivo Guias.json: verificar registro existente
 	con NroGuia: AG01-0001
 	con estado "PendienteDeRetiroEnAgencia"
