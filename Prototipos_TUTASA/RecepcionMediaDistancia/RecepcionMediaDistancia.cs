@@ -110,56 +110,7 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
 
         private void confirmarRecepcion()
         {
-            registrarRecepcion();
-
-            foreach (int nroHDR in modelo.ServicioActual.DetalleHDRs)
-            {
-                HojaDeRutaTransporte hdr = modelo.BuscarHDR(nroHDR);
-
-                if (hdr == null)
-                    continue;
-
-                actualizarEstadoHDR(hdr);
-
-                foreach (string nroGuia in hdr.DetalleGuias)
-                {
-                    Guia guia = modelo.BuscarGuia(nroGuia);
-
-                    if (guia != null)
-                    {
-                        actualizarEstadoGuia(guia);
-                    }
-                }
-            }
-        }
-
-        private void registrarRecepcion()
-        {
-            modelo.ServicioActual.fechaRecepcion = DateTime.Now;
-        }
-
-        private void actualizarEstadoHDR(HojaDeRutaTransporte hdr)
-        {
-            hdr.estado = EstadoHojaDeRutaEnum.Recibida;
-        }
-
-        private void actualizarEstadoGuia(Guia guia)
-        {
-            if (guia.idCDActual == guia.idCDDestino)
-            {
-                if (guia.modalidadEntrega == ModalidadEntregaEnum.EntregaCD)
-                {
-                    guia.estado = EstadoGuiaEnum.PendienteDeRetiroEnCD;
-                }
-                else
-                {
-                    guia.estado = EstadoGuiaEnum.EnCDDestino;
-                }
-            }
-            else
-            {
-                guia.estado = EstadoGuiaEnum.Admitida;
-            }
+            modelo.ConfirmarRecepcion();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
