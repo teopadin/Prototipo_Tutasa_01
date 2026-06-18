@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using Prototipos_TUTASA.Almacenes;
 using Prototipos_TUTASA.Auxiliares;
@@ -149,11 +151,12 @@ namespace Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Distribucion
             {
                 if (hdr.estado != EstadoHojaDeRutaEnum.Cumplida && hdr.estado != EstadoHojaDeRutaEnum.NoCumplida)
                 {
-                    MessageBox.Show("Debe aplicar un estado a todas las HDR antes de registrar la rendicion.");
+                    MessageBox.Show("Hay HDR sin su estado, completelas para poder registrar la rendicion.");
                     return false;
                 }
             }
 
+            // 1) Actualizar copias locales (para que la pantalla refleje el estado)
             foreach (var hdr in lista)
             {
                 foreach (string nroGuia in hdr.DetalleGuias)
@@ -168,6 +171,40 @@ namespace Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Distribucion
                         else if (hdr.estado == EstadoHojaDeRutaEnum.NoCumplida)
                             g.estado = EstadoGuiaEnum.EnCDDestino;
                     }
+                }
+            }
+
+            // 2) Actualizar entidades del almacen (para que persista al Guardar)
+            foreach (var hdr in lista)
+            {
+                var hdrEntidad = HojaDeRutaDistribucionAlmacen.hojasDeRutaDistribucion
+                    .FirstOrDefault(h => h.NroHDR == hdr.NroHDR);
+
+                if (hdrEntidad != null)
+                {
+                    hdrEntidad.estado = Enum.Parse<Auxiliares.EstadoHojaDeRutaEnum>(hdr.estado.ToString());
+
+                    if (hdr.estado == EstadoHojaDeRutaEnum.NoCumplida && hdr.motivoNoCumplida != null)
+                    {
+                        hdrEntidad.motivoNoCumplida = Enum.Parse<Auxiliares.MotivoNoCumplidaDistribucionEnum>(hdr.motivoNoCumplida.Value.ToString());
+                    }
+                }
+
+                foreach (string nroGuia in hdr.DetalleGuias)
+                {
+                    var guiaEntidad = GuiaAlmacen.Guias
+                        .FirstOrDefault(g => g.NroGuia == nroGuia);
+
+                    if (guiaEntidad == null) continue;
+
+                    // Solo modificar guías con modalidad EntregaDomicilio
+                    if (guiaEntidad.modalidadEntrega != Auxiliares.ModalidadEntregaEnum.EntregaDomicilio)
+                        continue;
+
+                    if (hdr.estado == EstadoHojaDeRutaEnum.Cumplida)
+                        guiaEntidad.estado = Auxiliares.EstadoGuiaEnum.Entregada;
+                    else if (hdr.estado == EstadoHojaDeRutaEnum.NoCumplida)
+                        guiaEntidad.estado = Auxiliares.EstadoGuiaEnum.EnCDDestino;
                 }
             }
 
