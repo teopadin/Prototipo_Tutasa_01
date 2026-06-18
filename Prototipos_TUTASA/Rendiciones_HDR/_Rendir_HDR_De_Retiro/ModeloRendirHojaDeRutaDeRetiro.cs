@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Forms;
 using Prototipos_TUTASA.Almacenes;
+using System;
 
 namespace Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Retiro
 {
@@ -148,11 +149,12 @@ namespace Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Retiro
             {
                 if (hdr.estado != EstadoHojaDeRutaEnum.Cumplida && hdr.estado != EstadoHojaDeRutaEnum.NoCumplida)
                 {
-                    MessageBox.Show("Debe aplicar un estado a todas las HDR antes de registrar la rendicion.");
+                    MessageBox.Show("Hay HDR sin su estado, completelas para poder registrar la rendicion.");
                     return false;
                 }
             }
 
+            // 1) Actualizar copias locales (para que la pantalla refleje el estado)
             foreach (var hdr in lista)
             {
                 foreach (string nroGuia in hdr.DetalleGuias)
@@ -161,12 +163,39 @@ namespace Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Retiro
                     if (g == null) continue;
 
                     if (hdr.estado == EstadoHojaDeRutaEnum.Cumplida)
-                    {
                         g.estado = EstadoGuiaEnum.Retirada;
-                    }
                     else if (hdr.estado == EstadoHojaDeRutaEnum.NoCumplida)
-                    {
                         g.estado = EstadoGuiaEnum.Impuesta;
+                }
+            }
+
+            // 2) Actualizar entidades del almacen (para que persista al Guardar)
+            foreach (var hdr in lista)
+            {
+                var hdrEntidad = HojaDeRutaRetiroAlmacen.hojasDeRutaRetiro
+                    .FirstOrDefault(h => h.NroHDR == hdr.NroHDR);
+
+                if (hdrEntidad != null)
+                {
+                    hdrEntidad.estado = Enum.Parse<Auxiliares.EstadoHojaDeRutaEnum>(hdr.estado.ToString());
+
+                    if (hdr.estado == EstadoHojaDeRutaEnum.NoCumplida && hdr.motivoNoCumplida != null)
+                    {
+                        hdrEntidad.motivoNoCumplida = Enum.Parse<Auxiliares.MotivoNoCumplidaRetiroEnum>(hdr.motivoNoCumplida.Value.ToString());
+                    }
+                }
+
+                foreach (string nroGuia in hdr.DetalleGuias)
+                {
+                    var guiaEntidad = GuiaAlmacen.Guias
+                        .FirstOrDefault(g => g.NroGuia == nroGuia);
+
+                    if (guiaEntidad != null)
+                    {
+                        if (hdr.estado == EstadoHojaDeRutaEnum.Cumplida)
+                            guiaEntidad.estado = Auxiliares.EstadoGuiaEnum.Retirada;
+                        else if (hdr.estado == EstadoHojaDeRutaEnum.NoCumplida)
+                            guiaEntidad.estado = Auxiliares.EstadoGuiaEnum.Impuesta;
                     }
                 }
             }
