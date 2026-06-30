@@ -234,5 +234,10 @@ namespace Prototipos_TUTASA.HojaDeRutaRetiro
         {
             this.Close();
         }
+
+        private void lvFleteros_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

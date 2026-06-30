@@ -57,7 +57,7 @@ namespace Prototipos_TUTASA.Rendiciones_HDR
 
             if (hdrs.Count == 0)
             {
-                MessageBox.Show("El transportista seleccionado no tiene HDR de distribucion pendientes de rendicion.");
+                MessageBox.Show("El Transportista seleccionado no tiene HDR de distribucion pendientes de rendicion.");
                 return;
             }
 
