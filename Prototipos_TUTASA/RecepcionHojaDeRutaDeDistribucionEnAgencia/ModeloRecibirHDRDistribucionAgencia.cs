@@ -125,6 +125,60 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
             return 0;
         }
 
+        public void ConfirmarRecepcion()
+        {
+            if (HdrActual == null)
+            {
+                return;
+            }
+
+            DateTime fechaRecepcion = DateTime.Now;
+
+            // Actualizo el DTO para que la pantalla quede consistente
+            HdrActual.Fecha = fechaRecepcion;
+            HdrActual.estado = EstadoHojaDeRutaEnum.Recibida;
+
+            // HDR: busco la ENTIDAD REAL del Almacén y la modifico
+            HojaDeRutaDistribucionEntidad hojaEntidad = HojaDeRutaDistribucionAlmacen.hojasDeRutaDistribucion
+                .FirstOrDefault(h => h.NroHDR == HdrActual.NroHDR);
+
+            if (hojaEntidad != null)
+            {
+                hojaEntidad.Fecha = fechaRecepcion;
+                hojaEntidad.estado = EstadoHojaDeRutaAlmacen.Recibida;
+            }
+
+            // Guías: cada una pasa a PendienteDeRetiroEnAgencia en la entidad real
+            foreach (string nroGuia in HdrActual.DetalleGuias)
+            {
+                // DTO (para la pantalla)
+                Guia guiaDto = BuscarGuia(nroGuia);
+                if (guiaDto != null)
+                {
+                    guiaDto.estado = EstadoGuiaEnum.PendienteDeRetiroEnAgencia;
+                }
+
+                // Entidad real del Almacén
+                GuiaEntidad guiaEntidad = GuiaAlmacen.Guias
+                    .FirstOrDefault(g => g.NroGuia == nroGuia);
+
+                if (guiaEntidad != null)
+                {
+                    guiaEntidad.estado = EstadoGuiaAlmacen.PendienteDeRetiroEnAgencia;
+
+                    guiaEntidad.Historial.Add(new HistorialEstadoGuia
+                    {
+                        FechaCambio = fechaRecepcion,
+                        Estado = EstadoGuiaAlmacen.PendienteDeRetiroEnAgencia,
+                        Donde = AgenciaLogueada.razonSocial
+                    });
+                }
+            }
+
+            GuiaAlmacen.Guardar();
+            HojaDeRutaDistribucionAlmacen.Guardar();
+        }
+
         private static TiposBultoEnum ConvertirTipoBulto(TipoBultoAlmacen tipoBulto)
         {
             return tipoBulto switch

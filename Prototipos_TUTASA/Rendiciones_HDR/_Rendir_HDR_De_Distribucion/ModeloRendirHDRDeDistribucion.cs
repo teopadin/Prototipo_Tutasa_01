@@ -144,14 +144,16 @@ namespace Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Distribucion
             }
             return true;
         }
-
         internal bool RegistrarRendicion(List<HojaDeRutaDistribucion> lista)
         {
+            DateTime fechaRendicion = DateTime.Now;
+            string lugarRendicion = ObtenerLugarRendicion();
+
             foreach (var hdr in lista)
             {
                 if (hdr.estado != EstadoHojaDeRutaEnum.Cumplida && hdr.estado != EstadoHojaDeRutaEnum.NoCumplida)
                 {
-                    MessageBox.Show("Hay HDR sin su estado, completelas para poder registrar la rendicion.");
+                    MessageBox.Show("Hay hojas de ruta sin su estado nuevo, completelas para poder registrar la rendicion.");
                     return false;
                 }
             }
@@ -201,10 +203,29 @@ namespace Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Distribucion
                     if (guiaEntidad.modalidadEntrega != Auxiliares.ModalidadEntregaEnum.EntregaDomicilio)
                         continue;
 
+                    Auxiliares.EstadoGuiaEnum estadoAnterior = guiaEntidad.estado;
+
                     if (hdr.estado == EstadoHojaDeRutaEnum.Cumplida)
                         guiaEntidad.estado = Auxiliares.EstadoGuiaEnum.Entregada;
                     else if (hdr.estado == EstadoHojaDeRutaEnum.NoCumplida)
                         guiaEntidad.estado = Auxiliares.EstadoGuiaEnum.EnCDDestino;
+
+                    if (guiaEntidad.estado == estadoAnterior)
+                    {
+                        continue;
+                    }
+
+                    if (guiaEntidad.Historial == null)
+                    {
+                        guiaEntidad.Historial = new List<HistorialEstadoGuia>();
+                    }
+
+                    guiaEntidad.Historial.Add(new HistorialEstadoGuia
+                    {
+                        FechaCambio = fechaRendicion,
+                        Estado = guiaEntidad.estado,
+                        Donde = lugarRendicion
+                    });
                 }
             }
 
@@ -212,6 +233,14 @@ namespace Prototipos_TUTASA.Rendiciones_HDR._Rendir_HDR_De_Distribucion
             HojaDeRutaDistribucionAlmacen.Guardar();
 
             return true;
+        }
+
+        private static string ObtenerLugarRendicion()
+        {
+            CentroDistribucionEntidad cdActual = CentroDistribucionAlmacen.CentrosDeDistribucion
+                .FirstOrDefault(cd => cd.idCD == Program.CodigoCDActual);
+
+            return cdActual?.nombre ?? string.Empty;
         }
     }
 }

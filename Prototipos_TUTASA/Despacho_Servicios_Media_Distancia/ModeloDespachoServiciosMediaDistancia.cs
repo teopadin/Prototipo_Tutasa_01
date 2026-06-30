@@ -169,12 +169,15 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
 
         public void ConfirmarDespacho()
         {
-            ServicioActual.fechaLlegada = DateTime.Now;
+            DateTime fechaDespacho = DateTime.Now;
+            string lugarDespacho = ObtenerLugarDespacho();
+
+            ServicioActual.fechaLlegada = fechaDespacho;
 
             var servicioAlmacen = ServicioMediaDistanciaAlmacen.serviciosMediaDistancia
                 .FirstOrDefault(s => s.idServicio == ServicioActual.idServicio);
             if (servicioAlmacen != null)
-                servicioAlmacen.fechaLlegada = DateTime.Now;
+                servicioAlmacen.fechaLlegada = fechaDespacho;
 
             foreach (int nroHDR in ServicioActual.DetalleHDRs)
             {
@@ -194,8 +197,27 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
                     if (g != null) g.estado = EstadoGuiaEnum.EnTransito;
 
                     var guiaAlmacen = GuiaAlmacen.Guias.FirstOrDefault(gua => gua.NroGuia == nroGuia);
-                    if (guiaAlmacen != null)
-                        guiaAlmacen.estado = EstadoGuiaAlmacen.EnTransito;
+                    if (guiaAlmacen == null) continue;
+
+                    Auxiliares.EstadoGuiaEnum estadoAnterior = guiaAlmacen.estado;
+                    guiaAlmacen.estado = Auxiliares.EstadoGuiaEnum.EnTransito;
+
+                    if (guiaAlmacen.estado == estadoAnterior)
+                    {
+                        continue;
+                    }
+
+                    if (guiaAlmacen.Historial == null)
+                    {
+                        guiaAlmacen.Historial = new List<HistorialEstadoGuia>();
+                    }
+
+                    guiaAlmacen.Historial.Add(new HistorialEstadoGuia
+                    {
+                        FechaCambio = fechaDespacho,
+                        Estado = guiaAlmacen.estado,
+                        Donde = lugarDespacho
+                    });
                 }
             }
 
@@ -204,6 +226,13 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
             GuiaAlmacen.Guardar();
         }
 
+        private static string ObtenerLugarDespacho()
+        {
+            CentroDistribucionEntidad cdActual = CentroDistribucionAlmacen.CentrosDeDistribucion
+                .FirstOrDefault(cd => cd.idCD == Program.CodigoCDActual);
+
+            return cdActual?.nombre ?? string.Empty;
+        }
         private static TiposBultoEnum ConvertirTipoBulto(TipoBultoAlmacen t)
         {
             return t switch

@@ -155,6 +155,97 @@ namespace Prototipos_TUTASA.RecepcionMediaDistancia
             return CDs.FirstOrDefault(c => c.idCD == idCD);
         }
 
+        public void ConfirmarRecepcion()
+        {
+            if (ServicioActual == null)
+            {
+                return;
+            }
+
+            DateTime fechaRecepcion = DateTime.Now;
+
+            // DTO (para la pantalla)
+            ServicioActual.fechaRecepcion = fechaRecepcion;
+
+            // Servicio: entidad real del Almacén
+            ServicioMediaDistanciaEntidad servicioEntidad = ServicioMediaDistanciaAlmacen.serviciosMediaDistancia
+                .FirstOrDefault(s => s.idServicio == ServicioActual.idServicio);
+
+            if (servicioEntidad != null)
+            {
+                servicioEntidad.fechaRecepcion = fechaRecepcion;
+            }
+
+            foreach (int nroHDR in ServicioActual.DetalleHDRs)
+            {
+                // HDR DTO
+                HojaDeRutaTransporte hdrDto = BuscarHDR(nroHDR);
+                if (hdrDto != null)
+                {
+                    hdrDto.estado = EstadoHojaDeRutaEnum.Recibida;
+                }
+
+                // HDR entidad real
+                HojaDeRutaTransporteEntidad hdrEntidad = HojaDeRutaTransporteAlmacen.hojasDeRutaTransporte
+                    .FirstOrDefault(h => h.nroHDR == nroHDR);
+
+                if (hdrEntidad == null)
+                {
+                    continue;
+                }
+
+                hdrEntidad.estado = EstadoHojaDeRutaAlmacen.Recibida;
+
+                foreach (string nroGuia in hdrEntidad.DetalleGuias)
+                {
+                    GuiaEntidad guiaEntidad = GuiaAlmacen.Guias
+                        .FirstOrDefault(g => g.NroGuia == nroGuia);
+
+                    if (guiaEntidad == null)
+                    {
+                        continue;
+                    }
+
+                    EstadoGuiaAlmacen nuevoEstado = DeterminarEstadoGuia(guiaEntidad);
+
+                    guiaEntidad.estado = nuevoEstado;
+
+                    guiaEntidad.Historial.Add(new HistorialEstadoGuia
+                    {
+                        FechaCambio = fechaRecepcion,
+                        Estado = nuevoEstado,
+                        Donde = CdEmisor.nombre
+                    });
+
+                    // DTO (para la pantalla)
+                    Guia guiaDto = BuscarGuia(nroGuia);
+                    if (guiaDto != null)
+                    {
+                        guiaDto.estado = ConvertirEstadoGuia(nuevoEstado);
+                    }
+                }
+            }
+
+            GuiaAlmacen.Guardar();
+            HojaDeRutaTransporteAlmacen.Guardar();
+            ServicioMediaDistanciaAlmacen.Guardar();
+        }
+
+        private static EstadoGuiaAlmacen DeterminarEstadoGuia(GuiaEntidad guiaEntidad)
+        {
+            if (guiaEntidad.idCDActual == guiaEntidad.idCDDestino)
+            {
+                if (guiaEntidad.modalidadEntrega == ModalidadEntregaAlmacen.EntregaCD)
+                {
+                    return EstadoGuiaAlmacen.PendienteDeRetiroEnCD;
+                }
+
+                return EstadoGuiaAlmacen.EnCDDestino;
+            }
+
+            return EstadoGuiaAlmacen.Admitida;
+        }
+
         private static TiposBultoEnum ConvertirTipoBulto(TipoBultoAlmacen tipoBulto)
         {
             return tipoBulto switch

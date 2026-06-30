@@ -108,6 +108,31 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia
             return Agencias.FirstOrDefault(a => a.idAgencia == idAgencia);
         }
 
+        public void ConfirmarRecepcion()
+        {
+            if (HdrActual == null)
+            {
+                return;
+            }
+
+            DateTime fechaRecepcion = DateTime.Now;
+
+            // Actualizo el DTO para que la pantalla quede consistente
+            HdrActual.Fecha = fechaRecepcion;
+            HdrActual.estado = EstadoHojaDeRutaEnum.Recibida;
+
+            // Busco la ENTIDAD REAL del Almacén y la modifico
+            HojaDeRutaRetiroEntidad hojaEntidad = HojaDeRutaRetiroAlmacen.hojasDeRutaRetiro
+                .FirstOrDefault(h => h.NroHDR == HdrActual.NroHDR);
+
+            if (hojaEntidad != null)
+            {
+                hojaEntidad.Fecha = fechaRecepcion;
+                hojaEntidad.estado = EstadoHojaDeRutaAlmacen.Recibida;
+            }
+
+            HojaDeRutaRetiroAlmacen.Guardar();
+        }
         private static TiposBultoEnum ConvertirTipoBulto(TipoBultoAlmacen tipoBulto)
         {
             return tipoBulto switch

@@ -138,34 +138,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeDistribucionEnAgencia
 
         private void confirmarRecepcion()
         {
-            registrarRecepcion();
-
-            actualizarEstadoHDR(modelo.HdrActual);
-
-            actualizarEstadoGuia(modelo.HdrActual);
-        }
-
-        private void registrarRecepcion()
-        {
-            modelo.HdrActual.Fecha = DateTime.Now;
-        }
-
-        private void actualizarEstadoHDR(HojaDeRutaDistribucion hdr)
-        {
-            hdr.estado = EstadoHojaDeRutaEnum.Recibida;
-        }
-
-        private void actualizarEstadoGuia(HojaDeRutaDistribucion hdr)
-        {
-            foreach (string nroGuia in hdr.DetalleGuias)
-            {
-                Guia guia = modelo.BuscarGuia(nroGuia);
-
-                if (guia != null)
-                {
-                    guia.estado = EstadoGuiaEnum.PendienteDeRetiroEnAgencia;
-                }
-            }
+            modelo.ConfirmarRecepcion();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

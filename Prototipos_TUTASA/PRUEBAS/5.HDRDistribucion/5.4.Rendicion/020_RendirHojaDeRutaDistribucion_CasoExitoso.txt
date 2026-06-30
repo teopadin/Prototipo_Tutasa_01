@@ -1,34 +1,38 @@
-﻿Plan de Prueba: Rendir HDR de Distribucion - Caso Exitoso (HDR No Cumplida)
+﻿Plan de Prueba: Rendición HDR de Distribución - Caso exitoso (No Cumplida)
 
-Datos de partida:
-- Transportista: dni 22222222 (Gomez, Maria)
-- HDR 1004 -> Destinatario: Ana Martinez, DetalleGuias: G-D-004 (ModalidadEntrega: EntregaDomicilio), estado: EnCurso
-- HDR 1005 -> Destinatario: Carlos Sosa, DetalleGuias: G-D-005 (ModalidadEntrega: EntregaDomicilio), estado: Recibida
-
-1- Abrir la pantalla "Rendir HDR de Distribucion".
-2- En el combo "Fletero" seleccionar "Gomez, Maria" (dni 22222222).
-3- Verificar: se cargan 2 filas en la grilla con las HDR 1004 y 1005, cada una con su destinatario, direccion y estado actual.
-4- Seleccionar en la grilla la fila correspondiente a la HDR 1004.
-5- Marcar el radio "No Cumplida".
-6- Verificar: se habilita el combo "Motivo".
-7- Presionar "Aplicar" sin seleccionar ningun motivo.
-8- Verificar mensaje: "Debe seleccionar un motivo cuando la HDR es No Cumplida."
-9- Presionar "Aceptar".
-10- En el combo "Motivo" seleccionar "DestinatarioAusente".
-11- Presionar "Aplicar".
-12- Verificar: en la grilla, la columna Estado de la fila 1004 cambia a "NoCumplida".
-13- Seleccionar la fila de la HDR 1005, marcar el radio "Cumplida" y presionar "Aplicar".
-14- Verificar: en la grilla, la columna Estado de la fila 1005 cambia a "Cumplida".
-15- Verificar: campo "Total Rendidas" = 2, "Total Cumplidas" = 1, "Total No Cumplidas" = 1.
-16- Presionar "Registrar Rendicion".
-17- Verificar mensaje: "Rendicion registrada con exito. Total HDR rendidas: 2"
-18- Presionar "Aceptar".
-19- Salir del sistema.
-
-20- Archivo HojasDeRutaDistribucion.json: registros existentes
-    con NroHDR 1004, con estado "NoCumplida" y motivoNoCumplida "DestinatarioAusente".
-    con NroHDR 1005, con estado "Cumplida".
-
-21- Archivo Guias.json: registros existentes
-    con NroGuia G-D-004 (ModalidadEntrega "EntregaDomicilio"), estado "EnCDDestino".
-    con NroGuia G-D-005 (ModalidadEntrega "EntregaDomicilio"), estado "Entregada".
+1- Abrir la pantalla Rendición HDR de Distribución.
+2- En el combo Transportista Local asignado, seleccionar "Laura Martinez".
+3- Verificar que la grilla "Hojas de Ruta rendidas por el Transportista Local" muestra al menos la HDR Nro 2012 con:
+   Destinatario: "Maria Gonzalez",
+   Calle: "Av. Santa Fe",
+   Altura: 2450,
+   Piso: (vacío),
+   CP: 1425,
+   Estado: "EnCurso".
+4- Seleccionar la fila correspondiente a la HDR 2012 en la grilla.
+5- Verificar que el groupbox cambia a "Estado de la HDR seleccionada (2012)" y se habilitan los radios Cumplida y No cumplida y el botón Aplicar.
+6- Seleccionar el radio "No cumplida".
+7- Verificar que el combo "Motivo (solo si no cumplida)" se habilita.
+8- En el combo Motivo, seleccionar "DireccionIncorrecta".
+9- Presionar "Aplicar".
+10- Verificar que la columna Estado de la HDR 2012 en la grilla pasa a "NoCumplida".
+11- Verificar que el contador "Total HDR Rendidas" muestra 1 y "Total HDR no cumplidas" muestra 1.
+12- Para cada una de las demás HDR que aparezcan en la grilla, seleccionarla, marcar "Cumplida" o "No cumplida" (en este último caso seleccionar un motivo del combo), presionar "Aplicar".
+13- Presionar "Registrar Rendición".
+14- Verificar mensaje: "Rendicion registrada con exito. Total HDR rendidas: " seguido del número total de HDR de la grilla.
+15- Presionar "Aceptar".
+16- Verificar que la pantalla se cierra automáticamente.
+17- Salir del sistema presionando la cruz del extremo superior derecho de la pantalla.
+18- Archivo HojasDeRutaDistribucion.json: verificar registro existente
+    con NroHDR 2012,
+    con estado "NoCumplida",
+    con motivoNoCumplida "DireccionIncorrecta".
+19- Archivo Guias.json: verificar registro existente
+    con NroGuia CD03-0001,
+    con estado correspondiente al último cambio aplicado por la rendición
+    (si la última HDR de Laura Martinez en procesarse fue marcada como No Cumplida, el estado será "EnCDDestino";
+     si fue Cumplida, el estado será "Entregada"),
+    con una nueva entrada al final del Historial:
+    FechaCambio (con fecha y hora de hoy),
+    Estado: coincide con el estado final de la guía,
+    Donde: "Capital y GBA".

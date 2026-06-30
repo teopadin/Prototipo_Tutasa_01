@@ -100,18 +100,7 @@ namespace Prototipos_TUTASA.RecepcionHojaDeRutaDeRetiroEnAgencia
 
         private void confirmarRecepcion()
         {
-            registrarRecepcion();
-            actualizarEstadoHDR(modelo.HdrActual);
-        }
-
-        private void registrarRecepcion()
-        {
-            modelo.HdrActual.Fecha = DateTime.Now;
-        }
-
-        private void actualizarEstadoHDR(HojaDeRutaRetiro hdr)
-        {
-            hdr.estado = EstadoHojaDeRutaEnum.Recibida;
+            modelo.ConfirmarRecepcion();
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)

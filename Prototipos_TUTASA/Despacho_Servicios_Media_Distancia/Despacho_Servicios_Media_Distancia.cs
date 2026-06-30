@@ -114,6 +114,7 @@ namespace Prototipos_TUTASA.Despacho_Servicios_Media_Distancia
             if (r == DialogResult.Yes) this.Close();
         }
 
+        //Limpiar
         private void LimpiarPantalla()
         {
             CdDestinoTxtb.Text = "";
